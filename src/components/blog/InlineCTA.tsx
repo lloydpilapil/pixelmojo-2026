@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, LinkButton } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface InlineCTAProps {
@@ -27,7 +27,7 @@ export function InlineCTA({
   variant = 'default',
   className,
 }: InlineCTAProps) {
-  const baseStyles = 'my-12 rounded-xl overflow-hidden'
+  const baseStyles = 'my-8 rounded-xl overflow-hidden'
 
   const variantStyles = {
     default: 'bg-muted/50 border border-border p-8',
@@ -39,24 +39,6 @@ export function InlineCTA({
   return (
     <div className={cn(baseStyles, variantStyles[variant], className)}>
       <div className='text-center max-w-2xl mx-auto'>
-        {/* Icon for gradient variant */}
-        {variant === 'gradient' && (
-          <div className='w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-            <svg
-              className='w-6 h-6 text-primary'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M13 10V3L4 14h7v7l9-11h-7z'
-              />
-            </svg>
-          </div>
-        )}
 
         {/* Content */}
         <h3
@@ -77,45 +59,37 @@ export function InlineCTA({
         {/* Buttons */}
         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
           {primaryButton.href ? (
-            <LinkButton
+            <a
               href={primaryButton.href}
-              variant='default'
-              shape='pill'
-              size={variant === 'minimal' ? 'default' : 'lg'}
+              className='inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:scale-105 active:scale-95 h-10 px-8 rounded-full'
             >
               {primaryButton.text}
-            </LinkButton>
+            </a>
           ) : (
-            <Button
+            <button
               onClick={primaryButton.onClick}
-              variant='default'
-              shape='pill'
-              size={variant === 'minimal' ? 'default' : 'lg'}
+              className='inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:scale-105 active:scale-95 h-10 px-8 rounded-full'
             >
               {primaryButton.text}
-            </Button>
+            </button>
           )}
 
           {secondaryButton && (
             <>
               {secondaryButton.href ? (
-                <LinkButton
+                <a
                   href={secondaryButton.href}
-                  variant='outline'
-                  shape='pill'
-                  size={variant === 'minimal' ? 'default' : 'lg'}
+                  className='inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95 h-10 px-8 rounded-full'
                 >
                   {secondaryButton.text}
-                </LinkButton>
+                </a>
               ) : (
-                <Button
+                <button
                   onClick={secondaryButton.onClick}
-                  variant='outline'
-                  shape='pill'
-                  size={variant === 'minimal' ? 'default' : 'lg'}
+                  className='inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95 h-10 px-8 rounded-full'
                 >
                   {secondaryButton.text}
-                </Button>
+                </button>
               )}
             </>
           )}

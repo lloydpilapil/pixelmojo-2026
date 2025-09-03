@@ -20,7 +20,7 @@ export function BlogHero({
   title,
   description,
   date,
-  tags,
+  tags: _tags,
   readingTime,
   author,
   className
@@ -143,19 +143,6 @@ export function BlogHero({
             </button>
           </div>
 
-          {/* Tags */}
-          {tags && tags.length > 0 && (
-            <div className='flex flex-wrap gap-2 justify-center'>
-              {tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className='bg-primary/10 text-primary text-small px-3 py-1 rounded-full font-medium'
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
         </header>
       </div>
     </div>

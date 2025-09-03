@@ -6,6 +6,7 @@ import BlogQuote from '@/components/blog/BlogQuote'
 import InlineCTA from '@/components/blog/InlineCTA'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
+import BlogCTA from '@/components/blog/BlogCTA'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -56,6 +57,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     InlineCTA: InlineCTA,
     BlogFAQ: BlogFAQ,
     BlogPostImage: BlogPostImage,
+    BlogCTA: BlogCTA,
     
     ...components,
   }

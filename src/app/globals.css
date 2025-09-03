@@ -176,6 +176,11 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   box-sizing: border-box;
 }
 
+/* Reset heading margins */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
 :root {
   --anchor-offset: 120px;
 }
@@ -380,7 +385,7 @@ p, .prose p {
   border-left: 4px solid var(--border);
   padding-left: var(--spacing-md);
   margin: var(--spacing-md) 0;
-  font-style: italic;
+  font-style: normal;
   color: var(--muted-foreground);
 }
 
