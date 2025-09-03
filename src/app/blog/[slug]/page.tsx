@@ -57,35 +57,50 @@ export default async function BlogPost({ params }: BlogPostProps) {
   // Get MDX components (not using hook in async function)
   const mdxComponents = {
     // Standard HTML elements
-    p: ({ children }: any) => <p>{children}</p>,
-    ul: ({ children }: any) => <ul className='list-disc pl-6 mb-4'>{children}</ul>,
-    ol: ({ children }: any) => <ol className='list-decimal pl-6 mb-4'>{children}</ol>,
-    li: ({ children }: any) => <li className='mb-1'>{children}</li>,
-    
-    code: ({ children }: any) => (
-      <code className='bg-muted text-foreground px-2 py-1 rounded text-sm font-mono'>{children}</code>
+    p: ({ children }: { children: React.ReactNode }) => <p>{children}</p>,
+    ul: ({ children }: { children: React.ReactNode }) => (
+      <ul className='list-disc pl-6 mb-4'>{children}</ul>
     ),
-    pre: ({ children }: any) => (
+    ol: ({ children }: { children: React.ReactNode }) => (
+      <ol className='list-decimal pl-6 mb-4'>{children}</ol>
+    ),
+    li: ({ children }: { children: React.ReactNode }) => (
+      <li className='mb-1'>{children}</li>
+    ),
+
+    code: ({ children }: { children: React.ReactNode }) => (
+      <code className='bg-muted text-foreground px-2 py-1 rounded text-sm font-mono'>
+        {children}
+      </code>
+    ),
+    pre: ({ children }: { children: React.ReactNode }) => (
       <pre className='bg-muted text-foreground p-4 rounded-lg overflow-x-auto mb-4 font-mono'>
         {children}
       </pre>
     ),
-    
-    blockquote: ({ children }: any) => (
+
+    blockquote: ({ children }: { children: React.ReactNode }) => (
       <blockquote className='border-l-4 border-border pl-4 my-4 italic text-muted-foreground'>
         {children}
       </blockquote>
     ),
-    
-    a: ({ children, href }: any) => (
-      <a href={href} className='text-primary underline underline-offset-2 hover:opacity-80 transition-opacity'>
+
+    a: ({ children, href }: { children: React.ReactNode; href?: string }) => (
+      <a
+        href={href}
+        className='text-primary underline underline-offset-2 hover:opacity-80 transition-opacity'
+      >
         {children}
       </a>
     ),
-    
-    strong: ({ children }: any) => <strong className='font-bold'>{children}</strong>,
-    em: ({ children }: any) => <em className='italic'>{children}</em>,
-    
+
+    strong: ({ children }: { children: React.ReactNode }) => (
+      <strong className='font-bold'>{children}</strong>
+    ),
+    em: ({ children }: { children: React.ReactNode }) => (
+      <em className='italic'>{children}</em>
+    ),
+
     // Custom MDX components
     TLDR,
     BlogQuote,
@@ -93,14 +108,12 @@ export default async function BlogPost({ params }: BlogPostProps) {
     BlogFAQ,
     BlogPostImage,
   }
-  
-  
+
   // Calculate reading time
   const readingTime = calculateReadingTime(post.body.raw)
-  
+
   // Get author data (defaulting to Lloyd Pilapil)
   const author = getAuthor('lloyd-pilapil')
-  
 
   return (
     <>
@@ -113,23 +126,27 @@ export default async function BlogPost({ params }: BlogPostProps) {
         readingTime={readingTime}
         author={{
           name: author.name,
-          avatar: "/lloyd-pilapil.webp"
+          avatar: '/lloyd-pilapil.webp',
         }}
       />
 
       {/* Two Column Layout Below Hero */}
       <BlogPostLayout
-        tableOfContents={post.showTOC !== false && post.headings ? (
-          <TableOfContents headings={post.headings} />
-        ) : undefined}
-        sidebar={post.showCTA !== false ? (
-          <BlogCTA
-            title="Stay Updated"
-            description="Get the latest web development insights delivered to your inbox."
-            buttonText="Subscribe"
-            variant="newsletter"
-          />
-        ) : undefined}
+        tableOfContents={
+          post.showTOC !== false && post.headings ? (
+            <TableOfContents headings={post.headings} />
+          ) : undefined
+        }
+        sidebar={
+          post.showCTA !== false ? (
+            <BlogCTA
+              title='Stay Updated'
+              description='Get the latest web development insights delivered to your inbox.'
+              buttonText='Subscribe'
+              variant='newsletter'
+            />
+          ) : undefined
+        }
       >
         {/* Article Content */}
         <article className='animate-fade-in'>
@@ -142,9 +159,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
           <AuthorBio
             author={{
               ...author,
-              avatar: "/lloyd-pilapil.webp"
+              avatar: '/lloyd-pilapil.webp',
             }}
-            title="About the Author"
+            title='About the Author'
           />
         </article>
       </BlogPostLayout>
