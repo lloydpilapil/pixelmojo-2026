@@ -1,0 +1,32 @@
+{
+  "title": "Hello World",
+  "date": "2024-01-01T00:00:00.000Z",
+  "description": "My first blog post",
+  "tags": [
+    "introduction",
+    "blog"
+  ],
+  "showTOC": true,
+  "showCTA": true,
+  "body": {
+    "raw": "\nWelcome to my portfolio blog! This is my first post using MDX and Contentlayer.\n\n## Features\n\n- **MDX Support**: Write JSX in markdown\n- **TypeScript**: Full type safety\n- **Contentlayer**: Automatic content processing\n\n```javascript\nconsole.log('Hello, World!')\n```\n\nThis is just the beginning of my blogging journey!\n",
+    "code": "var Component=(()=>{var p=Object.create;var i=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var y=(e,n)=>()=>(n||e((n={exports:{}}).exports,n),n.exports),x=(e,n)=>{for(var o in n)i(e,o,{get:n[o],enumerable:!0})},s=(e,n,o,l)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let r of u(n))!f.call(e,r)&&r!==o&&i(e,r,{get:()=>n[r],enumerable:!(l=h(n,r))||l.enumerable});return e};var j=(e,n,o)=>(o=e!=null?p(m(e)):{},s(n||!e||!e.__esModule?i(o,\"default\",{value:e,enumerable:!0}):o,e)),_=e=>s(i({},\"__esModule\",{value:!0}),e);var d=y((C,c)=>{c.exports=_jsx_runtime});var b={};x(b,{default:()=>g,frontmatter:()=>M});var t=j(d()),M={title:\"Hello World\",date:\"2024-01-01\",description:\"My first blog post\",tags:[\"introduction\",\"blog\"]};function a(e){let n={code:\"code\",h2:\"h2\",li:\"li\",p:\"p\",pre:\"pre\",strong:\"strong\",ul:\"ul\",...e.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(n.p,{children:\"Welcome to my portfolio blog! This is my first post using MDX and Contentlayer.\"}),`\n`,(0,t.jsx)(n.h2,{id:\"features\",children:\"Features\"}),`\n`,(0,t.jsxs)(n.ul,{children:[`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"MDX Support\"}),\": Write JSX in markdown\"]}),`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"TypeScript\"}),\": Full type safety\"]}),`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"Contentlayer\"}),\": Automatic content processing\"]}),`\n`]}),`\n`,(0,t.jsx)(n.pre,{children:(0,t.jsx)(n.code,{className:\"language-javascript\",children:`console.log('Hello, World!')\n`})}),`\n`,(0,t.jsx)(n.p,{children:\"This is just the beginning of my blogging journey!\"})]})}function g(e={}){let{wrapper:n}=e.components||{};return n?(0,t.jsx)(n,{...e,children:(0,t.jsx)(a,{...e})}):a(e)}return _(b);})();\n;return Component;"
+  },
+  "_id": "hello-world.mdx",
+  "_raw": {
+    "sourceFilePath": "hello-world.mdx",
+    "sourceFileName": "hello-world.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "hello-world"
+  },
+  "type": "Post",
+  "url": "/blog/hello-world",
+  "headings": [
+    {
+      "id": "features",
+      "text": "Features",
+      "level": 2
+    }
+  ]
+}

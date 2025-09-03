@@ -1,0 +1,82 @@
+// contentlayer.config.ts
+import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+import rehypeSlug from "rehype-slug";
+import { visit } from "unist-util-visit";
+import { toString } from "mdast-util-to-string";
+var Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: `**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the post (recommended: 50-60 characters for SEO)",
+      required: true
+    },
+    date: {
+      type: "date",
+      description: "The date of the post",
+      required: true
+    },
+    description: {
+      type: "string",
+      description: "The description of the post (recommended: 120-160 characters for SEO)",
+      required: false
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      description: "Tags for the post",
+      required: false
+    },
+    showTOC: {
+      type: "boolean",
+      description: "Whether to show table of contents in sidebar",
+      required: false,
+      default: true
+    },
+    showCTA: {
+      type: "boolean",
+      description: "Whether to show CTA in sidebar",
+      required: false,
+      default: true
+    }
+  },
+  computedFields: {
+    url: {
+      type: "string",
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`
+    },
+    headings: {
+      type: "json",
+      resolve: async (doc) => {
+        const headingsRegex = /^(#{1,6})\s+(.+)$/gm;
+        const headings = [];
+        let match;
+        while ((match = headingsRegex.exec(doc.body.raw)) !== null) {
+          const level = match[1].length;
+          const text = match[2].trim();
+          const id = text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_]+/g, "-").replace(/^-+|-+$/g, "");
+          headings.push({
+            id,
+            text,
+            level
+          });
+        }
+        return headings;
+      }
+    }
+  }
+}));
+var contentlayer_config_default = makeSource({
+  contentDirPath: "content",
+  documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [rehypeSlug]
+  }
+});
+export {
+  Post,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-5QLMFRVT.mjs.map

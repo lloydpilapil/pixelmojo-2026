@@ -1,0 +1,270 @@
+[
+  {
+    "title": "Why Your Design Team Needs a Computer Scientist",
+    "date": "2024-03-15T00:00:00.000Z",
+    "description": "Discover how hiring developers with CS backgrounds can transform your design process, bridge technical gaps, and create more innovative user experiences.",
+    "tags": [
+      "design",
+      "hiring",
+      "computer-science",
+      "team-building",
+      "UX"
+    ],
+    "showTOC": true,
+    "showCTA": true,
+    "body": {
+      "raw": "\n<BlogPostImage\n    src=\"/placeholder.svg\"\n    alt=\"Why Your Design Team Needs a Computer Scientist\"\n    aspectRatio=\"3/2\"\n  />\n\n<TLDR\n  title=\"TL;DR\"\n  points={[\n    'Computer scientists bring systems thinking and technical feasibility assessment to design teams',\n    'Hybrid roles bridge the gap between design vision and engineering reality',\n    'Data-driven decision making enhances traditional design intuition',\n    'Companies like Airbnb and Figma prove the value of technical design thinking'\n  ]}\n/>\n\nThe design world is evolving faster than ever. As products become more complex and user expectations soar, the most successful design teams are breaking down traditional silos and embracing interdisciplinary thinking.\n\n## The Gap Between Design Vision and Technical Reality\n\nEvery designer has been there: you've crafted the perfect user experience, only to hear \"that's not technically feasible\" from the development team. This disconnect isn't just frustrating—it's expensive and time-consuming.\n\nTraditional design education focuses on aesthetics, user research, and design thinking. But today's digital products require understanding of:\n\n- **Performance constraints** and how they affect user experience\n- **Data structures** that influence interface organization  \n- **Algorithm complexity** that impacts feature feasibility\n- **System architecture** that shapes user flows\n\n## What Computer Scientists Bring to Design Teams\n\n <BlogPostImage src=\"/placeholder.svg\" alt=\"Your alt text\" aspectRatio=\"3/2\" />\n\n### 1. Systems Thinking at Scale\n\nComputer scientists are trained to think in systems. They understand how individual components interact, scale, and fail. This perspective transforms how they approach design challenges.\n\n```javascript\n// A CS-minded designer thinks about state management\nconst userFlow = {\n  onboarding: { \n    steps: 5,\n    dropOffRate: 0.2,\n    optimizationOpportunity: true \n  },\n  checkout: {\n    steps: 3,\n    conversionRate: 0.15,\n    technicalConstraints: ['payment API limits', 'validation complexity']\n  }\n}\n```\n\n### 2. Data-Driven Design Decisions\n\nWhile traditional designers rely on intuition and user feedback, CS-trained team members bring quantitative analysis skills. They can:\n\n- Build prototypes that actually measure user behavior\n- Create A/B testing frameworks from scratch\n- Analyze user data to identify patterns invisible to traditional research methods\n\n### 3. Technical Feasibility Assessment\n\nInstead of designing in a vacuum, CS-minded designers can evaluate ideas against technical constraints early in the process. This prevents costly redesigns and accelerates development cycles.\n\n## Real-World Success Stories\n\n### Airbnb's Design-Engineering Hybrid Roles\n\nAirbnb pioneered the concept of \"design technologists\"—roles that blend design sensibility with technical implementation skills. These team members:\n\n- Prototype complex interactions that would be impossible to convey through static mockups\n- Build design systems with actual code, not just documentation\n- Bridge the gap between design intent and engineering reality\n\n### Figma's Technical Design Philosophy\n\nFigma's success stems from their design team's deep technical understanding. They didn't just design a better interface—they reimagined how design tools could work by understanding browser capabilities, rendering optimization, and real-time collaboration algorithms.\n\n## The Skills That Matter Most\n\nWhen hiring CS-trained designers, look for these key competencies:\n\n### Technical Skills\n- **Front-end development** (HTML, CSS, JavaScript)\n- **Data analysis** (SQL, Python, or R)\n- **Prototyping tools** beyond traditional design software\n- **Version control** and collaborative development workflows\n\n### Mindset Qualities\n- **Logical problem-solving** approach to design challenges\n- **Comfort with constraints** rather than seeing them as limitations\n- **Iterative thinking** aligned with agile development processes\n- **Evidence-based decision making** using metrics and data\n\n## Implementation Strategy\n\n### Start Small, Think Big\n\nDon't overhaul your entire team at once. Consider these approaches:\n\n1. **Hire one hybrid role** to prove the concept\n2. **Cross-train existing team members** in basic technical skills\n3. **Create collaboration rituals** between design and engineering\n4. **Invest in shared tools** that both designers and developers can use\n\n### Create the Right Environment\n\nCS-minded designers thrive when they can:\n- Access real user data and analytics\n- Prototype with actual APIs and data sources  \n- Collaborate closely with engineering teams\n- Experiment with new tools and technologies\n\n## Measuring Success\n\nTrack these metrics to evaluate the impact:\n\n- **Design-to-development handoff time**\n- **Number of technical revisions** required per project\n- **Feature feasibility accuracy** in early design phases\n- **Team satisfaction scores** from both design and engineering\n\n## The Future of Design Teams\n\nThe most innovative companies are already moving beyond traditional role definitions. They're building teams where:\n\n- Designers code prototypes\n- Developers contribute to design systems\n- Product managers understand technical architecture\n- Everyone thinks like a problem solver first\n\nThe question isn't whether to hire computer scientists for your design team—it's how quickly you can start building this capability.\n\n<BlogQuote\n  quote=\"We Design for Impact, We Build for ROI\"\n  author=\"Lloyd Pilapil\"\n  company=\"Pixelmojo\"\n/>\n\n## Getting Started Tomorrow\n\nReady to transform your design process? Here are three immediate actions:\n\n1. **Audit your current team's technical skills** and identify knowledge gaps\n2. **Partner with your engineering team** to understand current pain points\n3. **Define hybrid role requirements** that align with your product goals\n\nThe design teams that embrace technical thinking today will be the ones creating breakthrough user experiences tomorrow.\n\n<BlogFAQ\n  title=\"Frequently Asked Questions\"\n  faqs={[\n    {\n      id: '1',\n      question: 'How long does it typically take to implement this approach?',\n      answer: 'Implementation time varies depending on your team size and complexity, but most organizations see initial improvements within 2-3 months of hiring their first CS-minded designer.'\n    },\n    {\n      id: '2',\n      question: 'Is this approach suitable for small design teams?',\n      answer: 'Yes! Even one team member with CS thinking can transform how a small team approaches design challenges and communicates with developers.'\n    },\n    {\n      id: '3',\n      question: 'What are the main benefits compared to traditional design approaches?',\n      answer: 'The main benefits include faster design-to-development handoffs, fewer technical revisions, more innovative solutions, and better alignment between design intent and final implementation.'\n    },\n    {\n      id: '4',\n      question: 'How do you balance creative design thinking with technical constraints?',\n      answer: 'CS-minded designers don\\'t see constraints as limitations—they see them as creative challenges. This mindset often leads to more innovative solutions that are both beautiful and technically sound.'\n    }\n  ]}\n/>\n\n---\n\n*Want to discuss how computer science thinking can transform your design process? Let's explore how Pixelmojo can help bridge the gap between design vision and technical reality.*",
+      "code": "var Component=(()=>{var u=Object.create;var a=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var y=Object.getOwnPropertyNames;var b=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var v=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),w=(i,e)=>{for(var t in e)a(i,t,{get:e[t],enumerable:!0})},c=(i,e,t,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of y(e))!f.call(i,s)&&s!==t&&a(i,s,{get:()=>e[s],enumerable:!(r=p(e,s))||r.enumerable});return i};var k=(i,e,t)=>(t=i!=null?u(b(i)):{},c(e||!i||!i.__esModule?a(t,\"default\",{value:i,enumerable:!0}):t,i)),T=i=>c(a({},\"__esModule\",{value:!0}),i);var h=v((D,d)=>{d.exports=_jsx_runtime});var S={};w(S,{default:()=>m,frontmatter:()=>x});var n=k(h()),x={title:\"Why Your Design Team Needs a Computer Scientist\",date:\"2024-03-15\",description:\"Discover how hiring developers with CS backgrounds can transform your design process, bridge technical gaps, and create more innovative user experiences.\",tags:[\"design\",\"hiring\",\"computer-science\",\"team-building\",\"UX\"]};function g(i){let e={code:\"code\",em:\"em\",h2:\"h2\",h3:\"h3\",hr:\"hr\",li:\"li\",ol:\"ol\",p:\"p\",pre:\"pre\",strong:\"strong\",ul:\"ul\",...i.components},{BlogFAQ:t,BlogPostImage:r,BlogQuote:s,TLDR:l}=e;return t||o(\"BlogFAQ\",!0),r||o(\"BlogPostImage\",!0),s||o(\"BlogQuote\",!0),l||o(\"TLDR\",!0),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r,{src:\"/placeholder.svg\",alt:\"Why Your Design Team Needs a Computer Scientist\",aspectRatio:\"3/2\"}),`\n`,(0,n.jsx)(l,{title:\"TL;DR\",points:[\"Computer scientists bring systems thinking and technical feasibility assessment to design teams\",\"Hybrid roles bridge the gap between design vision and engineering reality\",\"Data-driven decision making enhances traditional design intuition\",\"Companies like Airbnb and Figma prove the value of technical design thinking\"]}),`\n`,(0,n.jsx)(e.p,{children:\"The design world is evolving faster than ever. As products become more complex and user expectations soar, the most successful design teams are breaking down traditional silos and embracing interdisciplinary thinking.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"the-gap-between-design-vision-and-technical-reality\",children:\"The Gap Between Design Vision and Technical Reality\"}),`\n`,(0,n.jsx)(e.p,{children:`Every designer has been there: you've crafted the perfect user experience, only to hear \"that's not technically feasible\" from the development team. This disconnect isn't just frustrating\\u2014it's expensive and time-consuming.`}),`\n`,(0,n.jsx)(e.p,{children:\"Traditional design education focuses on aesthetics, user research, and design thinking. But today's digital products require understanding of:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Performance constraints\"}),\" and how they affect user experience\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Data structures\"}),\" that influence interface organization\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Algorithm complexity\"}),\" that impacts feature feasibility\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"System architecture\"}),\" that shapes user flows\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{id:\"what-computer-scientists-bring-to-design-teams\",children:\"What Computer Scientists Bring to Design Teams\"}),`\n`,(0,n.jsx)(r,{src:\"/placeholder.svg\",alt:\"Your alt text\",aspectRatio:\"3/2\"}),`\n`,(0,n.jsx)(e.h3,{id:\"1-systems-thinking-at-scale\",children:\"1. Systems Thinking at Scale\"}),`\n`,(0,n.jsx)(e.p,{children:\"Computer scientists are trained to think in systems. They understand how individual components interact, scale, and fail. This perspective transforms how they approach design challenges.\"}),`\n`,(0,n.jsx)(e.pre,{children:(0,n.jsx)(e.code,{className:\"language-javascript\",children:`// A CS-minded designer thinks about state management\nconst userFlow = {\n  onboarding: { \n    steps: 5,\n    dropOffRate: 0.2,\n    optimizationOpportunity: true \n  },\n  checkout: {\n    steps: 3,\n    conversionRate: 0.15,\n    technicalConstraints: ['payment API limits', 'validation complexity']\n  }\n}\n`})}),`\n`,(0,n.jsx)(e.h3,{id:\"2-data-driven-design-decisions\",children:\"2. Data-Driven Design Decisions\"}),`\n`,(0,n.jsx)(e.p,{children:\"While traditional designers rely on intuition and user feedback, CS-trained team members bring quantitative analysis skills. They can:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Build prototypes that actually measure user behavior\"}),`\n`,(0,n.jsx)(e.li,{children:\"Create A/B testing frameworks from scratch\"}),`\n`,(0,n.jsx)(e.li,{children:\"Analyze user data to identify patterns invisible to traditional research methods\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{id:\"3-technical-feasibility-assessment\",children:\"3. Technical Feasibility Assessment\"}),`\n`,(0,n.jsx)(e.p,{children:\"Instead of designing in a vacuum, CS-minded designers can evaluate ideas against technical constraints early in the process. This prevents costly redesigns and accelerates development cycles.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"real-world-success-stories\",children:\"Real-World Success Stories\"}),`\n`,(0,n.jsx)(e.h3,{id:\"airbnbs-design-engineering-hybrid-roles\",children:\"Airbnb's Design-Engineering Hybrid Roles\"}),`\n`,(0,n.jsx)(e.p,{children:'Airbnb pioneered the concept of \"design technologists\"\\u2014roles that blend design sensibility with technical implementation skills. These team members:'}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Prototype complex interactions that would be impossible to convey through static mockups\"}),`\n`,(0,n.jsx)(e.li,{children:\"Build design systems with actual code, not just documentation\"}),`\n`,(0,n.jsx)(e.li,{children:\"Bridge the gap between design intent and engineering reality\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{id:\"figmas-technical-design-philosophy\",children:\"Figma's Technical Design Philosophy\"}),`\n`,(0,n.jsx)(e.p,{children:\"Figma's success stems from their design team's deep technical understanding. They didn't just design a better interface\\u2014they reimagined how design tools could work by understanding browser capabilities, rendering optimization, and real-time collaboration algorithms.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"the-skills-that-matter-most\",children:\"The Skills That Matter Most\"}),`\n`,(0,n.jsx)(e.p,{children:\"When hiring CS-trained designers, look for these key competencies:\"}),`\n`,(0,n.jsx)(e.h3,{id:\"technical-skills\",children:\"Technical Skills\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Front-end development\"}),\" (HTML, CSS, JavaScript)\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Data analysis\"}),\" (SQL, Python, or R)\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Prototyping tools\"}),\" beyond traditional design software\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Version control\"}),\" and collaborative development workflows\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{id:\"mindset-qualities\",children:\"Mindset Qualities\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Logical problem-solving\"}),\" approach to design challenges\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Comfort with constraints\"}),\" rather than seeing them as limitations\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Iterative thinking\"}),\" aligned with agile development processes\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Evidence-based decision making\"}),\" using metrics and data\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{id:\"implementation-strategy\",children:\"Implementation Strategy\"}),`\n`,(0,n.jsx)(e.h3,{id:\"start-small-think-big\",children:\"Start Small, Think Big\"}),`\n`,(0,n.jsx)(e.p,{children:\"Don't overhaul your entire team at once. Consider these approaches:\"}),`\n`,(0,n.jsxs)(e.ol,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Hire one hybrid role\"}),\" to prove the concept\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Cross-train existing team members\"}),\" in basic technical skills\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Create collaboration rituals\"}),\" between design and engineering\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Invest in shared tools\"}),\" that both designers and developers can use\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{id:\"create-the-right-environment\",children:\"Create the Right Environment\"}),`\n`,(0,n.jsx)(e.p,{children:\"CS-minded designers thrive when they can:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Access real user data and analytics\"}),`\n`,(0,n.jsx)(e.li,{children:\"Prototype with actual APIs and data sources\"}),`\n`,(0,n.jsx)(e.li,{children:\"Collaborate closely with engineering teams\"}),`\n`,(0,n.jsx)(e.li,{children:\"Experiment with new tools and technologies\"}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{id:\"measuring-success\",children:\"Measuring Success\"}),`\n`,(0,n.jsx)(e.p,{children:\"Track these metrics to evaluate the impact:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:(0,n.jsx)(e.strong,{children:\"Design-to-development handoff time\"})}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Number of technical revisions\"}),\" required per project\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Feature feasibility accuracy\"}),\" in early design phases\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Team satisfaction scores\"}),\" from both design and engineering\"]}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{id:\"the-future-of-design-teams\",children:\"The Future of Design Teams\"}),`\n`,(0,n.jsx)(e.p,{children:\"The most innovative companies are already moving beyond traditional role definitions. They're building teams where:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Designers code prototypes\"}),`\n`,(0,n.jsx)(e.li,{children:\"Developers contribute to design systems\"}),`\n`,(0,n.jsx)(e.li,{children:\"Product managers understand technical architecture\"}),`\n`,(0,n.jsx)(e.li,{children:\"Everyone thinks like a problem solver first\"}),`\n`]}),`\n`,(0,n.jsx)(e.p,{children:\"The question isn't whether to hire computer scientists for your design team\\u2014it's how quickly you can start building this capability.\"}),`\n`,(0,n.jsx)(s,{quote:\"We Design for Impact, We Build for ROI\",author:\"Lloyd Pilapil\",company:\"Pixelmojo\"}),`\n`,(0,n.jsx)(e.h2,{id:\"getting-started-tomorrow\",children:\"Getting Started Tomorrow\"}),`\n`,(0,n.jsx)(e.p,{children:\"Ready to transform your design process? Here are three immediate actions:\"}),`\n`,(0,n.jsxs)(e.ol,{children:[`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Audit your current team's technical skills\"}),\" and identify knowledge gaps\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Partner with your engineering team\"}),\" to understand current pain points\"]}),`\n`,(0,n.jsxs)(e.li,{children:[(0,n.jsx)(e.strong,{children:\"Define hybrid role requirements\"}),\" that align with your product goals\"]}),`\n`]}),`\n`,(0,n.jsx)(e.p,{children:\"The design teams that embrace technical thinking today will be the ones creating breakthrough user experiences tomorrow.\"}),`\n`,(0,n.jsx)(t,{title:\"Frequently Asked Questions\",faqs:[{id:\"1\",question:\"How long does it typically take to implement this approach?\",answer:\"Implementation time varies depending on your team size and complexity, but most organizations see initial improvements within 2-3 months of hiring their first CS-minded designer.\"},{id:\"2\",question:\"Is this approach suitable for small design teams?\",answer:\"Yes! Even one team member with CS thinking can transform how a small team approaches design challenges and communicates with developers.\"},{id:\"3\",question:\"What are the main benefits compared to traditional design approaches?\",answer:\"The main benefits include faster design-to-development handoffs, fewer technical revisions, more innovative solutions, and better alignment between design intent and final implementation.\"},{id:\"4\",question:\"How do you balance creative design thinking with technical constraints?\",answer:\"CS-minded designers don't see constraints as limitations\\u2014they see them as creative challenges. This mindset often leads to more innovative solutions that are both beautiful and technically sound.\"}]}),`\n`,(0,n.jsx)(e.hr,{}),`\n`,(0,n.jsx)(e.p,{children:(0,n.jsx)(e.em,{children:\"Want to discuss how computer science thinking can transform your design process? Let's explore how Pixelmojo can help bridge the gap between design vision and technical reality.\"})})]})}function m(i={}){let{wrapper:e}=i.components||{};return e?(0,n.jsx)(e,{...i,children:(0,n.jsx)(g,{...i})}):g(i)}function o(i,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+i+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return T(S);})();\n;return Component;"
+    },
+    "_id": "design-team-hire-computer-scientist.mdx",
+    "_raw": {
+      "sourceFilePath": "design-team-hire-computer-scientist.mdx",
+      "sourceFileName": "design-team-hire-computer-scientist.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "design-team-hire-computer-scientist"
+    },
+    "type": "Post",
+    "url": "/blog/design-team-hire-computer-scientist",
+    "headings": [
+      {
+        "id": "the-gap-between-design-vision-and-technical-reality",
+        "text": "The Gap Between Design Vision and Technical Reality",
+        "level": 2
+      },
+      {
+        "id": "what-computer-scientists-bring-to-design-teams",
+        "text": "What Computer Scientists Bring to Design Teams",
+        "level": 2
+      },
+      {
+        "id": "1-systems-thinking-at-scale",
+        "text": "1. Systems Thinking at Scale",
+        "level": 3
+      },
+      {
+        "id": "2-data-driven-design-decisions",
+        "text": "2. Data-Driven Design Decisions",
+        "level": 3
+      },
+      {
+        "id": "3-technical-feasibility-assessment",
+        "text": "3. Technical Feasibility Assessment",
+        "level": 3
+      },
+      {
+        "id": "real-world-success-stories",
+        "text": "Real-World Success Stories",
+        "level": 2
+      },
+      {
+        "id": "airbnbs-design-engineering-hybrid-roles",
+        "text": "Airbnb's Design-Engineering Hybrid Roles",
+        "level": 3
+      },
+      {
+        "id": "figmas-technical-design-philosophy",
+        "text": "Figma's Technical Design Philosophy",
+        "level": 3
+      },
+      {
+        "id": "the-skills-that-matter-most",
+        "text": "The Skills That Matter Most",
+        "level": 2
+      },
+      {
+        "id": "technical-skills",
+        "text": "Technical Skills",
+        "level": 3
+      },
+      {
+        "id": "mindset-qualities",
+        "text": "Mindset Qualities",
+        "level": 3
+      },
+      {
+        "id": "implementation-strategy",
+        "text": "Implementation Strategy",
+        "level": 2
+      },
+      {
+        "id": "start-small-think-big",
+        "text": "Start Small, Think Big",
+        "level": 3
+      },
+      {
+        "id": "create-the-right-environment",
+        "text": "Create the Right Environment",
+        "level": 3
+      },
+      {
+        "id": "measuring-success",
+        "text": "Measuring Success",
+        "level": 2
+      },
+      {
+        "id": "the-future-of-design-teams",
+        "text": "The Future of Design Teams",
+        "level": 2
+      },
+      {
+        "id": "getting-started-tomorrow",
+        "text": "Getting Started Tomorrow",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "Hello World",
+    "date": "2024-01-01T00:00:00.000Z",
+    "description": "My first blog post",
+    "tags": [
+      "introduction",
+      "blog"
+    ],
+    "showTOC": true,
+    "showCTA": true,
+    "body": {
+      "raw": "\nWelcome to my portfolio blog! This is my first post using MDX and Contentlayer.\n\n## Features\n\n- **MDX Support**: Write JSX in markdown\n- **TypeScript**: Full type safety\n- **Contentlayer**: Automatic content processing\n\n```javascript\nconsole.log('Hello, World!')\n```\n\nThis is just the beginning of my blogging journey!\n",
+      "code": "var Component=(()=>{var p=Object.create;var i=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var y=(e,n)=>()=>(n||e((n={exports:{}}).exports,n),n.exports),x=(e,n)=>{for(var o in n)i(e,o,{get:n[o],enumerable:!0})},s=(e,n,o,l)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let r of u(n))!f.call(e,r)&&r!==o&&i(e,r,{get:()=>n[r],enumerable:!(l=h(n,r))||l.enumerable});return e};var j=(e,n,o)=>(o=e!=null?p(m(e)):{},s(n||!e||!e.__esModule?i(o,\"default\",{value:e,enumerable:!0}):o,e)),_=e=>s(i({},\"__esModule\",{value:!0}),e);var d=y((C,c)=>{c.exports=_jsx_runtime});var b={};x(b,{default:()=>g,frontmatter:()=>M});var t=j(d()),M={title:\"Hello World\",date:\"2024-01-01\",description:\"My first blog post\",tags:[\"introduction\",\"blog\"]};function a(e){let n={code:\"code\",h2:\"h2\",li:\"li\",p:\"p\",pre:\"pre\",strong:\"strong\",ul:\"ul\",...e.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(n.p,{children:\"Welcome to my portfolio blog! This is my first post using MDX and Contentlayer.\"}),`\n`,(0,t.jsx)(n.h2,{id:\"features\",children:\"Features\"}),`\n`,(0,t.jsxs)(n.ul,{children:[`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"MDX Support\"}),\": Write JSX in markdown\"]}),`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"TypeScript\"}),\": Full type safety\"]}),`\n`,(0,t.jsxs)(n.li,{children:[(0,t.jsx)(n.strong,{children:\"Contentlayer\"}),\": Automatic content processing\"]}),`\n`]}),`\n`,(0,t.jsx)(n.pre,{children:(0,t.jsx)(n.code,{className:\"language-javascript\",children:`console.log('Hello, World!')\n`})}),`\n`,(0,t.jsx)(n.p,{children:\"This is just the beginning of my blogging journey!\"})]})}function g(e={}){let{wrapper:n}=e.components||{};return n?(0,t.jsx)(n,{...e,children:(0,t.jsx)(a,{...e})}):a(e)}return _(b);})();\n;return Component;"
+    },
+    "_id": "hello-world.mdx",
+    "_raw": {
+      "sourceFilePath": "hello-world.mdx",
+      "sourceFileName": "hello-world.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "hello-world"
+    },
+    "type": "Post",
+    "url": "/blog/hello-world",
+    "headings": [
+      {
+        "id": "features",
+        "text": "Features",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "My Test Blog Post",
+    "date": "2025-08-31T00:00:00.000Z",
+    "description": "Add your post description here",
+    "tags": [],
+    "showTOC": true,
+    "showCTA": true,
+    "body": {
+      "raw": "\nStart writing your blog post content here...\n\n## Example Section\n\nThis is an example section. You can:\n\n- Add bullet points\n- Include code blocks\n- Embed images\n- And much more with MDX!\n\n```javascript\n// Example code block\nconst greeting = 'Hello, World!'\nconsole.log(greeting)\n```\n",
+      "code": "var Component=(()=>{var p=Object.create;var c=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var _=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),j=(n,e)=>{for(var o in e)c(n,o,{get:e[o],enumerable:!0})},l=(n,e,o,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of u(e))!x.call(n,r)&&r!==o&&c(n,r,{get:()=>e[r],enumerable:!(i=m(e,r))||i.enumerable});return n};var b=(n,e,o)=>(o=n!=null?p(g(n)):{},l(e||!n||!n.__esModule?c(o,\"default\",{value:n,enumerable:!0}):o,n)),f=n=>l(c({},\"__esModule\",{value:!0}),n);var d=_((A,s)=>{s.exports=_jsx_runtime});var y={};j(y,{default:()=>h,frontmatter:()=>M});var t=b(d()),M={title:\"My Test Blog Post\",date:\"2025-08-31\",description:\"Add your post description here\",tags:[]};function a(n){let e={code:\"code\",h2:\"h2\",li:\"li\",p:\"p\",pre:\"pre\",ul:\"ul\",...n.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.p,{children:\"Start writing your blog post content here...\"}),`\n`,(0,t.jsx)(e.h2,{id:\"example-section\",children:\"Example Section\"}),`\n`,(0,t.jsx)(e.p,{children:\"This is an example section. You can:\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"Add bullet points\"}),`\n`,(0,t.jsx)(e.li,{children:\"Include code blocks\"}),`\n`,(0,t.jsx)(e.li,{children:\"Embed images\"}),`\n`,(0,t.jsx)(e.li,{children:\"And much more with MDX!\"}),`\n`]}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-javascript\",children:`// Example code block\nconst greeting = 'Hello, World!'\nconsole.log(greeting)\n`})})]})}function h(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(a,{...n})}):a(n)}return f(y);})();\n;return Component;"
+    },
+    "_id": "my-test-blog-post.mdx",
+    "_raw": {
+      "sourceFilePath": "my-test-blog-post.mdx",
+      "sourceFileName": "my-test-blog-post.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "my-test-blog-post"
+    },
+    "type": "Post",
+    "url": "/blog/my-test-blog-post",
+    "headings": [
+      {
+        "id": "example-section",
+        "text": "Example Section",
+        "level": 2
+      }
+    ]
+  },
+  {
+    "title": "TOC Test Post",
+    "date": "2024-01-02T00:00:00.000Z",
+    "description": "Testing table of contents functionality",
+    "tags": [
+      "test",
+      "toc"
+    ],
+    "showTOC": true,
+    "showCTA": true,
+    "body": {
+      "raw": "\nThis is a test post to debug the Table of Contents functionality.\n\n## Introduction\n\nThis is the introduction section with some content. Let's add enough text to make scrolling meaningful. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\n### Getting Started\n\nThis is a subsection under Introduction. More content here to test the TOC active states.\n\n### Prerequisites\n\nAnother subsection with requirements and setup information.\n\n## Implementation Details\n\nThis section covers the implementation specifics. We need substantial content here to test the scrolling behavior properly.\n\n### Core Components\n\nDetails about the core components and their functionality.\n\n### Configuration\n\nHow to configure the system for optimal performance.\n\n## Advanced Features\n\nThis section explores advanced functionality and use cases.\n\n### Performance Optimization\n\nTips and tricks for better performance.\n\n### Security Considerations\n\nImportant security aspects to consider.\n\n## Troubleshooting\n\nCommon issues and their solutions.\n\n### Common Errors\n\nList of frequent errors and how to resolve them.\n\n### Debug Mode\n\nHow to enable and use debug mode effectively.\n\n## Conclusion\n\nFinal thoughts and summary of the content covered in this post.",
+      "code": "var Component=(()=>{var u=Object.create;var r=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var b=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),y=(t,e)=>{for(var i in e)r(t,i,{get:e[i],enumerable:!0})},c=(t,e,i,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of p(e))!g.call(t,o)&&o!==i&&r(t,o,{get:()=>e[o],enumerable:!(s=m(e,o))||s.enumerable});return t};var C=(t,e,i)=>(i=t!=null?u(f(t)):{},c(e||!t||!t.__esModule?r(i,\"default\",{value:t,enumerable:!0}):i,t)),T=t=>c(r({},\"__esModule\",{value:!0}),t);var a=b((w,d)=>{d.exports=_jsx_runtime});var v={};y(v,{default:()=>l,frontmatter:()=>x});var n=C(a()),x={title:\"TOC Test Post\",date:\"2024-01-02\",description:\"Testing table of contents functionality\",tags:[\"test\",\"toc\"]};function h(t){let e={h2:\"h2\",h3:\"h3\",p:\"p\",...t.components};return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.p,{children:\"This is a test post to debug the Table of Contents functionality.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"introduction\",children:\"Introduction\"}),`\n`,(0,n.jsx)(e.p,{children:\"This is the introduction section with some content. Let's add enough text to make scrolling meaningful. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"getting-started\",children:\"Getting Started\"}),`\n`,(0,n.jsx)(e.p,{children:\"This is a subsection under Introduction. More content here to test the TOC active states.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"prerequisites\",children:\"Prerequisites\"}),`\n`,(0,n.jsx)(e.p,{children:\"Another subsection with requirements and setup information.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"implementation-details\",children:\"Implementation Details\"}),`\n`,(0,n.jsx)(e.p,{children:\"This section covers the implementation specifics. We need substantial content here to test the scrolling behavior properly.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"core-components\",children:\"Core Components\"}),`\n`,(0,n.jsx)(e.p,{children:\"Details about the core components and their functionality.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"configuration\",children:\"Configuration\"}),`\n`,(0,n.jsx)(e.p,{children:\"How to configure the system for optimal performance.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"advanced-features\",children:\"Advanced Features\"}),`\n`,(0,n.jsx)(e.p,{children:\"This section explores advanced functionality and use cases.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"performance-optimization\",children:\"Performance Optimization\"}),`\n`,(0,n.jsx)(e.p,{children:\"Tips and tricks for better performance.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"security-considerations\",children:\"Security Considerations\"}),`\n`,(0,n.jsx)(e.p,{children:\"Important security aspects to consider.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"troubleshooting\",children:\"Troubleshooting\"}),`\n`,(0,n.jsx)(e.p,{children:\"Common issues and their solutions.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"common-errors\",children:\"Common Errors\"}),`\n`,(0,n.jsx)(e.p,{children:\"List of frequent errors and how to resolve them.\"}),`\n`,(0,n.jsx)(e.h3,{id:\"debug-mode\",children:\"Debug Mode\"}),`\n`,(0,n.jsx)(e.p,{children:\"How to enable and use debug mode effectively.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"conclusion\",children:\"Conclusion\"}),`\n`,(0,n.jsx)(e.p,{children:\"Final thoughts and summary of the content covered in this post.\"})]})}function l(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(h,{...t})}):h(t)}return T(v);})();\n;return Component;"
+    },
+    "_id": "toc-test.mdx",
+    "_raw": {
+      "sourceFilePath": "toc-test.mdx",
+      "sourceFileName": "toc-test.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "toc-test"
+    },
+    "type": "Post",
+    "url": "/blog/toc-test",
+    "headings": [
+      {
+        "id": "introduction",
+        "text": "Introduction",
+        "level": 2
+      },
+      {
+        "id": "getting-started",
+        "text": "Getting Started",
+        "level": 3
+      },
+      {
+        "id": "prerequisites",
+        "text": "Prerequisites",
+        "level": 3
+      },
+      {
+        "id": "implementation-details",
+        "text": "Implementation Details",
+        "level": 2
+      },
+      {
+        "id": "core-components",
+        "text": "Core Components",
+        "level": 3
+      },
+      {
+        "id": "configuration",
+        "text": "Configuration",
+        "level": 3
+      },
+      {
+        "id": "advanced-features",
+        "text": "Advanced Features",
+        "level": 2
+      },
+      {
+        "id": "performance-optimization",
+        "text": "Performance Optimization",
+        "level": 3
+      },
+      {
+        "id": "security-considerations",
+        "text": "Security Considerations",
+        "level": 3
+      },
+      {
+        "id": "troubleshooting",
+        "text": "Troubleshooting",
+        "level": 2
+      },
+      {
+        "id": "common-errors",
+        "text": "Common Errors",
+        "level": 3
+      },
+      {
+        "id": "debug-mode",
+        "text": "Debug Mode",
+        "level": 3
+      },
+      {
+        "id": "conclusion",
+        "text": "Conclusion",
+        "level": 2
+      }
+    ]
+  }
+]

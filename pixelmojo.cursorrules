@@ -1,0 +1,186 @@
+# Next.js 15 Portfolio Project Standards
+
+You are an expert Next.js developer. Follow these standards strictly.
+
+## Core Principles
+- Write TypeScript, not JavaScript
+- Use App Router, not Pages Router  
+- Implement Server Components by default
+- Use Client Components only when needed (useState, onClick, useEffect, etc.)
+- Follow mobile-first responsive design
+- Ensure accessibility (WCAG 2.1 AA)
+
+## Next.js Specific Rules
+
+### File Structure
+- Use app/ directory structure
+- Colocate components with their routes
+- Keep components outside app/ in components/
+- Use route groups (parentheses) for organization without affecting URLs
+
+### Data Fetching
+```typescript
+// ✅ GOOD - Server Component
+async function Page() {
+  const data = await fetch('...', { cache: 'force-cache' })
+  return <div>{data}</div>
+}
+
+// ❌ BAD - Unnecessary client component for data fetching
+'use client'
+function Page() {
+  const [data, setData] = useState()
+  useEffect(() => { fetch('...') }, [])
+}
+
+// ✅ Static metadata
+export const metadata = {
+  title: 'Page Title',
+  description: 'Page description',
+}
+
+// ✅ Dynamic metadata
+export async function generateMetadata({ params }) {
+  return {
+    title: `${params.slug} | Site Name`,
+  }
+}
+```
+
+### Image Optimization
+```typescript
+// ✅ ALWAYS use Next.js Image
+import Image from 'next/image'
+<Image src="/hero.jpg" alt="Description" width={1200} height={600} />
+
+// ❌ NEVER use img tag
+<img src="/hero.jpg" alt="Description" />
+```
+
+### Server/Client Component Patterns
+```typescript
+// ✅ Proper Server/Client separation
+// ServerComponent.tsx (default)
+async function ServerComponent() {
+  const data = await fetchData()
+  return <ClientChild data={data} />
+}
+
+// ClientChild.tsx
+'use client'
+function ClientChild({ data }) {
+  const [state, setState] = useState()
+  return <div onClick={() => setState(data)}>...</div>
+}
+```
+
+### API Routes
+```typescript
+// ✅ app/api/contact/route.ts
+export async function POST(request: Request) {
+  const body = await request.json()
+  // Validate with zod
+  return Response.json({ success: true })
+}
+```
+
+### Error Handling
+```typescript
+// ✅ Always include loading.tsx
+export default function Loading() {
+  return <Skeleton />
+}
+
+// ✅ Always include error.tsx
+'use client'
+export default function Error({ error, reset }) {
+  return <ErrorBoundary error={error} reset={reset} />
+}
+```
+
+## Performance Rules
+
+- Use dynamic imports for heavy components
+- Implement streaming with Suspense
+- Use Link component for navigation
+- Preload critical fonts
+- Optimize bundle with analyzer
+
+## TypeScript Standards
+```typescript
+// ✅ Proper typing
+interface Props {
+  title: string
+  count: number
+}
+
+// ❌ Avoid any
+const data: any = fetchData()
+```
+
+## Tailwind CSS Rules
+
+- Use Tailwind classes only
+- No inline styles
+- No CSS modules unless absolutely necessary
+- Use cn() utility for conditional classes
+
+## MDX Content Rules
+
+- Always include frontmatter
+- Use reading time calculation
+- Include alt text for images
+- Proper heading hierarchy (h1 → h2 → h3)
+- Add meta descriptions under 160 chars
+
+## Accessibility Checklist
+
+- Semantic HTML elements
+- ARIA labels where needed
+- Keyboard navigation support
+- Focus management
+- Color contrast (4.5:1 minimum)
+- Alt text for images
+
+## SEO Requirements
+
+- Include metadata for all pages
+- Generate sitemap
+- Add robots.txt
+- Implement structured data
+- Use canonical URLs
+- OpenGraph images
+
+## Error Prevention
+
+- Validate forms with Zod
+- Handle API errors gracefully
+- Add error boundaries
+- Implement proper logging
+- Never expose sensitive data
+
+## File Naming Conventions
+
+- Components: PascalCase (Button.tsx)
+- Utilities: camelCase (formatDate.ts)
+- Routes: kebab-case (about-us/page.tsx)
+- MDX: kebab-case (my-first-post.mdx)
+
+## Git Commit Standards
+
+- feat: New feature
+- fix: Bug fix
+- docs: Documentation
+- style: Formatting
+- refactor: Code restructuring
+- test: Testing
+- chore: Maintenance
+
+## Never:
+
+- Use pages/ directory
+- Forget error handling
+- Skip loading states
+- Use client components unnecessarily
+- Commit console.logs
+- Push directly to main

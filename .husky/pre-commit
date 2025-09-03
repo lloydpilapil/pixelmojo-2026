@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged to check only changed files
+echo "📋 Linting and formatting changed files..."
+npx lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "❌ Linting failed! Fix the issues above."
+  exit 1
+fi
+
+# Run TypeScript type check on the entire project
+echo "🔍 Checking TypeScript types..."
+npm run type-check
+
+if [ $? -ne 0 ]; then
+  echo "⚠️  TypeScript errors found, but commit will proceed."
+  echo "   Please fix these issues when possible."
+fi
+
+# Build content layer to ensure MDX files are valid
+echo "📝 Building content layer..."
+npm run contentlayer
+
+if [ $? -ne 0 ]; then
+  echo "❌ Content layer build failed! Check your MDX files."
+  exit 1
+fi
+
+echo "✅ Pre-commit checks completed!"

@@ -1,0 +1,29 @@
+{
+  "title": "My Test Blog Post",
+  "date": "2025-08-31T00:00:00.000Z",
+  "description": "Add your post description here",
+  "tags": [],
+  "showTOC": true,
+  "showCTA": true,
+  "body": {
+    "raw": "\nStart writing your blog post content here...\n\n## Example Section\n\nThis is an example section. You can:\n\n- Add bullet points\n- Include code blocks\n- Embed images\n- And much more with MDX!\n\n```javascript\n// Example code block\nconst greeting = 'Hello, World!'\nconsole.log(greeting)\n```\n",
+    "code": "var Component=(()=>{var p=Object.create;var c=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var _=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),j=(n,e)=>{for(var o in e)c(n,o,{get:e[o],enumerable:!0})},l=(n,e,o,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of u(e))!x.call(n,r)&&r!==o&&c(n,r,{get:()=>e[r],enumerable:!(i=m(e,r))||i.enumerable});return n};var b=(n,e,o)=>(o=n!=null?p(g(n)):{},l(e||!n||!n.__esModule?c(o,\"default\",{value:n,enumerable:!0}):o,n)),f=n=>l(c({},\"__esModule\",{value:!0}),n);var d=_((A,s)=>{s.exports=_jsx_runtime});var y={};j(y,{default:()=>h,frontmatter:()=>M});var t=b(d()),M={title:\"My Test Blog Post\",date:\"2025-08-31\",description:\"Add your post description here\",tags:[]};function a(n){let e={code:\"code\",h2:\"h2\",li:\"li\",p:\"p\",pre:\"pre\",ul:\"ul\",...n.components};return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.p,{children:\"Start writing your blog post content here...\"}),`\n`,(0,t.jsx)(e.h2,{id:\"example-section\",children:\"Example Section\"}),`\n`,(0,t.jsx)(e.p,{children:\"This is an example section. You can:\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"Add bullet points\"}),`\n`,(0,t.jsx)(e.li,{children:\"Include code blocks\"}),`\n`,(0,t.jsx)(e.li,{children:\"Embed images\"}),`\n`,(0,t.jsx)(e.li,{children:\"And much more with MDX!\"}),`\n`]}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-javascript\",children:`// Example code block\nconst greeting = 'Hello, World!'\nconsole.log(greeting)\n`})})]})}function h(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(a,{...n})}):a(n)}return f(y);})();\n;return Component;"
+  },
+  "_id": "my-test-blog-post.mdx",
+  "_raw": {
+    "sourceFilePath": "my-test-blog-post.mdx",
+    "sourceFileName": "my-test-blog-post.mdx",
+    "sourceFileDir": ".",
+    "contentType": "mdx",
+    "flattenedPath": "my-test-blog-post"
+  },
+  "type": "Post",
+  "url": "/blog/my-test-blog-post",
+  "headings": [
+    {
+      "id": "example-section",
+      "text": "Example Section",
+      "level": 2
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(*)",
+      "Write(*)",
+      "Read(*)",
+      "MultiEdit(*)",
+      
+      "Bash(npm run *)",
+      "Bash(npm install*)",
+      "Bash(npm uninstall*)",
+      "Bash(npx *)",
+      "Bash(next *)",
+      "Bash(node *)",
+      
+      "Bash(mkdir *)",
+      "Bash(touch *)",
+      "Bash(echo *)",
+      "Bash(chmod +x scripts/*)",
+      
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git branch*)",
+      "Bash(git checkout *)",
+      "Bash(git log*)",
+      "Bash(git stash*)",
+      
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find . *)",
+      "Bash(which *)",
+      
+      "Bash(cursor *)",
+      "Bash(code *)",
+      "Bash(subl *)",
+      "Bash(atom *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -f *)",
+      "Bash(rmdir *)",
+      "Bash(mv * /)",
+      "Bash(cp * /)",
+      
+      "Bash(git push*)",
+      "Bash(git pull*)",
+      "Bash(git fetch*)",
+      "Bash(git clone*)",
+      
+      "Bash(sudo *)",
+      "Bash(su *)",
+      "Bash(passwd *)",
+      "Bash(chmod 777 *)",
+      "Bash(chown *)",
+      
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      
+      "Bash(kill *)",
+      "Bash(killall *)",
+      "Bash(ps *)",
+      "Bash(top *)",
+      
+      "Bash(npm install -g *)",
+      "Bash(yarn global *)"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "context": {
+    "project": "pixelmojo-portfolio-2026",
+    "description": "Modern Next.js 15 portfolio with blog, built with App Router, TypeScript, and Contentlayer",
+    "stack": ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "MDX", "Contentlayer"],
+    "architecture": "server-first",
+    "ide": "cursor",
+    "packageManager": "npm",
+    "nodeVersion": "18+",
+    "deploymentTarget": "vercel"
+  },
+  "devHelpers": {
+    "contentCreation": {
+      "newPost": "npm run new:post \"Title\"",
+      "newComponent": "npm run new:component \"Name\"",
+      "buildContent": "npm run contentlayer"
+    },
+    "development": {
+      "dev": "npm run dev",
+      "build": "npm run build", 
+      "start": "npm run start",
+      "lint": "npm run lint",
+      "typeCheck": "npm run type-check",
+      "format": "npm run format"
+    },
+    "maintenance": {
+      "clean": "npm run clean",
+      "analyze": "npm run analyze"
+    }
+  }
+}
