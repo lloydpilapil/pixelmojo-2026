@@ -15,8 +15,12 @@ export type Post = {
   type: 'Post'
   /** The title of the post (recommended: 50-60 characters for SEO) */
   title: string
-  /** The date of the post */
+  /** The publication date of the post */
   date: IsoDateTimeString
+  /** The date when the post was first created */
+  createdDate?: IsoDateTimeString | undefined
+  /** The date when the post was last updated */
+  updatedDate?: IsoDateTimeString | undefined
   /** The description of the post (recommended: 120-160 characters for SEO) */
   description?: string | undefined
   /** Tags for the post */

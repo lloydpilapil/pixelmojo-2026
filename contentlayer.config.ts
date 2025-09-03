@@ -15,17 +15,29 @@ export const Post = defineDocumentType(() => ({
   fields: {
     title: {
       type: 'string',
-      description: 'The title of the post (recommended: 50-60 characters for SEO)',
+      description:
+        'The title of the post (recommended: 50-60 characters for SEO)',
       required: true,
     },
     date: {
       type: 'date',
-      description: 'The date of the post',
+      description: 'The publication date of the post',
       required: true,
+    },
+    createdDate: {
+      type: 'date',
+      description: 'The date when the post was first created',
+      required: false,
+    },
+    updatedDate: {
+      type: 'date',
+      description: 'The date when the post was last updated',
+      required: false,
     },
     description: {
       type: 'string',
-      description: 'The description of the post (recommended: 120-160 characters for SEO)',
+      description:
+        'The description of the post (recommended: 120-160 characters for SEO)',
       required: false,
     },
     tags: {
@@ -41,7 +53,7 @@ export const Post = defineDocumentType(() => ({
       default: true,
     },
     showCTA: {
-      type: 'boolean', 
+      type: 'boolean',
       description: 'Whether to show CTA in sidebar',
       required: false,
       default: true,
@@ -54,31 +66,31 @@ export const Post = defineDocumentType(() => ({
     },
     headings: {
       type: 'json',
-      resolve: async (doc) => {
+      resolve: async doc => {
         // Process the raw MDX to extract headings
         const headingsRegex = /^(#{1,6})\s+(.+)$/gm
         const headings: TOCItem[] = []
         let match
-        
+
         while ((match = headingsRegex.exec(doc.body.raw)) !== null) {
           const level = match[1].length
           const text = match[2].trim()
-          
+
           // Generate slug to match rehype-slug
           const id = text
             .toLowerCase()
             .trim()
-            .replace(/[^\w\s-]/g, '')  
-            .replace(/[\s_]+/g, '-')    
-            .replace(/^-+|-+$/g, '')    
-          
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[\s_]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+
           headings.push({
             id,
             text,
-            level
+            level,
           })
         }
-        
+
         return headings
       },
     },

@@ -4,5 +4,6 @@ import designTeamHireComputerScientistMdx from './design-team-hire-computer-scie
 import helloWorldMdx from './hello-world.mdx.json' with { type: 'json' }
 import myTestBlogPostMdx from './my-test-blog-post.mdx.json' with { type: 'json' }
 import tocTestMdx from './toc-test.mdx.json' with { type: 'json' }
+import whyLlmAndGeoVisibilityAreTheNewFrontiersOfBrandingNotJustSeoMdx from './why-llm-and-geo-visibility-are-the-new-frontiers-of-branding-not-just-seo.mdx.json' with { type: 'json' }
 
-export const allPosts = [designTeamHireComputerScientistMdx, helloWorldMdx, myTestBlogPostMdx, tocTestMdx]
+export const allPosts = [designTeamHireComputerScientistMdx, helloWorldMdx, myTestBlogPostMdx, tocTestMdx, whyLlmAndGeoVisibilityAreTheNewFrontiersOfBrandingNotJustSeoMdx]

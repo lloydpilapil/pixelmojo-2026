@@ -15,10 +15,14 @@ interface BlogFAQProps {
   className?: string
 }
 
-function FAQAccordionItem({ faq, isOpen, onToggle }: { 
+function FAQAccordionItem({
+  faq,
+  isOpen,
+  onToggle,
+}: {
   faq: FAQItem
   isOpen: boolean
-  onToggle: () => void 
+  onToggle: () => void
 }) {
   return (
     <div className='border border-border rounded-lg overflow-hidden'>
@@ -38,14 +42,21 @@ function FAQAccordionItem({ faq, isOpen, onToggle }: {
           stroke='currentColor'
           viewBox='0 0 24 24'
         >
-          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M19 9l-7 7-7-7'
+          />
         </svg>
       </button>
-      
-      <div className={cn(
-        'px-6 bg-card transition-all duration-200 ease-in-out overflow-hidden',
-        isOpen ? 'pb-4 opacity-100' : 'pb-0 opacity-0 max-h-0'
-      )}>
+
+      <div
+        className={cn(
+          'px-6 bg-card transition-all duration-200 ease-in-out overflow-hidden',
+          isOpen ? 'pb-4 opacity-100' : 'pb-0 opacity-0 max-h-0'
+        )}
+      >
         <div className='prose prose-sm max-w-none text-muted-foreground'>
           <p>{faq.answer}</p>
         </div>
@@ -54,10 +65,10 @@ function FAQAccordionItem({ faq, isOpen, onToggle }: {
   )
 }
 
-export function BlogFAQ({ 
-  title = "Frequently Asked Questions", 
-  faqs, 
-  className 
+export function BlogFAQ({
+  title = 'Frequently Asked Questions',
+  faqs,
+  className,
 }: BlogFAQProps) {
   const [openItems, setOpenItems] = useState<Set<string>>(new Set())
 
@@ -71,6 +82,16 @@ export function BlogFAQ({
     setOpenItems(newOpenItems)
   }
 
+  const expandAll = () => {
+    setOpenItems(new Set(faqs.map(faq => faq.id)))
+  }
+
+  const collapseAll = () => {
+    setOpenItems(new Set())
+  }
+
+  const allExpanded = openItems.size === faqs.length
+
   if (!faqs || faqs.length === 0) {
     return null
   }
@@ -78,14 +99,25 @@ export function BlogFAQ({
   return (
     <section className={cn('py-12 border-t border-border', className)}>
       <div className='mb-8'>
-        <h2 className='mb-4'>{title}</h2>
+        <div className='flex items-center justify-between mb-4'>
+          <h2 className='mb-0'>{title}</h2>
+          <button
+            onClick={allExpanded ? collapseAll : expandAll}
+            className='text-sm text-primary hover:text-primary/80 transition-colors'
+            aria-label={
+              allExpanded ? 'Collapse all questions' : 'Expand all questions'
+            }
+          >
+            {allExpanded ? 'Collapse all' : 'Expand all'}
+          </button>
+        </div>
         <p className='text-muted-foreground'>
           Common questions about this topic, answered.
         </p>
       </div>
 
       <div className='space-y-4'>
-        {faqs.map((faq) => (
+        {faqs.map(faq => (
           <FAQAccordionItem
             key={faq.id}
             faq={faq}
