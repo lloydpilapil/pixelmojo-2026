@@ -87,7 +87,7 @@ export function AuthorBio({
 
             {/* Social Links */}
             {author.socialLinks && (
-              <div className='flex gap-3'>
+              <div className='flex flex-wrap gap-2'>
                 {author.socialLinks.linkedin && (
                   <LinkButton
                     href={author.socialLinks.linkedin}
