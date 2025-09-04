@@ -30,9 +30,12 @@ function FAQAccordionItem({
         onClick={onToggle}
         className='w-full px-6 py-4 text-left bg-card hover:bg-muted/50 transition-colors flex items-center justify-between group'
       >
-        <h4 className='font-medium group-hover:text-primary transition-colors pr-4'>
+        <h3
+          className='font-medium group-hover:text-primary transition-colors pr-4'
+          style={{ fontSize: '1.125rem' }}
+        >
           {faq.question}
-        </h4>
+        </h3>
         <svg
           className={cn(
             'w-5 h-5 text-muted-foreground transition-transform duration-200',

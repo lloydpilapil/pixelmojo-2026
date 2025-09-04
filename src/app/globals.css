@@ -174,45 +174,7 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   --ring: #4A9FE7;
 }
 
-/* Tailwind Integration */
-@theme {
-  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-family-heading: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Monaco, monospace;
-  
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-cta: var(--cta);
-  --color-cta-foreground: var(--cta-foreground);
-  --color-growth: var(--growth);
-  --color-growth-foreground: var(--growth-foreground);
-  --color-gray: var(--gray);
-  --color-gray-foreground: var(--gray-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-ring: var(--ring);
-  --radius: var(--radius);
-  
-  /* Font Weight Scale */
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-weight-black: 900;
-}
+/* Tailwind Integration - Removed @theme as it's not supported in standard CSS */
 
 /* Base Styles */
 * {
