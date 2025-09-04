@@ -8,11 +8,11 @@ interface BlogPostLayoutProps {
   className?: string
 }
 
-export function BlogPostLayout({ 
-  children, 
-  tableOfContents, 
-  sidebar, 
-  className 
+export function BlogPostLayout({
+  children,
+  tableOfContents,
+  sidebar,
+  className,
 }: BlogPostLayoutProps) {
   return (
     <div className={cn('w-full px-4 py-8', className)}>
@@ -20,22 +20,17 @@ export function BlogPostLayout({
         {/* Mobile/Tablet: Stacked Layout */}
         <div className='xl:hidden max-w-4xl mx-auto space-y-8'>
           {/* Content First on Mobile */}
-          <main>
-            {children}
-          </main>
-          
+          <main>{children}</main>
+
           {/* TOC on mobile/tablet */}
           {tableOfContents && (
-            <div className='bg-card border border-border rounded-lg p-6'>
-              <h4 className='font-semibold mb-4 text-foreground'>Table of Contents</h4>
+            <div className='bg-[#F8F1E5] border border-border rounded-lg'>
               {tableOfContents}
             </div>
           )}
-          
+
           {/* CTA on mobile/tablet */}
-          {sidebar && (
-            <div>{sidebar}</div>
-          )}
+          {sidebar && <div>{sidebar}</div>}
         </div>
 
         {/* Desktop: 3-Column Layout - Maximized Width */}
@@ -43,8 +38,7 @@ export function BlogPostLayout({
           {/* Left Sidebar - TOC */}
           <aside className='xl:col-span-3 xl:sticky xl:top-8 xl:self-start'>
             {tableOfContents && (
-              <div className='bg-card border border-border rounded-lg p-6'>
-                <h4 className='font-semibold mb-4 text-foreground'>Table of Contents</h4>
+              <div className='bg-[#F8F1E5] border border-border rounded-lg'>
                 {tableOfContents}
               </div>
             )}
@@ -52,9 +46,7 @@ export function BlogPostLayout({
 
           {/* Center Content Area */}
           <main className='xl:col-span-6'>
-            <div className='w-full max-w-none'>
-              {children}
-            </div>
+            <div className='w-full max-w-none'>{children}</div>
           </main>
 
           {/* Right Sidebar - CTA */}

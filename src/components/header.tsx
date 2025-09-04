@@ -1,15 +1,20 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Header() {
   return (
     <header className='border-b border-border bg-card'>
       <div className='container mx-auto px-4 py-4'>
         <nav className='flex justify-between items-center'>
-          <Link
-            href='/'
-            className='text-xl font-extrabold text-primary hover:opacity-80 transition-opacity'
-          >
-            Lloyd Pilapil
+          <Link href='/' className='hover:opacity-80 transition-opacity'>
+            <Image
+              src='/pixelmojo-branding.svg'
+              alt='PixelMojo'
+              width={140}
+              height={32}
+              className='h-8 w-auto'
+              priority
+            />
           </Link>
           <div className='hidden md:flex space-x-8'>
             <Link

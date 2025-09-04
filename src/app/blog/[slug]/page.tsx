@@ -149,9 +149,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
         }
       >
         {/* Article Content */}
-        <article className='animate-fade-in'>
+        <article className='animate-fade-in blog-post'>
           {/* All content now comes from MDX */}
-          <div className='prose max-w-none mb-12'>
+          <div className='prose max-w-none mb-12 blog-post-content'>
             <MDXContent components={mdxComponents} />
           </div>
 

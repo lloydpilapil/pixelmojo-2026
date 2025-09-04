@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Montserrat, JetBrains_Mono } from 'next/font/google'
+import { Montserrat, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -8,7 +8,14 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin'],
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['500', '600', '700', '800', '900'],
+})
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -32,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${montserrat.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
+        className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Header />
         <main className='flex-1'>{children}</main>
