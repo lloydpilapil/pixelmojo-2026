@@ -187,7 +187,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-montserrat);
   font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
+  line-height: 1.15;
   color: var(--foreground);
   margin-top: 0;
 }
