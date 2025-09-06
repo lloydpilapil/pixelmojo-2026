@@ -10,16 +10,16 @@ const buttonVariants = cva(
       variant: {
         default:
           'shadow hover:scale-105 active:scale-95' +
-          ' bg-[#FD4B8B] text-white hover:bg-[#FD4B8B]/90',
+          ' bg-[#FD4B8B] text-white hover:bg-[#55AE44]',
         destructive:
-          'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 hover:scale-105 active:scale-95',
+          'bg-[#FD4B8B] text-white shadow-sm hover:bg-[#55AE44] hover:scale-105 active:scale-95',
         outline:
-          'border border-border bg-background shadow-sm hover:bg-gray-100 hover:text-gray-900 hover:scale-105 active:scale-95',
+          'border-2 border-[#FD4B8B] bg-transparent text-[#FD4B8B] shadow-sm hover:bg-[#55AE44] hover:text-white hover:border-[#55AE44] hover:scale-105 active:scale-95',
         secondary:
-          'bg-gray-500 text-white shadow-sm hover:bg-gray-600 hover:scale-105 active:scale-95',
+          'bg-[#FD4B8B]/20 text-[#FD4B8B] shadow-sm hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
         ghost:
-          'hover:bg-gray-100 hover:text-gray-900 hover:scale-105 active:scale-95',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'text-[#FD4B8B] hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
+        link: 'text-[#FD4B8B] underline-offset-4 hover:text-[#55AE44] hover:underline',
       },
       size: {
         default: 'h-9 px-4 py-2',
@@ -28,15 +28,16 @@ const buttonVariants = cva(
         icon: 'h-9 w-9',
       },
       shape: {
-        default: 'rounded-md',
+        default: 'rounded-full',
         pill: 'rounded-full',
         square: 'rounded-none',
+        rounded: 'rounded-md',
       },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
-      shape: 'default',
+      shape: 'pill', // Changed to pill shape by default
     },
   }
 )
@@ -160,4 +161,209 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
 )
 LinkButton.displayName = 'LinkButton'
 
-export { Button, LinkButton, buttonVariants }
+// Link Button with Arrow Component
+export interface LinkButtonWithArrowProps
+  extends Omit<LinkButtonProps, 'rightIcon'> {
+  arrowIcon?: 'chevron' | 'arrow'
+  showArrow?: boolean
+}
+
+const LinkButtonWithArrow = React.forwardRef<HTMLAnchorElement, LinkButtonWithArrowProps>(
+  (
+    {
+      className,
+      variant = 'link',
+      size,
+      shape,
+      href,
+      children,
+      leftIcon,
+      arrowIcon = 'chevron',
+      showArrow = true,
+      ...props
+    },
+    ref
+  ) => {
+    // Simple inline SVG icons to avoid external dependencies
+    const ChevronRight = () => (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    )
+
+    const ArrowRight = () => (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    )
+
+    const rightIcon = showArrow ? (
+      arrowIcon === 'arrow' ? <ArrowRight /> : <ChevronRight />
+    ) : null
+
+    const content = (
+      <>
+        {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
+        <span className="inline-flex items-center gap-1 group">
+          {children}
+          {rightIcon && (
+            <span className='inline-block transition-transform group-hover:translate-x-1'>
+              {rightIcon}
+            </span>
+          )}
+        </span>
+      </>
+    )
+
+    return (
+      <Link
+        className={cn(
+          buttonVariants({ variant, size, shape, className }),
+          'group'
+        )}
+        href={href}
+        ref={ref}
+        {...props}
+      >
+        {content}
+      </Link>
+    )
+  }
+)
+LinkButtonWithArrow.displayName = 'LinkButtonWithArrow'
+
+// Text Button with Arrow (non-link version)
+export interface TextButtonWithArrowProps
+  extends Omit<ButtonProps, 'rightIcon'> {
+  arrowIcon?: 'chevron' | 'arrow'
+  showArrow?: boolean
+}
+
+const TextButtonWithArrow = React.forwardRef<HTMLButtonElement, TextButtonWithArrowProps>(
+  (
+    {
+      className,
+      variant = 'link',
+      size,
+      shape,
+      children,
+      leftIcon,
+      arrowIcon = 'chevron',
+      showArrow = true,
+      loading = false,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    // Simple inline SVG icons
+    const ChevronRight = () => (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    )
+
+    const ArrowRight = () => (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    )
+
+    const rightIcon = showArrow && !loading ? (
+      arrowIcon === 'arrow' ? <ArrowRight /> : <ChevronRight />
+    ) : null
+
+    const content = loading ? (
+      <>
+        <svg
+          className='animate-spin -ml-1 mr-2 h-4 w-4'
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+        >
+          <circle
+            className='opacity-25'
+            cx='12'
+            cy='12'
+            r='10'
+            stroke='currentColor'
+            strokeWidth='4'
+          />
+          <path
+            className='opacity-75'
+            fill='currentColor'
+            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+          />
+        </svg>
+        Loading...
+      </>
+    ) : (
+      <>
+        {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
+        <span className="inline-flex items-center gap-1 group">
+          {children}
+          {rightIcon && (
+            <span className='inline-block transition-transform group-hover:translate-x-1'>
+              {rightIcon}
+            </span>
+          )}
+        </span>
+      </>
+    )
+
+    return (
+      <button
+        className={cn(
+          buttonVariants({ variant, size, shape, className }),
+          'group'
+        )}
+        disabled={disabled || loading}
+        ref={ref}
+        {...props}
+      >
+        {content}
+      </button>
+    )
+  }
+)
+TextButtonWithArrow.displayName = 'TextButtonWithArrow'
+
+export { Button, LinkButton, LinkButtonWithArrow, TextButtonWithArrow, buttonVariants }
