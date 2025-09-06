@@ -188,7 +188,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-montserrat);
   font-weight: var(--font-weight-bold);
   line-height: 1.15;
-  color: var(--foreground);
   margin-top: 0;
 }
 
@@ -244,7 +243,6 @@ p {
   font-weight: var(--font-weight-normal);
   line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
-  color: var(--foreground);
 }
 
 /* List Styles */

@@ -24,7 +24,7 @@ export default function InlineCTA({
 
   return (
     <section
-      className={`relative rounded-2xl overflow-hidden my-12 min-h-[400px] bg-cover bg-center ${className}`}
+      className={`relative rounded-2xl overflow-hidden my-4 min-h-[300px] bg-cover bg-center ${className}`}
       style={{
         backgroundImage: `url('${backgroundImage}')`,
       }}
@@ -33,18 +33,12 @@ export default function InlineCTA({
       <div className='absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent' />
 
       {/* Content */}
-      <div className='relative z-10 px-8 py-16 md:px-16 md:py-20'>
-        <h3
-          className='text-white text-3xl md:text-4xl font-bold mb-4'
-          style={{ color: '#FFFFFF' }}
-        >
+      <div className='relative z-10 px-8 py-10 md:px-12 md:py-12'>
+        <h3 className='text-white text-3xl md:text-4xl font-bold mb-3'>
           {title}
         </h3>
 
-        <p
-          className='text-white text-lg md:text-xl mb-8 max-w-2xl'
-          style={{ color: '#FFFFFF' }}
-        >
+        <p className='text-white text-lg md:text-xl mb-6 max-w-2xl'>
           {description}
         </p>
 

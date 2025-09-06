@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
@@ -22,10 +22,10 @@ const buttonVariants = cva(
         link: 'text-[#FD4B8B] underline-offset-4 hover:text-[#55AE44] hover:underline',
       },
       size: {
-        default: 'h-9 px-4 py-2',
-        sm: 'h-8 px-3 text-xs',
-        lg: 'h-10 px-8',
-        icon: 'h-9 w-9',
+        default: 'h-11 px-5 text-base', // 44px height (was 36px)
+        sm: 'h-10 px-4 text-sm', // 40px height (was 32px)
+        lg: 'h-12 px-10 text-base', // 48px height (was 40px)
+        icon: 'h-11 w-11', // 44px × 44px (was 36px)
       },
       shape: {
         default: 'rounded-full',
@@ -80,7 +80,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const content = loading ? (
       <>
         <svg
-          className='animate-spin -ml-1 mr-2 h-4 w-4'
+          className='animate-spin -ml-1 mr-2 h-5 w-5'
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
           viewBox='0 0 24 24'
@@ -168,7 +168,10 @@ export interface LinkButtonWithArrowProps
   showArrow?: boolean
 }
 
-const LinkButtonWithArrow = React.forwardRef<HTMLAnchorElement, LinkButtonWithArrowProps>(
+const LinkButtonWithArrow = React.forwardRef<
+  HTMLAnchorElement,
+  LinkButtonWithArrowProps
+>(
   (
     {
       className,
@@ -187,43 +190,47 @@ const LinkButtonWithArrow = React.forwardRef<HTMLAnchorElement, LinkButtonWithAr
     // Simple inline SVG icons to avoid external dependencies
     const ChevronRight = () => (
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        width='20'
+        height='20'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       >
-        <polyline points="9 18 15 12 9 6" />
+        <polyline points='9 18 15 12 9 6' />
       </svg>
     )
 
     const ArrowRight = () => (
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        width='20'
+        height='20'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       >
-        <line x1="5" y1="12" x2="19" y2="12" />
-        <polyline points="12 5 19 12 12 19" />
+        <line x1='5' y1='12' x2='19' y2='12' />
+        <polyline points='12 5 19 12 12 19' />
       </svg>
     )
 
     const rightIcon = showArrow ? (
-      arrowIcon === 'arrow' ? <ArrowRight /> : <ChevronRight />
+      arrowIcon === 'arrow' ? (
+        <ArrowRight />
+      ) : (
+        <ChevronRight />
+      )
     ) : null
 
     const content = (
       <>
         {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
-        <span className="inline-flex items-center gap-1 group">
+        <span className='inline-flex items-center gap-1 group'>
           {children}
           {rightIcon && (
             <span className='inline-block transition-transform group-hover:translate-x-1'>
@@ -258,7 +265,10 @@ export interface TextButtonWithArrowProps
   showArrow?: boolean
 }
 
-const TextButtonWithArrow = React.forwardRef<HTMLButtonElement, TextButtonWithArrowProps>(
+const TextButtonWithArrow = React.forwardRef<
+  HTMLButtonElement,
+  TextButtonWithArrowProps
+>(
   (
     {
       className,
@@ -278,43 +288,48 @@ const TextButtonWithArrow = React.forwardRef<HTMLButtonElement, TextButtonWithAr
     // Simple inline SVG icons
     const ChevronRight = () => (
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        width='20'
+        height='20'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       >
-        <polyline points="9 18 15 12 9 6" />
+        <polyline points='9 18 15 12 9 6' />
       </svg>
     )
 
     const ArrowRight = () => (
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        width='20'
+        height='20'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       >
-        <line x1="5" y1="12" x2="19" y2="12" />
-        <polyline points="12 5 19 12 12 19" />
+        <line x1='5' y1='12' x2='19' y2='12' />
+        <polyline points='12 5 19 12 12 19' />
       </svg>
     )
 
-    const rightIcon = showArrow && !loading ? (
-      arrowIcon === 'arrow' ? <ArrowRight /> : <ChevronRight />
-    ) : null
+    const rightIcon =
+      showArrow && !loading ? (
+        arrowIcon === 'arrow' ? (
+          <ArrowRight />
+        ) : (
+          <ChevronRight />
+        )
+      ) : null
 
     const content = loading ? (
       <>
         <svg
-          className='animate-spin -ml-1 mr-2 h-4 w-4'
+          className='animate-spin -ml-1 mr-2 h-5 w-5'
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
           viewBox='0 0 24 24'
@@ -338,7 +353,7 @@ const TextButtonWithArrow = React.forwardRef<HTMLButtonElement, TextButtonWithAr
     ) : (
       <>
         {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
-        <span className="inline-flex items-center gap-1 group">
+        <span className='inline-flex items-center gap-1 group'>
           {children}
           {rightIcon && (
             <span className='inline-block transition-transform group-hover:translate-x-1'>
@@ -366,4 +381,10 @@ const TextButtonWithArrow = React.forwardRef<HTMLButtonElement, TextButtonWithAr
 )
 TextButtonWithArrow.displayName = 'TextButtonWithArrow'
 
-export { Button, LinkButton, LinkButtonWithArrow, TextButtonWithArrow, buttonVariants }
+export {
+  Button,
+  LinkButton,
+  LinkButtonWithArrow,
+  TextButtonWithArrow,
+  buttonVariants,
+}

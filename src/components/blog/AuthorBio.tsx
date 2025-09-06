@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { Tag } from '@/components/ui/tag'
 
 export interface AuthorData {
   name: string
@@ -28,27 +29,27 @@ export function AuthorBio({
   title = 'About the Author',
 }: AuthorBioProps) {
   return (
-    <section className={cn('py-12', className)}>
+    <section className={cn('py-8 md:py-12', className)}>
       {/* Optional section title */}
       {title && (
-        <div className='mb-6'>
-          <h2 className='text-2xl font-semibold'>{title}</h2>
+        <div className='mb-4 md:mb-6'>
+          <h2 className='text-xl md:text-2xl font-semibold'>{title}</h2>
         </div>
       )}
 
       {/* Main card container */}
-      <div className='relative bg-transparent rounded-xl border border-border p-8'>
+      <div className='relative bg-transparent rounded-xl border border-border p-6 md:p-8'>
         {/* LinkedIn icon in top right corner */}
         {author.socialLinks?.linkedin && (
           <a
             href={author.socialLinks.linkedin}
             target='_blank'
             rel='noopener noreferrer'
-            className='absolute top-6 right-6 w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-muted/80 transition-colors'
+            className='absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-muted rounded-full flex items-center justify-center hover:bg-muted/80 transition-colors'
             aria-label='LinkedIn Profile'
           >
             <svg
-              className='w-5 h-5 text-foreground'
+              className='w-4 h-4 md:w-5 md:h-5 text-foreground'
               fill='currentColor'
               viewBox='0 0 24 24'
             >
@@ -57,11 +58,11 @@ export function AuthorBio({
           </a>
         )}
 
-        {/* Main content area */}
-        <div className='flex gap-6'>
+        {/* Main content area - stacked on mobile, side-by-side on larger screens */}
+        <div className='flex flex-col sm:flex-row gap-4 sm:gap-6'>
           {/* Avatar */}
-          <div className='flex-shrink-0'>
-            <div className='w-24 h-24 rounded-full overflow-hidden bg-muted'>
+          <div className='flex-shrink-0 flex justify-center sm:block'>
+            <div className='w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-muted'>
               {author.avatar ? (
                 <img
                   src={author.avatar}
@@ -71,7 +72,7 @@ export function AuthorBio({
               ) : (
                 <div className='w-full h-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center'>
                   <svg
-                    className='w-10 h-10 text-primary/50'
+                    className='w-8 h-8 sm:w-10 sm:h-10 text-primary/50'
                     fill='currentColor'
                     viewBox='0 0 24 24'
                   >
@@ -83,35 +84,38 @@ export function AuthorBio({
           </div>
 
           {/* Text content */}
-          <div className='flex-1 pr-12'>
+          <div className='flex-1 text-center sm:text-left sm:pr-0 md:pr-12'>
             {/* Name and Title */}
-            <div className='mb-4'>
-              <h3 className='text-2xl font-bold mb-1'>{author.name}</h3>
-              <p className='text-base text-muted-foreground'>
+            <div className='mb-3 md:mb-4'>
+              <h3 className='text-xl sm:text-2xl font-bold mb-1'>
+                {author.name}
+              </h3>
+              <p className='text-sm sm:text-base text-muted-foreground'>
                 {author.title}
                 {author.company && ` at ${author.company}`}
               </p>
             </div>
 
             {/* Bio */}
-            <p className='text-base leading-relaxed mb-6 text-foreground/90'>
+            <p className='text-sm sm:text-base leading-relaxed mb-4 md:mb-6 text-foreground/90'>
               {author.bio}
             </p>
 
             {/* Expertise Tags */}
             {author.expertise && author.expertise.length > 0 && (
-              <div className='mb-6'>
-                <p className='text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wider'>
+              <div className='mb-0 sm:mb-6'>
+                <p className='text-xs sm:text-sm font-semibold text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wider'>
                   Expertise
                 </p>
-                <div className='flex flex-wrap gap-2'>
+                <div className='flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-2'>
                   {author.expertise.map((skill, index) => (
-                    <span
+                    <Tag
                       key={index}
-                      className='bg-secondary/15 text-secondary border border-secondary/20 text-sm px-4 py-1.5 rounded-full font-medium'
+                      size='sm'
+                      className='sm:text-sm sm:px-4 sm:py-1.5'
                     >
                       {skill}
-                    </span>
+                    </Tag>
                   ))}
                 </div>
               </div>
