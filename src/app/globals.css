@@ -4,11 +4,17 @@
 :root {
   /* Anchor offset for TOC scrolling */
   --anchor-offset: 120px;
+  
+  /* Font Families - Properly defined */
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-montserrat: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  
   /* Colors - Light Mode */
-  --background: #FBF8F2; /* Warm cream background */
-  --foreground: #2d3748; /* Softer than pure black */
+  --background: #FBF8F2;
+  --foreground: #2d3748;
   --muted: #f8f9fa;
-  --muted-foreground: #64748b; /* Better contrast ratio */
+  --muted-foreground: #64748b;
   --card: #ffffff;
   --card-foreground: #171717;
   --popover: #ffffff;
@@ -16,27 +22,22 @@
   --border: #e5e7eb;
   --input: #e5e7eb;
   
-  /* Brand Colors - Corrected Hierarchy */
-  --primary: #005493; /* Brand blue - for links, navigation, general interactions */
+  /* Brand Colors */
+  --primary: #005493;
   --primary-foreground: #ffffff;
-  --secondary: #3CC29E; /* Brand teal - supporting color */
+  --secondary: #3CC29E;
   --secondary-foreground: #ffffff;
-  --accent: #F48024; /* Tertiary orange */
+  --accent: #F48024;
   --accent-foreground: #ffffff;
-  
-  /* Special Purpose Colors */
-  --cta: #FD4B8B; /* CTA pink - ONLY for call-to-action buttons */
+  --cta: #FD4B8B;
   --cta-foreground: #ffffff;
-  --growth: #55AE44; /* Growth/success green */
+  --growth: #55AE44;
   --growth-foreground: #ffffff;
-  
-  /* Neutral Colors */
-  --gray: #6b7280; /* For secondary buttons/neutral elements */
+  --gray: #6b7280;
   --gray-foreground: #ffffff;
-  
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --ring: #005493; /* Match primary */
+  --ring: #005493;
   
   /* Spacing Scale */
   --radius: 0.5rem;
@@ -47,11 +48,6 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   
-  /* Typography - Direct fallback for reliability */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
-  
   /* Font Weights */
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -60,20 +56,25 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
+  
+  /* Font Sizes - Simplified */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
   
   /* Line Heights */
   --leading-tight: 1.25;
   --leading-normal: 1.5;
   --leading-relaxed: 1.625;
+  --leading-loose: 1.8;
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -91,7 +92,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #e2e8f0; /* Softer white for dark mode */
+    --foreground: #e2e8f0;
     --muted: #171717;
     --muted-foreground: #a1a1aa;
     --card: #111111;
@@ -100,52 +101,28 @@
     --popover-foreground: #ededed;
     --border: #27272a;
     --input: #27272a;
-    
-    /* Brand Colors - Dark mode adjusted */
-    --primary: #4A9FE7; /* Brand blue - lighter for dark mode */
+    --primary: #4A9FE7;
     --primary-foreground: #ffffff;
-    --secondary: #5DD4AF; /* Brand teal - lighter for dark mode */
+    --secondary: #5DD4AF;
     --secondary-foreground: #ffffff;
-    --accent: #FF9554; /* Orange - lighter for dark mode */
+    --accent: #FF9554;
     --accent-foreground: #ffffff;
-    
-    /* Special Purpose Colors - Dark mode variants */
-    --cta: #FF6BA5; /* CTA pink - lighter for dark mode */
+    --cta: #FF6BA5;
     --cta-foreground: #ffffff;
-    --growth: #6BC95A; /* Growth green - lighter for dark mode */
+    --growth: #6BC95A;
     --growth-foreground: #ffffff;
-    
-    /* Neutral Colors */
-    --gray: #9ca3af; /* Lighter gray for dark mode */
+    --gray: #9ca3af;
     --gray-foreground: #ffffff;
-    
     --destructive: #f87171;
     --destructive-foreground: #ffffff;
-    --ring: #4A9FE7; /* Match primary */
+    --ring: #4A9FE7;
   }
 }
 
 /* Manual Dark Mode Class Override */
-/* Scroll behavior for anchor links */
-html {
-  scroll-padding-top: var(--anchor-offset);
-  /* Remove scroll-behavior: auto - let JS handle it */
-}
-
-/* Ensure headings have the offset applied */
-h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
-  scroll-margin-top: var(--anchor-offset);
-}
-
-/* For prose content specifically */
-.prose h1[id], .prose h2[id], .prose h3[id], 
-.prose h4[id], .prose h5[id], .prose h6[id] {
-  scroll-margin-top: var(--anchor-offset);
-}
-
 [data-theme='dark'] {
   --background: #0a0a0a;
-  --foreground: #e2e8f0; /* Softer white for dark mode */
+  --foreground: #e2e8f0;
   --muted: #171717;
   --muted-foreground: #a1a1aa;
   --card: #111111;
@@ -154,8 +131,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   --popover-foreground: #ededed;
   --border: #27272a;
   --input: #27272a;
-  
-  /* Brand Colors - Dark mode variants */
   --primary: #4A9FE7;
   --primary-foreground: #ffffff;
   --secondary: #5DD4AF;
@@ -168,48 +143,32 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   --growth-foreground: #ffffff;
   --gray: #9ca3af;
   --gray-foreground: #ffffff;
-  
   --destructive: #f87171;
   --destructive-foreground: #ffffff;
   --ring: #4A9FE7;
 }
-
-/* Tailwind Integration - Removed @theme as it's not supported in standard CSS */
 
 /* Base Styles */
 * {
   box-sizing: border-box;
 }
 
-/* Reset heading margins */
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-}
-
-:root {
-  --anchor-offset: 120px;
-}
-
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: var(--anchor-offset);
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Auto-offset for all headings - no JS math needed */
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  scroll-margin-top: var(--anchor-offset);
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-inter);
   font-size: var(--font-size-base);
   line-height: var(--leading-relaxed);
   font-weight: var(--font-weight-normal);
   overflow-x: hidden;
+  margin: 0;
 }
 
 /* Focus Management */
@@ -224,279 +183,142 @@ body {
   color: var(--primary-foreground);
 }
 
-/* Typography Utilities */
-.prose {
-  max-width: 100%;
-  line-height: 1.8;
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-}
-
-/* Paragraph text with Inter for better readability */
-p, .prose p {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-weight: var(--font-weight-normal);
-  font-size: 1.125rem; /* 18px - comfortable reading size */
-  line-height: 1.8;
+/* Heading Styles - Montserrat */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
   color: var(--foreground);
-  opacity: 0.95; /* Very slightly soften for easier reading */
+  margin-top: 0;
 }
 
-/* Blog post specific paragraph sizing */
-.blog-post p, .blog-post .prose p {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif !important;
-  font-size: 1.0625rem; /* 17px - better for long-form reading */
-  line-height: 1.75;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-}
-
-/* List items with Inter */
-li, .prose li {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.8;
-  color: var(--foreground);
-  opacity: 0.95;
-}
-
-.blog-post li, .blog-post .prose li {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif !important;
-  font-size: 1.0625rem; /* 17px for blog posts */
-  line-height: 1.75;
-  margin-bottom: 0.75rem;
-  font-weight: 400;
-}
-
-/* All other text elements use Inter by default */
-div, span, a, td, th, button, input, textarea, select, label {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-}
-
-/* Ensure all text content uses Inter, not Montserrat */
-.font-sans {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif !important;
-}
-
-/* Override any remaining Montserrat usage for non-headings */
-:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-}
-
-/* Force Inter for all blog content */
-.blog-post, .blog-post * {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif !important;
-}
-
-/* But keep headings as Montserrat in blog posts */
-.blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif !important;
-}
-
-/* Brand Color Utility Classes */
-.text-brand-blue { color: var(--brand-blue); }
-.text-brand-teal { color: var(--brand-teal); }
-.text-growth { color: var(--growth); }
-
-.bg-brand-blue { background-color: var(--brand-blue); color: #ffffff; }
-.bg-brand-teal { background-color: var(--brand-teal); color: #ffffff; }
-.bg-growth { background-color: var(--growth); color: var(--growth-foreground); }
-
-.border-brand-blue { border-color: var(--brand-blue); }
-.border-brand-teal { border-color: var(--brand-teal); }
-.border-growth { border-color: var(--growth); }
-
-/* Secondary Button Styles (Gray) */
-.btn-secondary {
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
-  border: 1px solid var(--secondary);
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background-color: transparent;
-  color: var(--secondary);
-  transform: translateY(-1px);
-}
-
-/* Growth/Success Button Styles */
-.btn-growth {
-  background-color: var(--growth);
-  color: var(--growth-foreground);
-  border: 1px solid var(--growth);
-  transition: all 0.2s ease;
-}
-
-.btn-growth:hover {
-  background-color: transparent;
-  color: var(--growth);
-  transform: translateY(-1px);
-}
-
-/* Blockquotes with better styling */
-blockquote, .prose blockquote {
-  font-family: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.125rem;
-  line-height: 1.75;
-  color: var(--muted-foreground);
-  font-style: italic;
-}
-
-/* Blog post blockquotes */
-.blog-post blockquote {
-  font-size: 1.25rem;
-  line-height: 1.8;
-  margin: 2rem 0;
-}
-
-/* Heading Styles - Montserrat with Extrabold */
-h1, .prose h1 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+h1 {
   font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-extrabold);
-  line-height: var(--leading-tight);
-  margin-bottom: var(--spacing-lg);
-  color: var(--foreground);
   letter-spacing: -0.025em;
+  margin-bottom: var(--spacing-lg);
 }
 
-/* Blog Post Hero Title - Extra Large Display */
-.blog-hero-title {
-  font-size: 5.1rem; /* 81.6px - 15% smaller than 96px */
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 1024px) {
-  .blog-hero-title {
-    font-size: 3.825rem; /* 61.2px - 15% smaller than 72px */
-  }
-}
-
-@media (max-width: 768px) {
-  .blog-hero-title {
-    font-size: 2.55rem; /* 40.8px - 15% smaller than 48px */
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-  }
-}
-
-h2, .prose h2 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.875rem; /* 30px */
+h2 {
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
+  letter-spacing: -0.025em;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--foreground);
-  letter-spacing: -0.025em;
 }
 
-h3, .prose h3 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.5rem; /* 24px */
+h3 {
+  font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: var(--foreground);
-  letter-spacing: -0.02em;
 }
 
-h4, .prose h4 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
-  margin-top: var(--spacing-md);
+h4 {
+  font-size: var(--font-size-xl);
+  margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
-  color: var(--foreground);
 }
 
-h5, .prose h5 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--leading-tight);
+h5 {
+  font-size: var(--font-size-lg);
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-xs);
-  color: var(--foreground);
 }
 
-h6, .prose h6 {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--font-size-sm);
+h6 {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--leading-tight);
   margin-top: var(--spacing-sm);
   margin-bottom: var(--spacing-xs);
-  color: var(--muted-foreground);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--muted-foreground);
 }
 
-/* Body Text & Paragraph Styles */
-p, .prose p {
-  font-family: var(--font-montserrat), 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+/* Paragraph and Body Text - Inter */
+p {
+  font-family: var(--font-inter);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  line-height: var(--leading-relaxed);
+  line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
   color: var(--foreground);
 }
 
-/* Text Variations */
-.text-large {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--leading-relaxed);
-}
-
-.text-small {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--leading-normal);
-}
-
-.text-muted {
-  color: var(--muted-foreground);
-}
-
-/* Lead Text */
-.lead {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--leading-relaxed);
-  color: var(--muted-foreground);
-}
-
-.prose ul, .prose ol {
+/* List Styles */
+ul, ol {
+  font-family: var(--font-inter);
+  font-size: var(--font-size-base);
+  line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
   padding-left: var(--spacing-lg);
 }
 
-.prose li {
+li {
+  font-family: var(--font-inter);
   margin-bottom: var(--spacing-xs);
 }
 
+/* Prose Container */
+.prose {
+  max-width: 100%;
+  font-family: var(--font-inter);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-montserrat);
+  scroll-margin-top: var(--anchor-offset);
+}
+
+.prose p {
+  font-size: var(--font-size-lg);
+  line-height: var(--leading-loose);
+  margin-bottom: 1.5rem;
+}
+
+.prose ul,
+.prose ol {
+  font-size: var(--font-size-lg);
+  line-height: var(--leading-loose);
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--border);
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+  font-size: var(--font-size-lg);
+}
+
 .prose code {
+  font-family: var(--font-jetbrains-mono);
   background: var(--muted);
   color: var(--foreground);
   padding: 0.125rem 0.25rem;
   border-radius: calc(var(--radius) * 0.5);
   font-size: 0.9em;
-  font-family: var(--font-mono);
 }
 
 .prose pre {
+  font-family: var(--font-jetbrains-mono);
   background: var(--muted);
   color: var(--foreground);
   padding: var(--spacing-md);
   border-radius: var(--radius);
   overflow-x: auto;
   margin-bottom: var(--spacing-md);
-  font-family: var(--font-mono);
   font-size: var(--font-size-sm);
 }
 
@@ -504,14 +326,6 @@ p, .prose p {
   background: none;
   padding: 0;
   font-size: inherit;
-}
-
-.prose blockquote {
-  border-left: 4px solid var(--border);
-  padding-left: var(--spacing-md);
-  margin: var(--spacing-md) 0;
-  font-style: normal;
-  color: var(--muted-foreground);
 }
 
 .prose a {
@@ -526,23 +340,87 @@ p, .prose p {
   opacity: 0.8;
 }
 
-/* Animation Classes */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Blog Post Specific Styles */
+.blog-post {
+  font-family: var(--font-inter);
 }
 
-.animate-fade-in {
-  animation: fade-in var(--transition-normal) ease-out;
+.blog-post h1,
+.blog-post h2,
+.blog-post h3,
+.blog-post h4,
+.blog-post h5,
+.blog-post h6 {
+  font-family: var(--font-montserrat);
 }
 
-/* Component Base Styles */
+.blog-post p {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post li {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+/* Blog Hero Title */
+.blog-hero-title {
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+}
+
+/* Text Size Utilities */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+.text-6xl { font-size: var(--font-size-6xl); }
+.text-7xl { font-size: var(--font-size-7xl); }
+
+/* Text Utilities */
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.lead {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--muted-foreground);
+}
+
+/* Brand Color Utilities */
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-accent { color: var(--accent); }
+.text-cta { color: var(--cta); }
+.text-growth { color: var(--growth); }
+
+.bg-primary { background-color: var(--primary); color: var(--primary-foreground); }
+.bg-secondary { background-color: var(--secondary); color: var(--secondary-foreground); }
+.bg-accent { background-color: var(--accent); color: var(--accent-foreground); }
+.bg-cta { background-color: var(--cta); color: var(--cta-foreground); }
+.bg-growth { background-color: var(--growth); color: var(--growth-foreground); }
+
+.border-primary { border-color: var(--primary); }
+.border-secondary { border-color: var(--secondary); }
+.border-accent { border-color: var(--accent); }
+.border-cta { border-color: var(--cta); }
+.border-growth { border-color: var(--growth); }
+
+/* Component Styles */
 .card {
   background: var(--card);
   color: var(--card-foreground);
@@ -556,7 +434,54 @@ p, .prose p {
   box-shadow: var(--shadow-md);
 }
 
-/* Button styles now handled by shadcn/ui Button component */
+/* Button Base Styles */
+.btn {
+  font-family: var(--font-inter);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-cta {
+  background-color: var(--cta);
+  color: var(--cta-foreground);
+  border-color: var(--cta);
+}
+
+.btn-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
 
 /* Loading States */
 .skeleton {
@@ -589,16 +514,56 @@ p, .prose p {
   }
 }
 
-/* Responsive Utilities */
-@media (max-width: 768px) {
+/* Animation Classes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in var(--transition-normal) ease-out;
+}
+
+/* Responsive Typography */
+@media (max-width: 1024px) {
   :root {
-    --font-size-3xl: 1.5rem;
-    --font-size-4xl: 1.875rem;
-    --font-size-5xl: 2.25rem;
+    --font-size-5xl: 2.5rem;    /* 40px */
+    --font-size-6xl: 3rem;      /* 48px */
+    --font-size-7xl: 3.5rem;    /* 56px */
   }
   
-  .prose {
-    max-width: 100%;
+  .blog-hero-title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-3xl: 1.5rem;    /* 24px */
+    --font-size-4xl: 1.875rem;  /* 30px */
+    --font-size-5xl: 2.25rem;   /* 36px */
+    --font-size-6xl: 2.5rem;    /* 40px */
+    --font-size-7xl: 3rem;      /* 48px */
+  }
+  
+  .blog-hero-title {
+    font-size: var(--font-size-4xl);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+  
+  .prose p {
+    font-size: var(--font-size-base);
+  }
+  
+  .blog-post p {
+    font-size: var(--font-size-base);
   }
 }
 
@@ -618,3 +583,61 @@ p, .prose p {
     display: none !important;
   }
 }
+
+/* Add this to your global.css for extra large hero titles */
+
+.hero-title {
+  /* Fluid typography that scales smoothly with viewport */
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  
+  /* For the largest possible impact */
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+/* Specific breakpoints for fine control */
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: clamp(3rem, 9vw, 5rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-title {
+    font-size: 5.5rem; /* 88px */
+  }
+}
+
+@media (min-width: 1536px) {
+  .hero-title {
+    font-size: 6.5rem; /* 104px */
+  }
+}
+
+/* Alternative: Ultra-large hero for maximum impact */
+.hero-title-ultra {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-black);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+/* Ensure color utilities work with the hero title */
+.hero-title .text-accent { color: var(--accent); }
+.hero-title .text-cta { color: var(--cta); }
+.hero-title .text-growth { color: var(--growth); }

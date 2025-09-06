@@ -1,12 +1,44 @@
 import type { Metadata } from 'next'
-import { LinkButton } from '@/components/ui/button'
+import Hero from '@/components/Hero'
+import Services from '@/components/Services'
+import BlogCTA from '@/components/BlogCTA'
+
+const servicesData = [
+  {
+    icon: (
+      <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4 4 4 0 004-4V5z' />
+      </svg>
+    ),
+    title: 'Web Design & Development',
+    description: 'Creating responsive, high-converting websites that elevate your brand and drive business growth through strategic design.'
+  },
+  {
+    icon: (
+      <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' />
+      </svg>
+    ),
+    title: 'Brand Identity & Strategy',
+    description: 'Developing compelling brand identities and strategic positioning that resonates with your target audience and drives recognition.'
+  },
+  {
+    icon: (
+      <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' />
+      </svg>
+    ),
+    title: 'Digital Marketing & SEO',
+    description: 'Comprehensive digital marketing strategies including SEO, content marketing, and performance optimization for measurable ROI.'
+  }
+]
 
 export const metadata: Metadata = {
-  title: 'Lloyd Pilapil | Portfolio',
-  description: 'Passionate developer creating beautiful and functional web experiences. Welcome to my digital portfolio.',
+  title: 'PixelMojo | Design for Impact, Build for ROI',
+  description: 'We design digital experiences that drive measurable results. Transform your brand with strategic design and development.',
   openGraph: {
-    title: 'Lloyd Pilapil | Portfolio',
-    description: 'Passionate developer creating beautiful and functional web experiences.',
+    title: 'PixelMojo | Design for Impact, Build for ROI',
+    description: 'We design digital experiences that drive measurable results.',
     type: 'website',
   },
 }
@@ -14,94 +46,20 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className='container mx-auto px-4 py-16 animate-fade-in'>
-      {/* Hero Section */}
-      <section className='text-center mb-20'>
-        <h1 className='mb-6'>
-          Hello, I'm <span className='text-primary'>Lloyd Pilapil</span>
-        </h1>
-        <p className='lead max-w-2xl mx-auto mb-10'>
-          A passionate developer creating beautiful and functional web
-          experiences. Welcome to my digital portfolio where I showcase my work
-          and share my thoughts.
-        </p>
-        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-          <LinkButton href='/portfolio' variant='default' shape='pill' size='lg'>
-            View My Work
-          </LinkButton>
-          <LinkButton href='/contact' variant='outline' shape='pill' size='lg'>
-            Get In Touch
-          </LinkButton>
-        </div>
-      </section>
+      <Hero
+        title='WE DESIGN FOR IMPACT, WE BUILD FOR ROI'
+        description='Transform your brand with strategic design and development that drives measurable results. We create digital experiences that convert visitors into customers and customers into advocates.'
+        ctaText='Start Your Project'
+        ctaHref='/contact-us'
+      />
 
-      {/* Services Section */}
-      <section className='mb-20'>
-        <div className='text-center mb-12'>
-          <h2 className='mb-4'>What I Do</h2>
-          <p className='text-muted'>
-            Specialized in creating digital experiences that matter
-          </p>
-        </div>
-        <div className='grid md:grid-cols-3 gap-8'>
-          <div className='card text-center p-8 hover:shadow-lg transition-shadow'>
-            <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-              <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' />
-              </svg>
-            </div>
-            <h3 className='mb-4'>Frontend Development</h3>
-            <p className='text-muted'>
-              Creating responsive and interactive user interfaces using modern
-              frameworks and technologies.
-            </p>
-          </div>
-          <div className='card text-center p-8 hover:shadow-lg transition-shadow'>
-            <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-              <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2' />
-              </svg>
-            </div>
-            <h3 className='mb-4'>Backend Development</h3>
-            <p className='text-muted'>
-              Building robust server-side applications and APIs with scalable
-              architecture.
-            </p>
-          </div>
-          <div className='card text-center p-8 hover:shadow-lg transition-shadow'>
-            <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-              <svg className='w-8 h-8 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 10V3L4 14h7v7l9-11h-7z' />
-              </svg>
-            </div>
-            <h3 className='mb-4'>Full Stack Solutions</h3>
-            <p className='text-muted'>
-              End-to-end development from concept to deployment with modern tech
-              stacks.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Services
+        title='What We Do'
+        description='Comprehensive digital solutions designed to elevate your brand and drive measurable business growth'
+        services={servicesData}
+      />
 
-      {/* Blog CTA Section */}
-      <section className='text-center bg-muted/30 rounded-2xl p-12'>
-        <h2 className='mb-6'>Latest from the Blog</h2>
-        <p className='text-large text-muted mb-8 max-w-2xl mx-auto'>
-          Check out my latest thoughts on development, technology, and insights
-          from building modern web applications.
-        </p>
-        <LinkButton
-          href='/blog'
-          variant='default'
-          shape='pill'
-          rightIcon={
-            <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17 8l4 4m0 0l-4 4m4-4H3' />
-            </svg>
-          }
-        >
-          Read All Posts
-        </LinkButton>
-      </section>
+      <BlogCTA />
     </div>
   )
 }
