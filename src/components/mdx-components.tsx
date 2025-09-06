@@ -105,20 +105,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Smart link handling (internal vs external)
-    a: ({ children, href }) => {
-      const isInternal = href && (href.startsWith('/') || href.startsWith('#'))
+    a: ({ children, href, ...props }) => {
+      const isExternal =
+        href && (href.startsWith('http://') || href.startsWith('https://'))
       const isAnchor = href && href.startsWith('#')
 
       return (
         <a
           href={href}
           className='text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all duration-200 hover:text-primary/80'
-          target={!isInternal ? '_blank' : undefined}
-          rel={!isInternal ? 'noopener noreferrer' : undefined}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
           aria-label={isAnchor ? `Jump to section ${children}` : undefined}
+          {...props}
         >
           {children}
-          {!isInternal && (
+          {isExternal && (
             <svg
               className='inline-block ml-1 mb-1 h-4 w-4'
               fill='none'

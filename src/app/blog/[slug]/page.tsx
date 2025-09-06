@@ -85,14 +85,35 @@ export default async function BlogPost({ params }: BlogPostProps) {
       </blockquote>
     ),
 
-    a: ({ children, href }: { children: React.ReactNode; href?: string }) => (
-      <a
-        href={href}
-        className='text-primary underline underline-offset-2 hover:opacity-80 transition-opacity'
-      >
-        {children}
-      </a>
-    ),
+    a: ({ children, href }: { children: React.ReactNode; href?: string }) => {
+      const isExternal =
+        href && (href.startsWith('http://') || href.startsWith('https://'))
+      return (
+        <a
+          href={href}
+          className='text-primary underline underline-offset-2 hover:opacity-80 transition-opacity'
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
+        >
+          {children}
+          {isExternal && (
+            <svg
+              className='inline-block ml-1 mb-1 h-3 w-3'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
+              />
+            </svg>
+          )}
+        </a>
+      )
+    },
 
     strong: ({ children }: { children: React.ReactNode }) => (
       <strong className='font-bold'>{children}</strong>
