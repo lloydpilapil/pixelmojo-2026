@@ -83,17 +83,21 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
   if (!h2Headings.length) return null
 
   return (
-    <div className={cn('not-prose rounded-lg p-6', className)}>
+    <div className={cn('not-prose rounded-lg pt-6 pr-6 pb-6', className)}>
       <nav aria-label='Table of contents'>
         {/* TOC title - same font as content but bold and uppercase */}
-        <span className='block mb-7 text-sm font-bold text-foreground uppercase tracking-wider'>
+        <span className='block mb-7 pl-6 text-sm font-bold text-foreground uppercase tracking-wider'>
           Table of Contents
         </span>
 
         {/* Normalize list spacing to avoid hidden top margin */}
-        <ul className='mt-0 mb-0 p-0 list-none space-y-4'>
+        <ul className='mt-0 mb-0 p-0 list-none'>
           {h2Headings.map(({ id, text }) => (
-            <li key={id} className='group relative'>
+            <li
+              key={id}
+              className='group relative'
+              style={{ marginBottom: '1rem' }}
+            >
               <div className='relative flex items-center'>
                 {/* Animated chevron - appears on hover and when active, positioned absolutely */}
                 <svg
