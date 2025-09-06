@@ -19,7 +19,7 @@
   --card-foreground: #171717;
   --popover: #ffffff;
   --popover-foreground: #171717;
-  --border: #e5e7eb;
+  --border: #f3f4f6;
   --input: #e5e7eb;
   
   /* Brand Colors */
@@ -99,8 +99,8 @@
     --card-foreground: #ededed;
     --popover: #111111;
     --popover-foreground: #ededed;
-    --border: #27272a;
-    --input: #27272a;
+    --border: #9A9AA0;
+    --input: #9A9AA0;
     --primary: #4A9FE7;
     --primary-foreground: #ffffff;
     --secondary: #5DD4AF;
@@ -129,8 +129,8 @@
   --card-foreground: #ededed;
   --popover: #111111;
   --popover-foreground: #ededed;
-  --border: #27272a;
-  --input: #27272a;
+  --border: #9A9AA0;
+  --input: #9A9AA0;
   --primary: #4A9FE7;
   --primary-foreground: #ffffff;
   --secondary: #5DD4AF;
@@ -366,6 +366,16 @@ li {
   margin-bottom: 0.75rem;
 }
 
+/* Hero Title */
+.hero-title {
+  font-family: var(--font-montserrat);
+  font-size: 5.6rem; /* 90px */  
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+}
+
 /* Blog Hero Title */
 .blog-hero-title {
   font-family: var(--font-montserrat);
@@ -584,60 +594,3 @@ li {
   }
 }
 
-/* Add this to your global.css for extra large hero titles */
-
-.hero-title {
-  /* Fluid typography that scales smoothly with viewport */
-  font-size: clamp(2rem, 7vw, 5rem);
-  
-  /* For the largest possible impact */
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-weight-extrabold);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-}
-
-/* Specific breakpoints for fine control */
-@media (min-width: 640px) {
-  .hero-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: clamp(3rem, 9vw, 5rem);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-title {
-    font-size: clamp(3.5rem, 9vw, 5.5rem);
-  }
-}
-
-@media (min-width: 1280px) {
-  .hero-title {
-    font-size: 4.5rem; /* 72px */
-  }
-}
-
-@media (min-width: 1536px) {
-  .hero-title {
-    font-size: 5.5rem; /* 88px */
-  }
-}
-
-/* Alternative: Ultra-large hero for maximum impact */
-.hero-title-ultra {
-  font-size: clamp(3rem, 12vw, 8rem);
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-weight-black);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-/* Ensure color utilities work with the hero title */
-.hero-title .text-accent { color: var(--accent); }
-.hero-title .text-cta { color: var(--cta); }
-.hero-title .text-growth { color: var(--growth); }
