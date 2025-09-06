@@ -1,7 +1,7 @@
 import { LinkButton } from '@/components/ui/button'
 
 interface HeroProps {
-  title: string
+  title: React.ReactNode
   description: string
   ctaText: string
   ctaHref: string
@@ -9,23 +9,19 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title: _title,
+  title,
   description,
   ctaText,
   ctaHref,
-  className = ''
+  className = '',
 }: HeroProps) {
   return (
-    <section className={`text-center mb-20 ${className}`}>
-      <div className='text-center mb-16'>
-        <h1 className='hero-title mb-6'>
-          WE <span className='text-accent'>DESIGN</span> FOR <span className='text-cta'>IMPACT</span><span className='text-cta'>,</span> WE BUILD FOR <span className='text-growth'>ROI</span>
-        </h1>
+    <section className={`text-center mb-20 mt-16 md:mt-24 ${className}`}>
+      <div className='text-center'>
+        <h1 className='hero-title max-w-6xl mx-auto mb-10 md:mb-12'>{title}</h1>
       </div>
-      <p className='lead max-w-5xl mx-auto mb-10'>
-        {description}
-      </p>
-      <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+      <p className='lead max-w-5xl mx-auto mb-10 md:mb-12'>{description}</p>
+      <div className='flex flex-col sm:flex-row gap-4 justify-center mt-12'>
         <LinkButton href={ctaHref} variant='default' shape='pill' size='lg'>
           {ctaText}
         </LinkButton>

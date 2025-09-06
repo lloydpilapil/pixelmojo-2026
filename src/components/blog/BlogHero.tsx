@@ -89,7 +89,7 @@ export function BlogHero({
           </div>
 
           {/* Title */}
-          <h1 className='blog-hero-title max-w-6xl mx-auto'>{title}</h1>
+          <h1 className='max-w-6xl mx-auto mb-8'>{title}</h1>
 
           {description && (
             <p className='text-large text-muted-foreground mb-8 leading-relaxed max-w-5xl mx-auto'>

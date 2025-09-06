@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: var(--font-size-5xl);
+  font-size: 4.5rem; /* 72px */
   font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.025em;
   margin-bottom: var(--spacing-lg);
@@ -588,7 +588,7 @@ li {
 
 .hero-title {
   /* Fluid typography that scales smoothly with viewport */
-  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-size: clamp(2rem, 7vw, 5rem);
   
   /* For the largest possible impact */
   font-family: var(--font-montserrat);
@@ -600,31 +600,31 @@ li {
 /* Specific breakpoints for fine control */
 @media (min-width: 640px) {
   .hero-title {
-    font-size: clamp(3rem, 9vw, 5rem);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
   }
 }
 
 @media (min-width: 768px) {
   .hero-title {
-    font-size: clamp(3.5rem, 10vw, 5.5rem);
+    font-size: clamp(3rem, 9vw, 5rem);
   }
 }
 
 @media (min-width: 1024px) {
   .hero-title {
-    font-size: clamp(4rem, 10vw, 6rem);
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
   }
 }
 
 @media (min-width: 1280px) {
   .hero-title {
-    font-size: 5.5rem; /* 88px */
+    font-size: 4.5rem; /* 72px */
   }
 }
 
 @media (min-width: 1536px) {
   .hero-title {
-    font-size: 6.5rem; /* 104px */
+    font-size: 5.5rem; /* 88px */
   }
 }
 
