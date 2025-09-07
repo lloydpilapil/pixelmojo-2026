@@ -58,6 +58,11 @@ export const Post = defineDocumentType(() => ({
       required: false,
       default: true,
     },
+    featuredImage: {
+      type: 'string',
+      description: 'Featured image URL for the post',
+      required: false,
+    },
   },
   computedFields: {
     url: {

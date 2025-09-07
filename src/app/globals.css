@@ -2,8 +2,8 @@
 
 /* CSS Custom Properties - Design System */
 :root {
-  /* Anchor offset for TOC scrolling */
-  --anchor-offset: 120px;
+  /* Anchor offset for TOC scrolling - accounts for sticky nav height only */
+  --anchor-offset: 80px;
   
   /* Font Families - Properly defined */
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -57,18 +57,33 @@
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
   
-  /* Font Sizes - Simplified */
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
+  /* Font Sizes - Modular Scale 1.25 (Major Third) */
+  --font-size-2xs: 0.64rem;    /* 10.24px */
+  --font-size-xs: 0.8rem;      /* 12.8px */
+  --font-size-sm: 0.875rem;    /* 14px - minimum readable */
   --font-size-base: 1rem;      /* 16px */
   --font-size-lg: 1.125rem;    /* 18px */
   --font-size-xl: 1.25rem;     /* 20px */
-  --font-size-2xl: 1.5rem;     /* 24px */
-  --font-size-3xl: 1.875rem;   /* 30px */
-  --font-size-4xl: 2.25rem;    /* 36px */
-  --font-size-5xl: 3rem;       /* 48px */
-  --font-size-6xl: 3.75rem;    /* 60px */
-  --font-size-7xl: 4.5rem;     /* 72px */
+  --font-size-2xl: 1.563rem;   /* 25px */
+  --font-size-3xl: 1.953rem;   /* 31.25px */
+  --font-size-4xl: 2.441rem;   /* 39px */
+  --font-size-5xl: 3.052rem;   /* 48.8px */
+  --font-size-6xl: 3.815rem;   /* 61px */
+  --font-size-7xl: 4.768rem;   /* 76.3px */
+  --font-size-8xl: 5.96rem;    /* 95.4px */
+  
+  /* Fluid Font Sizes - Desktop First */
+  --fluid-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8rem);
+  --fluid-sm: clamp(0.8125rem, 0.8rem + 0.0625vw, 0.875rem);
+  --fluid-base: clamp(0.9375rem, 0.9rem + 0.1875vw, 1rem);
+  --fluid-lg: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fluid-xl: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+  --fluid-2xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.563rem);
+  --fluid-3xl: clamp(1.5rem, 1.2rem + 1.5vw, 1.953rem);
+  --fluid-4xl: clamp(1.75rem, 1.3rem + 2.25vw, 2.441rem);
+  --fluid-5xl: clamp(2rem, 1.4rem + 3vw, 3.052rem);
+  --fluid-6xl: clamp(2.25rem, 1.5rem + 3.75vw, 3.815rem);
+  --fluid-7xl: clamp(2.5rem, 1.6rem + 4.5vw, 4.768rem);
   
   /* Line Heights */
   --leading-tight: 1.25;
@@ -183,7 +198,7 @@ body {
   color: var(--primary-foreground);
 }
 
-/* Heading Styles - Montserrat */
+/* Heading Styles - Using Fluid Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-montserrat);
   font-weight: var(--font-weight-bold);
@@ -192,14 +207,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 4.5rem; /* 72px */
+  font-size: var(--fluid-7xl);
   font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.025em;
   margin-bottom: var(--spacing-lg);
 }
 
 h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--fluid-3xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.025em;
   margin-top: 2.5rem;
@@ -207,7 +222,7 @@ h2 {
 }
 
 h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--fluid-2xl);
   font-weight: var(--font-weight-semibold);
   letter-spacing: -0.02em;
   margin-top: 2rem;
@@ -215,19 +230,19 @@ h3 {
 }
 
 h4 {
-  font-size: var(--font-size-xl);
+  font-size: var(--fluid-xl);
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
 }
 
 h5 {
-  font-size: var(--font-size-lg);
+  font-size: var(--fluid-lg);
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-xs);
 }
 
 h6 {
-  font-size: var(--font-size-base);
+  font-size: var(--fluid-base);
   font-weight: var(--font-weight-semibold);
   margin-top: var(--spacing-sm);
   margin-bottom: var(--spacing-xs);
@@ -239,7 +254,7 @@ h6 {
 /* Paragraph and Body Text - Inter */
 p {
   font-family: var(--font-inter);
-  font-size: var(--font-size-base);
+  font-size: var(--fluid-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
@@ -248,7 +263,7 @@ p {
 /* List Styles */
 ul, ol {
   font-family: var(--font-inter);
-  font-size: var(--font-size-base);
+  font-size: var(--fluid-base);
   line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
   padding-left: var(--spacing-lg);
@@ -276,14 +291,14 @@ li {
 }
 
 .prose p {
-  font-size: var(--font-size-lg);
+  font-size: var(--fluid-lg);
   line-height: var(--leading-loose);
   margin-bottom: 1.5rem;
 }
 
 .prose ul,
 .prose ol {
-  font-size: var(--font-size-lg);
+  font-size: var(--fluid-lg);
   line-height: var(--leading-loose);
 }
 
@@ -297,7 +312,7 @@ li {
   margin: var(--spacing-lg) 0;
   font-style: italic;
   color: var(--muted-foreground);
-  font-size: var(--font-size-lg);
+  font-size: var(--fluid-lg);
 }
 
 .prose code {
@@ -353,21 +368,21 @@ li {
 }
 
 .blog-post p {
-  font-size: 1.0625rem; /* 17px */
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem); /* 16px to 17px */
   line-height: 1.75;
   margin-bottom: 1.5rem;
 }
 
 .blog-post li {
-  font-size: 1.0625rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
   line-height: 1.75;
   margin-bottom: 0.75rem;
 }
 
-/* Hero Title */
+/* Hero Title - Fluid Typography */
 .hero-title {
   font-family: var(--font-montserrat);
-  font-size: 5.6rem; /* 90px */  
+  font-size: clamp(2.5rem, 4vw + 1.5rem, 5.625rem); /* 40px to 90px */
   font-weight: var(--font-weight-extrabold);
   line-height: 1.1;
   letter-spacing: -0.04em;
@@ -377,7 +392,7 @@ li {
 /* Blog Hero Title */
 .blog-hero-title {
   font-family: var(--font-montserrat);
-  font-size: var(--font-size-6xl);
+  font-size: clamp(2rem, 3vw + 1rem, var(--font-size-6xl));
   font-weight: var(--font-weight-extrabold);
   line-height: 1.1;
   letter-spacing: -0.04em;
@@ -385,6 +400,7 @@ li {
 }
 
 /* Text Size Utilities */
+.text-2xs { font-size: var(--font-size-2xs); }
 .text-xs { font-size: var(--font-size-xs); }
 .text-sm { font-size: var(--font-size-sm); }
 .text-base { font-size: var(--font-size-base); }
@@ -396,6 +412,20 @@ li {
 .text-5xl { font-size: var(--font-size-5xl); }
 .text-6xl { font-size: var(--font-size-6xl); }
 .text-7xl { font-size: var(--font-size-7xl); }
+.text-8xl { font-size: var(--font-size-8xl); }
+
+/* Fluid Text Utilities */
+.text-fluid-xs { font-size: var(--fluid-xs); }
+.text-fluid-sm { font-size: var(--fluid-sm); }
+.text-fluid-base { font-size: var(--fluid-base); }
+.text-fluid-lg { font-size: var(--fluid-lg); }
+.text-fluid-xl { font-size: var(--fluid-xl); }
+.text-fluid-2xl { font-size: var(--fluid-2xl); }
+.text-fluid-3xl { font-size: var(--fluid-3xl); }
+.text-fluid-4xl { font-size: var(--fluid-4xl); }
+.text-fluid-5xl { font-size: var(--fluid-5xl); }
+.text-fluid-6xl { font-size: var(--fluid-6xl); }
+.text-fluid-7xl { font-size: var(--fluid-7xl); }
 
 /* Text Utilities */
 .text-muted {
@@ -403,7 +433,7 @@ li {
 }
 
 .lead {
-  font-size: var(--font-size-xl);
+  font-size: var(--fluid-xl);
   font-weight: var(--font-weight-normal);
   line-height: var(--leading-relaxed);
   color: var(--muted-foreground);
@@ -538,12 +568,15 @@ li {
   animation: fade-in var(--transition-normal) ease-out;
 }
 
-/* Responsive Typography */
-@media (max-width: 1024px) {
+/* Responsive Typography - Progressive Enhancement */
+
+/* Large Tablet (900px to 1024px) */
+@media (max-width: 1024px) and (min-width: 901px) {
   :root {
-    --font-size-5xl: 2.5rem;    /* 40px */
-    --font-size-6xl: 3rem;      /* 48px */
-    --font-size-7xl: 3.5rem;    /* 56px */
+    --font-size-4xl: 2.25rem;    /* 36px */
+    --font-size-5xl: 2.75rem;    /* 44px */
+    --font-size-6xl: 3.375rem;   /* 54px */
+    --font-size-7xl: 4rem;       /* 64px */
   }
   
   .blog-hero-title {
@@ -551,21 +584,42 @@ li {
   }
   
   h1 {
-    font-size: 3.5rem; /* 56px - down from 72px */
+    font-size: 3.75rem; /* 60px */
   }
   
-  .hero-title {
-    font-size: 4rem; /* 64px - down from 90px */
+  .prose p,
+  .blog-post p {
+    font-size: 1.0625rem; /* 17px - optimal for tablet reading */
   }
 }
 
-@media (max-width: 768px) {
+/* Small Tablet (768px to 900px) */
+@media (max-width: 900px) and (min-width: 769px) {
   :root {
-    --font-size-3xl: 1.5rem;    /* 24px */
-    --font-size-4xl: 1.875rem;  /* 30px */
-    --font-size-5xl: 2.25rem;   /* 36px */
-    --font-size-6xl: 2.5rem;    /* 40px */
-    --font-size-7xl: 3rem;      /* 48px */
+    --font-size-4xl: 2rem;       /* 32px */
+    --font-size-5xl: 2.5rem;     /* 40px */
+    --font-size-6xl: 3rem;       /* 48px */
+    --font-size-7xl: 3.5rem;     /* 56px */
+  }
+  
+  .blog-hero-title {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h1 {
+    font-size: 3.25rem; /* 52px */
+  }
+}
+
+/* Mobile - Large (481px to 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  :root {
+    --font-size-2xl: 1.375rem;   /* 22px */
+    --font-size-3xl: 1.625rem;   /* 26px */
+    --font-size-4xl: 1.875rem;   /* 30px */
+    --font-size-5xl: 2.25rem;    /* 36px */
+    --font-size-6xl: 2.625rem;   /* 42px */
+    --font-size-7xl: 3rem;       /* 48px */
   }
   
   .blog-hero-title {
@@ -574,22 +628,98 @@ li {
     letter-spacing: -0.03em;
   }
   
-  .prose p {
-    font-size: var(--font-size-base);
-  }
-  
+  .prose p,
   .blog-post p {
     font-size: var(--font-size-base);
+    line-height: 1.7;
   }
   
   h1 {
-    font-size: 2.5rem; /* 40px - down from 72px */
+    font-size: 2.25rem; /* 36px */
     line-height: 1.1;
   }
   
-  .hero-title {
-    font-size: 2.75rem; /* 44px - down from 90px */
-    line-height: 1.1;
+  h2 {
+    font-size: var(--font-size-3xl);
+    margin-top: 2rem;
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+    margin-top: 1.5rem;
+  }
+}
+
+/* Mobile - Small (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    --font-size-sm: 0.875rem;    /* 14px minimum */
+    --font-size-base: 0.9375rem; /* 15px */
+    --font-size-lg: 1.0625rem;   /* 17px */
+    --font-size-xl: 1.125rem;    /* 18px */
+    --font-size-2xl: 1.25rem;    /* 20px */
+    --font-size-3xl: 1.5rem;     /* 24px */
+    --font-size-4xl: 1.75rem;    /* 28px */
+    --font-size-5xl: 2rem;       /* 32px */
+    --font-size-6xl: 2.25rem;    /* 36px */
+    --font-size-7xl: 2.5rem;     /* 40px */
+  }
+  
+  body {
+    font-size: var(--font-size-base);
+  }
+  
+  .blog-hero-title {
+    font-size: var(--font-size-4xl);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  
+  .prose p,
+  .blog-post p {
+    font-size: var(--font-size-base);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  
+  .prose li,
+  .blog-post li {
+    font-size: var(--font-size-base);
+    margin-bottom: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem; /* 32px */
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: var(--font-size-3xl);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  h4 {
+    font-size: var(--font-size-xl);
+    margin-top: 1rem;
+  }
+  
+  /* Reduce padding/margins for small screens */
+  .prose blockquote {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-sm);
+  }
+  
+  ul, ol {
+    padding-left: var(--spacing-md);
   }
 }
 
@@ -601,6 +731,15 @@ li {
     box-shadow: none !important;
   }
   
+  body {
+    font-size: 12pt;
+  }
+  
+  h1 { font-size: 24pt; }
+  h2 { font-size: 18pt; }
+  h3 { font-size: 14pt; }
+  h4 { font-size: 12pt; }
+  
   a {
     text-decoration: underline;
   }
@@ -609,4 +748,3 @@ li {
     display: none !important;
   }
 }
-

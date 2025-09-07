@@ -1,10 +1,7 @@
 import { allPosts } from 'contentlayer/generated'
-import Link from 'next/link'
 import type { Metadata } from 'next'
-import { Tag } from '@/components/ui/tag'
-import { LinkButtonWithArrow } from '@/components/ui/button'
-import { calculateReadingTime } from '@/lib/blog-utils'
-import { getAuthor } from '@/lib/data/authors'
+import { BlogPostCard } from '@/components/blog/BlogPostCard'
+import { FeaturedPostCard } from '@/components/blog/FeaturedPostCard'
 
 export const metadata: Metadata = {
   title: 'Blog | Lloyd Pilapil',
@@ -57,9 +54,6 @@ export default function Blog() {
   const featuredPost = posts[0]
   const recentPosts = posts.slice(1)
 
-  // Get author data
-  const author = getAuthor('lloyd-pilapil')
-
   return (
     <div className='animate-fade-in'>
       {/* Hero Section */}
@@ -79,142 +73,21 @@ export default function Blog() {
       <section className='container mx-auto px-4 py-16'>
         <div className='max-w-6xl mx-auto'>
           {/* Featured Post - Now takes full width */}
-          {featuredPost && (
-            <Link href={featuredPost.url} className='group'>
-              <article className='card overflow-hidden hover:shadow-xl transition-all duration-300'>
-                {/* Featured Image */}
-                <div className='aspect-[16/9] relative overflow-hidden bg-muted'>
-                  <img
-                    src='/placeholder.svg'
-                    alt={featuredPost.title}
-                    className='w-full h-full object-cover opacity-50'
-                  />
-                  {featuredPost.tags && featuredPost.tags[0] && (
-                    <div className='absolute top-4 left-4'>
-                      <Tag variant='solid' size='sm'>
-                        {featuredPost.tags[0]}
-                      </Tag>
-                    </div>
-                  )}
-                </div>
-
-                <div className='p-8'>
-                  <div className='flex items-center gap-4 text-sm text-muted mb-4'>
-                    <time>
-                      {new Date(featuredPost.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                    <span>•</span>
-                    <span>
-                      {calculateReadingTime(featuredPost.body?.raw || '')} min
-                      read
-                    </span>
-                  </div>
-
-                  <h2 className='mb-4 group-hover:text-primary transition-colors'>
-                    {featuredPost.title}
-                  </h2>
-
-                  {featuredPost.description && (
-                    <p className='text-muted mb-6 line-clamp-3'>
-                      {featuredPost.description}
-                    </p>
-                  )}
-
-                  <div className='flex items-center gap-3'>
-                    <img
-                      src='/lloyd-pilapil.webp'
-                      alt={author.name}
-                      className='w-10 h-10 rounded-full'
-                    />
-                    <div>
-                      <p className='font-medium text-sm'>{author.name}</p>
-                      <p className='text-xs text-muted'>{author.title}</p>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </Link>
-          )}
+          {featuredPost && <FeaturedPostCard post={featuredPost} />}
         </div>
       </section>
 
       {/* Latest Articles Section */}
       <section className='container mx-auto px-4 py-16'>
         <div className='max-w-6xl mx-auto'>
-          <div className='flex justify-between items-center mb-12'>
-            <h2>Latest articles</h2>
-            <LinkButtonWithArrow
-              href='/blog/archive'
-              variant='link'
-              arrowIcon='chevron'
-            >
-              See All
-            </LinkButtonWithArrow>
+          <div className='mb-12'>
+            <h2>More Insights</h2>
           </div>
 
           {recentPosts.length > 0 ? (
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
               {recentPosts.map(post => (
-                <Link key={post._id} href={post.url} className='group'>
-                  <article className='card overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col'>
-                    {/* Post Image */}
-                    <div className='aspect-[16/10] relative overflow-hidden bg-muted'>
-                      <img
-                        src='/placeholder.svg'
-                        alt={post.title}
-                        className='w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity'
-                      />
-                    </div>
-
-                    <div className='p-6 flex flex-col flex-grow'>
-                      <div className='flex items-center gap-2 text-xs text-muted mb-3'>
-                        {post.tags && post.tags[0] && (
-                          <>
-                            <span className='uppercase font-semibold text-secondary'>
-                              {post.tags[0]}
-                            </span>
-                            <span>•</span>
-                          </>
-                        )}
-                        <span>
-                          {calculateReadingTime(post.body?.raw || '')} min read
-                        </span>
-                      </div>
-
-                      <h3 className='mb-3 group-hover:text-primary transition-colors line-clamp-2'>
-                        {post.title}
-                      </h3>
-
-                      {post.description && (
-                        <p className='text-sm text-muted mb-4 line-clamp-3 flex-grow'>
-                          {post.description}
-                        </p>
-                      )}
-
-                      <div className='flex items-center gap-3 mt-auto pt-4 border-t border-border'>
-                        <img
-                          src='/lloyd-pilapil.webp'
-                          alt={author.name}
-                          className='w-8 h-8 rounded-full'
-                        />
-                        <div>
-                          <p className='font-medium text-sm'>{author.name}</p>
-                          <p className='text-xs text-muted'>
-                            {new Date(post.date).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric',
-                              year: 'numeric',
-                            })}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
+                <BlogPostCard key={post._id} post={post} />
               ))}
             </div>
           ) : (

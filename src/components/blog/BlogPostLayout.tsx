@@ -36,7 +36,10 @@ export function BlogPostLayout({
         {/* Desktop: 3-Column Layout - Maximized Width */}
         <div className='hidden xl:grid xl:grid-cols-12 xl:gap-12'>
           {/* Left Sidebar - TOC */}
-          <aside className='xl:col-span-3 xl:sticky xl:top-8 xl:self-start'>
+          <aside
+            className='xl:col-span-3 xl:sticky xl:self-start'
+            style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
+          >
             {tableOfContents && (
               <div className='bg-[#F8F1E5] border border-border rounded-lg'>
                 {tableOfContents}
@@ -50,7 +53,10 @@ export function BlogPostLayout({
           </main>
 
           {/* Right Sidebar - CTA */}
-          <aside className='xl:col-span-3 xl:sticky xl:top-8 xl:self-start'>
+          <aside
+            className='xl:col-span-3 xl:sticky xl:self-start'
+            style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
+          >
             {sidebar}
           </aside>
         </div>

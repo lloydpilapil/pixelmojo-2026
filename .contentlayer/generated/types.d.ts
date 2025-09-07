@@ -29,6 +29,8 @@ export type Post = {
   showTOC: boolean
   /** Whether to show CTA in sidebar */
   showCTA: boolean
+  /** Featured image URL for the post */
+  featuredImage?: string | undefined
   /** MDX file body */
   body: MDX
   url: string
