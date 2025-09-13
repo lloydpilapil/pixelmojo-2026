@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
-import VideoPlayer from '@/components/VideoPlayer'
+import ScrollVideoSection from '@/components/ScrollVideoSection'
 import Services from '@/components/Services'
 import BlogCTA from '@/components/BlogCTA'
 
@@ -100,12 +100,8 @@ export default function Home() {
         ctaHref='/contact-us'
       />
 
-      {/* Video Section */}
-      <section className='mb-24'>
-        <div className='max-w-6xl mx-auto'>
-          <VideoPlayer videoId='1095336702' className='shadow-2xl' />
-        </div>
-      </section>
+      {/* Scroll-Animated Video Section */}
+      <ScrollVideoSection videoId='1095336702' />
 
       <Services
         title='What We Do'

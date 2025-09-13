@@ -194,8 +194,8 @@ body {
 
 /* Selection */
 ::selection {
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: var(--selection-bg, var(--primary));
+  color: var(--selection-color, var(--primary-foreground));
 }
 
 /* Heading Styles - Using Fluid Typography */

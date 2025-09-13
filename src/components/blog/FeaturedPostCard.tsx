@@ -38,7 +38,7 @@ export function FeaturedPostCard({ post }: FeaturedPostCardProps) {
             {/* Featured Label */}
             <div className='mb-3'>
               <span className='inline-block px-3 py-1 text-xs font-semibold text-primary bg-white/90 rounded-full uppercase tracking-wider'>
-                Featured Post
+                Featured Insight
               </span>
             </div>
 

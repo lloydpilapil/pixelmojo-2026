@@ -3,6 +3,7 @@ import { Montserrat, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import { DynamicSelectionColors } from '@/components/DynamicSelectionColors'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -41,6 +42,29 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
+        <DynamicSelectionColors
+          // Using default colors, changing on selection
+          rotationTrigger='selection'
+          fadeEffect={true}
+          transitionDuration={300}
+          randomize={false}
+
+          // Optional: Use brand colors instead
+          // colors={[
+          //   { bg: 'rgba(0, 84, 147, 0.3)', color: 'rgb(0, 84, 147)' }, // Primary blue
+          //   { bg: 'rgba(60, 194, 158, 0.3)', color: 'rgb(60, 194, 158)' }, // Secondary teal
+          //   { bg: 'rgba(244, 128, 36, 0.3)', color: 'rgb(244, 128, 36)' }, // Accent orange
+          //   { bg: 'rgba(253, 75, 139, 0.3)', color: 'rgb(253, 75, 139)' }, // CTA pink
+          // ]}
+
+          // Optional: Time-based rotation every 10 seconds
+          // rotationTrigger="time"
+          // rotationInterval={10000}
+
+          // Optional: Apply only to blog content
+          // selector=".blog-content"
+          // excludeElements={['code', 'pre']}
+        />
         <Header />
         <main className='flex-1'>{children}</main>
         <Footer />

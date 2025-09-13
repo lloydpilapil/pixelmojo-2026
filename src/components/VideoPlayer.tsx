@@ -1,22 +1,42 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface VideoPlayerProps {
   videoId: string
   coverImage?: string
   className?: string
+  autoplay?: boolean
+  autoplayThreshold?: number // Percentage of element visible before autoplay (0.0 - 1.0)
 }
 
 export default function VideoPlayer({
   videoId,
   coverImage = '/video-cover-02.webp',
   className = '',
+  autoplay = false,
+  autoplayThreshold = 0.5, // Autoplay when 50% of video is visible
 }: VideoPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false) // Don't autoplay immediately
   const [, setPlayer] = useState<any>(null)
+  const [hasAutoplayed, setHasAutoplayed] = useState(false) // Track if we've already autoplayed
+  const [isPreloaded, setIsPreloaded] = useState(false) // Track if iframe is preloaded
+  const containerRef = useRef<HTMLDivElement>(null)
 
+  // Load Vimeo Player API and setup preloading
   useEffect(() => {
+    // DNS prefetch for faster connection
+    const dnsPrefetch = document.createElement('link')
+    dnsPrefetch.rel = 'dns-prefetch'
+    dnsPrefetch.href = '//player.vimeo.com'
+    document.head.appendChild(dnsPrefetch)
+
+    // Preconnect for even faster loading
+    const preconnect = document.createElement('link')
+    preconnect.rel = 'preconnect'
+    preconnect.href = 'https://player.vimeo.com'
+    document.head.appendChild(preconnect)
+
     // Load Vimeo Player API
     const script = document.createElement('script')
     script.src = 'https://player.vimeo.com/api/player.js'
@@ -24,16 +44,60 @@ export default function VideoPlayer({
     document.head.appendChild(script)
 
     return () => {
-      // Cleanup
       if (document.head.contains(script)) {
         document.head.removeChild(script)
+      }
+      if (document.head.contains(dnsPrefetch)) {
+        document.head.removeChild(dnsPrefetch)
+      }
+      if (document.head.contains(preconnect)) {
+        document.head.removeChild(preconnect)
       }
     }
   }, [])
 
-  const handlePlayClick = () => {
-    setIsPlaying(true)
+  // Preload iframe after component mounts (delayed to not block hero)
+  useEffect(() => {
+    if (autoplay) {
+      const preloadTimer = setTimeout(() => {
+        setIsPreloaded(true)
+      }, 2000) // Wait 2 seconds after mount to preload
 
+      return () => clearTimeout(preloadTimer)
+    }
+  }, [autoplay])
+
+  // Intersection Observer for viewport detection
+  useEffect(() => {
+    if (!autoplay || !containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          // Check if element is entering viewport and we haven't autoplayed yet
+          if (entry.isIntersecting && !hasAutoplayed && !isPlaying) {
+            console.log('Video entering viewport - autoplaying')
+            handleAutoplay()
+            setHasAutoplayed(true)
+          }
+        })
+      },
+      {
+        threshold: autoplayThreshold, // Trigger when X% of element is visible
+        rootMargin: '0px', // Can adjust this to trigger earlier/later
+      }
+    )
+
+    observer.observe(containerRef.current)
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [autoplay, hasAutoplayed, isPlaying, autoplayThreshold])
+
+  const initializeVimeoPlayer = () => {
     // Initialize Vimeo player after iframe is rendered
     setTimeout(() => {
       const iframe = document.getElementById(`vimeo-${videoId}`)
@@ -54,8 +118,20 @@ export default function VideoPlayer({
     }, 100)
   }
 
+  const handleAutoplay = () => {
+    setIsPlaying(true)
+    initializeVimeoPlayer()
+  }
+
+  const handlePlayClick = () => {
+    setIsPlaying(true)
+    setHasAutoplayed(true) // Mark as autoplayed to prevent re-triggering
+    initializeVimeoPlayer()
+  }
+
   return (
     <div
+      ref={containerRef}
       className={`relative w-full aspect-video overflow-hidden rounded-xl ${className}`}
     >
       {/* Video Cover */}
@@ -88,15 +164,29 @@ export default function VideoPlayer({
         </div>
       )}
 
+      {/* Hidden Preload Iframe */}
+      {isPreloaded && !isPlaying && (
+        <iframe
+          id={`vimeo-preload-${videoId}`}
+          src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=1&app_id=58479&autoplay=0&title=0&byline=0&portrait=0`}
+          className='absolute opacity-0 pointer-events-none w-full h-full border-none'
+          allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
+          referrerPolicy='strict-origin-when-cross-origin'
+          title='Preload video'
+        />
+      )}
+
       {/* Vimeo Player */}
       {isPlaying && (
         <div className='absolute inset-0 z-5'>
           <iframe
             id={`vimeo-${videoId}`}
-            src={`https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0`}
+            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0`}
             className='w-full h-full border-none'
-            allow='autoplay; fullscreen; picture-in-picture; clipboard-write'
+            allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
             allowFullScreen
+            referrerPolicy='strict-origin-when-cross-origin'
+            title='Transform Your Business with Integrated Digital Solutions'
           />
         </div>
       )}
