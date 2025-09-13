@@ -2,6 +2,23 @@
 
 import { useState, useEffect, useRef } from 'react'
 
+interface VimeoPlayer {
+  on: (event: string, callback: (error?: unknown) => void) => void
+  play: () => Promise<void>
+  setVolume: (volume: number) => Promise<void>
+  getVolume: () => Promise<number>
+}
+
+interface VimeoConstructor {
+  Player: new (element: HTMLIFrameElement | HTMLElement) => VimeoPlayer
+}
+
+declare global {
+  interface Window {
+    Vimeo: VimeoConstructor
+  }
+}
+
 interface VideoPlayerProps {
   videoId: string
   coverImage?: string
@@ -17,10 +34,11 @@ export default function VideoPlayer({
   autoplay = false,
   autoplayThreshold = 0.5, // Autoplay when 50% of video is visible
 }: VideoPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false) // Don't autoplay immediately
-  const [, setPlayer] = useState<any>(null)
-  const [hasAutoplayed, setHasAutoplayed] = useState(false) // Track if we've already autoplayed
-  const [isPreloaded, setIsPreloaded] = useState(false) // Track if iframe is preloaded
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true) // Start muted for autoplay
+  const [player, setPlayer] = useState<VimeoPlayer | null>(null)
+  const [hasAutoplayed, setHasAutoplayed] = useState(false)
+  const [isPreloaded, setIsPreloaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   // Load Vimeo Player API and setup preloading
@@ -76,7 +94,7 @@ export default function VideoPlayer({
         entries.forEach(entry => {
           // Check if element is entering viewport and we haven't autoplayed yet
           if (entry.isIntersecting && !hasAutoplayed && !isPlaying) {
-            console.log('Video entering viewport - autoplaying')
+            console.log('Video entering viewport - autoplaying muted')
             handleAutoplay()
             setHasAutoplayed(true)
           }
@@ -97,17 +115,41 @@ export default function VideoPlayer({
     }
   }, [autoplay, hasAutoplayed, isPlaying, autoplayThreshold])
 
-  const initializeVimeoPlayer = () => {
+  const initializeVimeoPlayer = (startMuted: boolean = true) => {
     // Initialize Vimeo player after iframe is rendered
     setTimeout(() => {
       const iframe = document.getElementById(`vimeo-${videoId}`)
-      if (iframe && (window as any).Vimeo) {
-        const vimeoPlayer = new (window as any).Vimeo.Player(iframe)
+      if (iframe && window.Vimeo) {
+        const vimeoPlayer = new window.Vimeo.Player(iframe)
         setPlayer(vimeoPlayer)
 
-        // Handle video end
+        // Start playing muted for guaranteed autoplay
+        if (startMuted) {
+          vimeoPlayer.setVolume(0).then(() => {
+            vimeoPlayer
+              .play()
+              .then(() => {
+                setIsPlaying(true)
+                console.log('Video playing muted')
+              })
+              .catch(error => {
+                console.log('Autoplay blocked:', error)
+              })
+          })
+        }
+
+        // Handle video events
+        vimeoPlayer.on('play', () => {
+          setIsPlaying(true)
+        })
+
+        vimeoPlayer.on('pause', () => {
+          setIsPlaying(false)
+        })
+
         vimeoPlayer.on('ended', () => {
           setIsPlaying(false)
+          setIsMuted(true)
           setPlayer(null)
         })
 
@@ -120,13 +162,29 @@ export default function VideoPlayer({
 
   const handleAutoplay = () => {
     setIsPlaying(true)
-    initializeVimeoPlayer()
+    initializeVimeoPlayer(true) // Start muted
   }
 
   const handlePlayClick = () => {
     setIsPlaying(true)
-    setHasAutoplayed(true) // Mark as autoplayed to prevent re-triggering
-    initializeVimeoPlayer()
+    setHasAutoplayed(true)
+    initializeVimeoPlayer(true) // Start muted even on click for consistency
+  }
+
+  const toggleMute = () => {
+    if (player) {
+      if (isMuted) {
+        player.setVolume(1).then(() => {
+          setIsMuted(false)
+          console.log('Unmuted')
+        })
+      } else {
+        player.setVolume(0).then(() => {
+          setIsMuted(true)
+          console.log('Muted')
+        })
+      }
+    }
   }
 
   return (
@@ -168,7 +226,7 @@ export default function VideoPlayer({
       {isPreloaded && !isPlaying && (
         <iframe
           id={`vimeo-preload-${videoId}`}
-          src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=1&app_id=58479&autoplay=0&title=0&byline=0&portrait=0`}
+          src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=1&app_id=58479&autoplay=0&title=0&byline=0&portrait=0&muted=1`}
           className='absolute opacity-0 pointer-events-none w-full h-full border-none'
           allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
           referrerPolicy='strict-origin-when-cross-origin'
@@ -181,7 +239,7 @@ export default function VideoPlayer({
         <div className='absolute inset-0 z-5'>
           <iframe
             id={`vimeo-${videoId}`}
-            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0`}
+            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=0`}
             className='w-full h-full border-none'
             allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
             allowFullScreen
@@ -189,6 +247,76 @@ export default function VideoPlayer({
             title='Transform Your Business with Integrated Digital Solutions'
           />
         </div>
+      )}
+
+      {/* Unmute button overlay */}
+      {isPlaying && (
+        <button
+          onClick={toggleMute}
+          className='absolute bottom-4 right-4 md:bottom-5 md:right-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 border-2 border-white/30 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95 animate-pulse-attention'
+          aria-label={isMuted ? 'Unmute' : 'Mute'}
+        >
+          {isMuted ? (
+            <svg
+              width='20'
+              height='20'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+              className='md:w-6 md:h-6'
+            >
+              <path
+                d='M11 5L6 9H2V15H6L11 19V5Z'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <line
+                x1='23'
+                y1='9'
+                x2='17'
+                y2='15'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+              />
+              <line
+                x1='17'
+                y1='9'
+                x2='23'
+                y2='15'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+              />
+            </svg>
+          ) : (
+            <svg
+              width='20'
+              height='20'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+              className='md:w-6 md:h-6'
+            >
+              <path
+                d='M11 5L6 9H2V15H6L11 19V5Z'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <path
+                d='M19.07 4.93C20.9447 6.80528 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53'
+                stroke='white'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+          )}
+        </button>
       )}
     </div>
   )

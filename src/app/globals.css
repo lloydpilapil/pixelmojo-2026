@@ -472,6 +472,36 @@ li {
   box-shadow: var(--shadow-md);
 }
 
+/* Video Player Unmute Button Animation */
+@keyframes pulse-attention {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(147, 51, 234, 0.4);
+  }
+}
+
+.animate-pulse-attention {
+  animation: pulse-attention 2s ease-in-out infinite;
+}
+
+/* Shimmer Animation for Loading States */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
 /* Button Base Styles */
 .btn {
   font-family: var(--font-inter);
