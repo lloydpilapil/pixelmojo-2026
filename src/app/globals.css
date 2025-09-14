@@ -214,16 +214,17 @@ h1 {
 }
 
 h2 {
-  font-size: var(--fluid-3xl);
-  font-weight: var(--font-weight-bold);
+  font-size: var(--fluid-4xl);
+  font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.025em;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--primary);
 }
 
 h3 {
   font-size: var(--fluid-2xl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.02em;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
