@@ -101,17 +101,7 @@ export default function ScrollVideoSection({
 
       {/* Video Container */}
       <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Title Section - Always visible, not scaled */}
-        <div className='text-center mb-16'>
-          <h2 className='text-4xl md:text-5xl font-bold mb-4'>
-            Experience Our Work
-          </h2>
-          <p className='text-lg text-muted max-w-2xl mx-auto'>
-            Watch how we transform ideas into digital experiences
-          </p>
-        </div>
-
-        {/* Video with scaling animation - separated from text */}
+        {/* Video with scaling animation */}
         <div
           ref={videoRef}
           className='transform-gpu transition-all duration-700 ease-out'
