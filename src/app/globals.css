@@ -598,6 +598,19 @@ li {
   animation: fade-in var(--transition-normal) ease-out;
 }
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
 /* Responsive Typography - Progressive Enhancement */
 
 /* Large Tablet (900px to 1024px) */

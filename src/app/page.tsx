@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
 import ScrollVideoSection from '@/components/ScrollVideoSection'
+import CompanyLogos from '@/components/CompanyLogos'
 import Services from '@/components/Services'
 import BlogCTA from '@/components/BlogCTA'
 
@@ -103,6 +104,9 @@ export default function Home() {
 
       {/* Scroll-Animated Video Section */}
       <ScrollVideoSection videoId='1095336702' />
+
+      {/* Company Logos Section */}
+      <CompanyLogos />
 
       <Services
         title='What We Do'
