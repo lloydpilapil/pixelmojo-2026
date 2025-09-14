@@ -234,17 +234,25 @@ export default function VideoPlayer({
         />
       )}
 
-      {/* Vimeo Player */}
+      {/* Vimeo Player with Loading Background */}
       {isPlaying && (
-        <div className='absolute inset-0 z-5'>
+        <div className='absolute inset-0 z-5 bg-black'>
           <iframe
             id={`vimeo-${videoId}`}
             src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=0`}
-            className='w-full h-full border-none'
+            className='w-full h-full border-none opacity-0 transition-opacity duration-700 ease-out'
             allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
             allowFullScreen
             referrerPolicy='strict-origin-when-cross-origin'
             title='Transform Your Business with Integrated Digital Solutions'
+            onLoad={() => {
+              // Fade in the video once it's loaded
+              const iframe = document.getElementById(`vimeo-${videoId}`)
+              if (iframe) {
+                iframe.classList.remove('opacity-0')
+                iframe.classList.add('opacity-100')
+              }
+            }}
           />
         </div>
       )}
