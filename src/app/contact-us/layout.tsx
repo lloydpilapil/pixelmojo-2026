@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact | Lloyd Pilapil',
-  description: 'Get in touch with Lloyd Pilapil for web development projects, collaboration opportunities, or just to say hello.',
+  title: 'Contact Pixelmojo | Book a Strategy Session for Growth',
+  description:
+    "Let's fix what's holding your growth back. Connect with PixelMojo for a free strategy call—designed to turn digital chaos into a growth engine.",
   openGraph: {
-    title: 'Contact Lloyd Pilapil',
-    description: 'Get in touch for web development projects and collaboration opportunities.',
+    title: 'Contact Pixelmojo | Book a Strategy Session for Growth',
+    description:
+      "Let's fix what's holding your growth back. Connect with PixelMojo for a free strategy call—designed to turn digital chaos into a growth engine.",
     type: 'website',
   },
 }

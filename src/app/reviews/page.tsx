@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import { LinkButton } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Reviews | Lloyd Pilapil',
-  description: 'Client testimonials and reviews from successful projects and collaborations.',
+  title: 'Client Testimonials | Results-Driven Design by Pixelmojo',
+  description:
+    'Hear from startups and enterprise teams who partnered with Pixelmojo. Real stories of how our design and strategy delivered impact, growth, and ROI.',
   openGraph: {
-    title: 'Reviews | Lloyd Pilapil',
-    description: 'Client testimonials and reviews from successful projects.',
+    title: 'Client Testimonials | Results-Driven Design by Pixelmojo',
+    description:
+      'Hear from startups and enterprise teams who partnered with Pixelmojo. Real stories of how our design and strategy delivered impact, growth, and ROI.',
     type: 'website',
   },
 }
@@ -18,7 +20,8 @@ export default function Reviews() {
       role: 'CEO, TechStart Manila',
       company: 'TechStart Manila',
       rating: 5,
-      review: 'Lloyd transformed our outdated website into a modern, high-performing platform. His attention to detail and technical expertise exceeded our expectations. The new site has increased our conversion rate by 40%.',
+      review:
+        'Lloyd transformed our outdated website into a modern, high-performing platform. His attention to detail and technical expertise exceeded our expectations. The new site has increased our conversion rate by 40%.',
       project: 'E-Commerce Platform',
       avatar: '👩‍💼',
     },
@@ -27,7 +30,8 @@ export default function Reviews() {
       role: 'Product Manager',
       company: 'FinTech Solutions PH',
       rating: 5,
-      review: 'Working with Lloyd was a game-changer for our startup. He not only delivered a beautiful product but also provided valuable insights on user experience and performance optimization.',
+      review:
+        'Working with Lloyd was a game-changer for our startup. He not only delivered a beautiful product but also provided valuable insights on user experience and performance optimization.',
       project: 'Financial Dashboard',
       avatar: '👨‍💻',
     },
@@ -36,7 +40,8 @@ export default function Reviews() {
       role: 'Marketing Director',
       company: 'Creative Agency BGC',
       rating: 5,
-      review: 'Lloyd\'s ability to translate our creative vision into a functional website was impressive. He communicated clearly throughout the project and delivered on time and within budget.',
+      review:
+        "Lloyd's ability to translate our creative vision into a functional website was impressive. He communicated clearly throughout the project and delivered on time and within budget.",
       project: 'Agency Portfolio',
       avatar: '👩‍🎨',
     },
@@ -45,7 +50,8 @@ export default function Reviews() {
       role: 'Founder',
       company: 'EduTech Philippines',
       rating: 5,
-      review: 'The learning management system Lloyd built for us has been instrumental in our growth. His code is clean, well-documented, and easy to maintain. Highly recommended!',
+      review:
+        'The learning management system Lloyd built for us has been instrumental in our growth. His code is clean, well-documented, and easy to maintain. Highly recommended!',
       project: 'Learning Platform',
       avatar: '👨‍🏫',
     },
@@ -54,7 +60,8 @@ export default function Reviews() {
       role: 'Operations Manager',
       company: 'Local Retail Chain',
       rating: 5,
-      review: 'Lloyd helped us transition from offline to online seamlessly. His e-commerce solution integrated perfectly with our existing systems. Sales have increased by 60% since launch.',
+      review:
+        'Lloyd helped us transition from offline to online seamlessly. His e-commerce solution integrated perfectly with our existing systems. Sales have increased by 60% since launch.',
       project: 'Retail E-Commerce',
       avatar: '👩‍💼',
     },
@@ -63,7 +70,8 @@ export default function Reviews() {
       role: 'CTO',
       company: 'StartupHub Cebu',
       rating: 5,
-      review: 'As a fellow developer, I appreciate Lloyd\'s clean code and modern approach. He\'s not just a coder but a problem solver who thinks about the bigger picture.',
+      review:
+        "As a fellow developer, I appreciate Lloyd's clean code and modern approach. He's not just a coder but a problem solver who thinks about the bigger picture.",
       project: 'SaaS Platform',
       avatar: '👨‍💻',
     },
@@ -90,7 +98,9 @@ export default function Reviews() {
         <div className='grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto'>
           {stats.map((stat, index) => (
             <div key={index} className='text-center'>
-              <div className='text-3xl font-bold text-primary mb-2'>{stat.value}</div>
+              <div className='text-3xl font-bold text-primary mb-2'>
+                {stat.value}
+              </div>
               <div className='text-sm text-muted-foreground'>{stat.label}</div>
             </div>
           ))}
@@ -107,12 +117,16 @@ export default function Reviews() {
             {/* Rating Stars */}
             <div className='flex gap-1 mb-4'>
               {[...Array(review.rating)].map((_, i) => (
-                <span key={i} className='text-yellow-500'>★</span>
+                <span key={i} className='text-yellow-500'>
+                  ★
+                </span>
               ))}
             </div>
 
             {/* Review Text */}
-            <p className='text-muted-foreground mb-6 italic'>"{review.review}"</p>
+            <p className='text-muted-foreground mb-6 italic'>
+              "{review.review}"
+            </p>
 
             {/* Reviewer Info */}
             <div className='border-t pt-4'>
@@ -120,8 +134,12 @@ export default function Reviews() {
                 <div className='text-3xl'>{review.avatar}</div>
                 <div>
                   <div className='font-semibold'>{review.name}</div>
-                  <div className='text-sm text-muted-foreground'>{review.role}</div>
-                  <div className='text-xs text-muted-foreground'>{review.company}</div>
+                  <div className='text-sm text-muted-foreground'>
+                    {review.role}
+                  </div>
+                  <div className='text-xs text-muted-foreground'>
+                    {review.company}
+                  </div>
                 </div>
               </div>
               <div className='mt-3 text-xs text-primary'>
@@ -136,28 +154,39 @@ export default function Reviews() {
       <div className='bg-muted/30 rounded-2xl p-12 mb-20 text-center'>
         <h2 className='mb-8 font-heading'>Featured Testimonial</h2>
         <blockquote className='text-xl italic mb-8 max-w-3xl mx-auto'>
-          "Lloyd is not just a developer; he's a true partner in bringing digital visions to life. 
-          His combination of technical excellence, creative problem-solving, and professional communication 
-          makes him stand out in the industry. I wouldn't hesitate to work with him again."
+          "Lloyd is not just a developer; he's a true partner in bringing
+          digital visions to life. His combination of technical excellence,
+          creative problem-solving, and professional communication makes him
+          stand out in the industry. I wouldn't hesitate to work with him
+          again."
         </blockquote>
         <div className='flex items-center justify-center gap-3'>
           <span className='text-3xl'>🌟</span>
           <div className='text-left'>
             <div className='font-semibold'>Patricia Martinez</div>
-            <div className='text-sm text-muted-foreground'>Chief Digital Officer, Enterprise Corp</div>
+            <div className='text-sm text-muted-foreground'>
+              Chief Digital Officer, Enterprise Corp
+            </div>
           </div>
         </div>
       </div>
 
       {/* CTA Section */}
       <div className='text-center'>
-        <h2 className='mb-4 font-heading'>Ready to Be My Next Success Story?</h2>
+        <h2 className='mb-4 font-heading'>
+          Ready to Be My Next Success Story?
+        </h2>
         <p className='text-large text-muted-foreground mb-8 max-w-2xl mx-auto'>
           Join the growing list of satisfied clients who have transformed their
           digital presence with modern web solutions.
         </p>
         <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-          <LinkButton href='/contact-us' variant='default' shape='pill' size='lg'>
+          <LinkButton
+            href='/contact-us'
+            variant='default'
+            shape='pill'
+            size='lg'
+          >
             Start Your Project
           </LinkButton>
           <LinkButton href='/services' variant='outline' shape='pill' size='lg'>

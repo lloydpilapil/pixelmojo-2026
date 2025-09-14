@@ -68,12 +68,13 @@ const servicesData = [
 ]
 
 export const metadata: Metadata = {
-  title: 'PixelMojo | Design for Impact, Build for ROI',
+  title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
   description:
-    'We design digital experiences that drive measurable results. Transform your brand with strategic design and development.',
+    'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
   openGraph: {
-    title: 'PixelMojo | Design for Impact, Build for ROI',
-    description: 'We design digital experiences that drive measurable results.',
+    title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
+    description:
+      'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
     type: 'website',
   },
 }

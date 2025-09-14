@@ -4,13 +4,13 @@ import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import { FeaturedPostCard } from '@/components/blog/FeaturedPostCard'
 
 export const metadata: Metadata = {
-  title: 'Blog | Lloyd Pilapil',
+  title: 'Insights & Strategy Blog | Product, UX & Growth by Pixelmojo',
   description:
-    'Thoughts, tutorials, and insights about web development and technology by Lloyd Pilapil.',
+    'Real-world lessons in UX, product design, and growth strategy—written by the team behind Pixelmojo. Built for startups, SaaS teams, and digital leaders.',
   openGraph: {
-    title: 'Lloyd Pilapil - Blog',
+    title: 'Insights & Strategy Blog | Product, UX & Growth by Pixelmojo',
     description:
-      'Thoughts, tutorials, and insights about web development and technology.',
+      'Real-world lessons in UX, product design, and growth strategy—written by the team behind Pixelmojo. Built for startups, SaaS teams, and digital leaders.',
     type: 'website',
   },
 }

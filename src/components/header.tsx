@@ -28,11 +28,10 @@ const navigationConfig = {
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
     { label: 'Reviews', href: '/reviews' },
-    { label: 'Contact', href: '/contact' },
   ],
   ctaButton: {
-    label: 'Start a Project',
-    href: '/contact',
+    label: 'Get in Touch!',
+    href: '/contact-us',
   },
 }
 
@@ -91,7 +90,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className='hidden lg:flex items-center justify-center flex-1'>
-            <div className='flex items-center gap-8'>
+            <div className='flex items-center gap-12'>
               {navigationConfig.mainNav.map(item =>
                 item.children ? (
                   // Services with dropdown - integrated directly here
