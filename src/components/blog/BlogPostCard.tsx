@@ -27,7 +27,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             src={post.featuredImage || '/placeholder.svg'}
             alt={post.title}
             fill
-            className='object-cover opacity-30 group-hover:opacity-40 transition-opacity'
+            className='object-cover group-hover:scale-105 transition-transform duration-300'
           />
         </div>
 
