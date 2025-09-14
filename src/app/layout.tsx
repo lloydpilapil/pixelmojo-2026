@@ -27,9 +27,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio | Your Name',
+  title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
   description:
-    'Personal portfolio website showcasing my projects and blog posts',
+    'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
 }
 
 export default function RootLayout({

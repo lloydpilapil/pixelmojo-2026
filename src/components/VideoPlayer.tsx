@@ -39,10 +39,41 @@ export default function VideoPlayer({
   const [player, setPlayer] = useState<VimeoPlayer | null>(null)
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
   const [isPreloaded, setIsPreloaded] = useState(false)
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false) // Only load when near viewport
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Load Vimeo Player API and setup preloading
+  // Lazy loading: Only load video resources when component enters viewport
   useEffect(() => {
+    if (!containerRef.current) return
+
+    const lazyLoadObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !shouldLoadVideo) {
+            console.log('Video component in viewport - loading resources')
+            setShouldLoadVideo(true)
+          }
+        })
+      },
+      {
+        threshold: 0.1, // Load when 10% visible
+        rootMargin: '200px', // Start loading 200px before entering viewport
+      }
+    )
+
+    lazyLoadObserver.observe(containerRef.current)
+
+    return () => {
+      if (containerRef.current) {
+        lazyLoadObserver.unobserve(containerRef.current)
+      }
+    }
+  }, [shouldLoadVideo])
+
+  // Load Vimeo Player API only when video is needed
+  useEffect(() => {
+    if (!shouldLoadVideo) return
+
     // DNS prefetch for faster connection
     const dnsPrefetch = document.createElement('link')
     dnsPrefetch.rel = 'dns-prefetch'
@@ -72,24 +103,24 @@ export default function VideoPlayer({
         document.head.removeChild(preconnect)
       }
     }
-  }, [])
+  }, [shouldLoadVideo])
 
-  // Preload iframe after component mounts (delayed to not block hero)
+  // Preload iframe only after resources are loaded and video is near viewport
   useEffect(() => {
-    if (autoplay) {
+    if (autoplay && shouldLoadVideo) {
       const preloadTimer = setTimeout(() => {
         setIsPreloaded(true)
-      }, 2000) // Wait 2 seconds after mount to preload
+      }, 1000) // Reduced delay since we're already near viewport
 
       return () => clearTimeout(preloadTimer)
     }
-  }, [autoplay])
+  }, [autoplay, shouldLoadVideo])
 
-  // Intersection Observer for viewport detection
+  // Intersection Observer for autoplay (only works if resources are loaded)
   useEffect(() => {
-    if (!autoplay || !containerRef.current) return
+    if (!autoplay || !shouldLoadVideo || !containerRef.current) return
 
-    const observer = new IntersectionObserver(
+    const autoplayObserver = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           // Check if element is entering viewport and we haven't autoplayed yet
@@ -106,14 +137,14 @@ export default function VideoPlayer({
       }
     )
 
-    observer.observe(containerRef.current)
+    autoplayObserver.observe(containerRef.current)
 
     return () => {
       if (containerRef.current) {
-        observer.unobserve(containerRef.current)
+        autoplayObserver.unobserve(containerRef.current)
       }
     }
-  }, [autoplay, hasAutoplayed, isPlaying, autoplayThreshold])
+  }, [autoplay, shouldLoadVideo, hasAutoplayed, isPlaying, autoplayThreshold])
 
   const initializeVimeoPlayer = (startMuted: boolean = true) => {
     // Initialize Vimeo player after iframe is rendered
