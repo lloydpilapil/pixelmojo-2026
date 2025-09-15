@@ -1,9 +1,11 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { LinkButton } from '@/components/ui/button'
 import {
   Mail,
-  Phone,
   MapPin,
   Linkedin,
   Twitter,
@@ -11,10 +13,20 @@ import {
   Github,
   ArrowRight,
   Send,
+  ChevronDown,
 } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const [openSections, setOpenSections] = useState<string[]>([])
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev =>
+      prev.includes(section)
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
+    )
+  }
 
   const quickLinks = [
     { label: 'About', href: '/about' },
@@ -38,6 +50,59 @@ export default function Footer() {
     { icon: Github, href: '#', label: 'GitHub' },
   ]
 
+  // Responsive Accordion Wrapper Component
+  const ResponsiveSection = ({
+    title,
+    sectionKey,
+    children,
+    className = '',
+  }: {
+    title: string
+    sectionKey: string
+    children: React.ReactNode
+    className?: string
+  }) => {
+    const isOpen = openSections.includes(sectionKey)
+
+    return (
+      <div className={className}>
+        {/* Mobile Accordion Header - Hidden on lg and up */}
+        <button
+          onClick={() => toggleSection(sectionKey)}
+          className='lg:hidden w-full py-4 flex items-center justify-between text-left transition-colors hover:bg-white/5 border-b border-white/10'
+          aria-expanded={isOpen}
+          aria-controls={`section-${sectionKey}`}
+        >
+          <h4 className='text-white font-montserrat font-semibold text-fluid-base'>
+            {title}
+          </h4>
+          <ChevronDown
+            className={`h-5 w-5 text-white/60 transition-transform duration-300 ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+          />
+        </button>
+
+        {/* Desktop Header - Hidden on mobile, visible on lg and up */}
+        <h4 className='hidden lg:block text-white font-montserrat font-semibold mb-4 text-fluid-base'>
+          {title}
+        </h4>
+
+        {/* Content - Always visible on desktop, accordion on mobile */}
+        <div
+          id={`section-${sectionKey}`}
+          className={`
+            lg:block
+            ${isOpen ? 'block' : 'hidden lg:block'}
+            overflow-hidden transition-all duration-300 ease-in-out
+          `}
+        >
+          <div className='lg:px-0 px-1 pb-4 lg:pb-0'>{children}</div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <footer className='relative bg-gradient-to-b from-[var(--primary)] to-[var(--secondary)] overflow-hidden'>
       {/* Background Pattern */}
@@ -54,16 +119,10 @@ export default function Footer() {
 
       {/* CTA Section */}
       <div className='relative border-b border-white/10'>
-        <div className='container mx-auto px-4 py-20'>
+        <div className='container mx-auto px-4 py-12 lg:py-20'>
           <div className='max-w-4xl mx-auto text-center'>
-            <h2 className='text-fluid-4xl font-montserrat font-extrabold text-white mb-6 tracking-tight'>
-              Ready to Create Something
-              <span className='bg-gradient-to-r from-[var(--secondary)] to-[var(--accent)] bg-clip-text text-transparent'>
-                {' '}
-                Amazing?
-              </span>
-            </h2>
-            <p className='text-fluid-lg text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed'>
+            <h2 className='!text-white'>Ready to Create Something Amazing?</h2>
+            <p className='!text-white'>
               Let's collaborate to transform your ideas into exceptional digital
               experiences that captivate users and drive growth.
             </p>
@@ -86,10 +145,10 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className='relative container mx-auto px-4 py-16'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12'>
-          {/* Brand & Newsletter Column */}
-          <div className='lg:col-span-5'>
+      <div className='relative container mx-auto px-4 py-12 lg:py-16'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12'>
+          {/* Brand & Newsletter Column - Always visible */}
+          <div className='lg:col-span-4 mb-8 lg:mb-0'>
             <div className='mb-8'>
               <Link href='/' className='inline-block mb-6'>
                 <Image
@@ -100,7 +159,7 @@ export default function Footer() {
                   className='brightness-0 invert'
                 />
               </Link>
-              <p className='text-white/70 mb-6 text-fluid-base leading-relaxed'>
+              <p className='text-white/70 mb-6'>
                 Crafting digital experiences that inspire, engage, and deliver
                 measurable results for forward-thinking brands.
               </p>
@@ -108,7 +167,7 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className='mb-8'>
-              <h4 className='text-white font-montserrat font-semibold mb-3 text-fluid-lg'>
+              <h4 className='text-white font-montserrat font-semibold mb-3 text-fluid-base lg:text-fluid-lg'>
                 Stay Updated
               </h4>
               <p className='text-white/60 mb-4 text-sm'>
@@ -149,81 +208,87 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className='lg:col-span-2'>
-            <h4 className='text-white font-montserrat font-semibold mb-4 text-fluid-base'>
-              Quick Links
-            </h4>
-            <ul className='space-y-3'>
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm inline-flex items-center group'
-                  >
-                    <span className='w-0 group-hover:w-4 h-px bg-[var(--secondary)] transition-all duration-300 mr-0 group-hover:mr-2' />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Spacer - Only visible on large screens */}
+          <div className='hidden lg:block lg:col-span-1'></div>
 
-          {/* Services */}
-          <div className='lg:col-span-3'>
-            <h4 className='text-white font-montserrat font-semibold mb-4 text-fluid-base'>
-              Services
-            </h4>
-            <ul className='space-y-3'>
-              {services.map((service, index) => (
-                <li key={index}>
-                  <Link
-                    href={service.href}
-                    className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm inline-flex items-center group'
-                  >
-                    <span className='w-0 group-hover:w-4 h-px bg-[var(--secondary)] transition-all duration-300 mr-0 group-hover:mr-2' />
-                    {service.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links Container - Responsive grid within */}
+          <div className='lg:col-span-7 border-t lg:border-0 border-white/10'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 lg:gap-8'>
+              {/* Quick Links - Responsive Section */}
+              <ResponsiveSection
+                title='Quick Links'
+                sectionKey='quicklinks'
+                className='lg:col-span-1'
+              >
+                <ul className='space-y-3'>
+                  {quickLinks.map((link, index) => (
+                    <li key={index}>
+                      <Link
+                        href={link.href}
+                        className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm block group relative py-1 lg:py-0'
+                      >
+                        <span className='hidden lg:inline-block absolute left-0 top-1/2 -translate-y-1/2 w-0 h-px bg-[var(--secondary)] group-hover:w-4 transition-all duration-300' />
+                        <span className='lg:group-hover:pl-6 transition-all duration-300 inline-block'>
+                          {link.label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </ResponsiveSection>
 
-          {/* Contact Info */}
-          <div className='lg:col-span-2'>
-            <h4 className='text-white font-montserrat font-semibold mb-4 text-fluid-base'>
-              Get in Touch
-            </h4>
-            <ul className='space-y-3'>
-              <li>
-                <a
-                  href='mailto:hello@pixelmojo.com'
-                  className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm flex items-center gap-2 group'
-                >
-                  <Mail className='h-4 w-4 text-white/40 group-hover:text-[var(--secondary)]' />
-                  hello@pixelmojo.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href='tel:+1234567890'
-                  className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm flex items-center gap-2 group'
-                >
-                  <Phone className='h-4 w-4 text-white/40 group-hover:text-[var(--secondary)]' />
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li>
-                <div className='text-white/60 text-fluid-sm flex items-start gap-2'>
-                  <MapPin className='h-4 w-4 text-white/40 mt-0.5' />
-                  <span>
-                    123 Design Street
-                    <br />
-                    Creative City, CC 12345
-                  </span>
-                </div>
-              </li>
-            </ul>
+              {/* Services - Responsive Section */}
+              <ResponsiveSection
+                title='Services'
+                sectionKey='services'
+                className='lg:col-span-1'
+              >
+                <ul className='space-y-3'>
+                  {services.map((service, index) => (
+                    <li key={index}>
+                      <Link
+                        href={service.href}
+                        className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm block group relative py-1 lg:py-0'
+                      >
+                        <span className='hidden lg:inline-block absolute left-0 top-1/2 -translate-y-1/2 w-0 h-px bg-[var(--secondary)] group-hover:w-4 transition-all duration-300' />
+                        <span className='lg:group-hover:pl-6 transition-all duration-300 inline-block'>
+                          {service.label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </ResponsiveSection>
+
+              {/* Contact Info - Responsive Section */}
+              <ResponsiveSection
+                title='Get in Touch'
+                sectionKey='contact'
+                className='lg:col-span-1'
+              >
+                <ul className='space-y-3'>
+                  <li>
+                    <a
+                      href='mailto:founders@pixelmojo.io'
+                      className='text-white/60 hover:text-[var(--secondary)] transition-colors duration-200 text-fluid-sm flex items-start group'
+                    >
+                      <Mail className='h-4 w-4 text-white/40 group-hover:text-[var(--secondary)] mr-3 mt-0.5 flex-shrink-0' />
+                      <span>founders@pixelmojo.io</span>
+                    </a>
+                  </li>
+                  <li>
+                    <div className='text-white/60 text-fluid-sm flex items-start'>
+                      <MapPin className='h-4 w-4 text-white/40 mr-3 mt-0.5 flex-shrink-0' />
+                      <span>
+                        111 Paseo de Roxas, Legazpi Village
+                        <br />
+                        Makati, 1229 Metro Manila
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </ResponsiveSection>
+            </div>
           </div>
         </div>
       </div>
@@ -231,32 +296,69 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className='relative border-t border-white/10'>
         <div className='container mx-auto px-4 py-6'>
-          <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-            <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6'>
+          {/* Desktop Layout - 3 columns with proper alignment */}
+          <div className='hidden md:flex md:items-center md:justify-between'>
+            {/* Left - Copyright */}
+            <div className='flex-1'>
               <p className='text-white/50 text-sm font-inter'>
                 &copy; {currentYear} Pixelmojo. All rights reserved.
               </p>
-              <div className='flex items-center gap-6'>
+            </div>
+
+            {/* Center - Designed & Built */}
+            <div className='flex-1 flex justify-center'>
+              <div className='text-white/50 text-sm'>
+                Designed & Built with Passion
+              </div>
+            </div>
+
+            {/* Right - Legal Links */}
+            <div className='flex-1 flex justify-end'>
+              <div className='flex items-center gap-1'>
                 <Link
                   href='/privacy'
-                  className='text-white/50 hover:text-white text-sm transition-colors duration-200'
+                  className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
                 >
                   Privacy Policy
                 </Link>
+                <span className='text-white/30'>|</span>
                 <Link
                   href='/terms'
-                  className='text-white/50 hover:text-white text-sm transition-colors duration-200'
+                  className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
                 >
                   Terms of Service
                 </Link>
               </div>
             </div>
+          </div>
 
-            {/* Badge or Certification */}
-            <div className='flex items-center gap-2 text-white/50 text-sm'>
-              <span>Crafted with</span>
-              <span className='text-[var(--cta)] animate-pulse'>♥</span>
-              <span>in Creative City</span>
+          {/* Mobile Layout - Stacked and centered */}
+          <div className='md:hidden flex flex-col items-center gap-4'>
+            {/* Copyright */}
+            <p className='text-white/50 text-sm font-inter text-center'>
+              &copy; {currentYear} Pixelmojo. All rights reserved.
+            </p>
+
+            {/* Designed & Built */}
+            <div className='text-white/50 text-sm text-center'>
+              Designed & Built with Passion
+            </div>
+
+            {/* Legal Links */}
+            <div className='flex items-center gap-1'>
+              <Link
+                href='/privacy'
+                className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
+              >
+                Privacy Policy
+              </Link>
+              <span className='text-white/30'>|</span>
+              <Link
+                href='/terms'
+                className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
+              >
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
