@@ -31,7 +31,11 @@ const RecentArticles = ({
         <div className='max-w-6xl mx-auto'>
           {/* Section Header */}
           <div className='text-center mb-16'>
-            <h2>{title}</h2>
+            <h2 className='mb-6'>{title}</h2>
+            <p className='text-muted max-w-2xl mx-auto text-lg leading-relaxed'>
+              Stay ahead with insights, trends, and expert perspectives on
+              design, development, and digital strategy from our team.
+            </p>
           </div>
 
           {/* Blog Posts Grid */}
