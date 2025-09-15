@@ -5,7 +5,6 @@ import CompanyLogos from '@/components/CompanyLogos'
 import ServicesPreview from '@/components/ServicesPreview'
 import TestimonialSection from '@/components/TestimonialSection'
 import FeaturedWorks from '@/components/FeaturedWorks'
-import ComparisonTable from '@/components/ComparisonTable'
 import OurApproach from '@/components/OurApproach'
 import RecentArticles from '@/components/RecentArticles'
 
@@ -57,9 +56,6 @@ export default function Home() {
 
       {/* Featured Works Section */}
       <FeaturedWorks />
-
-      {/* Comparison Table Section */}
-      <ComparisonTable />
 
       {/* Our Approach Section */}
       <OurApproach />

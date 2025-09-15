@@ -34,7 +34,13 @@ const CompanyLogos = ({
   return (
     <section className='py-20 overflow-hidden'>
       <div className='container mx-auto px-4'>
-        <h2 className='text-center mb-32'>{title}</h2>
+        <h2 className='text-center mb-6 !text-xl md:!text-2xl lg:!text-3xl'>
+          {title}
+        </h2>
+        <p className='text-center text-muted max-w-3xl mx-auto mb-32 text-lg leading-relaxed'>
+          Trusted by industry leaders across sectors, from Fortune 500
+          enterprises to innovative startups driving digital transformation.
+        </p>
 
         <div className='relative w-full pt-16'>
           {/* Left fade */}
