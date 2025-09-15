@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { LinkButton } from '@/components/ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import ScrollVideoSection from '@/components/ScrollVideoSection'
 
 export const metadata: Metadata = {
   title: 'UI/UX, Product Design & Growth Services | Pixelmojo',
@@ -16,84 +19,90 @@ export const metadata: Metadata = {
 export default function Services() {
   const services = [
     {
-      title: 'Web Development',
+      title: 'UI/UX Design Solutions',
       description:
-        'Custom websites and web applications built with modern technologies and best practices.',
+        'User-centered design that drives engagement and conversions through intuitive interfaces and seamless experiences.',
       features: [
-        'React/Next.js',
-        'TypeScript',
-        'Responsive Design',
+        'User Research & Analysis',
+        'Wireframing & Prototyping',
+        'Interaction Design',
+        'Usability Testing',
+      ],
+      icon: '/ui_ux_design_solutions_services_thumb.svg',
+      href: '/services/ui-ux-design-solutions',
+    },
+    {
+      title: 'Brand Identity',
+      description:
+        'Comprehensive brand design that tells your story and creates lasting connections with your audience.',
+      features: [
+        'Logo Design & Guidelines',
+        'Brand Strategy & Positioning',
+        'Visual Identity Systems',
+        'Brand Voice & Messaging',
+      ],
+      icon: '/branding_services_thumb.svg',
+      href: '/services/brand-identity',
+    },
+    {
+      title: 'Brand Activation & Growth',
+      description:
+        'Strategic campaigns that amplify your brand presence and drive growth across all touchpoints.',
+      features: [
+        'Marketing Campaign Design',
+        'Social Media Strategy',
+        'Content Creation & Planning',
+        'Growth Marketing Tactics',
+      ],
+      icon: '/digital_marketing_services_thumb.svg',
+      href: '/services/brand-activation-growth',
+    },
+    {
+      title: 'Web & App Design',
+      description:
+        'Digital experiences that perform beautifully and delight users on every device and platform.',
+      features: [
+        'Responsive Web Design',
+        'Mobile App Interfaces',
+        'Progressive Web Apps',
+        'E-commerce Solutions',
+      ],
+      icon: '/web_app_design_services_thumb.svg',
+      href: '/services/web-app-design',
+    },
+    {
+      title: 'Graphic & Visuals',
+      description:
+        'Visual assets that communicate your message clearly and captivate your target audience.',
+      features: [
+        'Print & Digital Graphics',
+        'Illustration & Iconography',
+        'Marketing Collateral',
+        'Presentation Design',
+      ],
+      icon: '/graphic_visual_design_services_thumb.svg',
+      href: '/services/graphic-visuals',
+    },
+    {
+      title: 'Development Solutions',
+      description:
+        'Robust technical implementation that scales with your business and delivers exceptional performance.',
+      features: [
+        'Frontend Development',
+        'Backend Architecture',
+        'CMS Integration',
         'Performance Optimization',
       ],
-      icon: '🚀',
-    },
-    {
-      title: 'UI/UX Design',
-      description:
-        'User-centered design solutions that combine aesthetics with functionality.',
-      features: [
-        'User Research',
-        'Wireframing',
-        'Prototyping',
-        'Design Systems',
-      ],
-      icon: '🎨',
-    },
-    {
-      title: 'E-Commerce Solutions',
-      description:
-        'Complete online store setups with payment processing and inventory management.',
-      features: [
-        'Shopify',
-        'WooCommerce',
-        'Payment Integration',
-        'SEO Optimization',
-      ],
-      icon: '🛒',
-    },
-    {
-      title: 'Mobile Development',
-      description:
-        'Cross-platform mobile applications that work seamlessly on iOS and Android.',
-      features: [
-        'React Native',
-        'Progressive Web Apps',
-        'App Store Deployment',
-        'Push Notifications',
-      ],
-      icon: '📱',
-    },
-    {
-      title: 'API Development',
-      description:
-        'Robust backend solutions and API integrations for your applications.',
-      features: [
-        'RESTful APIs',
-        'GraphQL',
-        'Database Design',
-        'Third-party Integrations',
-      ],
-      icon: '⚡',
-    },
-    {
-      title: 'Consulting & Strategy',
-      description:
-        'Technical guidance and strategic planning for your digital projects.',
-      features: [
-        'Code Reviews',
-        'Architecture Planning',
-        'Tech Stack Selection',
-        'Performance Audits',
-      ],
-      icon: '💡',
+      icon: '/creative_contents_services_thumb.svg',
+      href: '/services/development-solutions',
     },
   ]
 
   return (
     <div className='container mx-auto px-4 py-16 animate-fade-in'>
       {/* Hero Section */}
-      <div className='text-center mb-20'>
-        <h1 className='mb-6 font-heading'>Services</h1>
+      <div className='text-center mb-12'>
+        <h1 className='mb-6 font-heading'>Our Services</h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
           From concept to deployment, I offer comprehensive web development
           services tailored to your unique needs. Let's build something amazing
@@ -101,87 +110,72 @@ export default function Services() {
         </p>
       </div>
 
-      {/* Services Grid */}
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20'>
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className='card p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
-          >
-            <div className='text-4xl mb-4'>{service.icon}</div>
-            <h3 className='text-xl font-bold mb-3 font-heading'>
-              {service.title}
-            </h3>
-            <p className='text-muted-foreground mb-6'>{service.description}</p>
-            <ul className='space-y-2'>
-              {service.features.map((feature, idx) => (
-                <li key={idx} className='flex items-start gap-2'>
-                  <span className='text-primary mt-1'>✓</span>
-                  <span className='text-sm'>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      {/* Scroll-Animated Video Section */}
+      <ScrollVideoSection
+        videoId='1098410997'
+        coverImage='/our-services-cover.webp'
+      />
 
-      {/* Process Section */}
-      <div className='mb-20'>
-        <h2 className='text-center mb-12 font-heading'>My Process</h2>
-        <div className='grid md:grid-cols-4 gap-8'>
-          {[
-            {
-              step: '01',
-              title: 'Discovery',
-              desc: 'Understanding your goals and requirements',
-            },
-            {
-              step: '02',
-              title: 'Planning',
-              desc: 'Creating a roadmap and choosing the right tools',
-            },
-            {
-              step: '03',
-              title: 'Development',
-              desc: 'Building your solution with clean, scalable code',
-            },
-            {
-              step: '04',
-              title: 'Delivery',
-              desc: 'Testing, deployment, and ongoing support',
-            },
-          ].map((phase, index) => (
-            <div key={index} className='text-center'>
-              <div className='text-5xl font-bold text-primary/20 mb-4'>
-                {phase.step}
-              </div>
-              <h3 className='font-bold mb-2 font-heading'>{phase.title}</h3>
-              <p className='text-sm text-muted-foreground'>{phase.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className='text-center bg-muted/30 rounded-2xl p-12'>
-        <h2 className='mb-4 font-heading'>Ready to Start Your Project?</h2>
-        <p className='text-large text-muted-foreground mb-8 max-w-2xl mx-auto'>
-          Let's discuss how I can help bring your ideas to life with modern web
-          technologies and thoughtful design.
+      {/* Value Proposition Section */}
+      <div className='text-center mb-20'>
+        <h2 className='mb-6 !text-4xl md:!text-5xl lg:!text-6xl'>
+          End the Digital Chaos, Start Growing
+        </h2>
+        <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
+          Tired of disconnected teams creating beautiful but ineffective digital
+          assets? We integrate all your digital services—branding, design,
+          development, and marketing—into one cohesive growth engine. The
+          result? No more miscommunication, faster timelines, and most
+          importantly, measurable ROI from every project.
         </p>
-        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-          <LinkButton
-            href='/contact-us'
-            variant='default'
-            shape='pill'
-            size='lg'
-          >
-            Get Started
-          </LinkButton>
-          <LinkButton href='/works' variant='outline' shape='pill' size='lg'>
-            View My Works
-          </LinkButton>
-        </div>
+      </div>
+
+      {/* Services Grid */}
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
+        {services.map((service, index) => (
+          <Link key={index} href={service.href} className='group block h-full'>
+            <div className='h-full bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
+              {/* Icon */}
+              <div className='w-16 h-16 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110'>
+                <Image
+                  src={service.icon}
+                  alt={service.title}
+                  width={64}
+                  height={64}
+                  className='w-16 h-16'
+                />
+              </div>
+
+              {/* Content */}
+              <div className='space-y-4 mb-6'>
+                <h3 className='group-hover:text-primary transition-colors duration-300'>
+                  {service.title}
+                </h3>
+                <p className='text-muted leading-relaxed'>
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className='space-y-3 mb-6'>
+                {service.features.map((feature, idx) => (
+                  <div key={idx} className='flex items-start gap-3'>
+                    <div className='flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5'>
+                      <div className='w-2 h-2 rounded-full bg-primary' />
+                    </div>
+                    <span className='text-sm text-foreground'>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className='flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300'>
+                <span>Learn more</span>
+                <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   )

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:v="https://vecta.io/nano" version="1.1" viewBox="0 0 372 340">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #fdbd0c;
+      }
+
+      .st1 {
+        fill: none;
+      }
+
+      .st1, .st2 {
+        stroke: #000;
+        stroke-linejoin: round;
+        stroke-width: 4.95px;
+      }
+
+      .st2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <circle class="st0" cx="186.03" cy="171.57" r="22.36"/>
+  <g>
+    <path class="st2" d="M186.03,4.21l-108.11,169.43,50.46,79.21h115.14l50.46-79.21L185.87,4.21v144.04c13.25,0,23.79,10.54,23.79,23.63s-10.59,23.63-23.63,23.63-23.63-10.59-23.63-23.63c-.03-13.03,10.51-23.6,23.54-23.63h.1V4.21Z"/>
+    <path class="st1" d="M243.52,252.85H113.69v83.04h144.68v-83.04h-14.85,0Z"/>
+    <path class="st2" d="M243.68,252.69H113.69v83.04h144.84v-83.04h-14.85Z"/>
+  </g>
+</svg>
