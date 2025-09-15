@@ -104,7 +104,7 @@ export default function Services() {
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading'>Our Services</h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
-          From concept to deployment, I offer comprehensive web development
+          From concept to deployment, we offer comprehensive web development
           services tailored to your unique needs. Let's build something amazing
           together.
         </p>
