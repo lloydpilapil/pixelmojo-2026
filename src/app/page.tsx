@@ -7,7 +7,6 @@ import TestimonialSection from '@/components/TestimonialSection'
 import FeaturedWorks from '@/components/FeaturedWorks'
 import ComparisonTable from '@/components/ComparisonTable'
 import OurApproach from '@/components/OurApproach'
-import CTACard from '@/components/CTACard'
 import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
@@ -64,9 +63,6 @@ export default function Home() {
 
       {/* Our Approach Section */}
       <OurApproach />
-
-      {/* CTA Card Section */}
-      <CTACard />
 
       {/* Recent Articles Section */}
       <RecentArticles />

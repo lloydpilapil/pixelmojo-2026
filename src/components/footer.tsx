@@ -4,17 +4,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { LinkButton } from '@/components/ui/button'
+import { Mail, MapPin, ArrowRight, Send, ChevronDown } from 'lucide-react'
 import {
-  Mail,
-  MapPin,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Github,
-  ArrowRight,
-  Send,
-  ChevronDown,
-} from 'lucide-react'
+  FaLinkedinIn,
+  FaXTwitter,
+  FaInstagram,
+  FaGithub,
+} from 'react-icons/fa6'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -44,10 +40,10 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
+    { icon: FaXTwitter, href: '#', label: 'Twitter' },
+    { icon: FaInstagram, href: '#', label: 'Instagram' },
+    { icon: FaGithub, href: '#', label: 'GitHub' },
   ]
 
   // Responsive Accordion Wrapper Component
@@ -201,7 +197,7 @@ export default function Footer() {
                     className='w-10 h-10 rounded-lg bg-white/10 hover:bg-[var(--secondary)]/20 border border-white/10 hover:border-[var(--secondary)]/50 flex items-center justify-center transition-all duration-300 group'
                     aria-label={social.label}
                   >
-                    <Icon className='h-4 w-4 text-white/70 group-hover:text-[var(--secondary)] transition-colors' />
+                    <Icon className='text-base text-white/70 group-hover:text-[var(--secondary)] transition-colors' />
                   </Link>
                 )
               })}
