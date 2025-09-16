@@ -29,7 +29,6 @@ export default function Footer() {
     { label: 'Services', href: '/services' },
     { label: 'Works', href: '/works' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Reviews', href: '/reviews' },
   ]
 
   const services = [

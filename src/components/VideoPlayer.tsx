@@ -307,7 +307,7 @@ export default function VideoPlayer({
       {isPlaying && (
         <button
           onClick={toggleMute}
-          className='absolute bottom-4 right-4 md:bottom-5 md:right-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 border-2 border-white/30 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95 animate-pulse-attention'
+          className='absolute bottom-4 right-4 md:bottom-5 md:right-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-primary to-secondary border-2 border-white/30 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/30 active:scale-95 animate-pulse group'
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? (

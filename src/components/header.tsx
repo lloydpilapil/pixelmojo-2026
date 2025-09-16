@@ -27,7 +27,6 @@ const navigationConfig = {
     { label: 'Works', href: '/works' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Reviews', href: '/reviews' },
   ],
   ctaButton: {
     label: 'Get in Touch!',
