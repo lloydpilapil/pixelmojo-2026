@@ -20,6 +20,44 @@ export default function ScrollVideoSection({
   const [opacity, setOpacity] = useState(1)
   const [shouldAutoplay, setShouldAutoplay] = useState(false)
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
+  const [videoStyle, setVideoStyle] = useState<React.CSSProperties>({})
+
+  useEffect(() => {
+    // Calculate video size to fit viewport with navbar
+    const calculateVideoSize = () => {
+      const navbarHeight = 64 // h-16 in Tailwind = 4rem = 64px
+      const padding = 48 // Some padding from top and bottom
+      const availableHeight = window.innerHeight - navbarHeight - padding
+      const maxWidth = window.innerWidth * 0.9 // 90% of viewport width
+
+      // Video aspect ratio is 16:9
+      const aspectRatio = 16 / 9
+
+      // Calculate dimensions that fit within available space
+      let width = maxWidth
+      let height = width / aspectRatio
+
+      // If height exceeds available space, scale down
+      if (height > availableHeight) {
+        height = availableHeight
+        width = height * aspectRatio
+      }
+
+      setVideoStyle({
+        maxWidth: `${width}px`,
+        maxHeight: `${height}px`,
+        width: '100%',
+        aspectRatio: '16/9',
+      })
+    }
+
+    calculateVideoSize()
+    window.addEventListener('resize', calculateVideoSize)
+
+    return () => {
+      window.removeEventListener('resize', calculateVideoSize)
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,19 +139,20 @@ export default function ScrollVideoSection({
 
       {/* Video Container */}
       <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Video with scaling animation */}
+        {/* Video with scaling animation and dynamic sizing */}
         <div
           ref={videoRef}
-          className='transform-gpu transition-all duration-700 ease-out'
+          className='transform-gpu transition-all duration-700 ease-out mx-auto'
           style={{
             transform: `scale(${scale})`,
             opacity: opacity,
             transformOrigin: 'center center',
+            ...videoStyle,
           }}
         >
           {/* Video Player with subtle shadow */}
           <div
-            className='relative rounded-2xl overflow-hidden transition-all duration-700'
+            className='relative rounded-2xl overflow-hidden transition-all duration-700 w-full h-full'
             style={{
               boxShadow: `0 ${8 + 12 * opacity}px ${16 + 24 * opacity}px -${4 - 2 * opacity}px rgba(0, 0, 0, ${0.06 + 0.08 * opacity})`,
             }}

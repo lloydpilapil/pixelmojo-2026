@@ -38,6 +38,7 @@ export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const servicesNav = navigationConfig.mainNav.find(
     item => item.label === 'Services'
@@ -67,6 +68,20 @@ export default function Header() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [isMobileMenuOpen])
+
+  // Handle scroll detection for button variant change
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 10)
+    }
+
+    // Check initial scroll position
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <header className='sticky top-0 z-40 bg-[#FBF8F2]'>
@@ -127,13 +142,14 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA with dynamic variant */}
           <div className='hidden lg:block'>
             <LinkButton
               href={navigationConfig.ctaButton.href}
-              variant='default'
+              variant={isScrolled ? 'default' : 'outline'}
               size='default'
               shape='pill'
+              className='transition-all duration-300'
             >
               {navigationConfig.ctaButton.label}
             </LinkButton>
