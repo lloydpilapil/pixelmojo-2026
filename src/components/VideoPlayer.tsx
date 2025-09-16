@@ -41,6 +41,8 @@ export default function VideoPlayer({
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
   const [isPreloaded, setIsPreloaded] = useState(false)
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false) // Only load when near viewport
+  const [isVideoReady, setIsVideoReady] = useState(false) // Track when video is actually ready to play
+  const [showCover, setShowCover] = useState(true) // Control cover visibility
   const containerRef = useRef<HTMLDivElement>(null)
 
   // Lazy loading: Only load video resources when component enters viewport
@@ -175,6 +177,15 @@ export default function VideoPlayer({
           setIsPlaying(true)
         })
 
+        // Listen for when video is actually ready to play
+        vimeoPlayer.on('loaded', () => {
+          setIsVideoReady(true)
+          // Only hide cover when video is truly ready
+          setTimeout(() => {
+            setShowCover(false)
+          }, 100) // Small delay to ensure smooth transition
+        })
+
         vimeoPlayer.on('pause', () => {
           setIsPlaying(false)
         })
@@ -188,6 +199,8 @@ export default function VideoPlayer({
               setIsMuted(true)
               setPlayer(null)
               setHasAutoplayed(false) // Allow autoplay again if user scrolls back
+              setIsVideoReady(false)
+              setShowCover(true) // Show cover again
             })
             .catch(error => {
               console.log('Error resetting video time:', error)
@@ -196,6 +209,8 @@ export default function VideoPlayer({
               setIsMuted(true)
               setPlayer(null)
               setHasAutoplayed(false)
+              setIsVideoReady(false)
+              setShowCover(true) // Show cover again
             })
         })
 
@@ -238,8 +253,8 @@ export default function VideoPlayer({
       ref={containerRef}
       className={`relative w-full aspect-video overflow-hidden rounded-xl ${className}`}
     >
-      {/* Video Cover */}
-      {!isPlaying && (
+      {/* Video Cover - Show until video is ready */}
+      {showCover && (
         <div
           className='absolute inset-0 bg-cover bg-center flex justify-center items-center cursor-pointer z-10 transition-all duration-300 hover:brightness-90 group'
           style={{ backgroundImage: `url(${coverImage})` }}
@@ -282,7 +297,9 @@ export default function VideoPlayer({
 
       {/* Vimeo Player with Loading Background */}
       {isPlaying && (
-        <div className='absolute inset-0 z-5 bg-black'>
+        <div
+          className={`absolute inset-0 z-5 bg-black ${!isVideoReady ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
+        >
           <iframe
             id={`vimeo-${videoId}`}
             src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=0`}

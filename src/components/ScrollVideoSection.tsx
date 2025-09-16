@@ -17,7 +17,7 @@ export default function ScrollVideoSection({
   const sectionRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
   const [scale, setScale] = useState(0.8)
-  const [opacity, setOpacity] = useState(0)
+  const [opacity, setOpacity] = useState(1)
   const [shouldAutoplay, setShouldAutoplay] = useState(false)
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
 
@@ -48,7 +48,7 @@ export default function ScrollVideoSection({
       setScale(newScale)
 
       // Smooth opacity from 0 to 1
-      setOpacity(clampedProgress)
+      setOpacity(1)
 
       // Trigger autoplay when video is 50% visible and hasn't autoplayed yet
       if (visibilityRatio > 0.5 && !hasAutoplayed && !shouldAutoplay) {
