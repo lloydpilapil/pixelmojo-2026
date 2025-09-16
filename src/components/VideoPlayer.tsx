@@ -7,6 +7,7 @@ interface VimeoPlayer {
   play: () => Promise<void>
   setVolume: (volume: number) => Promise<void>
   getVolume: () => Promise<number>
+  setCurrentTime: (seconds: number) => Promise<number>
 }
 
 interface VimeoConstructor {
@@ -179,9 +180,23 @@ export default function VideoPlayer({
         })
 
         vimeoPlayer.on('ended', () => {
-          setIsPlaying(false)
-          setIsMuted(true)
-          setPlayer(null)
+          // Reset video to frame 1 and show cover image
+          vimeoPlayer
+            .setCurrentTime(0)
+            .then(() => {
+              setIsPlaying(false)
+              setIsMuted(true)
+              setPlayer(null)
+              setHasAutoplayed(false) // Allow autoplay again if user scrolls back
+            })
+            .catch(error => {
+              console.log('Error resetting video time:', error)
+              // Fallback: just hide the video and show cover
+              setIsPlaying(false)
+              setIsMuted(true)
+              setPlayer(null)
+              setHasAutoplayed(false)
+            })
         })
 
         vimeoPlayer.on('error', (error: any) => {
