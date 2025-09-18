@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostProps) {
-  const { slug } = await params
+  const { slug } = params
   const post = allPosts.find(post => post._raw.flattenedPath === slug)
 
   if (!post) {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const { slug } = await params
+  const { slug } = params
   const post = allPosts.find(post => post._raw.flattenedPath === slug)
 
   if (!post) {
@@ -54,75 +54,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
   }
 
   const MDXContent = getMDXComponent(post.body.code)
-  // Get MDX components (not using hook in async function)
+
+  // MDX components for blog posts
   const mdxComponents = {
-    // Standard HTML elements
-    p: ({ children }: { children: React.ReactNode }) => <p>{children}</p>,
-    ul: ({ children }: { children: React.ReactNode }) => (
-      <ul className='list-disc pl-6 mb-4'>{children}</ul>
-    ),
-    ol: ({ children }: { children: React.ReactNode }) => (
-      <ol className='list-decimal pl-6 mb-4'>{children}</ol>
-    ),
-    li: ({ children }: { children: React.ReactNode }) => (
-      <li className='mb-1'>{children}</li>
-    ),
-
-    code: ({ children }: { children: React.ReactNode }) => (
-      <code className='bg-muted text-foreground px-2 py-1 rounded text-sm font-mono'>
-        {children}
-      </code>
-    ),
-    pre: ({ children }: { children: React.ReactNode }) => (
-      <pre className='bg-muted text-foreground p-4 rounded-lg overflow-x-auto mb-4 font-mono'>
-        {children}
-      </pre>
-    ),
-
-    blockquote: ({ children }: { children: React.ReactNode }) => (
-      <blockquote className='border-l-4 border-border pl-4 my-4 italic text-muted-foreground'>
-        {children}
-      </blockquote>
-    ),
-
-    a: ({ children, href }: { children: React.ReactNode; href?: string }) => {
-      const isExternal =
-        href && (href.startsWith('http://') || href.startsWith('https://'))
-      return (
-        <a
-          href={href}
-          className='text-primary underline underline-offset-2 hover:opacity-80 transition-opacity'
-          target={isExternal ? '_blank' : undefined}
-          rel={isExternal ? 'noopener noreferrer' : undefined}
-        >
-          {children}
-          {isExternal && (
-            <svg
-              className='inline-block ml-1 mb-1 h-3 w-3'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
-              />
-            </svg>
-          )}
-        </a>
-      )
-    },
-
-    strong: ({ children }: { children: React.ReactNode }) => (
-      <strong className='font-bold'>{children}</strong>
-    ),
-    em: ({ children }: { children: React.ReactNode }) => (
-      <em className='italic'>{children}</em>
-    ),
-
-    // Custom MDX components
     TLDR,
     BlogQuote,
     InlineCTA,
@@ -143,7 +77,6 @@ export default async function BlogPost({ params }: BlogPostProps) {
         title={post.title}
         description={post.description}
         date={post.date}
-        tags={post.tags}
         readingTime={readingTime}
         author={{
           name: author.name,

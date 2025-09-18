@@ -9,7 +9,6 @@ interface BlogHeroProps {
   date: string
   createdDate?: string
   updatedDate?: string
-  tags?: string[]
   readingTime?: number
   author?: {
     name: string
@@ -24,7 +23,6 @@ export function BlogHero({
   date,
   createdDate,
   updatedDate,
-  tags: _tags,
   readingTime,
   author,
   className,
