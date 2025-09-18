@@ -10,6 +10,7 @@ interface BlogHeroProps {
   createdDate?: string
   updatedDate?: string
   readingTime?: number
+  tags?: string[]
   author?: {
     name: string
     avatar?: string
@@ -24,6 +25,7 @@ export function BlogHero({
   createdDate,
   updatedDate,
   readingTime,
+  tags,
   author,
   className,
 }: BlogHeroProps) {
@@ -93,6 +95,20 @@ export function BlogHero({
             <p className='text-large text-muted-foreground mb-8 leading-relaxed max-w-5xl mx-auto'>
               {description}
             </p>
+          )}
+
+          {/* Tags */}
+          {tags && tags.length > 0 && (
+            <div className='flex flex-wrap items-center justify-center gap-2 mb-8'>
+              {tags.map(tag => (
+                <span
+                  key={tag}
+                  className='px-3 py-1 bg-primary/10 text-primary rounded-full text-small font-medium'
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           )}
 
           {/* Author */}
