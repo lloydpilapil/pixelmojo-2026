@@ -79,9 +79,9 @@ export default function Footer() {
         </button>
 
         {/* Desktop Header - Hidden on mobile, visible on lg and up */}
-        <h4 className='hidden lg:block text-white font-montserrat font-semibold mb-4 text-fluid-base'>
+        <h3 className='hidden lg:block text-white font-montserrat font-semibold mb-4 text-fluid-base'>
           {title}
-        </h4>
+        </h3>
 
         {/* Content - Always visible on desktop, accordion on mobile */}
         <div
@@ -162,9 +162,9 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className='mb-8'>
-              <h4 className='text-white font-montserrat font-semibold mb-3 text-fluid-base lg:text-fluid-lg'>
+              <h3 className='text-white font-montserrat font-semibold mb-3 text-fluid-base lg:text-fluid-lg'>
                 Stay Updated
-              </h4>
+              </h3>
               <p className='text-white/60 mb-4 text-sm'>
                 Get insights on design trends and digital innovation.
               </p>
