@@ -68,9 +68,9 @@ export default function Footer() {
           aria-expanded={isOpen}
           aria-controls={`section-${sectionKey}`}
         >
-          <h4 className='text-white font-montserrat font-semibold text-fluid-base'>
+          <span className='text-white font-montserrat font-semibold text-fluid-base'>
             {title}
-          </h4>
+          </span>
           <ChevronDown
             className={`h-5 w-5 text-white/60 transition-transform duration-300 ${
               isOpen ? 'rotate-180' : ''
