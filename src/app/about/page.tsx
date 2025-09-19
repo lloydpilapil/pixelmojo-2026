@@ -105,6 +105,7 @@ export default function About() {
       <ScrollVideoSection
         videoId='1098766945'
         coverImage='/video-cover-02.webp'
+        caption='Showreel: See how Pixelmojo fuses strategy, UX, and engineering to unlock measurable growth for product teams.'
       />
 
       {/* Value Proposition Section */}
@@ -112,21 +113,89 @@ export default function About() {
         <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
           Where Fortune 500 Strategy Meets Startup Agility
         </h2>
-        <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-          After 20+ years working with global enterprises and scaling startups,
-          I built Pixelmojo to fix a critical gap: combining enterprise-level
-          strategic thinking with the speed and innovation growing businesses
-          need. We deliver high-impact digital solutions that drive sustainable
-          growth.
-        </p>
-        <h2 className='mt-10 mb-4 text-3xl font-heading'>Our Mission</h2>
-        <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-          We believe every digital touchpoint should drive measurable business
-          growth. We don't just create beautiful designs—we architect complete
-          growth ecosystems that turn your digital presence into a powerful
-          engine for sustainable success. We design for impact. We build for
-          ROI.
-        </p>
+        <div className='mx-auto max-w-4xl space-y-6 text-left md:text-center'>
+          <p className='text-muted text-lg leading-relaxed'>
+            After 20+ years working with global enterprises and scaling
+            startups, I built Pixelmojo to fix a critical gap: combining
+            enterprise-level strategic thinking with the speed and innovation
+            growing businesses need.
+          </p>
+          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Decision velocity
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Enterprise-caliber product and growth frameworks delivered at
+                founder speed.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Unified delivery
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Brand, product, and engineering partners aligned around
+                measurable outcomes.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm md:col-span-2'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Momentum you can measure
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Systems that translate customer insight into testable sprints,
+                clearer roadmaps, and confident launches.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
+        <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
+          <p className='text-muted text-lg leading-relaxed'>
+            Every digital touchpoint should be accountable to growth. Pixelmojo
+            partners with your teams so the experience layer becomes a profit
+            lever.
+          </p>
+          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Frictionless journeys
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Connect strategy, design, and engineering to remove friction
+                from every revenue-critical touchpoint.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Learning loops
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Instrument every release with analytics and feedback cycles so
+                teams learn and iterate faster.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Scalable systems
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Build reusable design and delivery frameworks that keep brand,
+                product, and marketing in sync as you scale.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Empowered teams
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Coach cross-functional squads with playbooks and rituals that
+                sustain momentum well beyond launch.
+              </p>
+            </li>
+          </ul>
+        </div>
         <div className='mt-12 max-w-5xl mx-auto'>
           <div className='gradient-surface relative overflow-hidden rounded-2xl border border-white/15 p-8 text-center shadow-lg shadow-primary/15 md:p-12'>
             <div className='relative z-10 space-y-5'>
@@ -165,7 +234,7 @@ export default function About() {
                 >
                   <div className='flex flex-col gap-5 md:flex-row md:gap-10'>
                     <div className='md:w-48'>
-                      <p className='font-mono text-xs uppercase tracking-[0.28em] text-primary/80'>
+                      <p className='font-mono text-xs tracking-[0.14em] text-primary/80 md:uppercase md:tracking-[0.28em]'>
                         {entry.period}
                       </p>
                       <h3 className='mt-2 text-2xl font-heading text-foreground md:text-3xl'>
@@ -173,16 +242,16 @@ export default function About() {
                       </h3>
                     </div>
                     <div className='flex-1 space-y-4'>
-                      <p className='text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
+                      <p className='text-sm font-semibold tracking-[0.05em] text-muted-foreground md:uppercase md:tracking-[0.14em]'>
                         {entry.role}
                       </p>
                       <p className='text-muted leading-relaxed'>
                         {entry.description}
                       </p>
                       {entry.highlight ? (
-                        <div className='rounded-xl bg-primary/10 py-3 text-sm font-medium text-primary/90'>
+                        <p className='text-sm font-semibold text-primary'>
                           {entry.highlight}
-                        </div>
+                        </p>
                       ) : null}
                     </div>
                   </div>
@@ -228,7 +297,7 @@ export default function About() {
                       <dt className='font-medium text-foreground'>Timeframe</dt>
                       <dd className='mt-1 leading-relaxed'>{step.timeframe}</dd>
                     </div>
-                    <div className='relative inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary/80'>
+                    <div className='relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-xs font-semibold tracking-[0.08em] text-primary md:uppercase md:tracking-[0.18em]'>
                       <span className='h-2 w-2 rounded-full bg-primary' />
                       <span>Phase {index + 1}</span>
                     </div>

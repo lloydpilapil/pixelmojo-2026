@@ -1,18 +1,20 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import VideoPlayer from './VideoPlayer'
 
 interface ScrollVideoSectionProps {
   videoId: string
   coverImage?: string
   className?: string
+  caption?: string
 }
 
 export default function ScrollVideoSection({
   videoId,
   coverImage,
   className = '',
+  caption = 'Pixelmojo project reel highlighting integrated strategy, design, and engineering partnerships.',
 }: ScrollVideoSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
@@ -22,6 +24,7 @@ export default function ScrollVideoSection({
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
   const [videoStyle, setVideoStyle] = useState<React.CSSProperties>({})
   const [isMobile, setIsMobile] = useState(false)
+  const captionId = useId()
 
   useEffect(() => {
     // Calculate video size to fit viewport with navbar
@@ -138,6 +141,7 @@ export default function ScrollVideoSection({
     <section
       ref={sectionRef}
       className={`relative overflow-hidden py-16 md:py-24 ${className}`}
+      aria-labelledby={captionId}
     >
       {/* Background gradient for dramatic effect */}
       <div
@@ -147,8 +151,7 @@ export default function ScrollVideoSection({
         }}
       />
 
-      {/* Video Container */}
-      <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <figure className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Video with scaling animation and dynamic sizing */}
         <div
           ref={videoRef}
@@ -162,7 +165,7 @@ export default function ScrollVideoSection({
         >
           {/* Video Player with subtle shadow */}
           <div
-            className='relative rounded-2xl overflow-hidden transition-all duration-700 w-full h-full'
+            className='relative w-full h-full overflow-hidden rounded-2xl transition-all duration-700'
             style={{
               boxShadow: isMobile
                 ? `0 10px 26px rgba(0, 0, 0, 0.18)`
@@ -174,26 +177,33 @@ export default function ScrollVideoSection({
               coverImage={coverImage}
               className='w-full'
               autoplay={shouldAutoplay}
+              ariaDescribedBy={captionId}
             />
           </div>
 
           {/* Optional: Add floating elements that parallax */}
           <div
-            className='absolute -top-10 -left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl'
+            className='absolute -top-10 -left-10 h-32 w-32 rounded-full bg-primary/10 blur-3xl'
             style={{
               transform: `translateY(${-30 * (1 - opacity)}px)`,
               opacity: opacity * 0.5,
             }}
           />
           <div
-            className='absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl'
+            className='absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-3xl'
             style={{
               transform: `translateY(${30 * (1 - opacity)}px)`,
               opacity: opacity * 0.5,
             }}
           />
         </div>
-      </div>
+        <figcaption
+          id={captionId}
+          className='mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground md:text-base'
+        >
+          {caption}
+        </figcaption>
+      </figure>
     </section>
   )
 }

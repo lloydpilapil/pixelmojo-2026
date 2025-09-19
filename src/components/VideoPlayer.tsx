@@ -106,6 +106,7 @@ interface VideoPlayerProps {
   className?: string
   autoplay?: boolean
   autoplayThreshold?: number // Percentage of element visible before autoplay (0.0 - 1.0)
+  ariaDescribedBy?: string
 }
 
 export default function VideoPlayer({
@@ -114,6 +115,7 @@ export default function VideoPlayer({
   className = '',
   autoplay = false,
   autoplayThreshold = 0.5, // Autoplay when 50% of video is visible
+  ariaDescribedBy,
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true) // Start muted for autoplay
@@ -417,24 +419,28 @@ export default function VideoPlayer({
     <div
       ref={containerRef}
       className={`relative w-full aspect-video overflow-hidden rounded-xl ${className}`}
+      aria-describedby={ariaDescribedBy}
     >
       {/* Video Cover - Show until video is ready */}
       {showCover && (
-        <div
-          className='absolute inset-0 bg-cover bg-center flex justify-center items-center cursor-pointer z-10 transition-all duration-300 hover:brightness-90 group'
+        <button
+          type='button'
+          className='group absolute inset-0 z-10 flex items-center justify-center bg-cover bg-center transition-all duration-300 hover:brightness-90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40'
           style={{ backgroundImage: `url(${coverImage})` }}
           onClick={handlePlayClick}
+          aria-label='Play video'
         >
           {/* Play Button */}
-          <div className='relative w-16 h-16 md:w-20 md:h-20 flex justify-center items-center transition-transform duration-300 group-hover:scale-110'>
+          <div className='relative flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:scale-110 md:h-20 md:w-20'>
             {/* Glow Effect */}
-            <div className='absolute inset-0 bg-white rounded-full opacity-60 blur-md animate-pulse group-hover:animate-none' />
+            <div className='absolute inset-0 animate-pulse rounded-full bg-white opacity-60 blur-md group-hover:animate-none' />
 
             {/* Play Button SVG */}
             <svg
-              className='w-full h-full relative z-10 animate-pulse group-hover:animate-none transition-transform duration-300'
+              className='relative z-10 h-full w-full animate-pulse transition-transform duration-300 group-hover:animate-none'
               viewBox='0 0 100 100'
-              aria-label='Play video'
+              aria-hidden='true'
+              focusable='false'
             >
               <circle fill='#FD4B8B' cx='50' cy='50' r='50' />
               <polygon className='fill-white' points='42,35 65,50 42,65' />
@@ -442,10 +448,13 @@ export default function VideoPlayer({
           </div>
 
           {/* Click to Play Text */}
-          <span className='absolute top-[calc(50%+60px)] left-1/2 transform -translate-x-1/2 text-white font-semibold text-base drop-shadow-lg opacity-0 group-hover:opacity-100 group-hover:top-[calc(50%+70px)] transition-all duration-300 pointer-events-none'>
+          <span
+            className='pointer-events-none absolute left-1/2 top-[calc(50%+60px)] -translate-x-1/2 transform text-base font-semibold text-white opacity-0 transition-all duration-300 drop-shadow-lg group-hover:top-[calc(50%+70px)] group-hover:opacity-100'
+            aria-hidden='true'
+          >
             Click to Play
           </span>
-        </div>
+        </button>
       )}
 
       {/* Hidden Preload Iframe */}
@@ -453,10 +462,12 @@ export default function VideoPlayer({
         <iframe
           id={`vimeo-preload-${videoId}`}
           src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=1&app_id=58479&autoplay=0&title=0&byline=0&portrait=0&muted=1`}
-          className='absolute opacity-0 pointer-events-none w-full h-full border-none'
+          className='absolute h-full w-full border-none pointer-events-none opacity-0'
           allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
           referrerPolicy='strict-origin-when-cross-origin'
+          loading='lazy'
           title='Preload video'
+          aria-hidden='true'
         />
       )}
 
@@ -467,12 +478,14 @@ export default function VideoPlayer({
         >
           <iframe
             id={`vimeo-${videoId}`}
-            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=0`}
-            className='w-full h-full border-none opacity-0 transition-opacity duration-700 ease-out'
+            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=1`}
+            className='h-full w-full border-none opacity-0 transition-opacity duration-700 ease-out'
             allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
             allowFullScreen
             referrerPolicy='strict-origin-when-cross-origin'
+            loading='lazy'
             title='Transform Your Business with Integrated Digital Solutions'
+            aria-describedby={ariaDescribedBy}
             onLoad={() => {
               // Fade in the video once it's loaded
               const iframe = document.getElementById(`vimeo-${videoId}`)
@@ -488,8 +501,9 @@ export default function VideoPlayer({
       {/* Unmute button overlay */}
       {isPlaying && (
         <button
+          type='button'
           onClick={toggleMute}
-          className='absolute bottom-4 right-4 md:bottom-5 md:right-5 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-primary to-secondary border-2 border-white/30 flex items-center justify-center cursor-pointer z-20 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/30 active:scale-95 animate-pulse group'
+          className='absolute bottom-4 right-4 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 border-white/30 bg-gradient-to-r from-primary to-secondary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/30 active:scale-95 animate-pulse group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50 md:bottom-5 md:right-5 md:h-12 md:w-12'
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? (
