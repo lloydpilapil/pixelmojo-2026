@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
-import { LinkButton } from '@/components/ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import ScrollVideoSection from '@/components/ScrollVideoSection'
 
 export const metadata: Metadata = {
   title: 'About Pixelmojo | Strategic Design for Growth-Driven Teams',
@@ -13,270 +16,270 @@ export const metadata: Metadata = {
   },
 }
 
+const aboutHighlights = [
+  {
+    title: 'Design-Led Engineering',
+    description:
+      'Translating validated user insights into cohesive systems, interfaces, and production-ready code.',
+    features: [
+      'UI/UX systems that scale across products',
+      'Component libraries engineered for reuse',
+      'Pixel-perfect implementation with accessibility in mind',
+      'Design QA baked into delivery rituals',
+    ],
+    icon: '/ui_ux_design_solutions_services_thumb.svg',
+    href: '/portfolio',
+    cta: 'View project work',
+  },
+  {
+    title: 'Product Strategy & Leadership',
+    description:
+      'Partnering with founders and product teams to align vision, roadmap, and delivery for measurable outcomes.',
+    features: [
+      'Research-informed product roadmaps',
+      'Executive and stakeholder alignment',
+      'North-star metrics tied to execution',
+      'Prioritization frameworks that unlock focus',
+    ],
+    icon: '/branding_services_thumb.svg',
+    href: '/services',
+    cta: 'Explore strategy approach',
+  },
+  {
+    title: 'Integrated Growth Systems',
+    description:
+      'Breaking down silos by uniting brand, design, engineering, and growth into one momentum-building engine.',
+    features: [
+      'Cross-functional rituals that ship faster',
+      'Analytics loops for every release',
+      'Campaigns connected to product moments',
+      'Documentation that scales knowledge',
+    ],
+    icon: '/digital_marketing_services_thumb.svg',
+    href: '/services/brand-activation-growth',
+    cta: 'Align your growth ops',
+  },
+  {
+    title: 'Full-Stack Craft',
+    description:
+      'Modern web engineering across the stack to ensure performance, maintainability, and joyful experiences.',
+    features: [
+      'React, Next.js, and TypeScript expertise',
+      'API, CMS, and data integration patterns',
+      'Performance & accessibility from day one',
+      'CI/CD automation with observable workflows',
+    ],
+    icon: '/web_app_design_services_thumb.svg',
+    href: '/services/development-solutions',
+    cta: 'Review technical craft',
+  },
+  {
+    title: 'Client Partnerships',
+    description:
+      'Long-term collaborations that turn ambitious roadmaps into shipped products and compounding value.',
+    features: [
+      '5+ years delivering enterprise-grade outcomes',
+      '30+ multi-disciplinary launches across sectors',
+      'Global collaboration across time zones',
+      'Fractional and embedded leadership models',
+    ],
+    icon: '/creative_contents_services_thumb.svg',
+    href: '/contact',
+    cta: 'Start a partnership',
+  },
+  {
+    title: 'Mentorship & Community',
+    description:
+      'Giving back through teaching, coaching, and building spaces for designers and engineers to grow.',
+    features: [
+      'Team coaching and enablement programs',
+      'Playbooks for scaling design & dev orgs',
+      'Workshops, talks, and community sessions',
+      '1:1 mentorship for emerging talent',
+    ],
+    icon: '/graphic_visual_design_services_thumb.svg',
+    href: '/contact',
+    cta: 'Schedule a session',
+  },
+]
+
+const experienceTimeline = [
+  {
+    period: '2024 — Present',
+    company: 'Pixelmojo',
+    role: 'Founder & Creative Visionary',
+    description:
+      'Leading a design-driven agency focused on high-impact digital solutions for SaaS, fintech, and high-growth companies. Driving digital strategy, branding, and user experience innovation while spearheading business growth through conversion-optimized design, scalable systems, and strategic content.',
+  },
+  {
+    period: '2015 – 2023',
+    company: 'Salesforce & Global Enterprises',
+    role: 'UX Lead & Digital Strategist',
+    description:
+      'Led UX initiatives for large-scale infrastructure and enterprise SaaS projects. Specialized in optimizing complex user flows, increasing engagement by 20%, and implementing automated design systems that reduced project delivery time by 30%.',
+  },
+  {
+    period: '2004 – 2014',
+    company: 'Digital Transformation Era',
+    role: 'Director of UX & Design',
+    description:
+      'Drove digital transformation for government and corporate clients, streamlining workflows to improve operational efficiency by 40% and leading flagship design projects that generated 30% revenue increases.',
+  },
+  {
+    period: '2001 – 2004',
+    company: 'Digital Renaissance',
+    role: 'Senior UI/UX & Digital Product Designer',
+    description:
+      'Transitioned from traditional design to digital experiences during the early web boom, mastering front-end development, web design, and UX to create user-friendly digital platforms that set new standards for usability.',
+  },
+  {
+    period: '1991 – 2001',
+    company: 'Creative Foundation',
+    role: 'Art Director & Graphic Designer',
+    description:
+      'Built a strong foundation in visual arts, focusing on branding, print media, and creative direction while mastering composition, typography, and brand storytelling.',
+  },
+]
+
 export default function About() {
   return (
     <div className='container mx-auto px-4 py-16 animate-fade-in'>
-      <div className='max-w-6xl mx-auto'>
-        {/* Page Header */}
-        <div className='text-center mb-16'>
-          <h1 className='mb-6'>About Me</h1>
-          <p className='lead max-w-2xl mx-auto'>
-            Passionate about creating exceptional digital experiences through
-            clean code and innovative solutions.
+      {/* Hero Section */}
+      <div className='text-center mb-12'>
+        <h1 className='mb-6 font-heading'>About Pixelmojo</h1>
+        <p className='lead max-w-3xl mx-auto mb-8'>
+          Strategic product design and engineering leadership from Lloyd
+          Pilapil—aligning vision, execution, and measurable growth.
+        </p>
+      </div>
+
+      {/* Scroll-Animated Video Section */}
+      <ScrollVideoSection
+        videoId='1098766945'
+        coverImage='/video-cover-02.webp'
+      />
+
+      {/* Value Proposition Section */}
+      <div className='text-center mb-20'>
+        <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
+          Where Fortune 500 Strategy Meets Startup Agility
+        </h2>
+        <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
+          After 20+ years working with global enterprises and scaling startups,
+          I built Pixelmojo to fix a critical gap: combining enterprise-level
+          strategic thinking with the speed and innovation growing businesses
+          need. We deliver high-impact digital solutions that drive sustainable
+          growth.
+        </p>
+        <h2 className='mt-10 mb-4 text-3xl font-heading'>Our Mission</h2>
+        <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
+          We believe every digital touchpoint should drive measurable business
+          growth. We don't just create beautiful designs—we architect complete
+          growth ecosystems that turn your digital presence into a powerful
+          engine for sustainable success. We design for impact. We build for
+          ROI.
+        </p>
+        <div className='mt-12 max-w-5xl mx-auto bg-primary/5 border border-primary/10 rounded-2xl p-8 md:p-12 text-center shadow-sm'>
+          <h3 className='font-heading text-2xl md:text-3xl mb-4 text-primary'>
+            What Pixelmojo Means
+          </h3>
+          <p className='text-muted-foreground leading-relaxed max-w-4xl mx-auto text-lg'>
+            Our name reflects our philosophy: every{' '}
+            <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
+            design and every{' '}
+            <span className='font-extrabold text-[#F48024]'>mojo</span>—that
+            spark of innovation—we bring serves one purpose: driving your
+            business growth. The intersecting elements in our logo represent the
+            convergence of strategy, design, and technology into unified
+            solutions that actually work.
           </p>
         </div>
 
-        <div className='grid lg:grid-cols-2 gap-16 items-start mb-20'>
-          {/* Profile Image */}
-          <div className='order-2 lg:order-1'>
-            <div className='aspect-square bg-muted rounded-2xl flex items-center justify-center mb-8'>
-              <div className='text-center'>
-                <div className='w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4'>
-                  <svg
-                    className='w-12 h-12 text-primary'
-                    fill='none'
-                    stroke='currentColor'
-                    viewBox='0 0 24 24'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
-                    />
-                  </svg>
-                </div>
-                <p className='text-muted text-small'>Professional Photo</p>
-              </div>
-            </div>
-          </div>
+        {/* Experience Timeline */}
+        <div className='mt-16 max-w-6xl mx-auto'>
+          <h2 className='text-center font-heading text-3xl md:text-4xl mb-16 md:mb-20'>
+            Three Decades of Design, Innovation & Digital Transformation
+          </h2>
 
-          {/* About Content */}
-          <div className='order-1 lg:order-2 space-y-8'>
-            <div className='space-y-6'>
-              <p className='text-large'>
-                Hello! I'm Lloyd Pilapil, a passionate developer with a love for
-                creating innovative web solutions. I specialize in modern web
-                technologies and enjoy turning complex problems into simple,
-                beautiful designs.
-              </p>
-
-              <p>
-                With several years of experience in full-stack development, I've
-                worked on various projects ranging from small business websites
-                to large-scale applications. I'm always eager to learn new
-                technologies and stay up-to-date with industry trends.
-              </p>
-            </div>
-
-            {/* Quick Stats */}
-            <div className='grid grid-cols-3 gap-6 py-8 border-y border-border'>
-              <div className='text-center'>
-                <div
-                  className='text-primary mb-2'
-                  style={{
-                    fontSize: 'var(--font-size-3xl)',
-                    fontWeight: 'var(--font-weight-extrabold)',
-                  }}
+          <div className='space-y-16 md:space-y-20'>
+            {experienceTimeline.map((entry, index) => (
+              <div
+                key={`${entry.period}-${index}`}
+                className='text-center space-y-4'
+              >
+                <h3
+                  className='text-lg md:text-xl font-semibold'
+                  style={{ color: '#3CC29E' }}
                 >
-                  5+
-                </div>
-                <p className='text-small text-muted'>Years Experience</p>
-              </div>
-              <div className='text-center'>
-                <div
-                  className='text-primary mb-2'
-                  style={{
-                    fontSize: 'var(--font-size-3xl)',
-                    fontWeight: 'var(--font-weight-extrabold)',
-                  }}
-                >
-                  30+
-                </div>
-                <p className='text-small text-muted'>Projects Completed</p>
-              </div>
-              <div className='text-center'>
-                <div
-                  className='text-primary mb-2'
-                  style={{
-                    fontSize: 'var(--font-size-3xl)',
-                    fontWeight: 'var(--font-weight-extrabold)',
-                  }}
-                >
-                  10+
-                </div>
-                <p className='text-small text-muted'>Happy Clients</p>
-              </div>
-            </div>
-
-            <div className='flex gap-4'>
-              <LinkButton href='/portfolio' variant='default' shape='pill'>
-                View My Work
-              </LinkButton>
-              <LinkButton href='/contact' variant='outline' shape='pill'>
-                Get In Touch
-              </LinkButton>
-            </div>
-          </div>
-        </div>
-
-        {/* Skills & Technologies */}
-        <section className='mb-20'>
-          <div className='text-center mb-12'>
-            <h2 className='mb-4'>Skills & Technologies</h2>
-            <p className='text-muted max-w-2xl mx-auto'>
-              Here are the tools and technologies I work with to bring ideas to
-              life
-            </p>
-          </div>
-
-          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
-            <div className='card p-6 text-center'>
-              <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4'>
-                <svg
-                  className='w-8 h-8 text-primary'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'
-                  />
-                </svg>
-              </div>
-              <h4 className='mb-3'>Frontend</h4>
-              <ul className='text-muted text-small space-y-2'>
-                <li>React / Next.js</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-                <li>JavaScript</li>
-              </ul>
-            </div>
-
-            <div className='card p-6 text-center'>
-              <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4'>
-                <svg
-                  className='w-8 h-8 text-primary'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2'
-                  />
-                </svg>
-              </div>
-              <h4 className='mb-3'>Backend</h4>
-              <ul className='text-muted text-small space-y-2'>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>PostgreSQL</li>
-                <li>MongoDB</li>
-              </ul>
-            </div>
-
-            <div className='card p-6 text-center'>
-              <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4'>
-                <svg
-                  className='w-8 h-8 text-primary'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4 4 4 0 004-4V5z'
-                  />
-                </svg>
-              </div>
-              <h4 className='mb-3'>Design</h4>
-              <ul className='text-muted text-small space-y-2'>
-                <li>Figma</li>
-                <li>Adobe XD</li>
-                <li>Sketch</li>
-                <li>Framer</li>
-              </ul>
-            </div>
-
-            <div className='card p-6 text-center'>
-              <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4'>
-                <svg
-                  className='w-8 h-8 text-primary'
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z'
-                  />
-                </svg>
-              </div>
-              <h4 className='mb-3'>DevOps</h4>
-              <ul className='text-muted text-small space-y-2'>
-                <li>Docker</li>
-                <li>AWS / Vercel</li>
-                <li>GitHub Actions</li>
-                <li>Nginx</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section>
-          <div className='text-center mb-12'>
-            <h2 className='mb-4'>Experience</h2>
-            <p className='text-muted max-w-2xl mx-auto'>
-              My professional journey and the companies I've had the pleasure of
-              working with
-            </p>
-          </div>
-
-          <div className='max-w-3xl mx-auto space-y-8'>
-            <div className='card p-8 border-l-4 border-l-primary'>
-              <div className='flex flex-col md:flex-row md:items-center justify-between mb-4'>
+                  {entry.period}
+                </h3>
                 <div>
-                  <h3 className='mb-1'>Senior Developer</h3>
-                  <p className='text-primary font-medium'>Company Name</p>
-                </div>
-                <div className='text-muted text-small'>2022 - Present</div>
-              </div>
-              <p className='text-muted'>
-                Leading development of web applications using modern
-                technologies. Responsible for architecture decisions, code
-                reviews, and mentoring junior developers.
-              </p>
-            </div>
-
-            <div className='card p-8 border-l-4 border-l-muted-foreground'>
-              <div className='flex flex-col md:flex-row md:items-center justify-between mb-4'>
-                <div>
-                  <h3 className='mb-1'>Frontend Developer</h3>
-                  <p className='text-muted-foreground font-medium'>
-                    Previous Company
+                  <h4 className='text-xl md:text-2xl font-heading text-foreground mb-2'>
+                    {entry.company}
+                  </h4>
+                  <p className='text-lg font-medium text-muted-foreground mb-4'>
+                    {entry.role}
                   </p>
                 </div>
-                <div className='text-muted text-small'>2020 - 2022</div>
+                <p className='text-muted leading-relaxed max-w-2xl mx-auto'>
+                  {entry.description}
+                </p>
               </div>
-              <p className='text-muted'>
-                Developed responsive user interfaces and improved user
-                experience across multiple web applications. Collaborated with
-                design teams to implement pixel-perfect designs.
-              </p>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </div>
+
+      {/* Highlights Grid */}
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
+        {aboutHighlights.map((highlight, index) => (
+          <Link
+            key={index}
+            href={highlight.href}
+            className='group block h-full'
+          >
+            <div className='h-full bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
+              {/* Icon */}
+              <div className='w-16 h-16 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110'>
+                <Image
+                  src={highlight.icon}
+                  alt={highlight.title}
+                  width={64}
+                  height={64}
+                  className='w-16 h-16'
+                />
+              </div>
+
+              {/* Content */}
+              <div className='space-y-4 mb-6'>
+                <h3 className='group-hover:text-primary transition-colors duration-300'>
+                  {highlight.title}
+                </h3>
+                <p className='text-muted leading-relaxed'>
+                  {highlight.description}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div className='space-y-3 mb-6'>
+                {highlight.features.map((feature, idx) => (
+                  <div key={idx} className='flex items-start gap-3'>
+                    <div className='flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5'>
+                      <div className='w-2 h-2 rounded-full bg-primary' />
+                    </div>
+                    <span className='text-sm text-foreground'>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className='flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300'>
+                <span>{highlight.cta ?? 'Learn more'}</span>
+                <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   )
