@@ -20,6 +20,7 @@ const experienceTimeline = [
     role: 'Founder & Creative Visionary',
     description:
       'Leading a design-driven agency focused on high-impact digital solutions for SaaS, fintech, and high-growth companies. Driving digital strategy, branding, and user experience innovation while spearheading business growth through conversion-optimized design, scalable systems, and strategic content.',
+    highlight: '3x conversion lifts and faster GTM for emerging SaaS teams.',
   },
   {
     period: '2015 – 2023',
@@ -27,6 +28,7 @@ const experienceTimeline = [
     role: 'UX Lead & Digital Strategist',
     description:
       'Led UX initiatives for large-scale infrastructure and enterprise SaaS projects. Specialized in optimizing complex user flows, increasing engagement by 20%, and implementing automated design systems that reduced project delivery time by 30%.',
+    highlight: 'Design system adoption across 7 enterprise product squads.',
   },
   {
     period: '2004 – 2014',
@@ -34,6 +36,8 @@ const experienceTimeline = [
     role: 'Director of UX & Design',
     description:
       'Drove digital transformation for government and corporate clients, streamlining workflows to improve operational efficiency by 40% and leading flagship design projects that generated 30% revenue increases.',
+    highlight:
+      'Portfolio of 40+ transformation programs modernized end-to-end.',
   },
   {
     period: '2001 – 2004',
@@ -41,6 +45,7 @@ const experienceTimeline = [
     role: 'Senior UI/UX & Digital Product Designer',
     description:
       'Transitioned from traditional design to digital experiences during the early web boom, mastering front-end development, web design, and UX to create user-friendly digital platforms that set new standards for usability.',
+    highlight: 'Early adopter of UX research ops, reducing rework by 25%.',
   },
   {
     period: '1991 – 2001',
@@ -48,6 +53,39 @@ const experienceTimeline = [
     role: 'Art Director & Graphic Designer',
     description:
       'Built a strong foundation in visual arts, focusing on branding, print media, and creative direction while mastering composition, typography, and brand storytelling.',
+    highlight: 'Award-winning campaigns across print, OOH, and identity.',
+  },
+]
+
+const processSteps = [
+  {
+    title: 'Discover & Risk Assessment',
+    description:
+      'We uncover your business drivers, user behavior, and potential roadblocks to craft strategies that accelerate growth while minimizing risk.',
+    deliverables:
+      'Stakeholder workshops, analytics deep-dive, growth opportunity map.',
+    timeframe: '1–2 weeks',
+    outcome:
+      'Shared vision, prioritized roadmap, and quantified success metrics.',
+  },
+  {
+    title: 'Design & Development',
+    description:
+      'We create high-performing digital experiences that combine intuitive UX, enterprise-grade architecture, and brand-aligned visual systems.',
+    deliverables:
+      'UX flows, interactive prototypes, production-ready design system.',
+    timeframe: '3–6 weeks',
+    outcome:
+      'Validated experience blueprint and ready-to-build component library.',
+  },
+  {
+    title: 'Launch & Optimize',
+    description:
+      'We deploy with confidence, then iterate based on performance data to drive engagement, conversions, and ROI from day one.',
+    deliverables: 'Launch playbook, instrumentation plan, KPI dashboard setup.',
+    timeframe: '2+ weeks',
+    outcome:
+      'Live product with measurement loops and continuous improvement cadence.',
   },
 ]
 
@@ -89,20 +127,24 @@ export default function About() {
           engine for sustainable success. We design for impact. We build for
           ROI.
         </p>
-        <div className='mt-12 max-w-5xl mx-auto bg-primary/5 border border-primary/10 rounded-2xl p-8 md:p-12 text-center shadow-sm'>
-          <h3 className='font-heading text-2xl md:text-3xl mb-4 text-primary'>
-            What Pixelmojo Means
-          </h3>
-          <p className='text-muted-foreground leading-relaxed max-w-4xl mx-auto text-lg'>
-            Our name reflects our philosophy: every{' '}
-            <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
-            design and every{' '}
-            <span className='font-extrabold text-[#F48024]'>mojo</span>—that
-            spark of innovation—we bring serves one purpose: driving your
-            business growth. The intersecting elements in our logo represent the
-            convergence of strategy, design, and technology into unified
-            solutions that actually work.
-          </p>
+        <div className='mt-12 max-w-5xl mx-auto'>
+          <div className='gradient-surface relative overflow-hidden rounded-2xl border border-white/15 p-8 text-center shadow-lg shadow-primary/15 md:p-12'>
+            <div className='relative z-10 space-y-5'>
+              <h3 className='font-heading text-2xl text-white md:text-3xl'>
+                What Pixelmojo Means
+              </h3>
+              <p className='mx-auto max-w-4xl text-lg leading-relaxed text-white/90'>
+                Our name reflects our philosophy: every{' '}
+                <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
+                design and every{' '}
+                <span className='font-extrabold text-[#F48024]'>mojo</span>—that
+                spark of innovation—we bring serves one purpose: driving your
+                business growth. The intersecting elements in our logo represent
+                the convergence of strategy, design, and technology into unified
+                solutions that actually work.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Experience Timeline */}
@@ -114,36 +156,44 @@ export default function About() {
             Three Decades of Design, Innovation & Digital Transformation
           </h2>
 
-          <div className='space-y-16 md:space-y-20'>
-            {experienceTimeline.map((entry, index) => (
-              <div
-                key={`${entry.period}-${index}`}
-                className='text-center space-y-4'
-              >
-                <h3
-                  className='text-lg md:text-xl font-semibold'
-                  style={{ color: '#3CC29E' }}
+          <div className='relative'>
+            <div className='space-y-10 sm:space-y-12 md:space-y-14'>
+              {experienceTimeline.map((entry, index) => (
+                <article
+                  key={`${entry.period}-${index}`}
+                  className='relative rounded-2xl py-2 text-left md:px-0'
                 >
-                  {entry.period}
-                </h3>
-                <div>
-                  <h4 className='text-xl md:text-2xl font-heading text-foreground mb-2'>
-                    {entry.company}
-                  </h4>
-                  <p className='text-lg font-medium text-muted-foreground mb-4'>
-                    {entry.role}
-                  </p>
-                </div>
-                <p className='text-muted leading-relaxed max-w-2xl mx-auto'>
-                  {entry.description}
-                </p>
-              </div>
-            ))}
+                  <div className='flex flex-col gap-5 md:flex-row md:gap-10'>
+                    <div className='md:w-48'>
+                      <p className='font-mono text-xs uppercase tracking-[0.28em] text-primary/80'>
+                        {entry.period}
+                      </p>
+                      <h3 className='mt-2 text-2xl font-heading text-foreground md:text-3xl'>
+                        {entry.company}
+                      </h3>
+                    </div>
+                    <div className='flex-1 space-y-4'>
+                      <p className='text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
+                        {entry.role}
+                      </p>
+                      <p className='text-muted leading-relaxed'>
+                        {entry.description}
+                      </p>
+                      {entry.highlight ? (
+                        <div className='rounded-xl bg-primary/10 py-3 text-sm font-medium text-primary/90'>
+                          {entry.highlight}
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Process Section */}
-        <div className='mt-24 max-w-5xl mx-auto'>
+        <div className='mt-24 max-w-6xl mx-auto px-4 md:px-0'>
           <h2
             className='text-center font-heading text-3xl md:text-4xl'
             style={{ marginBottom: '4rem' }}
@@ -151,36 +201,46 @@ export default function About() {
             How We Turn Strategy Into Measurable Growth
           </h2>
 
-          <div className='grid md:grid-cols-3 gap-8'>
-            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
-              <h3 className='text-xl font-heading mb-4'>
-                Discover & Risk Assessment
-              </h3>
-              <p className='text-muted leading-relaxed'>
-                We uncover your business drivers, user behavior, and potential
-                roadblocks to craft strategies that accelerate growth while
-                minimizing risk.
-              </p>
-            </div>
-
-            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
-              <h3 className='text-xl font-heading mb-4'>
-                Design & Development
-              </h3>
-              <p className='text-muted leading-relaxed'>
-                We create high-performing digital experiences that combine
-                intuitive UX, enterprise-grade architecture, and brand-aligned
-                visual systems.
-              </p>
-            </div>
-
-            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
-              <h3 className='text-xl font-heading mb-4'>Launch & Optimize</h3>
-              <p className='text-muted leading-relaxed'>
-                We deploy with confidence, then iterate based on performance
-                data to drive engagement, conversions, and ROI from day one.
-              </p>
-            </div>
+          <div className='grid gap-6 md:grid-cols-3 md:gap-8'>
+            {processSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className='group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card/60 p-6 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary md:p-8'
+              >
+                <span className='inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#3CC29E] font-heading text-base font-semibold text-white'>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className='mt-4 text-xl font-heading'>{step.title}</h3>
+                <p className='mt-4 text-muted leading-relaxed'>
+                  {step.description}
+                </p>
+                <dl className='mt-6 space-y-4 text-sm text-muted-foreground'>
+                  <div>
+                    <dt className='font-medium text-foreground'>
+                      Deliverables
+                    </dt>
+                    <dd className='mt-1 leading-relaxed'>
+                      {step.deliverables}
+                    </dd>
+                  </div>
+                  <div className='flex items-start justify-between gap-3'>
+                    <div>
+                      <dt className='font-medium text-foreground'>Timeframe</dt>
+                      <dd className='mt-1 leading-relaxed'>{step.timeframe}</dd>
+                    </div>
+                    <div className='relative inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary/80'>
+                      <span className='h-2 w-2 rounded-full bg-primary' />
+                      <span>Phase {index + 1}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <dt className='font-medium text-foreground'>Outcome</dt>
+                    <dd className='mt-1 leading-relaxed'>{step.outcome}</dd>
+                  </div>
+                </dl>
+                <span className='pointer-events-none absolute inset-x-6 bottom-5 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+              </article>
+            ))}
           </div>
         </div>
       </div>
