@@ -26,20 +26,15 @@ export default function Home() {
       <Hero
         title={
           <>
-            WE <span className='text-accent'>DESIGN</span> FOR{' '}
-            <span className='text-cta'>IMPACT</span>
-            <span className='text-cta'>,</span> WE BUILD FOR{' '}
-            <span
-              className='text-growth underline decoration-growth underline-offset-4'
-              style={{ textDecorationThickness: '10px' }}
-            >
-              ROI
-            </span>
+            We design SaaS experiences that turn{' '}
+            <span className='text-accent'>strategy</span> into{' '}
+            <span className='text-growth'>ROI.</span>
           </>
         }
-        description='AI is transformative, but only when deployed strategically. We cut through the hype to identify and capture real business value. We integrate AI with clear purpose, build platforms, and deliver measurable ROI.'
+        description='We bridge product strategy, UX, and AI enablement so your teams launch faster, convert better, and prove measurable value to the business.'
         ctaText='See How We Drive Growth'
         ctaHref='/contact-us'
+        proofPoints={[]}
       />
 
       {/* Scroll-Animated Video Section */}

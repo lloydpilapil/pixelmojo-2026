@@ -15,6 +15,10 @@ interface WorkItem {
   coverImage?: string
   technologies?: string[]
   featured?: boolean
+  results?: Array<{
+    value: string
+    label: string
+  }>
 }
 
 interface FeaturedWorksProps {
@@ -123,6 +127,25 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
             </div>
           )}
 
+          {/* Results */}
+          {work.results && work.results.length > 0 && (
+            <div className='grid gap-3 sm:grid-cols-2 pt-2'>
+              {work.results.map(result => (
+                <div
+                  key={`${work.slug}-${result.label}`}
+                  className='rounded-xl border border-border/70 bg-muted/40 px-4 py-3'
+                >
+                  <div className='text-xl font-semibold text-foreground'>
+                    {result.value}
+                  </div>
+                  <div className='text-xs uppercase tracking-wide text-muted-foreground'>
+                    {result.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* CTA */}
           <div className='flex items-center gap-2 text-primary font-medium pt-2 group-hover:gap-3 transition-all duration-300'>
             <span>View Project</span>
@@ -144,9 +167,13 @@ const FeaturedWorks = ({
       year: '2024',
       category: 'Web & Mobile',
       slug: '/works/real-estate-bear',
-      coverImage: '',
+      coverImage: '/ready-to-transform.webp',
       technologies: ['React', 'Next.js', 'React Native', 'TypeScript'],
       featured: true,
+      results: [
+        { value: '120%', label: 'Growth in qualified leads' },
+        { value: '6 weeks', label: 'From audit to relaunch' },
+      ],
     },
     {
       title: 'Funnel Zen Branding',
@@ -155,8 +182,12 @@ const FeaturedWorks = ({
       year: '2023',
       category: 'Branding',
       slug: '/works/funnel-zen-branding',
-      coverImage: '',
+      coverImage: '/our-services-cover.webp',
       technologies: ['Brand Strategy', 'Logo Design', 'Visual Identity'],
+      results: [
+        { value: '3 mo', label: 'Time to market with new identity' },
+        { value: '+48%', label: 'Increase in demo conversions' },
+      ],
     },
     {
       title: 'Beemine Store',
@@ -165,8 +196,12 @@ const FeaturedWorks = ({
       year: '2023',
       category: 'E-commerce',
       slug: '/works/beemine-store',
-      coverImage: '',
+      coverImage: '/pixelmojo-branding.svg',
       technologies: ['Shopify', 'UI/UX', 'Brand Design', 'Conversion'],
+      results: [
+        { value: '38%', label: 'Lift in checkout completion' },
+        { value: '2x', label: 'Average order value growth' },
+      ],
     },
     {
       title: 'Cigna Stress Management App',
@@ -175,9 +210,13 @@ const FeaturedWorks = ({
       year: '2020',
       category: 'Healthcare',
       slug: '/works/cigna-stress-management-app',
-      coverImage: '',
+      coverImage: '/why-your-design-teams-next-hire-should---scientist.webp',
       technologies: ['Mobile Design', 'Healthcare UX', 'Accessibility'],
       featured: true,
+      results: [
+        { value: '92%', label: 'Patient program adherence' },
+        { value: 'HIPAA', label: 'Compliant design system' },
+      ],
     },
   ],
 }: FeaturedWorksProps) => {

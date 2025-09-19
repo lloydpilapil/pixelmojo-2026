@@ -39,6 +39,7 @@ const TestimonialSection = ({
       authorTitle: 'Founder & Chief Operating Officer',
       authorCompany: 'Got Volunteers?',
       authorImage: '/mira.webp',
+      companyLogo: '/got-volunteers-min.png',
     },
     {
       headline: 'A+ for Collaboration & Creativity',
@@ -48,6 +49,7 @@ const TestimonialSection = ({
       authorTitle: 'Project Controls Manager',
       authorCompany: 'Parsons',
       authorImage: '/richard_bridge-min.jpg',
+      companyLogo: '/parsons-corporation-vector-logo-2022.svg',
     },
     {
       headline: 'User-Driven Brand Design',
@@ -176,7 +178,7 @@ const TestimonialSection = ({
               )}
 
               {/* Quote - Large and Centered */}
-              <blockquote className='text-center mb-12'>
+              <blockquote className='text-center mb-10 lg:mb-12'>
                 <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-slate-800 dark:text-slate-100'>
                   "{currentTestimonial.quote}"
                 </p>
@@ -198,7 +200,7 @@ const TestimonialSection = ({
                 )}
 
                 {/* Author Details - Simple Text */}
-                <div className='text-left'>
+                <div className='text-left max-w-sm'>
                   <div className='font-semibold text-slate-800 dark:text-slate-100'>
                     {currentTestimonial.authorName}
                   </div>
