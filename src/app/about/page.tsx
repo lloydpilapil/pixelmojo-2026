@@ -1,7 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import ScrollVideoSection from '@/components/ScrollVideoSection'
 
 export const metadata: Metadata = {
@@ -15,93 +12,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
-
-const aboutHighlights = [
-  {
-    title: 'Design-Led Engineering',
-    description:
-      'Translating validated user insights into cohesive systems, interfaces, and production-ready code.',
-    features: [
-      'UI/UX systems that scale across products',
-      'Component libraries engineered for reuse',
-      'Pixel-perfect implementation with accessibility in mind',
-      'Design QA baked into delivery rituals',
-    ],
-    icon: '/ui_ux_design_solutions_services_thumb.svg',
-    href: '/portfolio',
-    cta: 'View project work',
-  },
-  {
-    title: 'Product Strategy & Leadership',
-    description:
-      'Partnering with founders and product teams to align vision, roadmap, and delivery for measurable outcomes.',
-    features: [
-      'Research-informed product roadmaps',
-      'Executive and stakeholder alignment',
-      'North-star metrics tied to execution',
-      'Prioritization frameworks that unlock focus',
-    ],
-    icon: '/branding_services_thumb.svg',
-    href: '/services',
-    cta: 'Explore strategy approach',
-  },
-  {
-    title: 'Integrated Growth Systems',
-    description:
-      'Breaking down silos by uniting brand, design, engineering, and growth into one momentum-building engine.',
-    features: [
-      'Cross-functional rituals that ship faster',
-      'Analytics loops for every release',
-      'Campaigns connected to product moments',
-      'Documentation that scales knowledge',
-    ],
-    icon: '/digital_marketing_services_thumb.svg',
-    href: '/services/brand-activation-growth',
-    cta: 'Align your growth ops',
-  },
-  {
-    title: 'Full-Stack Craft',
-    description:
-      'Modern web engineering across the stack to ensure performance, maintainability, and joyful experiences.',
-    features: [
-      'React, Next.js, and TypeScript expertise',
-      'API, CMS, and data integration patterns',
-      'Performance & accessibility from day one',
-      'CI/CD automation with observable workflows',
-    ],
-    icon: '/web_app_design_services_thumb.svg',
-    href: '/services/development-solutions',
-    cta: 'Review technical craft',
-  },
-  {
-    title: 'Client Partnerships',
-    description:
-      'Long-term collaborations that turn ambitious roadmaps into shipped products and compounding value.',
-    features: [
-      '5+ years delivering enterprise-grade outcomes',
-      '30+ multi-disciplinary launches across sectors',
-      'Global collaboration across time zones',
-      'Fractional and embedded leadership models',
-    ],
-    icon: '/creative_contents_services_thumb.svg',
-    href: '/contact',
-    cta: 'Start a partnership',
-  },
-  {
-    title: 'Mentorship & Community',
-    description:
-      'Giving back through teaching, coaching, and building spaces for designers and engineers to grow.',
-    features: [
-      'Team coaching and enablement programs',
-      'Playbooks for scaling design & dev orgs',
-      'Workshops, talks, and community sessions',
-      '1:1 mentorship for emerging talent',
-    ],
-    icon: '/graphic_visual_design_services_thumb.svg',
-    href: '/contact',
-    cta: 'Schedule a session',
-  },
-]
 
 const experienceTimeline = [
   {
@@ -143,7 +53,7 @@ const experienceTimeline = [
 
 export default function About() {
   return (
-    <div className='container mx-auto px-4 py-16 animate-fade-in'>
+    <div className='container mx-auto px-4 py-16 pb-32 animate-fade-in'>
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading'>About Pixelmojo</h1>
@@ -197,7 +107,10 @@ export default function About() {
 
         {/* Experience Timeline */}
         <div className='mt-16 max-w-6xl mx-auto'>
-          <h2 className='text-center font-heading text-3xl md:text-4xl mb-16 md:mb-20'>
+          <h2
+            className='text-center font-heading text-3xl md:text-4xl'
+            style={{ marginBottom: '4rem' }}
+          >
             Three Decades of Design, Innovation & Digital Transformation
           </h2>
 
@@ -228,58 +141,48 @@ export default function About() {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Highlights Grid */}
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
-        {aboutHighlights.map((highlight, index) => (
-          <Link
-            key={index}
-            href={highlight.href}
-            className='group block h-full'
+        {/* Process Section */}
+        <div className='mt-24 max-w-5xl mx-auto'>
+          <h2
+            className='text-center font-heading text-3xl md:text-4xl'
+            style={{ marginBottom: '4rem' }}
           >
-            <div className='h-full bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
-              {/* Icon */}
-              <div className='w-16 h-16 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110'>
-                <Image
-                  src={highlight.icon}
-                  alt={highlight.title}
-                  width={64}
-                  height={64}
-                  className='w-16 h-16'
-                />
-              </div>
+            How We Turn Strategy Into Measurable Growth
+          </h2>
 
-              {/* Content */}
-              <div className='space-y-4 mb-6'>
-                <h3 className='group-hover:text-primary transition-colors duration-300'>
-                  {highlight.title}
-                </h3>
-                <p className='text-muted leading-relaxed'>
-                  {highlight.description}
-                </p>
-              </div>
-
-              {/* Features */}
-              <div className='space-y-3 mb-6'>
-                {highlight.features.map((feature, idx) => (
-                  <div key={idx} className='flex items-start gap-3'>
-                    <div className='flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5'>
-                      <div className='w-2 h-2 rounded-full bg-primary' />
-                    </div>
-                    <span className='text-sm text-foreground'>{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <div className='flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300'>
-                <span>{highlight.cta ?? 'Learn more'}</span>
-                <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
-              </div>
+          <div className='grid md:grid-cols-3 gap-8'>
+            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
+              <h3 className='text-xl font-heading mb-4'>
+                Discover & Risk Assessment
+              </h3>
+              <p className='text-muted leading-relaxed'>
+                We uncover your business drivers, user behavior, and potential
+                roadblocks to craft strategies that accelerate growth while
+                minimizing risk.
+              </p>
             </div>
-          </Link>
-        ))}
+
+            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
+              <h3 className='text-xl font-heading mb-4'>
+                Design & Development
+              </h3>
+              <p className='text-muted leading-relaxed'>
+                We create high-performing digital experiences that combine
+                intuitive UX, enterprise-grade architecture, and brand-aligned
+                visual systems.
+              </p>
+            </div>
+
+            <div className='bg-card rounded-2xl border border-border p-8 text-center'>
+              <h3 className='text-xl font-heading mb-4'>Launch & Optimize</h3>
+              <p className='text-muted leading-relaxed'>
+                We deploy with confidence, then iterate based on performance
+                data to drive engagement, conversions, and ROI from day one.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
