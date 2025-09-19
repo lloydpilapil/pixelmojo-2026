@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Check commit message format (conventional commits)
 # Examples: feat: add new feature, fix: resolve bug, docs: update readme
 npx commitlint --edit "$1"
