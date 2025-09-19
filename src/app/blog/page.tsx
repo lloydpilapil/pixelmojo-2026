@@ -1,50 +1,10 @@
 import { allPosts } from 'contentlayer/generated'
-import type { Metadata } from 'next'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import { FeaturedPostCard } from '@/components/blog/FeaturedPostCard'
+import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'Insights & Strategy Blog | Product, UX & Growth by Pixelmojo',
-  description:
-    'Real-world lessons in UX, product design, and growth strategy—written by the team behind Pixelmojo. Built for startups, SaaS teams, and digital leaders.',
-  openGraph: {
-    title: 'Insights & Strategy Blog | Product, UX & Growth by Pixelmojo',
-    description:
-      'Real-world lessons in UX, product design, and growth strategy—written by the team behind Pixelmojo. Built for startups, SaaS teams, and digital leaders.',
-    type: 'website',
-  },
-}
-
-// Client Component for Newsletter Form
-function NewsletterSection({
-  variant = 'default',
-  buttonText = 'Subscribe now',
-  buttonFullWidth = true,
-}: {
-  variant?: 'default' | 'secondary'
-  buttonText?: string
-  buttonFullWidth?: boolean
-}) {
-  return (
-    <div className='space-y-4'>
-      <input
-        type='email'
-        placeholder='your@email.com'
-        className='w-full px-4 py-3 rounded-full border border-border bg-background focus:outline-none focus:ring-2 focus:ring-cta'
-      />
-      <button
-        type='button'
-        className={`inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 px-5 text-base rounded-full shadow hover:scale-105 active:scale-95 ${
-          variant === 'secondary'
-            ? 'bg-secondary/20 text-secondary hover:bg-growth hover:text-white'
-            : 'bg-cta text-white hover:bg-growth'
-        } ${buttonFullWidth ? 'w-full' : 'w-full md:w-auto'}`}
-      >
-        {buttonText}
-      </button>
-    </div>
-  )
-}
+const POSTS_PER_PAGE = 9
 
 export default function Blog() {
   const posts = allPosts.sort(
@@ -53,6 +13,9 @@ export default function Blog() {
 
   const featuredPost = posts[0]
   const recentPosts = posts.slice(1)
+  const displayedPosts = recentPosts.slice(0, POSTS_PER_PAGE)
+  const totalPages = Math.ceil(recentPosts.length / POSTS_PER_PAGE)
+  const hasMorePages = totalPages > 1
 
   return (
     <div className='animate-fade-in'>
@@ -84,9 +47,9 @@ export default function Blog() {
             <h2>More Insights</h2>
           </div>
 
-          {recentPosts.length > 0 ? (
+          {displayedPosts.length > 0 ? (
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-              {recentPosts.map(post => (
+              {displayedPosts.map(post => (
                 <BlogPostCard key={post._id} post={post} />
               ))}
             </div>
@@ -111,33 +74,65 @@ export default function Blog() {
               <p className='text-muted'>Check back soon for new content!</p>
             </div>
           )}
-        </div>
-      </section>
 
-      {/* Bottom Newsletter Section */}
-      <section className='bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-t border-border'>
-        <div className='container mx-auto px-4 py-20'>
-          <div className='max-w-4xl mx-auto'>
-            <div className='grid md:grid-cols-2 gap-12 items-center'>
-              <div>
-                <span className='text-primary font-semibold text-sm uppercase tracking-wider'>
-                  Subscribe to
-                </span>
-                <h2 className='mt-2 mb-4'>The Creative Brief</h2>
-                <p className='text-muted'>
-                  Where 70K+ creatives and marketers find the latest insights,
-                  articles and tools sparking industry-wide interest.
-                </p>
+          {/* Pagination Controls */}
+          {hasMorePages && (
+            <div className='mt-16'>
+              <div className='flex items-center justify-center gap-2'>
+                {/* Page Numbers */}
+                <div className='flex items-center gap-1'>
+                  {/* Current page (1) - highlighted */}
+                  <span className='px-3 py-1 rounded-lg bg-primary text-white'>
+                    1
+                  </span>
+
+                  {/* Show next few page numbers */}
+                  {Array.from(
+                    { length: Math.min(3, totalPages - 1) },
+                    (_, i) => i + 2
+                  ).map(page => (
+                    <Link
+                      key={page}
+                      href={`/blog/page/${page}`}
+                      className='px-3 py-1 rounded-lg hover:bg-muted transition-colors'
+                    >
+                      {page}
+                    </Link>
+                  ))}
+
+                  {/* Show ellipsis if there are many pages */}
+                  {totalPages > 4 && (
+                    <span className='px-2 text-muted'>...</span>
+                  )}
+
+                  {/* Last page link if it's not already shown */}
+                  {totalPages > 4 && (
+                    <Link
+                      href={`/blog/page/${totalPages}`}
+                      className='px-3 py-1 rounded-lg hover:bg-muted transition-colors'
+                    >
+                      {totalPages}
+                    </Link>
+                  )}
+                </div>
+
+                {/* Next Button */}
+                <Link
+                  href='/blog/page/2'
+                  className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors'
+                >
+                  Next
+                  <ChevronRight className='w-4 h-4' />
+                </Link>
               </div>
-              <div>
-                <NewsletterSection
-                  variant='secondary'
-                  buttonText='Subscribe'
-                  buttonFullWidth={false}
-                />
-              </div>
+
+              {/* Page Info */}
+              <p className='mt-6 text-center text-sm text-muted'>
+                Showing posts 1-{displayedPosts.length} of {recentPosts.length}{' '}
+                total posts
+              </p>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </div>

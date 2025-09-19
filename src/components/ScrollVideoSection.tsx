@@ -21,14 +21,20 @@ export default function ScrollVideoSection({
   const [shouldAutoplay, setShouldAutoplay] = useState(false)
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
   const [videoStyle, setVideoStyle] = useState<React.CSSProperties>({})
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     // Calculate video size to fit viewport with navbar
     const calculateVideoSize = () => {
+      const isSmallScreen = window.innerWidth < 768
+      setIsMobile(isSmallScreen)
+
       const navbarHeight = 64 // h-16 in Tailwind = 4rem = 64px
-      const padding = 48 // Some padding from top and bottom
+      const padding = isSmallScreen ? 24 : 48 // Allow more breathing room on desktop
       const availableHeight = window.innerHeight - navbarHeight - padding
-      const maxWidth = window.innerWidth * 0.9 // 90% of viewport width
+      const maxWidth = isSmallScreen
+        ? window.innerWidth
+        : window.innerWidth * 0.9
 
       // Video aspect ratio is 16:9
       const aspectRatio = 16 / 9
@@ -49,6 +55,8 @@ export default function ScrollVideoSection({
         width: '100%',
         aspectRatio: '16/9',
       })
+
+      setScale(isSmallScreen ? 1 : 0.8)
     }
 
     calculateVideoSize()
@@ -82,7 +90,9 @@ export default function ScrollVideoSection({
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress))
 
       // Smooth scaling from 0.8 to 1.0
-      const newScale = 0.8 + 0.2 * clampedProgress
+      const minScale = isMobile ? 1 : 0.8
+      const maxScale = 1
+      const newScale = minScale + (maxScale - minScale) * clampedProgress
       setScale(newScale)
 
       // Smooth opacity from 0 to 1
@@ -122,7 +132,7 @@ export default function ScrollVideoSection({
       window.removeEventListener('scroll', scrollListener)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [hasAutoplayed, shouldAutoplay])
+  }, [hasAutoplayed, shouldAutoplay, isMobile])
 
   return (
     <section
@@ -154,7 +164,9 @@ export default function ScrollVideoSection({
           <div
             className='relative rounded-2xl overflow-hidden transition-all duration-700 w-full h-full'
             style={{
-              boxShadow: `0 ${8 + 12 * opacity}px ${16 + 24 * opacity}px -${4 - 2 * opacity}px rgba(0, 0, 0, ${0.06 + 0.08 * opacity})`,
+              boxShadow: isMobile
+                ? `0 10px 26px rgba(0, 0, 0, 0.18)`
+                : `0 ${8 + 12 * opacity}px ${16 + 24 * opacity}px -${4 - 2 * opacity}px rgba(0, 0, 0, ${0.06 + 0.08 * opacity})`,
             }}
           >
             <VideoPlayer

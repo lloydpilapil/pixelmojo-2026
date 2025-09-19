@@ -188,7 +188,7 @@ export default function Header() {
 
       {/* Desktop Mega Menu Panel - Pushes content down */}
       <div
-        className={`hidden lg:block w-full bg-[#FBF8F2] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`hidden lg:block w-full bg-[#EEF7EB] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
           isServicesOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -200,7 +200,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsServicesOpen(false)}
-                className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#55AE44] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded hover:bg-gray-100/50'
+                className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#2F6B24] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
               >
                 {item.label}
               </Link>

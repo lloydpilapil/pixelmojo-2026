@@ -1,13 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface VimeoPlayer {
   on: (event: string, callback: (error?: unknown) => void) => void
+  off: (event: string, callback?: (error?: unknown) => void) => void
   play: () => Promise<void>
   setVolume: (volume: number) => Promise<void>
   getVolume: () => Promise<number>
   setCurrentTime: (seconds: number) => Promise<number>
+  destroy: () => Promise<void>
 }
 
 interface VimeoConstructor {
@@ -18,6 +20,84 @@ declare global {
   interface Window {
     Vimeo: VimeoConstructor
   }
+}
+
+const VIMEO_SCRIPT_SRC = 'https://player.vimeo.com/api/player.js'
+const VIMEO_ORIGIN = 'https://player.vimeo.com'
+
+let vimeoAPIReadyPromise: Promise<VimeoConstructor> | null = null
+
+const ensureVimeoConnectionHints = () => {
+  if (typeof document === 'undefined') return
+
+  if (
+    !document.querySelector(
+      `link[rel="dns-prefetch"][href="//player.vimeo.com"]`
+    )
+  ) {
+    const dnsPrefetch = document.createElement('link')
+    dnsPrefetch.rel = 'dns-prefetch'
+    dnsPrefetch.href = '//player.vimeo.com'
+    document.head.appendChild(dnsPrefetch)
+  }
+
+  if (
+    !document.querySelector(`link[rel="preconnect"][href="${VIMEO_ORIGIN}"]`)
+  ) {
+    const preconnect = document.createElement('link')
+    preconnect.rel = 'preconnect'
+    preconnect.href = VIMEO_ORIGIN
+    preconnect.crossOrigin = 'anonymous'
+    document.head.appendChild(preconnect)
+  }
+}
+
+const loadVimeoAPI = async (): Promise<VimeoConstructor> => {
+  if (typeof window === 'undefined') {
+    throw new Error('Vimeo API can only be loaded in the browser')
+  }
+
+  if (window.Vimeo) {
+    return window.Vimeo
+  }
+
+  if (!vimeoAPIReadyPromise) {
+    ensureVimeoConnectionHints()
+
+    vimeoAPIReadyPromise = new Promise((resolve, reject) => {
+      const handleLoad = () => {
+        if (window.Vimeo) {
+          resolve(window.Vimeo)
+        } else {
+          vimeoAPIReadyPromise = null
+          reject(new Error('Vimeo API did not initialize properly'))
+        }
+      }
+
+      const handleError = () => {
+        vimeoAPIReadyPromise = null
+        reject(new Error('Failed to load Vimeo API script'))
+      }
+
+      const existingScript = document.querySelector<HTMLScriptElement>(
+        `script[src="${VIMEO_SCRIPT_SRC}"]`
+      )
+
+      if (existingScript) {
+        existingScript.addEventListener('load', handleLoad, { once: true })
+        existingScript.addEventListener('error', handleError, { once: true })
+      } else {
+        const script = document.createElement('script')
+        script.src = VIMEO_SCRIPT_SRC
+        script.async = true
+        script.addEventListener('load', handleLoad, { once: true })
+        script.addEventListener('error', handleError, { once: true })
+        document.head.appendChild(script)
+      }
+    })
+  }
+
+  return vimeoAPIReadyPromise
 }
 
 interface VideoPlayerProps {
@@ -37,13 +117,22 @@ export default function VideoPlayer({
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true) // Start muted for autoplay
-  const [player, setPlayer] = useState<VimeoPlayer | null>(null)
   const [hasAutoplayed, setHasAutoplayed] = useState(false)
   const [isPreloaded, setIsPreloaded] = useState(false)
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false) // Only load when near viewport
   const [isVideoReady, setIsVideoReady] = useState(false) // Track when video is actually ready to play
   const [showCover, setShowCover] = useState(true) // Control cover visibility
   const containerRef = useRef<HTMLDivElement>(null)
+  const playerRef = useRef<VimeoPlayer | null>(null)
+  const playerHandlersRef = useRef<{
+    onPlay?: () => void
+    onPause?: () => void
+    onLoaded?: () => void
+    onEnded?: () => void
+    onError?: (error: unknown) => void
+  }>({})
+  const pendingStartMutedRef = useRef(true)
+  const coverTimeoutRef = useRef<number | null>(null)
 
   // Lazy loading: Only load video resources when component enters viewport
   useEffect(() => {
@@ -77,34 +166,16 @@ export default function VideoPlayer({
   useEffect(() => {
     if (!shouldLoadVideo) return
 
-    // DNS prefetch for faster connection
-    const dnsPrefetch = document.createElement('link')
-    dnsPrefetch.rel = 'dns-prefetch'
-    dnsPrefetch.href = '//player.vimeo.com'
-    document.head.appendChild(dnsPrefetch)
+    let isActive = true
 
-    // Preconnect for even faster loading
-    const preconnect = document.createElement('link')
-    preconnect.rel = 'preconnect'
-    preconnect.href = 'https://player.vimeo.com'
-    document.head.appendChild(preconnect)
-
-    // Load Vimeo Player API
-    const script = document.createElement('script')
-    script.src = 'https://player.vimeo.com/api/player.js'
-    script.async = true
-    document.head.appendChild(script)
+    loadVimeoAPI().catch(error => {
+      if (isActive) {
+        console.error('Failed to prepare Vimeo API', error)
+      }
+    })
 
     return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script)
-      }
-      if (document.head.contains(dnsPrefetch)) {
-        document.head.removeChild(dnsPrefetch)
-      }
-      if (document.head.contains(preconnect)) {
-        document.head.removeChild(preconnect)
-      }
+      isActive = false
     }
   }, [shouldLoadVideo])
 
@@ -149,104 +220,198 @@ export default function VideoPlayer({
     }
   }, [autoplay, shouldLoadVideo, hasAutoplayed, isPlaying, autoplayThreshold])
 
-  const initializeVimeoPlayer = (startMuted: boolean = true) => {
-    // Initialize Vimeo player after iframe is rendered
-    setTimeout(() => {
-      const iframe = document.getElementById(`vimeo-${videoId}`)
-      if (iframe && window.Vimeo) {
-        const vimeoPlayer = new window.Vimeo.Player(iframe)
-        setPlayer(vimeoPlayer)
+  const cleanupPlayer = useCallback((target?: VimeoPlayer | null) => {
+    const activePlayer = target ?? playerRef.current
+    if (!activePlayer) return
 
-        // Start playing muted for guaranteed autoplay
-        if (startMuted) {
-          vimeoPlayer.setVolume(0).then(() => {
-            vimeoPlayer
-              .play()
-              .then(() => {
-                setIsPlaying(true)
-                console.log('Video playing muted')
-              })
-              .catch(error => {
-                console.log('Autoplay blocked:', error)
-              })
+    if (coverTimeoutRef.current) {
+      window.clearTimeout(coverTimeoutRef.current)
+      coverTimeoutRef.current = null
+    }
+
+    const handlers = playerHandlersRef.current
+
+    if (handlers?.onPlay) activePlayer.off('play', handlers.onPlay)
+    if (handlers?.onPause) activePlayer.off('pause', handlers.onPause)
+    if (handlers?.onLoaded) activePlayer.off('loaded', handlers.onLoaded)
+    if (handlers?.onEnded) activePlayer.off('ended', handlers.onEnded)
+    if (handlers?.onError) activePlayer.off('error', handlers.onError)
+
+    playerHandlersRef.current = {}
+
+    activePlayer.destroy().catch(() => undefined)
+
+    if (!target || target === playerRef.current) {
+      playerRef.current = null
+    }
+  }, [])
+
+  const initializeVimeoPlayer = useCallback(
+    async (startMuted: boolean = true) => {
+      if (!shouldLoadVideo) return
+
+      try {
+        const Vimeo = await loadVimeoAPI()
+        let iframe = document.getElementById(
+          `vimeo-${videoId}`
+        ) as HTMLIFrameElement | null
+
+        if (!iframe) {
+          // Wait for next animation frame in case the iframe hasn't been rendered yet
+          await new Promise<void>(resolve => {
+            requestAnimationFrame(() => resolve())
           })
+          iframe = document.getElementById(
+            `vimeo-${videoId}`
+          ) as HTMLIFrameElement | null
         }
 
-        // Handle video events
-        vimeoPlayer.on('play', () => {
-          setIsPlaying(true)
-        })
+        if (!iframe) {
+          return
+        }
 
-        // Listen for when video is actually ready to play
-        vimeoPlayer.on('loaded', () => {
-          setIsVideoReady(true)
-          // Only hide cover when video is truly ready
-          setTimeout(() => {
-            setShowCover(false)
-          }, 100) // Small delay to ensure smooth transition
-        })
+        if (!playerRef.current) {
+          const vimeoPlayer = new Vimeo.Player(iframe)
+          playerRef.current = vimeoPlayer
 
-        vimeoPlayer.on('pause', () => {
-          setIsPlaying(false)
-        })
+          const handlePlay = () => {
+            setIsPlaying(true)
+          }
 
-        vimeoPlayer.on('ended', () => {
-          // Reset video to frame 1 and show cover image
-          vimeoPlayer
-            .setCurrentTime(0)
-            .then(() => {
-              setIsPlaying(false)
-              setIsMuted(true)
-              setPlayer(null)
-              setHasAutoplayed(false) // Allow autoplay again if user scrolls back
-              setIsVideoReady(false)
-              setShowCover(true) // Show cover again
-            })
-            .catch(error => {
-              console.log('Error resetting video time:', error)
-              // Fallback: just hide the video and show cover
-              setIsPlaying(false)
-              setIsMuted(true)
-              setPlayer(null)
-              setHasAutoplayed(false)
-              setIsVideoReady(false)
-              setShowCover(true) // Show cover again
-            })
-        })
+          const handleLoaded = () => {
+            setIsVideoReady(true)
+            if (coverTimeoutRef.current) {
+              window.clearTimeout(coverTimeoutRef.current)
+            }
+            coverTimeoutRef.current = window.setTimeout(() => {
+              setShowCover(false)
+              coverTimeoutRef.current = null
+            }, 100)
+          }
 
-        vimeoPlayer.on('error', (error: any) => {
-          console.error('Vimeo Player Error:', error)
-        })
+          const handlePause = () => {
+            setIsPlaying(false)
+            setIsVideoReady(false)
+            setShowCover(true)
+            pendingStartMutedRef.current = true
+            cleanupPlayer()
+          }
+
+          const handleEnded = () => {
+            const currentPlayer = playerRef.current
+            if (!currentPlayer) return
+
+            currentPlayer
+              .setCurrentTime(0)
+              .catch(error => {
+                console.log('Error resetting video time:', error)
+              })
+              .finally(() => {
+                setIsPlaying(false)
+                setIsMuted(true)
+                setHasAutoplayed(false)
+                setIsVideoReady(false)
+                setShowCover(true)
+                pendingStartMutedRef.current = true
+                cleanupPlayer(currentPlayer)
+              })
+          }
+
+          const handleError = (error: unknown) => {
+            console.error('Vimeo Player Error:', error)
+          }
+
+          vimeoPlayer.on('play', handlePlay)
+          vimeoPlayer.on('loaded', handleLoaded)
+          vimeoPlayer.on('pause', handlePause)
+          vimeoPlayer.on('ended', handleEnded)
+          vimeoPlayer.on('error', handleError)
+
+          playerHandlersRef.current = {
+            onPlay: handlePlay,
+            onLoaded: handleLoaded,
+            onPause: handlePause,
+            onEnded: handleEnded,
+            onError: handleError,
+          }
+        }
+
+        const activePlayer = playerRef.current
+        if (!activePlayer) return
+
+        if (startMuted) {
+          await activePlayer.setVolume(0)
+          setIsMuted(true)
+        } else {
+          await activePlayer.setVolume(1)
+          setIsMuted(false)
+        }
+
+        try {
+          await activePlayer.play()
+        } catch (error) {
+          console.log('Autoplay blocked:', error)
+        }
+      } catch (error) {
+        console.error('Failed to initialize Vimeo Player:', error)
       }
-    }, 100)
+    },
+    [cleanupPlayer, shouldLoadVideo, videoId]
+  )
+
+  const startPlayback = (startMuted: boolean) => {
+    pendingStartMutedRef.current = startMuted
+    setShouldLoadVideo(true)
+    setIsPlaying(true)
   }
 
   const handleAutoplay = () => {
-    setIsPlaying(true)
-    initializeVimeoPlayer(true) // Start muted
+    startPlayback(true)
   }
 
   const handlePlayClick = () => {
-    setIsPlaying(true)
     setHasAutoplayed(true)
-    initializeVimeoPlayer(true) // Start muted even on click for consistency
+    startPlayback(true)
   }
 
   const toggleMute = () => {
-    if (player) {
-      if (isMuted) {
-        player.setVolume(1).then(() => {
+    const activePlayer = playerRef.current
+    if (!activePlayer) return
+
+    if (isMuted) {
+      activePlayer
+        .setVolume(1)
+        .then(() => {
           setIsMuted(false)
           console.log('Unmuted')
         })
-      } else {
-        player.setVolume(0).then(() => {
+        .catch(error => {
+          console.log('Unable to unmute video:', error)
+        })
+    } else {
+      activePlayer
+        .setVolume(0)
+        .then(() => {
           setIsMuted(true)
           console.log('Muted')
         })
-      }
+        .catch(error => {
+          console.log('Unable to mute video:', error)
+        })
     }
   }
+
+  useEffect(() => {
+    if (!isPlaying) return
+
+    initializeVimeoPlayer(pendingStartMutedRef.current)
+  }, [isPlaying, initializeVimeoPlayer])
+
+  useEffect(() => {
+    return () => {
+      cleanupPlayer()
+    }
+  }, [cleanupPlayer])
 
   return (
     <div

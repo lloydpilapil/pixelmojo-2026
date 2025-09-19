@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
   const post = allPosts.find(post => post._raw.flattenedPath === slug)
 
   if (!post) {
-    return {}
+    notFound()
   }
 
   return {
