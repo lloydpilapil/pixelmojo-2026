@@ -9,13 +9,13 @@ import OurApproach from '@/components/OurApproach'
 import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
-  title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
+  title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
   description:
-    'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
+    'Pixelmojo orchestrates AI + design so SaaS roadmaps ship faster, mapping enablement to real user journeys and experiments teams can run today.',
   openGraph: {
-    title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
+    title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
     description:
-      'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
+      'Pixelmojo orchestrates AI + design so SaaS roadmaps ship faster, mapping enablement to real user journeys and experiments teams can run today.',
     type: 'website',
   },
 }

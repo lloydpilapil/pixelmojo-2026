@@ -161,12 +161,11 @@ export default function Contact() {
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
-          Ready to Transform Your Digital Chaos Into Growth?
+          Start the AI + design sprint your roadmap needs.
         </h1>
         <p className='lead max-w-5xl mx-auto mb-12'>
-          If you've made it here, you're probably tired of juggling multiple
-          vendors, dealing with disconnected solutions, or working with agencies
-          that create pretty designs but don't drive real business results.
+          Tell us where delivery drags. We'll map AI enablement to real user
+          journeys and pair it with experiments your team can ship this quarter.
         </p>
       </div>
 

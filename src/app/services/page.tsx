@@ -4,13 +4,13 @@ import ScrollVideoSection from '@/components/ScrollVideoSection'
 import { LinkButtonWithArrow } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'UI/UX, Product Design & Growth Services | Pixelmojo',
+  title: 'AI + Design Sprints & Product Services | Pixelmojo',
   description:
-    'Scalable UI/UX, product design, development, and growth strategy—integrated into one cohesive system to launch faster, convert better, and scale smarter.',
+    'See how Pixelmojo links AI enablement, product design, and growth experiments into one sprint-ready system for SaaS teams.',
   openGraph: {
-    title: 'UI/UX, Product Design & Growth Services | Pixelmojo',
+    title: 'AI + Design Sprints & Product Services | Pixelmojo',
     description:
-      'Scalable UI/UX, product design, development, and growth strategy—integrated into one cohesive system to launch faster, convert better, and scale smarter.',
+      'See how Pixelmojo links AI enablement, product design, and growth experiments into one sprint-ready system for SaaS teams.',
     type: 'website',
   },
 }

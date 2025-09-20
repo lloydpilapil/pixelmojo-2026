@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import ScrollVideoSection from '@/components/ScrollVideoSection'
 
 export const metadata: Metadata = {
-  title: 'About Pixelmojo | Strategic Design for Growth-Driven Teams',
+  title: 'About Pixelmojo | AI + Design Sprints for SaaS Teams',
   description:
-    'Led by Lloyd Pilapil, Pixelmojo blends enterprise strategy with startup speed to deliver high-impact UI/UX, product design, and growth-ready digital solutions.',
+    'Meet the team that maps AI enablement to real user journeys, pairing design systems with experiments that ship faster.',
   openGraph: {
-    title: 'About Pixelmojo | Strategic Design for Growth-Driven Teams',
+    title: 'About Pixelmojo | AI + Design Sprints for SaaS Teams',
     description:
-      'Led by Lloyd Pilapil, Pixelmojo blends enterprise strategy with startup speed to deliver high-impact UI/UX, product design, and growth-ready digital solutions.',
+      'Meet the team that maps AI enablement to real user journeys, pairing design systems with experiments that ship faster.',
     type: 'website',
   },
 }

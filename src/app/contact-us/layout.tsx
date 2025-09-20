@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact Pixelmojo | Book a Strategy Session for Growth',
+  title: 'Contact Pixelmojo | Start Your AI + Design Sprint',
   description:
-    "Let's fix what's holding your growth back. Connect with PixelMojo for a free strategy call—designed to turn digital chaos into a growth engine.",
+    "Tell us where delivery drags. We'll map AI enablement to real user journeys and pair it with experiments your team can ship this quarter.",
   openGraph: {
-    title: 'Contact Pixelmojo | Book a Strategy Session for Growth',
+    title: 'Contact Pixelmojo | Start Your AI + Design Sprint',
     description:
-      "Let's fix what's holding your growth back. Connect with PixelMojo for a free strategy call—designed to turn digital chaos into a growth engine.",
+      "Tell us where delivery drags. We'll map AI enablement to real user journeys and pair it with experiments your team can ship this quarter.",
     type: 'website',
   },
 }
