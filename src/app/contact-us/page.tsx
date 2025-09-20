@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
 import { ChevronDown } from 'lucide-react'
 
 export default function Contact() {
@@ -26,6 +25,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -38,16 +38,42 @@ export default function Contact() {
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setSubmitted(true)
-    setIsSubmitting(false)
-    setFormData(getDefaultFormState())
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as {
+          message?: string
+        } | null
+        throw new Error(
+          payload?.message ||
+            'We could not send your message. Please try again.'
+        )
+      }
+
+      setSubmitted(true)
+      setFormData(getDefaultFormState())
+      setIsProjectDetailsOpen(false)
+    } catch (submissionError) {
+      const message =
+        submissionError instanceof Error
+          ? submissionError.message
+          : 'We could not send your message. Please try again.'
+      setError(message)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -95,22 +121,17 @@ export default function Contact() {
         <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
           Ready to Transform Your Digital Chaos Into Growth?
         </h1>
-        <p className='lead max-w-5xl mx-auto mb-8'>
+        <p className='lead max-w-5xl mx-auto mb-12'>
           If you've made it here, you're probably tired of juggling multiple
           vendors, dealing with disconnected solutions, or working with agencies
           that create pretty designs but don't drive real business results.
         </p>
-
-        {/* Scroll-Animated Video Section */}
-        <ScrollVideoSection
-          videoId='1098923926'
-          coverImage='/cover-contact.webp'
-          caption='See how we partner with teams to turn ideas into ship-ready experiences that scale.'
-        />
       </div>
 
-      <div className='max-w-6xl mx-auto mt-20'>
-        <div className='grid gap-8 lg:grid-cols-[1.05fr,1fr] lg:items-start'>
+      {/* Two-Column Layout: Content + Form */}
+      <div className='max-w-6xl mx-auto'>
+        <div className='grid gap-8 lg:grid-cols-2 lg:items-start'>
+          {/* Left Column - Value Proposition */}
           <div className='space-y-6'>
             <div className='card p-8 md:p-10 space-y-6'>
               <div className='space-y-4'>
@@ -170,6 +191,7 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* Right Column - Contact Form */}
           <div className='card p-8 md:p-10 space-y-8'>
             <div className='space-y-3'>
               <h2 className='font-heading text-2xl md:text-3xl'>
@@ -337,26 +359,34 @@ export default function Contact() {
                         { label: 'Email', value: 'email' },
                         { label: 'LinkedIn DM', value: 'linkedin' },
                         { label: 'Video call', value: 'video' },
-                      ].map(option => (
-                        <label
-                          key={option.value}
-                          className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors cursor-pointer ${
-                            formData.preferredContact === option.value
-                              ? 'border-primary bg-primary/10 text-primary'
-                              : 'border-border hover:border-primary/60'
-                          }`}
-                        >
-                          <input
-                            type='radio'
-                            name='preferredContact'
-                            value={option.value}
-                            checked={formData.preferredContact === option.value}
-                            onChange={handleChange}
-                            className='sr-only'
-                          />
-                          {option.label}
-                        </label>
-                      ))}
+                      ].map(option => {
+                        const id = `preferredContact-${option.value}`
+
+                        return (
+                          <label
+                            key={option.value}
+                            htmlFor={id}
+                            className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors cursor-pointer ${
+                              formData.preferredContact === option.value
+                                ? 'border-primary bg-primary/10 text-primary'
+                                : 'border-border hover:border-primary/60'
+                            }`}
+                          >
+                            <input
+                              id={id}
+                              type='radio'
+                              name='preferredContact'
+                              value={option.value}
+                              checked={
+                                formData.preferredContact === option.value
+                              }
+                              onChange={handleChange}
+                              className='sr-only'
+                            />
+                            {option.label}
+                          </label>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
@@ -515,6 +545,11 @@ export default function Contact() {
               </section>
 
               <div className='space-y-4'>
+                {error && (
+                  <p className='text-sm text-red-600 bg-red-500/10 border border-red-400/50 rounded-lg px-4 py-3'>
+                    {error}
+                  </p>
+                )}
                 <Button
                   type='submit'
                   disabled={isSubmitting}
