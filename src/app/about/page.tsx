@@ -61,31 +61,31 @@ const processSteps = [
   {
     title: 'Discover & Risk Assessment',
     description:
-      'We uncover your business drivers, user behavior, and potential roadblocks to craft strategies that accelerate growth while minimizing risk.',
+      'Map north-star journeys, surface the AI assists worth testing, and define the evidence we’ll collect together.',
     deliverables:
-      'Stakeholder workshops, analytics deep-dive, growth opportunity map.',
+      'Stakeholder workshops, analytics deep-dive, opportunity and risk map.',
     timeframe: '1–2 weeks',
     outcome:
-      'Shared vision, prioritized roadmap, and quantified success metrics.',
+      'Shared problem framing, prioritized opportunities, and success metrics leadership can endorse.',
   },
   {
     title: 'Design & Development',
     description:
-      'We create high-performing digital experiences that combine intuitive UX, enterprise-grade architecture, and brand-aligned visual systems.',
+      'Prototype AI-enabled flows, codify them in your design system, and prep engineering with sprint-ready assets.',
     deliverables:
-      'UX flows, interactive prototypes, production-ready design system.',
+      'UX flows, interactive prototypes, instrumented design system updates.',
     timeframe: '3–6 weeks',
     outcome:
-      'Validated experience blueprint and ready-to-build component library.',
+      'Validated journey blueprint, instrumented UI kit, and handoff docs devs can ship.',
   },
   {
     title: 'Launch & Optimize',
     description:
-      'We deploy with confidence, then iterate based on performance data to drive engagement, conversions, and ROI from day one.',
+      'Roll out with analytics wired, monitor adoption, and feed insights straight back into prioritization.',
     deliverables: 'Launch playbook, instrumentation plan, KPI dashboard setup.',
     timeframe: '2+ weeks',
     outcome:
-      'Live product with measurement loops and continuous improvement cadence.',
+      'Live experience with dashboards, experiment backlog, and executive-ready reporting.',
   },
 ]
 
@@ -94,10 +94,12 @@ export default function About() {
     <div className='container mx-auto px-4 py-16 pb-32 animate-fade-in'>
       {/* Hero Section */}
       <div className='text-center mb-12'>
-        <h1 className='mb-6 font-heading'>About Pixelmojo</h1>
+        <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
+          We embed AI-enabled product design with your teams.
+        </h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
-          Strategic product design and engineering leadership from Lloyd
-          Pilapil—aligning vision, execution, and measurable growth.
+          Pixelmojo helps product squads deliver evidence-led UX, AI-enabled
+          product design, and delivery rituals leadership can defend.
         </p>
       </div>
 
@@ -111,14 +113,14 @@ export default function About() {
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
         <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
-          Where Fortune 500 Strategy Meets Startup Agility
+          AI-enabled product design that actually ships
         </h2>
         <div className='mx-auto max-w-4xl space-y-6 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
-            After 20+ years working with global enterprises and scaling
-            startups, I built Pixelmojo to fix a critical gap: combining
-            enterprise-level strategic thinking with the speed and innovation
-            growing businesses need.
+            After 20+ years inside global enterprises and scaling startups, I
+            built Pixelmojo to close the gap between AI ambition and ship-ready
+            design. We integrate with your teams to activate experiment-ready
+            journeys, reusable systems, and the analytics leaders demand.
           </p>
           <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -126,8 +128,8 @@ export default function About() {
                 Decision velocity
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Enterprise-caliber product and growth frameworks delivered at
-                founder speed.
+                Align product, design, and AI leads around experiment-ready
+                journeys so the roadmap moves faster with proof.
               </p>
             </li>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -135,8 +137,8 @@ export default function About() {
                 Unified delivery
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Brand, product, and engineering partners aligned around
-                measurable outcomes.
+                Plug reusable design systems and analytics into every sprint so
+                brand, product, and engineering stay in lockstep.
               </p>
             </li>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm md:col-span-2'>
@@ -144,8 +146,8 @@ export default function About() {
                 Momentum you can measure
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Systems that translate customer insight into testable sprints,
-                clearer roadmaps, and confident launches.
+                Instrument launches from day one, capturing usage signals that
+                show what to scale next.
               </p>
             </li>
           </ul>
@@ -153,9 +155,8 @@ export default function About() {
         <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
         <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
-            Every digital touchpoint should be accountable to growth. Pixelmojo
-            partners with your teams so the experience layer becomes a profit
-            lever.
+            Every experience layer should pay its way. We coach teams to turn AI
+            ideas into testable journeys that drive revenue.
           </p>
           <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -163,8 +164,8 @@ export default function About() {
                 Frictionless journeys
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Connect strategy, design, and engineering to remove friction
-                from every revenue-critical touchpoint.
+                Connect strategy, UX, and engineering to remove roadblocks
+                across revenue-critical flows.
               </p>
             </li>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -172,8 +173,8 @@ export default function About() {
                 Learning loops
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Instrument every release with analytics and feedback cycles so
-                teams learn and iterate faster.
+                Ship with tracking hooks and rituals that turn every release
+                into a data-backed recommendation.
               </p>
             </li>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -181,8 +182,8 @@ export default function About() {
                 Scalable systems
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Build reusable design and delivery frameworks that keep brand,
-                product, and marketing in sync as you scale.
+                Build design and delivery frameworks your teams can extend
+                without calling an agency every sprint.
               </p>
             </li>
             <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
@@ -190,8 +191,8 @@ export default function About() {
                 Empowered teams
               </p>
               <p className='mt-2 text-base leading-relaxed text-muted'>
-                Coach cross-functional squads with playbooks and rituals that
-                sustain momentum well beyond launch.
+                Embed playbooks, rituals, and knowledge transfer so momentum
+                survives long after handoff.
               </p>
             </li>
           </ul>
@@ -203,14 +204,14 @@ export default function About() {
                 What Pixelmojo Means
               </h3>
               <p className='mx-auto max-w-4xl text-lg leading-relaxed text-white/90'>
-                Our name reflects our philosophy: every{' '}
+                Every{' '}
                 <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
-                design and every{' '}
+                design and every bit of{' '}
                 <span className='font-extrabold text-[#F48024]'>mojo</span>—that
-                spark of innovation—we bring serves one purpose: driving your
-                business growth. The intersecting elements in our logo represent
-                the convergence of strategy, design, and technology into unified
-                solutions that actually work.
+                spark of insight—has one job: turn AI ambition into launches
+                leadership can defend. The intersecting forms in our logo stand
+                for strategy, design, and engineering moving in sync, so the
+                experience layer becomes a measurable growth engine.
               </p>
             </div>
           </div>

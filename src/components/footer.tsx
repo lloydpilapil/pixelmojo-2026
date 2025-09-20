@@ -32,10 +32,18 @@ export default function Footer() {
   ]
 
   const services = [
-    { label: 'UI/UX Design', href: '/services#uiux' },
-    { label: 'Web Development', href: '/services#web' },
-    { label: 'Brand Identity', href: '/services#brand' },
-    { label: 'Product Design', href: '/services#product' },
+    {
+      label: 'Growth-Focused Product Sprint',
+      href: '/services/ui-ux-design-solutions',
+    },
+    { label: 'Brand Identity', href: '/services/brand-identity' },
+    {
+      label: 'Brand Activation & Growth',
+      href: '/services/brand-activation-growth',
+    },
+    { label: 'Web & App Design', href: '/services/web-app-design' },
+    { label: 'Graphic & Visuals', href: '/services/graphic-visuals' },
+    { label: 'Development Solutions', href: '/services/development-solutions' },
   ]
 
   const socialLinks = [

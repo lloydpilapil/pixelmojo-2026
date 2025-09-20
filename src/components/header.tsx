@@ -13,15 +13,21 @@ const navigationConfig = {
       href: '/services',
       children: [
         { label: 'Overview', href: '/services' },
-        { label: 'UI/UX Design Solutions', href: '/services/ui-ux-design' },
+        {
+          label: 'Growth-Focused Product Sprint',
+          href: '/services/ui-ux-design-solutions',
+        },
         { label: 'Brand Identity', href: '/services/brand-identity' },
         {
           label: 'Brand Activation & Growth',
-          href: '/services/brand-activation',
+          href: '/services/brand-activation-growth',
         },
         { label: 'Web & App Design', href: '/services/web-app-design' },
         { label: 'Graphic & Visuals', href: '/services/graphic-visuals' },
-        { label: 'Development Solutions', href: '/services/development' },
+        {
+          label: 'Development Solutions',
+          href: '/services/development-solutions',
+        },
       ],
     },
     { label: 'Works', href: '/works' },

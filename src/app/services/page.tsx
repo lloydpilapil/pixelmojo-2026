@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import ScrollVideoSection from '@/components/ScrollVideoSection'
+import { LinkButtonWithArrow } from '@/components/ui/button'
 
 export const metadata: Metadata = {
   title: 'UI/UX, Product Design & Growth Services | Pixelmojo',
@@ -19,14 +18,14 @@ export const metadata: Metadata = {
 export default function Services() {
   const services = [
     {
-      title: 'UI/UX Design Solutions',
+      title: 'Growth-Focused Product Sprint',
       description:
-        'User-centered design that drives engagement and conversions through intuitive interfaces and seamless experiences.',
+        'Align product, design, and AI leads around your north-star journey; prototype flows that unblock adoption faster.',
       features: [
-        'User Research & Analysis',
-        'Wireframing & Prototyping',
-        'Interaction Design',
-        'Usability Testing',
+        'North-star journey & opportunity mapping',
+        'Prototype and experiment sprints',
+        'Analytics & dashboard setup',
+        'Activation playbooks and handoff',
       ],
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ui-ux-design-solutions',
@@ -34,12 +33,12 @@ export default function Services() {
     {
       title: 'Brand Identity',
       description:
-        'Comprehensive brand design that tells your story and creates lasting connections with your audience.',
+        'Translate positioning into design systems teams can ship—voice, visuals, governance rooted in customer truth.',
       features: [
-        'Logo Design & Guidelines',
-        'Brand Strategy & Positioning',
-        'Visual Identity Systems',
-        'Brand Voice & Messaging',
+        'Brand research & positioning',
+        'Visual language & asset systems',
+        'Messaging & narrative frameworks',
+        'Governance and rollout playbooks',
       ],
       icon: '/branding_services_thumb.svg',
       href: '/services/brand-identity',
@@ -47,12 +46,12 @@ export default function Services() {
     {
       title: 'Brand Activation & Growth',
       description:
-        'Strategic campaigns that amplify your brand presence and drive growth across all touchpoints.',
+        'Pair narrative, AI-assisted nurture, and revenue analytics so every campaign ladders back to roadmap.',
       features: [
-        'Marketing Campaign Design',
-        'Social Media Strategy',
-        'Content Creation & Planning',
-        'Growth Marketing Tactics',
+        'Lifecycle & nurture strategy',
+        'Campaign activation kits',
+        'Automation & tooling setup',
+        'Pipeline analytics & reporting',
       ],
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/brand-activation-growth',
@@ -60,12 +59,12 @@ export default function Services() {
     {
       title: 'Web & App Design',
       description:
-        'Digital experiences that perform beautifully and delight users on every device and platform.',
+        'Build product surfaces tied to journeys, with AI cues, accessibility, and performance tuned before launch.',
       features: [
-        'Responsive Web Design',
-        'Mobile App Interfaces',
-        'Progressive Web Apps',
-        'E-commerce Solutions',
+        'Experience audit & journey mapping',
+        'High-fidelity UI & motion specs',
+        'AI-assisted workflow design',
+        'Accessibility & performance QA',
       ],
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/web-app-design',
@@ -73,12 +72,12 @@ export default function Services() {
     {
       title: 'Graphic & Visuals',
       description:
-        'Visual assets that communicate your message clearly and captivate your target audience.',
+        'Deliver on-demand storytelling assets for experiments—from investor decks to nudges.',
       features: [
-        'Print & Digital Graphics',
-        'Illustration & Iconography',
-        'Marketing Collateral',
-        'Presentation Design',
+        'Campaign & launch asset sprints',
+        'Sales, board & investor decks',
+        'Illustration & iconography systems',
+        'Reusable template libraries',
       ],
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/graphic-visuals',
@@ -86,12 +85,12 @@ export default function Services() {
     {
       title: 'Development Solutions',
       description:
-        'Robust technical implementation that scales with your business and delivers exceptional performance.',
+        'Embed full-stack squads who code against the design system, automate QA, and surface actionable evidence every sprint.',
       features: [
-        'Frontend Development',
-        'Backend Architecture',
-        'CMS Integration',
-        'Performance Optimization',
+        'Embedded product & web squads',
+        'Design system implementation',
+        'Automated QA & analytics setup',
+        'DevOps & release optimization',
       ],
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/development-solutions',
@@ -102,11 +101,12 @@ export default function Services() {
     <div className='container mx-auto px-4 py-16 animate-fade-in'>
       {/* Hero Section */}
       <div className='text-center mb-12'>
-        <h1 className='mb-6 font-heading'>Our Services</h1>
+        <h1 className='mb-6 font-heading max-w-6xl mx-auto'>
+          Choose the partnership that keeps your roadmap moving.
+        </h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
-          From concept to deployment, we offer comprehensive web development
-          services tailored to your unique needs. Let's build something amazing
-          together.
+          We embed with your squads to deliver evidence-led UX, AI-enabled
+          product design, and engineering rituals that leadership can defend.
         </p>
       </div>
 
@@ -118,25 +118,25 @@ export default function Services() {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 !text-4xl md:!text-5xl lg:!text-6xl'>
-          End the Digital Chaos, Start Growing
+        <h2 className='mb-6 max-w-5xl mx-auto !text-4xl md:!text-5xl lg:!text-6xl'>
+          Turn AI ambition into launch-ready experiences
         </h2>
         <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-          Tired of disconnected teams creating beautiful but ineffective digital
-          assets? We integrate all your digital services—branding, design,
-          development, and marketing—into one cohesive growth engine. The
-          result? No more miscommunication, faster timelines, and most
-          importantly, measurable ROI from every project.
+          Disconnected vendors create pretty assets; we design systems that
+          ship. Pixelmojo aligns product, design, content, and engineering
+          around experiment-ready journeys, reusable components, and analytics
+          that prove what works. Every engagement is built to give leadership
+          confidence and teams momentum.
         </p>
       </div>
 
       {/* Services Grid */}
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
         {services.map((service, index) => (
-          <Link key={index} href={service.href} className='group block h-full'>
-            <div className='h-full bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
+          <div key={index} className='group h-full'>
+            <div className='h-full flex flex-col bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
               {/* Icon */}
-              <div className='w-16 h-16 flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110'>
+              <div className='w-16 h-16 flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110'>
                 <Image
                   src={service.icon}
                   alt={service.title}
@@ -146,35 +146,42 @@ export default function Services() {
                 />
               </div>
 
-              {/* Content */}
-              <div className='space-y-4 mb-6'>
-                <h3 className='group-hover:text-primary transition-colors duration-300'>
-                  {service.title}
-                </h3>
-                <p className='text-muted leading-relaxed'>
-                  {service.description}
-                </p>
-              </div>
+              {/* Content wrapper with flex-1 */}
+              <div className='flex-1 flex flex-col'>
+                {/* Content */}
+                <div className='space-y-4 mb-6'>
+                  <h3 className='group-hover:text-primary transition-colors duration-300'>
+                    {service.title}
+                  </h3>
+                  <p className='text-muted leading-relaxed'>
+                    {service.description}
+                  </p>
+                </div>
 
-              {/* Features */}
-              <div className='space-y-3 mb-6'>
-                {service.features.map((feature, idx) => (
-                  <div key={idx} className='flex items-start gap-3'>
-                    <div className='flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5'>
-                      <div className='w-2 h-2 rounded-full bg-primary' />
+                {/* Features */}
+                <div className='space-y-3 mb-6'>
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className='flex items-start gap-3'>
+                      <div className='flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5'>
+                        <div className='w-2 h-2 rounded-full bg-primary' />
+                      </div>
+                      <span className='text-sm text-foreground'>{feature}</span>
                     </div>
-                    <span className='text-sm text-foreground'>{feature}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
-              {/* CTA */}
-              <div className='flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all duration-300'>
-                <span>Learn more</span>
-                <ArrowRight className='w-4 h-4 transition-transform duration-300 group-hover:translate-x-1' />
-              </div>
+              {/* CTA - aligned to bottom and left */}
+              <LinkButtonWithArrow
+                href={service.href}
+                variant='link'
+                arrowIcon='arrow'
+                className='mt-6 self-start'
+              >
+                Learn more
+              </LinkButtonWithArrow>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

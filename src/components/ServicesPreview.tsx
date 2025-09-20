@@ -26,7 +26,7 @@ const ServicesPreview = ({
     {
       title: 'Growth-Focused Product Sprint',
       description:
-        'Align product, design, and AI leads around your north-star journey; prototype, test, and instrument the flows that unblock adoption inside one quarter.',
+        'Align product, design, and AI around your north-star journey; prototype, test, and instrument flows that unblock adoption within one quarter.',
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ui-ux-design-solutions',
       gradient: 'from-blue-500/20 to-purple-500/30',
@@ -81,7 +81,7 @@ const ServicesPreview = ({
     {
       title: 'Development Solutions',
       description:
-        'Embed full-stack squads who code against the design system, automate QA, and surface evidence every sprint.',
+        'Embed full-stack engineering squads who code against your design system, automate QA testing, and surface evidence every sprint.',
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/development-solutions',
       gradient: 'from-indigo-500/10 to-blue-500/10',
@@ -116,7 +116,7 @@ const ServicesPreview = ({
           {services.map(service => (
             <div key={service.title} className='group h-full'>
               <div
-                className={`h-full rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative ${
+                className={`h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative ${
                   service.featured
                     ? 'border-primary/50 bg-gradient-to-br from-primary/5 via-card to-secondary/5 hover:border-primary/70 hover:shadow-primary/20'
                     : 'border-border bg-card hover:border-primary/40 hover:shadow-primary/10'
@@ -132,34 +132,36 @@ const ServicesPreview = ({
                   alt={service.title}
                   width={48}
                   height={48}
-                  className='mb-6 h-12 w-12 transition-transform duration-300 group-hover:scale-105'
+                  className='mb-3 h-12 w-12 transition-transform duration-300 group-hover:scale-105'
                 />
-                <div className='space-y-3'>
-                  <h3 className='text-lg font-semibold transition-colors duration-300 group-hover:text-primary'>
-                    {service.title}
-                  </h3>
-                  <p className='text-muted leading-relaxed min-h-[6rem]'>
-                    {service.description}
-                  </p>
-                </div>
-                <div className='mt-6 flex flex-col gap-3 border-t border-border/70 pt-5'>
-                  <div className='text-sm font-medium text-muted-foreground'>
-                    {service.outcome}
+                <div className='flex-1 flex flex-col'>
+                  <div className='space-y-3'>
+                    <h3 className='text-lg font-semibold transition-colors duration-300 group-hover:text-primary'>
+                      {service.title}
+                    </h3>
+                    <p className='text-muted leading-relaxed min-h-[6rem]'>
+                      {service.description}
+                    </p>
                   </div>
-                  {service.startingAt && (
-                    <span
-                      className='text-sm font-semibold'
-                      style={{ color: '#3CC29E' }}
-                    >
-                      {service.startingAt}
-                    </span>
-                  )}
+                  <div className='mt-6 flex flex-col gap-3 border-t border-border/70 pt-5'>
+                    <div className='text-sm font-medium text-muted-foreground'>
+                      {service.outcome}
+                    </div>
+                    {service.startingAt && (
+                      <span
+                        className='text-sm font-semibold'
+                        style={{ color: '#3CC29E' }}
+                      >
+                        {service.startingAt}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <LinkButtonWithArrow
                   href={service.href}
                   variant='link'
                   arrowIcon='arrow'
-                  className='mt-6'
+                  className='mt-6 self-start'
                 >
                   Learn more
                 </LinkButtonWithArrow>
