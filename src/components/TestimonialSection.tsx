@@ -39,7 +39,6 @@ const TestimonialSection = ({
       authorTitle: 'Founder & Chief Operating Officer',
       authorCompany: 'Got Volunteers?',
       authorImage: '/mira.webp',
-      companyLogo: '/got-volunteers-min.png',
     },
     {
       headline: 'A+ for Collaboration & Creativity',
@@ -49,7 +48,6 @@ const TestimonialSection = ({
       authorTitle: 'Project Controls Manager',
       authorCompany: 'Parsons',
       authorImage: '/richard_bridge-min.jpg',
-      companyLogo: '/parsons-corporation-vector-logo-2022.svg',
     },
     {
       headline: 'User-Driven Brand Design',
@@ -64,18 +62,14 @@ const TestimonialSection = ({
   const [currentIndex, setCurrentIndex] = useState(0)
   const testimonialCount = testimonials.length
   const hasMultiple = testimonialCount > 1
-  const [isFading, setIsFading] = useState(false)
-  const fadeTimeoutRef = useRef<number | null>(null)
-  const revealTimeoutRef = useRef<number | null>(null)
-  const fadeDuration = 220
+  const [prevIndex, setPrevIndex] = useState<number | null>(null)
+  const transitionTimeoutRef = useRef<number | null>(null)
+  const fadeDuration = 320
 
   React.useEffect(() => {
     return () => {
-      if (fadeTimeoutRef.current) {
-        window.clearTimeout(fadeTimeoutRef.current)
-      }
-      if (revealTimeoutRef.current) {
-        window.clearTimeout(revealTimeoutRef.current)
+      if (transitionTimeoutRef.current) {
+        window.clearTimeout(transitionTimeoutRef.current)
       }
     }
   }, [])
@@ -84,30 +78,17 @@ const TestimonialSection = ({
     return null
   }
 
-  const scheduleFadeReset = () => {
-    if (revealTimeoutRef.current) {
-      window.clearTimeout(revealTimeoutRef.current)
-    }
-
-    revealTimeoutRef.current = window.setTimeout(() => {
-      setIsFading(false)
-    }, 20)
-  }
-
   const startTransition = (targetIndex: number) => {
     if (!hasMultiple || targetIndex === currentIndex) return
 
-    if (fadeTimeoutRef.current) {
-      window.clearTimeout(fadeTimeoutRef.current)
-    }
-    if (revealTimeoutRef.current) {
-      window.clearTimeout(revealTimeoutRef.current)
+    if (transitionTimeoutRef.current) {
+      window.clearTimeout(transitionTimeoutRef.current)
     }
 
-    setIsFading(true)
-    fadeTimeoutRef.current = window.setTimeout(() => {
-      setCurrentIndex(targetIndex)
-      scheduleFadeReset()
+    setPrevIndex(currentIndex)
+    setCurrentIndex(targetIndex)
+    transitionTimeoutRef.current = window.setTimeout(() => {
+      setPrevIndex(null)
     }, fadeDuration)
   }
 
@@ -119,130 +100,147 @@ const TestimonialSection = ({
     startTransition((currentIndex - 1 + testimonialCount) % testimonialCount)
   }
 
-  const currentTestimonial =
-    testimonials[Math.min(currentIndex, testimonialCount - 1)]
-  const contentTransitionClasses = isFading
-    ? 'opacity-0 translate-y-3'
-    : 'opacity-100 translate-y-0'
+  const visibleIndices =
+    prevIndex === null ? [currentIndex] : [prevIndex, currentIndex]
 
   return (
     <section className='py-20'>
       <div className='container mx-auto px-4'>
         <div className='mx-auto max-w-6xl'>
           {/* Special Card with Enhanced Background */}
-          <div className='relative overflow-hidden rounded-3xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-2xl shadow-primary/10 p-12 lg:p-16'>
+          <div className='relative overflow-hidden rounded-3xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-xl shadow-slate-900/5 p-12 lg:p-16'>
             {/* Decorative Elements */}
             <div
               aria-hidden='true'
-              className='absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl'
+              className='absolute -top-32 -left-32 w-44 h-44 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl'
             />
             <div
               aria-hidden='true'
-              className='absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full blur-3xl'
+              className='absolute -bottom-32 -right-32 w-44 h-44 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-full blur-3xl'
             />
 
-            {/* Navigation Arrows */}
-            {hasMultiple && (
-              <>
-                <button
-                  type='button'
-                  onClick={prevTestimonial}
-                  className='absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg transition-colors hover:bg-white dark:bg-slate-700/80 dark:hover:bg-slate-600'
-                  aria-label='Previous testimonial'
-                >
-                  <ChevronLeft className='h-5 w-5 text-slate-600 dark:text-slate-300' />
-                </button>
-
-                <button
-                  type='button'
-                  onClick={nextTestimonial}
-                  className='absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 shadow-lg transition-colors hover:bg-white dark:bg-slate-700/80 dark:hover:bg-slate-600'
-                  aria-label='Next testimonial'
-                >
-                  <ChevronRight className='h-5 w-5 text-slate-600 dark:text-slate-300' />
-                </button>
-              </>
-            )}
-
             {/* Content */}
-            <div
-              className={`relative z-10 transition-all duration-300 ease-out ${contentTransitionClasses}`}
-            >
-              {/* Headline */}
-              {currentTestimonial.headline && (
-                <div className='text-center mb-8'>
-                  <span className='inline-block text-primary font-semibold text-sm uppercase tracking-wider'>
-                    {currentTestimonial.headline}
-                  </span>
-                </div>
-              )}
+            <div className='relative z-10'>
+              {visibleIndices.map(index => {
+                const testimonial =
+                  testimonials[Math.min(index, testimonialCount - 1)]
+                const isActive = index === currentIndex
 
-              {/* Quote - Large and Centered */}
-              <blockquote className='text-center mb-10 lg:mb-12'>
-                <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-slate-800 dark:text-slate-100'>
-                  "{currentTestimonial.quote}"
-                </p>
-              </blockquote>
+                return (
+                  <div
+                    key={`testimonial-${index}`}
+                    className={`transition-all duration-300 ease-out ${
+                      isActive
+                        ? 'relative w-full opacity-100 translate-y-0'
+                        : 'absolute inset-0 w-full opacity-0 translate-y-3 pointer-events-none'
+                    }`}
+                  >
+                    {/* Headline */}
+                    {testimonial.headline && (
+                      <div className='text-center mb-8'>
+                        <span className='inline-block text-primary font-semibold text-sm uppercase tracking-wider'>
+                          {testimonial.headline}
+                        </span>
+                      </div>
+                    )}
 
-              {/* Minimal Author Section */}
-              <div className='flex items-center justify-center gap-4'>
-                {/* Author Image */}
-                {currentTestimonial.authorImage && (
-                  <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/20 dark:ring-slate-600/50 shadow-lg'>
-                    <Image
-                      src={currentTestimonial.authorImage}
-                      alt={currentTestimonial.authorName}
-                      fill
-                      sizes='64px'
-                      className='object-cover'
-                    />
-                  </div>
-                )}
+                    {/* Quote - Large and Centered */}
+                    <blockquote className='text-center mb-10 lg:mb-12'>
+                      <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-slate-800 dark:text-slate-100'>
+                        "{testimonial.quote}"
+                      </p>
+                    </blockquote>
 
-                {/* Author Details - Simple Text */}
-                <div className='text-left max-w-sm'>
-                  <div className='font-semibold text-slate-800 dark:text-slate-100'>
-                    {currentTestimonial.authorName}
-                  </div>
-                  <div className='text-sm text-slate-600 dark:text-slate-300'>
-                    {currentTestimonial.authorTitle}
-                  </div>
-                  {currentTestimonial.authorCompany && (
-                    <div className='flex items-center gap-2 mt-1'>
-                      {currentTestimonial.companyLogo && (
-                        <Image
-                          src={currentTestimonial.companyLogo}
-                          alt={currentTestimonial.authorCompany}
-                          width={16}
-                          height={16}
-                          className='opacity-60'
-                        />
+                    {/* Minimal Author Section */}
+                    <div className='flex items-center justify-center gap-4'>
+                      {/* Author Image */}
+                      {testimonial.authorImage && (
+                        <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/20 dark:ring-slate-600/50 shadow-lg'>
+                          <Image
+                            src={testimonial.authorImage}
+                            alt={testimonial.authorName}
+                            fill
+                            sizes='64px'
+                            className='object-cover'
+                          />
+                        </div>
                       )}
-                      <span className='text-sm text-slate-600 dark:text-slate-300'>
-                        {currentTestimonial.authorCompany}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
 
-              {/* Minimal Dots Indicator */}
+                      {/* Author Details - Simple Text */}
+                      <div className='text-left max-w-sm'>
+                        <div className='font-semibold text-slate-800 dark:text-slate-100'>
+                          {testimonial.authorName}
+                        </div>
+                        <div className='text-sm text-slate-600 dark:text-slate-300'>
+                          {testimonial.authorTitle}
+                        </div>
+                        {testimonial.authorCompany && (
+                          <div className='flex items-center gap-2 mt-1'>
+                            {testimonial.companyLogo && (
+                              <Image
+                                src={testimonial.companyLogo}
+                                alt={testimonial.authorCompany}
+                                width={16}
+                                height={16}
+                                className='opacity-60'
+                              />
+                            )}
+                            <span className='text-sm text-slate-600 dark:text-slate-300'>
+                              {testimonial.authorCompany}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+
+              {/* Navigation kit */}
               {hasMultiple && (
-                <div className='mt-8 flex justify-center gap-2'>
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      type='button'
-                      onClick={() => startTransition(index)}
-                      className={`h-2 w-2 rounded-full transition-colors ${
-                        index === currentIndex
-                          ? 'bg-primary'
-                          : 'bg-slate-300 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500'
-                      }`}
-                      aria-label={`Go to testimonial ${index + 1}`}
-                      aria-pressed={index === currentIndex}
-                    />
-                  ))}
+                <div className='mt-12 flex items-center justify-center gap-6'>
+                  <button
+                    type='button'
+                    onClick={prevTestimonial}
+                    className='flex h-10 w-10 items-center justify-center rounded-full bg-white/40 backdrop-blur ring-1 ring-white/50 text-slate-600 transition hover:bg-white/60 hover:text-slate-700 drop-shadow-lg dark:bg-slate-700/40 dark:ring-slate-500/60 dark:text-slate-200 dark:hover:bg-slate-600/60'
+                    aria-label='Previous testimonial'
+                  >
+                    <ChevronLeft className='h-5 w-5' />
+                  </button>
+
+                  <div className='flex items-center justify-center gap-1.5 rounded-full bg-white/20 px-2 py-1 backdrop-blur dark:bg-slate-700/30'>
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        type='button'
+                        onClick={() => startTransition(index)}
+                        className={`group flex h-8 w-8 items-center justify-center rounded-full transition ${
+                          index === currentIndex
+                            ? 'bg-white/50 ring-1 ring-white/60 dark:bg-slate-600/50 dark:ring-slate-400'
+                            : 'hover:bg-white/30 dark:hover:bg-slate-600/40'
+                        }`}
+                        aria-label={`Go to testimonial ${index + 1}`}
+                        aria-pressed={index === currentIndex}
+                      >
+                        <span
+                          className={`h-2 w-2 rounded-full transition ${
+                            index === currentIndex
+                              ? 'bg-slate-800 dark:bg-white'
+                              : 'bg-slate-400 dark:bg-slate-500'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    type='button'
+                    onClick={nextTestimonial}
+                    className='flex h-10 w-10 items-center justify-center rounded-full bg-white/40 backdrop-blur ring-1 ring-white/50 text-slate-600 transition hover:bg-white/60 hover:text-slate-700 drop-shadow-lg dark:bg-slate-700/40 dark:ring-slate-500/60 dark:text-slate-200 dark:hover:bg-slate-600/60'
+                    aria-label='Next testimonial'
+                  >
+                    <ChevronRight className='h-5 w-5' />
+                  </button>
                 </div>
               )}
             </div>
