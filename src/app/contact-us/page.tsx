@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { ChevronDown } from 'lucide-react'
+import { ChevronRight, ChevronLeft } from 'lucide-react'
 
 export default function Contact() {
   const getDefaultFormState = () => ({
@@ -24,8 +24,10 @@ export default function Contact() {
   const [formData, setFormData] = useState(getDefaultFormState)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
-  const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState(false)
+  const [currentStep, setCurrentStep] = useState(1)
   const [error, setError] = useState<string | null>(null)
+
+  const totalSteps = 2
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -38,8 +40,48 @@ export default function Contact() {
     })
   }
 
+  const validateStep1 = () => {
+    return (
+      formData.firstName.trim() !== '' &&
+      formData.lastName.trim() !== '' &&
+      formData.email.trim() !== '' &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    )
+  }
+
+  const validateStep2 = () => {
+    return formData.message.trim() !== ''
+  }
+
+  const handleNext = () => {
+    if (currentStep === 1 && validateStep1()) {
+      setCurrentStep(2)
+      setError(null)
+    } else if (currentStep === 1) {
+      setError('Please fill in all required fields with valid information.')
+    }
+  }
+
+  const handlePrevious = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1)
+      setError(null)
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (currentStep === 1) {
+      handleNext()
+      return
+    }
+
+    if (!validateStep2()) {
+      setError('Please describe what would make this engagement a win.')
+      return
+    }
+
     setIsSubmitting(true)
     setError(null)
 
@@ -64,7 +106,7 @@ export default function Contact() {
 
       setSubmitted(true)
       setFormData(getDefaultFormState())
-      setIsProjectDetailsOpen(false)
+      setCurrentStep(1)
     } catch (submissionError) {
       const message =
         submissionError instanceof Error
@@ -128,96 +170,28 @@ export default function Contact() {
         </p>
       </div>
 
-      {/* Two-Column Layout: Content + Form */}
-      <div className='max-w-6xl mx-auto'>
-        <div className='grid gap-8 lg:grid-cols-2 lg:items-start'>
-          {/* Left Column - Value Proposition */}
-          <div className='space-y-6'>
-            <div className='card p-8 md:p-10 space-y-6'>
-              <div className='space-y-4'>
-                <h2 className='font-heading text-2xl md:text-3xl'>
-                  We get it. Let's fix that.
-                </h2>
-                <p className='text-muted text-sm md:text-base'>
-                  At Pixelmojo, we don't just launch websites or campaigns. We
-                  architect connected growth ecosystems that turn your entire
-                  digital presence into a revenue engine.
-                </p>
-                <p className='text-muted text-sm md:text-base'>
-                  Here's what happens next: fill in a few details and we'll line
-                  up a 30-minute strategy session to audit your current setup
-                  and show you where growth is hiding.
-                </p>
-                <p className='text-muted text-sm md:text-base'>
-                  No pressure or pitch. You'll walk away with actionable
-                  recommendations whether we work together or not.
-                </p>
-              </div>
-
-              <div className='grid gap-4 sm:grid-cols-2'>
-                {[
-                  {
-                    title: 'Signal-rich audit',
-                    description:
-                      'We review your product flows, funnels, and messaging so the conversation starts with insight, not discovery.',
-                  },
-                  {
-                    title: 'Road-mapping together',
-                    description:
-                      'Expect collaborative sketching on priorities, packages, and launch cadence tailored to your team.',
-                  },
-                  {
-                    title: 'Team-augmented support',
-                    description:
-                      'Need design, content, or dev horsepower? We scope the right cross-functional crew from day one.',
-                  },
-                  {
-                    title: 'Next-day follow up',
-                    description:
-                      'You get a recap, recommended next steps, and a proposed path to ship momentum quickly.',
-                  },
-                ].map(item => (
-                  <div
-                    key={item.title}
-                    className='rounded-lg border border-border/70 bg-muted/20 p-4 shadow-sm'
-                  >
-                    <p className='font-medium text-foreground'>{item.title}</p>
-                    <p className='text-muted text-sm mt-2'>
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* Progressive Form Layout */}
+      <div className='max-w-4xl mx-auto'>
+        {/* Form Container */}
+        <div className='card p-8 md:p-12 space-y-8'>
+          <div className='space-y-3 text-center'>
+            <h2 className='font-heading text-2xl md:text-3xl'>
+              {currentStep === 1
+                ? 'Tell us about your project'
+                : 'Project snapshot'}
+            </h2>
+            <p className='text-muted text-sm md:text-base max-w-2xl mx-auto'>
+              {currentStep === 1
+                ? 'Share the essentials so we can show up to your strategy session with ideas, not guesswork.'
+                : 'A quick snapshot helps us show up prepared with tailored recommendations.'}
+            </p>
           </div>
 
-          {/* Right Column - Contact Form */}
-          <div className='card p-8 md:p-10 space-y-8'>
-            <div className='space-y-3'>
-              <h2 className='font-heading text-2xl md:text-3xl'>
-                Tell us about your project
-              </h2>
-              <p className='text-muted text-sm md:text-base'>
-                Share the essentials so we can show up to your strategy session
-                with ideas, not guesswork.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className='space-y-10'>
-              <section className='space-y-6'>
-                <div className='flex flex-col gap-2 md:flex-row md:items-end md:justify-between'>
-                  <div>
-                    <h3 className='font-heading text-lg'>Contact details</h3>
-                    <p className='text-muted text-sm'>
-                      We'll reach out with next steps and a calendar link.
-                    </p>
-                  </div>
-                  <p className='text-muted text-xs md:text-sm'>
-                    Prefer a different channel? Let us know below.
-                  </p>
-                </div>
-
-                <div className='grid gap-6 md:grid-cols-2'>
+          <form onSubmit={handleSubmit} className='space-y-8'>
+            {/* Step 1: Contact Details */}
+            {currentStep === 1 && (
+              <div className='space-y-6 animate-fade-in'>
+                <div className='grid gap-6 md:grid-cols-2 max-w-2xl mx-auto'>
                   <div>
                     <label
                       htmlFor='firstName'
@@ -354,7 +328,7 @@ export default function Contact() {
                     <span className='block text-small font-medium mb-2'>
                       Preferred contact
                     </span>
-                    <div className='flex flex-wrap gap-3'>
+                    <div className='flex flex-wrap gap-3 justify-center'>
                       {[
                         { label: 'Email', value: 'email' },
                         { label: 'LinkedIn DM', value: 'linkedin' },
@@ -390,186 +364,179 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
+            )}
 
-              <section className='space-y-6'>
-                <button
-                  type='button'
-                  onClick={() => setIsProjectDetailsOpen(!isProjectDetailsOpen)}
-                  className='w-full flex items-center justify-between text-left group'
-                >
-                  <div className='flex flex-col gap-2'>
-                    <h3 className='font-heading text-lg group-hover:text-primary transition-colors'>
-                      Project snapshot
-                    </h3>
-                    <p className='text-muted text-sm'>
-                      A quick snapshot helps us show up prepared.
-                    </p>
+            {/* Step 2: Project Details */}
+            {currentStep === 2 && (
+              <div className='space-y-6 animate-fade-in'>
+                <div className='grid gap-6 md:grid-cols-2 max-w-2xl mx-auto'>
+                  <div>
+                    <label
+                      htmlFor='projectStage'
+                      className='block text-small font-medium mb-2'
+                    >
+                      Where are you today?
+                    </label>
+                    <select
+                      id='projectStage'
+                      name='projectStage'
+                      value={formData.projectStage}
+                      onChange={handleChange}
+                      className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
+                    >
+                      <option value=''>Select stage</option>
+                      <option value='idea'>Exploring an idea</option>
+                      <option value='prototype'>Validating a prototype</option>
+                      <option value='launch'>Preparing to launch</option>
+                      <option value='scale'>Scaling an existing product</option>
+                    </select>
                   </div>
-                  <ChevronDown
-                    className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${
-                      isProjectDetailsOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
 
-                <div
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isProjectDetailsOpen
-                      ? 'max-h-none opacity-100'
-                      : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <div className='grid gap-6 md:grid-cols-2 pt-4'>
-                    <div>
-                      <label
-                        htmlFor='projectStage'
-                        className='block text-small font-medium mb-2'
-                      >
-                        Where are you today?
-                      </label>
-                      <select
-                        id='projectStage'
-                        name='projectStage'
-                        value={formData.projectStage}
-                        onChange={handleChange}
-                        className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
-                      >
-                        <option value=''>Select stage</option>
-                        <option value='idea'>Exploring an idea</option>
-                        <option value='prototype'>
-                          Validating a prototype
-                        </option>
-                        <option value='launch'>Preparing to launch</option>
-                        <option value='scale'>
-                          Scaling an existing product
-                        </option>
-                      </select>
-                    </div>
+                  <div>
+                    <label
+                      htmlFor='projectTimeline'
+                      className='block text-small font-medium mb-2'
+                    >
+                      Ideal timeline
+                    </label>
+                    <select
+                      id='projectTimeline'
+                      name='projectTimeline'
+                      value={formData.projectTimeline}
+                      onChange={handleChange}
+                      className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
+                    >
+                      <option value=''>Select timeline</option>
+                      <option value='2-4 weeks'>2-4 weeks</option>
+                      <option value='1-2 months'>1-2 months</option>
+                      <option value='3-6 months'>3-6 months</option>
+                      <option value='flexible'>
+                        Flexible / depends on scope
+                      </option>
+                    </select>
+                  </div>
 
-                    <div>
-                      <label
-                        htmlFor='projectTimeline'
-                        className='block text-small font-medium mb-2'
-                      >
-                        Ideal timeline
-                      </label>
-                      <select
-                        id='projectTimeline'
-                        name='projectTimeline'
-                        value={formData.projectTimeline}
-                        onChange={handleChange}
-                        className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
-                      >
-                        <option value=''>Select timeline</option>
-                        <option value='2-4 weeks'>2-4 weeks</option>
-                        <option value='1-2 months'>1-2 months</option>
-                        <option value='3-6 months'>3-6 months</option>
-                        <option value='flexible'>
-                          Flexible / depends on scope
-                        </option>
-                      </select>
-                    </div>
+                  <div>
+                    <label
+                      htmlFor='projectBudget'
+                      className='block text-small font-medium mb-2'
+                    >
+                      Working budget (USD)
+                    </label>
+                    <select
+                      id='projectBudget'
+                      name='projectBudget'
+                      value={formData.projectBudget}
+                      onChange={handleChange}
+                      className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
+                    >
+                      <option value=''>Select range</option>
+                      <option value='under-5k'>Under $5k</option>
+                      <option value='5k-15k'>$5k - $15k</option>
+                      <option value='15k-30k'>$15k - $30k</option>
+                      <option value='30k-plus'>$30k +</option>
+                    </select>
+                  </div>
 
-                    <div>
-                      <label
-                        htmlFor='projectBudget'
-                        className='block text-small font-medium mb-2'
-                      >
-                        Working budget (USD)
-                      </label>
-                      <select
-                        id='projectBudget'
-                        name='projectBudget'
-                        value={formData.projectBudget}
-                        onChange={handleChange}
-                        className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
-                      >
-                        <option value=''>Select range</option>
-                        <option value='under-5k'>Under $5k</option>
-                        <option value='5k-15k'>$5k - $15k</option>
-                        <option value='15k-30k'>$15k - $30k</option>
-                        <option value='30k-plus'>$30k +</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label
+                      htmlFor='hearAboutUs'
+                      className='block text-small font-medium mb-2'
+                    >
+                      How did you hear about us?
+                    </label>
+                    <select
+                      id='hearAboutUs'
+                      name='hearAboutUs'
+                      value={formData.hearAboutUs}
+                      onChange={handleChange}
+                      className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
+                    >
+                      <option value=''>Select an option</option>
+                      <option value='referral'>Referral or past partner</option>
+                      <option value='event'>Met at an event</option>
+                      <option value='content'>Content or newsletter</option>
+                      <option value='search'>Search or social</option>
+                      <option value='other'>Something else</option>
+                    </select>
+                  </div>
 
-                    <div>
-                      <label
-                        htmlFor='hearAboutUs'
-                        className='block text-small font-medium mb-2'
-                      >
-                        How did you hear about us?
-                      </label>
-                      <select
-                        id='hearAboutUs'
-                        name='hearAboutUs'
-                        value={formData.hearAboutUs}
-                        onChange={handleChange}
-                        className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors'
-                      >
-                        <option value=''>Select an option</option>
-                        <option value='referral'>
-                          Referral or past partner
-                        </option>
-                        <option value='event'>Met at an event</option>
-                        <option value='content'>Content or newsletter</option>
-                        <option value='search'>Search or social</option>
-                        <option value='other'>Something else</option>
-                      </select>
-                    </div>
-
-                    <div className='md:col-span-2'>
-                      <label
-                        htmlFor='message'
-                        className='block text-small font-medium mb-2'
-                      >
-                        What would make this engagement a win? *
-                      </label>
-                      <textarea
-                        id='message'
-                        name='message'
-                        required
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder='Share goals, success metrics, collaborators, or links we should review ahead of the call.'
-                        className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-vertical'
-                      ></textarea>
-                      <p className='text-muted text-xs mt-2'>
-                        Include anything you feel will help us prep for a
-                        productive first conversation.
-                      </p>
-                    </div>
+                  <div className='md:col-span-2'>
+                    <label
+                      htmlFor='message'
+                      className='block text-small font-medium mb-2'
+                    >
+                      What would make this engagement a win? *
+                    </label>
+                    <textarea
+                      id='message'
+                      name='message'
+                      required
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder='Share goals, success metrics, collaborators, or links we should review ahead of the call.&#10;&#10;Include anything you feel will help us prep for a productive first conversation.'
+                      className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-vertical'
+                    ></textarea>
                   </div>
                 </div>
-              </section>
+              </div>
+            )}
 
-              <div className='space-y-4'>
-                {error && (
-                  <p className='text-sm text-red-600 bg-red-500/10 border border-red-400/50 rounded-lg px-4 py-3'>
-                    {error}
-                  </p>
+            {/* Navigation and Submit */}
+            <div className='space-y-4 max-w-2xl mx-auto'>
+              {error && (
+                <p className='text-sm text-red-600 bg-red-500/10 border border-red-400/50 rounded-lg px-4 py-3 text-center'>
+                  {error}
+                </p>
+              )}
+
+              <div className='flex gap-4'>
+                {currentStep > 1 && (
+                  <Button
+                    type='button'
+                    onClick={handlePrevious}
+                    variant='outline'
+                    shape='pill'
+                    className='flex-1'
+                  >
+                    <ChevronLeft className='w-4 h-4 mr-2' />
+                    Previous
+                  </Button>
                 )}
+
                 <Button
                   type='submit'
                   disabled={isSubmitting}
                   loading={isSubmitting}
                   variant='default'
                   shape='pill'
-                  className='w-full'
+                  className='flex-1'
                 >
-                  Send project details
+                  {currentStep === totalSteps ? (
+                    'Send project details'
+                  ) : (
+                    <>
+                      Continue
+                      <ChevronRight className='w-4 h-4 ml-2' />
+                    </>
+                  )}
                 </Button>
-                <p className='text-center text-muted text-xs'>
-                  Prefer to email instead? Reach me at{' '}
-                  <span className='font-medium text-foreground'>
-                    hello@pixelmojo.com
-                  </span>
-                  .
-                </p>
               </div>
-            </form>
-          </div>
+
+              <p className='text-center text-muted text-xs'>
+                Prefer to email instead? Reach me at{' '}
+                <a
+                  href='mailto:founders@pixelmojo.com?subject=Inquiry'
+                  className='font-medium text-foreground hover:text-primary transition-colors underline'
+                >
+                  founders@pixelmojo.com
+                </a>
+                .
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
