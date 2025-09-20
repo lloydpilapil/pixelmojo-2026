@@ -196,37 +196,33 @@ const TestimonialSection = ({
                 )
               })}
 
-              {/* Navigation kit */}
+              {/* Minimal Navigation */}
               {hasMultiple && (
-                <div className='mt-12 flex items-center justify-center gap-6'>
+                <div className='mt-12 flex items-center justify-center gap-8'>
                   <button
                     type='button'
                     onClick={prevTestimonial}
-                    className='flex h-10 w-10 items-center justify-center rounded-full bg-white/40 backdrop-blur ring-1 ring-white/50 text-slate-600 transition hover:bg-white/60 hover:text-slate-700 drop-shadow-lg dark:bg-slate-700/40 dark:ring-slate-500/60 dark:text-slate-200 dark:hover:bg-slate-600/60'
+                    className='flex h-8 w-8 items-center justify-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors'
                     aria-label='Previous testimonial'
                   >
-                    <ChevronLeft className='h-5 w-5' />
+                    <ChevronLeft className='h-4 w-4' />
                   </button>
 
-                  <div className='flex items-center justify-center gap-1.5 rounded-full bg-white/20 px-2 py-1 backdrop-blur dark:bg-slate-700/30'>
+                  <div className='flex items-center gap-2'>
                     {testimonials.map((_, index) => (
                       <button
                         key={index}
                         type='button'
                         onClick={() => startTransition(index)}
-                        className={`group flex h-8 w-8 items-center justify-center rounded-full transition ${
-                          index === currentIndex
-                            ? 'bg-white/50 ring-1 ring-white/60 dark:bg-slate-600/50 dark:ring-slate-400'
-                            : 'hover:bg-white/30 dark:hover:bg-slate-600/40'
-                        }`}
+                        className='group p-1'
                         aria-label={`Go to testimonial ${index + 1}`}
                         aria-pressed={index === currentIndex}
                       >
                         <span
-                          className={`h-2 w-2 rounded-full transition ${
+                          className={`block h-1.5 w-1.5 rounded-full transition-all ${
                             index === currentIndex
-                              ? 'bg-slate-800 dark:bg-white'
-                              : 'bg-slate-400 dark:bg-slate-500'
+                              ? 'bg-slate-600 dark:bg-slate-300 scale-125'
+                              : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
                           }`}
                         />
                       </button>
@@ -236,10 +232,10 @@ const TestimonialSection = ({
                   <button
                     type='button'
                     onClick={nextTestimonial}
-                    className='flex h-10 w-10 items-center justify-center rounded-full bg-white/40 backdrop-blur ring-1 ring-white/50 text-slate-600 transition hover:bg-white/60 hover:text-slate-700 drop-shadow-lg dark:bg-slate-700/40 dark:ring-slate-500/60 dark:text-slate-200 dark:hover:bg-slate-600/60'
+                    className='flex h-8 w-8 items-center justify-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors'
                     aria-label='Next testimonial'
                   >
-                    <ChevronRight className='h-5 w-5' />
+                    <ChevronRight className='h-4 w-4' />
                   </button>
                 </div>
               )}
