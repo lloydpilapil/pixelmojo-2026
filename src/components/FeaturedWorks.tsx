@@ -12,7 +12,7 @@ import {
   Heart,
   Sparkles,
 } from 'lucide-react'
-import { LinkButtonWithArrow, buttonVariants } from '@/components/ui/button'
+import { LinkButtonWithArrow } from '@/components/ui/button'
 import { Tag } from '@/components/ui/tag'
 import { cn } from '@/lib/utils'
 
@@ -74,29 +74,29 @@ const categoryConfig: Record<
 
 // Loading Skeleton Component
 const PortfolioStripSkeleton: React.FC = () => (
-  <div className='h-full bg-card rounded-2xl border border-border overflow-hidden animate-pulse'>
+  <div className='h-full flex flex-col md:flex-row animate-pulse'>
     {/* Image skeleton */}
-    <div className='aspect-[3/2] bg-gradient-to-br from-primary/5 to-secondary/5' />
+    <div className='aspect-[3/2] w-full md:w-[360px] rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5' />
 
     {/* Content skeleton */}
-    <div className='p-6 space-y-4'>
-      <div className='space-y-2'>
+    <div className='flex-1 p-5 md:p-6 space-y-4'>
+      <div className='space-y-1.5'>
         <div className='flex items-start justify-between gap-4'>
-          <div className='h-6 w-3/4 rounded-lg bg-muted' />
+          <div className='h-5 w-2/3 rounded-lg bg-muted' />
           <div className='h-5 w-16 rounded-full bg-muted/60' />
         </div>
         <div className='space-y-2'>
-          <div className='h-4 w-full rounded bg-muted/70' />
-          <div className='h-4 w-5/6 rounded bg-muted/70' />
-          <div className='h-4 w-4/6 rounded bg-muted/70' />
+          <div className='h-[14px] w-full rounded bg-muted/70' />
+          <div className='h-[14px] w-5/6 rounded bg-muted/70' />
+          <div className='h-[14px] w-4/6 rounded bg-muted/70' />
         </div>
       </div>
-      <div className='flex gap-2'>
+      <div className='flex flex-wrap gap-2'>
         <div className='w-16 h-6 rounded-full bg-muted/50' />
         <div className='w-20 h-6 rounded-full bg-muted/50' />
-        <div className='w-18 h-6 rounded-full bg-muted/50' />
+        <div className='w-20 h-6 rounded-full bg-muted/50' />
       </div>
-      <div className='h-5 w-32 rounded bg-muted' />
+      <div className='h-5 w-24 rounded bg-muted' />
     </div>
   </div>
 )
@@ -128,9 +128,9 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
         className='block h-full'
         aria-label={`View ${work.title} case study`}
       >
-        <div className='h-full bg-card rounded-2xl border border-border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-2'>
+        <div className='h-full flex flex-col md:flex-row transition-all duration-500'>
           {/* Cover Image */}
-          <div className='relative aspect-[3/2] overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5'>
+          <div className='relative aspect-[3/2] w-full md:w-[360px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5'>
             {/* Loading shimmer */}
             {!imageLoaded && (
               <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer' />
@@ -144,45 +144,38 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
                   fill
                   className={cn(
                     'object-cover transition-all duration-700',
-                    'group-hover:scale-110',
+                    'group-hover:scale-105',
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   )}
                   onLoad={() => setImageLoaded(true)}
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 320px'
                   priority={work.featured}
                 />
 
                 {/* Overlay on hover */}
-                <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
-
-                {/* Featured Badge */}
-                {work.featured && (
-                  <div className='absolute top-4 left-4 px-3 py-1 bg-primary text-white text-xs font-medium rounded-full'>
-                    Featured
-                  </div>
-                )}
+                <div className='absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500' />
 
                 {/* Category Badge */}
-                <div className='absolute top-4 right-4 px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/20'>
+                <div className='absolute top-3 right-3 px-3 py-1 bg-black/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/20'>
                   {work.category}
                 </div>
 
                 {/* View indicator on hover */}
                 <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500'>
-                  <div className='bg-white/95 backdrop-blur-sm rounded-full p-4 transform scale-0 group-hover:scale-100 transition-transform duration-500'>
-                    <Eye className='w-6 h-6 text-primary' />
+                  <div className='bg-white/95 backdrop-blur-sm rounded-full p-3 transform scale-0 group-hover:scale-100 transition-transform duration-500'>
+                    <Eye className='w-5 h-5 text-primary' />
                   </div>
                 </div>
               </>
             ) : (
               <div className='w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center'>
-                <CategoryIcon className='w-16 h-16 text-primary/20' />
+                <CategoryIcon className='w-12 h-12 text-primary/20' />
               </div>
             )}
           </div>
 
           {/* Content */}
-          <div className='p-6 space-y-4'>
+          <div className='flex-1 p-5 md:p-6 flex flex-col gap-3 justify-start'>
             {/* Header */}
             <div className='space-y-2'>
               <div className='flex items-start justify-between gap-4'>
@@ -195,7 +188,7 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
                 </div>
               </div>
 
-              <p className='text-muted leading-relaxed line-clamp-3'>
+              <p className='text-muted leading-relaxed line-clamp-2 md:line-clamp-3'>
                 {work.description}
               </p>
             </div>
@@ -215,34 +208,6 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
                 )}
               </div>
             )}
-
-            {/* CTA */}
-            <span
-              className={cn(
-                buttonVariants({ variant: 'link', size: 'link' }),
-                'group pt-2'
-              )}
-            >
-              <span className='inline-flex items-center gap-2'>
-                View Case Study
-                <span className='inline-block transition-transform group-hover:translate-x-1'>
-                  <svg
-                    width='20'
-                    height='20'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                    stroke='currentColor'
-                    strokeWidth='2'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    aria-hidden='true'
-                  >
-                    <line x1='5' y1='12' x2='19' y2='12' />
-                    <polyline points='12 5 19 12 12 19' />
-                  </svg>
-                </span>
-              </span>
-            </span>
           </div>
         </div>
       </Link>
@@ -262,7 +227,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       year: '2024',
       category: 'Web & Mobile',
       slug: '/works/real-estate-bear',
-      coverImage: '/ready-to-transform.webp',
+      coverImage: '/placeholder.svg',
       technologies: ['React', 'Next.js', 'React Native', 'TypeScript'],
       featured: true,
       isNew: true,
@@ -274,7 +239,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       year: '2023',
       category: 'Branding',
       slug: '/works/funnel-zen-branding',
-      coverImage: '/our-services-cover.webp',
+      coverImage: '/placeholder.svg',
       technologies: ['Brand Strategy', 'Logo Design', 'Visual Identity'],
     },
     {
@@ -284,7 +249,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       year: '2023',
       category: 'E-commerce',
       slug: '/works/beemine-store',
-      coverImage: '/pixelmojo-branding.svg',
+      coverImage: '/placeholder.svg',
       technologies: ['Shopify', 'UI/UX', 'Brand Design', 'Conversion'],
     },
     {
@@ -294,7 +259,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
       year: '2020',
       category: 'Healthcare',
       slug: '/works/cigna-stress-management-app',
-      coverImage: '/why-your-design-teams-next-hire-should---scientist.webp',
+      coverImage: '/placeholder.svg',
       technologies: ['Mobile Design', 'Healthcare UX', 'Accessibility'],
       featured: true,
     },
@@ -323,7 +288,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
         </div>
 
         {/* Portfolio Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto'>
+        <div className='grid grid-cols-1 gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto'>
           {loading
             ? // Show skeletons while loading
               Array.from({ length: 4 }).map((_, i) => (

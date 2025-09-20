@@ -145,7 +145,7 @@ const OurApproach = ({
                 }`}
               >
                 {/* Front */}
-                <div className='absolute inset-0 [backface-visibility:hidden] bg-card border border-border rounded-2xl p-8 flex flex-col justify-between gap-6 shadow-lg hover:shadow-xl transition-shadow duration-300'>
+                <div className='absolute inset-0 [backface-visibility:hidden] bg-card border border-border rounded-2xl p-8 flex flex-col justify-between gap-6'>
                   <div className='flex items-start gap-4'>
                     <div className='shrink-0'>{step.icon}</div>
                     <h3 className='flex-1 text-lg font-semibold leading-tight'>
@@ -155,7 +155,7 @@ const OurApproach = ({
 
                   <div className='flex items-start gap-3 text-muted text-sm leading-relaxed'>
                     <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-full ${step.hoverColor} text-white text-lg font-bold shadow-lg`}
+                      className={`flex h-10 w-10 items-center justify-center rounded-full ${step.hoverColor} text-white text-lg font-bold`}
                     >
                       {step.number}
                     </div>
