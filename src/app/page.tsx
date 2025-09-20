@@ -26,12 +26,12 @@ export default function Home() {
       <Hero
         title={
           <>
-            We design SaaS experiences that turn{' '}
-            <span className='text-accent'>strategy</span> into{' '}
-            <span className='text-growth'>ROI.</span>
+            We orchestrate <span className='text-accent'>AI + design</span> so
+            your <span className='text-growth'>roadmap</span> stops gathering
+            dust.
           </>
         }
-        description='We bridge product strategy, UX, and AI enablement so your teams launch faster, convert better, and prove measurable value to the business.'
+        description='We map AI enablement to real user journeys, making your launches simpler to ship and easier to defend in the boardroom by pairing design systems with measurable experiments your teams can run today.'
         ctaText='See How We Drive Growth'
         ctaHref='/contact-us'
         proofPoints={[]}

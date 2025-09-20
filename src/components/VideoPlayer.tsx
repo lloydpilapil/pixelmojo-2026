@@ -478,7 +478,7 @@ export default function VideoPlayer({
         >
           <iframe
             id={`vimeo-${videoId}`}
-            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=1`}
+            src={`https://player.vimeo.com/video/${videoId}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&title=0&byline=0&portrait=0&muted=1&controls=0`}
             className='h-full w-full border-none opacity-0 transition-opacity duration-700 ease-out'
             allow='autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share'
             allowFullScreen

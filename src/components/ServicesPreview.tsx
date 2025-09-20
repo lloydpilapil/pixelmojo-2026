@@ -26,64 +26,67 @@ const ServicesPreview = ({
     {
       title: 'Growth-Focused Product Sprint',
       description:
-        'Align strategy, UX, and AI to prototype, validate, and launch revenue-ready flows within six weeks.',
+        'Align product, design, and AI leads around your north-star journey; prototype, test, and instrument the flows that unblock adoption inside one quarter.',
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ui-ux-design-solutions',
       gradient: 'from-blue-500/20 to-purple-500/30',
       outcome:
-        'Fast-track activation and onboarding for SaaS teams in 6 weeks.',
+        'Ship validated activation journeys with dashboards that show what to scale next.',
       startingAt: 'From $15K',
       featured: true,
     },
     {
       title: 'Brand Identity',
       description:
-        'Craft positioning, visual systems, and messaging frameworks that keep brands unmistakable to scale.',
+        'Translate positioning into a design system your teams can actually ship with—voice, visuals, and governance rooted in customer truth.',
       icon: '/branding_services_thumb.svg',
       href: '/services/brand-identity',
       gradient: 'from-purple-500/10 to-pink-500/10',
-      outcome: 'Define brand voice and launch-ready assets in 4 weeks.',
+      outcome: 'Hand off a brand kit wired for experimentation, not shelfware.',
       startingAt: 'Starts at $9K',
     },
     {
       title: 'Brand Activation & Growth',
       description:
-        'Run lifecycle campaigns with GTM toolkits and analytics so qualified deals stay warm throughout pipeline.',
+        'Pair lifecycle narrative, AI-assisted nurture, and revenue analytics so every campaign ladders back to the roadmap.',
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/brand-activation-growth',
       gradient: 'from-green-500/10 to-teal-500/10',
-      outcome: 'Accelerate qualified pipeline with ROI dashboards in 90 days.',
+      outcome:
+        'Keep qualified pipeline warm with insight loops leadership can defend.',
       startingAt: 'Retainers from $6K/mo',
     },
     {
       title: 'Web & App Design',
       description:
-        'Design responsive systems and motion-rich interfaces with accessibility and performance built-in.',
+        'Build responsive product surfaces tied to real user journeys, with AI cues, accessibility, and performance tuned before dev picks it up.',
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/web-app-design',
       gradient: 'from-orange-500/10 to-red-500/10',
       outcome:
-        'Launch conversion-optimized marketing sites or apps in 10–12 weeks.',
+        'Launch feature-rich experiences that drive conversion and capture learning signals.',
       startingAt: 'Project scopes from $22K',
     },
     {
       title: 'Graphic & Visuals',
       description:
-        'Deliver campaign visuals, sales collateral, and pitch decks as reusable, on-brand kits for growth.',
+        'Deliver on-demand storytelling assets that plug into your experiments—from investor decks to in-app nudges—always on-brand.',
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/graphic-visuals',
       gradient: 'from-pink-500/10 to-rose-500/10',
-      outcome: 'Campaign-ready drops produced in 10 business days.',
+      outcome:
+        'Deploy campaign visuals in days, complete with metrics to prove what lands.',
       startingAt: 'Bundles from $4K',
     },
     {
       title: 'Development Solutions',
       description:
-        'Provide full-stack product and web engineering with QA automation and analytics embedded from sprint one.',
+        'Embed full-stack squads who code against the design system, automate QA, and surface evidence every sprint.',
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/development-solutions',
       gradient: 'from-indigo-500/10 to-blue-500/10',
-      outcome: 'Ship stable releases every two weeks with embedded squads.',
+      outcome:
+        'Release AI-enabled features on a predictable cadence without compromising reliability.',
       startingAt: 'Embedded teams from $12K/mo',
     },
   ],
@@ -99,11 +102,11 @@ const ServicesPreview = ({
         <div className='mb-16 text-center'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted mx-auto max-w-3xl text-lg leading-relaxed'>
-            Choose the partnership model that meets you where you are—from rapid
-            sprints to embedded teams, each backed by outcomes we track and
-            optimize with you.{' '}
+            We turn your AI ambitions into launch-ready experiences with design
+            systems, rapid experiments, and the proof your leadership needs to
+            keep funding momentum.{' '}
             <span className='text-primary font-medium'>
-              Global expertise, optimized efficiency.
+              Evidence over hype, every sprint.
             </span>
           </p>
         </div>
@@ -135,7 +138,7 @@ const ServicesPreview = ({
                   <h3 className='text-lg font-semibold transition-colors duration-300 group-hover:text-primary'>
                     {service.title}
                   </h3>
-                  <p className='text-muted leading-relaxed h-[6rem]'>
+                  <p className='text-muted leading-relaxed min-h-[6rem]'>
                     {service.description}
                   </p>
                 </div>
