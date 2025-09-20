@@ -267,7 +267,6 @@ ul, ol {
   font-size: var(--fluid-base);
   line-height: var(--leading-loose);
   margin-bottom: var(--spacing-md);
-  padding-left: var(--spacing-lg);
 }
 
 li {
