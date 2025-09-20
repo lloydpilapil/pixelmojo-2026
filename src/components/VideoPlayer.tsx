@@ -425,16 +425,13 @@ export default function VideoPlayer({
       {showCover && (
         <button
           type='button'
-          className='group absolute inset-0 z-10 flex items-center justify-center bg-cover bg-center transition-all duration-300 hover:brightness-90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40'
+          className='group absolute inset-0 z-10 flex items-center justify-center bg-cover bg-center transition-all duration-300 hover:brightness-90 focus-visible:outline-none'
           style={{ backgroundImage: `url(${coverImage})` }}
           onClick={handlePlayClick}
           aria-label='Play video'
         >
           {/* Play Button */}
           <div className='relative flex h-16 w-16 items-center justify-center transition-transform duration-300 group-hover:scale-110 md:h-20 md:w-20'>
-            {/* Glow Effect */}
-            <div className='absolute inset-0 animate-pulse rounded-full bg-white opacity-60 blur-md group-hover:animate-none' />
-
             {/* Play Button SVG */}
             <svg
               className='relative z-10 h-full w-full animate-pulse transition-transform duration-300 group-hover:animate-none'
@@ -449,7 +446,7 @@ export default function VideoPlayer({
 
           {/* Click to Play Text */}
           <span
-            className='pointer-events-none absolute left-1/2 top-[calc(50%+60px)] -translate-x-1/2 transform text-base font-semibold text-white opacity-0 transition-all duration-300 drop-shadow-lg group-hover:top-[calc(50%+70px)] group-hover:opacity-100'
+            className='pointer-events-none absolute left-1/2 top-[calc(50%+60px)] -translate-x-1/2 transform text-base font-semibold text-white opacity-0 transition-all duration-300 group-hover:top-[calc(50%+70px)] group-hover:opacity-100'
             aria-hidden='true'
           >
             Click to Play
@@ -503,7 +500,7 @@ export default function VideoPlayer({
         <button
           type='button'
           onClick={toggleMute}
-          className='absolute bottom-4 right-4 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 border-white/30 bg-gradient-to-r from-primary to-secondary transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/30 active:scale-95 animate-pulse group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50 md:bottom-5 md:right-5 md:h-12 md:w-12'
+          className='absolute bottom-4 right-4 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 border-white/30 bg-gradient-to-r from-primary to-secondary transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse group focus-visible:outline-none md:bottom-5 md:right-5 md:h-12 md:w-12'
           aria-label={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? (

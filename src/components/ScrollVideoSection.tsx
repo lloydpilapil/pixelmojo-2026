@@ -143,14 +143,6 @@ export default function ScrollVideoSection({
       className={`relative overflow-hidden py-16 md:py-24 ${className}`}
       aria-labelledby={captionId}
     >
-      {/* Background gradient for dramatic effect */}
-      <div
-        className='absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent pointer-events-none'
-        style={{
-          opacity: opacity * 0.3,
-        }}
-      />
-
       <figure className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Video with scaling animation and dynamic sizing */}
         <div
@@ -163,15 +155,8 @@ export default function ScrollVideoSection({
             ...videoStyle,
           }}
         >
-          {/* Video Player with subtle shadow */}
-          <div
-            className='relative w-full h-full overflow-hidden rounded-2xl transition-all duration-700'
-            style={{
-              boxShadow: isMobile
-                ? `0 10px 26px rgba(0, 0, 0, 0.18)`
-                : `0 ${8 + 12 * opacity}px ${16 + 24 * opacity}px -${4 - 2 * opacity}px rgba(0, 0, 0, ${0.06 + 0.08 * opacity})`,
-            }}
-          >
+          {/* Video Player */}
+          <div className='relative w-full h-full overflow-hidden rounded-2xl transition-all duration-700'>
             <VideoPlayer
               videoId={videoId}
               coverImage={coverImage}
@@ -180,22 +165,6 @@ export default function ScrollVideoSection({
               ariaDescribedBy={captionId}
             />
           </div>
-
-          {/* Optional: Add floating elements that parallax */}
-          <div
-            className='absolute -top-10 -left-10 h-32 w-32 rounded-full bg-primary/10 blur-3xl'
-            style={{
-              transform: `translateY(${-30 * (1 - opacity)}px)`,
-              opacity: opacity * 0.5,
-            }}
-          />
-          <div
-            className='absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-3xl'
-            style={{
-              transform: `translateY(${30 * (1 - opacity)}px)`,
-              opacity: opacity * 0.5,
-            }}
-          />
         </div>
         <figcaption
           id={captionId}

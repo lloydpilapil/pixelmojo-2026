@@ -192,6 +192,13 @@ body {
   outline-offset: 2px;
 }
 
+/* Prevent browser glow on embedded players while keeping other controls accessible */
+iframe:focus,
+iframe:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Selection */
 ::selection {
   background: var(--selection-bg, var(--primary));
