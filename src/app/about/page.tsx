@@ -106,7 +106,7 @@ export default function About() {
       {/* Scroll-Animated Video Section */}
       <ScrollVideoSection
         videoId='1098766945'
-        coverImage='/video-cover-02.webp'
+        coverImage='/cover-about.webp'
         caption='Showreel: See how Pixelmojo fuses strategy, UX, and engineering to unlock measurable growth for product teams.'
       />
 

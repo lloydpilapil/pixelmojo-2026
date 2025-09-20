@@ -489,14 +489,16 @@ li {
 /* Force no shadows on all cards globally + consistent subtle borders */
 .card,
 [class*="card"],
-.bg-card {
+.bg-card,
+article[class*="card"] {
   box-shadow: none !important;
   border: 1px solid rgba(161, 161, 161, 0.6) !important;
 }
 
 .card:hover,
 [class*="card"]:hover,
-.bg-card:hover {
+.bg-card:hover,
+article[class*="card"]:hover {
   box-shadow: none !important;
   transform: none !important;
   border: 1px solid rgba(161, 161, 161, 0.6) !important;
