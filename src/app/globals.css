@@ -15,11 +15,11 @@
   --foreground: #2d3748;
   --muted: #f8f9fa;
   --muted-foreground: #64748b;
-  --card: #ffffff;
+  --card: #FFFDF7;
   --card-foreground: #171717;
   --popover: #ffffff;
   --popover-foreground: #171717;
-  --border: #f3f4f6;
+  --border: #A1A1A1;
   --input: #e5e7eb;
   
   /* Brand Colors */
@@ -459,6 +459,44 @@ li {
 .bg-cta { background-color: var(--cta); color: var(--cta-foreground); }
 .bg-growth { background-color: var(--growth); color: var(--growth-foreground); }
 
+/* Force bg-card utility */
+.bg-card { background-color: var(--card) !important; }
+
+/* Force card backgrounds to be visible */
+.card,
+[class*="card"] {
+  background-color: #FFFDF7 !important;
+}
+
+.bg-card {
+  background-color: #FFFDF7 !important;
+}
+
+/* Handle opacity variants */
+.bg-card\/70 {
+  background-color: rgba(255, 253, 247, 0.7) !important;
+}
+
+.bg-card\/60 {
+  background-color: rgba(255, 253, 247, 0.6) !important;
+}
+
+/* Force no shadows on all cards globally + consistent subtle borders */
+.card,
+[class*="card"],
+.bg-card {
+  box-shadow: none !important;
+  border: 1px solid rgba(161, 161, 161, 0.6) !important;
+}
+
+.card:hover,
+[class*="card"]:hover,
+.bg-card:hover {
+  box-shadow: none !important;
+  transform: none !important;
+  border: 1px solid rgba(161, 161, 161, 0.6) !important;
+}
+
 .border-primary { border-color: var(--primary); }
 .border-secondary { border-color: var(--secondary); }
 .border-accent { border-color: var(--accent); }
@@ -467,16 +505,16 @@ li {
 
 /* Component Styles */
 .card {
-  background: var(--card);
+  background: var(--card) !important;
   color: var(--card-foreground);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border) !important;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none !important;
   transition: box-shadow var(--transition-fast);
 }
 
 .card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: none !important;
 }
 
 /* Animated Gradient Surface */
@@ -992,6 +1030,7 @@ li {
 [data-theme='dark'] .tech-tag:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
 
 /* Mobile touch feedback */
 @media (hover: none) {

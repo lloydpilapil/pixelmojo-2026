@@ -82,7 +82,7 @@ const OurApproach = ({
               onClick={() => setActiveCard(activeCard === index ? null : index)}
             >
               {/* Card */}
-              <div className='relative bg-card border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-lg min-h-[200px] md:min-h-[240px]'>
+              <div className='card relative p-6 md:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-lg min-h-[200px] md:min-h-[240px]'>
                 {/* Number badge - with higher z-index to stay on top */}
                 <div
                   className={`absolute -top-3 -left-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full ${step.hoverColor} text-white font-bold text-lg md:text-xl shadow-lg z-20`}
@@ -102,7 +102,7 @@ const OurApproach = ({
 
                 {/* Hover/Active overlay - simpler approach */}
                 <div
-                  className={`absolute inset-0 rounded-2xl ${step.hoverColor} p-6 md:p-8 flex items-center justify-center transition-opacity duration-300 ${
+                  className={`absolute inset-0 rounded-lg ${step.hoverColor} p-6 md:p-8 flex items-center justify-center transition-opacity duration-300 ${
                     activeCard === index
                       ? 'opacity-100'
                       : 'opacity-0 pointer-events-none'

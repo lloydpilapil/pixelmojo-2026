@@ -134,7 +134,7 @@ export default function Services() {
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
         {services.map((service, index) => (
           <div key={index} className='group h-full'>
-            <div className='h-full flex flex-col bg-card rounded-2xl border border-border p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
+            <div className='card h-full flex flex-col rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/50 hover:-translate-y-1'>
               {/* Icon */}
               <div className='w-16 h-16 flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110'>
                 <Image
