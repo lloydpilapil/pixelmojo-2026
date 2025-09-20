@@ -143,7 +143,7 @@ const ServicesPreview = ({
                       {service.description}
                     </p>
                   </div>
-                  <div className='mt-6 flex flex-col gap-3 border-t border-border/70 pt-5'>
+                  <div className='mt-6 flex flex-col gap-3 border-t border-border/60 pt-5'>
                     <div className='text-sm font-medium text-muted-foreground'>
                       {service.outcome}
                     </div>
