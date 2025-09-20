@@ -38,7 +38,7 @@ export function AuthorBio({
       )}
 
       {/* Main card container */}
-      <div className='relative bg-transparent rounded-xl border border-border p-6 md:p-8'>
+      <div className='relative bg-transparent rounded-xl border border-border/60 p-6 md:p-8'>
         {/* LinkedIn icon in top right corner */}
         {author.socialLinks?.linkedin && (
           <a

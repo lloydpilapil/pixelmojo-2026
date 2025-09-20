@@ -90,7 +90,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     pre: ({ children, ...props }) => (
       <pre
-        className='bg-muted text-foreground p-4 rounded-lg overflow-x-auto mb-6 font-mono text-sm leading-relaxed border border-border'
+        className='bg-muted text-foreground p-4 rounded-lg overflow-x-auto mb-6 font-mono text-sm leading-relaxed border border-border/60'
         {...props}
       >
         {children}
@@ -148,11 +148,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Horizontal rule
-    hr: () => <hr className='my-10 border-t border-border/50' />,
+    hr: () => <hr className='my-10 border-t border-border/60' />,
 
     // Table support
     table: ({ children }) => (
-      <div className='overflow-x-auto mb-6 rounded-lg border border-border'>
+      <div className='overflow-x-auto mb-6 rounded-lg border border-border/60'>
         <table className='min-w-full divide-y divide-border'>{children}</table>
       </div>
     ),
@@ -186,7 +186,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Details/Summary for collapsible content
     details: ({ children, ...props }) => (
       <details
-        className='mb-6 p-4 bg-muted/30 rounded-lg border border-border group'
+        className='mb-6 p-4 bg-muted/30 rounded-lg border border-border/60 group'
         {...props}
       >
         {children}
@@ -220,7 +220,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Keyboard shortcuts
     kbd: ({ children }) => (
-      <kbd className='px-2 py-1 text-sm font-mono bg-muted border border-border rounded-md shadow-sm'>
+      <kbd className='px-2 py-1 text-sm font-mono bg-muted border border-border/60 rounded-md shadow-sm'>
         {children}
       </kbd>
     ),

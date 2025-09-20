@@ -25,10 +25,10 @@ function FAQAccordionItem({
   onToggle: () => void
 }) {
   return (
-    <div className='border border-border rounded-lg overflow-hidden'>
+    <div className='border border-border/60 rounded-lg overflow-hidden bg-card'>
       <button
         onClick={onToggle}
-        className='w-full px-6 py-4 text-left bg-card hover:bg-muted/50 transition-colors flex items-center justify-between group'
+        className='w-full px-6 py-4 text-left hover:bg-muted/50 transition-colors flex items-center justify-between group'
       >
         <h3
           className='font-medium group-hover:text-primary transition-colors pr-4'
@@ -56,12 +56,12 @@ function FAQAccordionItem({
 
       <div
         className={cn(
-          'px-6 bg-card transition-all duration-200 ease-in-out overflow-hidden',
+          'px-6 transition-all duration-200 ease-in-out overflow-hidden',
           isOpen ? 'pb-4 opacity-100' : 'pb-0 opacity-0 max-h-0'
         )}
       >
-        <div className='prose prose-sm max-w-none text-muted-foreground'>
-          <p>{faq.answer}</p>
+        <div className='max-w-none text-muted-foreground'>
+          <p className='m-0'>{faq.answer}</p>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ export function BlogFAQ({
   }
 
   return (
-    <section className={cn('py-12 border-t border-border', className)}>
+    <section className={cn('py-12', className)}>
       <div className='mb-8'>
         <div className='flex items-center justify-between mb-4'>
           <h2 className='mb-0'>{title}</h2>

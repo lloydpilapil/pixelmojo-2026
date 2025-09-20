@@ -42,7 +42,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             </p>
           )}
 
-          <div className='mt-auto pt-4 border-t border-border'>
+          <div className='mt-auto pt-4 border-t border-border/60'>
             <div className='flex items-center gap-2 text-xs text-muted'>
               <span>
                 {new Date(post.date).toLocaleDateString('en-US', {
