@@ -19,13 +19,14 @@ const buttonVariants = cva(
           'bg-[#FD4B8B]/20 text-[#FD4B8B] shadow-sm hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
         ghost:
           'text-[#FD4B8B] hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
-        link: 'text-[#FD4B8B] underline-offset-4 hover:text-[#55AE44] hover:underline',
+        link: 'text-primary underline-offset-4 hover:text-primary/80 hover:underline',
       },
       size: {
         default: 'h-11 px-5 text-base', // 44px height (was 36px)
         sm: 'h-10 px-4 text-sm', // 40px height (was 32px)
         lg: 'h-12 px-10 text-base', // 48px height (was 40px)
         icon: 'h-11 w-11', // 44px × 44px (was 36px)
+        link: 'h-auto px-0 py-0 text-base', // Text-style links align with surrounding copy
       },
       shape: {
         default: 'rounded-full',
@@ -77,6 +78,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const resolvedSize = size ?? (variant === 'link' ? 'link' : undefined)
+
     const content = loading ? (
       <>
         <svg
@@ -111,7 +114,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={cn(buttonVariants({ variant, size, shape, className }))}
+        className={cn(
+          buttonVariants({ variant, size: resolvedSize, shape, className })
+        )}
         disabled={disabled || loading}
         ref={ref}
         {...props}
@@ -139,6 +144,8 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
     },
     ref
   ) => {
+    const resolvedSize = size ?? (variant === 'link' ? 'link' : undefined)
+
     const content = (
       <>
         {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
@@ -149,7 +156,9 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
 
     return (
       <Link
-        className={cn(buttonVariants({ variant, size, shape, className }))}
+        className={cn(
+          buttonVariants({ variant, size: resolvedSize, shape, className })
+        )}
         href={href}
         ref={ref}
         {...props}
@@ -161,7 +170,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
 )
 LinkButton.displayName = 'LinkButton'
 
-// Link Button with Arrow Component
+// Link Button with Arrow Component - FIXED VERSION
 export interface LinkButtonWithArrowProps
   extends Omit<LinkButtonProps, 'rightIcon'> {
   arrowIcon?: 'chevron' | 'arrow'
@@ -219,6 +228,8 @@ const LinkButtonWithArrow = React.forwardRef<
       </svg>
     )
 
+    const resolvedSize = size ?? (variant === 'link' ? 'link' : undefined)
+
     const rightIcon = showArrow ? (
       arrowIcon === 'arrow' ? (
         <ArrowRight />
@@ -227,24 +238,23 @@ const LinkButtonWithArrow = React.forwardRef<
       )
     ) : null
 
+    // FIXED: Simplified content structure to remove extra wrapper and padding
     const content = (
       <>
         {leftIcon && <span className='flex items-center'>{leftIcon}</span>}
-        <span className='inline-flex items-center gap-1 group'>
-          {children}
-          {rightIcon && (
-            <span className='inline-block transition-transform group-hover:translate-x-1'>
-              {rightIcon}
-            </span>
-          )}
-        </span>
+        {children}
+        {rightIcon && (
+          <span className='inline-block ml-1 transition-transform group-hover:translate-x-1'>
+            {rightIcon}
+          </span>
+        )}
       </>
     )
 
     return (
       <Link
         className={cn(
-          buttonVariants({ variant, size, shape, className }),
+          buttonVariants({ variant, size: resolvedSize, shape, className }),
           'group'
         )}
         href={href}
@@ -317,6 +327,8 @@ const TextButtonWithArrow = React.forwardRef<
       </svg>
     )
 
+    const resolvedSize = size ?? (variant === 'link' ? 'link' : undefined)
+
     const rightIcon =
       showArrow && !loading ? (
         arrowIcon === 'arrow' ? (
@@ -367,7 +379,7 @@ const TextButtonWithArrow = React.forwardRef<
     return (
       <button
         className={cn(
-          buttonVariants({ variant, size, shape, className }),
+          buttonVariants({ variant, size: resolvedSize, shape, className }),
           'group'
         )}
         disabled={disabled || loading}

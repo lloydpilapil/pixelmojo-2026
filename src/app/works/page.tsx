@@ -74,8 +74,8 @@ export default function Works() {
 
         {/* Projects Grid */}
         <div className='grid md:grid-cols-2 gap-8 mb-20'>
-          {works.map(work => (
-            <PortfolioCard key={work.slug} work={work} />
+          {works.map((work, index) => (
+            <PortfolioCard key={work.slug} work={work} index={index} />
           ))}
         </div>
       </div>

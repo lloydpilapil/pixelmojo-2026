@@ -2,8 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { LinkButtonWithArrow } from '@/components/ui/button'
 
 interface ServiceItem {
@@ -113,11 +111,7 @@ const ServicesPreview = ({
         {/* Services Grid */}
         <div className='mx-auto mb-12 grid max-w-6xl gap-8 md:grid-cols-2 xl:grid-cols-3 items-stretch'>
           {services.map(service => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className='group block h-full'
-            >
+            <div key={service.title} className='group h-full'>
               <div
                 className={`h-full rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative ${
                   service.featured
@@ -150,17 +144,24 @@ const ServicesPreview = ({
                     {service.outcome}
                   </div>
                   {service.startingAt && (
-                    <span className='text-sm font-semibold text-primary'>
+                    <span
+                      className='text-sm font-semibold'
+                      style={{ color: '#3CC29E' }}
+                    >
                       {service.startingAt}
                     </span>
                   )}
                 </div>
-                <div className='mt-6 flex items-center gap-2 text-primary font-medium transition-all duration-300 group-hover:gap-3'>
-                  <span>Learn more</span>
-                  <ArrowRight className='h-4 w-4 transition-transform duration-300 group-hover:translate-x-1' />
-                </div>
+                <LinkButtonWithArrow
+                  href={service.href}
+                  variant='link'
+                  arrowIcon='arrow'
+                  className='mt-6'
+                >
+                  Learn more
+                </LinkButtonWithArrow>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
