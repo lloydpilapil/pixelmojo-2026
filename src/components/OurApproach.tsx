@@ -145,25 +145,21 @@ const OurApproach = ({
                 }`}
               >
                 {/* Front */}
-                <div className='absolute inset-0 [backface-visibility:hidden] bg-card border border-border rounded-2xl p-8 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300'>
-                  {/* Step Number Badge - positioned relative to card, not floating above */}
-                  <div className='absolute top-4 right-4'>
+                <div className='absolute inset-0 [backface-visibility:hidden] bg-card border border-border rounded-2xl p-8 flex flex-col justify-between gap-6 shadow-lg hover:shadow-xl transition-shadow duration-300'>
+                  <div className='flex items-start gap-4'>
+                    <div className='shrink-0'>{step.icon}</div>
+                    <h3 className='flex-1 text-lg font-semibold leading-tight'>
+                      {step.title}
+                    </h3>
+                  </div>
+
+                  <div className='flex items-start gap-3 text-muted text-sm leading-relaxed'>
                     <div
-                      className={`w-10 h-10 rounded-full ${step.hoverColor} text-white text-lg font-bold flex items-center justify-center shadow-lg`}
+                      className={`flex h-10 w-10 items-center justify-center rounded-full ${step.hoverColor} text-white text-lg font-bold shadow-lg`}
                     >
                       {step.number}
                     </div>
-                  </div>
-
-                  {/* Icon */}
-                  <div className='mb-6 mt-4'>{step.icon}</div>
-
-                  {/* Content */}
-                  <div className='flex-1'>
-                    <h3 className='mb-4 text-lg font-semibold'>{step.title}</h3>
-                    <p className='text-muted text-sm leading-relaxed'>
-                      {step.description}
-                    </p>
+                    <p className='flex-1'>{step.description}</p>
                   </div>
                 </div>
 
@@ -173,8 +169,8 @@ const OurApproach = ({
                 >
                   <div className='flex flex-col justify-center h-full text-white text-center'>
                     <div className='mb-6'>
-                      <div className='w-12 h-12 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center'>
-                        <span className='text-2xl'>✨</span>
+                      <div className='w-12 h-12 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold'>
+                        {step.number}
                       </div>
                       <h4 className='text-xl font-bold mb-4'>Key Benefit</h4>
                       <p className='text-lg leading-relaxed'>

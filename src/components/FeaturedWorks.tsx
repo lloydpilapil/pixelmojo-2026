@@ -12,7 +12,7 @@ import {
   Heart,
   Sparkles,
 } from 'lucide-react'
-import { LinkButtonWithArrow } from '@/components/ui/button'
+import { LinkButtonWithArrow, buttonVariants } from '@/components/ui/button'
 import { Tag } from '@/components/ui/tag'
 import { cn } from '@/lib/utils'
 
@@ -217,14 +217,32 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
             )}
 
             {/* CTA */}
-            <LinkButtonWithArrow
-              href={work.slug}
-              variant='link'
-              arrowIcon='arrow'
-              className='pt-2'
+            <span
+              className={cn(
+                buttonVariants({ variant: 'link', size: 'link' }),
+                'group pt-2'
+              )}
             >
-              View Case Study
-            </LinkButtonWithArrow>
+              <span className='inline-flex items-center gap-2'>
+                View Case Study
+                <span className='inline-block transition-transform group-hover:translate-x-1'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    aria-hidden='true'
+                  >
+                    <line x1='5' y1='12' x2='19' y2='12' />
+                    <polyline points='12 5 19 12 12 19' />
+                  </svg>
+                </span>
+              </span>
+            </span>
           </div>
         </div>
       </Link>
