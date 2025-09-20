@@ -24,7 +24,7 @@ export function BlogPostLayout({
 
           {/* TOC on mobile/tablet */}
           {tableOfContents && (
-            <div className='bg-[#F8F1E5] border border-border rounded-lg'>
+            <div className='bg-[#F8F1E5] border border-border/60 rounded-lg'>
               {tableOfContents}
             </div>
           )}
@@ -41,7 +41,7 @@ export function BlogPostLayout({
             style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
           >
             {tableOfContents && (
-              <div className='bg-[#F8F1E5] border border-border rounded-lg'>
+              <div className='bg-[#F8F1E5] border border-border/60 rounded-lg'>
                 {tableOfContents}
               </div>
             )}

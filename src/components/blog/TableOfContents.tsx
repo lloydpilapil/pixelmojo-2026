@@ -98,7 +98,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
               className='group relative'
               style={{ marginBottom: '1rem' }}
             >
-              <div className='relative flex items-center'>
+              <div className='relative flex items-center pl-6'>
                 {/* Animated chevron - appears on hover and when active, positioned absolutely */}
                 <svg
                   className={cn(
@@ -122,9 +122,9 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
                   onClick={e => handleClick(e, id)}
                   className={cn(
                     'text-sm transition-all duration-300 ease-out hover:text-primary cursor-pointer truncate',
-                    'transform group-hover:translate-x-5 transition-transform duration-300 ease-out',
+                    'transform group-hover:translate-x-1 transition-transform duration-300 ease-out',
                     activeId === id
-                      ? 'text-foreground font-medium translate-x-5'
+                      ? 'text-foreground font-medium translate-x-1'
                       : 'text-foreground/60'
                   )}
                   title={text}

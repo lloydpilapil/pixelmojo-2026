@@ -481,6 +481,11 @@ li {
   background-color: rgba(255, 253, 247, 0.6) !important;
 }
 
+/* Force border utilities */
+.border-border\/60 {
+  border-color: rgba(161, 161, 161, 0.6) !important;
+}
+
 /* Force no shadows on all cards globally + consistent subtle borders */
 .card,
 [class*="card"],
