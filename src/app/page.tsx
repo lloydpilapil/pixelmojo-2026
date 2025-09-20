@@ -32,8 +32,8 @@ export default function Home() {
           </>
         }
         description='We map AI enablement to real user journeys, making your launches simpler to ship and easier to defend in the boardroom by pairing design systems with measurable experiments your teams can run today.'
-        ctaText='See How We Drive Growth'
-        ctaHref='/contact-us'
+        ctaText='Learn Our Process'
+        ctaHref='/about'
         proofPoints={[]}
       />
 
