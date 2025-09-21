@@ -39,7 +39,7 @@ export default function Hero({
       <div className='text-center'>
         <h1 className='hero-title max-w-6xl mx-auto mb-10 md:mb-12'>{title}</h1>
       </div>
-      <p className='lead max-w-5xl mx-auto mb-10 md:mb-12'>{description}</p>
+      <p className='lead max-w-3xl mx-auto mb-10 md:mb-12'>{description}</p>
       <div className='flex flex-col sm:flex-row gap-4 justify-center mt-12'>
         <LinkButton href={ctaHref} variant='default' shape='pill' size='lg'>
           {ctaText}

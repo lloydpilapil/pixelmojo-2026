@@ -46,7 +46,7 @@ export default function ServicePage({ service }: ServicePageProps) {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 max-w-5xl mx-auto !text-4xl md:!text-5xl lg:!text-6xl'>
+        <h2 className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
           Stop burning cash on concepts. Start shipping products that pay.
         </h2>
         <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed mb-16'>
@@ -120,11 +120,11 @@ export default function ServicePage({ service }: ServicePageProps) {
       {/* Horizontal Step Process */}
       <div className='max-w-6xl mx-auto mb-20'>
         <div className='relative'>
-          {/* Horizontal line */}
-          <div className='absolute top-6 left-0 right-0 h-0.5 bg-gray-300'></div>
+          {/* Horizontal line - hidden on mobile */}
+          <div className='absolute top-6 left-0 right-0 h-0.5 bg-gray-300 hidden md:block'></div>
 
           {/* Steps */}
-          <div className='grid grid-cols-5 gap-4 relative'>
+          <div className='grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative'>
             {/* Step 1 */}
             <div className='text-center'>
               <div

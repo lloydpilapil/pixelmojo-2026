@@ -118,7 +118,7 @@ export default function Services() {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 max-w-5xl mx-auto !text-4xl md:!text-5xl lg:!text-6xl'>
+        <h2 className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
           Stop burning cash on concepts. Start shipping products that pay.
         </h2>
         <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>

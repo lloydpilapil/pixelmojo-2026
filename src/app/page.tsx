@@ -27,10 +27,10 @@ export default function Home() {
         title={
           <>
             We build <span className='text-accent'>AI products</span> that
-            profit from <span className='text-growth'>day one.</span>
+            actually ship and <span className='text-growth'>sell.</span>
           </>
         }
-        description='Forget fragmented vendors and endless discovery. We design, develop, and deploy complete product ecosystems that generate measurable ROI immediately, not someday.'
+        description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
         ctaText='Learn Our Process'
         ctaHref='/about'
         proofPoints={[]}

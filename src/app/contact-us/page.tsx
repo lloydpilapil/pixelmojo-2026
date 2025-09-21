@@ -149,13 +149,13 @@ export default function Contact() {
       <div className='container mx-auto px-4 py-16 pb-32'>
         {/* Hero Section */}
         <div className='text-center mb-12'>
-          <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
-            Ready to build AI products that generate profits from day one?
+          <h1 className='mb-6 font-heading max-w-5xl mx-auto'>
+            Ready to ship AI products that actually sell?
           </h1>
-          <p className='lead max-w-5xl mx-auto mb-12'>
-            Stop burning cash on concepts. We architect, build, and deploy
-            complete AI ecosystems that deliver measurable ROI immediately, not
-            someday.
+          <p className='lead max-w-3xl mx-auto mb-12'>
+            Let's skip the endless discovery phase. Tell us your goals, and
+            we'll show up with a concrete plan to build, launch, and scale in
+            weeks, not quarters.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export default function Contact() {
               </h2>
               <p className='text-muted text-sm md:text-base max-w-2xl mx-auto'>
                 {currentStep === 1
-                  ? 'Share your goals so we can show up with concrete plans to generate revenue from day one.'
+                  ? "Tell us where you want to go. We'll show you exactly how to get there with timelines, deliverables, and ROI projections."
                   : 'A quick snapshot helps us design systems that deliver immediate ROI.'}
               </p>
             </div>

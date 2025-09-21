@@ -41,11 +41,12 @@ export default function AboutClient() {
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
-          We build AI products that generate profits, not presentations.
+          One partner from strategy to scale, no vendor chaos.
         </h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
-          Complete product ecosystems that deliver measurable ROI from launch.
-          No fragmented vendors, no endless discovery, no someday promises.
+          We unite design, development, and AI expertise under one roof. The
+          result? Complete product ecosystems that deliver measurable ROI from
+          launch, not fragmented solutions that never ship.
         </p>
       </div>
 
@@ -59,24 +60,25 @@ export default function AboutClient() {
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
         <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
-          From zero to profitable AI product in 90 days
+          Strategy to scale, all under one roof
         </h2>
         <div className='mx-auto max-w-4xl space-y-6 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
-            After 20+ years building profitable products for enterprises and
-            startups, I built Pixelmojo to eliminate the gap between AI concepts
-            and revenue reality. We architect, build, and deploy complete
-            ecosystems that generate ROI from launch day.
+            After 20+ years shipping products for enterprises and startups, I
+            built Pixelmojo to solve the vendor chaos problem. Instead of
+            juggling designers, developers, and AI consultants who don't talk to
+            each other, you get one unified team that owns the entire journey
+            from concept to customer.
           </p>
           <div className='grid gap-6 md:gap-8'>
             {/* Featured large card */}
             <div className='relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 text-center'>
               <h3 className='text-2xl font-heading text-primary mb-3'>
-                90-day profitable launches
+                Complete products that actually ship
               </h3>
               <p className='text-lg leading-relaxed text-muted max-w-2xl mx-auto'>
-                Ship complete AI products with paying customers from day one,
-                not prototypes that need more funding.
+                Unified teams that deliver working products with real users and
+                measurable results, not endless strategy decks.
               </p>
             </div>
 
@@ -84,21 +86,21 @@ export default function AboutClient() {
             <div className='grid gap-6 md:grid-cols-2'>
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-2'>
-                  Complete ecosystems that compound
+                  No vendor chaos, one partner
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
-                  Every component optimized for revenue generation, upselling,
-                  and retention from the first user interaction.
+                  Strategy, design, development, and AI under one roof. No
+                  juggling multiple teams that don't talk to each other.
                 </p>
               </div>
 
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-2'>
-                  Self-optimizing profit engines
+                  Products that ship and scale
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
-                  AI-powered systems that automatically improve conversion
-                  rates, reduce churn, and identify expansion opportunities.
+                  Complete ecosystems from concept to customer, built to grow
+                  with your business and adapt to market changes.
                 </p>
               </div>
             </div>
@@ -107,48 +109,48 @@ export default function AboutClient() {
         <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
         <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
-            Every product we build must generate more revenue than it costs to
-            create. We transform AI concepts into profit-generating realities
-            that pay for themselves.
+            End the vendor chaos. Unite strategy, design, and development under
+            one partnership that owns the entire journey from concept to
+            customer success.
           </p>
           <div className='grid gap-6 md:grid-cols-2'>
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
-                Revenue-first architecture
+                Unified product strategy
               </p>
               <p className='text-sm leading-relaxed text-muted'>
-                Every interface, workflow, and feature designed to maximize
-                customer lifetime value and minimize churn.
+                Strategy, design, and development working in sync to deliver
+                complete products that solve real user problems.
               </p>
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-3'>
-                Profit optimization loops
+                Products that actually ship
               </p>
               <p className='text-sm leading-relaxed text-muted'>
-                AI systems that continuously identify and capitalize on revenue
-                opportunities while reducing operational costs.
+                Working products with real users, not endless discovery phases
+                or strategy decks that never see implementation.
               </p>
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-3'>
-                Self-funding growth engines
+                Partnership accountability
               </p>
               <p className='text-sm leading-relaxed text-muted'>
-                Products that generate enough revenue to fund their own
-                development, scaling, and market expansion.
+                One team accountable for your success. No finger-pointing
+                between vendors when deadlines slip or features break.
               </p>
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
-                Immediate ROI delivery
+                Complete ecosystem delivery
               </p>
               <p className='text-sm leading-relaxed text-muted'>
-                Launch with paying customers secured, revenue streams activated,
-                and growth metrics trending upward from day one.
+                Strategy, design systems, working code, and launch support.
+                Everything you need to go from concept to customer success.
               </p>
             </div>
           </div>
