@@ -217,6 +217,7 @@ h1 {
   font-size: var(--fluid-7xl);
   font-weight: var(--font-weight-extrabold);
   letter-spacing: -0.025em;
+  line-height: 1.2;
   margin-bottom: var(--spacing-lg);
 }
 
