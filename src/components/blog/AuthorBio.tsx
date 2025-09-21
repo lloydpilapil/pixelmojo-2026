@@ -29,7 +29,7 @@ export function AuthorBio({
   title = 'About the Author',
 }: AuthorBioProps) {
   return (
-    <section className={cn('py-8 md:py-12', className)}>
+    <section className={cn('blog-content-section py-8 md:py-12', className)}>
       {/* Optional section title */}
       {title && (
         <div className='mb-4 md:mb-6'>

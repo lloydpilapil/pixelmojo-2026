@@ -7,7 +7,6 @@ export { default as AuthorBio } from './AuthorBio'
 export { default as BlogHero } from './BlogHero'
 export { default as TLDR } from './TLDR'
 export { default as BlogQuote } from './BlogQuote'
-export { default as InlineCTA } from './InlineCTA'
 
 // Re-export types
 // export type { TOCHeading } from './TableOfContents' // Removed - no longer exported

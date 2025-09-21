@@ -5,12 +5,10 @@ import { calculateReadingTime } from '@/lib/blog-utils'
 import { getAuthor } from '@/lib/data/authors'
 import BlogPostLayout from '@/components/blog/BlogPostLayout'
 import TableOfContents from '@/components/blog/TableOfContents'
-import BlogCTA from '@/components/blog/BlogCTA'
 import AuthorBio from '@/components/blog/AuthorBio'
 import BlogHero from '@/components/blog/BlogHero'
 import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
-import InlineCTA from '@/components/blog/InlineCTA'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
 
@@ -59,7 +57,6 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const mdxComponents = {
     TLDR,
     BlogQuote,
-    InlineCTA,
     BlogFAQ,
     BlogPostImage,
   }
@@ -91,16 +88,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
             <TableOfContents headings={post.headings} />
           ) : undefined
         }
-        sidebar={
-          post.showCTA !== false ? (
-            <BlogCTA
-              title='Ready to Ship Your AI Product?'
-              description='Stop building features nobody wants. Start shipping products people pay for.'
-              buttonText='Get Started'
-              buttonHref='/contact'
-            />
-          ) : undefined
-        }
+        sidebar={undefined}
       >
         {/* Article Content */}
         <article className='animate-fade-in blog-post'>

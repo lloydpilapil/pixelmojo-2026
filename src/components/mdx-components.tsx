@@ -3,7 +3,6 @@ import React from 'react'
 import type { MDXComponents } from 'mdx/types'
 import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
-import InlineCTA from '@/components/blog/InlineCTA'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
 import BlogCTA from '@/components/blog/BlogCTA'
@@ -268,7 +267,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Custom blog components
     TLDR: TLDR,
     BlogQuote: BlogQuote,
-    InlineCTA: InlineCTA,
     BlogFAQ: BlogFAQ,
     BlogPostImage: BlogPostImage,
     BlogCTA: BlogCTA,

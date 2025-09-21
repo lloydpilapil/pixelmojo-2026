@@ -83,62 +83,44 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
   if (!h2Headings.length) return null
 
   return (
-    <div
-      className={cn(
-        'not-prose rounded-2xl border border-border/60 bg-card/70 pt-6 pr-6 pb-6',
-        className
-      )}
-    >
+    <div className={cn('not-prose pr-8', className)}>
       <nav aria-label='Table of contents'>
         {/* TOC title - same font as content but bold and uppercase */}
-        <span className='block mb-7 pl-6 text-sm font-bold text-foreground uppercase tracking-wider'>
+        <span className='block mb-7 text-sm font-bold text-foreground uppercase tracking-wider'>
           Table of Contents
         </span>
 
         {/* Normalize list spacing to avoid hidden top margin */}
-        <ul className='mt-0 mb-0 p-0 list-none'>
-          {h2Headings.map(({ id, text }) => (
-            <li
-              key={id}
-              className='group relative'
-              style={{ marginBottom: '1rem' }}
-            >
-              <div className='relative flex items-center pl-6'>
-                {/* Animated chevron - appears on hover and when active, positioned absolutely */}
-                <svg
+        <ul className='mt-0 mb-0 p-0 list-none space-y-4'>
+          {h2Headings.map(({ id, text }, index) => {
+            const isActive = activeId === id
+            const displayNumber = String(index + 1).padStart(2, '0')
+
+            return (
+              <li
+                key={id}
+                className='flex items-start gap-4 transition-transform duration-150 hover:scale-[1.02]'
+              >
+                <span
                   className={cn(
-                    'absolute left-0 w-4 h-4 text-[#FD4B8B] opacity-0 transition-all duration-300 ease-out',
-                    'group-hover:opacity-100',
-                    activeId === id && 'opacity-100'
+                    'text-base font-semibold tracking-wide min-w-[2.5rem]',
+                    isActive ? 'text-cta' : 'text-foreground/40'
                   )}
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
                 >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M9 5l7 7-7 7'
-                  />
-                </svg>
+                  {displayNumber}
+                </span>
+
                 <a
                   href={`#${id}`}
                   onClick={e => handleClick(e, id)}
-                  className={cn(
-                    'text-sm transition-all duration-300 ease-out hover:text-primary cursor-pointer truncate',
-                    'transform group-hover:translate-x-1 transition-transform duration-300 ease-out',
-                    activeId === id
-                      ? 'text-foreground font-medium translate-x-1'
-                      : 'text-foreground/60'
-                  )}
+                  className='flex-1 text-base leading-snug transition-colors duration-150 font-medium text-foreground/70 hover:text-growth'
                   title={text}
                 >
                   {text}
                 </a>
-              </div>
-            </li>
-          ))}
+              </li>
+            )
+          })}
         </ul>
       </nav>
     </div>

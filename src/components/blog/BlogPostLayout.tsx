@@ -29,28 +29,36 @@ export function BlogPostLayout({
           {sidebar && <div>{sidebar}</div>}
         </div>
 
-        {/* Desktop: 3-Column Layout - Maximized Width */}
-        <div className='hidden xl:grid xl:grid-cols-12 xl:gap-12'>
-          {/* Left Sidebar - TOC */}
+        {/* Desktop: Dynamic Layout Based on Sidebar */}
+        <div
+          className={`hidden xl:grid xl:gap-12 ${
+            sidebar ? 'xl:grid-cols-12' : 'xl:grid-cols-4'
+          }`}
+        >
+          {/* Left Sidebar - TOC (25% width) */}
           <aside
-            className='xl:col-span-3 xl:sticky xl:self-start'
+            className={`xl:sticky xl:self-start ${
+              sidebar ? 'xl:col-span-3' : 'xl:col-span-1'
+            }`}
             style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
           >
             {tableOfContents}
           </aside>
 
-          {/* Center Content Area */}
-          <main className='xl:col-span-6'>
+          {/* Center Content Area - 75% when no sidebar */}
+          <main className={sidebar ? 'xl:col-span-6' : 'xl:col-span-3'}>
             <div className='w-full max-w-none'>{children}</div>
           </main>
 
-          {/* Right Sidebar - CTA */}
-          <aside
-            className='xl:col-span-3 xl:sticky xl:self-start'
-            style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
-          >
-            {sidebar}
-          </aside>
+          {/* Right Sidebar - CTA (only if present) */}
+          {sidebar && (
+            <aside
+              className='xl:col-span-3 xl:sticky xl:self-start'
+              style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
+            >
+              {sidebar}
+            </aside>
+          )}
         </div>
       </div>
     </div>

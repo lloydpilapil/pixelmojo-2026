@@ -405,6 +405,34 @@ li {
   margin-bottom: 0.75rem;
 }
 
+/* Blog Post Text Content Layout - Only text, not images */
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3,
+.blog-post-content h4,
+.blog-post-content h5,
+.blog-post-content h6,
+.blog-post-content p,
+.blog-post-content ul,
+.blog-post-content ol,
+.blog-post-content blockquote,
+.blog-post-content pre {
+  margin-left: 25%;
+  width: 75%;
+}
+
+/* Blog components that should align with the text column */
+.blog-content-section {
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .blog-post .blog-content-section {
+    margin-left: 25%;
+    width: 75%;
+  }
+}
+
 /* Hero Title - Fluid Typography */
 .hero-title {
   font-family: var(--font-montserrat);

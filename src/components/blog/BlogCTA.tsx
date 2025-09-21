@@ -1,51 +1,95 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
 interface BlogCTAProps {
   title?: string
   description?: string
   buttonText?: string
   buttonHref?: string
-  className?: string
 }
 
 export function BlogCTA({
-  title = 'Ready to Ship Your AI Product?',
-  description = 'Stop building features nobody wants. Start shipping products people pay for.',
-  buttonText = 'Get Started',
+  title = 'Ready to transform your design process from art to science?',
+  description = "Let's build your computational thinking operating system together.",
+  buttonText = 'Start Your Transformation Today',
   buttonHref = '/contact',
-  className,
 }: BlogCTAProps) {
+  // Apply the 25-75 grid directly to the component
+  const containerStyle: React.CSSProperties = {
+    marginLeft: '25%',
+    width: '75%',
+    marginTop: '4rem',
+    marginBottom: '4rem',
+  }
+
+  const cardStyle: React.CSSProperties = {
+    backgroundColor: 'var(--card)',
+    border: '1px solid var(--border)',
+    borderRadius: '1rem',
+    overflow: 'hidden',
+  }
+
+  const imageStyle: React.CSSProperties = {
+    width: '100%',
+    aspectRatio: '3/2',
+    objectFit: 'cover',
+    borderBottom: '1px solid var(--border)',
+  }
+
+  const contentStyle: React.CSSProperties = {
+    padding: '2rem',
+    textAlign: 'center',
+  }
+
+  const titleStyle: React.CSSProperties = {
+    fontSize: '1.25rem',
+    fontWeight: '600',
+    marginBottom: '1rem',
+    color: 'var(--foreground)',
+  }
+
+  const descriptionStyle: React.CSSProperties = {
+    color: 'var(--muted-foreground)',
+    marginBottom: '1.5rem',
+  }
+
+  const buttonStyle: React.CSSProperties = {
+    display: 'inline-block',
+    padding: '0.75rem 2rem',
+    backgroundColor: 'var(--cta)',
+    color: 'white',
+    borderRadius: '9999px',
+    textDecoration: 'none',
+    fontWeight: '500',
+    transition: 'background-color 0.2s',
+  }
+
   return (
-    <div
-      className={cn(
-        'bg-card/70 border border-border/60 rounded-2xl overflow-hidden w-full',
-        className
-      )}
-    >
-      {/* Full Width Image - 3:2 Aspect Ratio */}
-      <div className='w-full aspect-[3/2] border-b border-border/60 overflow-hidden'>
+    <div style={containerStyle}>
+      <div style={cardStyle}>
         <img
           src='/why-your-design-image.webp'
           srcSet='/why-your-design-image.webp 1x, /why-your-design-image@2x.webp 2x'
-          alt='AI Product Development'
-          className='w-full h-full object-cover'
+          alt='Transform your design process'
+          style={imageStyle}
         />
-      </div>
 
-      <div className='p-6'>
-        <div className='text-center mb-6'>
-          <h4 className='font-semibold mb-3'>{title}</h4>
-          <p className='text-small text-muted-foreground'>{description}</p>
-        </div>
-
-        <div className='text-center'>
-          <Button asChild variant='default' shape='pill' className='w-full'>
-            <a href={buttonHref}>{buttonText}</a>
-          </Button>
+        <div style={contentStyle}>
+          <h3 style={titleStyle}>{title}</h3>
+          <p style={descriptionStyle}>{description}</p>
+          <a
+            href={buttonHref}
+            style={buttonStyle}
+            onMouseEnter={e =>
+              (e.currentTarget.style.backgroundColor = 'var(--growth)')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.backgroundColor = 'var(--cta)')
+            }
+          >
+            {buttonText}
+          </a>
         </div>
       </div>
     </div>
