@@ -1,7 +1,6 @@
 'use client'
 
 import ScrollVideoSection from '@/components/ScrollVideoSection'
-import { LinkButton } from '@/components/ui/button'
 
 const processSteps = [
   {
@@ -197,7 +196,7 @@ export default function AboutClient() {
                 estate company - all delivered on time and driving immediate
                 business value.
               </p>
-              <div className='flex items-center gap-2 text-sm text-primary font-medium'>
+              <div className='flex items-center justify-center gap-2 text-sm text-[#3CC29E] font-medium'>
                 <svg
                   className='w-4 h-4'
                   fill='currentColor'
@@ -216,7 +215,7 @@ export default function AboutClient() {
             {/* Measurable Impact Grid */}
             <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-primary mb-2'>
+                <div className='text-3xl font-heading text-[#3CC29E] mb-2'>
                   40+
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -228,7 +227,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-primary mb-2'>
+                <div className='text-3xl font-heading text-[#F48024] mb-2'>
                   20+ Years
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -264,7 +263,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-primary mb-2'>
+                <div className='text-3xl font-heading text-[#3CC29E] mb-2'>
                   100%
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -276,44 +275,13 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-primary mb-2'>
+                <div className='text-3xl font-heading text-[#F48024] mb-2'>
                   Enterprise
                 </div>
                 <p className='text-sm font-medium mb-2'>Scale & Adoption</p>
                 <p className='text-xs text-muted-foreground'>
                   Design systems across product teams
                 </p>
-              </div>
-            </div>
-
-            {/* Key Differentiator */}
-            <div className='rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8 text-center'>
-              <h3 className='font-heading text-xl mb-4'>
-                Why Our Results Matter
-              </h3>
-              <p className='text-muted max-w-3xl mx-auto mb-6'>
-                While others build prototypes that need more funding, we
-                architect complete ecosystems that generate revenue from launch
-                day. Every project is designed to pay for itself within 90 days,
-                not someday.
-              </p>
-              <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-                <LinkButton
-                  href='/contact-us'
-                  size='lg'
-                  variant='default'
-                  shape='pill'
-                >
-                  Start Your 90-Day Profit Journey
-                </LinkButton>
-                <LinkButton
-                  href='/services'
-                  size='lg'
-                  variant='outline'
-                  shape='pill'
-                >
-                  View Our Process
-                </LinkButton>
               </div>
             </div>
           </div>
@@ -386,7 +354,7 @@ export default function AboutClient() {
               generates measurable profits. Each tool in our stack is selected
               for its ability to create, optimize, and scale revenue streams.
             </p>
-            <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium mb-8'>
+            <div className='flex items-center justify-center gap-2 text-sm text-[#3CC29E] font-medium mb-8'>
               <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
                 <path
                   fillRule='evenodd'
