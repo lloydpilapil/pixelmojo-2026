@@ -1,6 +1,7 @@
 'use client'
 
 import ScrollVideoSection from '@/components/ScrollVideoSection'
+import { LinkButton } from '@/components/ui/button'
 
 const processSteps = [
   {
@@ -68,35 +69,41 @@ export default function AboutClient() {
             and revenue reality. We architect, build, and deploy complete
             ecosystems that generate ROI from launch day.
           </p>
-          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+          <div className='grid gap-6 md:gap-8'>
+            {/* Featured large card */}
+            <div className='relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 text-center'>
+              <h3 className='text-2xl font-heading text-primary mb-3'>
                 90-day profitable launches
-              </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
+              </h3>
+              <p className='text-lg leading-relaxed text-muted max-w-2xl mx-auto'>
                 Ship complete AI products with paying customers from day one,
                 not prototypes that need more funding.
               </p>
-            </li>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
-                Complete ecosystems that compound
-              </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
-                Every component optimized for revenue generation, upselling, and
-                retention from the first user interaction.
-              </p>
-            </li>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm md:col-span-2'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
-                Self-optimizing profit engines
-              </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
-                AI-powered systems that automatically improve conversion rates,
-                reduce churn, and identify expansion opportunities.
-              </p>
-            </li>
-          </ul>
+            </div>
+
+            {/* Two column cards */}
+            <div className='grid gap-6 md:grid-cols-2'>
+              <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-2'>
+                  Complete ecosystems that compound
+                </p>
+                <p className='text-base leading-relaxed text-muted'>
+                  Every component optimized for revenue generation, upselling,
+                  and retention from the first user interaction.
+                </p>
+              </div>
+
+              <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-2'>
+                  Self-optimizing profit engines
+                </p>
+                <p className='text-base leading-relaxed text-muted'>
+                  AI-powered systems that automatically improve conversion
+                  rates, reduce churn, and identify expansion opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
         <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
@@ -105,44 +112,47 @@ export default function AboutClient() {
             create. We transform AI concepts into profit-generating realities
             that pay for themselves.
           </p>
-          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+          <div className='grid gap-6 md:grid-cols-2'>
+            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Revenue-first architecture
               </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted'>
                 Every interface, workflow, and feature designed to maximize
                 customer lifetime value and minimize churn.
               </p>
-            </li>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+            </div>
+
+            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-3'>
                 Profit optimization loops
               </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted'>
                 AI systems that continuously identify and capitalize on revenue
                 opportunities while reducing operational costs.
               </p>
-            </li>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+            </div>
+
+            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-3'>
                 Self-funding growth engines
               </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted'>
                 Products that generate enough revenue to fund their own
                 development, scaling, and market expansion.
               </p>
-            </li>
-            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+            </div>
+
+            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Immediate ROI delivery
               </p>
-              <p className='mt-2 text-base leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted'>
                 Launch with paying customers secured, revenue streams activated,
                 and growth metrics trending upward from day one.
               </p>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
         <div className='mt-12 max-w-5xl mx-auto'>
           <div className='gradient-surface relative overflow-hidden rounded-2xl border border-white/15 p-8 text-center shadow-lg shadow-primary/15 md:p-12'>
@@ -207,23 +217,25 @@ export default function AboutClient() {
             <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
                 <div className='text-3xl font-heading text-primary mb-2'>
-                  $50M+
+                  40+
                 </div>
-                <p className='text-sm font-medium mb-2'>Total ROI Generated</p>
+                <p className='text-sm font-medium mb-2'>
+                  Successful Transformations
+                </p>
                 <p className='text-xs text-muted-foreground'>
-                  Across 40+ transformation programs
+                  Complete product ecosystems delivered
                 </p>
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
                 <div className='text-3xl font-heading text-primary mb-2'>
-                  45%
+                  20+ Years
                 </div>
                 <p className='text-sm font-medium mb-2'>
-                  Average Revenue Increase
+                  Deep Product Expertise
                 </p>
                 <p className='text-xs text-muted-foreground'>
-                  For conversion-optimized platforms
+                  Building profitable digital products
                 </p>
               </div>
 
@@ -241,16 +253,6 @@ export default function AboutClient() {
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
                 <div className='text-3xl font-heading text-primary mb-2'>
-                  25%
-                </div>
-                <p className='text-sm font-medium mb-2'>Average Sales Lift</p>
-                <p className='text-xs text-muted-foreground'>
-                  From optimized campaigns and identity
-                </p>
-              </div>
-
-              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-primary mb-2'>
                   3x
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -263,11 +265,23 @@ export default function AboutClient() {
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
                 <div className='text-3xl font-heading text-primary mb-2'>
-                  7+
+                  100%
                 </div>
-                <p className='text-sm font-medium mb-2'>Enterprise Adoptions</p>
+                <p className='text-sm font-medium mb-2'>
+                  Profit-First Approach
+                </p>
                 <p className='text-xs text-muted-foreground'>
-                  Design systems across product squads
+                  Every product designed to pay for itself
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  Enterprise
+                </div>
+                <p className='text-sm font-medium mb-2'>Scale & Adoption</p>
+                <p className='text-xs text-muted-foreground'>
+                  Design systems across product teams
                 </p>
               </div>
             </div>
@@ -277,12 +291,30 @@ export default function AboutClient() {
               <h3 className='font-heading text-xl mb-4'>
                 Why Our Results Matter
               </h3>
-              <p className='text-muted max-w-3xl mx-auto'>
+              <p className='text-muted max-w-3xl mx-auto mb-6'>
                 While others build prototypes that need more funding, we
                 architect complete ecosystems that generate revenue from launch
                 day. Every project is designed to pay for itself within 90 days,
                 not someday.
               </p>
+              <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  variant='default'
+                  shape='pill'
+                >
+                  Start Your 90-Day Profit Journey
+                </LinkButton>
+                <LinkButton
+                  href='/services'
+                  size='lg'
+                  variant='outline'
+                  shape='pill'
+                >
+                  View Our Process
+                </LinkButton>
+              </div>
             </div>
           </div>
         </div>
@@ -343,10 +375,28 @@ export default function AboutClient() {
         <div className='mt-24 max-w-6xl mx-auto px-4 md:px-0'>
           <h2
             className='text-center font-heading text-3xl md:text-4xl'
-            style={{ marginBottom: '4rem' }}
+            style={{ marginBottom: '2rem' }}
           >
             Powered By Profit-Generating Technology
           </h2>
+
+          <div className='text-center mb-12'>
+            <p className='text-muted max-w-3xl mx-auto mb-6'>
+              We don't chase trends, we use battle-tested technology that
+              generates measurable profits. Each tool in our stack is selected
+              for its ability to create, optimize, and scale revenue streams.
+            </p>
+            <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium mb-8'>
+              <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
+                <path
+                  fillRule='evenodd'
+                  d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+                  clipRule='evenodd'
+                />
+              </svg>
+              Proven to generate profits from day one
+            </div>
+          </div>
 
           <div className='grid gap-8 md:grid-cols-3 mb-12'>
             {/* AI & Automation Stack */}
@@ -472,34 +522,6 @@ export default function AboutClient() {
                     Executive Reporting
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className='text-center'>
-            <div className='rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-12'>
-              <h3 className='font-heading text-2xl mb-4'>
-                Every Tool Chosen For Maximum ROI
-              </h3>
-              <p className='text-muted max-w-3xl mx-auto mb-6'>
-                We don't chase trends—we use battle-tested technology that
-                generates measurable profits. Each tool in our stack is selected
-                for its ability to create, optimize, and scale revenue streams.
-              </p>
-              <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium'>
-                <svg
-                  className='w-5 h-5'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
-                    clipRule='evenodd'
-                  />
-                </svg>
-                Proven to generate profits from day one
               </div>
             </div>
           </div>
