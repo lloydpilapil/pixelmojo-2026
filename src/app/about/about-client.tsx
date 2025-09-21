@@ -367,7 +367,7 @@ export default function AboutClient() {
           </div>
 
           <div className='grid gap-8 md:grid-cols-3 mb-12'>
-            {/* AI & Automation Stack */}
+            {/* AI & Intelligence Stack */}
             <div className='space-y-6'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>
@@ -379,15 +379,21 @@ export default function AboutClient() {
               </div>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>OpenAI GPT-4o</span>
+                  <span className='text-sm font-medium'>Claude Opus 4.1</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Strategic Analysis
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>GPT-5</span>
                   <span className='text-xs text-muted-foreground'>
                     Product Intelligence
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>Claude Sonnet</span>
+                  <span className='text-sm font-medium'>Claude Code</span>
                   <span className='text-xs text-muted-foreground'>
-                    Strategic Analysis
+                    Development Acceleration
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
@@ -399,11 +405,9 @@ export default function AboutClient() {
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>
-                    Predictive Analytics
-                  </span>
+                  <span className='text-sm font-medium'>LangChain</span>
                   <span className='text-xs text-muted-foreground'>
-                    Revenue Forecasting
+                    AI Workflow Orchestration
                   </span>
                 </div>
               </div>
@@ -412,9 +416,7 @@ export default function AboutClient() {
             {/* Development Stack */}
             <div className='space-y-6'>
               <div className='text-center'>
-                <h3 className='font-heading text-xl mb-3'>
-                  Revenue-Optimized Development
-                </h3>
+                <h3 className='font-heading text-xl mb-3'>Development Stack</h3>
                 <p className='text-muted text-sm mb-6'>
                   Lightning-fast, conversion-focused interfaces
                 </p>
@@ -437,6 +439,18 @@ export default function AboutClient() {
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Cursor</span>
+                  <span className='text-xs text-muted-foreground'>
+                    AI-Enhanced Development
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>JetBrains IDEs</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Professional Tooling
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Supabase</span>
                   <span className='text-xs text-muted-foreground'>
                     Real-time Data
@@ -451,43 +465,47 @@ export default function AboutClient() {
               </div>
             </div>
 
-            {/* Growth Infrastructure */}
+            {/* Design & Integration Stack */}
             <div className='space-y-6'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>
-                  Growth Engine Infrastructure
+                  Design & Integration Stack
                 </h3>
                 <p className='text-muted text-sm mb-6'>
-                  Self-optimizing revenue systems
+                  AI-powered design systems and integrations
                 </p>
               </div>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>Custom Analytics</span>
+                  <span className='text-sm font-medium'>Storybook</span>
                   <span className='text-xs text-muted-foreground'>
-                    Revenue Attribution
+                    Component Documentation
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Chromatic</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Visual Testing & Review
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>
-                    A/B Testing Engine
+                    MCP (Model Context Protocol)
                   </span>
                   <span className='text-xs text-muted-foreground'>
-                    Conversion Optimization
+                    AI Tool Integration
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>
-                    Payment Integration
-                  </span>
+                  <span className='text-sm font-medium'>Custom MCPs</span>
                   <span className='text-xs text-muted-foreground'>
-                    Instant Monetization
+                    Client-Specific AI Tools
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>Growth Dashboards</span>
+                  <span className='text-sm font-medium'>GitHub Copilot</span>
                   <span className='text-xs text-muted-foreground'>
-                    Executive Reporting
+                    Code Intelligence
                   </span>
                 </div>
               </div>
