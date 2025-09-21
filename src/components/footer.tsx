@@ -35,17 +35,20 @@ export default function Footer() {
 
   const services = [
     {
-      label: 'Growth-Focused Product Sprint',
+      label: 'AI Product Development',
       href: '/services/ui-ux-design-solutions',
     },
-    { label: 'Brand Identity', href: '/services/brand-identity' },
+    { label: 'Revenue-First Design', href: '/services/brand-identity' },
     {
-      label: 'Brand Activation & Growth',
+      label: 'AI-Powered Growth',
       href: '/services/brand-activation-growth',
     },
-    { label: 'Web & App Design', href: '/services/web-app-design' },
-    { label: 'Graphic & Visuals', href: '/services/graphic-visuals' },
-    { label: 'Development Solutions', href: '/services/development-solutions' },
+    { label: 'Profit-Optimized Interfaces', href: '/services/web-app-design' },
+    { label: 'Conversion Assets', href: '/services/graphic-visuals' },
+    {
+      label: 'Full-Stack AI Implementation',
+      href: '/services/development-solutions',
+    },
   ]
 
   const socialLinks = [

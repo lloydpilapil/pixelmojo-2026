@@ -4,13 +4,13 @@ import ScrollVideoSection from '@/components/ScrollVideoSection'
 import { LinkButtonWithArrow } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'AI + Design Sprints & Product Services | Pixelmojo',
+  title: 'AI Products That Generate ROI From Day One | Pixelmojo',
   description:
-    'See how Pixelmojo links AI enablement, product design, and growth experiments into one sprint-ready system for SaaS teams.',
+    'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
   openGraph: {
-    title: 'AI + Design Sprints & Product Services | Pixelmojo',
+    title: 'AI Products That Generate ROI From Day One | Pixelmojo',
     description:
-      'See how Pixelmojo links AI enablement, product design, and growth experiments into one sprint-ready system for SaaS teams.',
+      'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
     type: 'website',
   },
 }
@@ -18,79 +18,79 @@ export const metadata: Metadata = {
 export default function Services() {
   const services = [
     {
-      title: 'Growth-Focused Product Sprint',
+      title: 'AI Product Development',
       description:
-        'Align product, design, and AI leads around your north-star journey; prototype flows that unblock adoption faster.',
+        'Ship complete AI products in 90 days. Production-ready systems that generate revenue from launch, not someday.',
       features: [
-        'North-star journey & opportunity mapping',
-        'Prototype and experiment sprints',
-        'Analytics & dashboard setup',
-        'Activation playbooks and handoff',
+        'Full product architecture & AI integration',
+        'Revenue-optimized user flows',
+        'Launch with paying customers',
+        'Built-in growth metrics & analytics',
       ],
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ui-ux-design-solutions',
     },
     {
-      title: 'Brand Identity',
+      title: 'Revenue-First Design Systems',
       description:
-        'Translate positioning into design systems teams can ship—voice, visuals, governance rooted in customer truth.',
+        'Design systems built to convert. Every component optimized for activation, retention, and expansion from day one.',
       features: [
-        'Brand research & positioning',
-        'Visual language & asset systems',
-        'Messaging & narrative frameworks',
-        'Governance and rollout playbooks',
+        'Conversion-optimized components',
+        'AI-enhanced interaction patterns',
+        'Measurable impact on key metrics',
+        'Ready-to-ship design tokens',
       ],
       icon: '/branding_services_thumb.svg',
       href: '/services/brand-identity',
     },
     {
-      title: 'Brand Activation & Growth',
+      title: 'AI-Powered Growth Engines',
       description:
-        'Pair narrative, AI-assisted nurture, and revenue analytics so every campaign ladders back to roadmap.',
+        'Automate your entire growth stack. From lead scoring to lifecycle campaigns that generate immediate pipeline.',
       features: [
-        'Lifecycle & nurture strategy',
-        'Campaign activation kits',
-        'Automation & tooling setup',
-        'Pipeline analytics & reporting',
+        'Automated lead qualification & scoring',
+        'AI-driven nurture sequences',
+        'Self-optimizing campaigns',
+        'Revenue attribution dashboards',
       ],
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/brand-activation-growth',
     },
     {
-      title: 'Web & App Design',
+      title: 'Profit-Optimized Interfaces',
       description:
-        'Build product surfaces tied to journeys, with AI cues, accessibility, and performance tuned before launch.',
+        'Product experiences that maximize revenue per user. AI-enhanced flows that convert, upsell, and retain.',
       features: [
-        'Experience audit & journey mapping',
-        'High-fidelity UI & motion specs',
-        'AI-assisted workflow design',
-        'Accessibility & performance QA',
+        'Revenue-per-user optimization',
+        'AI-powered upsell flows',
+        'Churn prediction & prevention',
+        'Measurable ARPU improvement',
       ],
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/web-app-design',
     },
     {
-      title: 'Graphic & Visuals',
+      title: 'Conversion Asset Systems',
       description:
-        'Deliver on-demand storytelling assets for experiments—from investor decks to nudges.',
+        'Visual systems that sell. From pitch decks that close to in-app experiences that drive expansion revenue.',
       features: [
-        'Campaign & launch asset sprints',
-        'Sales, board & investor decks',
-        'Illustration & iconography systems',
-        'Reusable template libraries',
+        'Sales-optimized pitch decks',
+        'Revenue-driving visual systems',
+        'Conversion-tested templates',
+        'Measurable impact on close rates',
       ],
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/graphic-visuals',
     },
     {
-      title: 'Development Solutions',
+      title: 'Full-Stack AI Implementation',
       description:
-        'Embed full-stack squads who code against the design system, automate QA, and surface actionable evidence every sprint.',
+        'Teams that ship production AI weekly. Complete ecosystems from infrastructure to interface, generating ROI immediately.',
       features: [
-        'Embedded product & web squads',
-        'Design system implementation',
-        'Automated QA & analytics setup',
-        'DevOps & release optimization',
+        'Production-ready AI features',
+        'Complete ecosystem deployment',
+        'Revenue-generating from week one',
+        'Self-funding development cycles',
       ],
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/development-solutions',
@@ -102,11 +102,11 @@ export default function Services() {
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading max-w-6xl mx-auto'>
-          Choose the partnership that keeps your roadmap moving.
+          Complete AI products that profit from day one.
         </h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
-          We embed with your squads to deliver evidence-led UX, AI-enabled
-          product design, and engineering rituals that leadership can defend.
+          No fragmented vendors. No endless discovery. We design, develop, and
+          deploy complete ecosystems that generate measurable ROI immediately.
         </p>
       </div>
 
@@ -119,14 +119,13 @@ export default function Services() {
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
         <h2 className='mb-6 max-w-5xl mx-auto !text-4xl md:!text-5xl lg:!text-6xl'>
-          Turn AI ambition into launch-ready experiences
+          Stop burning cash on concepts. Start shipping products that pay.
         </h2>
         <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-          Disconnected vendors create pretty assets; we design systems that
-          ship. Pixelmojo aligns product, design, content, and engineering
-          around experiment-ready journeys, reusable components, and analytics
-          that prove what works. Every engagement is built to give leadership
-          confidence and teams momentum.
+          Every service is engineered for immediate returns. From AI product
+          development to growth automation, we deliver complete solutions that
+          generate revenue from launch. Built to scale, optimized to profit,
+          designed to dominate.
         </p>
       </div>
 

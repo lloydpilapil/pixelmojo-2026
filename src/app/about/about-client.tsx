@@ -1,0 +1,522 @@
+'use client'
+
+import { useState } from 'react'
+import ScrollVideoSection from '@/components/ScrollVideoSection'
+
+const experienceTimeline = [
+  {
+    period: '2024 — Present',
+    company: 'Pixelmojo',
+    role: 'Founder & Chief Revenue Architect',
+    description:
+      'Building AI products that generate profits from day one for SaaS, fintech, and high-growth companies. Architecting complete revenue ecosystems that eliminate vendor fragmentation and deliver measurable ROI immediately, not someday.',
+    highlight: '$3.2M+ ARR generated for portfolio companies in 12 months.',
+  },
+  {
+    period: '2015 – 2023',
+    company: 'Salesforce & Global Enterprises',
+    role: 'Revenue-Focused Product Lead',
+    description:
+      'Led product initiatives that directly impacted enterprise revenue streams. Specialized in optimizing user flows for maximum LTV, implementing AI-powered personalization that increased ARPU by 35%, and building design systems that accelerated profitable feature delivery.',
+    highlight: '15% average ARPU increase across 7 enterprise product lines.',
+  },
+  {
+    period: '2004 – 2014',
+    company: 'Digital Transformation Era',
+    role: 'Director of Profit-Driven Innovation',
+    description:
+      'Architected digital transformations that generated immediate ROI for government and corporate clients. Led projects that reduced operational costs by 40% while increasing revenue by 30%, proving digital investments pay for themselves.',
+    highlight:
+      '$50M+ in measurable ROI delivered across 40+ transformation programs.',
+  },
+  {
+    period: '2001 – 2004',
+    company: 'Digital Renaissance',
+    role: 'Senior Product Designer & Developer',
+    description:
+      'Pioneered revenue-optimized digital experiences during the web boom. Built platforms that not only looked great but converted visitors into paying customers, establishing early frameworks for profit-driven product design.',
+    highlight:
+      'Conversion-optimized platforms averaging 45% higher revenue per visitor.',
+  },
+  {
+    period: '1991 – 2001',
+    company: 'Creative Foundation',
+    role: 'Art Director & Brand Strategist',
+    description:
+      "Mastered the fundamentals of persuasive visual communication. Created campaigns that didn't just win awards—they drove sales, built market share, and delivered measurable business impact for every client.",
+    highlight:
+      'Campaigns averaging 25% sales lift across print, OOH, and identity projects.',
+  },
+]
+
+const processSteps = [
+  {
+    title: 'Revenue Opportunity Mapping',
+    description:
+      'Identify immediate profit opportunities, map revenue-critical user flows, and define metrics that directly impact your bottom line.',
+    deliverables:
+      'Revenue flow analysis, competitive profit audit, ROI projection models.',
+    timeframe: '1–2 weeks',
+    outcome:
+      'Clear revenue targets, prioritized profit opportunities, and executive-approved investment thesis.',
+  },
+  {
+    title: 'Build Profit-Optimized Product',
+    description:
+      'Architect and develop complete AI systems optimized for revenue generation, customer retention, and automated upselling.',
+    deliverables:
+      'Production-ready AI product, conversion-optimized interfaces, revenue automation systems.',
+    timeframe: '6–10 weeks',
+    outcome:
+      'Launch-ready product with integrated payment flows, customer onboarding, and revenue tracking.',
+  },
+  {
+    title: 'Deploy & Scale Revenue',
+    description:
+      'Launch with paying customers secured, activate growth engines, and optimize for compound revenue growth.',
+    deliverables:
+      'Customer acquisition system, growth automation, profit optimization dashboard.',
+    timeframe: '2–4 weeks',
+    outcome:
+      'Live product generating revenue with self-optimizing growth systems and executive profit reporting.',
+  },
+]
+
+export default function AboutClient() {
+  const [openTimelineItems, setOpenTimelineItems] = useState<number[]>([0]) // First item (Pixelmojo) expanded by default
+
+  const toggleTimelineItem = (index: number) => {
+    setOpenTimelineItems(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+    )
+  }
+
+  return (
+    <div className='container mx-auto px-4 py-16 pb-32 animate-fade-in'>
+      {/* Hero Section */}
+      <div className='text-center mb-12'>
+        <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
+          We build AI products that generate profits, not presentations.
+        </h1>
+        <p className='lead max-w-3xl mx-auto mb-8'>
+          Complete product ecosystems that deliver measurable ROI from launch.
+          No fragmented vendors, no endless discovery, no someday promises.
+        </p>
+      </div>
+
+      {/* Scroll-Animated Video Section */}
+      <ScrollVideoSection
+        videoId='1098766945'
+        coverImage='/cover-about.webp'
+        caption='Showreel: See how Pixelmojo fuses strategy, UX, and engineering to unlock measurable growth for product teams.'
+      />
+
+      {/* Value Proposition Section */}
+      <div className='text-center mb-20'>
+        <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
+          From zero to profitable AI product in 90 days
+        </h2>
+        <div className='mx-auto max-w-4xl space-y-6 text-left md:text-center'>
+          <p className='text-muted text-lg leading-relaxed'>
+            After 20+ years building profitable products for enterprises and
+            startups, I built Pixelmojo to eliminate the gap between AI concepts
+            and revenue reality. We architect, build, and deploy complete
+            ecosystems that generate ROI from launch day.
+          </p>
+          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                90-day profitable launches
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Ship complete AI products with paying customers from day one,
+                not prototypes that need more funding.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Complete ecosystems that compound
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Every component optimized for revenue generation, upselling, and
+                retention from the first user interaction.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm md:col-span-2'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Self-optimizing profit engines
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                AI-powered systems that automatically improve conversion rates,
+                reduce churn, and identify expansion opportunities.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
+        <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
+          <p className='text-muted text-lg leading-relaxed'>
+            Every product we build must generate more revenue than it costs to
+            create. We transform AI concepts into profit-generating realities
+            that pay for themselves.
+          </p>
+          <ul className='grid gap-4 list-none p-0 md:grid-cols-2 md:gap-5'>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Revenue-first architecture
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Every interface, workflow, and feature designed to maximize
+                customer lifetime value and minimize churn.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Profit optimization loops
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                AI systems that continuously identify and capitalize on revenue
+                opportunities while reducing operational costs.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Self-funding growth engines
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Products that generate enough revenue to fund their own
+                development, scaling, and market expansion.
+              </p>
+            </li>
+            <li className='rounded-2xl border border-border/60 bg-card/70 p-5 text-left shadow-sm'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary/80'>
+                Immediate ROI delivery
+              </p>
+              <p className='mt-2 text-base leading-relaxed text-muted'>
+                Launch with paying customers secured, revenue streams activated,
+                and growth metrics trending upward from day one.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className='mt-12 max-w-5xl mx-auto'>
+          <div className='gradient-surface relative overflow-hidden rounded-2xl border border-white/15 p-8 text-center shadow-lg shadow-primary/15 md:p-12'>
+            <div className='relative z-10 space-y-5'>
+              <h3 className='font-heading text-2xl text-white md:text-3xl'>
+                What Pixelmojo Means
+              </h3>
+              <p className='mx-auto max-w-4xl text-lg leading-relaxed text-white/90'>
+                Every{' '}
+                <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
+                design and every bit of{' '}
+                <span className='font-extrabold text-[#F48024]'>mojo</span>—that
+                spark of insight—has one job: generate profits from day one. The
+                intersecting forms in our logo represent the fusion of AI,
+                design, and revenue optimization working in perfect sync to
+                create products that pay for themselves.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Experience Timeline */}
+        <div className='mt-16 max-w-5xl mx-auto text-left'>
+          <h2
+            className='text-center font-heading text-3xl md:text-4xl'
+            style={{ marginBottom: '3rem' }}
+          >
+            Three Decades of Design, Innovation & Digital Transformation
+          </h2>
+
+          <div className='divide-y divide-border/30'>
+            {experienceTimeline.map((entry, index) => {
+              const isOpen = openTimelineItems.includes(index)
+
+              return (
+                <div key={`${entry.period}-${index}`} className='py-1'>
+                  {/* Accordion Header */}
+                  <button
+                    onClick={() => toggleTimelineItem(index)}
+                    className='w-full text-left py-4 flex justify-between group hover:bg-muted/30 px-4 -mx-4 rounded-lg transition-colors duration-200'
+                    aria-expanded={isOpen}
+                    aria-controls={`timeline-content-${index}`}
+                  >
+                    <div className='flex-1'>
+                      <p className='font-mono text-xs tracking-wider text-primary/70 uppercase mb-1'>
+                        {entry.period}
+                      </p>
+                      <h3 className='text-lg font-heading text-foreground group-hover:text-primary transition-colors mb-0.5'>
+                        {entry.company}
+                      </h3>
+                      <p className='text-sm text-muted-foreground'>
+                        {entry.role}
+                      </p>
+                    </div>
+                    <div className='ml-4 flex-shrink-0 self-start mt-1'>
+                      <svg
+                        className={`w-4 h-4 text-muted-foreground transition-all duration-200 ${
+                          isOpen
+                            ? 'rotate-180 text-primary'
+                            : 'group-hover:text-primary'
+                        }`}
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M19 9l-7 7-7-7'
+                        />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Accordion Content */}
+                  <div
+                    id={`timeline-content-${index}`}
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className='pb-6 pt-2 pr-4 space-y-3'>
+                      <p className='text-muted leading-relaxed text-sm'>
+                        {entry.description}
+                      </p>
+                      {entry.highlight && (
+                        <div className='p-3 rounded-md bg-primary/5'>
+                          <p className='text-sm font-medium text-primary'>
+                            {entry.highlight}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Process Section */}
+        <div className='mt-24 max-w-6xl mx-auto px-4 md:px-0'>
+          <h2
+            className='text-center font-heading text-3xl md:text-4xl'
+            style={{ marginBottom: '4rem' }}
+          >
+            How We Turn Concepts Into Profitable Products
+          </h2>
+
+          <div className='grid gap-6 md:grid-cols-3 md:gap-8'>
+            {processSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className='group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card/60 p-6 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary md:p-8'
+              >
+                <span className='inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#3CC29E] font-heading text-base font-semibold text-white'>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className='mt-4 text-xl font-heading'>{step.title}</h3>
+                <p className='mt-4 text-muted leading-relaxed'>
+                  {step.description}
+                </p>
+                <dl className='mt-6 space-y-4 text-sm text-muted-foreground'>
+                  <div>
+                    <dt className='font-medium text-foreground'>
+                      Deliverables
+                    </dt>
+                    <dd className='mt-1 leading-relaxed'>
+                      {step.deliverables}
+                    </dd>
+                  </div>
+                  <div className='flex items-start justify-between gap-3'>
+                    <div>
+                      <dt className='font-medium text-foreground'>Timeframe</dt>
+                      <dd className='mt-1 leading-relaxed'>{step.timeframe}</dd>
+                    </div>
+                    <div className='relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-xs font-semibold tracking-[0.08em] text-primary md:uppercase md:tracking-[0.18em]'>
+                      <span className='h-2 w-2 rounded-full bg-primary' />
+                      <span>Phase {index + 1}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <dt className='font-medium text-foreground'>Outcome</dt>
+                    <dd className='mt-1 leading-relaxed'>{step.outcome}</dd>
+                  </div>
+                </dl>
+                <span className='pointer-events-none absolute inset-x-6 bottom-5 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech Stack Section */}
+        <div className='mt-24 max-w-6xl mx-auto px-4 md:px-0'>
+          <h2
+            className='text-center font-heading text-3xl md:text-4xl'
+            style={{ marginBottom: '4rem' }}
+          >
+            Powered By Profit-Generating Technology
+          </h2>
+
+          <div className='grid gap-8 md:grid-cols-3 mb-12'>
+            {/* AI & Automation Stack */}
+            <div className='space-y-6'>
+              <div className='text-center'>
+                <h3 className='font-heading text-xl mb-3'>
+                  AI & Intelligence Stack
+                </h3>
+                <p className='text-muted text-sm mb-6'>
+                  Revenue-optimizing AI that learns and adapts
+                </p>
+              </div>
+              <div className='space-y-3'>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>OpenAI GPT-4o</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Product Intelligence
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Claude Sonnet</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Strategic Analysis
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    Custom AI Pipelines
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Growth Optimization
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    Predictive Analytics
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Revenue Forecasting
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Development Stack */}
+            <div className='space-y-6'>
+              <div className='text-center'>
+                <h3 className='font-heading text-xl mb-3'>
+                  Revenue-Optimized Development
+                </h3>
+                <p className='text-muted text-sm mb-6'>
+                  Lightning-fast, conversion-focused interfaces
+                </p>
+              </div>
+              <div className='space-y-3'>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    React 19 + Next.js 15
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Ultra-fast UIs
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    TypeScript + Tailwind
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Scalable Systems
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Supabase</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Real-time Data
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Vercel Edge</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Global Performance
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Growth Infrastructure */}
+            <div className='space-y-6'>
+              <div className='text-center'>
+                <h3 className='font-heading text-xl mb-3'>
+                  Growth Engine Infrastructure
+                </h3>
+                <p className='text-muted text-sm mb-6'>
+                  Self-optimizing revenue systems
+                </p>
+              </div>
+              <div className='space-y-3'>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Custom Analytics</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Revenue Attribution
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    A/B Testing Engine
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Conversion Optimization
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>
+                    Payment Integration
+                  </span>
+                  <span className='text-xs text-muted-foreground'>
+                    Instant Monetization
+                  </span>
+                </div>
+                <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
+                  <span className='text-sm font-medium'>Growth Dashboards</span>
+                  <span className='text-xs text-muted-foreground'>
+                    Executive Reporting
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className='text-center'>
+            <div className='rounded-2xl border border-primary/30 bg-primary/5 p-8 md:p-12'>
+              <h3 className='font-heading text-2xl mb-4'>
+                Every Tool Chosen For Maximum ROI
+              </h3>
+              <p className='text-muted max-w-3xl mx-auto mb-6'>
+                We don't chase trends—we use battle-tested technology that
+                generates measurable profits. Each tool in our stack is selected
+                for its ability to create, optimize, and scale revenue streams.
+              </p>
+              <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium'>
+                <svg
+                  className='w-5 h-5'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+                    clipRule='evenodd'
+                  />
+                </svg>
+                Proven to generate profits from day one
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

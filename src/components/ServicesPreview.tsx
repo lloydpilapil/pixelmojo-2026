@@ -21,72 +21,69 @@ interface ServicesPreviewProps {
 }
 
 const ServicesPreview = ({
-  title = 'Our Services',
+  title = 'Build AI Products That Profit',
   services = [
     {
-      title: 'Growth-Focused Product Sprint',
+      title: 'AI Product Development',
       description:
-        'Align product, design, and AI around your north-star journey; prototype, test, and instrument flows that unblock adoption within one quarter.',
+        'Ship complete AI products in 90 days. We architect, design, and deploy production-ready systems that generate revenue from launch.',
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ui-ux-design-solutions',
       gradient: 'from-blue-500/20 to-purple-500/30',
-      outcome:
-        'Ship validated activation journeys with dashboards that show what to scale next.',
+      outcome: 'Launch with paying customers and predictable growth metrics.',
       startingAt: 'From $15K',
       featured: true,
     },
     {
-      title: 'Brand Identity',
+      title: 'Revenue-First Design Systems',
       description:
-        'Translate positioning into a design system your teams can actually ship with—voice, visuals, and governance rooted in customer truth.',
+        'Build design systems that convert. Every component optimized for activation, retention, and expansion from day one.',
       icon: '/branding_services_thumb.svg',
       href: '/services/brand-identity',
       gradient: 'from-purple-500/10 to-pink-500/10',
-      outcome: 'Hand off a brand kit wired for experimentation, not shelfware.',
+      outcome: 'Deploy brand assets that directly impact conversion rates.',
       startingAt: 'Starts at $9K',
     },
     {
-      title: 'Brand Activation & Growth',
+      title: 'AI-Powered Growth Engines',
       description:
-        'Pair lifecycle narrative, AI-assisted nurture, and revenue analytics so every campaign ladders back to the roadmap.',
+        'Automate your entire growth stack with AI. From lead scoring to lifecycle campaigns that generate immediate pipeline.',
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/brand-activation-growth',
       gradient: 'from-green-500/10 to-teal-500/10',
       outcome:
-        'Keep qualified pipeline warm with insight loops leadership can defend.',
+        'Turn on revenue streams that compound without manual intervention.',
       startingAt: 'Retainers from $6K/mo',
     },
     {
-      title: 'Web & App Design',
+      title: 'Profit-Optimized Interfaces',
       description:
-        'Build responsive product surfaces tied to real user journeys, with AI cues, accessibility, and performance tuned before dev picks it up.',
+        'Design and build product experiences that maximize revenue per user. AI-enhanced flows that convert, upsell, and retain.',
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/web-app-design',
       gradient: 'from-orange-500/10 to-red-500/10',
-      outcome:
-        'Launch feature-rich experiences that drive conversion and capture learning signals.',
+      outcome: 'Ship interfaces that increase ARPU measurably within 30 days.',
       startingAt: 'Project scopes from $22K',
     },
     {
-      title: 'Graphic & Visuals',
+      title: 'Conversion Asset Systems',
       description:
-        'Deliver on-demand storytelling assets that plug into your experiments—from investor decks to in-app nudges—always on-brand.',
+        'Create visual systems that sell. From pitch decks that close to in-app experiences that drive expansion revenue.',
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/graphic-visuals',
       gradient: 'from-pink-500/10 to-rose-500/10',
       outcome:
-        'Deploy campaign visuals in days, complete with metrics to prove what lands.',
+        'Deploy assets with proven impact on close rates and deal velocity.',
       startingAt: 'Bundles from $4K',
     },
     {
-      title: 'Development Solutions',
+      title: 'Full-Stack AI Implementation',
       description:
-        'Embed full-stack engineering squads who code against your design system, automate QA testing, and surface evidence every sprint.',
+        'Embed teams that ship production AI features weekly. Complete ecosystems from infrastructure to interface, generating ROI immediately.',
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/development-solutions',
       gradient: 'from-indigo-500/10 to-blue-500/10',
-      outcome:
-        'Release AI-enabled features on a predictable cadence without compromising reliability.',
+      outcome: 'Release revenue-generating features that pay for themselves.',
       startingAt: 'Embedded teams from $12K/mo',
     },
   ],
@@ -102,11 +99,10 @@ const ServicesPreview = ({
         <div className='mb-16 text-center'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted mx-auto max-w-3xl text-lg leading-relaxed'>
-            We turn your AI ambitions into launch-ready experiences with design
-            systems, rapid experiments, and the proof your leadership needs to
-            keep funding momentum.{' '}
+            Complete product ecosystems that generate measurable ROI
+            immediately. No fragmented vendors, no endless discovery.{' '}
             <span className='text-primary font-medium'>
-              Evidence over hype, every sprint.
+              Design, develop, deploy, profit.
             </span>
           </p>
         </div>

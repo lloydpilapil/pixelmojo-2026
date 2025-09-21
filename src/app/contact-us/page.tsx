@@ -45,7 +45,9 @@ export default function Contact() {
       formData.firstName.trim() !== '' &&
       formData.lastName.trim() !== '' &&
       formData.email.trim() !== '' &&
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+      formData.linkedin.trim() !== '' &&
+      /^https:\/\/(www\.)?linkedin\.com\/in\//.test(formData.linkedin)
     )
   }
 
@@ -122,26 +124,12 @@ export default function Contact() {
     return (
       <div className='container mx-auto px-4 py-16 animate-fade-in'>
         <div className='max-w-2xl mx-auto text-center'>
-          <div className='card p-12'>
-            <div className='w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-              <svg
-                className='w-8 h-8 text-primary'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M5 13l4 4L19 7'
-                />
-              </svg>
-            </div>
+          <div className='p-12 border border-gray-300 rounded-lg'>
             <h1 className='mb-4 font-heading'>Thank You!</h1>
             <p className='text-muted mb-8'>
-              Your message is in. Expect a reply within one business day with
-              next steps and a link to schedule a working session.
+              We'll review your goals and get back to you within one business
+              day with a concrete plan to start generating revenue from your AI
+              product immediately.
             </p>
             <Button
               onClick={() => setSubmitted(false)}
@@ -161,28 +149,32 @@ export default function Contact() {
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading max-w-7xl mx-auto'>
-          Start the AI + design sprint your roadmap needs.
+          Ready to build AI products that generate profits from day one?
         </h1>
         <p className='lead max-w-5xl mx-auto mb-12'>
-          Tell us where delivery drags. We'll map AI enablement to real user
-          journeys and pair it with experiments your team can ship this quarter.
+          Stop burning cash on concepts. We architect, build, and deploy
+          complete AI ecosystems that deliver measurable ROI immediately, not
+          someday.
         </p>
+      </div>
+
+      {/* Divider */}
+      <div className='max-w-4xl mx-auto mb-12'>
+        <div className='h-px bg-gray-300'></div>
       </div>
 
       {/* Progressive Form Layout */}
       <div className='max-w-4xl mx-auto'>
         {/* Form Container */}
-        <div className='card p-8 md:p-12 space-y-8'>
+        <div className='space-y-8'>
           <div className='space-y-3 text-center'>
             <h2 className='font-heading text-2xl md:text-3xl'>
-              {currentStep === 1
-                ? 'Tell us about your project'
-                : 'Project snapshot'}
+              {currentStep === 1 ? "Let's get started" : 'Project snapshot'}
             </h2>
             <p className='text-muted text-sm md:text-base max-w-2xl mx-auto'>
               {currentStep === 1
-                ? 'Share the essentials so we can show up to your strategy session with ideas, not guesswork.'
-                : 'A quick snapshot helps us show up prepared with tailored recommendations.'}
+                ? 'Share your goals so we can show up with concrete plans to generate revenue from day one.'
+                : 'A quick snapshot helps us design systems that deliver immediate ROI.'}
             </p>
           </div>
 
@@ -292,12 +284,13 @@ export default function Contact() {
                       htmlFor='linkedin'
                       className='block text-small font-medium mb-2'
                     >
-                      LinkedIn profile
+                      LinkedIn profile *
                     </label>
                     <input
                       type='url'
                       id='linkedin'
                       name='linkedin'
+                      required
                       value={formData.linkedin}
                       onChange={handleChange}
                       placeholder='https://www.linkedin.com/in/you'
