@@ -1,53 +1,6 @@
 'use client'
 
-import { useState } from 'react'
 import ScrollVideoSection from '@/components/ScrollVideoSection'
-
-const experienceTimeline = [
-  {
-    period: '2024 — Present',
-    company: 'Pixelmojo',
-    role: 'Founder & Chief Revenue Architect',
-    description:
-      'Building AI products that generate profits from day one for SaaS, fintech, and high-growth companies. Architecting complete revenue ecosystems that eliminate vendor fragmentation and deliver measurable ROI immediately, not someday.',
-    highlight: '$3.2M+ ARR generated for portfolio companies in 12 months.',
-  },
-  {
-    period: '2015 – 2023',
-    company: 'Salesforce & Global Enterprises',
-    role: 'Revenue-Focused Product Lead',
-    description:
-      'Led product initiatives that directly impacted enterprise revenue streams. Specialized in optimizing user flows for maximum LTV, implementing AI-powered personalization that increased ARPU by 35%, and building design systems that accelerated profitable feature delivery.',
-    highlight: '15% average ARPU increase across 7 enterprise product lines.',
-  },
-  {
-    period: '2004 – 2014',
-    company: 'Digital Transformation Era',
-    role: 'Director of Profit-Driven Innovation',
-    description:
-      'Architected digital transformations that generated immediate ROI for government and corporate clients. Led projects that reduced operational costs by 40% while increasing revenue by 30%, proving digital investments pay for themselves.',
-    highlight:
-      '$50M+ in measurable ROI delivered across 40+ transformation programs.',
-  },
-  {
-    period: '2001 – 2004',
-    company: 'Digital Renaissance',
-    role: 'Senior Product Designer & Developer',
-    description:
-      'Pioneered revenue-optimized digital experiences during the web boom. Built platforms that not only looked great but converted visitors into paying customers, establishing early frameworks for profit-driven product design.',
-    highlight:
-      'Conversion-optimized platforms averaging 45% higher revenue per visitor.',
-  },
-  {
-    period: '1991 – 2001',
-    company: 'Creative Foundation',
-    role: 'Art Director & Brand Strategist',
-    description:
-      "Mastered the fundamentals of persuasive visual communication. Created campaigns that didn't just win awards—they drove sales, built market share, and delivered measurable business impact for every client.",
-    highlight:
-      'Campaigns averaging 25% sales lift across print, OOH, and identity projects.',
-  },
-]
 
 const processSteps = [
   {
@@ -83,14 +36,6 @@ const processSteps = [
 ]
 
 export default function AboutClient() {
-  const [openTimelineItems, setOpenTimelineItems] = useState<number[]>([0]) // First item (Pixelmojo) expanded by default
-
-  const toggleTimelineItem = (index: number) => {
-    setOpenTimelineItems(prev =>
-      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
-    )
-  }
-
   return (
     <div className='container mx-auto px-4 py-16 pb-32 animate-fade-in'>
       {/* Hero Section */}
@@ -219,83 +164,126 @@ export default function AboutClient() {
           </div>
         </div>
 
-        {/* Experience Timeline */}
-        <div className='mt-16 max-w-5xl mx-auto text-left'>
+        {/* Proven Results Section */}
+        <div className='mt-16 max-w-5xl mx-auto'>
           <h2
             className='text-center font-heading text-3xl md:text-4xl'
             style={{ marginBottom: '3rem' }}
           >
-            Three Decades of Design, Innovation & Digital Transformation
+            Proven Results That Generate Immediate ROI
           </h2>
 
-          <div className='divide-y divide-border/30'>
-            {experienceTimeline.map((entry, index) => {
-              const isOpen = openTimelineItems.includes(index)
+          <div className='space-y-8'>
+            {/* Recent Confidential Projects */}
+            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 md:p-8'>
+              <h3 className='font-heading text-xl mb-4 text-primary'>
+                Recent Confidential Projects
+              </h3>
+              <p className='text-muted leading-relaxed mb-4'>
+                Recent confidential projects include launching an AI startup's
+                complete brand ecosystem, building a custom logistics tracking
+                system, and developing a real estate earnings tracking system
+                with predictive profit analytics for a well-known local real
+                estate company - all delivered on time and driving immediate
+                business value.
+              </p>
+              <div className='flex items-center gap-2 text-sm text-primary font-medium'>
+                <svg
+                  className='w-4 h-4'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                >
+                  <path
+                    fillRule='evenodd'
+                    d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
+                    clipRule='evenodd'
+                  />
+                </svg>
+                Protected by NDAs - serious clients, serious results
+              </div>
+            </div>
 
-              return (
-                <div key={`${entry.period}-${index}`} className='py-1'>
-                  {/* Accordion Header */}
-                  <button
-                    onClick={() => toggleTimelineItem(index)}
-                    className='w-full text-left py-4 flex justify-between group hover:bg-muted/30 px-4 -mx-4 rounded-lg transition-colors duration-200'
-                    aria-expanded={isOpen}
-                    aria-controls={`timeline-content-${index}`}
-                  >
-                    <div className='flex-1'>
-                      <p className='font-mono text-xs tracking-wider text-primary/70 uppercase mb-1'>
-                        {entry.period}
-                      </p>
-                      <h3 className='text-lg font-heading text-foreground group-hover:text-primary transition-colors mb-0.5'>
-                        {entry.company}
-                      </h3>
-                      <p className='text-sm text-muted-foreground'>
-                        {entry.role}
-                      </p>
-                    </div>
-                    <div className='ml-4 flex-shrink-0 self-start mt-1'>
-                      <svg
-                        className={`w-4 h-4 text-muted-foreground transition-all duration-200 ${
-                          isOpen
-                            ? 'rotate-180 text-primary'
-                            : 'group-hover:text-primary'
-                        }`}
-                        fill='none'
-                        stroke='currentColor'
-                        viewBox='0 0 24 24'
-                      >
-                        <path
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeWidth={2}
-                          d='M19 9l-7 7-7-7'
-                        />
-                      </svg>
-                    </div>
-                  </button>
-
-                  {/* Accordion Content */}
-                  <div
-                    id={`timeline-content-${index}`}
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                      isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    <div className='pb-6 pt-2 pr-4 space-y-3'>
-                      <p className='text-muted leading-relaxed text-sm'>
-                        {entry.description}
-                      </p>
-                      {entry.highlight && (
-                        <div className='p-3 rounded-md bg-primary/5'>
-                          <p className='text-sm font-medium text-primary'>
-                            {entry.highlight}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+            {/* Measurable Impact Grid */}
+            <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  $50M+
                 </div>
-              )
-            })}
+                <p className='text-sm font-medium mb-2'>Total ROI Generated</p>
+                <p className='text-xs text-muted-foreground'>
+                  Across 40+ transformation programs
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  45%
+                </div>
+                <p className='text-sm font-medium mb-2'>
+                  Average Revenue Increase
+                </p>
+                <p className='text-xs text-muted-foreground'>
+                  For conversion-optimized platforms
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  90 Days
+                </div>
+                <p className='text-sm font-medium mb-2'>
+                  Average Time to Profit
+                </p>
+                <p className='text-xs text-muted-foreground'>
+                  From concept to revenue generation
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  25%
+                </div>
+                <p className='text-sm font-medium mb-2'>Average Sales Lift</p>
+                <p className='text-xs text-muted-foreground'>
+                  From optimized campaigns and identity
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  3x
+                </div>
+                <p className='text-sm font-medium mb-2'>
+                  Conversion Improvements
+                </p>
+                <p className='text-xs text-muted-foreground'>
+                  Through AI-enhanced interfaces
+                </p>
+              </div>
+
+              <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  7+
+                </div>
+                <p className='text-sm font-medium mb-2'>Enterprise Adoptions</p>
+                <p className='text-xs text-muted-foreground'>
+                  Design systems across product squads
+                </p>
+              </div>
+            </div>
+
+            {/* Key Differentiator */}
+            <div className='rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8 text-center'>
+              <h3 className='font-heading text-xl mb-4'>
+                Why Our Results Matter
+              </h3>
+              <p className='text-muted max-w-3xl mx-auto'>
+                While others build prototypes that need more funding, we
+                architect complete ecosystems that generate revenue from launch
+                day. Every project is designed to pay for itself within 90 days,
+                not someday.
+              </p>
+            </div>
           </div>
         </div>
 
