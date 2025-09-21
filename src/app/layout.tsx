@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { DynamicSelectionColors } from '@/components/DynamicSelectionColors'
+import ConditionalRecentArticles from '@/components/ConditionalRecentArticles'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -67,6 +68,7 @@ export default function RootLayout({
         />
         <Header />
         <main className='flex-1'>{children}</main>
+        <ConditionalRecentArticles />
         <Footer />
       </body>
     </html>

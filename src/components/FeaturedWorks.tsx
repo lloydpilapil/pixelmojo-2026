@@ -15,7 +15,7 @@ import {
 import { LinkButtonWithArrow } from '@/components/ui/button'
 import { Tag } from '@/components/ui/tag'
 import { cn } from '@/lib/utils'
-import { WorkItem, getFeaturedWorks } from '@/data/works'
+import { WorkItem, getFeaturedWorks, generateAltText } from '@/data/works'
 
 interface FeaturedWorksProps {
   title?: string
@@ -116,7 +116,9 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
         className='block h-full'
         aria-label={`View ${work.title} case study`}
       >
-        <div className='h-full flex flex-col md:flex-row transition-all duration-500'>
+        <div
+          className={`h-full flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} transition-all duration-500`}
+        >
           {/* Cover Image */}
           <div className='relative aspect-[3/2] w-full md:w-[360px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5'>
             {/* Loading shimmer */}
@@ -124,11 +126,11 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
               <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer' />
             )}
 
-            {work.coverImage ? (
+            {work.thumbnailImage || work.coverImage ? (
               <>
                 <Image
-                  src={work.coverImage}
-                  alt={work.title}
+                  src={work.thumbnailImage || work.coverImage || ''}
+                  alt={generateAltText(work, 'thumbnail')}
                   fill
                   className={cn(
                     'object-cover transition-all duration-700',

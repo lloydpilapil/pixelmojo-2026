@@ -5,6 +5,7 @@ export interface WorkItem {
   category: string
   slug: string
   coverImage?: string
+  thumbnailImage?: string // For works listing and featured works (3:2 aspect ratio)
   technologies?: string[]
   featured?: boolean
   demoUrl?: string
@@ -19,7 +20,8 @@ export const worksData: WorkItem[] = [
     year: '2024',
     category: 'Web & Mobile',
     slug: '/works/real-estate-bear',
-    coverImage: '/placeholder.svg',
+    coverImage: '/real-estate-bear-main-image.webp',
+    thumbnailImage: '/real-estate-bear-cover-image-02.webp',
     technologies: ['React', 'Next.js', 'React Native', 'TypeScript'],
     featured: true,
     isNew: true,
@@ -31,7 +33,8 @@ export const worksData: WorkItem[] = [
     year: '2023',
     category: 'Branding',
     slug: '/works/funnel-zen-branding',
-    coverImage: '/placeholder.svg',
+    coverImage: '/funnel-zen-main-image.webp',
+    thumbnailImage: '/funnel-zen-branding-thumb-2.webp',
     technologies: ['Brand Strategy', 'Logo Design', 'Visual Identity'],
     featured: true,
   },
@@ -42,7 +45,8 @@ export const worksData: WorkItem[] = [
     year: '2023',
     category: 'E-commerce',
     slug: '/works/beemine-store',
-    coverImage: '/placeholder.svg',
+    coverImage: '/beemine-main-image-2.webp',
+    thumbnailImage: '/beemine-thumb-female-with-bag.webp',
     technologies: ['Shopify', 'UI/UX', 'Brand Design', 'Conversion'],
     featured: true,
   },
@@ -53,7 +57,8 @@ export const worksData: WorkItem[] = [
     year: '2020',
     category: 'Healthcare',
     slug: '/works/cigna-stress-management-app',
-    coverImage: '/placeholder.svg',
+    coverImage: '/cigna-stress-app-main-image.webp',
+    thumbnailImage: '/cigna-cover-image-02.webp',
     technologies: ['Mobile Design', 'Healthcare UX', 'Accessibility'],
     featured: true,
   },
@@ -65,3 +70,21 @@ export const getAllWorks = () => worksData
 export const getWorksByCategory = (category: string) =>
   worksData.filter(work => work.category === category)
 export const getRecentWorks = () => worksData.filter(work => work.isNew)
+
+// SEO-optimized alt text generation
+export const generateAltText = (
+  work: WorkItem,
+  imageType: 'thumbnail' | 'main' = 'thumbnail'
+): string => {
+  const { title, category, technologies } = work
+  const mainTech = technologies?.[0] || ''
+  const imageContext =
+    imageType === 'thumbnail' ? 'project thumbnail' : 'case study image'
+
+  // Create descriptive alt text under 125 characters for SEO
+  const altText = `${title} ${category.toLowerCase()} ${imageContext}${mainTech ? ` - ${mainTech}` : ''} by Pixelmojo`
+
+  return altText.length > 125
+    ? `${title} ${category.toLowerCase()} ${imageContext} by Pixelmojo`
+    : altText
+}

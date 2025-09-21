@@ -6,7 +6,6 @@ import ServicesPreview from '@/components/ServicesPreview'
 import TestimonialSection from '@/components/TestimonialSection'
 import FeaturedWorks from '@/components/FeaturedWorks'
 import OurApproach from '@/components/OurApproach'
-import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
   title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
@@ -53,9 +52,6 @@ export default function Home() {
 
       {/* Our Approach Section */}
       <OurApproach />
-
-      {/* Recent Articles Section */}
-      <RecentArticles />
     </div>
   )
 }

@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { LinkButton } from './ui/button'
 import { Tag } from './ui/tag'
 import { ExternalLink } from 'lucide-react'
-import { WorkItem } from '@/data/works'
+import { WorkItem, generateAltText } from '@/data/works'
+import ProjectNavigation from './ProjectNavigation'
 
 interface WorkPageProps {
   work: WorkItem
@@ -64,10 +65,10 @@ export default function WorkPage({ work }: WorkPageProps) {
       {/* Cover Image */}
       {work.coverImage && (
         <div className='mb-16'>
-          <div className='relative aspect-video rounded-lg overflow-hidden'>
+          <div className='relative aspect-[12/5] rounded-lg overflow-hidden'>
             <Image
               src={work.coverImage}
-              alt={work.title}
+              alt={generateAltText(work, 'main')}
               fill
               className='object-cover'
               priority
@@ -88,6 +89,9 @@ export default function WorkPage({ work }: WorkPageProps) {
           </p>
         </div>
       </div>
+
+      {/* Project Navigation */}
+      <ProjectNavigation currentSlug={work.slug} />
     </div>
   )
 }
