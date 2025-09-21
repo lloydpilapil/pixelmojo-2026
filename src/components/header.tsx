@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { LinkButton } from '@/components/ui/button'
 
 const navigationConfig = {
@@ -48,6 +49,15 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
+
+  // Helper function to check if nav item is active
+  const isActiveNav = (href: string, hasChildren?: boolean) => {
+    if (href === '/' && pathname === '/') return true
+    if (href !== '/' && pathname.startsWith(href)) return true
+    if (hasChildren && pathname.startsWith('/services')) return true
+    return false
+  }
 
   const servicesNav = navigationConfig.mainNav.find(
     item => item.label === 'Services'
@@ -117,35 +127,51 @@ export default function Header() {
               {navigationConfig.mainNav.map(item =>
                 item.children ? (
                   // Services with dropdown - integrated directly here
-                  <button
-                    key={item.label}
-                    onClick={() => setIsServicesOpen(!isServicesOpen)}
-                    className='text-sm font-medium text-gray-800 hover:text-[#55AE44] transition-colors duration-200 flex items-center gap-1'
-                  >
-                    {item.label}
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
-                      fill='none'
-                      stroke='currentColor'
-                      viewBox='0 0 24 24'
+                  <div key={item.label} className='relative'>
+                    <button
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      className={`text-sm font-medium transition-colors duration-200 flex items-center gap-1 relative ${
+                        isActiveNav(item.href, true)
+                          ? 'text-primary'
+                          : 'text-gray-800 hover:text-[#55AE44]'
+                      }`}
                     >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M19 9l-7 7-7-7'
-                      />
-                    </svg>
-                  </button>
+                      {item.label}
+                      <svg
+                        className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M19 9l-7 7-7-7'
+                        />
+                      </svg>
+                    </button>
+                    {isActiveNav(item.href, true) && (
+                      <div className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full' />
+                    )}
+                  </div>
                 ) : (
                   // Regular nav items
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className='text-sm font-medium text-gray-800 hover:text-[#55AE44] transition-colors duration-200'
-                  >
-                    {item.label}
-                  </Link>
+                  <div key={item.label} className='relative'>
+                    <Link
+                      href={item.href}
+                      className={`text-sm font-medium transition-colors duration-200 relative ${
+                        isActiveNav(item.href)
+                          ? 'text-primary'
+                          : 'text-gray-800 hover:text-[#55AE44]'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                    {isActiveNav(item.href) && (
+                      <div className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full' />
+                    )}
+                  </div>
                 )
               )}
             </div>
@@ -292,7 +318,11 @@ export default function Header() {
                         onClick={() =>
                           setIsMobileServicesOpen(!isMobileServicesOpen)
                         }
-                        className='w-full flex items-center justify-between text-lg font-medium text-gray-800 hover:text-[#55AE44] transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation'
+                        className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation relative ${
+                          isActiveNav(item.href, true)
+                            ? 'text-primary bg-primary/5 border-l-4 border-primary'
+                            : 'text-gray-800 hover:text-[#55AE44]'
+                        }`}
                         style={{ minHeight: '44px' }}
                       >
                         <span>{item.label}</span>
@@ -343,7 +373,11 @@ export default function Header() {
                         setIsMobileMenuOpen(false)
                         setIsMobileServicesOpen(false)
                       }}
-                      className='block text-lg font-medium text-gray-800 hover:text-[#55AE44] transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation'
+                      className={`block text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation ${
+                        isActiveNav(item.href)
+                          ? 'text-primary bg-primary/5 border-l-4 border-primary'
+                          : 'text-gray-800 hover:text-[#55AE44]'
+                      }`}
                       style={{ minHeight: '44px' }}
                     >
                       {item.label}
