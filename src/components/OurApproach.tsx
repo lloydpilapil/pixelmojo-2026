@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 interface ApproachStep {
   number: string
+  week: string
   title: string
   description: string
   hoverText: string
@@ -20,38 +21,38 @@ const OurApproach = ({
   steps = [
     {
       number: '01',
-      title: 'Discover & Understand',
+      week: 'Week 1',
+      title: 'Revenue Strategy, Not Research Reports',
       description:
-        'We start by deeply understanding your business, audience, and goals to identify key opportunities for growth.',
-      hoverText:
-        'Gain a crystal-clear roadmap, aligning every digital dollar to tangible business growth.',
+        'Skip the 6-month discovery. We identify your fastest path to paying customers and build backwards from there.',
+      hoverText: 'Walk away with a profit roadmap, not another strategy deck.',
       hoverColor: 'bg-primary',
     },
     {
       number: '02',
-      title: 'Strategy & Planning',
+      week: 'Weeks 2-4',
+      title: "Build What Sells, Not What's Safe",
       description:
-        'We develop a clear, actionable roadmap that unifies your digital efforts and sets measurable goals for success.',
-      hoverText:
-        'Eliminate guesswork with a focused plan that prioritizes high-impact actions for results.',
+        'Design and prototype the core experience that validates your riskiest assumptions with real users.',
+      hoverText: 'Working prototype that users actually want to pay for.',
       hoverColor: 'bg-secondary',
     },
     {
       number: '03',
-      title: 'Design & Build',
+      week: 'Weeks 5-10',
+      title: 'Ship to Market, Not to Meetings',
       description:
-        'Our team designs and develops intuitive, scalable solutions that create a seamless experience for your users.',
-      hoverText:
-        'Create seamless user experiences that boost adoption and are built to scale as you grow.',
+        'Develop and deploy production-ready features while gathering real customer feedback and revenue signals.',
+      hoverText: 'Live product generating initial revenue and validation data.',
       hoverColor: 'bg-cta',
     },
     {
       number: '04',
-      title: 'Launch & Grow',
+      week: 'Week 11+',
+      title: "Scale What Works, Kill What Doesn't",
       description:
-        'After launch, we continuously monitor performance, using data-driven insights to refine and enhance your digital ecosystem.',
-      hoverText:
-        'Turn data into profit. We continuously optimize your digital ecosystem for maximum ROI.',
+        "Use revenue data to double down on what's profitable and cut what isn't. Continuous deployment, continuous profit.",
+      hoverText: 'Self-funding growth engine that scales based on actual ROI.',
       hoverColor: 'bg-accent',
     },
   ],
@@ -65,9 +66,8 @@ const OurApproach = ({
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted max-w-2xl mx-auto text-lg leading-relaxed'>
-            Our proven methodology transforms your ideas into impactful digital
-            solutions through strategic planning, expert execution, and
-            continuous optimization.
+            How we ship products that sell in 90 days. No endless discovery, no
+            strategy theater - just working products that generate revenue.
           </p>
         </div>
 
@@ -92,9 +92,14 @@ const OurApproach = ({
 
                 {/* Content */}
                 <div className='mt-2'>
-                  <h3 className='text-lg md:text-xl font-semibold mb-4 pr-4'>
-                    {step.title}
-                  </h3>
+                  <div className='mb-4 pr-4'>
+                    <div className='text-sm font-medium text-primary mb-1'>
+                      {step.week}
+                    </div>
+                    <h3 className='text-lg md:text-xl font-semibold'>
+                      {step.title}
+                    </h3>
+                  </div>
                   <p className='text-muted text-sm md:text-base leading-relaxed'>
                     {step.description}
                   </p>
@@ -110,7 +115,7 @@ const OurApproach = ({
                 >
                   <div className='text-white text-center'>
                     <h4 className='text-lg md:text-xl font-bold mb-3'>
-                      Key Benefit
+                      Key Outcome
                     </h4>
                     <p className='text-sm md:text-base leading-relaxed'>
                       {step.hoverText}

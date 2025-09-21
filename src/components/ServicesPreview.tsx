@@ -21,12 +21,12 @@ interface ServicesPreviewProps {
 }
 
 const ServicesPreview = ({
-  title = 'Build AI Products That Profit',
+  title = 'Build AI Products That Actually Ship',
   services = [
     {
       title: 'AI Product Development',
       description:
-        'Ship complete AI products in 90 days. We architect, design, and deploy production-ready systems that generate revenue from launch.',
+        'Ship complete AI products in 90 days flat. We architect, design, and deploy production-ready systems that generate revenue at launch, not someday.',
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ai-product-development',
       gradient: 'from-blue-500/20 to-purple-500/30',
@@ -37,7 +37,7 @@ const ServicesPreview = ({
     {
       title: 'Revenue-First Design Systems',
       description:
-        'Build design systems that convert. Every component optimized for activation, retention, and expansion from day one.',
+        'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
       icon: '/branding_services_thumb.svg',
       href: '/services/revenue-first-design',
       gradient: 'from-purple-500/10 to-pink-500/10',
@@ -47,7 +47,7 @@ const ServicesPreview = ({
     {
       title: 'AI-Powered Growth Engines',
       description:
-        'Automate your entire growth stack with AI. From lead scoring to lifecycle campaigns that generate immediate pipeline.',
+        'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/ai-powered-growth',
       gradient: 'from-green-500/10 to-teal-500/10',
@@ -58,7 +58,7 @@ const ServicesPreview = ({
     {
       title: 'Profit-Optimized Interfaces',
       description:
-        'Design and build product experiences that maximize revenue per user. AI-enhanced flows that convert, upsell, and retain.',
+        'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/profit-optimized-interfaces',
       gradient: 'from-orange-500/10 to-red-500/10',
@@ -68,7 +68,7 @@ const ServicesPreview = ({
     {
       title: 'Conversion Asset Systems',
       description:
-        'Create visual systems that sell. From pitch decks that close to in-app experiences that drive expansion revenue.',
+        'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/conversion-assets',
       gradient: 'from-pink-500/10 to-rose-500/10',
@@ -79,7 +79,7 @@ const ServicesPreview = ({
     {
       title: 'Full-Stack AI Implementation',
       description:
-        'Embed teams that ship production AI features weekly. Complete ecosystems from infrastructure to interface, generating ROI immediately.',
+        'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/full-stack-ai',
       gradient: 'from-indigo-500/10 to-blue-500/10',
@@ -99,10 +99,10 @@ const ServicesPreview = ({
         <div className='mb-16 text-center'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted mx-auto max-w-3xl text-lg leading-relaxed'>
-            Complete product ecosystems that generate measurable ROI
+            Complete product ecosystems that ship in weeks and scale
             immediately. No fragmented vendors, no endless discovery.{' '}
             <span className='text-primary font-medium'>
-              Design, develop, deploy, profit.
+              Design, develop, deploy, scale.
             </span>
           </p>
         </div>

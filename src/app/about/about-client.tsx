@@ -62,7 +62,7 @@ export default function AboutClient() {
         <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
           Strategy to scale, all under one roof
         </h2>
-        <div className='mx-auto max-w-4xl space-y-6 text-left md:text-center'>
+        <div className='mx-auto max-w-6xl space-y-6 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
             After 20+ years shipping products for enterprises and startups, I
             built Pixelmojo to solve the vendor chaos problem. Instead of
@@ -107,7 +107,7 @@ export default function AboutClient() {
           </div>
         </div>
         <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
-        <div className='mx-auto max-w-4xl space-y-4 text-left md:text-center'>
+        <div className='mx-auto max-w-6xl space-y-4 text-left md:text-center'>
           <p className='text-muted text-lg leading-relaxed'>
             End the vendor chaos. Unite strategy, design, and development under
             one partnership that owns the entire journey from concept to
@@ -155,28 +155,9 @@ export default function AboutClient() {
             </div>
           </div>
         </div>
-        <div className='mt-12 max-w-5xl mx-auto'>
-          <div className='gradient-surface relative overflow-hidden rounded-2xl border border-white/15 p-8 text-center shadow-lg shadow-primary/15 md:p-12'>
-            <div className='relative z-10 space-y-5'>
-              <h3 className='font-heading text-2xl text-white md:text-3xl'>
-                What Pixelmojo Means
-              </h3>
-              <p className='mx-auto max-w-4xl text-lg leading-relaxed text-white/90'>
-                Every{' '}
-                <span className='font-extrabold text-[#3CC29E]'>pixel</span> we
-                design and every bit of{' '}
-                <span className='font-extrabold text-[#F48024]'>mojo</span>—that
-                spark of insight—has one job: generate profits from day one. The
-                intersecting forms in our logo represent the fusion of AI,
-                design, and revenue optimization working in perfect sync to
-                create products that pay for themselves.
-              </p>
-            </div>
-          </div>
-        </div>
 
         {/* Proven Results Section */}
-        <div className='mt-16 max-w-5xl mx-auto'>
+        <div className='mt-16 max-w-6xl mx-auto'>
           <h2
             className='text-center font-heading text-3xl md:text-4xl'
             style={{ marginBottom: '3rem' }}
@@ -186,7 +167,7 @@ export default function AboutClient() {
 
           <div className='space-y-8'>
             {/* Recent Confidential Projects */}
-            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 md:p-8'>
+            <div className='rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card/90 to-[#3CC29E]/10 p-6 md:p-8 shadow-md'>
               <h3 className='font-heading text-xl mb-4 text-primary'>
                 Recent Confidential Projects
               </h3>

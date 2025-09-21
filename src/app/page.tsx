@@ -31,7 +31,7 @@ export default function Home() {
           </>
         }
         description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
-        ctaText='Learn Our Process'
+        ctaText='See How We Ship'
         ctaHref='/about'
         proofPoints={[]}
       />

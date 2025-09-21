@@ -20,12 +20,12 @@ export default function Services() {
     {
       title: 'AI Product Development',
       description:
-        'Ship complete AI products in 90 days. Production-ready systems that generate revenue from launch, not someday.',
+        'Ship complete AI products in 90 days flat. Production-ready systems that generate revenue at launch, not someday.',
       features: [
         'Full product architecture & AI integration',
-        'Revenue-optimized user flows',
+        'Revenue-validated user flows',
         'Launch with paying customers',
-        'Built-in growth metrics & analytics',
+        'Built-in growth metrics',
       ],
       icon: '/ui_ux_design_solutions_services_thumb.svg',
       href: '/services/ai-product-development',
@@ -33,12 +33,12 @@ export default function Services() {
     {
       title: 'Revenue-First Design Systems',
       description:
-        'Design systems built to convert. Every component optimized for activation, retention, and expansion from day one.',
+        'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
       features: [
-        'Conversion-optimized components',
-        'AI-enhanced interaction patterns',
-        'Measurable impact on key metrics',
-        'Ready-to-ship design tokens',
+        'Conversion-tested components',
+        'AI-enhanced interactions',
+        'Direct impact on revenue metrics',
+        'Ship-ready from sprint one',
       ],
       icon: '/branding_services_thumb.svg',
       href: '/services/revenue-first-design',
@@ -46,12 +46,12 @@ export default function Services() {
     {
       title: 'AI-Powered Growth Engines',
       description:
-        'Automate your entire growth stack. From lead scoring to lifecycle campaigns that generate immediate pipeline.',
+        'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
       features: [
-        'Automated lead qualification & scoring',
-        'AI-driven nurture sequences',
+        'Intelligent lead qualification',
         'Self-optimizing campaigns',
-        'Revenue attribution dashboards',
+        'Revenue attribution built-in',
+        'ROI visible in weeks',
       ],
       icon: '/digital_marketing_services_thumb.svg',
       href: '/services/ai-powered-growth',
@@ -59,12 +59,12 @@ export default function Services() {
     {
       title: 'Profit-Optimized Interfaces',
       description:
-        'Product experiences that maximize revenue per user. AI-enhanced flows that convert, upsell, and retain.',
+        'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
       features: [
         'Revenue-per-user optimization',
-        'AI-powered upsell flows',
+        'Smart upsell timing',
         'Churn prediction & prevention',
-        'Measurable ARPU improvement',
+        'Measurable ARPU lift',
       ],
       icon: '/web_app_design_services_thumb.svg',
       href: '/services/profit-optimized-interfaces',
@@ -72,12 +72,12 @@ export default function Services() {
     {
       title: 'Conversion Asset Systems',
       description:
-        'Visual systems that sell. From pitch decks that close to in-app experiences that drive expansion revenue.',
+        'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
       features: [
-        'Sales-optimized pitch decks',
-        'Revenue-driving visual systems',
-        'Conversion-tested templates',
-        'Measurable impact on close rates',
+        'Battle-tested pitch templates',
+        'Revenue-focused visual systems',
+        'Conversion-validated designs',
+        'Trackable impact on close rates',
       ],
       icon: '/graphic_visual_design_services_thumb.svg',
       href: '/services/conversion-assets',
@@ -85,12 +85,12 @@ export default function Services() {
     {
       title: 'Full-Stack AI Implementation',
       description:
-        'Teams that ship production AI weekly. Complete ecosystems from infrastructure to interface, generating ROI immediately.',
+        'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
       features: [
-        'Production-ready AI features',
-        'Complete ecosystem deployment',
-        'Revenue-generating from week one',
-        'Self-funding development cycles',
+        'Ship production features weekly',
+        'End-to-end deployment',
+        'Revenue-focused roadmaps',
+        'Self-funding growth cycles',
       ],
       icon: '/creative_contents_services_thumb.svg',
       href: '/services/full-stack-ai',
@@ -102,11 +102,11 @@ export default function Services() {
       {/* Hero Section */}
       <div className='text-center mb-12'>
         <h1 className='mb-6 font-heading max-w-6xl mx-auto'>
-          Complete AI products that profit from day one.
+          Complete AI products built to generate revenue, fast.
         </h1>
         <p className='lead max-w-3xl mx-auto mb-8'>
           No fragmented vendors. No endless discovery. We design, develop, and
-          deploy complete ecosystems that generate measurable ROI immediately.
+          deploy complete ecosystems that ship in weeks and scale immediately.
         </p>
       </div>
 
@@ -119,13 +119,14 @@ export default function Services() {
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
         <h2 className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
-          Stop burning cash on concepts. Start shipping products that pay.
+          Stop building features nobody wants. Start shipping products people
+          pay for.
         </h2>
         <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-          Every service is engineered for immediate returns. From AI product
-          development to growth automation, we deliver complete solutions that
-          generate revenue from launch. Built to scale, optimized to profit,
-          designed to dominate.
+          Every service engineered for measurable ROI. From AI development to
+          growth automation, we deliver complete solutions that validate with
+          real revenue. Built to scale, optimized to profit, designed to
+          dominate.
         </p>
       </div>
 
