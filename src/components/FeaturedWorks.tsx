@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -59,35 +59,6 @@ const categoryConfig: Record<
     color: 'cta',
   },
 }
-
-// Loading Skeleton Component
-const PortfolioStripSkeleton: React.FC = () => (
-  <div className='h-full flex flex-col md:flex-row animate-pulse'>
-    {/* Image skeleton */}
-    <div className='aspect-[3/2] w-full md:w-[360px] rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5' />
-
-    {/* Content skeleton */}
-    <div className='flex-1 p-5 md:p-6 space-y-4'>
-      <div className='space-y-1.5'>
-        <div className='flex items-start justify-between gap-4'>
-          <div className='h-5 w-2/3 rounded-lg bg-muted' />
-          <div className='h-5 w-16 rounded-full bg-muted/60' />
-        </div>
-        <div className='space-y-2'>
-          <div className='h-[14px] w-full rounded bg-muted/70' />
-          <div className='h-[14px] w-5/6 rounded bg-muted/70' />
-          <div className='h-[14px] w-4/6 rounded bg-muted/70' />
-        </div>
-      </div>
-      <div className='flex flex-wrap gap-2'>
-        <div className='w-16 h-6 rounded-full bg-muted/50' />
-        <div className='w-20 h-6 rounded-full bg-muted/50' />
-        <div className='w-20 h-6 rounded-full bg-muted/50' />
-      </div>
-      <div className='h-5 w-24 rounded bg-muted' />
-    </div>
-  </div>
-)
 
 // Compact Portfolio Card Component
 const PortfolioCard: React.FC<PortfolioStripProps> = ({
@@ -211,14 +182,6 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
   subtitle = 'Explore our portfolio of successful projects that have driven measurable results for clients across various industries.',
   works = getFeaturedWorks(),
 }) => {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    // Simulate initial load
-    const timer = setTimeout(() => setLoading(false), 100)
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <section className='py-16 md:py-20 lg:py-24 overflow-hidden'>
       <div className='container mx-auto px-4'>
@@ -235,14 +198,9 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
 
         {/* Portfolio Grid */}
         <div className='grid grid-cols-1 gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto'>
-          {loading
-            ? // Show skeletons while loading
-              Array.from({ length: 4 }).map((_, i) => (
-                <PortfolioStripSkeleton key={i} />
-              ))
-            : works.map((work, index) => (
-                <PortfolioCard key={work.slug} work={work} index={index} />
-              ))}
+          {works.map((work, index) => (
+            <PortfolioCard key={work.slug} work={work} index={index} />
+          ))}
         </div>
 
         {/* Enhanced View All Works CTA */}
@@ -263,4 +221,4 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
 }
 
 export default FeaturedWorks
-export { PortfolioCard, PortfolioStripSkeleton }
+export { PortfolioCard }

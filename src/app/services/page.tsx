@@ -177,8 +177,9 @@ export default function Services() {
                 variant='link'
                 arrowIcon='arrow'
                 className='mt-6 self-start'
+                aria-label={`Learn more about ${service.title} services`}
               >
-                Learn about {service.title}
+                Learn More
               </LinkButtonWithArrow>
             </div>
           </div>
