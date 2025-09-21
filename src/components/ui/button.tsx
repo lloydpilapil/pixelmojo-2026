@@ -10,15 +10,15 @@ const buttonVariants = cva(
       variant: {
         default:
           'shadow hover:scale-105 active:scale-95' +
-          ' bg-[#FD4B8B] text-white hover:bg-[#55AE44]',
+          ' bg-[#F90B8A] text-white hover:bg-[#55AE44]',
         destructive:
-          'bg-[#FD4B8B] text-white shadow-sm hover:bg-[#55AE44] hover:scale-105 active:scale-95',
+          'bg-[#F90B8A] text-white shadow-sm hover:bg-[#55AE44] hover:scale-105 active:scale-95',
         outline:
-          'border-2 border-[#FD4B8B] bg-transparent text-[#FD4B8B] shadow-sm hover:bg-[#55AE44] hover:text-white hover:border-[#55AE44] hover:scale-105 active:scale-95',
+          'border-2 border-[#F90B8A] bg-transparent text-[#F90B8A] shadow-sm hover:bg-[#55AE44] hover:text-white hover:border-[#55AE44] hover:scale-105 active:scale-95',
         secondary:
-          'bg-[#FD4B8B]/20 text-[#FD4B8B] shadow-sm hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
+          'bg-[#F90B8A]/20 text-[#F90B8A] shadow-sm hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
         ghost:
-          'text-[#FD4B8B] hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
+          'text-[#F90B8A] hover:bg-[#55AE44] hover:text-white hover:scale-105 active:scale-95',
         link: 'text-primary underline-offset-4 hover:text-primary/80 hover:underline',
       },
       size: {

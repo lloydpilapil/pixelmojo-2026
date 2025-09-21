@@ -85,7 +85,7 @@ export default function AboutClient() {
             {/* Two column cards */}
             <div className='grid gap-6 md:grid-cols-2'>
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
-                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-2'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-sky mb-2'>
                   No vendor chaos, one partner
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
@@ -95,7 +95,7 @@ export default function AboutClient() {
               </div>
 
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
-                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-2'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-warning mb-2'>
                   Products that ship and scale
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
@@ -125,7 +125,7 @@ export default function AboutClient() {
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#3CC29E] mb-3'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-info mb-3'>
                 Products that actually ship
               </p>
               <p className='text-sm leading-relaxed text-muted'>
@@ -135,7 +135,7 @@ export default function AboutClient() {
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-[#F48024] mb-3'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-warning mb-3'>
                 Partnership accountability
               </p>
               <p className='text-sm leading-relaxed text-muted'>
@@ -167,7 +167,7 @@ export default function AboutClient() {
 
           <div className='space-y-8'>
             {/* Recent Confidential Projects */}
-            <div className='rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card/90 to-[#3CC29E]/10 p-6 md:p-8 shadow-md'>
+            <div className='rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card/90 to-sky/10 p-6 md:p-8 shadow-md'>
               <h3 className='font-heading text-xl mb-4 text-primary'>
                 Recent Confidential Projects
               </h3>
@@ -179,7 +179,7 @@ export default function AboutClient() {
                 estate company - all delivered on time and driving immediate
                 business value.
               </p>
-              <div className='flex items-center justify-center gap-2 text-sm text-[#3CC29E] font-medium'>
+              <div className='flex items-center justify-center gap-2 text-sm text-sky font-medium'>
                 <svg
                   className='w-4 h-4'
                   fill='currentColor'
@@ -198,9 +198,7 @@ export default function AboutClient() {
             {/* Measurable Impact Grid */}
             <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-[#3CC29E] mb-2'>
-                  40+
-                </div>
+                <div className='text-3xl font-heading text-sky mb-2'>40+</div>
                 <p className='text-sm font-medium mb-2'>
                   Successful Transformations
                 </p>
@@ -210,7 +208,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-[#F48024] mb-2'>
+                <div className='text-3xl font-heading text-warning mb-2'>
                   20+ Years
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -246,9 +244,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-[#3CC29E] mb-2'>
-                  100%
-                </div>
+                <div className='text-3xl font-heading text-info mb-2'>100%</div>
                 <p className='text-sm font-medium mb-2'>
                   Profit-First Approach
                 </p>
@@ -258,7 +254,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-[#F48024] mb-2'>
+                <div className='text-3xl font-heading text-warning mb-2'>
                   Enterprise
                 </div>
                 <p className='text-sm font-medium mb-2'>Scale & Adoption</p>
@@ -285,7 +281,7 @@ export default function AboutClient() {
                 key={step.title}
                 className='group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card/60 p-6 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary md:p-8'
               >
-                <span className='inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#3CC29E] font-heading text-base font-semibold text-white'>
+                <span className='inline-flex h-12 w-12 items-center justify-center rounded-full bg-info font-heading text-base font-semibold text-white'>
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className='mt-4 text-xl font-heading'>{step.title}</h3>
@@ -337,7 +333,7 @@ export default function AboutClient() {
               generates measurable profits. Each tool in our stack is selected
               for its ability to create, optimize, and scale revenue streams.
             </p>
-            <div className='flex items-center justify-center gap-2 text-sm text-[#3CC29E] font-medium mb-8'>
+            <div className='flex items-center justify-center gap-2 text-sm text-sky font-medium mb-8'>
               <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
                 <path
                   fillRule='evenodd'

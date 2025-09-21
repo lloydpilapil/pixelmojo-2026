@@ -29,10 +29,16 @@
   --secondary-foreground: #ffffff;
   --accent: #F48024;
   --accent-foreground: #ffffff;
-  --cta: #FD4B8B;
+  --cta: #F90B8A;
   --cta-foreground: #ffffff;
   --growth: #55AE44;
   --growth-foreground: #ffffff;
+  --warning: #FEC503;
+  --warning-foreground: #000000;
+  --info: #7C62FC;
+  --info-foreground: #ffffff;
+  --sky: #8BE0F3;
+  --sky-foreground: #000000;
   --gray: #6b7280;
   --gray-foreground: #ffffff;
   --destructive: #ef4444;
@@ -122,10 +128,16 @@
     --secondary-foreground: #ffffff;
     --accent: #FF9554;
     --accent-foreground: #ffffff;
-    --cta: #FF6BA5;
+    --cta: #F90B8A;
     --cta-foreground: #ffffff;
     --growth: #6BC95A;
     --growth-foreground: #ffffff;
+    --warning: #FEC503;
+    --warning-foreground: #000000;
+    --info: #7C62FC;
+    --info-foreground: #ffffff;
+    --sky: #8BE0F3;
+    --sky-foreground: #000000;
     --gray: #9ca3af;
     --gray-foreground: #ffffff;
     --destructive: #f87171;
@@ -152,10 +164,16 @@
   --secondary-foreground: #ffffff;
   --accent: #FF9554;
   --accent-foreground: #ffffff;
-  --cta: #FF6BA5;
+  --cta: #F90B8A;
   --cta-foreground: #ffffff;
   --growth: #6BC95A;
   --growth-foreground: #ffffff;
+  --warning: #FEC503;
+  --warning-foreground: #000000;
+  --info: #7C62FC;
+  --info-foreground: #ffffff;
+  --sky: #8BE0F3;
+  --sky-foreground: #000000;
   --gray: #9ca3af;
   --gray-foreground: #ffffff;
   --destructive: #f87171;
@@ -453,12 +471,18 @@ li {
 .text-accent { color: var(--accent); }
 .text-cta { color: var(--cta); }
 .text-growth { color: var(--growth); }
+.text-warning { color: var(--warning); }
+.text-info { color: var(--info); }
+.text-sky { color: var(--sky); }
 
 .bg-primary { background-color: var(--primary); color: var(--primary-foreground); }
 .bg-secondary { background-color: var(--secondary); color: var(--secondary-foreground); }
 .bg-accent { background-color: var(--accent); color: var(--accent-foreground); }
 .bg-cta { background-color: var(--cta); color: var(--cta-foreground); }
 .bg-growth { background-color: var(--growth); color: var(--growth-foreground); }
+.bg-warning { background-color: var(--warning); color: var(--warning-foreground); }
+.bg-info { background-color: var(--info); color: var(--info-foreground); }
+.bg-sky { background-color: var(--sky); color: var(--sky-foreground); }
 
 /* Force bg-card utility */
 .bg-card { background-color: var(--card) !important; }

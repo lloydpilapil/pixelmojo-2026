@@ -83,7 +83,12 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
   if (!h2Headings.length) return null
 
   return (
-    <div className={cn('not-prose rounded-lg pt-6 pr-6 pb-6', className)}>
+    <div
+      className={cn(
+        'not-prose rounded-2xl border border-border/60 bg-card/70 pt-6 pr-6 pb-6',
+        className
+      )}
+    >
       <nav aria-label='Table of contents'>
         {/* TOC title - same font as content but bold and uppercase */}
         <span className='block mb-7 pl-6 text-sm font-bold text-foreground uppercase tracking-wider'>

@@ -94,10 +94,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
         sidebar={
           post.showCTA !== false ? (
             <BlogCTA
-              title='Stay Updated'
-              description='Get the latest web development insights delivered to your inbox.'
-              buttonText='Subscribe'
-              variant='newsletter'
+              title='Ready to Ship Your AI Product?'
+              description='Stop building features nobody wants. Start shipping products people pay for.'
+              buttonText='Get Started'
+              buttonHref='/contact'
             />
           ) : undefined
         }

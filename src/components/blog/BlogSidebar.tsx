@@ -10,23 +10,23 @@ interface BlogSidebarProps {
   ctaTitle?: string
   ctaDescription?: string
   ctaButtonText?: string
-  ctaVariant?: 'newsletter' | 'contact' | 'custom'
+  ctaButtonHref?: string
 }
 
 export function BlogSidebar({
   showTOC = true,
   showCTA = true,
-  ctaTitle = "Stay Updated",
-  ctaDescription = "Get the latest web development insights delivered to your inbox.",
-  ctaButtonText = "Subscribe",
-  ctaVariant = "newsletter"
+  ctaTitle = 'Ready to Ship Your AI Product?',
+  ctaDescription = 'Stop building features nobody wants. Start shipping products people pay for.',
+  ctaButtonText = 'Get Started',
+  ctaButtonHref = '/contact',
 }: BlogSidebarProps) {
   useEffect(() => {
     // Find the BlogPostLayout and inject sidebar content
     const blogLayout = document.querySelector('[data-blog-layout]')
     const leftSidebar = document.querySelector('[data-left-sidebar]')
     const rightSidebar = document.querySelector('[data-right-sidebar]')
-    
+
     if (!blogLayout || !leftSidebar || !rightSidebar) return
 
     // Show the layout
@@ -38,16 +38,16 @@ export function BlogSidebar({
       const tocContainer = leftSidebar.querySelector('[data-toc-container]')
       if (tocContainer && !tocContainer.hasChildNodes()) {
         // TOC will be rendered by React, we just need to show the container
-        (leftSidebar as HTMLElement).style.display = 'block'
+        ;(leftSidebar as HTMLElement).style.display = 'block'
       }
     }
 
-    // Inject CTA into right sidebar  
+    // Inject CTA into right sidebar
     if (showCTA && rightSidebar) {
       const ctaContainer = rightSidebar.querySelector('[data-cta-container]')
       if (ctaContainer && !ctaContainer.hasChildNodes()) {
         // CTA will be rendered by React, we just need to show the container
-        (rightSidebar as HTMLElement).style.display = 'block'
+        ;(rightSidebar as HTMLElement).style.display = 'block'
       }
     }
   }, [showTOC, showCTA])
@@ -56,16 +56,16 @@ export function BlogSidebar({
   return (
     <>
       {/* Hidden elements that will be moved to sidebars by the effect */}
-      <div id="toc-content" style={{ display: 'none' }}>
+      <div id='toc-content' style={{ display: 'none' }}>
         {showTOC && <TableOfContents headings={[]} />}
       </div>
-      <div id="cta-content" style={{ display: 'none' }}>
+      <div id='cta-content' style={{ display: 'none' }}>
         {showCTA && (
           <BlogCTA
             title={ctaTitle}
             description={ctaDescription}
             buttonText={ctaButtonText}
-            variant={ctaVariant}
+            buttonHref={ctaButtonHref}
           />
         )}
       </div>

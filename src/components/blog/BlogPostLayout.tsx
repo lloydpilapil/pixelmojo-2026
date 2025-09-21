@@ -23,11 +23,7 @@ export function BlogPostLayout({
           <main>{children}</main>
 
           {/* TOC on mobile/tablet */}
-          {tableOfContents && (
-            <div className='bg-[#F8F1E5] border border-border/60 rounded-lg'>
-              {tableOfContents}
-            </div>
-          )}
+          {tableOfContents}
 
           {/* CTA on mobile/tablet */}
           {sidebar && <div>{sidebar}</div>}
@@ -40,11 +36,7 @@ export function BlogPostLayout({
             className='xl:col-span-3 xl:sticky xl:self-start'
             style={{ top: 'calc(var(--anchor-offset) + 1rem)' }}
           >
-            {tableOfContents && (
-              <div className='bg-[#F8F1E5] border border-border/60 rounded-lg'>
-                {tableOfContents}
-              </div>
-            )}
+            {tableOfContents}
           </aside>
 
           {/* Center Content Area */}
