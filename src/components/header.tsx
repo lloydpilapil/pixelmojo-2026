@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { Search } from 'lucide-react'
 import { LinkButton } from '@/components/ui/button'
 import { getFeaturedWorks } from '@/data/works'
 
@@ -67,6 +68,7 @@ const navigationConfig = {
 export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isWorksOpen, setIsWorksOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isMobileWorksOpen, setIsMobileWorksOpen] = useState(false)
@@ -162,9 +164,11 @@ export default function Header() {
                         if (item.label === 'Services') {
                           setIsServicesOpen(!isServicesOpen)
                           setIsWorksOpen(false)
+                          setIsSearchOpen(false)
                         } else if (item.label === 'Works') {
                           setIsWorksOpen(!isWorksOpen)
                           setIsServicesOpen(false)
+                          setIsSearchOpen(false)
                         }
                       }}
                       className={`text-sm font-medium transition-colors duration-200 flex items-center gap-1 relative ${
@@ -219,17 +223,34 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Desktop CTA with dynamic variant */}
-          <div className='hidden lg:block'>
-            <LinkButton
-              href={navigationConfig.ctaButton.href}
-              variant={isScrolled ? 'default' : 'outline'}
-              size='default'
-              shape='pill'
-              className='transition-all duration-300'
-            >
-              {navigationConfig.ctaButton.label}
-            </LinkButton>
+          {/* Search Icon */}
+          <div className='hidden lg:flex items-center gap-4'>
+            <div className='relative'>
+              <button
+                onClick={() => {
+                  setIsSearchOpen(!isSearchOpen)
+                  setIsServicesOpen(false)
+                  setIsWorksOpen(false)
+                }}
+                className='p-2 text-gray-800 hover:text-primary transition-colors duration-200 hover:bg-gray-100 rounded-full'
+                aria-label='Search'
+              >
+                <Search className='w-5 h-5' />
+              </button>
+            </div>
+
+            {/* Desktop CTA with dynamic variant */}
+            <div>
+              <LinkButton
+                href={navigationConfig.ctaButton.href}
+                variant={isScrolled ? 'default' : 'outline'}
+                size='default'
+                shape='pill'
+                className='transition-all duration-300'
+              >
+                {navigationConfig.ctaButton.label}
+              </LinkButton>
+            </div>
           </div>
 
           {/* Mobile Hamburger Button - Fixed visibility */}
@@ -303,6 +324,30 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Search Mega Menu Panel */}
+      <div
+        className={`hidden lg:block w-full bg-[#FFF9E6] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+          isSearchOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className='container mx-auto px-4 py-6'>
+          <div className='max-w-2xl mx-auto text-center'>
+            <div className='flex items-center gap-3 mb-4'>
+              <Search className='w-6 h-6 text-gray-400' />
+              <input
+                type='text'
+                placeholder='Search coming soon...'
+                disabled
+                className='flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 cursor-not-allowed'
+              />
+            </div>
+            <p className='text-sm text-gray-600'>
+              We're building an amazing search experience. Stay tuned!
+            </p>
           </div>
         </div>
       </div>
