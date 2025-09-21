@@ -178,7 +178,7 @@ export default function Services() {
                 arrowIcon='arrow'
                 className='mt-6 self-start'
               >
-                Learn more
+                Learn about {service.title}
               </LinkButtonWithArrow>
             </div>
           </div>
