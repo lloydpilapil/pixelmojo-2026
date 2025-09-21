@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { LinkButton } from './ui/button'
 import { Tag } from './ui/tag'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { WorkItem } from '@/data/works'
 
 interface WorkPageProps {
@@ -87,21 +87,6 @@ export default function WorkPage({ work }: WorkPageProps) {
             populated here.
           </p>
         </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className='text-center'>
-        <h2 className='text-3xl font-bold mb-4'>
-          Ready to ship products that actually sell?
-        </h2>
-        <p className='text-lg text-muted mb-8 max-w-2xl mx-auto'>
-          Stop juggling vendors. Partner with one team that owns your entire
-          journey from concept to customer success.
-        </p>
-        <LinkButton href='/contact-us' size='lg' className='group'>
-          Start Your Project
-          <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-        </LinkButton>
       </div>
     </div>
   )

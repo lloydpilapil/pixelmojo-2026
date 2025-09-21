@@ -5,6 +5,19 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { LinkButton } from '@/components/ui/button'
+import { getFeaturedWorks } from '@/data/works'
+
+// Generate works dropdown from featured works
+const getFeaturedWorksNav = () => {
+  const featuredWorks = getFeaturedWorks()
+  return [
+    { label: 'All Projects', href: '/works' },
+    ...featuredWorks.map(work => ({
+      label: work.title,
+      href: work.slug,
+    })),
+  ]
+}
 
 const navigationConfig = {
   mainNav: [
@@ -37,7 +50,11 @@ const navigationConfig = {
         },
       ],
     },
-    { label: 'Works', href: '/works' },
+    {
+      label: 'Works',
+      href: '/works',
+      children: getFeaturedWorksNav(),
+    },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
   ],
@@ -49,16 +66,21 @@ const navigationConfig = {
 
 export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const [isWorksOpen, setIsWorksOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileWorksOpen, setIsMobileWorksOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
 
   // Helper function to check if nav item is active
-  const isActiveNav = (href: string, hasChildren?: boolean) => {
+  const isActiveNav = (href: string, hasChildren?: boolean, label?: string) => {
     if (href === '/' && pathname === '/') return true
     if (href !== '/' && pathname.startsWith(href)) return true
-    if (hasChildren && pathname.startsWith('/services')) return true
+    if (hasChildren && label === 'Services' && pathname.startsWith('/services'))
+      return true
+    if (hasChildren && label === 'Works' && pathname.startsWith('/works'))
+      return true
     return false
   }
 
@@ -66,6 +88,9 @@ export default function Header() {
     item => item.label === 'Services'
   )
   const servicesItems = servicesNav?.children || []
+
+  const worksNav = navigationConfig.mainNav.find(item => item.label === 'Works')
+  const worksItems = worksNav?.children || []
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -85,6 +110,7 @@ export default function Header() {
       if (window.innerWidth >= 1024 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false)
         setIsMobileServicesOpen(false)
+        setIsMobileWorksOpen(false)
       }
     }
     window.addEventListener('resize', handleResize)
@@ -129,19 +155,32 @@ export default function Header() {
             <div className='flex items-center gap-12'>
               {navigationConfig.mainNav.map(item =>
                 item.children ? (
-                  // Services with dropdown - integrated directly here
+                  // Dropdown items (Services/Works)
                   <div key={item.label} className='relative'>
                     <button
-                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      onClick={() => {
+                        if (item.label === 'Services') {
+                          setIsServicesOpen(!isServicesOpen)
+                          setIsWorksOpen(false)
+                        } else if (item.label === 'Works') {
+                          setIsWorksOpen(!isWorksOpen)
+                          setIsServicesOpen(false)
+                        }
+                      }}
                       className={`text-sm font-medium transition-colors duration-200 flex items-center gap-1 relative ${
-                        isActiveNav(item.href, true)
+                        isActiveNav(item.href, true, item.label)
                           ? 'text-primary'
                           : 'text-gray-800 hover:text-[#55AE44]'
                       }`}
                     >
                       {item.label}
                       <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          (item.label === 'Services' && isServicesOpen) ||
+                          (item.label === 'Works' && isWorksOpen)
+                            ? 'rotate-180'
+                            : ''
+                        }`}
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
@@ -154,7 +193,7 @@ export default function Header() {
                         />
                       </svg>
                     </button>
-                    {isActiveNav(item.href, true) && (
+                    {isActiveNav(item.href, true, item.label) && (
                       <div className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full' />
                     )}
                   </div>
@@ -224,14 +263,13 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Desktop Mega Menu Panel - Pushes content down */}
+      {/* Desktop Services Mega Menu Panel */}
       <div
         className={`hidden lg:block w-full bg-[#EEF7EB] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
           isServicesOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className='container mx-auto px-4 py-3'>
-          {/* Responsive sizing: tighter on small screens, spacious on large screens */}
           <div className='flex flex-wrap gap-2 lg:gap-3 xl:gap-6 2xl:gap-8 justify-center'>
             {servicesItems.map(item => (
               <Link
@@ -239,6 +277,28 @@ export default function Header() {
                 href={item.href}
                 onClick={() => setIsServicesOpen(false)}
                 className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#2F6B24] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Works Mega Menu Panel */}
+      <div
+        className={`hidden lg:block w-full bg-[#F0F8FF] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+          isWorksOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className='container mx-auto px-4 py-3'>
+          <div className='flex flex-wrap gap-2 lg:gap-3 xl:gap-6 2xl:gap-8 justify-center'>
+            {worksItems.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsWorksOpen(false)}
+                className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#005493] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
               >
                 {item.label}
               </Link>
@@ -271,6 +331,7 @@ export default function Header() {
             onClick={() => {
               setIsMobileMenuOpen(false)
               setIsMobileServicesOpen(false)
+              setIsMobileWorksOpen(false)
             }}
             className='hover:opacity-80 transition-opacity'
           >
@@ -286,6 +347,7 @@ export default function Header() {
             onClick={() => {
               setIsMobileMenuOpen(false)
               setIsMobileServicesOpen(false)
+              setIsMobileWorksOpen(false)
             }}
             className='p-3 -mr-3 text-gray-600 hover:text-gray-800 transition-colors touch-manipulation'
             style={{ minHeight: '44px', minWidth: '44px' }}
@@ -315,14 +377,20 @@ export default function Header() {
               {navigationConfig.mainNav.map(item => (
                 <li key={item.label}>
                   {item.children ? (
-                    // Services with dropdown
+                    // Dropdown items (Services/Works)
                     <div>
                       <button
-                        onClick={() =>
-                          setIsMobileServicesOpen(!isMobileServicesOpen)
-                        }
+                        onClick={() => {
+                          if (item.label === 'Services') {
+                            setIsMobileServicesOpen(!isMobileServicesOpen)
+                            setIsMobileWorksOpen(false)
+                          } else if (item.label === 'Works') {
+                            setIsMobileWorksOpen(!isMobileWorksOpen)
+                            setIsMobileServicesOpen(false)
+                          }
+                        }}
                         className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation relative ${
-                          isActiveNav(item.href, true)
+                          isActiveNav(item.href, true, item.label)
                             ? 'text-primary bg-primary/5 border-l-4 border-primary'
                             : 'text-gray-800 hover:text-[#55AE44]'
                         }`}
@@ -330,7 +398,13 @@ export default function Header() {
                       >
                         <span>{item.label}</span>
                         <svg
-                          className={`w-5 h-5 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                          className={`w-5 h-5 transition-transform duration-200 ${
+                            (item.label === 'Services' &&
+                              isMobileServicesOpen) ||
+                            (item.label === 'Works' && isMobileWorksOpen)
+                              ? 'rotate-180'
+                              : ''
+                          }`}
                           fill='none'
                           stroke='currentColor'
                           viewBox='0 0 24 24'
@@ -344,10 +418,13 @@ export default function Header() {
                         </svg>
                       </button>
 
-                      {/* Services Dropdown */}
+                      {/* Dropdown content */}
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
-                          isMobileServicesOpen ? 'max-h-96' : 'max-h-0'
+                          (item.label === 'Services' && isMobileServicesOpen) ||
+                          (item.label === 'Works' && isMobileWorksOpen)
+                            ? 'max-h-96'
+                            : 'max-h-0'
                         }`}
                       >
                         <ul className='ml-4 mt-2 space-y-1 border-l-2 border-gray-200 pl-4'>
@@ -358,6 +435,7 @@ export default function Header() {
                                 onClick={() => {
                                   setIsMobileMenuOpen(false)
                                   setIsMobileServicesOpen(false)
+                                  setIsMobileWorksOpen(false)
                                 }}
                                 className='block text-base text-gray-600 hover:text-[#55AE44] transition-colors duration-200 py-2 px-3 rounded hover:bg-gray-100/30'
                               >
