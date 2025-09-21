@@ -39,22 +39,22 @@ const categoryConfig: Record<
   }
 > = {
   'Web & Mobile': {
-    href: '/services/web-app-design',
+    href: '/services/profit-optimized-interfaces',
     icon: Monitor,
     color: 'primary',
   },
   Branding: {
-    href: '/services/brand-identity',
+    href: '/services/revenue-first-design',
     icon: Palette,
     color: 'secondary',
   },
   'E-commerce': {
-    href: '/services/brand-activation-growth',
+    href: '/services/ai-powered-growth',
     icon: ShoppingBag,
     color: 'accent',
   },
   Healthcare: {
-    href: '/services/ui-ux-design-solutions',
+    href: '/services/ai-product-development',
     icon: Heart,
     color: 'cta',
   },

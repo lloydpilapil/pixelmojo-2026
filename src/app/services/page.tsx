@@ -28,7 +28,7 @@ export default function Services() {
         'Built-in growth metrics & analytics',
       ],
       icon: '/ui_ux_design_solutions_services_thumb.svg',
-      href: '/services/ui-ux-design-solutions',
+      href: '/services/ai-product-development',
     },
     {
       title: 'Revenue-First Design Systems',
@@ -41,7 +41,7 @@ export default function Services() {
         'Ready-to-ship design tokens',
       ],
       icon: '/branding_services_thumb.svg',
-      href: '/services/brand-identity',
+      href: '/services/revenue-first-design',
     },
     {
       title: 'AI-Powered Growth Engines',
@@ -54,7 +54,7 @@ export default function Services() {
         'Revenue attribution dashboards',
       ],
       icon: '/digital_marketing_services_thumb.svg',
-      href: '/services/brand-activation-growth',
+      href: '/services/ai-powered-growth',
     },
     {
       title: 'Profit-Optimized Interfaces',
@@ -67,7 +67,7 @@ export default function Services() {
         'Measurable ARPU improvement',
       ],
       icon: '/web_app_design_services_thumb.svg',
-      href: '/services/web-app-design',
+      href: '/services/profit-optimized-interfaces',
     },
     {
       title: 'Conversion Asset Systems',
@@ -80,7 +80,7 @@ export default function Services() {
         'Measurable impact on close rates',
       ],
       icon: '/graphic_visual_design_services_thumb.svg',
-      href: '/services/graphic-visuals',
+      href: '/services/conversion-assets',
     },
     {
       title: 'Full-Stack AI Implementation',
@@ -93,7 +93,7 @@ export default function Services() {
         'Self-funding development cycles',
       ],
       icon: '/creative_contents_services_thumb.svg',
-      href: '/services/development-solutions',
+      href: '/services/full-stack-ai',
     },
   ]
 
