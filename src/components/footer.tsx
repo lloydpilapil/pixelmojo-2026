@@ -115,17 +115,10 @@ export default function Footer() {
   }
 
   return (
-    <footer className='relative bg-gradient-to-b from-[var(--primary)] to-[var(--secondary)] overflow-hidden'>
+    <footer className='relative bg-[var(--primary)] overflow-hidden'>
       {/* Background Pattern */}
       <div className='absolute inset-0 opacity-5'>
-        <div
-          className='absolute inset-0'
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, var(--primary) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, var(--secondary) 0%, transparent 50%),
-                           radial-gradient(circle at 40% 40%, var(--accent) 0%, transparent 50%)`,
-          }}
-        />
+        <div className='absolute inset-0 bg-[var(--primary)]' />
       </div>
 
       {/* CTA Section */}

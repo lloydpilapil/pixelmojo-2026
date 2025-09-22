@@ -24,7 +24,7 @@ export function BlogCTA({
   const cardStyle: React.CSSProperties = {
     backgroundColor: 'var(--card)',
     border: '1px solid var(--border)',
-    borderRadius: '1rem',
+    borderRadius: '0px',
     overflow: 'hidden',
   }
 
@@ -57,7 +57,7 @@ export function BlogCTA({
     padding: '0.75rem 2rem',
     backgroundColor: 'var(--cta)',
     color: 'white',
-    borderRadius: '9999px',
+    borderRadius: '0px',
     textDecoration: 'none',
     fontWeight: '500',
     transition: 'background-color 0.2s',

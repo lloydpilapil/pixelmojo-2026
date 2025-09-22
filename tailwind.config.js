@@ -7,20 +7,36 @@ module.exports = {
     './content/**/*.{md,mdx}',
   ],
   theme: {
+    borderRadius: {
+      none: '0px',
+      sm: '0px',
+      DEFAULT: '0px',
+      md: '0px',
+      lg: '0px',
+      xl: '0px',
+      '2xl': '0px',
+      '3xl': '0px',
+      full: '0px',
+    },
     extend: {
       // Font families that match CSS variables
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-montserrat)', 'Montserrat', 'system-ui', 'sans-serif'],
+        heading: [
+          'var(--font-montserrat)',
+          'Montserrat',
+          'system-ui',
+          'sans-serif',
+        ],
         mono: ['var(--font-jetbrains-mono)', 'JetBrains Mono', 'monospace'],
       },
       // Font sizes that match CSS variables
       fontSize: {
-        'xs': 'var(--font-size-xs)',
-        'sm': 'var(--font-size-sm)',
-        'base': 'var(--font-size-base)',
-        'lg': 'var(--font-size-lg)',
-        'xl': 'var(--font-size-xl)',
+        xs: 'var(--font-size-xs)',
+        sm: 'var(--font-size-sm)',
+        base: 'var(--font-size-base)',
+        lg: 'var(--font-size-lg)',
+        xl: 'var(--font-size-xl)',
         '2xl': 'var(--font-size-2xl)',
         '3xl': 'var(--font-size-3xl)',
         '4xl': 'var(--font-size-4xl)',
@@ -74,11 +90,11 @@ module.exports = {
       },
       // Spacing that matches CSS variables
       spacing: {
-        'xs': 'var(--spacing-xs)',
-        'sm': 'var(--spacing-sm)',
-        'md': 'var(--spacing-md)',
-        'lg': 'var(--spacing-lg)',
-        'xl': 'var(--spacing-xl)',
+        xs: 'var(--spacing-xs)',
+        sm: 'var(--spacing-sm)',
+        md: 'var(--spacing-md)',
+        lg: 'var(--spacing-lg)',
+        xl: 'var(--spacing-xl)',
         '2xl': 'var(--spacing-2xl)',
       },
       // Border radius
@@ -104,21 +120,21 @@ module.exports = {
       },
       // Box shadows
       boxShadow: {
-        'sm': 'var(--shadow-sm)',
+        sm: 'var(--shadow-sm)',
         DEFAULT: 'var(--shadow)',
-        'md': 'var(--shadow-md)',
-        'lg': 'var(--shadow-lg)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
       },
       // Transition durations
       transitionDuration: {
-        'fast': '150ms',
-        'normal': '250ms',
-        'slow': '350ms',
+        fast: '150ms',
+        normal: '250ms',
+        slow: '350ms',
       },
       // Animation
       animation: {
         'fade-in': 'fade-in 250ms ease-out',
-        'shimmer': 'shimmer 1.5s infinite',
+        shimmer: 'shimmer 1.5s infinite',
       },
       keyframes: {
         'fade-in': {

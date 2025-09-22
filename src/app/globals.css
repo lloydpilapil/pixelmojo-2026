@@ -48,7 +48,7 @@
   --ring: #005493;
   
   /* Spacing Scale */
-  --radius: 0.5rem;
+  --radius: 0;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -662,6 +662,10 @@ article[class*="card"]:hover {
 
 .card:hover {
   box-shadow: none !important;
+}
+
+:where([class~='rounded'], [class*='rounded-']) {
+  border-radius: 0 !important;
 }
 
 /* Animated Gradient Surface */
