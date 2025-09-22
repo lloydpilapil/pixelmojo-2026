@@ -2,23 +2,34 @@ import { allPosts } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-const POSTS_PER_PAGE = 9
+import {
+  BLOG_POSTS_PER_PAGE,
+  FEATURED_POST_FALLBACK_INDEX,
+} from '@/lib/blog-config'
+import { buildCanonicalUrl } from '@/lib/site-config'
 
 export async function generateStaticParams() {
-  const posts = allPosts.sort(
+  const posts = [...allPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
-  // Remove featured post
-  const totalPosts = posts.length - 1
-  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
+  const featuredPost =
+    posts.find(post => post.featured) ?? posts[FEATURED_POST_FALLBACK_INDEX]
 
-  return Array.from({ length: totalPages }, (_, i) => ({
-    page: (i + 1).toString(),
-  }))
+  const postsWithoutFeatured = featuredPost
+    ? posts.filter(post => post._id !== featuredPost._id)
+    : posts
+  const totalPages = Math.ceil(
+    postsWithoutFeatured.length / BLOG_POSTS_PER_PAGE
+  )
+
+  return Array.from({ length: totalPages }, (_, i) => i + 1)
+    .filter(pageNumber => pageNumber > 1)
+    .map(pageNumber => ({
+      page: pageNumber.toString(),
+    }))
 }
 
 export async function generateMetadata({
@@ -41,7 +52,7 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: `/blog/page/${pageNumber}`,
+      canonical: buildCanonicalUrl(`/blog/page/${pageNumber}`),
     },
   }
 }
@@ -53,20 +64,29 @@ export default function BlogPage({ params }: { params: { page: string } }) {
     notFound()
   }
 
-  const posts = allPosts.sort(
+  if (pageNumber === 1) {
+    redirect('/blog')
+  }
+
+  const posts = [...allPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
-  // Remove featured post (first post)
-  const recentPosts = posts.slice(1)
-  const totalPages = Math.ceil(recentPosts.length / POSTS_PER_PAGE)
+  // Remove the featured post from paginated results
+  const featuredPost =
+    posts.find(post => post.featured) ?? posts[FEATURED_POST_FALLBACK_INDEX]
+
+  const recentPosts = featuredPost
+    ? posts.filter(post => post._id !== featuredPost._id)
+    : posts
+  const totalPages = Math.ceil(recentPosts.length / BLOG_POSTS_PER_PAGE)
 
   if (pageNumber > totalPages) {
     notFound()
   }
 
-  const startIndex = (pageNumber - 1) * POSTS_PER_PAGE
-  const endIndex = startIndex + POSTS_PER_PAGE
+  const startIndex = (pageNumber - 1) * BLOG_POSTS_PER_PAGE
+  const endIndex = startIndex + BLOG_POSTS_PER_PAGE
   const currentPosts = recentPosts.slice(startIndex, endIndex)
 
   return (

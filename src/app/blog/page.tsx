@@ -1,20 +1,34 @@
+import type { Metadata } from 'next'
 import { allPosts } from 'contentlayer/generated'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import { FeaturedPostCard } from '@/components/blog/FeaturedPostCard'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import {
+  BLOG_POSTS_PER_PAGE,
+  FEATURED_POST_FALLBACK_INDEX,
+} from '@/lib/blog-config'
+import { buildCanonicalUrl } from '@/lib/site-config'
 
-const POSTS_PER_PAGE = 9
+export const metadata: Metadata = {
+  alternates: {
+    canonical: buildCanonicalUrl('/blog'),
+  },
+}
 
 export default function Blog() {
-  const posts = allPosts.sort(
+  const posts = [...allPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
-  const featuredPost = posts[0]
-  const recentPosts = posts.slice(1)
-  const displayedPosts = recentPosts.slice(0, POSTS_PER_PAGE)
-  const totalPages = Math.ceil(recentPosts.length / POSTS_PER_PAGE)
+  const featuredPost =
+    posts.find(post => post.featured) ?? posts[FEATURED_POST_FALLBACK_INDEX]
+
+  const recentPosts = featuredPost
+    ? posts.filter(post => post._id !== featuredPost._id)
+    : posts
+  const displayedPosts = recentPosts.slice(0, BLOG_POSTS_PER_PAGE)
+  const totalPages = Math.ceil(recentPosts.length / BLOG_POSTS_PER_PAGE)
   const hasMorePages = totalPages > 1
 
   return (

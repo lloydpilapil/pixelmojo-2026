@@ -31,6 +31,8 @@ export type Post = {
   showCTA: boolean
   /** Featured image URL for the post */
   featuredImage?: string | undefined
+  /** Marks the post as featured on the blog overview */
+  featured: boolean
   /** MDX file body */
   body: MDX
   url: string

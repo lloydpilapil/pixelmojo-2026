@@ -63,6 +63,12 @@ export const Post = defineDocumentType(() => ({
       description: 'Featured image URL for the post',
       required: false,
     },
+    featured: {
+      type: 'boolean',
+      description: 'Marks the post as featured on the blog overview',
+      required: false,
+      default: false,
+    },
   },
   computedFields: {
     url: {

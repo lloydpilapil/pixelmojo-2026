@@ -1,0 +1,3 @@
+export const BLOG_POSTS_PER_PAGE = 9
+
+export const FEATURED_POST_FALLBACK_INDEX = 0
