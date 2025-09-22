@@ -103,8 +103,8 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
               >
                 <span
                   className={cn(
-                    'text-base font-semibold tracking-wide min-w-[2.5rem]',
-                    isActive ? 'text-cta' : 'text-foreground/40'
+                    'text-base font-semibold tracking-wide min-w-[2.5rem] transition-colors transition-opacity duration-150',
+                    isActive ? 'text-cta' : 'text-foreground opacity-40'
                   )}
                 >
                   {displayNumber}
@@ -113,7 +113,11 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
                 <a
                   href={`#${id}`}
                   onClick={e => handleClick(e, id)}
-                  className='flex-1 text-base leading-snug transition-colors duration-150 font-medium text-foreground/70 hover:text-growth'
+                  className={cn(
+                    'flex-1 text-base leading-snug transition-colors transition-opacity duration-150 font-medium outline-none focus-visible:ring-2 focus-visible:ring-cta/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                    isActive ? 'text-foreground' : 'text-foreground opacity-40'
+                  )}
+                  aria-current={isActive ? 'location' : undefined}
                   title={text}
                 >
                   {text}

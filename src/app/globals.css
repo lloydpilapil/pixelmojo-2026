@@ -434,10 +434,10 @@ li {
   margin-left: 0;
 }
 
-/* Narrow layout (text content - indented 25% on left) */
+/* Narrow layout (text content - indented 25% on left, 10% padding right) */
 [data-blog-layout="narrow"] {
   margin-left: 25%;
-  width: 75%;
+  width: 65%;
 }
 
 /* Default text content indentation in blog posts */
@@ -453,7 +453,7 @@ li {
 .blog-post-content > blockquote,
 .blog-post-content > pre {
   margin-left: 25%;
-  width: 75%;
+  width: 65%;
 }
 
 /* Restore list styles for blog content */
