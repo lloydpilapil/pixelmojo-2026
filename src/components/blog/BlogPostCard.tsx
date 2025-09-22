@@ -51,7 +51,7 @@ export function BlogPostCard({ post, theme }: BlogPostCardProps) {
   return (
     <Link href={post.url} className='group'>
       <article
-        className={`overflow-hidden transition-all duration-300 h-full flex flex-col border ${
+        className={`overflow-hidden transition-all duration-300 h-full flex flex-col border border-border ${
           theme
             ? 'hover:shadow-lg hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
             : 'hover:shadow-lg hover:border-primary/50 focus-within:border-primary/50'

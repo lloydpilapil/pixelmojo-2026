@@ -1,14 +1,17 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 interface ApproachStep {
   number: string
   week: string
   title: string
   description: string
-  hoverText: string
-  hoverColor: string
+  outcome: string
+  badgeClass: string
+  outcomeBorderClass: string
+  outcomeHoverClass: string
+  outcomeTextClass: string
 }
 
 interface OurApproachProps {
@@ -22,43 +25,56 @@ const OurApproach = ({
     {
       number: '01',
       week: 'Week 1',
-      title: 'Revenue Strategy, Not Research Reports',
+      title: 'Launch With a Revenue Roadmap',
       description:
-        'Skip the 6-month discovery. We identify your fastest path to paying customers and build backwards from there.',
-      hoverText: 'Walk away with a profit roadmap, not another strategy deck.',
-      hoverColor: 'bg-primary',
+        'Skip the endless discovery decks. We map the fastest path to paying customers so every sprint ladders to revenue with momentum.',
+      outcome:
+        'Profit roadmap that focuses build priorities around the clearest path to paying customers.',
+      badgeClass: 'bg-primary text-white',
+      outcomeBorderClass: 'border-primary/20',
+      outcomeHoverClass: 'group-hover:bg-primary/5',
+      outcomeTextClass: 'text-primary',
     },
     {
       number: '02',
       week: 'Weeks 2-4',
-      title: "Build What Sells, Not What's Safe",
+      title: 'Prototype the Experience Customers Pay For',
       description:
-        'Design and prototype the core experience that validates your riskiest assumptions with real users.',
-      hoverText: 'Working prototype that users actually want to pay for.',
-      hoverColor: 'bg-secondary',
+        'Design and test the core flow that validates your riskiest assumptions with actual users in real buying contexts and moments.',
+      outcome:
+        'Working prototype validated with target users and buying signals.',
+      badgeClass: 'bg-secondary text-white',
+      outcomeBorderClass: 'border-secondary/20',
+      outcomeHoverClass: 'group-hover:bg-secondary/5',
+      outcomeTextClass: 'text-secondary',
     },
     {
       number: '03',
       week: 'Weeks 5-10',
-      title: 'Ship to Market, Not to Meetings',
+      title: 'Ship Features to Market Feedback',
       description:
-        'Develop and deploy production-ready features while gathering real customer feedback and revenue signals.',
-      hoverText: 'Live product generating initial revenue and validation data.',
-      hoverColor: 'bg-cta',
+        'Build production-ready slices, release quickly, and capture live revenue signals that guide iteration and smart sales prioritization decisions.',
+      outcome: 'Live product producing real usage and monetization data.',
+      badgeClass: 'bg-cta text-white',
+      outcomeBorderClass: 'border-cta/20',
+      outcomeHoverClass: 'group-hover:bg-cta/5',
+      outcomeTextClass: 'text-cta',
     },
     {
       number: '04',
       week: 'Week 11+',
-      title: "Scale What Works, Kill What Doesn't",
+      title: 'Scale the Winners, Trim the Waste',
       description:
-        "Use revenue data to double down on what's profitable and cut what isn't. Continuous deployment, continuous profit.",
-      hoverText: 'Self-funding growth engine that scales based on actual ROI.',
-      hoverColor: 'bg-accent',
+        'Double down on what proves profitable and sunset what does not, powered by continuous deployment, analytics, and measurable ROI discipline.',
+      outcome:
+        'Self-funding growth engine that scales with ROI and market demand.',
+      badgeClass: 'bg-accent text-white',
+      outcomeBorderClass: 'border-accent/20',
+      outcomeHoverClass: 'group-hover:bg-accent/5',
+      outcomeTextClass: 'text-accent',
     },
   ],
 }: OurApproachProps) => {
-  const [activeCard, setActiveCard] = useState<number | null>(null)
-
   return (
     <section className='py-16 md:py-20'>
       <div className='container mx-auto px-4'>
@@ -66,36 +82,32 @@ const OurApproach = ({
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted max-w-2xl mx-auto text-lg leading-relaxed'>
-            How we ship products that sell in 90 days. No endless discovery, no
-            strategy theater - just working products that generate revenue.
+            How we ship revenue-ready products in 90 days. Every phase is built
+            to drive traction with real customers.
           </p>
         </div>
 
         {/* Cards - 2x2 grid on desktop, single column on mobile */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto'>
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className='group relative'
-              onMouseEnter={() => setActiveCard(index)}
-              onMouseLeave={() => setActiveCard(null)}
-              onClick={() => setActiveCard(activeCard === index ? null : index)}
-            >
+            <div key={index} className='group relative h-full'>
               {/* Card */}
-              <div className='card relative p-6 md:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-lg min-h-[200px] md:min-h-[240px]'>
+              <div className='card relative flex h-full flex-col p-6 md:p-8 transition-all duration-300 hover:border-primary/40 hover:shadow-lg'>
                 {/* Number badge - with higher z-index to stay on top */}
                 <div
-                  className={`absolute -top-3 -left-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full ${step.hoverColor} text-white font-bold text-lg md:text-xl shadow-lg z-20`}
+                  className={`absolute -top-3 -left-3 flex h-12 w-12 items-center justify-center rounded-full font-bold text-lg shadow-lg md:h-14 md:w-14 md:text-xl ${step.badgeClass}`}
                 >
                   {step.number}
                 </div>
 
+                {/* Week indicator - top right inside card */}
+                <div className='absolute top-6 right-6 md:top-8 md:right-8 text-sm font-medium text-primary'>
+                  {step.week}
+                </div>
+
                 {/* Content */}
-                <div className='mt-2'>
-                  <div className='mb-4 pr-4'>
-                    <div className='text-sm font-medium text-primary mb-1'>
-                      {step.week}
-                    </div>
+                <div className='mt-2 flex-1'>
+                  <div className='mb-4 pr-16'>
                     <h3 className='text-lg md:text-xl font-semibold'>
                       {step.title}
                     </h3>
@@ -105,36 +117,20 @@ const OurApproach = ({
                   </p>
                 </div>
 
-                {/* Hover/Active overlay - simpler approach */}
+                {/* Outcome callout */}
                 <div
-                  className={`absolute inset-0 rounded-lg ${step.hoverColor} p-6 md:p-8 flex items-center justify-center transition-opacity duration-300 ${
-                    activeCard === index
-                      ? 'opacity-100'
-                      : 'opacity-0 pointer-events-none'
-                  }`}
+                  className={`mt-6 rounded-xl border bg-white p-5 transition-colors duration-300 ${step.outcomeBorderClass} ${step.outcomeHoverClass}`}
                 >
-                  <div className='text-white text-center'>
-                    <h4 className='text-lg md:text-xl font-bold mb-3'>
-                      Key Outcome
-                    </h4>
-                    <p className='text-sm md:text-base leading-relaxed'>
-                      {step.hoverText}
-                    </p>
+                  <div
+                    className={`mb-2 text-sm font-semibold uppercase tracking-wide ${step.outcomeTextClass}`}
+                  >
+                    Key Outcome
                   </div>
+                  <p className='text-sm md:text-base leading-relaxed text-muted'>
+                    {step.outcome}
+                  </p>
                 </div>
               </div>
-
-              {/* Connecting line - only on desktop, between items in same row */}
-              {index % 2 === 0 && index < steps.length - 1 && (
-                <div className='hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 w-8'>
-                  <div className='h-px bg-gradient-to-r from-primary/30 to-transparent' />
-                </div>
-              )}
-
-              {/* Vertical connector on mobile between cards */}
-              {index < steps.length - 1 && (
-                <div className='md:hidden absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-6 w-px bg-gradient-to-b from-primary/30 to-transparent' />
-              )}
             </div>
           ))}
         </div>
