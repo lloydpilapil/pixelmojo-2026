@@ -9,14 +9,7 @@ interface HeroVisualProps {
   alt: string
   priority?: boolean
   className?: string
-  aspectRatio?: 'video' | 'square' | 'wide'
   animation?: 'reveal' | 'parallax' | 'ken-burns' | 'none'
-}
-
-const aspectRatios = {
-  video: 'aspect-video',
-  square: 'aspect-square',
-  wide: 'aspect-[16/9]',
 }
 
 export default function HeroVisual({
@@ -24,7 +17,6 @@ export default function HeroVisual({
   alt,
   priority = false,
   className,
-  aspectRatio = 'video',
   animation = 'reveal',
 }: HeroVisualProps) {
   const [isVisible, setIsVisible] = useState(false)
@@ -39,7 +31,7 @@ export default function HeroVisual({
     } else {
       setIsVisible(true)
     }
-  }, [])
+  }, [animation])
 
   useEffect(() => {
     if (animation !== 'parallax') return
@@ -78,39 +70,31 @@ export default function HeroVisual({
   }
 
   return (
-    <div
-      ref={containerRef}
-      className={cn('relative w-full mb-16 overflow-hidden', className)}
-    >
-      <div className='relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] max-w-none'>
-        <div
-          className={cn(
-            'relative w-full overflow-hidden',
-            aspectRatios[aspectRatio],
-            animation === 'reveal' && 'rounded-sm'
-          )}
-        >
-          <div
-            className={cn('absolute inset-0', getAnimationClasses())}
-            style={{
-              transform:
-                animation === 'parallax'
-                  ? `translateY(${parallaxOffset}px)`
-                  : undefined,
-            }}
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              priority={priority}
-              className='object-cover w-full h-full'
-              sizes='100vw'
-              placeholder='blur'
-              blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k='
-            />
-          </div>
-        </div>
+    <div ref={containerRef} className={cn('relative w-full mb-16', className)}>
+      <div
+        className={cn(
+          'relative w-full',
+          animation === 'reveal' && 'rounded-sm',
+          getAnimationClasses()
+        )}
+        style={{
+          transform:
+            animation === 'parallax'
+              ? `translateY(${parallaxOffset}px)`
+              : undefined,
+        }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={1920}
+          height={960}
+          priority={priority}
+          className='w-full h-auto'
+          sizes='100vw'
+          placeholder='blur'
+          blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k='
+        />
       </div>
     </div>
   )
