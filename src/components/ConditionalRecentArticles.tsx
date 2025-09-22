@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import RecentArticles from './RecentArticles'
+import { getServiceTheme, getServiceTitleFromSlug } from '@/utils/serviceThemes'
 
 const ConditionalRecentArticles = () => {
   const pathname = usePathname()
@@ -18,7 +19,20 @@ const ConditionalRecentArticles = () => {
     return null
   }
 
-  return <RecentArticles />
+  // Check if we're on a service page and get the theme
+  const isServicePage =
+    pathname.startsWith('/services/') && pathname !== '/services'
+  let theme = null
+
+  if (isServicePage) {
+    const serviceSlug = pathname.split('/services/')[1]?.split('/')[0]
+    if (serviceSlug) {
+      const serviceTitle = getServiceTitleFromSlug(serviceSlug)
+      theme = getServiceTheme(serviceTitle)
+    }
+  }
+
+  return <RecentArticles theme={theme} />
 }
 
 export default ConditionalRecentArticles

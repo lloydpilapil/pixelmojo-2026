@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { Search } from 'lucide-react'
 import { LinkButton } from '@/components/ui/button'
 import { getFeaturedWorks } from '@/data/works'
+import { getServiceTheme, getServiceTitleFromSlug } from '@/utils/serviceThemes'
 
 // Generate works dropdown from featured works
 const getFeaturedWorksNav = () => {
@@ -133,8 +134,26 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Check if we're on a service page and get the theme
+  const isServicePage =
+    pathname.startsWith('/services/') && pathname !== '/services'
+  let theme = null
+
+  if (isServicePage) {
+    const serviceSlug = pathname.split('/services/')[1]?.split('/')[0]
+    if (serviceSlug) {
+      const serviceTitle = getServiceTitleFromSlug(serviceSlug)
+      theme = getServiceTheme(serviceTitle)
+    }
+  }
+
   return (
-    <header className='sticky top-0 z-40 bg-[#FBF8F2]'>
+    <header
+      className='sticky top-0 z-40'
+      style={{
+        backgroundColor: theme?.bg || '#FBF8F2',
+      }}
+    >
       <div className='container mx-auto px-4'>
         <nav className='flex h-16 items-center justify-between relative'>
           {/* Logo */}
@@ -147,7 +166,10 @@ export default function Header() {
               alt='PixelMojo'
               width={140}
               height={32}
-              className='h-8 w-auto'
+              className='h-8 w-auto transition-all duration-300'
+              style={{
+                filter: theme?.isDark ? 'brightness(0) invert(1)' : 'none',
+              }}
               priority
             />
           </Link>
@@ -171,11 +193,12 @@ export default function Header() {
                           setIsSearchOpen(false)
                         }
                       }}
-                      className={`text-sm font-medium transition-colors duration-200 flex items-center gap-1 relative ${
-                        isActiveNav(item.href, true, item.label)
-                          ? 'text-primary'
-                          : 'text-gray-800 hover:text-[#55AE44]'
-                      }`}
+                      className={`text-sm font-medium transition-colors duration-200 flex items-center gap-1 relative`}
+                      style={{
+                        color: isActiveNav(item.href, true, item.label)
+                          ? theme?.textColor || 'var(--primary)'
+                          : theme?.textColor || '#374151',
+                      }}
                     >
                       {item.label}
                       <svg
@@ -198,7 +221,12 @@ export default function Header() {
                       </svg>
                     </button>
                     {isActiveNav(item.href, true, item.label) && (
-                      <div className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full' />
+                      <div
+                        className='absolute -bottom-1 left-0 right-0 h-0.5 rounded-full'
+                        style={{
+                          backgroundColor: theme?.textColor || 'var(--primary)',
+                        }}
+                      />
                     )}
                   </div>
                 ) : (
@@ -206,16 +234,22 @@ export default function Header() {
                   <div key={item.label} className='relative'>
                     <Link
                       href={item.href}
-                      className={`text-sm font-medium transition-colors duration-200 relative ${
-                        isActiveNav(item.href)
-                          ? 'text-primary'
-                          : 'text-gray-800 hover:text-[#55AE44]'
-                      }`}
+                      className='text-sm font-medium transition-colors duration-200 relative'
+                      style={{
+                        color: isActiveNav(item.href)
+                          ? theme?.textColor || 'var(--primary)'
+                          : theme?.textColor || '#374151',
+                      }}
                     >
                       {item.label}
                     </Link>
                     {isActiveNav(item.href) && (
-                      <div className='absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full' />
+                      <div
+                        className='absolute -bottom-1 left-0 right-0 h-0.5 rounded-full'
+                        style={{
+                          backgroundColor: theme?.textColor || 'var(--primary)',
+                        }}
+                      />
                     )}
                   </div>
                 )
@@ -232,7 +266,23 @@ export default function Header() {
                   setIsServicesOpen(false)
                   setIsWorksOpen(false)
                 }}
-                className='p-2 text-gray-800 hover:text-primary transition-colors duration-200 hover:bg-gray-100 rounded-full'
+                className='p-2 transition-colors duration-200 rounded-full'
+                style={{
+                  color: theme?.textColor || '#374151',
+                  backgroundColor: 'transparent',
+                }}
+                onMouseEnter={e => {
+                  if (theme) {
+                    e.currentTarget.style.backgroundColor = theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)'
+                  } else {
+                    e.currentTarget.style.backgroundColor = 'rgb(243 244 246)'
+                  }
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.backgroundColor = 'transparent'
+                }}
                 aria-label='Search'
               >
                 <Search className='w-5 h-5' />
@@ -247,6 +297,17 @@ export default function Header() {
                 size='default'
                 shape='pill'
                 className='transition-all duration-300'
+                style={
+                  theme
+                    ? {
+                        backgroundColor: isScrolled
+                          ? theme.textColor
+                          : 'transparent',
+                        color: isScrolled ? theme.bg : theme.textColor,
+                        borderColor: theme.textColor,
+                      }
+                    : {}
+                }
               >
                 {navigationConfig.ctaButton.label}
               </LinkButton>
@@ -263,21 +324,30 @@ export default function Header() {
           >
             <div className='relative w-6 h-5'>
               <span
-                className={`absolute left-0 w-full h-0.5 bg-gray-800 transition-all duration-300 ease-out ${
+                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out ${
                   isMobileMenuOpen ? 'top-2.5 rotate-45' : 'top-0'
                 }`}
+                style={{
+                  backgroundColor: theme?.textColor || '#374151',
+                }}
               />
               <span
-                className={`absolute left-0 top-2.5 w-full h-0.5 bg-gray-800 transition-all duration-300 ease-out ${
+                className={`absolute left-0 top-2.5 w-full h-0.5 transition-all duration-300 ease-out ${
                   isMobileMenuOpen
                     ? 'opacity-0 scale-0'
                     : 'opacity-100 scale-100'
                 }`}
+                style={{
+                  backgroundColor: theme?.textColor || '#374151',
+                }}
               />
               <span
-                className={`absolute left-0 w-full h-0.5 bg-gray-800 transition-all duration-300 ease-out ${
+                className={`absolute left-0 w-full h-0.5 transition-all duration-300 ease-out ${
                   isMobileMenuOpen ? 'top-2.5 -rotate-45' : 'top-5'
                 }`}
+                style={{
+                  backgroundColor: theme?.textColor || '#374151',
+                }}
               />
             </div>
           </button>
@@ -286,9 +356,15 @@ export default function Header() {
 
       {/* Desktop Services Mega Menu Panel */}
       <div
-        className={`hidden lg:block w-full bg-[#EEF7EB] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
           isServicesOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{
+          backgroundColor: theme?.bg || '#EEF7EB',
+          borderColor: theme?.isDark
+            ? 'rgba(255, 255, 255, 0.2)'
+            : 'rgba(0, 0, 0, 0.2)',
+        }}
       >
         <div className='container mx-auto px-4 py-3'>
           <div className='flex flex-wrap gap-2 lg:gap-3 xl:gap-6 2xl:gap-8 justify-center'>
@@ -297,7 +373,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsServicesOpen(false)}
-                className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#2F6B24] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
+                className='text-[11px] lg:text-xs xl:text-sm transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
+                style={{
+                  color: theme?.mutedTextColor || '#374151',
+                }}
               >
                 {item.label}
               </Link>
@@ -308,9 +387,15 @@ export default function Header() {
 
       {/* Desktop Works Mega Menu Panel */}
       <div
-        className={`hidden lg:block w-full bg-[#F0F8FF] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
           isWorksOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{
+          backgroundColor: theme?.bg || '#F0F8FF',
+          borderColor: theme?.isDark
+            ? 'rgba(255, 255, 255, 0.2)'
+            : 'rgba(0, 0, 0, 0.2)',
+        }}
       >
         <div className='container mx-auto px-4 py-3'>
           <div className='flex flex-wrap gap-2 lg:gap-3 xl:gap-6 2xl:gap-8 justify-center'>
@@ -319,7 +404,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsWorksOpen(false)}
-                className='text-[11px] lg:text-xs xl:text-sm text-gray-700 hover:text-[#005493] transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
+                className='text-[11px] lg:text-xs xl:text-sm transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
+                style={{
+                  color: theme?.mutedTextColor || '#374151',
+                }}
               >
                 {item.label}
               </Link>
@@ -330,22 +418,47 @@ export default function Header() {
 
       {/* Desktop Search Mega Menu Panel */}
       <div
-        className={`hidden lg:block w-full bg-[#FFF9E6] border-t border-b border-gray-200 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
           isSearchOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
         }`}
+        style={{
+          backgroundColor: theme?.bg || '#FFF9E6',
+          borderColor: theme?.isDark
+            ? 'rgba(255, 255, 255, 0.2)'
+            : 'rgba(0, 0, 0, 0.2)',
+        }}
       >
         <div className='container mx-auto px-4 py-6'>
           <div className='max-w-2xl mx-auto text-center'>
             <div className='flex items-center gap-3 mb-4'>
-              <Search className='w-6 h-6 text-gray-400' />
+              <Search
+                className='w-6 h-6'
+                style={{
+                  color: theme?.mutedTextColor || '#9CA3AF',
+                }}
+              />
               <input
                 type='text'
                 placeholder='Search coming soon...'
                 disabled
-                className='flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-gray-50 text-gray-500 cursor-not-allowed'
+                className='flex-1 px-4 py-3 rounded-lg border cursor-not-allowed'
+                style={{
+                  backgroundColor: theme?.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme?.isDark
+                    ? 'rgba(255, 255, 255, 0.2)'
+                    : 'rgba(0, 0, 0, 0.2)',
+                  color: theme?.mutedTextColor || '#6B7280',
+                }}
               />
             </div>
-            <p className='text-sm text-gray-600'>
+            <p
+              className='text-sm'
+              style={{
+                color: theme?.mutedTextColor || '#6B7280',
+              }}
+            >
               We're building an amazing search experience. Stay tuned!
             </p>
           </div>
@@ -363,14 +476,24 @@ export default function Header() {
         aria-hidden='true'
       />
 
-      {/* Mobile Menu Panel - With #FBF8F2 background */}
+      {/* Mobile Menu Panel - With themed background */}
       <div
-        className={`lg:hidden fixed inset-0 z-50 bg-[#FBF8F2] transform transition-transform duration-300 ease-out ${
+        className={`lg:hidden fixed inset-0 z-50 transform transition-transform duration-300 ease-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{
+          backgroundColor: theme?.bg || '#FBF8F2',
+        }}
       >
         {/* Mobile Menu Header */}
-        <div className='flex items-center justify-between h-16 px-4 border-b border-gray-200'>
+        <div
+          className='flex items-center justify-between h-16 px-4 border-b'
+          style={{
+            borderColor: theme?.isDark
+              ? 'rgba(255, 255, 255, 0.2)'
+              : 'rgba(0, 0, 0, 0.2)',
+          }}
+        >
           <Link
             href='/'
             onClick={() => {
@@ -385,7 +508,10 @@ export default function Header() {
               alt='PixelMojo'
               width={120}
               height={28}
-              className='h-7 w-auto'
+              className='h-7 w-auto transition-all duration-300'
+              style={{
+                filter: theme?.isDark ? 'brightness(0) invert(1)' : 'none',
+              }}
             />
           </Link>
           <button
@@ -394,8 +520,12 @@ export default function Header() {
               setIsMobileServicesOpen(false)
               setIsMobileWorksOpen(false)
             }}
-            className='p-3 -mr-3 text-gray-600 hover:text-gray-800 transition-colors touch-manipulation'
-            style={{ minHeight: '44px', minWidth: '44px' }}
+            className='p-3 -mr-3 transition-colors touch-manipulation'
+            style={{
+              minHeight: '44px',
+              minWidth: '44px',
+              color: theme?.textColor || '#6B7280',
+            }}
             aria-label='Close menu'
           >
             <svg

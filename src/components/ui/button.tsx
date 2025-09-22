@@ -60,6 +60,7 @@ export interface LinkButtonProps
   children: React.ReactNode
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
+  style?: React.CSSProperties
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -140,6 +141,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
       children,
       leftIcon,
       rightIcon,
+      style,
       ...props
     },
     ref
@@ -161,6 +163,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
         )}
         href={href}
         ref={ref}
+        style={style}
         {...props}
       >
         {content}

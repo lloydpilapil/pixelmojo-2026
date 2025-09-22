@@ -2,12 +2,14 @@ import React from 'react'
 import { allPosts } from 'contentlayer/generated'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import { LinkButton } from '@/components/ui/button'
+import type { ServiceTheme } from '@/utils/serviceThemes'
 
 interface RecentArticlesProps {
   title?: string
   limit?: number
   showViewAllButton?: boolean
   className?: string
+  theme?: ServiceTheme | null
 }
 
 const RecentArticles = ({
@@ -15,6 +17,7 @@ const RecentArticles = ({
   limit = 3,
   showViewAllButton = true,
   className = '',
+  theme = null,
 }: RecentArticlesProps) => {
   // Get the latest posts sorted by date
   const recentPosts = allPosts
@@ -26,13 +29,29 @@ const RecentArticles = ({
   }
 
   return (
-    <section className={`py-20 ${className}`}>
+    <section
+      className={`py-20 ${className}`}
+      style={{
+        backgroundColor: theme?.bg || 'transparent',
+        color: theme?.textColor || 'inherit',
+      }}
+    >
       <div className='container mx-auto px-4'>
         <div className='max-w-6xl mx-auto'>
           {/* Section Header */}
           <div className='text-center mb-16'>
-            <h2 className='mb-6'>{title}</h2>
-            <p className='text-muted max-w-2xl mx-auto text-lg leading-relaxed'>
+            <h2
+              className='mb-6'
+              style={{ color: theme?.textColor || 'inherit' }}
+            >
+              {title}
+            </h2>
+            <p
+              className='max-w-2xl mx-auto text-lg leading-relaxed'
+              style={{
+                color: theme?.mutedTextColor || 'var(--muted-foreground)',
+              }}
+            >
               Stay ahead with insights, trends, and expert perspectives on
               design, development, and digital strategy from our team.
             </p>
@@ -41,14 +60,28 @@ const RecentArticles = ({
           {/* Blog Posts Grid */}
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12'>
             {recentPosts.map(post => (
-              <BlogPostCard key={post._id} post={post} />
+              <BlogPostCard key={post._id} post={post} theme={theme} />
             ))}
           </div>
 
           {/* View All Button */}
           {showViewAllButton && (
             <div className='text-center'>
-              <LinkButton href='/blog' variant='outline' size='lg' shape='pill'>
+              <LinkButton
+                href='/blog'
+                variant='outline'
+                size='lg'
+                shape='pill'
+                style={
+                  theme
+                    ? {
+                        backgroundColor: 'transparent',
+                        color: theme.textColor,
+                        borderColor: theme.textColor,
+                      }
+                    : {}
+                }
+              >
                 View All Articles
               </LinkButton>
             </div>
