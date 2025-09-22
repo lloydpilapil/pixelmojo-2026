@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import HeroVisual from '@/components/HeroVisual'
 import CompanyLogos from '@/components/CompanyLogos'
 import ServicesPreview from '@/components/ServicesPreview'
 import TestimonialSection from '@/components/TestimonialSection'
@@ -36,8 +36,13 @@ export default function Home() {
         proofPoints={[]}
       />
 
-      {/* Scroll-Animated Video Section */}
-      <ScrollVideoSection videoId='1095336702' />
+      {/* Hero Visual Section */}
+      <HeroVisual
+        src='/pixelmojo-hero-home-visual.webp'
+        alt='Pixelmojo AI + Design Process'
+        priority
+        animation='reveal'
+      />
 
       {/* Company Logos Section */}
       <CompanyLogos />
