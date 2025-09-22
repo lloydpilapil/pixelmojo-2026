@@ -27,10 +27,7 @@ export function BlogFAQ({
   }
 
   return (
-    <div
-      className={cn('my-12', className)}
-      style={{ marginLeft: '25%', width: '75%' }}
-    >
+    <div data-blog-layout='narrow' className={cn('my-12', className)}>
       {/* Title Section */}
       <div className='mb-8'>
         <h2 className='text-2xl font-bold mb-2' style={{ margin: 0 }}>

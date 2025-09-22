@@ -8,29 +8,32 @@ interface BlogPostImageProps {
   className?: string
 }
 
-export function BlogPostImage({ 
-  src, 
-  alt, 
-  aspectRatio = '3/2', 
-  className 
+export function BlogPostImage({
+  src,
+  alt,
+  aspectRatio = '3/2',
+  className,
 }: BlogPostImageProps) {
   const aspectClasses = {
-    'video': 'aspect-video',
+    video: 'aspect-video',
     '3/2': 'aspect-[3/2]',
-    'square': 'aspect-square'
+    square: 'aspect-square',
   }
 
   return (
-    <div className={cn(
-      'w-full rounded-lg overflow-hidden mb-8',
-      aspectClasses[aspectRatio],
-      className
-    )}>
+    <div
+      data-blog-layout='full'
+      className={cn(
+        'w-full rounded-lg overflow-hidden mb-8',
+        aspectClasses[aspectRatio],
+        className
+      )}
+    >
       <img
         src={src || '/placeholder.svg'}
         alt={alt}
         className='w-full h-full object-cover'
-        loading="lazy"
+        loading='lazy'
       />
     </div>
   )

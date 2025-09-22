@@ -405,32 +405,110 @@ li {
   margin-bottom: 0.75rem;
 }
 
-/* Blog Post Text Content Layout - Only text, not images */
-.blog-post-content h1,
-.blog-post-content h2,
-.blog-post-content h3,
-.blog-post-content h4,
-.blog-post-content h5,
-.blog-post-content h6,
-.blog-post-content p,
-.blog-post-content ul,
-.blog-post-content ol,
-.blog-post-content blockquote,
-.blog-post-content pre {
-  margin-left: 25%;
-  width: 75%;
-}
-
-/* Blog components that should align with the text column */
-.blog-content-section {
+/* Blog Layout Grid System */
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   width: 100%;
 }
 
 @media (min-width: 1280px) {
-  .blog-post .blog-content-section {
-    margin-left: 25%;
-    width: 75%;
+  .blog-layout {
+    grid-template-columns: 1fr 3fr;
+    gap: 3rem;
   }
+}
+
+/* Blog content area - automatically flows into grid */
+.blog-content {
+  width: 100%;
+  max-width: none;
+}
+
+/* Blog Layout System - Using data attributes for explicit control */
+
+/* Full width layout (hero images, videos, etc) */
+[data-blog-layout="full"] {
+  width: 100%;
+  margin-left: 0;
+}
+
+/* Narrow layout (text content - indented 25% on left) */
+[data-blog-layout="narrow"] {
+  margin-left: 25%;
+  width: 75%;
+}
+
+/* Default text content indentation in blog posts */
+.blog-post-content > h1,
+.blog-post-content > h2,
+.blog-post-content > h3,
+.blog-post-content > h4,
+.blog-post-content > h5,
+.blog-post-content > h6,
+.blog-post-content > p,
+.blog-post-content > ul,
+.blog-post-content > ol,
+.blog-post-content > blockquote,
+.blog-post-content > pre {
+  margin-left: 25%;
+  width: 75%;
+}
+
+/* Restore list styles for blog content */
+.blog-post-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.blog-post-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.blog-post-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Images are always full width */
+.blog-post-content img,
+.blog-post-content figure {
+  width: 100%;
+  margin-left: 0;
+}
+
+/* Note: Components with data-blog-layout attributes use their own layout rules defined above */
+
+/* On mobile, everything is full width */
+@media (max-width: 1279px) {
+  [data-blog-layout="narrow"],
+  [data-blog-layout="full"],
+  .blog-post-content > h1,
+  .blog-post-content > h2,
+  .blog-post-content > h3,
+  .blog-post-content > h4,
+  .blog-post-content > h5,
+  .blog-post-content > h6,
+  .blog-post-content > p,
+  .blog-post-content > ul,
+  .blog-post-content > ol,
+  .blog-post-content > blockquote,
+  .blog-post-content > pre {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Keep list padding on mobile for bullet visibility */
+  .blog-post-content ul,
+  .blog-post-content ol {
+    padding-left: 1.25rem;
+  }
+}
+
+/* Blog components automatically align with grid */
+.blog-content-section {
+  width: 100%;
 }
 
 /* Hero Title - Fluid Typography */

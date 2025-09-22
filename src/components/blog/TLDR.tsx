@@ -7,19 +7,15 @@ interface TLDRProps {
   className?: string
 }
 
-export function TLDR({ 
-  title = "TL;DR", 
-  points, 
-  className 
-}: TLDRProps) {
+export function TLDR({ title = 'TL;DR', points, className }: TLDRProps) {
   if (!points || points.length === 0) {
     return null
   }
 
   return (
-    <div className={cn('my-8', className)}>
+    <div data-blog-layout='narrow' className={cn('my-8', className)}>
       <h2 className='font-semibold text-primary mb-3'>{title}</h2>
-      
+
       <ul className='space-y-2'>
         {points.map((point, index) => (
           <li key={index} className='flex items-start gap-3 text-sm'>

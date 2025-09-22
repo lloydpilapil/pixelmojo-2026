@@ -15,10 +15,8 @@ export function BlogCTA({
   buttonText = 'Start Your Transformation Today',
   buttonHref = '/contact',
 }: BlogCTAProps) {
-  // Apply the 25-75 grid directly to the component
+  // Container styling
   const containerStyle: React.CSSProperties = {
-    marginLeft: '25%',
-    width: '75%',
     marginTop: '4rem',
     marginBottom: '4rem',
   }
@@ -66,7 +64,7 @@ export function BlogCTA({
   }
 
   return (
-    <div style={containerStyle}>
+    <div data-blog-layout='narrow' style={containerStyle}>
       <div style={cardStyle}>
         <img
           src='/why-your-design-image.webp'
