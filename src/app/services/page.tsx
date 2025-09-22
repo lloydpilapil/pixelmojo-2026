@@ -36,7 +36,7 @@ export default function Services() {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
+        <h2 className='mb-6 max-w-5xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
           Stop building features nobody wants. Start shipping products people
           pay for.
         </h2>

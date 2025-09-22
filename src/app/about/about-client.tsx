@@ -59,7 +59,7 @@ export default function AboutClient() {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 max-w-4xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'>
+        <h2 className='mb-6 max-w-4xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
           Strategy to scale, all under one roof
         </h2>
         <div className='mx-auto max-w-6xl space-y-6 text-left md:text-center'>
