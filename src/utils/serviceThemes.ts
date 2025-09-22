@@ -9,6 +9,7 @@ export interface ServiceTheme {
   textColor: string
   mutedTextColor: string
   primary: string // Main brand color for this service
+  logoFilter?: string // Optional CSS filter for logo adjustments
 }
 
 export const getServiceTheme = (title: string): ServiceTheme => {
@@ -34,6 +35,7 @@ export const getServiceTheme = (title: string): ServiceTheme => {
       textColor: '#000000',
       mutedTextColor: 'rgba(0, 0, 0, 0.7)',
       primary: '#FDC304', // Yellow
+      logoFilter: 'brightness(0) invert(1)', // Make logo white for yellow background
     },
     'AI-Powered Growth Engines': {
       bg: '#55AE44', // Growth green full tone

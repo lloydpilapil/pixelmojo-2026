@@ -173,13 +173,20 @@ export default function Header() {
             className='flex items-center hover:opacity-80 transition-opacity z-50'
           >
             <Image
-              src='/pixelmojo-branding.svg'
+              src={
+                theme?.primary === '#FDC304'
+                  ? '/pixelmojo-branding-yellow-bg.svg'
+                  : '/pixelmojo-branding.svg'
+              }
               alt='PixelMojo'
               width={140}
               height={32}
               className='h-8 w-auto transition-all duration-300'
               style={{
-                filter: theme?.isDark ? 'brightness(0) invert(1)' : 'none',
+                filter:
+                  theme?.isDark && theme?.primary !== '#FDC304'
+                    ? 'brightness(0) invert(1)'
+                    : 'none',
               }}
               priority
             />
@@ -506,13 +513,20 @@ export default function Header() {
             className='hover:opacity-80 transition-opacity'
           >
             <Image
-              src='/pixelmojo-branding.svg'
+              src={
+                theme?.primary === '#FDC304'
+                  ? '/pixelmojo-branding-yellow-bg.svg'
+                  : '/pixelmojo-branding.svg'
+              }
               alt='PixelMojo'
               width={120}
               height={28}
               className='h-7 w-auto transition-all duration-300'
               style={{
-                filter: theme?.isDark ? 'brightness(0) invert(1)' : 'none',
+                filter:
+                  theme?.isDark && theme?.primary !== '#FDC304'
+                    ? 'brightness(0) invert(1)'
+                    : 'none',
               }}
             />
           </Link>
