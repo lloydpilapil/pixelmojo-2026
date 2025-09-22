@@ -147,13 +147,24 @@ export default function Header() {
     }
   }
 
+  // Define CSS variables for the header when theme is present
+  const headerStyle = theme
+    ? {
+        '--header-bg': theme.bg,
+        '--header-text': theme.textColor,
+        '--header-muted-text': theme.mutedTextColor,
+        '--header-border': theme.isDark
+          ? 'rgba(255, 255, 255, 0.2)'
+          : 'rgba(0, 0, 0, 0.2)',
+        '--header-search-hover': theme.isDark
+          ? 'rgba(255, 255, 255, 0.1)'
+          : 'rgba(0, 0, 0, 0.1)',
+        backgroundColor: 'var(--header-bg)',
+      }
+    : { backgroundColor: '#FBF8F2' }
+
   return (
-    <header
-      className='sticky top-0 z-40'
-      style={{
-        backgroundColor: theme?.bg || '#FBF8F2',
-      }}
-    >
+    <header className='sticky top-0 z-40' style={headerStyle}>
       <div className='container mx-auto px-4'>
         <nav className='flex h-16 items-center justify-between relative'>
           {/* Logo */}
@@ -266,23 +277,14 @@ export default function Header() {
                   setIsServicesOpen(false)
                   setIsWorksOpen(false)
                 }}
-                className='p-2 transition-colors duration-200 rounded-full'
-                style={{
-                  color: theme?.textColor || '#374151',
-                  backgroundColor: 'transparent',
-                }}
-                onMouseEnter={e => {
-                  if (theme) {
-                    e.currentTarget.style.backgroundColor = theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)'
-                  } else {
-                    e.currentTarget.style.backgroundColor = 'rgb(243 244 246)'
-                  }
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = 'transparent'
-                }}
+                className={`p-2 transition-colors duration-200 rounded-full ${
+                  theme
+                    ? 'hover:bg-[var(--header-search-hover)] focus-visible:bg-[var(--header-search-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--header-text)] focus-visible:ring-offset-transparent'
+                    : 'hover:bg-gray-100 focus-visible:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary'
+                }`}
+                style={
+                  theme ? { color: 'var(--header-text)' } : { color: '#374151' }
+                }
                 aria-label='Search'
               >
                 <Search className='w-5 h-5' />

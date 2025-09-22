@@ -90,22 +90,24 @@ export default function ServicesGrid() {
     <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20'>
       {services.map((service, index) => {
         const theme = getServiceTheme(service.title)
+        const cardStyle = {
+          '--card-bg': theme.bg,
+          '--card-border': theme.border,
+          '--card-hover-border': theme.hoverBorder,
+          '--card-text': theme.textColor,
+          '--card-muted-text': theme.mutedTextColor,
+          '--card-icon-bg': theme.iconBg,
+          '--card-dot': theme.dot,
+          backgroundColor: theme.bg,
+          borderColor: theme.border,
+          color: theme.textColor,
+          borderRadius: '0px',
+        }
         return (
           <div key={index} className='group h-full'>
             <div
-              className='h-full flex flex-col p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border'
-              style={{
-                backgroundColor: theme.bg,
-                borderColor: theme.border,
-                borderRadius: '0px',
-                color: theme.textColor,
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = theme.hoverBorder
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = theme.border
-              }}
+              className='h-full flex flex-col p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)] border'
+              style={cardStyle}
             >
               {/* Icon */}
               <div className='w-16 h-16 flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110'>
@@ -124,13 +126,13 @@ export default function ServicesGrid() {
                 <div className='space-y-4 mb-6'>
                   <h3
                     className='transition-colors duration-300'
-                    style={{ color: theme.textColor }}
+                    style={{ color: 'var(--card-text)' }}
                   >
                     {service.title}
                   </h3>
                   <p
                     className='leading-relaxed'
-                    style={{ color: theme.mutedTextColor }}
+                    style={{ color: 'var(--card-muted-text)' }}
                   >
                     {service.description}
                   </p>
@@ -142,16 +144,16 @@ export default function ServicesGrid() {
                     <div key={idx} className='flex items-start gap-3'>
                       <div
                         className='flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5'
-                        style={{ backgroundColor: theme.iconBg }}
+                        style={{ backgroundColor: 'var(--card-icon-bg)' }}
                       >
                         <div
                           className='w-2 h-2 rounded-full'
-                          style={{ backgroundColor: theme.dot }}
+                          style={{ backgroundColor: 'var(--card-dot)' }}
                         />
                       </div>
                       <span
                         className='text-sm'
-                        style={{ color: theme.textColor }}
+                        style={{ color: 'var(--card-text)' }}
                       >
                         {feature}
                       </span>
@@ -166,7 +168,7 @@ export default function ServicesGrid() {
                 variant='link'
                 arrowIcon='arrow'
                 className='mt-6 self-start'
-                style={{ color: theme.textColor }}
+                style={{ color: 'var(--card-text)' }}
                 aria-label={`Learn more about ${service.title} services`}
               >
                 Learn More

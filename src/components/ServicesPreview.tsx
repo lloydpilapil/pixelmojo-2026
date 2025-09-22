@@ -112,22 +112,25 @@ const ServicesPreview = ({
         <div className='mx-auto mb-12 grid max-w-6xl gap-8 md:grid-cols-2 xl:grid-cols-3 items-stretch'>
           {services.map(service => {
             const theme = getServiceTheme(service.title)
+            const cardStyle = {
+              '--card-bg': theme.bg,
+              '--card-border': theme.border,
+              '--card-hover-border': theme.hoverBorder,
+              '--card-text': theme.textColor,
+              '--card-muted-text': theme.mutedTextColor,
+              '--card-divider': theme.isDark
+                ? 'rgba(255, 255, 255, 0.2)'
+                : 'rgba(0, 0, 0, 0.2)',
+              backgroundColor: theme.bg,
+              borderColor: theme.border,
+              color: theme.textColor,
+              borderRadius: '0px',
+            }
             return (
               <div key={service.title} className='group h-full'>
                 <div
-                  className='h-full flex flex-col border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative'
-                  style={{
-                    backgroundColor: theme.bg,
-                    borderColor: theme.border,
-                    borderRadius: '0px',
-                    color: theme.textColor,
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = theme.hoverBorder
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = theme.border
-                  }}
+                  className='h-full flex flex-col border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)] relative'
+                  style={cardStyle}
                 >
                   {service.featured && (
                     <div className='absolute -top-2 -right-2 bg-growth text-growth-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg'>
@@ -145,13 +148,13 @@ const ServicesPreview = ({
                     <div className='space-y-3'>
                       <h3
                         className='text-lg font-semibold transition-colors duration-300'
-                        style={{ color: theme.textColor }}
+                        style={{ color: 'var(--card-text)' }}
                       >
                         {service.title}
                       </h3>
                       <p
                         className='leading-relaxed min-h-[6rem]'
-                        style={{ color: theme.mutedTextColor }}
+                        style={{ color: 'var(--card-muted-text)' }}
                       >
                         {service.description}
                       </p>
@@ -159,19 +162,19 @@ const ServicesPreview = ({
                     <div
                       className='mt-6 flex flex-col gap-3 pt-5'
                       style={{
-                        borderTop: `1px solid ${theme.isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+                        borderTop: '1px solid var(--card-divider)',
                       }}
                     >
                       <div
                         className='text-sm font-medium'
-                        style={{ color: theme.mutedTextColor }}
+                        style={{ color: 'var(--card-muted-text)' }}
                       >
                         {service.outcome}
                       </div>
                       {service.startingAt && (
                         <span
                           className='text-sm font-semibold'
-                          style={{ color: theme.textColor }}
+                          style={{ color: 'var(--card-text)' }}
                         >
                           {service.startingAt}
                         </span>
@@ -183,7 +186,7 @@ const ServicesPreview = ({
                     variant='link'
                     arrowIcon='arrow'
                     className='mt-6 self-start'
-                    style={{ color: theme.textColor }}
+                    style={{ color: 'var(--card-text)' }}
                     aria-label={`Learn more about ${service.title} services`}
                   >
                     Learn More

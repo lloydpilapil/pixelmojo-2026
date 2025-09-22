@@ -601,10 +601,10 @@ li {
 /* Force bg-card utility */
 .bg-card { background-color: var(--card) !important; }
 
-/* Force card backgrounds to be visible */
-.card,
-[class*="card"] {
-  background-color: #FFFDF7 !important;
+/* Default card backgrounds - can be overridden by inline styles */
+.card:not([style*="background"]),
+[class*="card"]:not([style*="background"]) {
+  background-color: #FFFDF7;
 }
 
 .bg-card {
@@ -651,12 +651,12 @@ article[class*="card"]:hover {
 .border-growth { border-color: var(--growth); }
 
 /* Component Styles */
-.card {
-  background: var(--card) !important;
+.card:not([style*="background"]) {
+  background: var(--card);
   color: var(--card-foreground);
-  border: 1px solid var(--border) !important;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: none !important;
+  box-shadow: none;
   transition: box-shadow var(--transition-fast);
 }
 
