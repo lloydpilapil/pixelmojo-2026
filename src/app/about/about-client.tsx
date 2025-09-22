@@ -1,6 +1,6 @@
 'use client'
 
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import HeroVisual from '@/components/HeroVisual'
 
 const processSteps = [
   {
@@ -50,11 +50,14 @@ export default function AboutClient() {
         </p>
       </div>
 
-      {/* Scroll-Animated Video Section */}
-      <ScrollVideoSection
-        videoId='1098766945'
-        coverImage='/cover-about.webp'
-        caption='Showreel: See how Pixelmojo fuses strategy, UX, and engineering to unlock measurable growth for product teams.'
+      {/* Hero Visual Section */}
+      <HeroVisual
+        src='/pixelmojo-about-hero-image.webp'
+        alt='Pixelmojo integrated team working on AI product strategy, design systems, and development workflow showing unified approach from concept to customer success'
+        priority
+        animation='reveal'
+        variant='contained'
+        caption='See how Pixelmojo fuses strategy, UX, and engineering to unlock measurable growth for product teams through our unified approach.'
       />
 
       {/* Value Proposition Section */}

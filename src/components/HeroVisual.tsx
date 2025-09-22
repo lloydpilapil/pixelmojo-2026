@@ -12,6 +12,7 @@ interface HeroVisualProps {
   animation?: 'reveal' | 'parallax' | 'ken-burns' | 'none'
   caption?: string
   captionClassName?: string
+  variant?: 'full' | 'contained' | 'narrow'
 }
 
 export default function HeroVisual({
@@ -22,6 +23,7 @@ export default function HeroVisual({
   animation = 'reveal',
   caption,
   captionClassName,
+  variant = 'full',
 }: HeroVisualProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [parallaxOffset, setParallaxOffset] = useState(0)
@@ -76,7 +78,13 @@ export default function HeroVisual({
   return (
     <figure
       ref={containerRef}
-      className={cn('relative w-full mb-16', className)}
+      className={cn(
+        'relative mb-16',
+        variant === 'full' && 'w-full',
+        variant === 'contained' && 'w-full max-w-6xl mx-auto',
+        variant === 'narrow' && 'w-full max-w-4xl mx-auto',
+        className
+      )}
     >
       <div
         className={cn(
