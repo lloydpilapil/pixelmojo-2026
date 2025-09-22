@@ -39,9 +39,10 @@ export default function Home() {
       {/* Hero Visual Section */}
       <HeroVisual
         src='/pixelmojo-hero-home-visual.webp'
-        alt='Pixelmojo AI + Design Process'
+        alt='Pixelmojo AI-powered design sprint process showing user research, rapid prototyping, and iterative testing workflow for SaaS product development'
         priority
         animation='reveal'
+        caption='Our proven AI + design sprint methodology that helps SaaS teams ship user-validated products faster than traditional development cycles'
       />
 
       {/* Company Logos Section */}

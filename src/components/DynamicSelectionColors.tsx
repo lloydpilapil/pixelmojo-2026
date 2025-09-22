@@ -26,10 +26,12 @@ export interface DynamicSelectionColorsProps {
 }
 
 const defaultColors: SelectionColor[] = [
-  { bg: 'rgba(147, 51, 234, 0.3)', color: 'rgb(147, 51, 234)' }, // Purple
-  { bg: 'rgba(236, 72, 153, 0.3)', color: 'rgb(236, 72, 153)' }, // Pink
-  { bg: 'rgba(251, 146, 60, 0.3)', color: 'rgb(251, 146, 60)' }, // Orange
-  { bg: 'rgba(59, 130, 246, 0.3)', color: 'rgb(59, 130, 246)' }, // Blue
+  { bg: 'rgba(0, 141, 204, 0.3)', color: 'rgb(0, 141, 204)' }, // Primary Blue
+  { bg: 'rgba(60, 194, 158, 0.3)', color: 'rgb(60, 194, 158)' }, // Secondary Green
+  { bg: 'rgba(253, 195, 4, 0.3)', color: 'rgb(253, 195, 4)' }, // Accent Yellow
+  { bg: 'rgba(248, 11, 140, 0.3)', color: 'rgb(248, 11, 140)' }, // CTA Pink
+  { bg: 'rgba(126, 100, 252, 0.3)', color: 'rgb(126, 100, 252)' }, // Purple
+  { bg: 'rgba(85, 174, 68, 0.3)', color: 'rgb(85, 174, 68)' }, // Growth Green
 ]
 
 export const DynamicSelectionColors = ({

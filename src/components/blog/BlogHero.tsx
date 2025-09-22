@@ -63,7 +63,7 @@ export function BlogHero({
 
   return (
     <div className={cn('w-full bg-background', className)}>
-      <div className='container mx-auto px-4 py-16'>
+      <div className='container mx-auto px-4 py-16 pb-24'>
         <header className='max-w-7xl mx-auto text-center'>
           {/* Dates */}
           <div className='text-muted text-small mb-4 space-y-1'>

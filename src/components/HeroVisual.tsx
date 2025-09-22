@@ -10,6 +10,8 @@ interface HeroVisualProps {
   priority?: boolean
   className?: string
   animation?: 'reveal' | 'parallax' | 'ken-burns' | 'none'
+  caption?: string
+  captionClassName?: string
 }
 
 export default function HeroVisual({
@@ -18,6 +20,8 @@ export default function HeroVisual({
   priority = false,
   className,
   animation = 'reveal',
+  caption,
+  captionClassName,
 }: HeroVisualProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [parallaxOffset, setParallaxOffset] = useState(0)
@@ -70,7 +74,10 @@ export default function HeroVisual({
   }
 
   return (
-    <div ref={containerRef} className={cn('relative w-full mb-16', className)}>
+    <figure
+      ref={containerRef}
+      className={cn('relative w-full mb-16', className)}
+    >
       <div
         className={cn(
           'relative w-full',
@@ -96,6 +103,16 @@ export default function HeroVisual({
           blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k='
         />
       </div>
-    </div>
+      {caption && (
+        <figcaption
+          className={cn(
+            'mt-4 text-center text-sm text-muted-foreground max-w-6xl mx-auto px-4',
+            captionClassName
+          )}
+        >
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   )
 }
