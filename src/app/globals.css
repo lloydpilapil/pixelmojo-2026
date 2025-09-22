@@ -23,7 +23,7 @@
   --input: #e5e7eb;
   
   /* Brand Colors */
-  --primary: #7E64FC;
+  --primary: #008dcc;
   --primary-foreground: #ffffff;
   --secondary: #3CC29E;
   --secondary-foreground: #ffffff;
@@ -31,6 +31,8 @@
   --accent-foreground: #000000;
   --cta: #F80B8C;
   --cta-foreground: #ffffff;
+  --purple: #7E64FC;
+  --purple-foreground: #ffffff;
   --growth: #55AE44;
   --growth-foreground: #ffffff;
   --warning: #FEC503;
@@ -122,7 +124,7 @@
     --popover-foreground: #ededed;
     --border: #A1A1A1;
     --input: #9A9AA0;
-    --primary: #7E64FC;
+    --primary: #008dcc;
     --primary-foreground: #ffffff;
     --secondary: #5DD4AF;
     --secondary-foreground: #ffffff;
@@ -130,6 +132,8 @@
     --accent-foreground: #000000;
     --cta: #F80B8C;
     --cta-foreground: #ffffff;
+    --purple: #7E64FC;
+    --purple-foreground: #ffffff;
     --growth: #6BC95A;
     --growth-foreground: #ffffff;
     --warning: #FEC503;
@@ -158,7 +162,7 @@
   --popover-foreground: #ededed;
   --border: #A1A1A1;
   --input: #9A9AA0;
-  --primary: #7E64FC;
+  --primary: #008dcc;
   --primary-foreground: #ffffff;
   --secondary: #5DD4AF;
   --secondary-foreground: #ffffff;
@@ -166,6 +170,8 @@
   --accent-foreground: #000000;
   --cta: #F80B8C;
   --cta-foreground: #ffffff;
+  --purple: #7E64FC;
+  --purple-foreground: #ffffff;
   --growth: #6BC95A;
   --growth-foreground: #ffffff;
   --warning: #FEC503;
@@ -576,6 +582,7 @@ li {
 .text-secondary { color: var(--secondary); }
 .text-accent { color: var(--accent); }
 .text-cta { color: var(--cta); }
+.text-purple { color: var(--purple); }
 .text-growth { color: var(--growth); }
 .text-warning { color: var(--warning); }
 .text-info { color: var(--info); }
@@ -585,6 +592,7 @@ li {
 .bg-secondary { background-color: var(--secondary); color: var(--secondary-foreground); }
 .bg-accent { background-color: var(--accent); color: var(--accent-foreground); }
 .bg-cta { background-color: var(--cta); color: var(--cta-foreground); }
+.bg-purple { background-color: var(--purple); color: var(--purple-foreground); }
 .bg-growth { background-color: var(--growth); color: var(--growth-foreground); }
 .bg-warning { background-color: var(--warning); color: var(--warning-foreground); }
 .bg-info { background-color: var(--info); color: var(--info-foreground); }
@@ -639,6 +647,7 @@ article[class*="card"]:hover {
 .border-secondary { border-color: var(--secondary); }
 .border-accent { border-color: var(--accent); }
 .border-cta { border-color: var(--cta); }
+.border-purple { border-color: var(--purple); }
 .border-growth { border-color: var(--growth); }
 
 /* Component Styles */

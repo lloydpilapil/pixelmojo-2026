@@ -25,8 +25,8 @@ export default function Home() {
       <Hero
         title={
           <>
-            We build <span className='text-cta'>AI products</span> that actually{' '}
-            <span className='text-accent'>ship</span> and{' '}
+            We build <span className='text-primary'>AI products</span> that
+            actually <span className='text-accent'>ship</span> and{' '}
             <span className='text-growth'>sell.</span>
           </>
         }
