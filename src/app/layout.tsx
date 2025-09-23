@@ -5,6 +5,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { DynamicSelectionColors } from '@/components/DynamicSelectionColors'
 import ConditionalRecentArticles from '@/components/ConditionalRecentArticles'
+import { Analytics } from '@vercel/analytics/react'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -70,6 +71,7 @@ export default function RootLayout({
         <main className='flex-1'>{children}</main>
         <ConditionalRecentArticles />
         <Footer />
+        <Analytics />
       </body>
     </html>
   )

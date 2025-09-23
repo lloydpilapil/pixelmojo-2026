@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { allPosts } from 'contentlayer/generated'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
 import { LinkButton } from '@/components/ui/button'
@@ -105,11 +106,14 @@ const RecentArticles = ({
       {/* Footer Visual - Full Width, Edge to Edge */}
       {footerImage && (
         <div className='w-full'>
-          <img
+          <Image
             src={footerImage}
             alt={footerImageAlt || 'Footer visual'}
+            width={2400}
+            height={900}
             className='w-full h-auto block'
-            loading='lazy'
+            priority={false}
+            sizes='100vw'
           />
         </div>
       )}

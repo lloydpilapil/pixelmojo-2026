@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ChevronRight, ChevronLeft } from 'lucide-react'
 
@@ -543,11 +544,14 @@ export default function Contact() {
 
       {/* Footer Visual - Full Width, Edge to Edge, No Gap */}
       <div className='w-full'>
-        <img
+        <Image
           src='/pixelmojo-footer-image.png'
           alt='Pixelmojo design showcase - AI-powered product development visual'
+          width={2400}
+          height={900}
           className='w-full h-auto block'
-          loading='lazy'
+          priority={false}
+          sizes='100vw'
         />
       </div>
     </div>

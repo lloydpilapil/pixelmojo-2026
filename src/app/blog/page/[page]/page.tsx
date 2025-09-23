@@ -32,6 +32,11 @@ export async function generateStaticParams() {
     }))
 }
 
+// ISR Configuration for paginated blog pages - revalidate every 30 minutes
+export const revalidate = 1800 // 30 minutes in seconds
+export const dynamic = 'force-static'
+export const dynamicParams = true
+
 export async function generateMetadata({
   params,
 }: {

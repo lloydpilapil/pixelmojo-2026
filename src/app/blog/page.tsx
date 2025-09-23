@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   },
 }
 
+// ISR Configuration for blog listing - revalidate every 30 minutes
+export const revalidate = 1800 // 30 minutes in seconds
+export const dynamic = 'force-static'
+
 export default function Blog() {
   const posts = [...allPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
