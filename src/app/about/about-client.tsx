@@ -166,7 +166,6 @@ export default function AboutClient() {
           animation='reveal'
           variant='contained'
           className='mt-16 mb-12'
-          caption='Our integrated approach brings strategy, design, and development together under one roof, eliminating vendor chaos and ensuring every project ships with measurable impact.'
         />
 
         {/* Proven Results Section */}
