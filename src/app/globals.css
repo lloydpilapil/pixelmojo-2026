@@ -522,7 +522,7 @@ li {
   font-family: var(--font-montserrat);
   font-size: clamp(2.5rem, 4vw + 1.5rem, 5.625rem); /* 40px to 90px */
   font-weight: var(--font-weight-extrabold);
-  line-height: 1.1;
+  line-height: 1.25;
   letter-spacing: -0.04em;
   margin-bottom: 2rem;
 }

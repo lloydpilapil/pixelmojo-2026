@@ -62,7 +62,7 @@ export default function AboutClient() {
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
-        <h2 className='mb-6 max-w-4xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
+        <h2 className='mb-6 max-w-6xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
           Strategy to scale, all under one roof
         </h2>
         <div className='mx-auto max-w-6xl space-y-6 text-left md:text-center'>
@@ -88,7 +88,7 @@ export default function AboutClient() {
             {/* Two column cards */}
             <div className='grid gap-6 md:grid-cols-2'>
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
-                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-sky mb-2'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-2'>
                   No vendor chaos, one partner
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
@@ -98,7 +98,7 @@ export default function AboutClient() {
               </div>
 
               <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
-                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-warning mb-2'>
+                <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-2'>
                   Products that ship and scale
                 </p>
                 <p className='text-base leading-relaxed text-muted'>
@@ -128,7 +128,7 @@ export default function AboutClient() {
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-info mb-3'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-purple mb-3'>
                 Products that actually ship
               </p>
               <p className='text-sm leading-relaxed text-muted'>
@@ -138,7 +138,7 @@ export default function AboutClient() {
             </div>
 
             <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
-              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-warning mb-3'>
+              <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-3'>
                 Partnership accountability
               </p>
               <p className='text-sm leading-relaxed text-muted'>
@@ -182,7 +182,7 @@ export default function AboutClient() {
                 estate company - all delivered on time and driving immediate
                 business value.
               </p>
-              <div className='flex items-center justify-center gap-2 text-sm text-sky font-medium'>
+              <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium'>
                 <svg
                   className='w-4 h-4'
                   fill='currentColor'
@@ -201,7 +201,9 @@ export default function AboutClient() {
             {/* Measurable Impact Grid */}
             <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-sky mb-2'>40+</div>
+                <div className='text-3xl font-heading text-primary mb-2'>
+                  40+
+                </div>
                 <p className='text-sm font-medium mb-2'>
                   Successful Transformations
                 </p>
@@ -211,7 +213,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-warning mb-2'>
+                <div className='text-3xl font-heading text-accent mb-2'>
                   20+ Years
                 </div>
                 <p className='text-sm font-medium mb-2'>
@@ -247,7 +249,9 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-info mb-2'>100%</div>
+                <div className='text-3xl font-heading text-purple mb-2'>
+                  100%
+                </div>
                 <p className='text-sm font-medium mb-2'>
                   Profit-First Approach
                 </p>
@@ -257,7 +261,7 @@ export default function AboutClient() {
               </div>
 
               <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-center'>
-                <div className='text-3xl font-heading text-warning mb-2'>
+                <div className='text-3xl font-heading text-accent mb-2'>
                   Enterprise
                 </div>
                 <p className='text-sm font-medium mb-2'>Scale & Adoption</p>
@@ -336,7 +340,7 @@ export default function AboutClient() {
               generates measurable profits. Each tool in our stack is selected
               for its ability to create, optimize, and scale revenue streams.
             </p>
-            <div className='flex items-center justify-center gap-2 text-sm text-sky font-medium mb-8'>
+            <div className='flex items-center justify-center gap-2 text-sm text-primary font-medium mb-8'>
               <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 20 20'>
                 <path
                   fillRule='evenodd'

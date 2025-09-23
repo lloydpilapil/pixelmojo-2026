@@ -35,7 +35,7 @@ export default function Hero({
   proofPoints = [],
 }: HeroProps) {
   return (
-    <section className={`text-center mb-32 mt-16 md:mt-24 ${className}`}>
+    <section className={`text-center mb-40 mt-16 md:mt-24 ${className}`}>
       <div className='text-center'>
         <h1 className='hero-title max-w-6xl mx-auto mb-10 md:mb-12'>{title}</h1>
       </div>
