@@ -66,7 +66,7 @@ export default function AboutClient() {
           Strategy to scale, all under one roof
         </h2>
         <div className='mx-auto max-w-6xl space-y-6 text-left md:text-center'>
-          <p className='text-muted text-lg leading-relaxed'>
+          <p className='text-muted-foreground text-lg leading-relaxed'>
             After 20+ years shipping products for enterprises and startups, I
             built Pixelmojo to solve the vendor chaos problem. Instead of
             juggling designers, developers, and AI consultants who don't talk to
@@ -79,7 +79,7 @@ export default function AboutClient() {
               <h3 className='text-2xl font-heading text-primary mb-3'>
                 Complete products that actually ship
               </h3>
-              <p className='text-lg leading-relaxed text-muted max-w-2xl mx-auto'>
+              <p className='text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto'>
                 Unified teams that deliver working products with real users and
                 measurable results, not endless strategy decks.
               </p>
@@ -91,7 +91,7 @@ export default function AboutClient() {
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-2'>
                   No vendor chaos, one partner
                 </p>
-                <p className='text-base leading-relaxed text-muted'>
+                <p className='text-base leading-relaxed text-muted-foreground'>
                   Strategy, design, development, and AI under one roof. No
                   juggling multiple teams that don't talk to each other.
                 </p>
@@ -101,7 +101,7 @@ export default function AboutClient() {
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-2'>
                   Products that ship and scale
                 </p>
-                <p className='text-base leading-relaxed text-muted'>
+                <p className='text-base leading-relaxed text-muted-foreground'>
                   Complete ecosystems from concept to customer, built to grow
                   with your business and adapt to market changes.
                 </p>
@@ -111,7 +111,7 @@ export default function AboutClient() {
         </div>
         <h2 className='mt-12 mb-4 text-3xl font-heading'>Our Mission</h2>
         <div className='mx-auto max-w-6xl space-y-4 text-left md:text-center'>
-          <p className='text-muted text-lg leading-relaxed'>
+          <p className='text-muted-foreground text-lg leading-relaxed'>
             End the vendor chaos. Unite strategy, design, and development under
             one partnership that owns the entire journey from concept to
             customer success.
@@ -121,7 +121,7 @@ export default function AboutClient() {
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Unified product strategy
               </p>
-              <p className='text-sm leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted-foreground'>
                 Strategy, design, and development working in sync to deliver
                 complete products that solve real user problems.
               </p>
@@ -131,7 +131,7 @@ export default function AboutClient() {
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-purple mb-3'>
                 Products that actually ship
               </p>
-              <p className='text-sm leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted-foreground'>
                 Working products with real users, not endless discovery phases
                 or strategy decks that never see implementation.
               </p>
@@ -141,7 +141,7 @@ export default function AboutClient() {
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-3'>
                 Partnership accountability
               </p>
-              <p className='text-sm leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted-foreground'>
                 One team accountable for your success. No finger-pointing
                 between vendors when deadlines slip or features break.
               </p>
@@ -151,7 +151,7 @@ export default function AboutClient() {
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Complete ecosystem delivery
               </p>
-              <p className='text-sm leading-relaxed text-muted'>
+              <p className='text-sm leading-relaxed text-muted-foreground'>
                 Strategy, design systems, working code, and launch support.
                 Everything you need to go from concept to customer success.
               </p>
@@ -174,7 +174,7 @@ export default function AboutClient() {
               <h3 className='font-heading text-xl mb-4 text-primary'>
                 Recent Confidential Projects
               </h3>
-              <p className='text-muted leading-relaxed mb-4'>
+              <p className='text-muted-foreground leading-relaxed mb-4'>
                 Recent confidential projects include launching an AI startup's
                 complete brand ecosystem, building a custom logistics tracking
                 system, and developing a real estate earnings tracking system
@@ -207,7 +207,7 @@ export default function AboutClient() {
                 <p className='text-sm font-medium mb-2'>
                   Successful Transformations
                 </p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   Complete product ecosystems delivered
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function AboutClient() {
                 <p className='text-sm font-medium mb-2'>
                   Deep Product Expertise
                 </p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   Building profitable digital products
                 </p>
               </div>
@@ -231,7 +231,7 @@ export default function AboutClient() {
                 <p className='text-sm font-medium mb-2'>
                   Average Time to Profit
                 </p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   From concept to revenue generation
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default function AboutClient() {
                 <p className='text-sm font-medium mb-2'>
                   Conversion Improvements
                 </p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   Through AI-enhanced interfaces
                 </p>
               </div>
@@ -255,7 +255,7 @@ export default function AboutClient() {
                 <p className='text-sm font-medium mb-2'>
                   Profit-First Approach
                 </p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   Every product designed to pay for itself
                 </p>
               </div>
@@ -265,7 +265,7 @@ export default function AboutClient() {
                   Enterprise
                 </div>
                 <p className='text-sm font-medium mb-2'>Scale & Adoption</p>
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-xs text-muted-foreground-foreground'>
                   Design systems across product teams
                 </p>
               </div>
@@ -300,10 +300,10 @@ export default function AboutClient() {
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className='mt-4 text-xl font-heading'>{step.title}</h3>
-                <p className='mt-4 text-muted leading-relaxed'>
+                <p className='mt-4 text-muted-foreground leading-relaxed'>
                   {step.description}
                 </p>
-                <dl className='mt-6 space-y-4 text-sm text-muted-foreground'>
+                <dl className='mt-6 space-y-4 text-sm text-muted-foreground-foreground'>
                   <div>
                     <dt className='font-medium text-foreground'>
                       Deliverables
@@ -343,7 +343,7 @@ export default function AboutClient() {
           </h2>
 
           <div className='text-center mb-12'>
-            <p className='text-muted max-w-3xl mx-auto mb-6'>
+            <p className='text-muted-foreground max-w-3xl mx-auto mb-6'>
               We don't chase trends, we use battle-tested technology that
               generates measurable profits. Each tool in our stack is selected
               for its ability to create, optimize, and scale revenue streams.
@@ -367,26 +367,26 @@ export default function AboutClient() {
                 <h3 className='font-heading text-xl mb-3'>
                   AI & Intelligence Stack
                 </h3>
-                <p className='text-muted text-sm mb-6'>
+                <p className='text-muted-foreground text-sm mb-6'>
                   Revenue-optimizing AI that learns and adapts
                 </p>
               </div>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Claude Opus 4.1</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Strategic Analysis
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>GPT-5</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Product Intelligence
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Claude Code</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Development Acceleration
                   </span>
                 </div>
@@ -394,13 +394,13 @@ export default function AboutClient() {
                   <span className='text-sm font-medium'>
                     Custom AI Pipelines
                   </span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Growth Optimization
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>LangChain</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     AI Workflow Orchestration
                   </span>
                 </div>
@@ -411,7 +411,7 @@ export default function AboutClient() {
             <div className='space-y-6 p-6 rounded-2xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-card/95 shadow-sm'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>Development Stack</h3>
-                <p className='text-muted text-sm mb-6'>
+                <p className='text-muted-foreground text-sm mb-6'>
                   Lightning-fast, conversion-focused interfaces
                 </p>
               </div>
@@ -420,7 +420,7 @@ export default function AboutClient() {
                   <span className='text-sm font-medium'>
                     React 19 + Next.js 15
                   </span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Ultra-fast UIs
                   </span>
                 </div>
@@ -428,31 +428,31 @@ export default function AboutClient() {
                   <span className='text-sm font-medium'>
                     TypeScript + Tailwind
                   </span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Scalable Systems
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Cursor</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     AI-Enhanced Development
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>JetBrains IDEs</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Professional Tooling
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Supabase</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Real-time Data
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Vercel Edge</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Global Performance
                   </span>
                 </div>
@@ -465,20 +465,20 @@ export default function AboutClient() {
                 <h3 className='font-heading text-xl mb-3'>
                   Design & Integration Stack
                 </h3>
-                <p className='text-muted text-sm mb-6'>
+                <p className='text-muted-foreground text-sm mb-6'>
                   AI-powered design systems and integrations
                 </p>
               </div>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Storybook</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Component Documentation
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Chromatic</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Visual Testing & Review
                   </span>
                 </div>
@@ -486,19 +486,19 @@ export default function AboutClient() {
                   <span className='text-sm font-medium'>
                     MCP (Model Context Protocol)
                   </span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     AI Tool Integration
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>Custom MCPs</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Client-Specific AI Tools
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
                   <span className='text-sm font-medium'>GitHub Copilot</span>
-                  <span className='text-xs text-muted-foreground'>
+                  <span className='text-xs text-muted-foreground-foreground'>
                     Code Intelligence
                   </span>
                 </div>

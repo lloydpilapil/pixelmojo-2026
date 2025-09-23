@@ -114,11 +114,11 @@
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0e172a;
     --foreground: #e2e8f0;
     --muted: #171717;
     --muted-foreground: #a1a1aa;
-    --card: #111111;
+    --card: #1a2332;
     --card-foreground: #ededed;
     --popover: #111111;
     --popover-foreground: #ededed;
@@ -152,11 +152,11 @@
 
 /* Manual Dark Mode Class Override */
 [data-theme='dark'] {
-  --background: #0a0a0a;
+  --background: #0e172a;
   --foreground: #e2e8f0;
   --muted: #171717;
   --muted-foreground: #a1a1aa;
-  --card: #111111;
+  --card: #1a2332;
   --card-foreground: #ededed;
   --popover: #111111;
   --popover-foreground: #ededed;
@@ -604,20 +604,20 @@ li {
 /* Default card backgrounds - can be overridden by inline styles */
 .card:not([style*="background"]),
 [class*="card"]:not([style*="background"]) {
-  background-color: #FFFDF7;
+  background-color: var(--card);
 }
 
 .bg-card {
-  background-color: #FFFDF7 !important;
+  background-color: var(--card) !important;
 }
 
 /* Handle opacity variants */
 .bg-card\/70 {
-  background-color: rgba(255, 253, 247, 0.7) !important;
+  background-color: color-mix(in srgb, var(--card) 70%, transparent) !important;
 }
 
 .bg-card\/60 {
-  background-color: rgba(255, 253, 247, 0.6) !important;
+  background-color: color-mix(in srgb, var(--card) 60%, transparent) !important;
 }
 
 /* Force border utilities */
@@ -631,7 +631,7 @@ li {
 .bg-card,
 article[class*="card"] {
   box-shadow: none !important;
-  border: 1px solid rgba(161, 161, 161, 0.6) !important;
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent) !important;
 }
 
 .card:hover,
@@ -640,7 +640,7 @@ article[class*="card"] {
 article[class*="card"]:hover {
   box-shadow: none !important;
   transform: none !important;
-  border: 1px solid rgba(161, 161, 161, 0.6) !important;
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent) !important;
 }
 
 .border-primary { border-color: var(--primary); }

@@ -81,7 +81,7 @@ const OurApproach = ({
         {/* Header */}
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='mb-6'>{title}</h2>
-          <p className='text-muted max-w-2xl mx-auto text-lg leading-relaxed'>
+          <p className='text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed'>
             How we ship revenue-ready products in 90 days. Every phase is built
             to drive traction with real customers.
           </p>
@@ -112,21 +112,21 @@ const OurApproach = ({
                       {step.title}
                     </h3>
                   </div>
-                  <p className='text-muted text-sm md:text-base leading-relaxed'>
+                  <p className='text-muted-foreground text-sm md:text-base leading-relaxed'>
                     {step.description}
                   </p>
                 </div>
 
                 {/* Outcome callout */}
                 <div
-                  className={`mt-6 rounded-xl border bg-white p-5 transition-colors duration-300 ${step.outcomeBorderClass} ${step.outcomeHoverClass}`}
+                  className={`mt-6 rounded-xl border bg-card p-5 transition-colors duration-300 ${step.outcomeBorderClass} ${step.outcomeHoverClass}`}
                 >
                   <div
                     className={`mb-2 text-sm font-semibold uppercase tracking-wide ${step.outcomeTextClass}`}
                   >
                     Key Outcome
                   </div>
-                  <p className='text-sm md:text-base leading-relaxed text-muted'>
+                  <p className='text-sm md:text-base leading-relaxed text-muted-foreground'>
                     {step.outcome}
                   </p>
                 </div>

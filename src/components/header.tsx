@@ -162,7 +162,9 @@ export default function Header() {
           : 'rgba(0, 0, 0, 0.1)',
         backgroundColor: 'var(--header-bg)',
       }
-    : { backgroundColor: '#FBF8F2' }
+    : {
+        backgroundColor: 'var(--background)',
+      }
 
   return (
     <header className='sticky top-0 z-40' style={headerStyle}>
@@ -216,7 +218,7 @@ export default function Header() {
                       style={{
                         color: isActiveNav(item.href, true, item.label)
                           ? theme?.textColor || 'var(--primary)'
-                          : theme?.textColor || '#374151',
+                          : theme?.textColor || 'var(--foreground)',
                       }}
                     >
                       {item.label}
@@ -257,7 +259,7 @@ export default function Header() {
                       style={{
                         color: isActiveNav(item.href)
                           ? theme?.textColor || 'var(--primary)'
-                          : theme?.textColor || '#374151',
+                          : theme?.textColor || 'var(--foreground)',
                       }}
                     >
                       {item.label}
@@ -288,11 +290,8 @@ export default function Header() {
                 className={`p-2 transition-colors duration-200 rounded-full ${
                   theme
                     ? 'hover:bg-[var(--header-search-hover)] focus-visible:bg-[var(--header-search-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--header-text)] focus-visible:ring-offset-transparent'
-                    : 'hover:bg-gray-100 focus-visible:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary'
+                    : 'hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary text-foreground'
                 }`}
-                style={
-                  theme ? { color: 'var(--header-text)' } : { color: '#374151' }
-                }
                 aria-label='Search'
               >
                 <Search className='w-5 h-5' />
@@ -373,10 +372,10 @@ export default function Header() {
           isServicesOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || '#EEF7EB',
+          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
-            : 'rgba(0, 0, 0, 0.2)',
+            : 'var(--border)',
         }}
       >
         <div className='container mx-auto px-4 py-3'>
@@ -388,7 +387,7 @@ export default function Header() {
                 onClick={() => setIsServicesOpen(false)}
                 className='text-[11px] lg:text-xs xl:text-sm transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
                 style={{
-                  color: theme?.mutedTextColor || '#374151',
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
                 }}
               >
                 {item.label}
@@ -404,10 +403,10 @@ export default function Header() {
           isWorksOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || '#F0F8FF',
+          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
-            : 'rgba(0, 0, 0, 0.2)',
+            : 'var(--border)',
         }}
       >
         <div className='container mx-auto px-4 py-3'>
@@ -419,7 +418,7 @@ export default function Header() {
                 onClick={() => setIsWorksOpen(false)}
                 className='text-[11px] lg:text-xs xl:text-sm transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded'
                 style={{
-                  color: theme?.mutedTextColor || '#374151',
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
                 }}
               >
                 {item.label}
@@ -435,10 +434,10 @@ export default function Header() {
           isSearchOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || '#FFF9E6',
+          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
-            : 'rgba(0, 0, 0, 0.2)',
+            : 'var(--border)',
         }}
       >
         <div className='container mx-auto px-4 py-6'>
@@ -447,7 +446,7 @@ export default function Header() {
               <Search
                 className='w-6 h-6'
                 style={{
-                  color: theme?.mutedTextColor || '#9CA3AF',
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
                 }}
               />
               <input
@@ -461,15 +460,15 @@ export default function Header() {
                     : 'rgba(0, 0, 0, 0.05)',
                   borderColor: theme?.isDark
                     ? 'rgba(255, 255, 255, 0.2)'
-                    : 'rgba(0, 0, 0, 0.2)',
-                  color: theme?.mutedTextColor || '#6B7280',
+                    : 'var(--border)',
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
                 }}
               />
             </div>
             <p
               className='text-sm'
               style={{
-                color: theme?.mutedTextColor || '#6B7280',
+                color: theme?.mutedTextColor || 'var(--muted-foreground)',
               }}
             >
               We're building an amazing search experience. Stay tuned!
@@ -584,10 +583,10 @@ export default function Header() {
                             setIsMobileServicesOpen(false)
                           }
                         }}
-                        className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation relative ${
+                        className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation relative ${
                           isActiveNav(item.href, true, item.label)
                             ? 'text-primary bg-primary/5 border-l-4 border-primary'
-                            : 'text-gray-800 hover:text-[#55AE44]'
+                            : 'text-foreground hover:text-primary'
                         }`}
                         style={{ minHeight: '44px' }}
                       >
@@ -622,7 +621,7 @@ export default function Header() {
                             : 'max-h-0'
                         }`}
                       >
-                        <ul className='ml-4 mt-2 space-y-1 border-l-2 border-gray-200 pl-4'>
+                        <ul className='ml-4 mt-2 space-y-1 border-l-2 border-border pl-4'>
                           {item.children.map(subItem => (
                             <li key={subItem.href}>
                               <Link
@@ -632,7 +631,7 @@ export default function Header() {
                                   setIsMobileServicesOpen(false)
                                   setIsMobileWorksOpen(false)
                                 }}
-                                className='block text-base text-gray-600 hover:text-[#55AE44] transition-colors duration-200 py-2 px-3 rounded hover:bg-gray-100/30'
+                                className='block text-base text-muted-foreground hover:text-primary transition-colors duration-200 py-2 px-3 rounded hover:bg-muted/30'
                               >
                                 {subItem.label}
                               </Link>
@@ -649,10 +648,10 @@ export default function Header() {
                         setIsMobileMenuOpen(false)
                         setIsMobileServicesOpen(false)
                       }}
-                      className={`block text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-gray-100/50 touch-manipulation ${
+                      className={`block text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation ${
                         isActiveNav(item.href)
                           ? 'text-primary bg-primary/5 border-l-4 border-primary'
-                          : 'text-gray-800 hover:text-[#55AE44]'
+                          : 'text-foreground hover:text-primary'
                       }`}
                       style={{ minHeight: '44px' }}
                     >
