@@ -101,7 +101,6 @@ export default function ServicesGrid() {
           backgroundColor: theme.bg,
           borderColor: theme.border,
           color: theme.textColor,
-          borderRadius: '0px',
         }
         return (
           <div key={index} className='group h-full'>

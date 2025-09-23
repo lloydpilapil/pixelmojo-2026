@@ -126,7 +126,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 1</h3>
@@ -143,7 +142,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 2</h3>
@@ -160,7 +158,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 3</h3>
@@ -189,7 +186,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 1</h3>
@@ -206,7 +202,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 2</h3>
@@ -223,7 +218,6 @@ export default function ServicePage({ service }: ServicePageProps) {
               borderColor: theme.isDark
                 ? 'rgba(255, 255, 255, 0.2)'
                 : 'rgba(0, 0, 0, 0.2)',
-              borderRadius: '0px',
             }}
           >
             <h3 style={{ color: theme.textColor }}>Card Title 3</h3>

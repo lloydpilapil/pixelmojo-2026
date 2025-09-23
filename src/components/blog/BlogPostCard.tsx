@@ -49,7 +49,6 @@ export function BlogPostCard({
           ? 'rgba(255, 255, 255, 0.2)'
           : 'rgba(0, 0, 0, 0.2)',
         color: theme.textColor,
-        borderRadius: '0px',
       }
     : undefined
 
@@ -65,7 +64,7 @@ export function BlogPostCard({
               ? 'border-border hover:shadow-lg hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
               : 'border-border hover:shadow-lg hover:border-primary/50 focus-within:border-primary/50'
         }`}
-        style={theme ? cardStyle : { borderRadius: '0px' }}
+        style={theme ? cardStyle : undefined}
       >
         {/* Featured Badge */}
         {featured && (
