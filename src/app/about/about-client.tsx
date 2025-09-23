@@ -75,7 +75,7 @@ export default function AboutClient() {
           </p>
           <div className='grid gap-6 md:gap-8'>
             {/* Featured large card */}
-            <div className='relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 text-center'>
+            <div className='relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card/95 to-secondary/5 p-8 text-center shadow-sm'>
               <h3 className='text-2xl font-heading text-primary mb-3'>
                 Complete products that actually ship
               </h3>
@@ -87,7 +87,7 @@ export default function AboutClient() {
 
             {/* Two column cards */}
             <div className='grid gap-6 md:grid-cols-2'>
-              <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
+              <div className='group relative rounded-2xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-card/95 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-2'>
                   No vendor chaos, one partner
                 </p>
@@ -97,7 +97,7 @@ export default function AboutClient() {
                 </p>
               </div>
 
-              <div className='group relative rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
+              <div className='group relative rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-card/95 p-6 text-left shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1'>
                 <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-2'>
                   Products that ship and scale
                 </p>
@@ -117,7 +117,7 @@ export default function AboutClient() {
             customer success.
           </p>
           <div className='grid gap-6 md:grid-cols-2'>
-            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+            <div className='rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-card/95 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Unified product strategy
               </p>
@@ -127,7 +127,7 @@ export default function AboutClient() {
               </p>
             </div>
 
-            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+            <div className='rounded-2xl border border-purple/20 bg-gradient-to-br from-purple/5 to-card/95 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-purple mb-3'>
                 Products that actually ship
               </p>
@@ -137,7 +137,7 @@ export default function AboutClient() {
               </p>
             </div>
 
-            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+            <div className='rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-card/95 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-accent mb-3'>
                 Partnership accountability
               </p>
@@ -147,7 +147,7 @@ export default function AboutClient() {
               </p>
             </div>
 
-            <div className='rounded-2xl border border-border/60 bg-card/70 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
+            <div className='rounded-2xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-card/95 p-6 text-left shadow-sm hover:shadow-lg transition-all duration-300'>
               <p className='text-sm font-semibold uppercase tracking-[0.12em] text-primary mb-3'>
                 Complete ecosystem delivery
               </p>
@@ -170,7 +170,7 @@ export default function AboutClient() {
 
           <div className='space-y-8'>
             {/* Recent Confidential Projects */}
-            <div className='rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card/90 to-sky/10 p-6 md:p-8 shadow-md'>
+            <div className='rounded-2xl border border-primary/40 bg-primary/10 p-6 md:p-8 shadow-lg'>
               <h3 className='font-heading text-xl mb-4 text-primary'>
                 Recent Confidential Projects
               </h3>
@@ -286,7 +286,15 @@ export default function AboutClient() {
             {processSteps.map((step, index) => (
               <article
                 key={step.title}
-                className='group relative flex h-full flex-col rounded-2xl border border-border/60 bg-card/60 p-6 text-left shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary md:p-8'
+                className={`group relative flex h-full flex-col rounded-2xl border p-6 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 md:p-8 ${
+                  index === 0
+                    ? 'border-primary/20 bg-gradient-to-br from-primary/5 to-card/95 hover:border-primary/40'
+                    : index === 1
+                      ? 'border-secondary/20 bg-gradient-to-br from-secondary/5 to-card/95 hover:border-secondary/40'
+                      : index === 2
+                        ? 'border-accent/20 bg-gradient-to-br from-accent/5 to-card/95 hover:border-accent/40'
+                        : 'border-purple/20 bg-gradient-to-br from-purple/5 to-card/95 hover:border-purple/40'
+                }`}
               >
                 <span className='inline-flex h-12 w-12 items-center justify-center rounded-full bg-info font-heading text-base font-semibold text-white'>
                   {String(index + 1).padStart(2, '0')}
@@ -354,7 +362,7 @@ export default function AboutClient() {
 
           <div className='grid gap-8 md:grid-cols-3 mb-12'>
             {/* AI & Intelligence Stack */}
-            <div className='space-y-6'>
+            <div className='space-y-6 p-6 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-card/95 shadow-sm'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>
                   AI & Intelligence Stack
@@ -400,7 +408,7 @@ export default function AboutClient() {
             </div>
 
             {/* Development Stack */}
-            <div className='space-y-6'>
+            <div className='space-y-6 p-6 rounded-2xl border border-secondary/20 bg-gradient-to-br from-secondary/5 to-card/95 shadow-sm'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>Development Stack</h3>
                 <p className='text-muted text-sm mb-6'>
@@ -452,7 +460,7 @@ export default function AboutClient() {
             </div>
 
             {/* Design & Integration Stack */}
-            <div className='space-y-6'>
+            <div className='space-y-6 p-6 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-card/95 shadow-sm'>
               <div className='text-center'>
                 <h3 className='font-heading text-xl mb-3'>
                   Design & Integration Stack
