@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { Search } from 'lucide-react'
 import { LinkButton } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/ThemeToggle'
 import { getFeaturedWorks } from '@/data/works'
 import { getServiceTheme, getServiceTitleFromSlug } from '@/utils/serviceThemes'
 
@@ -297,6 +298,9 @@ export default function Header() {
                 <Search className='w-5 h-5' />
               </button>
             </div>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* Desktop CTA with dynamic variant */}
             <div>
