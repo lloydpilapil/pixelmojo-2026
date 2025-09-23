@@ -17,9 +17,14 @@ interface BlogPostCardProps {
     }
   }
   theme?: ServiceTheme | null
+  featured?: boolean
 }
 
-export function BlogPostCard({ post, theme }: BlogPostCardProps) {
+export function BlogPostCard({
+  post,
+  theme,
+  featured = false,
+}: BlogPostCardProps) {
   const cardStyle = theme
     ? {
         '--card-bg': theme.isDark
@@ -51,13 +56,24 @@ export function BlogPostCard({ post, theme }: BlogPostCardProps) {
   return (
     <Link href={post.url} className='group'>
       <article
-        className={`overflow-hidden transition-all duration-300 h-full flex flex-col border border-border ${
-          theme
-            ? 'hover:shadow-lg hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
-            : 'hover:shadow-lg hover:border-primary/50 focus-within:border-primary/50'
+        className={`overflow-hidden transition-all duration-300 h-full flex flex-col border relative ${
+          featured
+            ? theme
+              ? 'border-2 hover:shadow-xl hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
+              : 'border-2 border-secondary/20 hover:shadow-xl hover:border-secondary/30 focus-within:border-secondary/30'
+            : theme
+              ? 'border-border hover:shadow-lg hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
+              : 'border-border hover:shadow-lg hover:border-primary/50 focus-within:border-primary/50'
         }`}
-        style={cardStyle || { borderRadius: '0px' }}
+        style={theme ? cardStyle : { borderRadius: '0px' }}
       >
+        {/* Featured Badge */}
+        {featured && (
+          <div className='absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg z-10'>
+            Featured
+          </div>
+        )}
+
         {/* Post Image */}
         <div
           className='aspect-[16/10] relative overflow-hidden'

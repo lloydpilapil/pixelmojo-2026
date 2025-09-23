@@ -10,6 +10,7 @@ interface RecentArticlesProps {
   showViewAllButton?: boolean
   className?: string
   theme?: ServiceTheme | null
+  featuredPostIds?: string[]
 }
 
 const RecentArticles = ({
@@ -18,6 +19,7 @@ const RecentArticles = ({
   showViewAllButton = true,
   className = '',
   theme = null,
+  featuredPostIds = [],
 }: RecentArticlesProps) => {
   // Get the latest posts sorted by date
   const recentPosts = allPosts
@@ -60,7 +62,12 @@ const RecentArticles = ({
           {/* Blog Posts Grid */}
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12'>
             {recentPosts.map(post => (
-              <BlogPostCard key={post._id} post={post} theme={theme} />
+              <BlogPostCard
+                key={post._id}
+                post={post}
+                theme={theme}
+                featured={featuredPostIds.includes(post._id)}
+              />
             ))}
           </div>
 
