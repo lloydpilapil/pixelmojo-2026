@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 
 interface BlogCTAProps {
   title?: string
@@ -66,10 +67,11 @@ export function BlogCTA({
   return (
     <div data-blog-layout='narrow' style={containerStyle}>
       <div style={cardStyle}>
-        <img
+        <Image
           src='/why-your-design-image.webp'
-          srcSet='/why-your-design-image.webp 1x, /why-your-design-image@2x.webp 2x'
           alt='Transform your design process'
+          width={400}
+          height={200}
           style={imageStyle}
         />
 

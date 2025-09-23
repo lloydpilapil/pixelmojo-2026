@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Tag } from '@/components/ui/tag'
 
@@ -64,9 +65,11 @@ export function AuthorBio({
           <div className='flex-shrink-0 flex justify-center sm:block'>
             <div className='w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-muted'>
               {author.avatar ? (
-                <img
+                <Image
                   src={author.avatar}
                   alt={author.name}
+                  width={96}
+                  height={96}
                   className='w-full h-full object-cover'
                 />
               ) : (

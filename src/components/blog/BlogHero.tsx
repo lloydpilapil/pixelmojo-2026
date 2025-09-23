@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface BlogHeroProps {
@@ -116,9 +117,11 @@ export function BlogHero({
             <div className='flex items-center justify-center gap-3 mb-8'>
               <div className='w-10 h-10 bg-muted rounded-full flex items-center justify-center overflow-hidden'>
                 {author.avatar ? (
-                  <img
+                  <Image
                     src={author.avatar}
                     alt={author.name}
+                    width={40}
+                    height={40}
                     className='w-full h-full object-cover'
                   />
                 ) : (

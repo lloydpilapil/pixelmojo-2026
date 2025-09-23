@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface BlogPostImageProps {
@@ -29,11 +30,11 @@ export function BlogPostImage({
         className
       )}
     >
-      <img
+      <Image
         src={src || '/placeholder.svg'}
         alt={alt}
+        fill
         className='w-full h-full object-cover'
-        loading='lazy'
       />
     </div>
   )
