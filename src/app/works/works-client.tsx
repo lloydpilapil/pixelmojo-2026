@@ -26,9 +26,14 @@ export default function WorksClient() {
         </div>
 
         {/* Projects Grid */}
-        <div className='grid grid-cols-1 gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto mb-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8 max-w-7xl mx-auto mb-12'>
           {displayedWorks.map((work, index) => (
-            <PortfolioCard key={work.slug} work={work} index={index} />
+            <PortfolioCard
+              key={work.slug}
+              work={work}
+              index={index}
+              layout='grid'
+            />
           ))}
         </div>
 

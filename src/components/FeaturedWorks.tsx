@@ -27,6 +27,7 @@ interface PortfolioStripProps {
   work: WorkItem
   index: number
   className?: string
+  layout?: 'alternating' | 'grid'
 }
 
 // Category configuration
@@ -65,6 +66,7 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
   work,
   index,
   className = '',
+  layout = 'alternating',
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const config = categoryConfig[work.category] || {
@@ -88,10 +90,18 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
         aria-label={`View ${work.title} case study`}
       >
         <div
-          className={`h-full flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} transition-all duration-500`}
+          className={`h-full flex flex-col ${
+            layout === 'grid'
+              ? 'md:flex-col'
+              : index % 2 === 0
+                ? 'md:flex-row'
+                : 'md:flex-row-reverse'
+          } transition-all duration-500`}
         >
           {/* Cover Image */}
-          <div className='relative aspect-[3/2] w-full md:w-[360px] flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5'>
+          <div
+            className={`relative aspect-[3/2] w-full ${layout === 'grid' ? 'md:w-full' : 'md:w-[360px]'} flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5`}
+          >
             {/* Loading shimmer */}
             {!imageLoaded && (
               <div className='absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer' />

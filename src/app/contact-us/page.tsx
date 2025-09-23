@@ -541,11 +541,11 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Cigna Work Preview - Full Width, Edge to Edge, No Gap */}
+      {/* Footer Visual - Full Width, Edge to Edge, No Gap */}
       <div className='w-full'>
         <img
-          src='/cigna-contact-footer.png'
-          alt='Cigna project preview - AI-powered healthcare solution'
+          src='/pixelmojo-footer-image.png'
+          alt='Pixelmojo design showcase - AI-powered product development visual'
           className='w-full h-auto block'
           loading='lazy'
         />

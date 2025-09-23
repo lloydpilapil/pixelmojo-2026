@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import HeroVisual from '@/components/HeroVisual'
 import ServicesGrid from './ServicesGrid'
 
 export const metadata: Metadata = {
@@ -28,10 +28,14 @@ export default function Services() {
         </p>
       </div>
 
-      {/* Scroll-Animated Video Section */}
-      <ScrollVideoSection
-        videoId='1098410997'
-        coverImage='/our-services-cover.webp'
+      {/* Hero Visual Section */}
+      <HeroVisual
+        src='/pixelmojo-service-hero-image.webp'
+        alt='Pixelmojo AI product development services - complete ecosystems that generate revenue from day one'
+        priority
+        animation='reveal'
+        variant='contained'
+        caption='Complete AI product ecosystems built to generate measurable revenue from day one'
       />
 
       {/* Value Proposition Section */}
