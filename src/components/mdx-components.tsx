@@ -1,5 +1,6 @@
 // mdx-components.tsx
 import React from 'react'
+import Image from 'next/image'
 import type { MDXComponents } from 'mdx/types'
 import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
@@ -173,11 +174,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Images (for standard markdown images)
     img: ({ src, alt, ...props }) => (
-      <img
+      <Image
         src={src}
         alt={alt || ''}
+        width={800}
+        height={400}
         className='rounded-lg my-6 w-full shadow-lg'
-        loading='lazy'
         {...props}
       />
     ),
