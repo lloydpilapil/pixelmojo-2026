@@ -6,6 +6,7 @@ import ServicesPreview from '@/components/ServicesPreview'
 import TestimonialSection from '@/components/TestimonialSection'
 import FeaturedWorks from '@/components/FeaturedWorks'
 import OurApproach from '@/components/OurApproach'
+import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
   title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
@@ -21,44 +22,52 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className='container mx-auto px-4 py-16 animate-fade-in'>
-      <Hero
-        title={
-          <>
-            We build <span className='text-primary'>AI products</span> that
-            actually <span className='text-accent'>ship</span> and{' '}
-            <span className='text-growth'>sell.</span>
-          </>
-        }
-        description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
-        ctaText='See How We Ship'
-        ctaHref='/about'
-        proofPoints={[]}
+    <div className='animate-fade-in'>
+      <div className='container mx-auto px-4 py-16'>
+        <Hero
+          title={
+            <>
+              We build <span className='text-primary'>AI products</span> that
+              actually <span className='text-accent'>ship</span> and{' '}
+              <span className='text-growth'>sell.</span>
+            </>
+          }
+          description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
+          ctaText='See How We Ship'
+          ctaHref='/about'
+          proofPoints={[]}
+        />
+
+        {/* Hero Visual Section */}
+        <HeroVisual
+          src='/pixelmojo-hero-home-visual.webp'
+          alt='Pixelmojo AI-powered design sprint process showing user research, rapid prototyping, and iterative testing workflow for SaaS product development'
+          priority
+          animation='reveal'
+          caption='Our proven AI + design sprint methodology that helps SaaS teams ship user-validated products faster than traditional development cycles'
+        />
+
+        {/* Company Logos Section */}
+        <CompanyLogos />
+
+        {/* Services Preview Section */}
+        <ServicesPreview />
+
+        {/* Testimonial Section */}
+        <TestimonialSection />
+
+        {/* Featured Works Section */}
+        <FeaturedWorks />
+
+        {/* Our Approach Section */}
+        <OurApproach />
+      </div>
+
+      {/* Recent Articles Section with Footer Visual */}
+      <RecentArticles
+        footerImage='/pixelmojo-hero-home-footer-visual.png'
+        footerImageAlt='Pixelmojo portfolio showcase - comprehensive AI product development solutions'
       />
-
-      {/* Hero Visual Section */}
-      <HeroVisual
-        src='/pixelmojo-hero-home-visual.webp'
-        alt='Pixelmojo AI-powered design sprint process showing user research, rapid prototyping, and iterative testing workflow for SaaS product development'
-        priority
-        animation='reveal'
-        caption='Our proven AI + design sprint methodology that helps SaaS teams ship user-validated products faster than traditional development cycles'
-      />
-
-      {/* Company Logos Section */}
-      <CompanyLogos />
-
-      {/* Services Preview Section */}
-      <ServicesPreview />
-
-      {/* Testimonial Section */}
-      <TestimonialSection />
-
-      {/* Featured Works Section */}
-      <FeaturedWorks />
-
-      {/* Our Approach Section */}
-      <OurApproach />
     </div>
   )
 }

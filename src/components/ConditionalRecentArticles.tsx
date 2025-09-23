@@ -9,6 +9,7 @@ const ConditionalRecentArticles = () => {
 
   // Don't show RecentArticles on these pages
   const shouldHideRecentArticles =
+    pathname === '/' ||
     pathname.startsWith('/blog') ||
     pathname.includes('/contact') ||
     pathname.includes('/thank-you') ||
