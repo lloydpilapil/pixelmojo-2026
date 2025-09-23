@@ -159,6 +159,16 @@ export default function AboutClient() {
           </div>
         </div>
 
+        {/* About Visual Section */}
+        <HeroVisual
+          src='/pixelmojo-about-02-image.webp'
+          alt='Pixelmojo team collaboration and project development process showcasing unified strategy, design, and development workflow'
+          animation='reveal'
+          variant='contained'
+          className='mt-16 mb-12'
+          caption='Our integrated approach brings strategy, design, and development together under one roof, eliminating vendor chaos and ensuring every project ships with measurable impact.'
+        />
+
         {/* Proven Results Section */}
         <div className='mt-16 max-w-6xl mx-auto'>
           <h2
