@@ -292,6 +292,7 @@ export default function Header() {
                     ? 'hover:bg-[var(--header-search-hover)] focus-visible:bg-[var(--header-search-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--header-text)] focus-visible:ring-offset-transparent'
                     : 'hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary text-foreground'
                 }`}
+                style={theme ? { color: theme.textColor } : {}}
                 aria-label='Search'
               >
                 <Search className='w-5 h-5' />
@@ -299,7 +300,7 @@ export default function Header() {
             </div>
 
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <ThemeToggle serviceTheme={theme} />
 
             {/* Desktop CTA with dynamic variant */}
             <div>
