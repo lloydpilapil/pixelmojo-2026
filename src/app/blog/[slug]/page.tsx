@@ -25,7 +25,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostProps) {
-  const { slug } = params
+  const { slug } = await params
   const post = allPosts.find(post => post._raw.flattenedPath === slug)
 
   if (!post) {
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
-  const { slug } = params
+  const { slug } = await params
   const post = allPosts.find(post => post._raw.flattenedPath === slug)
 
   if (!post) {
