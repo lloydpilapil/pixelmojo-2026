@@ -25,7 +25,7 @@ export function BlogPostImage({
     <div
       data-blog-layout='full'
       className={cn(
-        'w-full rounded-lg overflow-hidden mb-8',
+        'w-full rounded-lg overflow-hidden mb-8 relative',
         aspectClasses[aspectRatio],
         className
       )}
@@ -34,7 +34,7 @@ export function BlogPostImage({
         src={src || '/placeholder.svg'}
         alt={alt}
         fill
-        className='w-full h-full object-cover'
+        className='object-cover'
       />
     </div>
   )
