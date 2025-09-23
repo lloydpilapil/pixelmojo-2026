@@ -1,13 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface CompanyLogosProps {
   title?: string
   logos?: Array<{
     name: string
-    src: string
+    light: string
+    dark: string
     height?: number
   }>
 }
@@ -15,29 +16,80 @@ interface CompanyLogosProps {
 const CompanyLogos = ({
   title = 'Helping Fortune 500 and startups grow smarter, faster, and stronger',
   logos = [
-    { name: 'Egis', src: '/egis-vector-logo.svg', height: 40 },
-    { name: 'Got Volunteers', src: '/got-volunteers-min.png', height: 40 },
+    {
+      name: 'Egis',
+      light: '/egis-vector-logo-light.svg',
+      dark: '/egis-vector-logo-dark.svg',
+      height: 40,
+    },
+    {
+      name: 'Got Volunteers',
+      light: '/got-volunteers-min-light.png',
+      dark: '/got-volunteers-min-dark.png',
+      height: 40,
+    },
     {
       name: 'Parsons Corporation',
-      src: '/parsons-corporation-vector-logo-2022.svg',
+      light: '/parsons-corporation-vector-logo-2022-light.svg',
+      dark: '/parsons-corporation-vector-logo-2022-dark.svg',
       height: 40,
     },
     {
       name: 'Road Runner Logistics',
-      src: '/road-runner-logistics.svg',
+      light: '/road-runner-logistics-light.svg',
+      dark: '/road-runner-logistics-dark.svg',
       height: 40,
     },
-    { name: 'Salesforce', src: '/Salesforce.svg', height: 40 },
-    { name: 'Vlocity', src: '/vlocity-logo.svg', height: 40 },
+    {
+      name: 'Salesforce',
+      light: '/Salesforce-light.svg',
+      dark: '/Salesforce-dark.svg',
+      height: 40,
+    },
+    {
+      name: 'Vlocity',
+      light: '/vlocity-logo-light.svg',
+      dark: '/vlocity-logo-dark.svg',
+      height: 40,
+    },
   ],
 }: CompanyLogosProps) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+
+  useEffect(() => {
+    // Get current theme from document
+    const currentTheme = document.documentElement.getAttribute('data-theme') as
+      | 'light'
+      | 'dark'
+    setTheme(currentTheme || 'dark')
+
+    // Listen for theme changes
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute(
+            'data-theme'
+          ) as 'light' | 'dark'
+          setTheme(newTheme || 'dark')
+        }
+      })
+    })
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className='py-20 overflow-hidden'>
       <div className='container mx-auto px-4'>
         <h2 className='text-center mb-6 !text-xl md:!text-2xl lg:!text-3xl'>
           {title}
         </h2>
-        <p className='text-center text-muted max-w-3xl mx-auto mb-32 text-lg leading-relaxed'>
+        <p className='text-center text-muted-foreground max-w-3xl mx-auto mb-32 text-lg leading-relaxed'>
           Trusted by industry leaders across sectors, from Fortune 500
           enterprises to innovative startups driving digital transformation.
         </p>
@@ -58,13 +110,16 @@ const CompanyLogos = ({
               >
                 <div className='w-full h-full flex items-center justify-center'>
                   <Image
-                    src={logo.src}
+                    src={theme === 'dark' ? logo.dark : logo.light}
                     alt={logo.name}
                     width={0}
                     height={logo.height || 40}
                     className='object-contain w-auto'
                     quality={100}
-                    unoptimized={logo.src.includes('.png')}
+                    unoptimized={(theme === 'dark'
+                      ? logo.dark
+                      : logo.light
+                    ).includes('.png')}
                     style={{
                       height: `${logo.height || 40}px`,
                       imageRendering: 'crisp-edges',
@@ -81,13 +136,16 @@ const CompanyLogos = ({
               >
                 <div className='w-full h-full flex items-center justify-center'>
                   <Image
-                    src={logo.src}
+                    src={theme === 'dark' ? logo.dark : logo.light}
                     alt={logo.name}
                     width={0}
                     height={logo.height || 40}
                     className='object-contain w-auto'
                     quality={100}
-                    unoptimized={logo.src.includes('.png')}
+                    unoptimized={(theme === 'dark'
+                      ? logo.dark
+                      : logo.light
+                    ).includes('.png')}
                     style={{
                       height: `${logo.height || 40}px`,
                       imageRendering: 'crisp-edges',

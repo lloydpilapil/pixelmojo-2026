@@ -12,16 +12,15 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ serviceTheme }: ThemeToggleProps = {}) {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
   useEffect(() => {
-    // Check for saved theme or default to system preference
+    // Check current theme from HTML first, then saved theme, then default to dark
+    const currentHtmlTheme = document.documentElement.getAttribute(
+      'data-theme'
+    ) as 'light' | 'dark' | null
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
-      ? 'dark'
-      : 'light'
-    const initialTheme = savedTheme || systemTheme
+    const initialTheme = savedTheme || currentHtmlTheme || 'dark'
 
     setTheme(initialTheme)
     document.documentElement.setAttribute('data-theme', initialTheme)

@@ -28,7 +28,6 @@ const TestimonialSection = ({
       authorTitle: 'Principal Research Engineer, Salesforce AI research',
       authorCompany: 'Salesforce',
       authorImage: '/frank-wang.webp',
-      companyLogo: '/Salesforce.svg',
     },
     // Add your other testimonials here
     {
@@ -155,7 +154,7 @@ const TestimonialSection = ({
                     <div className='flex items-center justify-center gap-4'>
                       {/* Author Image */}
                       {testimonial.authorImage && (
-                        <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/20 shadow-lg'>
+                        <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden shadow-lg'>
                           <Image
                             src={testimonial.authorImage}
                             alt={testimonial.authorName}
