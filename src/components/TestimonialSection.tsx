@@ -108,7 +108,7 @@ const TestimonialSection = ({
       <div className='container mx-auto px-4'>
         <div className='mx-auto max-w-6xl'>
           {/* Special Card with Enhanced Background */}
-          <div className='relative overflow-hidden rounded-3xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 shadow-xl shadow-slate-900/5 p-12 lg:p-16'>
+          <div className='relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/30 shadow-xl p-12 lg:p-16'>
             {/* Decorative Elements */}
             <div
               aria-hidden='true'
@@ -146,7 +146,7 @@ const TestimonialSection = ({
 
                     {/* Quote - Large and Centered */}
                     <blockquote className='text-center mb-10 lg:mb-12'>
-                      <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-slate-800 dark:text-slate-100'>
+                      <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-foreground'>
                         "{testimonial.quote}"
                       </p>
                     </blockquote>
@@ -155,7 +155,7 @@ const TestimonialSection = ({
                     <div className='flex items-center justify-center gap-4'>
                       {/* Author Image */}
                       {testimonial.authorImage && (
-                        <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/20 dark:ring-slate-600/50 shadow-lg'>
+                        <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden ring-2 ring-primary/20 shadow-lg'>
                           <Image
                             src={testimonial.authorImage}
                             alt={testimonial.authorName}
@@ -168,10 +168,10 @@ const TestimonialSection = ({
 
                       {/* Author Details - Simple Text */}
                       <div className='text-left max-w-sm'>
-                        <div className='font-semibold text-slate-800 dark:text-slate-100'>
+                        <div className='font-semibold text-foreground'>
                           {testimonial.authorName}
                         </div>
-                        <div className='text-sm text-slate-600 dark:text-slate-300'>
+                        <div className='text-sm text-muted-foreground'>
                           {testimonial.authorTitle}
                         </div>
                         {testimonial.authorCompany && (
@@ -185,7 +185,7 @@ const TestimonialSection = ({
                                 className='opacity-60'
                               />
                             )}
-                            <span className='text-sm text-slate-600 dark:text-slate-300'>
+                            <span className='text-sm text-muted-foreground'>
                               {testimonial.authorCompany}
                             </span>
                           </div>
@@ -202,7 +202,7 @@ const TestimonialSection = ({
                   <button
                     type='button'
                     onClick={prevTestimonial}
-                    className='flex h-8 w-8 items-center justify-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors'
+                    className='flex h-8 w-8 items-center justify-center text-muted-foreground hover:text-foreground transition-colors'
                     aria-label='Previous testimonial'
                   >
                     <ChevronLeft className='h-4 w-4' />
@@ -214,15 +214,15 @@ const TestimonialSection = ({
                         key={index}
                         type='button'
                         onClick={() => startTransition(index)}
-                        className='group p-1'
+                        className='p-1'
                         aria-label={`Go to testimonial ${index + 1}`}
                         aria-pressed={index === currentIndex}
                       >
                         <span
-                          className={`block h-1.5 w-1.5 rounded-full transition-all ${
+                          className={`block h-2 w-2 rounded-full border transition-all ${
                             index === currentIndex
-                              ? 'bg-slate-600 dark:bg-slate-300 scale-125'
-                              : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500'
+                              ? 'bg-primary border-primary'
+                              : 'bg-transparent border-foreground/50 hover:border-foreground hover:bg-foreground/20'
                           }`}
                         />
                       </button>
@@ -232,7 +232,7 @@ const TestimonialSection = ({
                   <button
                     type='button'
                     onClick={nextTestimonial}
-                    className='flex h-8 w-8 items-center justify-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors'
+                    className='flex h-8 w-8 items-center justify-center text-muted-foreground hover:text-foreground transition-colors'
                     aria-label='Next testimonial'
                   >
                     <ChevronRight className='h-4 w-4' />
