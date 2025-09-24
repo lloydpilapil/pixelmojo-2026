@@ -161,7 +161,7 @@ export default function AboutClient() {
 
         {/* About Visual Section */}
         <HeroVisual
-          src='/pixelmojo-about-02-image.webp'
+          src='/pixelmojo-hero-home-visual.webp'
           alt='Pixelmojo team collaboration and project development process showcasing unified strategy, design, and development workflow'
           animation='reveal'
           variant='contained'
