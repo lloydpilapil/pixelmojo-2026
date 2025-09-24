@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Moon, Sun } from 'lucide-react'
+import { ScrollTooltip } from '@/components/ui/ScrollTooltip'
 
 interface ThemeToggleProps {
   serviceTheme?: {
@@ -9,9 +10,13 @@ interface ThemeToggleProps {
     mutedTextColor: string
     isDark: boolean
   } | null
+  showScrollTooltip?: boolean
 }
 
-export function ThemeToggle({ serviceTheme }: ThemeToggleProps = {}) {
+export function ThemeToggle({
+  serviceTheme,
+  showScrollTooltip = true,
+}: ThemeToggleProps = {}) {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export function ThemeToggle({ serviceTheme }: ThemeToggleProps = {}) {
     document.documentElement.setAttribute('data-theme', newTheme)
   }
 
-  return (
+  const button = (
     <button
       onClick={toggleTheme}
       className={`p-2 transition-colors duration-200 rounded-full ${
@@ -51,4 +56,19 @@ export function ThemeToggle({ serviceTheme }: ThemeToggleProps = {}) {
       )}
     </button>
   )
+
+  if (showScrollTooltip) {
+    return (
+      <ScrollTooltip
+        content='Switch modes'
+        scrollThreshold={200}
+        autoDismissDelay={5000}
+        storageKey='theme-scroll-tooltip-seen'
+      >
+        {button}
+      </ScrollTooltip>
+    )
+  }
+
+  return button
 }
