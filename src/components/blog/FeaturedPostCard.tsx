@@ -30,6 +30,7 @@ export function FeaturedPostCard({ post }: FeaturedPostCardProps) {
               alt={post.title}
               fill
               className='object-cover transition-transform duration-500 group-hover:scale-105'
+              quality={95}
             />
           </div>
 
@@ -75,6 +76,7 @@ export function FeaturedPostCard({ post }: FeaturedPostCardProps) {
               alt={post.title}
               fill
               className='object-cover transition-transform duration-500 group-hover:scale-105'
+              quality={95}
             />
           </div>
 

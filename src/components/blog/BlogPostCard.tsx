@@ -85,6 +85,7 @@ export function BlogPostCard({
             alt={post.title}
             fill
             className='object-cover group-hover:scale-105 transition-transform duration-300'
+            quality={95}
           />
         </div>
 

@@ -35,6 +35,7 @@ export function BlogPostImage({
         alt={alt}
         fill
         className='object-cover'
+        quality={95}
       />
     </div>
   )

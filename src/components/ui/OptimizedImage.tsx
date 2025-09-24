@@ -27,7 +27,7 @@ export default function OptimizedImage({
   containerClassName,
   width = 1920,
   height = 1080,
-  quality = 85,
+  quality = 95,
   ...props
 }: OptimizedImageProps) {
   // Generate responsive sizes based on common breakpoints
@@ -82,7 +82,7 @@ export function HeroImage({ className, ...props }: OptimizedImageProps) {
   return (
     <OptimizedImage
       priority
-      quality={90}
+      quality={95}
       aspectRatio='wide'
       className={cn('rounded-xl', className)}
       sizes='100vw'
@@ -95,7 +95,7 @@ export function ThumbnailImage({ className, ...props }: OptimizedImageProps) {
   return (
     <OptimizedImage
       aspectRatio='landscape'
-      quality={80}
+      quality={95}
       className={cn('rounded-lg', className)}
       sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
       {...props}
@@ -107,7 +107,7 @@ export function ProfileImage({ className, ...props }: OptimizedImageProps) {
   return (
     <OptimizedImage
       aspectRatio='square'
-      quality={90}
+      quality={95}
       className={cn('rounded-full', className)}
       sizes='(max-width: 768px) 20vw, 10vw'
       {...props}
@@ -118,7 +118,7 @@ export function ProfileImage({ className, ...props }: OptimizedImageProps) {
 export function FullWidthImage({ className, ...props }: OptimizedImageProps) {
   return (
     <OptimizedImage
-      quality={85}
+      quality={95}
       className={cn('w-full h-auto', className)}
       sizes='100vw'
       {...props}

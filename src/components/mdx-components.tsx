@@ -180,6 +180,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         width={800}
         height={400}
         className='rounded-lg my-6 w-full shadow-lg'
+        quality={95}
         {...props}
       />
     ),
