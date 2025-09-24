@@ -160,11 +160,6 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Divider */}
-        <div className='max-w-4xl mx-auto mb-12'>
-          <div className='h-px bg-gray-300'></div>
-        </div>
-
         {/* Progressive Form Layout */}
         <div className='max-w-4xl mx-auto'>
           {/* Form Container */}
