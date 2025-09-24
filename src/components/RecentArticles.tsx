@@ -114,6 +114,7 @@ const RecentArticles = ({
             className='w-full h-auto block'
             priority={false}
             sizes='100vw'
+            quality={95}
           />
         </div>
       )}
