@@ -495,7 +495,7 @@ export default function Header() {
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
-          backgroundColor: theme?.bg || '#FBF8F2',
+          backgroundColor: theme?.bg || 'hsl(var(--background))',
         }}
       >
         {/* Mobile Menu Header */}
@@ -587,9 +587,12 @@ export default function Header() {
                         className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation relative ${
                           isActiveNav(item.href, true, item.label)
                             ? 'text-primary bg-primary/5 border-l-4 border-primary'
-                            : 'text-foreground hover:text-primary'
+                            : 'hover:text-primary'
                         }`}
-                        style={{ minHeight: '44px' }}
+                        style={{
+                          minHeight: '44px',
+                          color: theme?.textColor || 'hsl(var(--foreground))',
+                        }}
                       >
                         <span>{item.label}</span>
                         <svg
@@ -632,7 +635,12 @@ export default function Header() {
                                   setIsMobileServicesOpen(false)
                                   setIsMobileWorksOpen(false)
                                 }}
-                                className='block text-base text-muted-foreground hover:text-primary transition-colors duration-200 py-2 px-3 rounded hover:bg-muted/30'
+                                className='block text-base hover:text-primary transition-colors duration-200 py-2 px-3 rounded hover:bg-muted/30'
+                                style={{
+                                  color:
+                                    theme?.mutedTextColor ||
+                                    'hsl(var(--muted-foreground))',
+                                }}
                               >
                                 {subItem.label}
                               </Link>
@@ -652,9 +660,12 @@ export default function Header() {
                       className={`block text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation ${
                         isActiveNav(item.href)
                           ? 'text-primary bg-primary/5 border-l-4 border-primary'
-                          : 'text-foreground hover:text-primary'
+                          : 'hover:text-primary'
                       }`}
-                      style={{ minHeight: '44px' }}
+                      style={{
+                        minHeight: '44px',
+                        color: theme?.textColor || 'hsl(var(--foreground))',
+                      }}
                     >
                       {item.label}
                     </Link>
