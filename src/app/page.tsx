@@ -40,7 +40,7 @@ export default function Home() {
 
         {/* Hero Visual Section */}
         <HeroVisual
-          src='/pixelmojo-hero-home-visual.webp'
+          src='/pixelmojo-about-02-image.webp'
           alt='Pixelmojo AI-powered design sprint process showing user research, rapid prototyping, and iterative testing workflow for SaaS product development'
           priority
           animation='reveal'
