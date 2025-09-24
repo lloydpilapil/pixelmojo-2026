@@ -46,10 +46,12 @@ export default function Home() {
           animation='reveal'
           caption='Our proven AI + design sprint methodology that helps SaaS teams ship user-validated products faster than traditional development cycles'
         />
+      </div>
 
-        {/* Company Logos Section */}
-        <CompanyLogos />
+      {/* Company Logos Section - Full Width */}
+      <CompanyLogos />
 
+      <div className='container mx-auto px-4 py-16 animate-fade-in'>
         {/* Services Preview Section */}
         <ServicesPreview />
 

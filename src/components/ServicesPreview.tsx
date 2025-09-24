@@ -133,7 +133,7 @@ const ServicesPreview = ({
                   style={cardStyle}
                 >
                   {service.featured && (
-                    <div className='absolute -top-2 -right-2 bg-growth text-growth-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg'>
+                    <div className='absolute -top-2 -right-2 bg-cta text-cta-foreground text-xs font-semibold px-3 py-1 rounded-full shadow-lg'>
                       Featured
                     </div>
                   )}
