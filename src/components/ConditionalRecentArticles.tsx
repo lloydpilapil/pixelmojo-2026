@@ -23,6 +23,7 @@ const ConditionalRecentArticles = () => {
   // Check if we're on a service page and get the theme
   const isServicePage =
     pathname.startsWith('/services/') && pathname !== '/services'
+  const isServicesOverview = pathname === '/services'
   let theme = null
 
   if (isServicePage) {
@@ -33,7 +34,16 @@ const ConditionalRecentArticles = () => {
     }
   }
 
-  return <RecentArticles theme={theme} />
+  // Add footer image for services overview page
+  const footerImageProps = isServicesOverview
+    ? {
+        footerImage: '/pixelmojo-services-footer-image.webp',
+        footerImageAlt:
+          'Pixelmojo services overview - comprehensive AI product development solutions',
+      }
+    : {}
+
+  return <RecentArticles theme={theme} {...footerImageProps} />
 }
 
 export default ConditionalRecentArticles
