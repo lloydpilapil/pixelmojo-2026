@@ -664,7 +664,7 @@ export default function Header() {
             </ul>
 
             {/* Mobile CTA */}
-            <div className='px-4'>
+            <div className='px-4 space-y-4'>
               <LinkButton
                 href={navigationConfig.ctaButton.href}
                 variant='default'
@@ -678,6 +678,21 @@ export default function Header() {
               >
                 {navigationConfig.ctaButton.label}
               </LinkButton>
+
+              {/* Mobile Theme Toggle */}
+              <div className='flex items-center justify-center'>
+                <div className='flex items-center gap-3 p-3 rounded-lg border border-border bg-muted/30'>
+                  <span
+                    className='text-sm font-medium'
+                    style={{
+                      color: theme?.textColor || 'var(--foreground)',
+                    }}
+                  >
+                    Theme
+                  </span>
+                  <ThemeToggle serviceTheme={theme} />
+                </div>
+              </div>
             </div>
           </nav>
         </div>
