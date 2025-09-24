@@ -495,7 +495,7 @@ export default function Header() {
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
-          backgroundColor: theme?.bg || 'hsl(var(--background))',
+          backgroundColor: theme?.bg || 'var(--background)',
         }}
       >
         {/* Mobile Menu Header */}
@@ -591,7 +591,7 @@ export default function Header() {
                         }`}
                         style={{
                           minHeight: '44px',
-                          color: theme?.textColor || 'hsl(var(--foreground))',
+                          color: theme?.textColor || 'var(--foreground)',
                         }}
                       >
                         <span>{item.label}</span>
@@ -639,7 +639,7 @@ export default function Header() {
                                 style={{
                                   color:
                                     theme?.mutedTextColor ||
-                                    'hsl(var(--muted-foreground))',
+                                    'var(--muted-foreground)',
                                 }}
                               >
                                 {subItem.label}
@@ -664,7 +664,7 @@ export default function Header() {
                       }`}
                       style={{
                         minHeight: '44px',
-                        color: theme?.textColor || 'hsl(var(--foreground))',
+                        color: theme?.textColor || 'var(--foreground)',
                       }}
                     >
                       {item.label}
