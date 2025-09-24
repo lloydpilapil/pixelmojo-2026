@@ -341,7 +341,7 @@ export default function Header() {
                   isMobileMenuOpen ? 'top-2.5 rotate-45' : 'top-0'
                 }`}
                 style={{
-                  backgroundColor: theme?.textColor || '#374151',
+                  backgroundColor: theme?.textColor || 'var(--foreground)',
                 }}
               />
               <span
@@ -351,7 +351,7 @@ export default function Header() {
                     : 'opacity-100 scale-100'
                 }`}
                 style={{
-                  backgroundColor: theme?.textColor || '#374151',
+                  backgroundColor: theme?.textColor || 'var(--foreground)',
                 }}
               />
               <span
@@ -359,7 +359,7 @@ export default function Header() {
                   isMobileMenuOpen ? 'top-2.5 -rotate-45' : 'top-5'
                 }`}
                 style={{
-                  backgroundColor: theme?.textColor || '#374151',
+                  backgroundColor: theme?.textColor || 'var(--foreground)',
                 }}
               />
             </div>
