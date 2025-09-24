@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* Recent Articles Section with Footer Visual */}
       <RecentArticles
-        footerImage='/pixelmojo-hero-home-footer-visual.png'
+        footerImage='/pixelmojo-hero-home-footer--new-visual.png'
         footerImageAlt='Pixelmojo portfolio showcase - comprehensive AI product development solutions'
       />
     </div>
