@@ -193,10 +193,16 @@ export default function RevenueFirstDesign() {
         {/* Process Section Header */}
         <LenisFadeIn delay={600}>
           <div className='text-center mb-20'>
-            <h2 style={{ color: theme.textColor }}>
+            <h2
+              className='max-w-4xl mx-auto'
+              style={{ color: theme.textColor }}
+            >
               Strategic Brand Development Process
             </h2>
-            <p style={{ color: theme.mutedTextColor }}>
+            <p
+              className='max-w-3xl mx-auto'
+              style={{ color: theme.mutedTextColor }}
+            >
               Our proven methodology transforms your vision into a powerful
               brand system that drives business results.
             </p>
@@ -207,7 +213,7 @@ export default function RevenueFirstDesign() {
         <LenisStaggered
           delay={700}
           staggerDelay={150}
-          className='max-w-6xl mx-auto mb-20'
+          className='w-full px-4 mb-20'
         >
           <div className='relative'>
             {/* Horizontal line - hidden on mobile */}

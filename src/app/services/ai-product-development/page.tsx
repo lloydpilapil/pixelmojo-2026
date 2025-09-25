@@ -195,10 +195,16 @@ export default function AIProductDevelopment() {
         {/* Process Section Header */}
         <LenisFadeIn delay={600}>
           <div className='text-center mb-20'>
-            <h2 style={{ color: theme.textColor }}>
+            <h2
+              className='max-w-4xl mx-auto'
+              style={{ color: theme.textColor }}
+            >
               Our Proven Path to Digital Excellence
             </h2>
-            <p style={{ color: theme.mutedTextColor }}>
+            <p
+              className='max-w-3xl mx-auto'
+              style={{ color: theme.mutedTextColor }}
+            >
               When you partner with Pixelmojo, we follow a rigorous, transparent
               process to guarantee superior results.
             </p>
@@ -209,7 +215,7 @@ export default function AIProductDevelopment() {
         <LenisStaggered
           delay={700}
           staggerDelay={150}
-          className='max-w-6xl mx-auto mb-20'
+          className='w-full px-4 mb-20'
         >
           <div className='relative'>
             {/* Horizontal line - hidden on mobile */}
