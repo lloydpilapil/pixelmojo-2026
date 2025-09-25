@@ -88,6 +88,107 @@ export default function AIProductDevelopment() {
           </div>
         </LenisFadeIn>
 
+        {/* Who It's For / Outcomes / KPIs Section */}
+        <LenisFadeIn delay={250}>
+          <div className='mb-20'>
+            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+              {/* Who It's For */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Who This Is For
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• SaaS startups ready to scale</li>
+                  <li>• Product teams at Series A-B companies</li>
+                  <li>• Enterprises launching digital products</li>
+                  <li>• Teams replacing legacy interfaces</li>
+                </ul>
+              </div>
+
+              {/* Outcomes Timeline */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Outcomes You'll See
+                </h3>
+                <div
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <p>
+                    <strong>30 days:</strong> Validated user personas & core
+                    features
+                  </p>
+                  <p>
+                    <strong>60 days:</strong> Working MVP with AI functionality
+                  </p>
+                  <p>
+                    <strong>90 days:</strong> User-tested product ready for
+                    launch
+                  </p>
+                </div>
+              </div>
+
+              {/* Sample KPIs */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  What You'll Achieve
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• 3x faster time-to-market</li>
+                  <li>• 60%+ user engagement increase</li>
+                  <li>• 40%+ revenue growth post-launch</li>
+                  <li>• 80%+ reduction in development costs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LenisFadeIn>
+
         {/* Value Proposition Section */}
         <LenisFadeIn delay={300}>
           <div className='text-center mb-20'>

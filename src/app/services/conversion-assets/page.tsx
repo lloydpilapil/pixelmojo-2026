@@ -89,6 +89,105 @@ export default function ConversionAssets() {
           </div>
         </LenisFadeIn>
 
+        {/* Who It's For / Outcomes / KPIs Section */}
+        <LenisFadeIn delay={250}>
+          <div className='mb-20'>
+            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+              {/* Who It's For */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Who This Is For
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• Startups pitching to investors</li>
+                  <li>• Marketing teams needing assets</li>
+                  <li>• Sales teams requiring materials</li>
+                  <li>• Educators creating content</li>
+                </ul>
+              </div>
+
+              {/* Outcomes Timeline */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Outcomes You'll See
+                </h3>
+                <div
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <p>
+                    <strong>7 days:</strong> Asset strategy & concept approval
+                  </p>
+                  <p>
+                    <strong>14 days:</strong> First draft designs & feedback
+                  </p>
+                  <p>
+                    <strong>21 days:</strong> Final polished assets delivered
+                  </p>
+                </div>
+              </div>
+
+              {/* Sample KPIs */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  What You'll Achieve
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• Close deals 2x faster</li>
+                  <li>• Get 60%+ more meeting requests</li>
+                  <li>• Win 45%+ more pitch competitions</li>
+                  <li>• Generate 3x qualified leads</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LenisFadeIn>
+
         {/* Value Proposition Section */}
         <LenisFadeIn delay={300}>
           <div className='text-center mb-20'>

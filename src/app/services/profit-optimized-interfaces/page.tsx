@@ -89,6 +89,106 @@ export default function ProfitOptimizedInterfaces() {
           </div>
         </LenisFadeIn>
 
+        {/* Who It's For / Outcomes / KPIs Section */}
+        <LenisFadeIn delay={250}>
+          <div className='mb-20'>
+            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+              {/* Who It's For */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Who This Is For
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• E-commerce businesses</li>
+                  <li>• SaaS platforms needing redesign</li>
+                  <li>• Mobile app development teams</li>
+                  <li>• Enterprise software companies</li>
+                </ul>
+              </div>
+
+              {/* Outcomes Timeline */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Outcomes You'll See
+                </h3>
+                <div
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <p>
+                    <strong>30 days:</strong> Design system & development setup
+                  </p>
+                  <p>
+                    <strong>60 days:</strong> MVP interface & core functionality
+                  </p>
+                  <p>
+                    <strong>90 days:</strong> Full launch & performance
+                    optimization
+                  </p>
+                </div>
+              </div>
+
+              {/* Sample KPIs */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  What You'll Achieve
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• 2x higher conversion rates</li>
+                  <li>• 50%+ increase in user retention</li>
+                  <li>• 35%+ boost in mobile revenue</li>
+                  <li>• Reduced support tickets by 40%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LenisFadeIn>
+
         {/* Value Proposition Section */}
         <LenisFadeIn delay={300}>
           <div className='text-center mb-20'>

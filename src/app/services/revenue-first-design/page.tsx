@@ -88,6 +88,107 @@ export default function RevenueFirstDesign() {
           </div>
         </LenisFadeIn>
 
+        {/* Who It's For / Outcomes / KPIs Section */}
+        <LenisFadeIn delay={250}>
+          <div className='mb-20'>
+            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+              {/* Who It's For */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Who This Is For
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• B2B companies needing brand refresh</li>
+                  <li>• Startups launching to market</li>
+                  <li>• Scale-ups rebranding for growth</li>
+                  <li>• Companies with low brand recognition</li>
+                </ul>
+              </div>
+
+              {/* Outcomes Timeline */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  Outcomes You'll See
+                </h3>
+                <div
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <p>
+                    <strong>30 days:</strong> Complete brand strategy & visual
+                    identity
+                  </p>
+                  <p>
+                    <strong>60 days:</strong> Full brand system & asset library
+                  </p>
+                  <p>
+                    <strong>90 days:</strong> Measurable brand awareness
+                    increase
+                  </p>
+                </div>
+              </div>
+
+              {/* Sample KPIs */}
+              <div
+                className='p-6 rounded-xl border'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.05)'
+                    : 'rgba(0, 0, 0, 0.05)',
+                  borderColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <h3
+                  className='font-semibold mb-3'
+                  style={{ color: theme.textColor }}
+                >
+                  What You'll Achieve
+                </h3>
+                <ul
+                  className='text-sm space-y-2'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>• Command premium pricing</li>
+                  <li>• Convert 15%+ more visitors</li>
+                  <li>• Build engaged community</li>
+                  <li>• Attract higher-quality leads</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LenisFadeIn>
+
         {/* Value Proposition Section */}
         <LenisFadeIn delay={300}>
           <div className='text-center mb-20'>
