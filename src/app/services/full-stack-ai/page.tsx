@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import { LinkButton } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { getServiceTheme } from '@/utils/serviceThemes'
@@ -69,13 +69,24 @@ export default function FullStackAI() {
           </div>
         </LenisFadeIn>
 
-        {/* Video Section */}
+        {/* Image Section */}
         <LenisFadeIn delay={200}>
-          <ScrollVideoSection
-            videoId='1098410997'
-            coverImage='/our-services-cover.webp'
-            className='mb-16'
-          />
+          <div className='mb-16'>
+            <OptimizedImage
+              src='/pixelmojo-services-full-stack-ai.webp'
+              alt='Full-Stack AI Implementation - Beyond code: high-performance development framework'
+              aspectRatio='video'
+              className='rounded-xl'
+              priority
+            />
+            <p
+              className='text-center mt-4 text-sm'
+              style={{ color: theme.mutedTextColor }}
+            >
+              Comprehensive development solutions that integrate cutting-edge AI
+              with proven engineering practices
+            </p>
+          </div>
         </LenisFadeIn>
 
         {/* Value Proposition Section */}

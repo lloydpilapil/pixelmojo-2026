@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import { LinkButton } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { getServiceTheme } from '@/utils/serviceThemes'
@@ -68,13 +68,24 @@ export default function AIProductDevelopment() {
           </div>
         </LenisFadeIn>
 
-        {/* Video Section */}
+        {/* Image Section */}
         <LenisFadeIn delay={200}>
-          <ScrollVideoSection
-            videoId='1098410997'
-            coverImage='/our-services-cover.webp'
-            className='mb-16'
-          />
+          <div className='mb-16'>
+            <OptimizedImage
+              src='/pixelmojo-services-ai-product-development.webp'
+              alt='AI Product Development - Transform digital products into growth engines'
+              aspectRatio='video'
+              className='rounded-xl'
+              priority
+            />
+            <p
+              className='text-center mt-4 text-sm'
+              style={{ color: theme.mutedTextColor }}
+            >
+              Strategic AI integration that transforms user experiences into
+              conversion-driven interfaces
+            </p>
+          </div>
         </LenisFadeIn>
 
         {/* Value Proposition Section */}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import ScrollVideoSection from '@/components/ScrollVideoSection'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import { LinkButton } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import { getServiceTheme } from '@/utils/serviceThemes'
@@ -69,13 +69,24 @@ export default function ProfitOptimizedInterfaces() {
           </div>
         </LenisFadeIn>
 
-        {/* Video Section */}
+        {/* Image Section */}
         <LenisFadeIn delay={200}>
-          <ScrollVideoSection
-            videoId='1098410997'
-            coverImage='/our-services-cover.webp'
-            className='mb-16'
-          />
+          <div className='mb-16'>
+            <OptimizedImage
+              src='/pixelmojo-services-profit-optimized-interfaces.webp'
+              alt='Profit-Optimized Interfaces - Design that delights, technology that delivers'
+              aspectRatio='video'
+              className='rounded-xl'
+              priority
+            />
+            <p
+              className='text-center mt-4 text-sm'
+              style={{ color: theme.mutedTextColor }}
+            >
+              Seamless integration of beautiful design and robust technology for
+              interfaces users love
+            </p>
+          </div>
         </LenisFadeIn>
 
         {/* Value Proposition Section */}

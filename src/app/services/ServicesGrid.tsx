@@ -16,7 +16,7 @@ export default function ServicesGrid() {
         'Launch with paying customers',
         'Built-in growth metrics',
       ],
-      icon: '/ui_ux_design_solutions_services_thumb.svg',
+      icon: '/pixelmojo-services-ai-product-development.webp',
       href: '/services/ai-product-development',
     },
     {
@@ -29,7 +29,7 @@ export default function ServicesGrid() {
         'Direct impact on revenue metrics',
         'Ship-ready from sprint one',
       ],
-      icon: '/branding_services_thumb.svg',
+      icon: '/pixelmojo-services-revenue-first-design.webp',
       href: '/services/revenue-first-design',
     },
     {
@@ -42,7 +42,7 @@ export default function ServicesGrid() {
         'Revenue attribution built-in',
         'ROI visible in weeks',
       ],
-      icon: '/digital_marketing_services_thumb.svg',
+      icon: '/pixelmojo-services-ai-powered-growth.webp',
       href: '/services/ai-powered-growth',
     },
     {
@@ -55,7 +55,7 @@ export default function ServicesGrid() {
         'Churn prediction & prevention',
         'Measurable ARPU lift',
       ],
-      icon: '/web_app_design_services_thumb.svg',
+      icon: '/pixelmojo-services-profit-optimized-interfaces.webp',
       href: '/services/profit-optimized-interfaces',
     },
     {
@@ -68,7 +68,7 @@ export default function ServicesGrid() {
         'Conversion-validated designs',
         'Trackable impact on close rates',
       ],
-      icon: '/graphic_visual_design_services_thumb.svg',
+      icon: '/pixelmojo-services-conversion-assets.webp',
       href: '/services/conversion-assets',
     },
     {
@@ -81,7 +81,7 @@ export default function ServicesGrid() {
         'Revenue-focused roadmaps',
         'Self-funding growth cycles',
       ],
-      icon: '/creative_contents_services_thumb.svg',
+      icon: '/pixelmojo-services-full-stack-ai.webp',
       href: '/services/full-stack-ai',
     },
   ]
@@ -109,13 +109,13 @@ export default function ServicesGrid() {
               style={cardStyle}
             >
               {/* Icon */}
-              <div className='w-16 h-16 flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110'>
+              <div className='w-full aspect-[16/9] rounded-xl overflow-hidden mb-4 transition-all duration-300 group-hover:scale-110'>
                 <Image
                   src={service.icon}
                   alt={service.title}
-                  width={64}
-                  height={64}
-                  className='w-16 h-16'
+                  width={320}
+                  height={180}
+                  className='w-full h-full object-contain'
                 />
               </div>
 

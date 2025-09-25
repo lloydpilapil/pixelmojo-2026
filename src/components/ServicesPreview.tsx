@@ -32,7 +32,7 @@ const ServicesPreview = ({
       title: 'AI Product Development',
       description:
         'Ship complete AI products in 90 days flat. We architect, design, and deploy production-ready systems that generate revenue at launch, not someday.',
-      icon: '/ui_ux_design_solutions_services_thumb.svg',
+      icon: '/pixelmojo-services-ai-product-development.webp',
       href: '/services/ai-product-development',
       gradient: '',
       outcome: 'Launch with paying customers and predictable growth metrics.',
@@ -43,7 +43,7 @@ const ServicesPreview = ({
       title: 'Revenue-First Design Systems',
       description:
         'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
-      icon: '/branding_services_thumb.svg',
+      icon: '/pixelmojo-services-revenue-first-design.webp',
       href: '/services/revenue-first-design',
       gradient: '',
       outcome: 'Deploy brand assets that directly impact conversion rates.',
@@ -53,7 +53,7 @@ const ServicesPreview = ({
       title: 'AI-Powered Growth Engines',
       description:
         'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
-      icon: '/digital_marketing_services_thumb.svg',
+      icon: '/pixelmojo-services-ai-powered-growth.webp',
       href: '/services/ai-powered-growth',
       gradient: '',
       outcome:
@@ -64,7 +64,7 @@ const ServicesPreview = ({
       title: 'Profit-Optimized Interfaces',
       description:
         'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
-      icon: '/web_app_design_services_thumb.svg',
+      icon: '/pixelmojo-services-profit-optimized-interfaces.webp',
       href: '/services/profit-optimized-interfaces',
       gradient: '',
       outcome: 'Ship interfaces that increase ARPU measurably within 30 days.',
@@ -74,7 +74,7 @@ const ServicesPreview = ({
       title: 'Conversion Asset Systems',
       description:
         'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
-      icon: '/graphic_visual_design_services_thumb.svg',
+      icon: '/pixelmojo-services-conversion-assets.webp',
       href: '/services/conversion-assets',
       gradient: '',
       outcome:
@@ -85,7 +85,7 @@ const ServicesPreview = ({
       title: 'Full-Stack AI Implementation',
       description:
         'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
-      icon: '/creative_contents_services_thumb.svg',
+      icon: '/pixelmojo-services-full-stack-ai.webp',
       href: '/services/full-stack-ai',
       gradient: '',
       outcome: 'Release revenue-generating features that pay for themselves.',
@@ -144,13 +144,16 @@ const ServicesPreview = ({
                       Featured
                     </div>
                   )}
-                  <Image
-                    src={service.icon}
-                    alt={service.title}
-                    width={48}
-                    height={48}
-                    className='mb-3 h-12 w-12 transition-transform duration-300 group-hover:scale-105'
-                  />
+                  <div className='mb-4 w-full aspect-[16/9] rounded-xl overflow-hidden transition-transform duration-300 group-hover:scale-105'>
+                    <Image
+                      src={service.icon}
+                      alt={service.title}
+                      width={320}
+                      height={180}
+                      className='w-full h-full object-contain'
+                      sizes='320px'
+                    />
+                  </div>
                   <div className='flex-1 flex flex-col'>
                     <div className='space-y-3'>
                       <h3
