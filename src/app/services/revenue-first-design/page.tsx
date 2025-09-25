@@ -65,72 +65,10 @@ export default function RevenueFirstDesign() {
               visual identity into a competitive advantage that resonates with
               your target audience and accelerates business growth.
             </p>
-            <div className='max-w-4xl mx-auto mb-8'>
-              <div className='grid gap-6 md:grid-cols-2 text-left'>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    If This Sounds Familiar
-                  </h3>
-                  <p className='text-sm md:text-base leading-relaxed'>
-                    Assets feel disconnected, messaging shifts from channel to
-                    channel, and execs keep asking how brand spend maps to ARR.
-                    We align identity, demand, and enablement so buyers hear the
-                    same promise from deck to demo.
-                  </p>
-                </div>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    AI-Native Moves We Deploy
-                  </h3>
-                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
-                    <li>
-                      Figma Tokens + Style Dictionary agents publish multi-brand
-                      rules into production every night.
-                    </li>
-                    <li>
-                      Midjourney + Runway prompt libraries spin on-brand visuals
-                      with automatic compliance checks.
-                    </li>
-                    <li>
-                      Notion AI roll-ups push positioning updates into Webflow,
-                      pitch decks, and lifecycle copy with zero manual sync.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </LenisFadeIn>
 
-        {/* Image Section */}
+        {/* Image Section - Moved up for better flow */}
         <LenisFadeIn delay={200}>
           <div className='mb-16'>
             <OptimizedImage
@@ -147,6 +85,89 @@ export default function RevenueFirstDesign() {
               Visual brand systems engineered to capture attention and drive
               sustainable business growth
             </p>
+          </div>
+        </LenisFadeIn>
+
+        <LenisFadeIn delay={300}>
+          <div className='max-w-5xl mx-auto mb-20'>
+            <div className='grid gap-8 md:grid-cols-2 text-left'>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    01
+                  </span>
+                  If This Sounds Familiar
+                </h3>
+                <p
+                  className='text-sm md:text-base leading-relaxed'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Assets feel disconnected, messaging shifts from channel to
+                  channel, and execs keep asking how brand spend maps to ARR. We
+                  align identity, demand, and enablement so buyers hear the same
+                  promise from deck to demo.
+                </p>
+              </div>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    02
+                  </span>
+                  AI-Native Moves We Deploy
+                </h3>
+                <ul
+                  className='list-disc pl-5 space-y-2 text-sm md:text-base'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>
+                    Figma Tokens + Style Dictionary agents publish multi-brand
+                    rules into production every night.
+                  </li>
+                  <li>
+                    Midjourney + Runway prompt libraries spin on-brand visuals
+                    with automatic compliance checks.
+                  </li>
+                  <li>
+                    Notion AI roll-ups push positioning updates into Webflow,
+                    pitch decks, and lifecycle copy with zero manual sync.
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </LenisFadeIn>
 

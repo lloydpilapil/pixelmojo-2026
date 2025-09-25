@@ -66,72 +66,10 @@ export default function ProfitOptimizedInterfaces() {
               digital solutions that drive engagement, conversions, and business
               growth.
             </p>
-            <div className='max-w-4xl mx-auto mb-8'>
-              <div className='grid gap-6 md:grid-cols-2 text-left'>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    If This Sounds Familiar
-                  </h3>
-                  <p className='text-sm md:text-base leading-relaxed'>
-                    Funnels leak, churn spikes after onboarding, and
-                    stakeholders keep asking how design moves revenue. We
-                    translate experience problems into measurable profit levers
-                    your finance team trusts.
-                  </p>
-                </div>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    AI-Native Moves We Deploy
-                  </h3>
-                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
-                    <li>
-                      Personalization layers forecast LTV and serve the right
-                      variant in real time.
-                    </li>
-                    <li>
-                      Hotjar + FullStory streams feed a Claude auditor that
-                      flags friction before churn shows up in dashboards.
-                    </li>
-                    <li>
-                      Cohere re-write bots ship winning upsell copy instantly
-                      via LaunchDarkly toggles.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </LenisFadeIn>
 
-        {/* Image Section */}
+        {/* Image Section - Moved up for better flow */}
         <LenisFadeIn delay={200}>
           <div className='mb-16'>
             <OptimizedImage
@@ -151,8 +89,91 @@ export default function ProfitOptimizedInterfaces() {
           </div>
         </LenisFadeIn>
 
+        <LenisFadeIn delay={300}>
+          <div className='max-w-5xl mx-auto mb-20'>
+            <div className='grid gap-8 md:grid-cols-2 text-left'>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    01
+                  </span>
+                  If This Sounds Familiar
+                </h3>
+                <p
+                  className='text-sm md:text-base leading-relaxed'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Funnels leak, churn spikes after onboarding, and stakeholders
+                  keep asking how design moves revenue. We translate experience
+                  problems into measurable profit levers your finance team
+                  trusts.
+                </p>
+              </div>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    02
+                  </span>
+                  AI-Native Moves We Deploy
+                </h3>
+                <ul
+                  className='list-disc pl-5 space-y-2 text-sm md:text-base'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>
+                    Personalization layers forecast LTV and serve the right
+                    variant in real time.
+                  </li>
+                  <li>
+                    Hotjar + FullStory streams feed a Claude auditor that flags
+                    friction before churn shows up in dashboards.
+                  </li>
+                  <li>
+                    Cohere re-write bots ship winning upsell copy instantly via
+                    LaunchDarkly toggles.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </LenisFadeIn>
+
         {/* Who It's For / Outcomes / KPIs Section */}
-        <LenisFadeIn delay={250}>
+        <LenisFadeIn delay={300}>
           <div className='mb-20'>
             <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
               {/* Who It's For */}

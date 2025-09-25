@@ -65,72 +65,10 @@ export default function AIProductDevelopment() {
               insights to optimize every interaction for maximum business
               impact.
             </p>
-            <div className='max-w-4xl mx-auto mb-8'>
-              <div className='grid gap-6 md:grid-cols-2 text-left'>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    If This Sounds Familiar
-                  </h3>
-                  <p className='text-sm md:text-base leading-relaxed'>
-                    Roadmaps stall, experiments never reach paying users, and
-                    investors want traction receipts you can't surface fast
-                    enough. We translate board-level pressure into a sprint plan
-                    your teams can actually ship.
-                  </p>
-                </div>
-                <div
-                  className='rounded-xl border p-6 space-y-3'
-                  style={{
-                    backgroundColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.05)'
-                      : 'rgba(0, 0, 0, 0.05)',
-                    borderColor: theme.isDark
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(0, 0, 0, 0.1)',
-                    color: theme.mutedTextColor,
-                  }}
-                >
-                  <h3
-                    className='text-sm font-semibold uppercase tracking-wide'
-                    style={{ color: theme.textColor }}
-                  >
-                    AI-Native Moves We Deploy
-                  </h3>
-                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
-                    <li>
-                      Claude Sonnet + GPT-4o pair every sprint to pressure-test
-                      requirements before engineering commits.
-                    </li>
-                    <li>
-                      LangChain research ops pull live customer evidence so
-                      discovery decks stay grounded in reality.
-                    </li>
-                    <li>
-                      Mixpanel + dbt revenue loops auto-rank high-value flows as
-                      prototypes hit beta.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </LenisFadeIn>
 
-        {/* Image Section */}
+        {/* Image Section - Moved up for better flow */}
         <LenisFadeIn delay={200}>
           <div className='mb-16'>
             <OptimizedImage
@@ -147,6 +85,90 @@ export default function AIProductDevelopment() {
               Strategic AI integration that transforms user experiences into
               conversion-driven interfaces
             </p>
+          </div>
+        </LenisFadeIn>
+
+        {/* Empathy & Stack Cards */}
+        <LenisFadeIn delay={300}>
+          <div className='max-w-5xl mx-auto mb-20'>
+            <div className='grid gap-8 md:grid-cols-2 text-left'>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    01
+                  </span>
+                  If This Sounds Familiar
+                </h3>
+                <p
+                  className='text-sm md:text-base leading-relaxed'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Roadmaps stall, experiments never reach paying users, and
+                  investors want traction receipts faster than product can ship.
+                  We translate top-down pressure into a sprint plan your team
+                  can execute.
+                </p>
+              </div>
+              <div
+                className='rounded-xl border p-8 space-y-4'
+                style={{
+                  backgroundColor: theme.isDark
+                    ? 'rgba(255, 255, 255, 0.04)'
+                    : 'rgba(0, 0, 0, 0.04)',
+                  borderColor: theme.border,
+                }}
+              >
+                <h3
+                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
+                  style={{ color: theme.textColor }}
+                >
+                  <span
+                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
+                    style={{
+                      backgroundColor: theme.iconBg,
+                      color: theme.textColor,
+                    }}
+                  >
+                    02
+                  </span>
+                  AI-Native Moves We Deploy
+                </h3>
+                <ul
+                  className='list-disc pl-5 space-y-2 text-sm md:text-base'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  <li>
+                    Claude Sonnet + GPT-4o pair every sprint to pressure-test
+                    requirements before engineering commits.
+                  </li>
+                  <li>
+                    LangChain research ops pull live customer evidence so
+                    discovery decks stay grounded in reality.
+                  </li>
+                  <li>
+                    Mixpanel + dbt revenue loops auto-rank high-value flows as
+                    prototypes hit beta.
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </LenisFadeIn>
 

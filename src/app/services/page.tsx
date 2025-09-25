@@ -22,29 +22,43 @@ export default function Services() {
         <h1 className='mb-6 font-heading max-w-6xl mx-auto'>
           Complete AI products built to generate revenue, fast.
         </h1>
-        <p className='lead max-w-3xl mx-auto mb-8'>
+        <p className='lead max-w-3xl mx-auto mb-12'>
           No fragmented vendors. No endless discovery. We design, develop, and
           deploy complete ecosystems that ship in weeks and scale immediately.
         </p>
       </div>
 
-      <div className='max-w-5xl mx-auto mb-14'>
-        <div className='grid gap-6 md:grid-cols-2 text-left'>
-          <div className='rounded-xl border border-border bg-muted/30 p-6 space-y-3'>
-            <h2 className='text-sm font-semibold uppercase tracking-wide text-foreground/80'>
+      {/* Hero Visual Section - Moved before empathy cards */}
+      <HeroVisual
+        src='/pixelmojo-service-hero-image.webp'
+        alt='Pixelmojo AI product development services - complete ecosystems that generate revenue from day one'
+        priority
+        animation='reveal'
+        variant='contained'
+        caption='Complete AI product ecosystems built to generate measurable revenue from day one'
+      />
+
+      {/* Empathy Cards - After visual for better flow */}
+      <div className='max-w-5xl mx-auto mb-20 mt-16'>
+        <div className='grid gap-8 lg:grid-cols-2 text-left'>
+          {/* Problem Card - Subtle warning treatment */}
+          <div className='rounded-xl border border-destructive/20 bg-destructive/5 p-8 space-y-4'>
+            <h3 className='text-sm font-semibold uppercase tracking-wide text-destructive/80'>
               If This Sounds Familiar
-            </h2>
+            </h3>
             <p className='text-sm md:text-base leading-relaxed text-muted-foreground'>
               Roadmaps stall, growth teams fight disconnected tools, and execs
               demand proof that every sprint ties to revenue. Pixelmojo replaces
               guesswork with a unified build, launch, and scale motion.
             </p>
           </div>
-          <div className='rounded-xl border border-border bg-muted/30 p-6 space-y-3'>
-            <h2 className='text-sm font-semibold uppercase tracking-wide text-foreground/80'>
+
+          {/* Solution Card - Positive emphasis */}
+          <div className='rounded-xl border-2 border-primary/30 bg-primary/5 p-8 space-y-4'>
+            <h3 className='text-sm font-semibold uppercase tracking-wide text-primary'>
               AI-Native Moves We Deploy
-            </h2>
-            <ul className='list-disc pl-5 space-y-2 text-sm md:text-base text-muted-foreground'>
+            </h3>
+            <ol className='list-decimal pl-5 space-y-2 text-sm md:text-base text-foreground/90'>
               <li>
                 Dual-LLM sprint partners to validate ideas before code ships.
               </li>
@@ -54,20 +68,10 @@ export default function Services() {
               <li>
                 Revenue telemetry wired into every prototype from day one.
               </li>
-            </ul>
+            </ol>
           </div>
         </div>
       </div>
-
-      {/* Hero Visual Section */}
-      <HeroVisual
-        src='/pixelmojo-service-hero-image.webp'
-        alt='Pixelmojo AI product development services - complete ecosystems that generate revenue from day one'
-        priority
-        animation='reveal'
-        variant='contained'
-        caption='Complete AI product ecosystems built to generate measurable revenue from day one'
-      />
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
