@@ -7,6 +7,7 @@ import {
   LenisFadeIn,
   LenisStaggered,
 } from '@/components/animations/LenisReveal'
+import ServiceNavigation from '@/components/ServiceNavigation'
 
 const service = {
   title: 'Conversion Asset Systems',
@@ -44,14 +45,20 @@ export default function ConversionAssets() {
         {/* Hero Section */}
         <LenisFadeIn>
           <div className='text-center mb-12'>
+            <p
+              className='text-sm font-medium mb-4 uppercase tracking-wider'
+              style={{ color: theme.mutedTextColor }}
+            >
+              • Conversion Asset Systems
+            </p>
             <h1
-              className='mb-6 font-heading max-w-6xl mx-auto'
+              className='mb-6 font-heading max-w-7xl mx-auto'
               style={{ color: theme.textColor }}
             >
               Visuals That Speak Volumes, Designs That Drive Action
             </h1>
             <p
-              className='lead max-w-4xl mx-auto mb-8'
+              className='lead max-w-5xl mx-auto mb-8'
               style={{ color: theme.mutedTextColor }}
             >
               {service.description} Our strategic design approach transforms
@@ -336,6 +343,9 @@ export default function ConversionAssets() {
             </div>
           </div>
         </LenisStaggered>
+
+        {/* Service Navigation */}
+        <ServiceNavigation currentService='conversion-assets' theme={theme} />
       </div>
     </div>
   )

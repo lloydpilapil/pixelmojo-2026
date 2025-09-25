@@ -7,6 +7,7 @@ import {
   LenisFadeIn,
   LenisStaggered,
 } from '@/components/animations/LenisReveal'
+import ServiceNavigation from '@/components/ServiceNavigation'
 
 const service = {
   title: 'Profit-Optimized Interfaces',
@@ -44,14 +45,20 @@ export default function ProfitOptimizedInterfaces() {
         {/* Hero Section */}
         <LenisFadeIn>
           <div className='text-center mb-12'>
+            <p
+              className='text-sm font-medium mb-4 uppercase tracking-wider'
+              style={{ color: theme.mutedTextColor }}
+            >
+              • Profit-Optimized Interfaces
+            </p>
             <h1
-              className='mb-6 font-heading max-w-6xl mx-auto'
+              className='mb-6 font-heading max-w-7xl mx-auto'
               style={{ color: theme.textColor }}
             >
               Design That Delights, Technology That Delivers
             </h1>
             <p
-              className='lead max-w-4xl mx-auto mb-8'
+              className='lead max-w-5xl mx-auto mb-8'
               style={{ color: theme.mutedTextColor }}
             >
               {service.description} Our integrated approach combines exceptional
@@ -337,6 +344,12 @@ export default function ProfitOptimizedInterfaces() {
             </div>
           </div>
         </LenisStaggered>
+
+        {/* Service Navigation */}
+        <ServiceNavigation
+          currentService='profit-optimized-interfaces'
+          theme={theme}
+        />
       </div>
     </div>
   )

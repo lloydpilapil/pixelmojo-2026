@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface FAQItem {
@@ -47,45 +47,85 @@ export function BlogFAQ({
           const isOpen = openItem === faq.id
 
           return (
-            <div
+            <FAQItem
               key={faq.id}
-              className='border border-border rounded-lg overflow-hidden bg-card transition-all duration-200'
-            >
-              {/* Question Button */}
-              <button
-                onClick={() => setOpenItem(isOpen ? null : faq.id)}
-                className='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-muted/50 transition-colors'
-              >
-                <span className='font-medium text-base pr-4'>
-                  {faq.question}
-                </span>
-                <svg
-                  className={cn(
-                    'w-5 h-5 text-muted-foreground transition-transform duration-200',
-                    isOpen && 'rotate-180'
-                  )}
-                  fill='none'
-                  stroke='currentColor'
-                  viewBox='0 0 24 24'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M19 9l-7 7-7-7'
-                  />
-                </svg>
-              </button>
-
-              {/* Answer Content */}
-              {isOpen && (
-                <div className='px-6 pb-4'>
-                  <div className='text-muted-foreground'>{faq.answer}</div>
-                </div>
-              )}
-            </div>
+              faq={faq}
+              isOpen={isOpen}
+              onToggle={() => setOpenItem(isOpen ? null : faq.id)}
+            />
           )
         })}
+      </div>
+    </div>
+  )
+}
+
+// Individual FAQ Item with smooth animations
+function FAQItem({
+  faq,
+  isOpen,
+  onToggle,
+}: {
+  faq: FAQItem
+  isOpen: boolean
+  onToggle: () => void
+}) {
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState<string>('0px')
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(isOpen ? `${contentRef.current.scrollHeight}px` : '0px')
+    }
+  }, [isOpen])
+
+  return (
+    <div className='border border-border rounded-lg overflow-hidden bg-card transition-all duration-300 ease-out hover:shadow-sm'>
+      {/* Question Button */}
+      <button
+        onClick={onToggle}
+        className='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-muted/50 transition-colors duration-200'
+      >
+        <span className='font-medium text-base pr-4'>{faq.question}</span>
+        <svg
+          className={cn(
+            'w-5 h-5 text-muted-foreground transition-transform duration-300 ease-out',
+            isOpen && 'rotate-180'
+          )}
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth={2}
+            d='M19 9l-7 7-7-7'
+          />
+        </svg>
+      </button>
+
+      {/* Answer Content with smooth height animation */}
+      <div
+        style={{
+          height,
+          overflow: 'hidden',
+          transition: 'height 300ms ease-out',
+        }}
+      >
+        <div ref={contentRef} className='px-6 pb-4'>
+          <div
+            className={cn(
+              'text-muted-foreground transition-opacity duration-200',
+              isOpen ? 'opacity-100' : 'opacity-0'
+            )}
+            style={{
+              transitionDelay: isOpen ? '150ms' : '0ms',
+            }}
+          >
+            {faq.answer}
+          </div>
+        </div>
       </div>
     </div>
   )

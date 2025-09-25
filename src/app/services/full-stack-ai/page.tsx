@@ -7,6 +7,7 @@ import {
   LenisFadeIn,
   LenisStaggered,
 } from '@/components/animations/LenisReveal'
+import ServiceNavigation from '@/components/ServiceNavigation'
 
 const service = {
   title: 'Full-Stack AI Implementation',
@@ -44,14 +45,20 @@ export default function FullStackAI() {
         {/* Hero Section */}
         <LenisFadeIn>
           <div className='text-center mb-12'>
+            <p
+              className='text-sm font-medium mb-4 uppercase tracking-wider'
+              style={{ color: theme.mutedTextColor }}
+            >
+              • Full-Stack AI Implementation
+            </p>
             <h1
-              className='mb-6 font-heading max-w-6xl mx-auto'
+              className='mb-6 font-heading max-w-7xl mx-auto'
               style={{ color: theme.textColor }}
             >
               Beyond Code: High-Performance Development Framework
             </h1>
             <p
-              className='lead max-w-4xl mx-auto mb-8'
+              className='lead max-w-5xl mx-auto mb-8'
               style={{ color: theme.mutedTextColor }}
             >
               {service.description} Our comprehensive development approach
@@ -333,6 +340,9 @@ export default function FullStackAI() {
             </div>
           </div>
         </LenisStaggered>
+
+        {/* Service Navigation */}
+        <ServiceNavigation currentService='full-stack-ai' theme={theme} />
       </div>
     </div>
   )
