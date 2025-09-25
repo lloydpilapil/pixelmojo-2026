@@ -193,10 +193,14 @@ const ServicesPreview = ({
                   </div>
                   <LinkButtonWithArrow
                     href={service.href}
-                    variant='link'
+                    variant='outline'
                     arrowIcon='arrow'
-                    className='mt-6 self-start'
-                    style={{ color: 'var(--card-text)' }}
+                    className='mt-6 w-full'
+                    style={{
+                      borderColor: 'var(--card-text)',
+                      color: 'var(--card-text)',
+                      backgroundColor: 'transparent',
+                    }}
                     aria-label={`Learn more about ${service.title} services`}
                   >
                     Learn More
