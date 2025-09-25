@@ -9,13 +9,13 @@ import OurApproach from '@/components/OurApproach'
 import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
-  title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
+  title: 'AI Product Development & UX Design Agency | Pixelmojo',
   description:
-    'Pixelmojo orchestrates AI + design so SaaS roadmaps ship faster, mapping enablement to real user journeys and experiments teams can run today.',
+    'AI-native design and development agency that ships revenue-driving products. We fuse UX, engineering, and applied AI to deliver working products that validate with real users, in weeks not quarters.',
   openGraph: {
-    title: 'AI + Design Sprints for SaaS Roadmaps | Pixelmojo',
+    title: 'AI Product Development & UX Design Agency | Pixelmojo',
     description:
-      'Pixelmojo orchestrates AI + design so SaaS roadmaps ship faster, mapping enablement to real user journeys and experiments teams can run today.',
+      'AI-native design and development agency that ships revenue-driving products. We fuse UX, engineering, and applied AI to deliver working products that validate with real users, in weeks not quarters.',
     type: 'website',
   },
 }
@@ -25,7 +25,6 @@ export default function Home() {
     <div className='animate-fade-in'>
       <div className='container mx-auto px-4 py-16'>
         <Hero
-          eyebrow='• AI-Native Design Agency'
           title={
             <>
               We build <span className='text-primary'>AI products</span> that
@@ -33,7 +32,7 @@ export default function Home() {
               <span className='text-growth'>sell.</span>
             </>
           }
-          description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
+          description='We fuse UX, engineering, and applied AI to ship revenue-driving products—fast. While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
           ctaText='See How We Ship'
           ctaHref='/about'
           proofPoints={[]}
