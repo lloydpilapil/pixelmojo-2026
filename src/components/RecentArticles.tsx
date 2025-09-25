@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { allPosts } from 'contentlayer/generated'
 import { BlogPostCard } from '@/components/blog/BlogPostCard'
@@ -26,10 +28,33 @@ const RecentArticles = ({
   footerImage,
   footerImageAlt,
 }: RecentArticlesProps) => {
+  const footerImageRef = useRef<HTMLDivElement>(null)
+
   // Get the latest posts sorted by date
   const recentPosts = allPosts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit)
+
+  // Intersection Observer for footer image reveal
+  useEffect(() => {
+    if (!footerImage || !footerImageRef.current) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('footer-image-reveal')
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '-50px 0px',
+      }
+    )
+
+    observer.observe(footerImageRef.current)
+
+    return () => observer.disconnect()
+  }, [footerImage])
 
   if (recentPosts.length === 0) {
     return null
@@ -105,13 +130,13 @@ const RecentArticles = ({
 
       {/* Footer Visual - Full Width, Edge to Edge */}
       {footerImage && (
-        <div className='w-full'>
+        <div ref={footerImageRef} className='w-full footer-image-container'>
           <Image
             src={footerImage}
             alt={footerImageAlt || 'Footer visual'}
             width={2400}
-            height={648}
-            className='w-full h-auto block'
+            height={1159}
+            className='w-full h-auto block footer-image'
             priority={false}
             sizes='100vw'
             quality={95}
