@@ -26,12 +26,12 @@ interface ServicesPreviewProps {
 }
 
 const ServicesPreview = ({
-  title = 'Build AI Products That Actually Ship',
+  title = 'AI-Native Services That Deliver Results',
   services = [
     {
       title: 'AI Product Development',
       description:
-        'Ship AI products in as fast as 90 days. We architect, design, and deploy production-ready MVPs that validate with real users and generate early revenue.',
+        'What others call "UI/UX Design" — we call AI Product Development. Systems that learn from every interaction and optimize automatically for better outcomes.',
       icon: '/pixelmojo-services-ai-product-development-thumb.webp',
       href: '/services/ai-product-development',
       gradient: '',
@@ -42,7 +42,7 @@ const ServicesPreview = ({
     {
       title: 'Revenue-First Design Systems',
       description:
-        'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
+        'Traditional "Brand Identity" becomes Revenue-First Design Systems — visual systems powered by performance data, not just aesthetics.',
       icon: '/pixelmojo-services-revenue-first-design-thumb.webp',
       href: '/services/revenue-first-design',
       gradient: '',
@@ -52,7 +52,7 @@ const ServicesPreview = ({
     {
       title: 'AI-Powered Growth Engines',
       description:
-        'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
+        'Beyond "Marketing" — AI-Powered Growth Engines that learn customer behavior and optimize campaigns automatically for maximum ROI.',
       icon: '/pixelmojo-services-ai-powered-growth-thumb.webp',
       href: '/services/ai-powered-growth',
       gradient: '',
@@ -63,7 +63,7 @@ const ServicesPreview = ({
     {
       title: 'Profit-Optimized Interfaces',
       description:
-        'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+        'Web & App Design evolved into Profit-Optimized Interfaces — experiences that adapt in real-time to maximize revenue per user.',
       icon: '/pixelmojo-services-profit-optimized-interfaces-thumb.webp',
       href: '/services/profit-optimized-interfaces',
       gradient: '',
@@ -73,7 +73,7 @@ const ServicesPreview = ({
     {
       title: 'Conversion Asset Systems',
       description:
-        'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
+        'Graphics & Visuals become Conversion Asset Systems — every visual element backed by behavioral science and designed to drive action.',
       icon: '/pixelmojo-services-conversion-assets-thumb.webp',
       href: '/services/conversion-assets',
       gradient: '',
@@ -84,7 +84,7 @@ const ServicesPreview = ({
     {
       title: 'Full-Stack AI Implementation',
       description:
-        'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+        'Development Solutions transformed into Full-Stack AI Implementation — complete systems with intelligence built into the architecture from day one.',
       icon: '/pixelmojo-services-footer-image-thumb.webp',
       href: '/services/full-stack-ai',
       gradient: '',
@@ -104,10 +104,11 @@ const ServicesPreview = ({
         <LenisFadeIn className='mb-16 text-center'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted mx-auto max-w-3xl text-lg leading-relaxed'>
-            Complete product ecosystems that ship in weeks and scale
-            immediately. No fragmented vendors, no endless discovery.{' '}
+            We didn't rebrand traditional services — we rebuilt them as
+            AI-native systems. Every offering starts with intelligence, learns
+            from data, and optimizes automatically.{' '}
             <span className='text-primary font-medium'>
-              Design, develop, deploy, scale.
+              Smarter systems. Better outcomes.
             </span>
           </p>
         </LenisFadeIn>

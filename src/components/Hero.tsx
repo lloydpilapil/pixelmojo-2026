@@ -25,6 +25,7 @@ interface HeroProps {
   ctaText: string
   ctaHref: string
   className?: string
+  eyebrow?: string
   secondaryCta?: HeroSecondaryCta
   proofPoints?: HeroProofPoint[]
 }
@@ -35,6 +36,7 @@ export default function Hero({
   ctaText,
   ctaHref,
   className = '',
+  eyebrow,
   secondaryCta,
   proofPoints = [],
 }: HeroProps) {
@@ -42,6 +44,11 @@ export default function Hero({
     <section className={`text-center mb-40 mt-16 md:mt-24 ${className}`}>
       <LenisFadeIn delay={100}>
         <div className='text-center'>
+          {eyebrow && (
+            <p className='text-sm font-medium mb-4 uppercase tracking-wider text-muted-foreground'>
+              {eyebrow}
+            </p>
+          )}
           <h1 className='hero-title max-w-6xl mx-auto mb-10 md:mb-12'>
             {title}
           </h1>

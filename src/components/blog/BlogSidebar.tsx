@@ -17,7 +17,7 @@ export function BlogSidebar({
   showTOC = true,
   showCTA = true,
   ctaTitle = 'Ready to Ship Your AI Product?',
-  ctaDescription = 'Stop building features nobody wants. Start shipping products people pay for.',
+  ctaDescription = 'Build products people actually want to pay for.',
   ctaButtonText = 'Get Started',
   ctaButtonHref = '/contact',
 }: BlogSidebarProps) {

@@ -63,15 +63,15 @@ export default function AboutClient() {
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
         <h2 className='mb-6 max-w-6xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
-          Strategy to scale, all under one roof
+          From Agency to AI-Native Intelligence
         </h2>
         <div className='mx-auto max-w-6xl space-y-6 text-left md:text-center'>
           <p className='text-muted-foreground text-lg leading-relaxed'>
-            After 20+ years shipping products for enterprises and startups, I
-            built Pixelmojo to solve the vendor chaos problem. Instead of
-            juggling designers, developers, and AI consultants who don't talk to
-            each other, you get one unified team that owns the entire journey
-            from concept to customer.
+            In 2024, we made a decision that changed everything: rebuild
+            Pixelmojo as an AI-native company. Not adding AI tools to old
+            processes, but reimagining how digital products should be built when
+            intelligence is available from day one. We don't just deliver faster
+            — we deliver smarter.
           </p>
           <div className='grid gap-6 md:gap-8'>
             {/* Featured large card */}
