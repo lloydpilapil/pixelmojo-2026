@@ -16,7 +16,7 @@ export default function ServicesGrid() {
         'Launch with paying customers',
         'Built-in growth metrics',
       ],
-      icon: '/pixelmojo-services-ai-product-development.webp',
+      icon: '/pixelmojo-services-ai-product-development-thumb.webp',
       href: '/services/ai-product-development',
     },
     {
@@ -29,7 +29,7 @@ export default function ServicesGrid() {
         'Direct impact on revenue metrics',
         'Ship-ready from sprint one',
       ],
-      icon: '/pixelmojo-services-revenue-first-design.webp',
+      icon: '/pixelmojo-services-revenue-first-design-thumb.webp',
       href: '/services/revenue-first-design',
     },
     {
@@ -42,7 +42,7 @@ export default function ServicesGrid() {
         'Revenue attribution built-in',
         'ROI visible in weeks',
       ],
-      icon: '/pixelmojo-services-ai-powered-growth.webp',
+      icon: '/pixelmojo-services-ai-powered-growth-thumb.webp',
       href: '/services/ai-powered-growth',
     },
     {
@@ -55,7 +55,7 @@ export default function ServicesGrid() {
         'Churn prediction & prevention',
         'Measurable ARPU lift',
       ],
-      icon: '/pixelmojo-services-profit-optimized-interfaces.webp',
+      icon: '/pixelmojo-services-profit-optimized-interfaces-thumb.webp',
       href: '/services/profit-optimized-interfaces',
     },
     {
@@ -68,7 +68,7 @@ export default function ServicesGrid() {
         'Conversion-validated designs',
         'Trackable impact on close rates',
       ],
-      icon: '/pixelmojo-services-conversion-assets.webp',
+      icon: '/pixelmojo-services-conversion-assets-thumb.webp',
       href: '/services/conversion-assets',
     },
     {
@@ -81,7 +81,7 @@ export default function ServicesGrid() {
         'Revenue-focused roadmaps',
         'Self-funding growth cycles',
       ],
-      icon: '/pixelmojo-services-full-stack-ai.webp',
+      icon: '/pixelmojo-services-footer-image-thumb.webp',
       href: '/services/full-stack-ai',
     },
   ]
