@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -62,8 +62,67 @@ const TestimonialSection = ({
   const testimonialCount = testimonials.length
   const hasMultiple = testimonialCount > 1
   const [prevIndex, setPrevIndex] = useState<number | null>(null)
+  const [transitionDirection, setTransitionDirection] = useState<
+    'next' | 'prev' | null
+  >(null)
   const transitionTimeoutRef = useRef<number | null>(null)
-  const fadeDuration = 320
+  const fadeDuration = 800 // Extended for staggered transitions
+
+  // Refs for animations
+  const sectionRef = useRef<HTMLElement>(null)
+  const blob1Ref = useRef<HTMLDivElement>(null)
+  const blob2Ref = useRef<HTMLDivElement>(null)
+
+  // Progressive reveal animation
+  useEffect(() => {
+    if (!sectionRef.current) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('testimonial-reveal')
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '-50px 0px',
+      }
+    )
+
+    observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  // Parallax effect for background blobs
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!blob1Ref.current || !blob2Ref.current) return
+
+      const scrolled = window.scrollY
+      const rate1 = scrolled * -0.1 // Slow upward movement
+      const rate2 = scrolled * -0.15 // Slightly faster movement
+
+      blob1Ref.current.style.transform = `translate(-50%, -50%) translateY(${rate1}px)`
+      blob2Ref.current.style.transform = `translate(50%, 50%) translateY(${rate2}px)`
+    }
+
+    // Use Lenis scroll events if available
+    const lenis = (window as any).lenis
+    if (lenis) {
+      lenis.on('scroll', handleScroll)
+    } else {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+    }
+
+    return () => {
+      const lenis = (window as any).lenis
+      if (lenis) {
+        lenis.off('scroll', handleScroll)
+      } else {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
 
   React.useEffect(() => {
     return () => {
@@ -77,66 +136,108 @@ const TestimonialSection = ({
     return null
   }
 
-  const startTransition = (targetIndex: number) => {
+  const startTransition = (
+    targetIndex: number,
+    direction?: 'next' | 'prev'
+  ) => {
     if (!hasMultiple || targetIndex === currentIndex) return
 
     if (transitionTimeoutRef.current) {
       window.clearTimeout(transitionTimeoutRef.current)
     }
 
+    // Set transition direction for enhanced animations
+    setTransitionDirection(direction || null)
     setPrevIndex(currentIndex)
     setCurrentIndex(targetIndex)
+
     transitionTimeoutRef.current = window.setTimeout(() => {
       setPrevIndex(null)
+      setTransitionDirection(null)
     }, fadeDuration)
   }
 
   const nextTestimonial = () => {
-    startTransition((currentIndex + 1) % testimonialCount)
+    startTransition((currentIndex + 1) % testimonialCount, 'next')
   }
 
   const prevTestimonial = () => {
-    startTransition((currentIndex - 1 + testimonialCount) % testimonialCount)
+    startTransition(
+      (currentIndex - 1 + testimonialCount) % testimonialCount,
+      'prev'
+    )
   }
 
   const visibleIndices =
     prevIndex === null ? [currentIndex] : [prevIndex, currentIndex]
 
   return (
-    <section className='py-20'>
+    <section
+      ref={sectionRef}
+      className='testimonial-section py-20'
+      data-transition-direction={transitionDirection}
+    >
       <div className='container mx-auto px-4'>
         <div className='mx-auto max-w-6xl'>
           {/* Special Card with Enhanced Background */}
-          <div className='relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/30 shadow-xl p-12 lg:p-16'>
-            {/* Decorative Elements */}
+          <div className='testimonial-card relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/30 shadow-xl p-12 lg:p-16'>
+            {/* Decorative Elements with Parallax */}
             <div
+              ref={blob1Ref}
               aria-hidden='true'
-              className='absolute -top-32 -left-32 w-44 h-44 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl'
+              className='absolute top-0 left-0 w-44 h-44 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl'
+              style={{ transform: 'translate(-50%, -50%)' }}
             />
             <div
+              ref={blob2Ref}
               aria-hidden='true'
-              className='absolute -bottom-32 -right-32 w-44 h-44 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-full blur-3xl'
+              className='absolute bottom-0 right-0 w-44 h-44 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-full blur-3xl'
+              style={{ transform: 'translate(50%, 50%)' }}
             />
 
             {/* Content */}
-            <div className='relative z-10'>
+            <div className='testimonial-content relative z-10'>
               {visibleIndices.map(index => {
                 const testimonial =
                   testimonials[Math.min(index, testimonialCount - 1)]
                 const isActive = index === currentIndex
 
+                // Determine transition classes based on direction and state
+                const getTransitionClasses = () => {
+                  const baseClasses = 'testimonial-content-wrapper w-full'
+
+                  if (isActive) {
+                    return `${baseClasses} relative opacity-100 translate-x-0`
+                  } else {
+                    const exitDirection =
+                      transitionDirection === 'next'
+                        ? '-translate-x-8'
+                        : transitionDirection === 'prev'
+                          ? 'translate-x-8'
+                          : 'translate-y-3'
+                    return `${baseClasses} absolute inset-0 opacity-0 ${exitDirection} pointer-events-none`
+                  }
+                }
+
                 return (
                   <div
                     key={`testimonial-${index}`}
-                    className={`transition-all duration-300 ease-out ${
-                      isActive
-                        ? 'relative w-full opacity-100 translate-y-0'
-                        : 'absolute inset-0 w-full opacity-0 translate-y-3 pointer-events-none'
-                    }`}
+                    className={getTransitionClasses()}
+                    data-transition-direction={transitionDirection}
+                    style={
+                      {
+                        '--transition-direction':
+                          transitionDirection === 'next'
+                            ? '1'
+                            : transitionDirection === 'prev'
+                              ? '-1'
+                              : '0',
+                      } as React.CSSProperties
+                    }
                   >
                     {/* Headline */}
                     {testimonial.headline && (
-                      <div className='text-center mb-8'>
+                      <div className='testimonial-headline text-center mb-8'>
                         <span className='inline-block text-primary font-semibold text-sm uppercase tracking-wider'>
                           {testimonial.headline}
                         </span>
@@ -144,14 +245,14 @@ const TestimonialSection = ({
                     )}
 
                     {/* Quote - Large and Centered */}
-                    <blockquote className='text-center mb-10 lg:mb-12'>
+                    <blockquote className='testimonial-quote text-center mb-10 lg:mb-12'>
                       <p className='text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-foreground'>
                         "{testimonial.quote}"
                       </p>
                     </blockquote>
 
                     {/* Minimal Author Section */}
-                    <div className='flex items-center justify-center gap-4'>
+                    <div className='testimonial-author flex items-center justify-center gap-4'>
                       {/* Author Image */}
                       {testimonial.authorImage && (
                         <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden shadow-lg'>

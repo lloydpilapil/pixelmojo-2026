@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { LenisFadeIn } from '@/components/animations/LenisReveal'
 
 interface CompanyLogosProps {
   title?: string
@@ -86,76 +87,80 @@ const CompanyLogos = ({
   return (
     <section className='py-20 overflow-hidden'>
       <div className='container mx-auto px-4'>
-        <h2 className='text-center mb-6 !text-xl md:!text-2xl lg:!text-3xl'>
-          {title}
-        </h2>
-        <p className='text-center text-muted-foreground max-w-3xl mx-auto mb-32 text-lg leading-relaxed'>
-          Trusted by industry leaders across sectors, from Fortune 500
-          enterprises to innovative startups driving digital transformation.
-        </p>
+        <LenisFadeIn>
+          <h2 className='text-center mb-6 !text-xl md:!text-2xl lg:!text-3xl'>
+            {title}
+          </h2>
+          <p className='text-center text-muted-foreground max-w-3xl mx-auto mb-32 text-lg leading-relaxed'>
+            Trusted by industry leaders across sectors, from Fortune 500
+            enterprises to innovative startups driving digital transformation.
+          </p>
+        </LenisFadeIn>
 
-        <div className='relative w-full pt-16'>
-          {/* Left fade */}
-          <div className='absolute left-0 top-16 z-10 w-20 h-full bg-gradient-to-r from-background to-transparent pointer-events-none'></div>
+        <LenisFadeIn delay={200}>
+          <div className='relative w-full pt-16'>
+            {/* Left fade */}
+            <div className='absolute left-0 top-16 z-10 w-20 h-full bg-gradient-to-r from-background to-transparent pointer-events-none'></div>
 
-          {/* Right fade */}
-          <div className='absolute right-0 top-16 z-10 w-20 h-full bg-gradient-to-l from-background to-transparent pointer-events-none'></div>
+            {/* Right fade */}
+            <div className='absolute right-0 top-16 z-10 w-20 h-full bg-gradient-to-l from-background to-transparent pointer-events-none'></div>
 
-          <div className='flex animate-scroll'>
-            {/* First set of logos */}
-            {logos.map((logo, index) => (
-              <div
-                key={`first-${index}`}
-                className='flex-shrink-0 mx-8 w-40 h-20 flex items-center justify-center overflow-hidden'
-              >
-                <div className='w-full h-full flex items-center justify-center'>
-                  <Image
-                    src={theme === 'dark' ? logo.dark : logo.light}
-                    alt={logo.name}
-                    width={0}
-                    height={logo.height || 40}
-                    className='object-contain w-auto'
-                    quality={100}
-                    unoptimized={(theme === 'dark'
-                      ? logo.dark
-                      : logo.light
-                    ).includes('.png')}
-                    style={{
-                      height: `${logo.height || 40}px`,
-                      imageRendering: 'crisp-edges',
-                    }}
-                  />
+            <div className='flex animate-scroll'>
+              {/* First set of logos */}
+              {logos.map((logo, index) => (
+                <div
+                  key={`first-${index}`}
+                  className='flex-shrink-0 mx-8 w-40 h-20 flex items-center justify-center overflow-hidden'
+                >
+                  <div className='w-full h-full flex items-center justify-center'>
+                    <Image
+                      src={theme === 'dark' ? logo.dark : logo.light}
+                      alt={logo.name}
+                      width={0}
+                      height={logo.height || 40}
+                      className='object-contain w-auto'
+                      quality={100}
+                      unoptimized={(theme === 'dark'
+                        ? logo.dark
+                        : logo.light
+                      ).includes('.png')}
+                      style={{
+                        height: `${logo.height || 40}px`,
+                        imageRendering: 'crisp-edges',
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-            {/* Duplicate set for seamless scroll */}
-            {logos.map((logo, index) => (
-              <div
-                key={`second-${index}`}
-                className='flex-shrink-0 mx-8 w-40 h-20 flex items-center justify-center overflow-hidden'
-              >
-                <div className='w-full h-full flex items-center justify-center'>
-                  <Image
-                    src={theme === 'dark' ? logo.dark : logo.light}
-                    alt={logo.name}
-                    width={0}
-                    height={logo.height || 40}
-                    className='object-contain w-auto'
-                    quality={100}
-                    unoptimized={(theme === 'dark'
-                      ? logo.dark
-                      : logo.light
-                    ).includes('.png')}
-                    style={{
-                      height: `${logo.height || 40}px`,
-                      imageRendering: 'crisp-edges',
-                    }}
-                  />
+              ))}
+              {/* Duplicate set for seamless scroll */}
+              {logos.map((logo, index) => (
+                <div
+                  key={`second-${index}`}
+                  className='flex-shrink-0 mx-8 w-40 h-20 flex items-center justify-center overflow-hidden'
+                >
+                  <div className='w-full h-full flex items-center justify-center'>
+                    <Image
+                      src={theme === 'dark' ? logo.dark : logo.light}
+                      alt={logo.name}
+                      width={0}
+                      height={logo.height || 40}
+                      className='object-contain w-auto'
+                      quality={100}
+                      unoptimized={(theme === 'dark'
+                        ? logo.dark
+                        : logo.light
+                      ).includes('.png')}
+                      style={{
+                        height: `${logo.height || 40}px`,
+                        imageRendering: 'crisp-edges',
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </LenisFadeIn>
       </div>
     </section>
   )

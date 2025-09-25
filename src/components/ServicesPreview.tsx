@@ -4,6 +4,10 @@ import React from 'react'
 import Image from 'next/image'
 import { LinkButtonWithArrow } from '@/components/ui/button'
 import { getServiceTheme } from '@/utils/serviceThemes'
+import {
+  LenisFadeIn,
+  LenisStaggered,
+} from '@/components/animations/LenisReveal'
 
 interface ServiceItem {
   title: string
@@ -97,7 +101,7 @@ const ServicesPreview = ({
     <section className='py-20'>
       <div className='container mx-auto px-4'>
         {/* Header */}
-        <div className='mb-16 text-center'>
+        <LenisFadeIn className='mb-16 text-center'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted mx-auto max-w-3xl text-lg leading-relaxed'>
             Complete product ecosystems that ship in weeks and scale
@@ -106,10 +110,13 @@ const ServicesPreview = ({
               Design, develop, deploy, scale.
             </span>
           </p>
-        </div>
+        </LenisFadeIn>
 
         {/* Services Grid */}
-        <div className='mx-auto mb-12 grid max-w-6xl gap-8 md:grid-cols-2 xl:grid-cols-3 items-stretch'>
+        <LenisStaggered
+          staggerDelay={150}
+          className='mx-auto mb-12 grid max-w-6xl gap-8 md:grid-cols-2 xl:grid-cols-3 items-stretch'
+        >
           {services.map(service => {
             const theme = getServiceTheme(service.title)
             const cardStyle = {
@@ -195,10 +202,10 @@ const ServicesPreview = ({
               </div>
             )
           })}
-        </div>
+        </LenisStaggered>
 
         {/* Services Overview CTA */}
-        <div className='text-center'>
+        <LenisFadeIn delay={400} className='text-center'>
           <LinkButtonWithArrow
             href='/services'
             variant='default'
@@ -207,7 +214,7 @@ const ServicesPreview = ({
           >
             View All Services
           </LinkButtonWithArrow>
-        </div>
+        </LenisFadeIn>
       </div>
     </section>
   )

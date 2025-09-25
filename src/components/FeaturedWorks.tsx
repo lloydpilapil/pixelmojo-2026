@@ -16,6 +16,10 @@ import { LinkButtonWithArrow } from '@/components/ui/button'
 import { Tag } from '@/components/ui/tag'
 import { cn } from '@/lib/utils'
 import { WorkItem, getFeaturedWorks, generateAltText } from '@/data/works'
+import {
+  LenisFadeIn,
+  LenisStaggered,
+} from '@/components/animations/LenisReveal'
 
 interface FeaturedWorksProps {
   title?: string
@@ -196,25 +200,25 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
     <section className='py-16 md:py-20 lg:py-24 overflow-hidden'>
       <div className='container mx-auto px-4'>
         {/* Enhanced Header with animation */}
-        <div className='text-center mb-12 md:mb-16 lg:mb-20'>
-          <h2 className='mb-6 animate-fade-in'>{title}</h2>
-          <p
-            className='text-muted-foreground max-w-3xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in'
-            style={{ animationDelay: '100ms' }}
-          >
+        <LenisFadeIn className='text-center mb-12 md:mb-16 lg:mb-20'>
+          <h2 className='mb-6'>{title}</h2>
+          <p className='text-muted-foreground max-w-3xl mx-auto text-lg md:text-xl leading-relaxed'>
             {subtitle}
           </p>
-        </div>
+        </LenisFadeIn>
 
         {/* Portfolio Grid */}
-        <div className='grid grid-cols-1 gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto'>
+        <LenisStaggered
+          staggerDelay={200}
+          className='grid grid-cols-1 gap-6 md:gap-7 lg:gap-8 max-w-6xl mx-auto'
+        >
           {works.map((work, index) => (
             <PortfolioCard key={work.slug} work={work} index={index} />
           ))}
-        </div>
+        </LenisStaggered>
 
         {/* Enhanced View All Works CTA */}
-        <div className='text-center mt-16 md:mt-20'>
+        <LenisFadeIn delay={400} className='text-center mt-16 md:mt-20'>
           <LinkButtonWithArrow
             href='/works'
             variant='default'
@@ -224,7 +228,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
           >
             <span className='relative z-10'>View All Works</span>
           </LinkButtonWithArrow>
-        </div>
+        </LenisFadeIn>
       </div>
     </section>
   )

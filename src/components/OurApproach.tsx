@@ -1,6 +1,10 @@
 'use client'
 
 import React from 'react'
+import {
+  LenisFadeIn,
+  LenisStaggered,
+} from '@/components/animations/LenisReveal'
 
 interface ApproachStep {
   number: string
@@ -79,16 +83,19 @@ const OurApproach = ({
     <section className='py-16 md:py-20'>
       <div className='container mx-auto px-4'>
         {/* Header */}
-        <div className='text-center mb-12 md:mb-16'>
+        <LenisFadeIn className='text-center mb-12 md:mb-16'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed'>
             How we ship revenue-ready products in 90 days. Every phase is built
             to drive traction with real customers.
           </p>
-        </div>
+        </LenisFadeIn>
 
         {/* Cards - 2x2 grid on desktop, single column on mobile */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto'>
+        <LenisStaggered
+          staggerDelay={150}
+          className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto'
+        >
           {steps.map((step, index) => (
             <div key={index} className='group relative h-full'>
               {/* Card */}
@@ -133,7 +140,7 @@ const OurApproach = ({
               </div>
             </div>
           ))}
-        </div>
+        </LenisStaggered>
       </div>
     </section>
   )

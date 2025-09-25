@@ -1240,3 +1240,329 @@ article[class*="card"]:hover {
   opacity: 1;
   filter: blur(0);
 }
+
+/* Testimonial progressive reveal animations */
+.testimonial-section {
+  /* Initial state - elements hidden */
+}
+
+.testimonial-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-headline {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.2s;
+}
+
+.testimonial-quote {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.4s;
+}
+
+.testimonial-author {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.6s;
+}
+
+/* Revealed state - elegant staggered entrance */
+.testimonial-reveal .testimonial-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-reveal .testimonial-headline {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-reveal .testimonial-quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-reveal .testimonial-author {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced parallax blobs */
+.testimonial-card [aria-hidden="true"] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Enhanced transitions for next/prev navigation */
+.testimonial-content-wrapper {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Lenis-inspired easing */
+}
+
+/* Staggered element transitions during navigation */
+.testimonial-content-wrapper .testimonial-headline {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0s;
+}
+
+.testimonial-content-wrapper .testimonial-quote {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.1s;
+}
+
+.testimonial-content-wrapper .testimonial-author {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.2s;
+}
+
+/* Directional slide animations */
+.testimonial-content-wrapper[data-transition-direction="next"] .testimonial-headline {
+  transform: translateX(calc(20px * var(--transition-direction, 0)));
+}
+
+.testimonial-content-wrapper[data-transition-direction="next"] .testimonial-quote {
+  transform: translateX(calc(30px * var(--transition-direction, 0)));
+}
+
+.testimonial-content-wrapper[data-transition-direction="next"] .testimonial-author {
+  transform: translateX(calc(20px * var(--transition-direction, 0)));
+}
+
+.testimonial-content-wrapper[data-transition-direction="prev"] .testimonial-headline {
+  transform: translateX(calc(20px * var(--transition-direction, 0)));
+}
+
+.testimonial-content-wrapper[data-transition-direction="prev"] .testimonial-quote {
+  transform: translateX(calc(30px * var(--transition-direction, 0)));
+}
+
+.testimonial-content-wrapper[data-transition-direction="prev"] .testimonial-author {
+  transform: translateX(calc(20px * var(--transition-direction, 0)));
+}
+
+/* Enhanced parallax response during transitions */
+.testimonial-reveal[data-transition-direction] .testimonial-card [aria-hidden="true"]:first-child {
+  transform: translate(-50%, -50%) translateY(var(--parallax-offset, 0px))
+             translateX(calc(10px * var(--transition-direction, 0))) !important;
+}
+
+.testimonial-reveal[data-transition-direction] .testimonial-card [aria-hidden="true"]:last-child {
+  transform: translate(50%, 50%) translateY(var(--parallax-offset, 0px))
+             translateX(calc(-10px * var(--transition-direction, 0))) !important;
+}
+
+/* Smooth entrance for new testimonials */
+.testimonial-content-wrapper.relative .testimonial-headline,
+.testimonial-content-wrapper.relative .testimonial-quote,
+.testimonial-content-wrapper.relative .testimonial-author {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+}
+
+/* Accessibility - respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card,
+  .testimonial-headline,
+  .testimonial-quote,
+  .testimonial-author,
+  .testimonial-content-wrapper {
+    transform: none !important;
+    transition: opacity 0.3s ease;
+  }
+
+  .testimonial-card [aria-hidden="true"] {
+    transform: none !important;
+    will-change: auto;
+  }
+}
+
+/* ============================================
+   LENIS REVEAL ANIMATION SYSTEM
+   ============================================ */
+
+/* Base animation element */
+.lenis-reveal-element {
+  will-change: transform, opacity;
+  transition: all var(--lenis-duration, 600ms) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   FADE ANIMATIONS
+   ============================================ */
+.lenis-reveal-fade {
+  opacity: 0;
+}
+
+.lenis-reveal-fade.lenis-reveal-visible {
+  opacity: 1;
+}
+
+/* ============================================
+   SLIDE ANIMATIONS
+   ============================================ */
+.lenis-reveal-slide {
+  opacity: 0;
+}
+
+/* Default: slide up */
+.lenis-reveal-slide {
+  transform: translateY(40px);
+}
+
+.lenis-reveal-slide.lenis-reveal-down {
+  transform: translateY(-40px);
+}
+
+.lenis-reveal-slide.lenis-reveal-left {
+  transform: translateX(40px);
+}
+
+.lenis-reveal-slide.lenis-reveal-right {
+  transform: translateX(-40px);
+}
+
+.lenis-reveal-slide.lenis-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* ============================================
+   SCALE ANIMATIONS
+   ============================================ */
+.lenis-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.lenis-reveal-scale.lenis-reveal-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   STAGGERED ANIMATIONS
+   ============================================ */
+.lenis-reveal-staggered {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger children elements */
+.lenis-reveal-staggered > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--lenis-duration, 600ms) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(1) {
+  transition-delay: 0ms;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(2) {
+  transition-delay: var(--lenis-stagger-delay, 100ms);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(3) {
+  transition-delay: calc(var(--lenis-stagger-delay, 100ms) * 2);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(4) {
+  transition-delay: calc(var(--lenis-stagger-delay, 100ms) * 3);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(5) {
+  transition-delay: calc(var(--lenis-stagger-delay, 100ms) * 4);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lenis-reveal-staggered.lenis-reveal-visible > *:nth-child(n+6) {
+  transition-delay: calc(var(--lenis-stagger-delay, 100ms) * 5);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   PARALLAX ANIMATIONS
+   ============================================ */
+.lenis-reveal-parallax {
+  opacity: 0;
+  transform: translateY(60px) scale(1.05);
+  filter: blur(1px);
+}
+
+.lenis-reveal-parallax.lenis-reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+.lenis-reveal-element {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ============================================
+   ACCESSIBILITY - RESPECT REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .lenis-reveal-element,
+  .lenis-reveal-element > * {
+    transform: none !important;
+    filter: none !important;
+    transition: opacity 0.3s ease !important;
+    will-change: auto !important;
+  }
+
+  .lenis-reveal-element.lenis-reveal-visible,
+  .lenis-reveal-element.lenis-reveal-visible > * {
+    opacity: 1 !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .lenis-reveal-slide {
+    transform: translateY(20px);
+  }
+
+  .lenis-reveal-slide.lenis-reveal-left {
+    transform: translateX(20px);
+  }
+
+  .lenis-reveal-slide.lenis-reveal-right {
+    transform: translateX(-20px);
+  }
+
+  .lenis-reveal-parallax {
+    transform: translateY(30px) scale(1.02);
+  }
+
+  .lenis-reveal-staggered > * {
+    transform: translateY(15px);
+  }
+}
