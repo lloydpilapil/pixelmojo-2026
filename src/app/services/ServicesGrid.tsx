@@ -11,8 +11,8 @@ export default function ServicesGrid() {
       description:
         'Ship AI products in as fast as 90 days. Production-ready MVPs that validate with real users and generate early revenue.',
       features: [
-        'Full product architecture & AI integration',
-        'Revenue-validated user flows',
+        'Claude Sonnet + GPT-4o paired roadmapping',
+        'LangChain research ops wired to real users',
         'Launch with paying customers',
         'Built-in growth metrics',
       ],
@@ -25,7 +25,7 @@ export default function ServicesGrid() {
         'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
       features: [
         'Conversion-tested components',
-        'AI-enhanced interactions',
+        'Figma token bots sync brand + product libraries',
         'Direct impact on revenue metrics',
         'Ship-ready from sprint one',
       ],
@@ -37,7 +37,7 @@ export default function ServicesGrid() {
       description:
         'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
       features: [
-        'Intelligent lead qualification',
+        'LLM-powered lead scoring & enrichment',
         'Self-optimizing campaigns',
         'Revenue attribution built-in',
         'ROI visible in weeks',
@@ -51,7 +51,7 @@ export default function ServicesGrid() {
         'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
       features: [
         'Revenue-per-user optimization',
-        'Smart upsell timing',
+        'Real-time personalization via predictive models',
         'Churn prediction & prevention',
         'Measurable ARPU lift',
       ],
@@ -65,7 +65,7 @@ export default function ServicesGrid() {
       features: [
         'Battle-tested pitch templates',
         'Revenue-focused visual systems',
-        'Conversion-validated designs',
+        'Jasper + Gamma production automations',
         'Trackable impact on close rates',
       ],
       icon: '/pixelmojo-services-conversion-assets-thumb.webp',
@@ -77,7 +77,7 @@ export default function ServicesGrid() {
         'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
       features: [
         'Ship production features weekly',
-        'End-to-end deployment',
+        'Bedrock + Vertex orchestration',
         'Revenue-focused roadmaps',
         'Self-funding growth cycles',
       ],

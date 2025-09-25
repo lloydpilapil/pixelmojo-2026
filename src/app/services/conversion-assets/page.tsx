@@ -66,6 +66,68 @@ export default function ConversionAssets() {
               attention, communicate value, and inspire your audience to take
               action.
             </p>
+            <div className='max-w-4xl mx-auto mb-8'>
+              <div className='grid gap-6 md:grid-cols-2 text-left'>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    If This Sounds Familiar
+                  </h3>
+                  <p className='text-sm md:text-base leading-relaxed'>
+                    Decks fall flat, visuals stall in review, and founders
+                    rewrite copy at midnight. We blend brand voice, sales
+                    enablement, and analytics so every asset nudges a deal
+                    forward.
+                  </p>
+                </div>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    AI-Native Moves We Deploy
+                  </h3>
+                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
+                    <li>
+                      Jasper + Claude draft narratives that our editors tighten
+                      in minutes.
+                    </li>
+                    <li>
+                      Gamma + Pitch automations pipe in live CRM data for charts
+                      that update before the meeting.
+                    </li>
+                    <li>
+                      Synthesia + Descript pipelines spin micro-demos straight
+                      from product telemetry.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </LenisFadeIn>
 

@@ -66,6 +66,68 @@ export default function FullStackAI() {
               practices to deliver digital products that scale with your
               business and evolve with your needs.
             </p>
+            <div className='max-w-4xl mx-auto mb-8'>
+              <div className='grid gap-6 md:grid-cols-2 text-left'>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    If This Sounds Familiar
+                  </h3>
+                  <p className='text-sm md:text-base leading-relaxed'>
+                    Shipping slows down, vendor sprawl explodes, and infra tips
+                    over the minute growth hits. We bring a governed, AI-first
+                    delivery model so product, data, and platform teams finally
+                    row in the same direction.
+                  </p>
+                </div>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    AI-Native Moves We Deploy
+                  </h3>
+                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
+                    <li>
+                      Bedrock + Vertex pipelines route workloads to the right
+                      model based on latency and compliance.
+                    </li>
+                    <li>
+                      GitHub Copilot with Superhuman reviews keeps paired
+                      engineers shipping production slices every sprint.
+                    </li>
+                    <li>
+                      Dagster orchestrates LangChain, dbt, and Supabase so data,
+                      product, and analytics share one deployment rhythm.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </LenisFadeIn>
 

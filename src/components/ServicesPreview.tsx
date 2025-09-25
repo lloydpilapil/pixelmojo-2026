@@ -31,28 +31,28 @@ const ServicesPreview = ({
     {
       title: 'AI Product Development',
       description:
-        'What others call "UI/UX Design" — we call AI Product Development. Systems that learn from every interaction and optimize automatically for better outcomes.',
+        'What others call "UI/UX Design" — we call AI Product Development. Claude Sonnet + GPT-4o co-pilot every sprint so the system learns from each interaction and self-optimizes.',
       icon: '/pixelmojo-services-ai-product-development-thumb.webp',
       href: '/services/ai-product-development',
       gradient: '',
-      outcome: 'Launch with paying customers and predictable growth metrics.',
+      outcome: 'LangChain telemetry bakes growth metrics in before launch.',
       startingAt: 'From $15K',
       featured: true,
     },
     {
       title: 'Revenue-First Design Systems',
       description:
-        'Traditional "Brand Identity" becomes Revenue-First Design Systems — visual systems powered by performance data, not just aesthetics.',
+        'Traditional "Brand Identity" becomes Revenue-First Design Systems — Figma token bots, Midjourney assets, and performance data working in sync.',
       icon: '/pixelmojo-services-revenue-first-design-thumb.webp',
       href: '/services/revenue-first-design',
       gradient: '',
-      outcome: 'Deploy brand assets that directly impact conversion rates.',
+      outcome: 'Deploy brand assets that trigger measurable conversion lift.',
       startingAt: 'Starts at $9K',
     },
     {
       title: 'AI-Powered Growth Engines',
       description:
-        'Beyond "Marketing" — AI-Powered Growth Engines that learn customer behavior and optimize campaigns automatically for maximum ROI.',
+        'Beyond "Marketing" — AI-Powered Growth Engines with GPT-4o copy orchestration, HubSpot scoring, and Pinecone intent data for maximum ROI.',
       icon: '/pixelmojo-services-ai-powered-growth-thumb.webp',
       href: '/services/ai-powered-growth',
       gradient: '',
@@ -63,7 +63,7 @@ const ServicesPreview = ({
     {
       title: 'Profit-Optimized Interfaces',
       description:
-        'Web & App Design evolved into Profit-Optimized Interfaces — experiences that adapt in real-time to maximize revenue per user.',
+        'Web & App Design evolved into Profit-Optimized Interfaces — predictive personalization and experimentation that adapt in real-time to maximize revenue per user.',
       icon: '/pixelmojo-services-profit-optimized-interfaces-thumb.webp',
       href: '/services/profit-optimized-interfaces',
       gradient: '',
@@ -73,7 +73,7 @@ const ServicesPreview = ({
     {
       title: 'Conversion Asset Systems',
       description:
-        'Graphics & Visuals become Conversion Asset Systems — every visual element backed by behavioral science and designed to drive action.',
+        'Graphics & Visuals become Conversion Asset Systems — Jasper, Gamma, and Synthesia pipelines turning behavioral science into assets that drive action.',
       icon: '/pixelmojo-services-conversion-assets-thumb.webp',
       href: '/services/conversion-assets',
       gradient: '',
@@ -84,7 +84,7 @@ const ServicesPreview = ({
     {
       title: 'Full-Stack AI Implementation',
       description:
-        'Development Solutions transformed into Full-Stack AI Implementation — complete systems with intelligence built into the architecture from day one.',
+        'Development Solutions transformed into Full-Stack AI Implementation — Bedrock, LangChain, and Dagster orchestration with intelligence baked in from day one.',
       icon: '/pixelmojo-services-footer-image-thumb.webp',
       href: '/services/full-stack-ai',
       gradient: '',

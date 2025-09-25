@@ -28,6 +28,37 @@ export default function Services() {
         </p>
       </div>
 
+      <div className='max-w-5xl mx-auto mb-14'>
+        <div className='grid gap-6 md:grid-cols-2 text-left'>
+          <div className='rounded-xl border border-border bg-muted/30 p-6 space-y-3'>
+            <h2 className='text-sm font-semibold uppercase tracking-wide text-foreground/80'>
+              If This Sounds Familiar
+            </h2>
+            <p className='text-sm md:text-base leading-relaxed text-muted-foreground'>
+              Roadmaps stall, growth teams fight disconnected tools, and execs
+              demand proof that every sprint ties to revenue. Pixelmojo replaces
+              guesswork with a unified build, launch, and scale motion.
+            </p>
+          </div>
+          <div className='rounded-xl border border-border bg-muted/30 p-6 space-y-3'>
+            <h2 className='text-sm font-semibold uppercase tracking-wide text-foreground/80'>
+              AI-Native Moves We Deploy
+            </h2>
+            <ul className='list-disc pl-5 space-y-2 text-sm md:text-base text-muted-foreground'>
+              <li>
+                Dual-LLM sprint partners to validate ideas before code ships.
+              </li>
+              <li>
+                Automated research ops pulling live customer and market signals.
+              </li>
+              <li>
+                Revenue telemetry wired into every prototype from day one.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Visual Section */}
       <HeroVisual
         src='/pixelmojo-service-hero-image.webp'

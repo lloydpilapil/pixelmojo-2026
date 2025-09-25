@@ -66,6 +66,68 @@ export default function AIPoweredGrowth() {
               activation to transform your brand investment into measurable
               business results.
             </p>
+            <div className='max-w-4xl mx-auto mb-8'>
+              <div className='grid gap-6 md:grid-cols-2 text-left'>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    If This Sounds Familiar
+                  </h3>
+                  <p className='text-sm md:text-base leading-relaxed'>
+                    Paid campaigns burn budget, content sits unread, and sales
+                    is still asking where the pipeline went. We align brand,
+                    demand, and RevOps so every touchpoint compounds instead of
+                    cannibalizes.
+                  </p>
+                </div>
+                <div
+                  className='rounded-xl border p-6 space-y-3'
+                  style={{
+                    backgroundColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'rgba(0, 0, 0, 0.05)',
+                    borderColor: theme.isDark
+                      ? 'rgba(255, 255, 255, 0.1)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: theme.mutedTextColor,
+                  }}
+                >
+                  <h3
+                    className='text-sm font-semibold uppercase tracking-wide'
+                    style={{ color: theme.textColor }}
+                  >
+                    AI-Native Moves We Deploy
+                  </h3>
+                  <ul className='list-disc pl-5 space-y-2 text-sm md:text-base'>
+                    <li>
+                      GPT-4o + Claude 3 orchestrate omni-channel messaging so
+                      tone and timing stay consistent from ads to nurture flows.
+                    </li>
+                    <li>
+                      HubSpot lead scoring blends Pipedrive deal data with
+                      Pinecone intent signals for real-time prioritization.
+                    </li>
+                    <li>
+                      Make + Mutiny automations run continuous experiments on
+                      every micro-conversion.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </LenisFadeIn>
 
