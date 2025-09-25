@@ -86,8 +86,8 @@ const OurApproach = ({
         <LenisFadeIn className='text-center mb-12 md:mb-16'>
           <h2 className='mb-6'>{title}</h2>
           <p className='text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed'>
-            How we ship revenue-ready products in 90 days. Every phase is built
-            to drive traction with real customers.
+            How we typically ship revenue-ready MVPs in 90-120 days. Every phase
+            is built to validate and drive traction with real customers.
           </p>
         </LenisFadeIn>
 

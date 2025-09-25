@@ -35,7 +35,11 @@ export default function Home() {
           description='While others deliver endless strategy decks, we ship working products that validate with real users and real revenue, in weeks, not quarters.'
           ctaText='See How We Ship'
           ctaHref='/about'
-          proofPoints={[]}
+          proofPoints={[
+            { label: 'Typical Ship Time', value: '90-120 Days' },
+            { label: 'Products Launched', value: '47+' },
+            { label: 'ROI Generated', value: '12x' },
+          ]}
         />
 
         {/* Hero Visual Section */}

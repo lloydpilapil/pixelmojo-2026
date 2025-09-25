@@ -129,7 +129,7 @@ export default function ConversionAssets() {
                 border: `2px solid ${theme.textColor}`,
               }}
             >
-              Create Compelling Assets
+              Start Your Project
               <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
             </LinkButton>
           </div>

@@ -385,25 +385,31 @@ export default function AboutClient() {
                 <h3 className='font-heading text-xl mb-3'>
                   AI & Intelligence Stack
                 </h3>
-                <p className='text-muted-foreground text-sm mb-6'>
+                <p className='text-muted-foreground text-sm mb-2'>
                   Revenue-optimizing AI that learns and adapts
+                </p>
+                <p className='text-xs text-muted-foreground italic mb-4'>
+                  We leverage best-in-class AI models. Your data stays private &
+                  secure.
                 </p>
               </div>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>Claude Opus 4.1</span>
+                  <span className='text-sm font-medium'>Anthropic Claude</span>
                   <span className='text-xs text-muted-foreground-foreground'>
                     Strategic Analysis
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>GPT-5</span>
+                  <span className='text-sm font-medium'>OpenAI GPT-4</span>
                   <span className='text-xs text-muted-foreground-foreground'>
                     Product Intelligence
                   </span>
                 </div>
                 <div className='flex items-center justify-between p-3 rounded-lg border border-border/60 bg-card/40'>
-                  <span className='text-sm font-medium'>Claude Code</span>
+                  <span className='text-sm font-medium'>
+                    Anthropic Claude Code
+                  </span>
                   <span className='text-xs text-muted-foreground-foreground'>
                     Development Acceleration
                   </span>

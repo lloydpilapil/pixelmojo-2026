@@ -9,7 +9,7 @@ export default function ServicesGrid() {
     {
       title: 'AI Product Development',
       description:
-        'Ship complete AI products in 90 days flat. Production-ready systems that generate revenue at launch, not someday.',
+        'Ship AI products in as fast as 90 days. Production-ready MVPs that validate with real users and generate early revenue.',
       features: [
         'Full product architecture & AI integration',
         'Revenue-validated user flows',

@@ -524,10 +524,10 @@ export default function Contact() {
                 <p className='text-center text-muted text-xs'>
                   Prefer to email instead? Reach me at{' '}
                   <a
-                    href='mailto:founders@pixelmojo.com?subject=Inquiry'
+                    href='mailto:founders@pixelmojo.io?subject=Inquiry'
                     className='font-medium text-foreground hover:text-primary transition-colors underline'
                   >
-                    founders@pixelmojo.com
+                    founders@pixelmojo.io
                   </a>
                   .
                 </p>

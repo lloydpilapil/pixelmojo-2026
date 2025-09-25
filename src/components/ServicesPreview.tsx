@@ -31,7 +31,7 @@ const ServicesPreview = ({
     {
       title: 'AI Product Development',
       description:
-        'Ship complete AI products in 90 days flat. We architect, design, and deploy production-ready systems that generate revenue at launch, not someday.',
+        'Ship AI products in as fast as 90 days. We architect, design, and deploy production-ready MVPs that validate with real users and generate early revenue.',
       icon: '/pixelmojo-services-ai-product-development-thumb.webp',
       href: '/services/ai-product-development',
       gradient: '',
