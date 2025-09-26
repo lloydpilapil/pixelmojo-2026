@@ -39,76 +39,83 @@ export default function Services() {
       />
 
       {/* Empathy Cards - After visual for better flow */}
-      <div className='max-w-5xl mx-auto mb-20 mt-16'>
-        <div className='grid gap-8 lg:grid-cols-2 text-left'>
-          {/* Problem Card - Subtle warning treatment */}
-          <div className='rounded-2xl border border-destructive/20 bg-destructive/10 p-8 space-y-4'>
-            <header className='flex items-center gap-2 mb-2'>
-              <span
-                className='px-2 py-1 text-xs font-semibold uppercase tracking-[0.3em] rounded-full'
-                style={{ backgroundColor: '#ef4444', color: '#ffffff' }}
-              >
+      <section className='max-w-6xl mx-auto mb-20 mt-16 overflow-hidden rounded-3xl border border-border bg-gradient-to-r from-background via-background to-background dark:from-[#0f0a12] dark:via-[#050b16] dark:to-[#030712]'>
+        <div className='grid gap-0 md:grid-cols-2'>
+          <div className='p-10 md:p-12 border-b md:border-b-0 md:border-r border-border/40 bg-muted/10 text-foreground dark:bg-white/5 dark:text-white'>
+            <header className='mb-6'>
+              <span className='inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.35em] text-white bg-[#f43f5e]'>
                 The Problem
               </span>
             </header>
-            <h3 className='text-sm font-semibold uppercase tracking-wide text-destructive/80'>
+            <h3 className='font-heading text-lg uppercase tracking-[0.25em] mb-6'>
               If this sounds familiar
             </h3>
-            <ul className='space-y-2 text-sm md:text-base text-muted-foreground'>
-              <li>Roadmaps stall before they reach paying customers.</li>
-              <li>
-                Growth teams juggle disconnected tools and stale insights.
+            <ul className='space-y-4 text-sm md:text-base text-muted-foreground dark:text-white/80'>
+              <li className='flex gap-3'>
+                <span className='mt-2 h-1.5 w-1.5 rounded-full bg-[#f43f5e]' />
+                <span>
+                  Roadmaps stall before they ever reach paying customers.
+                </span>
               </li>
-              <li>Execs demand proof each sprint ties directly to revenue.</li>
+              <li className='flex gap-3'>
+                <span className='mt-2 h-1.5 w-1.5 rounded-full bg-[#f43f5e]' />
+                <span>
+                  Growth teams juggle disconnected tools and stale insight.
+                </span>
+              </li>
+              <li className='flex gap-3'>
+                <span className='mt-2 h-1.5 w-1.5 rounded-full bg-[#f43f5e]' />
+                <span>
+                  Leadership keeps asking how every sprint maps to revenue.
+                </span>
+              </li>
             </ul>
           </div>
-
-          {/* Solution Card - Positive emphasis */}
-          <div className='rounded-2xl border border-primary/30 bg-primary/10 p-8 space-y-5'>
-            <header className='flex items-center gap-2 mb-2'>
-              <span
-                className='px-2 py-1 text-xs font-semibold uppercase tracking-[0.3em] rounded-full'
-                style={{ backgroundColor: '#0ea5e9', color: '#0b1120' }}
-              >
+          <div className='p-10 md:p-12 bg-primary/5 text-foreground dark:bg-white/10 dark:text-white'>
+            <header className='mb-6'>
+              <span className='inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.35em] text-background bg-primary dark:text-[#0b1120] dark:bg-[#38bdf8]'>
                 Our Solution
               </span>
             </header>
-            <h3
-              className='text-sm font-semibold uppercase tracking-wide'
-              style={{ color: '#0ea5e9' }}
-            >
+            <h3 className='font-heading text-lg uppercase tracking-[0.25em] mb-6 text-primary dark:text-[#38bdf8]'>
               AI-native moves we run on every engagement
             </h3>
-            <ul className='space-y-3 text-sm md:text-base text-foreground/90'>
-              <li className='flex gap-3'>
-                <span className='text-primary font-semibold'>1.</span>
+            <ul className='space-y-4 text-sm md:text-base text-foreground dark:text-white'>
+              <li className='flex gap-4'>
+                <span className='flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary font-semibold dark:bg-[#38bdf8]/20 dark:text-[#38bdf8]'>
+                  1
+                </span>
                 <span>
                   <strong>Validate faster:</strong> dual-LLM sprint partners
                   pressure-test ideas before engineering commits.
                 </span>
               </li>
-              <li className='flex gap-3'>
-                <span className='text-primary font-semibold'>2.</span>
+              <li className='flex gap-4'>
+                <span className='flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary font-semibold dark:bg-[#38bdf8]/20 dark:text-[#38bdf8]'>
+                  2
+                </span>
                 <span>
                   <strong>Stay reality-checked:</strong> automated research ops
                   pull live customer and market signals each week.
                 </span>
               </li>
-              <li className='flex gap-3'>
-                <span className='text-primary font-semibold'>3.</span>
+              <li className='flex gap-4'>
+                <span className='flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary font-semibold dark:bg-[#38bdf8]/20 dark:text-[#38bdf8]'>
+                  3
+                </span>
                 <span>
                   <strong>Prove the revenue:</strong> telemetry is wired into
                   every prototype from day one so leadership sees impact.
                 </span>
               </li>
             </ul>
-            <p className='text-xs uppercase tracking-wide text-primary/80'>
-              Result: production-ready launches in 90 days with revenue signals
-              on launch day.
-            </p>
           </div>
         </div>
-      </div>
+        <footer className='border-t border-border/50 bg-muted/20 px-10 py-4 md:px-12 text-xs uppercase tracking-[0.3em] text-muted-foreground text-center dark:bg-black/50 dark:text-white/70'>
+          Result: production-ready launches in 90 days with revenue telemetry
+          live from day one.
+        </footer>
+      </section>
 
       {/* Value Proposition Section */}
       <div className='text-center mb-20'>
