@@ -33,6 +33,8 @@ export type Post = {
   featuredImage?: string | undefined
   /** Marks the post as featured on the blog overview */
   featured: boolean
+  /** Custom slug for the post URL (optional, overrides filename) */
+  slug?: string | undefined
   /** MDX file body */
   body: MDX
   url: string
