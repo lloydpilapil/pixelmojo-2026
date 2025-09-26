@@ -8,7 +8,7 @@ export default function NotFound() {
         {/* 404 Image */}
         <div className='mb-8 flex justify-center'>
           <Image
-            src='/lost-404.svg'
+            src='/404-page.webp'
             alt='Page not found illustration'
             width={400}
             height={300}
