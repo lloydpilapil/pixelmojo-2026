@@ -168,7 +168,7 @@ export default function RevenueFirstDesign() {
               alt: 'Design system overview boards',
             }}
           >
-            <div className='flex justify-center gap-4'>
+            <div className='flex flex-wrap gap-4'>
               <LinkButton
                 href='/contact-us'
                 size='lg'
