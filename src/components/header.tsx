@@ -9,6 +9,20 @@ import { LinkButton } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getFeaturedWorks } from '@/data/works'
 import { getServiceTheme, getServiceTitleFromSlug } from '@/utils/serviceThemes'
+import { allPosts } from '.contentlayer/generated'
+
+// Utility function to truncate long titles for mega menu
+const truncateTitle = (title: string, maxLength = 40) => {
+  if (title.length <= maxLength) return title
+
+  // Try to break at word boundary
+  const truncated = title.substring(0, maxLength)
+  const lastSpace = truncated.lastIndexOf(' ')
+
+  return lastSpace > 20
+    ? truncated.substring(0, lastSpace) + '...'
+    : truncated + '...'
+}
 
 // Generate works dropdown from featured works
 const getFeaturedWorksNav = () => {
@@ -18,6 +32,22 @@ const getFeaturedWorksNav = () => {
     ...featuredWorks.map(work => ({
       label: work.title,
       href: work.slug,
+    })),
+  ]
+}
+
+// Generate blog dropdown from recent posts
+const getFeaturedBlogsNav = () => {
+  const sortedPosts = [...allPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+
+  return [
+    { label: 'All Posts', href: '/blog' },
+    ...sortedPosts.slice(0, 4).map(post => ({
+      label: truncateTitle(post.title),
+      href: post.url || `/blog/${post.slug || post._raw.flattenedPath}`,
+      fullTitle: post.title, // For hover tooltip
     })),
   ]
 }
@@ -59,7 +89,11 @@ const navigationConfig = {
       children: getFeaturedWorksNav(),
     },
     { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
+    {
+      label: 'Blog',
+      href: '/blog',
+      children: getFeaturedBlogsNav(),
+    },
   ],
   ctaButton: {
     label: 'Get in Touch!',
@@ -70,10 +104,12 @@ const navigationConfig = {
 export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isWorksOpen, setIsWorksOpen] = useState(false)
+  const [isBlogOpen, setIsBlogOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const [isMobileWorksOpen, setIsMobileWorksOpen] = useState(false)
+  const [isMobileBlogOpen, setIsMobileBlogOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
 
@@ -85,6 +121,8 @@ export default function Header() {
       return true
     if (hasChildren && label === 'Works' && pathname.startsWith('/works'))
       return true
+    if (hasChildren && label === 'Blog' && pathname.startsWith('/blog'))
+      return true
     return false
   }
 
@@ -95,6 +133,9 @@ export default function Header() {
 
   const worksNav = navigationConfig.mainNav.find(item => item.label === 'Works')
   const worksItems = worksNav?.children || []
+
+  const blogNav = navigationConfig.mainNav.find(item => item.label === 'Blog')
+  const blogItems = blogNav?.children || []
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -115,6 +156,7 @@ export default function Header() {
         setIsMobileMenuOpen(false)
         setIsMobileServicesOpen(false)
         setIsMobileWorksOpen(false)
+        setIsMobileBlogOpen(false)
       }
     }
     window.addEventListener('resize', handleResize)
@@ -207,10 +249,17 @@ export default function Header() {
                         if (item.label === 'Services') {
                           setIsServicesOpen(!isServicesOpen)
                           setIsWorksOpen(false)
+                          setIsBlogOpen(false)
                           setIsSearchOpen(false)
                         } else if (item.label === 'Works') {
                           setIsWorksOpen(!isWorksOpen)
                           setIsServicesOpen(false)
+                          setIsBlogOpen(false)
+                          setIsSearchOpen(false)
+                        } else if (item.label === 'Blog') {
+                          setIsBlogOpen(!isBlogOpen)
+                          setIsServicesOpen(false)
+                          setIsWorksOpen(false)
                           setIsSearchOpen(false)
                         }
                       }}
@@ -225,7 +274,8 @@ export default function Header() {
                       <svg
                         className={`w-4 h-4 transition-transform duration-200 ${
                           (item.label === 'Services' && isServicesOpen) ||
-                          (item.label === 'Works' && isWorksOpen)
+                          (item.label === 'Works' && isWorksOpen) ||
+                          (item.label === 'Blog' && isBlogOpen)
                             ? 'rotate-180'
                             : ''
                         }`}
@@ -286,6 +336,7 @@ export default function Header() {
                   setIsSearchOpen(!isSearchOpen)
                   setIsServicesOpen(false)
                   setIsWorksOpen(false)
+                  setIsBlogOpen(false)
                 }}
                 className={`p-2 transition-colors duration-200 rounded-full ${
                   theme
@@ -429,6 +480,40 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Desktop Blog Mega Menu Panel */}
+      <div
+        className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
+          isBlogOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+        style={{
+          backgroundColor: theme?.bg || 'var(--card)',
+          borderColor: theme?.isDark
+            ? 'rgba(255, 255, 255, 0.2)'
+            : 'var(--border)',
+        }}
+      >
+        <div className='container mx-auto px-4 py-3'>
+          <div className='flex flex-wrap gap-2 lg:gap-3 xl:gap-6 2xl:gap-8 justify-center'>
+            {blogItems.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsBlogOpen(false)}
+                className='text-[11px] lg:text-xs xl:text-sm transition-colors duration-200 whitespace-nowrap px-2 lg:px-3 xl:px-4 py-1.5 lg:py-2 rounded hover:text-primary'
+                style={{
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
+                }}
+                title={
+                  'fullTitle' in item ? (item as any).fullTitle : item.label
+                } // Show full title on hover
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Desktop Search Mega Menu Panel */}
       <div
         className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
@@ -513,6 +598,7 @@ export default function Header() {
               setIsMobileMenuOpen(false)
               setIsMobileServicesOpen(false)
               setIsMobileWorksOpen(false)
+              setIsMobileBlogOpen(false)
             }}
             className='hover:opacity-80 transition-opacity'
           >
@@ -539,6 +625,7 @@ export default function Header() {
               setIsMobileMenuOpen(false)
               setIsMobileServicesOpen(false)
               setIsMobileWorksOpen(false)
+              setIsMobileBlogOpen(false)
             }}
             className='p-3 -mr-3 transition-colors touch-manipulation'
             style={{
@@ -579,9 +666,15 @@ export default function Header() {
                           if (item.label === 'Services') {
                             setIsMobileServicesOpen(!isMobileServicesOpen)
                             setIsMobileWorksOpen(false)
+                            setIsMobileBlogOpen(false)
                           } else if (item.label === 'Works') {
                             setIsMobileWorksOpen(!isMobileWorksOpen)
                             setIsMobileServicesOpen(false)
+                            setIsMobileBlogOpen(false)
+                          } else if (item.label === 'Blog') {
+                            setIsMobileBlogOpen(!isMobileBlogOpen)
+                            setIsMobileServicesOpen(false)
+                            setIsMobileWorksOpen(false)
                           }
                         }}
                         className={`w-full flex items-center justify-between text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation relative ${
@@ -599,7 +692,8 @@ export default function Header() {
                           className={`w-5 h-5 transition-transform duration-200 ${
                             (item.label === 'Services' &&
                               isMobileServicesOpen) ||
-                            (item.label === 'Works' && isMobileWorksOpen)
+                            (item.label === 'Works' && isMobileWorksOpen) ||
+                            (item.label === 'Blog' && isMobileBlogOpen)
                               ? 'rotate-180'
                               : ''
                           }`}
@@ -620,7 +714,8 @@ export default function Header() {
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
                           (item.label === 'Services' && isMobileServicesOpen) ||
-                          (item.label === 'Works' && isMobileWorksOpen)
+                          (item.label === 'Works' && isMobileWorksOpen) ||
+                          (item.label === 'Blog' && isMobileBlogOpen)
                             ? 'max-h-96'
                             : 'max-h-0'
                         }`}
@@ -634,6 +729,7 @@ export default function Header() {
                                   setIsMobileMenuOpen(false)
                                   setIsMobileServicesOpen(false)
                                   setIsMobileWorksOpen(false)
+                                  setIsMobileBlogOpen(false)
                                 }}
                                 className='block text-base hover:text-primary transition-colors duration-200 py-2 px-3 rounded hover:bg-muted/30'
                                 style={{
@@ -656,6 +752,8 @@ export default function Header() {
                       onClick={() => {
                         setIsMobileMenuOpen(false)
                         setIsMobileServicesOpen(false)
+                        setIsMobileWorksOpen(false)
+                        setIsMobileBlogOpen(false)
                       }}
                       className={`block text-lg font-medium transition-colors duration-200 py-4 px-4 rounded-lg hover:bg-muted/50 touch-manipulation ${
                         isActiveNav(item.href)
@@ -685,6 +783,8 @@ export default function Header() {
                 onClick={() => {
                   setIsMobileMenuOpen(false)
                   setIsMobileServicesOpen(false)
+                  setIsMobileWorksOpen(false)
+                  setIsMobileBlogOpen(false)
                 }}
               >
                 {navigationConfig.ctaButton.label}
