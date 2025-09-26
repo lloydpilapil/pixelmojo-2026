@@ -171,6 +171,8 @@ export default function FullStackAIImplementation() {
             eyebrow='Data • Intelligence • Experience'
             title='Your AI platform, deployed end to end'
             description={`We bring the strategists, engineers, and designers that build production-grade AI without the usual integration hangovers.`}
+            subtitle='Product and engineering enablement covering data pipelines, models, and shipped experiences.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-full-stack-ai.webp',

@@ -158,6 +158,8 @@ export default function AIProductDevelopment() {
             eyebrow='Build • Launch • Scale'
             title='Ship AI products that prove revenue in quarter one.'
             description={`Our sprint pods pair senior product strategists with automation engineers so you validate, build, and monetize in the same 90-day window.`}
+            subtitle='Modern UI/UX product design, research, and engineering delivered as one AI-native pod.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-ai-product-development-01.webp',

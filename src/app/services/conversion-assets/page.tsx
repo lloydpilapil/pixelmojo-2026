@@ -147,6 +147,8 @@ export default function ConversionAssetSystems() {
             eyebrow='Pitch • Prove • Close'
             title='Asset systems built to shorten sales cycles'
             description={`We craft the capital, sales, and product collateral that keeps buyers engaged and moving forward.`}
+            subtitle='Pitch decks, sales collateral, and motion assets produced as a cohesive, data-backed system.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-conversion-assets.webp',

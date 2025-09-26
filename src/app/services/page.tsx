@@ -42,49 +42,70 @@ export default function Services() {
       <div className='max-w-5xl mx-auto mb-20 mt-16'>
         <div className='grid gap-8 lg:grid-cols-2 text-left'>
           {/* Problem Card - Subtle warning treatment */}
-          <div className='rounded-xl border border-destructive/20 bg-destructive/5 p-8 space-y-4'>
-            <div className='flex items-center gap-2 mb-3'>
+          <div className='rounded-2xl border border-destructive/20 bg-destructive/10 p-8 space-y-4'>
+            <header className='flex items-center gap-2 mb-2'>
               <span
-                className='px-2 py-1 text-xs font-medium rounded-full'
-                style={{
-                  backgroundColor: '#ef4444',
-                  color: '#ffffff',
-                }}
+                className='px-2 py-1 text-xs font-semibold uppercase tracking-[0.3em] rounded-full'
+                style={{ backgroundColor: '#ef4444', color: '#ffffff' }}
               >
                 The Problem
               </span>
-            </div>
+            </header>
             <h3 className='text-sm font-semibold uppercase tracking-wide text-destructive/80'>
-              If This Sounds Familiar
+              If this sounds familiar
             </h3>
-            <p className='text-sm md:text-base leading-relaxed text-muted-foreground'>
-              Roadmaps stall, growth teams fight disconnected tools, and execs
-              demand proof that every sprint ties to revenue. Pixelmojo replaces
-              guesswork with a unified build, launch, and scale motion.
-            </p>
+            <ul className='space-y-2 text-sm md:text-base text-muted-foreground'>
+              <li>Roadmaps stall before they reach paying customers.</li>
+              <li>
+                Growth teams juggle disconnected tools and stale insights.
+              </li>
+              <li>Execs demand proof each sprint ties directly to revenue.</li>
+            </ul>
           </div>
 
           {/* Solution Card - Positive emphasis */}
-          <div className='rounded-xl border-2 border-primary/30 bg-primary/5 p-8 space-y-4'>
-            <div className='flex items-center gap-2 mb-3'>
-              <span className='px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary'>
+          <div className='rounded-2xl border border-primary/30 bg-primary/10 p-8 space-y-5'>
+            <header className='flex items-center gap-2 mb-2'>
+              <span
+                className='px-2 py-1 text-xs font-semibold uppercase tracking-[0.3em] rounded-full'
+                style={{ backgroundColor: '#0ea5e9', color: '#0b1120' }}
+              >
                 Our Solution
               </span>
-            </div>
-            <h3 className='text-sm font-semibold uppercase tracking-wide text-primary'>
-              AI-Native Moves We Deploy
+            </header>
+            <h3
+              className='text-sm font-semibold uppercase tracking-wide'
+              style={{ color: '#0ea5e9' }}
+            >
+              AI-native moves we run on every engagement
             </h3>
-            <ol className='list-decimal pl-5 space-y-2 text-sm md:text-base text-foreground/90'>
-              <li>
-                Dual-LLM sprint partners to validate ideas before code ships.
+            <ul className='space-y-3 text-sm md:text-base text-foreground/90'>
+              <li className='flex gap-3'>
+                <span className='text-primary font-semibold'>1.</span>
+                <span>
+                  <strong>Validate faster:</strong> dual-LLM sprint partners
+                  pressure-test ideas before engineering commits.
+                </span>
               </li>
-              <li>
-                Automated research ops pulling live customer and market signals.
+              <li className='flex gap-3'>
+                <span className='text-primary font-semibold'>2.</span>
+                <span>
+                  <strong>Stay reality-checked:</strong> automated research ops
+                  pull live customer and market signals each week.
+                </span>
               </li>
-              <li>
-                Revenue telemetry wired into every prototype from day one.
+              <li className='flex gap-3'>
+                <span className='text-primary font-semibold'>3.</span>
+                <span>
+                  <strong>Prove the revenue:</strong> telemetry is wired into
+                  every prototype from day one so leadership sees impact.
+                </span>
               </li>
-            </ol>
+            </ul>
+            <p className='text-xs uppercase tracking-wide text-primary/80'>
+              Result: production-ready launches in 90 days with revenue signals
+              on launch day.
+            </p>
           </div>
         </div>
       </div>

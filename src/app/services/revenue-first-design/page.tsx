@@ -162,6 +162,8 @@ export default function RevenueFirstDesign() {
             eyebrow='Aligned brand + product + growth'
             title='Design systems built to convert, not just impress.'
             description={`Every component, message, and motion is engineered to push revenue, retention, and expansion metrics forward.`}
+            subtitle='Brand identity, design system, and governance program tuned to revenue outcomes.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-revenue-first-design-01.webp',

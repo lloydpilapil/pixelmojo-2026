@@ -7,6 +7,8 @@ interface ServiceHeroProps {
   eyebrow?: string
   title: string
   description: string
+  subtitle?: string
+  price?: string
   layout?: 'center' | 'split'
   kicker?: string
   image?: {
@@ -22,6 +24,8 @@ export function ServiceHero({
   eyebrow,
   title,
   description,
+  subtitle,
+  price,
   layout = 'center',
   kicker,
   image,
@@ -55,6 +59,14 @@ export function ServiceHero({
             >
               {description}
             </p>
+            {subtitle ? (
+              <p
+                className='text-sm text-muted-foreground md:text-base'
+                style={{ color: mutedColor }}
+              >
+                {subtitle}
+              </p>
+            ) : null}
             {kicker ? (
               <p
                 className='text-sm font-medium uppercase tracking-wide'
@@ -64,6 +76,14 @@ export function ServiceHero({
               </p>
             ) : null}
             {children}
+            {price ? (
+              <p
+                className='text-sm font-semibold uppercase tracking-wide text-muted-foreground'
+                style={{ color: mutedColor }}
+              >
+                Starting at {price}
+              </p>
+            ) : null}
           </div>
           {image ? (
             <div className='relative'>
@@ -113,6 +133,14 @@ export function ServiceHero({
         >
           {description}
         </p>
+        {subtitle ? (
+          <p
+            className='mx-auto max-w-2xl text-sm text-muted-foreground md:text-base'
+            style={{ color: mutedColor }}
+          >
+            {subtitle}
+          </p>
+        ) : null}
         {kicker ? (
           <p
             className='text-sm font-semibold uppercase tracking-wide'
@@ -143,6 +171,14 @@ export function ServiceHero({
         </div>
       ) : null}
       {children ? <div className='mt-12'>{children}</div> : null}
+      {price ? (
+        <p
+          className='mt-8 text-sm font-semibold uppercase tracking-wide text-muted-foreground'
+          style={{ color: mutedColor }}
+        >
+          Starting at {price}
+        </p>
+      ) : null}
     </section>
   )
 }

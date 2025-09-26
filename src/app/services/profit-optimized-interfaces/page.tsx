@@ -151,6 +151,8 @@ export default function ProfitOptimizedInterfaces() {
             eyebrow='Retention • Expansion • Loyalty'
             title='Interfaces engineered to grow revenue per customer'
             description={`We combine behavioural data, experimentation, and high-performing design systems so every experience earns its keep.`}
+            subtitle='Conversion optimization, personalization, and retention design for modern product teams.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-profit-optimized-interfaces-01.webp',

@@ -158,6 +158,8 @@ export default function AIPoweredGrowth() {
             eyebrow='Acquisition • Activation • Expansion'
             title='Growth engines wired directly to revenue operations'
             description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
+            subtitle='Brand activation, GTM strategy, and lifecycle growth orchestrated with AI-backed operations.'
+            price={service.pricing}
             layout='split'
             image={{
               src: '/pixelmojo-services-ai-powered-growth-01.webp',

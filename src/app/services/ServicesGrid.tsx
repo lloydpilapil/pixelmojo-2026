@@ -8,6 +8,9 @@ export default function ServicesGrid() {
   const services = [
     {
       title: 'AI Product Development',
+      classic: 'Modern UI/UX design & product launches',
+      classicDetail:
+        'Research, UX/UI, and engineering pods that ship production-ready experiences',
       description:
         'Ship AI products in as fast as 90 days. Production-ready MVPs that validate with real users and generate early revenue.',
       features: [
@@ -21,6 +24,9 @@ export default function ServicesGrid() {
     },
     {
       title: 'Revenue-First Design Systems',
+      classic: 'Brand identity & design system programs',
+      classicDetail:
+        'Visual language, component libraries, and governance built around revenue metrics',
       description:
         'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
       features: [
@@ -34,6 +40,9 @@ export default function ServicesGrid() {
     },
     {
       title: 'AI-Powered Growth Engines',
+      classic: 'Brand activation & GTM acceleration',
+      classicDetail:
+        'Demand, lifecycle, and RevOps plays coordinated by AI-backed workflows',
       description:
         'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
       features: [
@@ -47,6 +56,9 @@ export default function ServicesGrid() {
     },
     {
       title: 'Profit-Optimized Interfaces',
+      classic: 'Conversion-focused UI/UX optimization',
+      classicDetail:
+        'A/B testing, personalization, and retention design tuned for ARPU growth',
       description:
         'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
       features: [
@@ -60,6 +72,9 @@ export default function ServicesGrid() {
     },
     {
       title: 'Conversion Asset Systems',
+      classic: 'Pitch decks, sales collateral, and motion graphics',
+      classicDetail:
+        'Investor, sales, and product enablement assets shipped as a cohesive system',
       description:
         'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
       features: [
@@ -73,6 +88,9 @@ export default function ServicesGrid() {
     },
     {
       title: 'Full-Stack AI Implementation',
+      classic: 'Product & engineering enablement',
+      classicDetail:
+        'Data pipelines, model orchestration, and app development delivered end-to-end',
       description:
         'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
       features: [
@@ -129,6 +147,20 @@ export default function ServicesGrid() {
                   >
                     {service.title}
                   </h3>
+                  <div className='space-y-1'>
+                    <p
+                      className='text-sm font-medium uppercase tracking-wide'
+                      style={{ color: 'var(--card-text)' }}
+                    >
+                      {service.classic}
+                    </p>
+                    <p
+                      className='text-xs text-muted-foreground'
+                      style={{ color: 'var(--card-muted-text)' }}
+                    >
+                      {service.classicDetail}
+                    </p>
+                  </div>
                   <p
                     className='leading-relaxed'
                     style={{ color: 'var(--card-muted-text)' }}
