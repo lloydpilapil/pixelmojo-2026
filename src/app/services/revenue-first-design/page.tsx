@@ -164,8 +164,8 @@ export default function RevenueFirstDesign() {
             description={`Every component, message, and motion is engineered to push revenue, retention, and expansion metrics forward.`}
             layout='split'
             image={{
-              src: '/pixelmojo-services-revenue-first-design.webp',
-              alt: 'Design system overview boards',
+              src: '/pixelmojo-services-revenue-first-design-01.webp',
+              alt: 'Design leads arranging revenue-first design system components',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -194,8 +194,8 @@ export default function RevenueFirstDesign() {
               'AI prompt libraries mirror your voice so copy, visuals, and video stay consistent at speed.',
             ]}
             image={{
-              src: '/placeholder.svg',
-              alt: 'Brand and product teams aligning on shared metrics',
+              src: '/pixelmojo-services-revenue-first-design-02.webp',
+              alt: 'Brand and product stakeholders aligning shared performance metrics',
             }}
           />
 
@@ -231,8 +231,8 @@ export default function RevenueFirstDesign() {
             reverse
             tone='muted'
             image={{
-              src: '/placeholder.svg',
-              alt: 'Team collaborating on design system rollout playbook',
+              src: '/pixelmojo-services-revenue-first-design-03.webp',
+              alt: 'Team planning the rollout sequence for a design system playbook',
             }}
           />
 

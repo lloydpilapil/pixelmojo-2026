@@ -160,8 +160,8 @@ export default function AIPoweredGrowth() {
             description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
             layout='split'
             image={{
-              src: '/pixelmojo-services-ai-powered-growth.webp',
-              alt: 'Growth automation dashboards and workflows',
+              src: '/pixelmojo-services-ai-powered-growth-01.webp',
+              alt: 'Dashboard screens visualizing AI-powered growth automation performance',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -190,8 +190,8 @@ export default function AIPoweredGrowth() {
               'Alerting, routing, and playbooks keep teams executing within minutes, not days.',
             ]}
             image={{
-              src: '/placeholder.svg',
-              alt: 'Unified growth data across teams',
+              src: '/pixelmojo-services-ai-powered-growth-02.webp',
+              alt: 'Unified growth data pipelines connecting marketing and sales insights',
             }}
           />
 
@@ -245,8 +245,8 @@ export default function AIPoweredGrowth() {
             ]}
             reverse
             image={{
-              src: '/pixelmojo-services-ai-powered-growth.webp',
-              alt: 'Content production workflows with automation',
+              src: '/pixelmojo-services-ai-powered-growth-03.webp',
+              alt: 'Content studio coordinating campaign production alongside automation tools',
             }}
           />
 

@@ -150,7 +150,7 @@ export default function ConversionAssetSystems() {
             layout='split'
             image={{
               src: '/pixelmojo-services-conversion-assets.webp',
-              alt: 'Conversion asset collection overview',
+              alt: 'Collection of conversion-focused sales decks and visual assets',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -179,8 +179,8 @@ export default function ConversionAssetSystems() {
               'Call scripts, speaker notes, and follow-up frameworks keep messaging tight across the team.',
             ]}
             image={{
-              src: '/pixelmojo-services-full-stack-ai.webp',
-              alt: 'Pitch narrative frameworks connecting story and proof',
+              src: '/pixelmojo-services-conversion-assets-02.webp',
+              alt: 'Pitch narrative storyboard connecting proof points with messaging',
             }}
           />
 
@@ -234,8 +234,8 @@ export default function ConversionAssetSystems() {
             ]}
             reverse
             image={{
-              src: '/placeholder.svg',
-              alt: 'Enablement team launching conversion assets',
+              src: '/pixelmojo-services-conversion-assets-03.webp',
+              alt: 'Enablement team launching a conversion asset program',
             }}
           />
 

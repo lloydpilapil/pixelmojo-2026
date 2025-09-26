@@ -153,8 +153,8 @@ export default function ProfitOptimizedInterfaces() {
             description={`We combine behavioural data, experimentation, and high-performing design systems so every experience earns its keep.`}
             layout='split'
             image={{
-              src: '/pixelmojo-services-profit-optimized-interfaces.webp',
-              alt: 'Interface optimization dashboards',
+              src: '/pixelmojo-services-profit-optimized-interfaces-01.webp',
+              alt: 'Analytics dashboards highlighting revenue-focused interface metrics',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -183,8 +183,8 @@ export default function ProfitOptimizedInterfaces() {
               'Churn indicators trigger proactive outreach with pre-built enablement content.',
             ]}
             image={{
-              src: '/placeholder.svg',
-              alt: 'Revenue telemetry aligned across teams',
+              src: '/pixelmojo-services-profit-optimized-interfaces-03.webp',
+              alt: 'Revenue telemetry bringing together product and support insights',
             }}
           />
 
@@ -238,8 +238,8 @@ export default function ProfitOptimizedInterfaces() {
             ]}
             reverse
             image={{
-              src: '/placeholder.svg',
-              alt: 'Cross-functional squad collaborating on optimization backlog',
+              src: '/pixelmojo-services-profit-optimized-interfaces-02.webp',
+              alt: 'Cross-functional squad prioritizing the optimization backlog together',
             }}
           />
 

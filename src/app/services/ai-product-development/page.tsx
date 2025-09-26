@@ -160,8 +160,8 @@ export default function AIProductDevelopment() {
             description={`Our sprint pods pair senior product strategists with automation engineers so you validate, build, and monetize in the same 90-day window.`}
             layout='split'
             image={{
-              src: '/pixelmojo-services-ai-product-development.webp',
-              alt: 'AI product development collaboration visual',
+              src: '/pixelmojo-services-ai-product-development-01.webp',
+              alt: 'Product strategists reviewing an AI product roadmap together',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -199,8 +199,8 @@ export default function AIProductDevelopment() {
               'Revenue instrumentation ships inside prototypes so leadership sees ARR impact instantly.',
             ]}
             image={{
-              src: '/placeholder.svg',
-              alt: 'Validation workflows mapped with AI support',
+              src: '/pixelmojo-services-ai-product-development-02.webp',
+              alt: 'Workshop board mapping the AI validation workflow steps',
             }}
           />
 
@@ -255,8 +255,8 @@ export default function AIProductDevelopment() {
             ]}
             reverse
             image={{
-              src: '/placeholder.svg',
-              alt: 'Embedded product pod collaborating with client team',
+              src: '/pixelmojo-services-ai-product-development-03.webp',
+              alt: 'Pixelmojo pod collaborating with client engineers during sprint planning',
             }}
           />
 

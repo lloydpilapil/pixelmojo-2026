@@ -174,7 +174,7 @@ export default function FullStackAIImplementation() {
             layout='split'
             image={{
               src: '/pixelmojo-services-full-stack-ai.webp',
-              alt: 'Full-stack AI architecture visual',
+              alt: 'End-to-end AI architecture diagram spanning data to interface layers',
             }}
           >
             <div className='flex flex-wrap gap-4'>
@@ -203,8 +203,8 @@ export default function FullStackAIImplementation() {
               'Risk register covering compliance, security, and data exposure scenarios.',
             ]}
             image={{
-              src: '/placeholder.svg',
-              alt: 'AI platform blueprint connecting capabilities',
+              src: '/pixelmojo-services-full-stack-ai-02.webp',
+              alt: 'Blueprint detailing AI platform capabilities and ownership',
             }}
           />
 
@@ -239,8 +239,8 @@ export default function FullStackAIImplementation() {
             ]}
             reverse
             image={{
-              src: '/placeholder.svg',
-              alt: 'Cross-functional AI implementation pod',
+              src: '/pixelmojo-services-full-stack-ai-03.webp',
+              alt: 'Implementation pod coordinating AI build with client stakeholders',
             }}
           />
 
