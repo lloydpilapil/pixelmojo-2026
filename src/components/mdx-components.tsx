@@ -6,7 +6,6 @@ import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
-import BlogCTA from '@/components/blog/BlogCTA'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -272,7 +271,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BlogQuote: BlogQuote,
     BlogFAQ: BlogFAQ,
     BlogPostImage: BlogPostImage,
-    BlogCTA: BlogCTA,
 
     // Spread any additional components passed in
     ...components,

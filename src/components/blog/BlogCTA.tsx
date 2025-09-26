@@ -1,7 +1,5 @@
-'use client'
-
-import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface BlogCTAProps {
   title?: string
@@ -14,82 +12,35 @@ export function BlogCTA({
   title = 'Ready to transform your design process from art to science?',
   description = "Let's build your computational thinking operating system together.",
   buttonText = 'Start Your Transformation Today',
-  buttonHref = '/contact',
+  buttonHref = '/contact-us',
 }: BlogCTAProps) {
-  // Container styling
-  const containerStyle: React.CSSProperties = {
-    marginTop: '4rem',
-    marginBottom: '4rem',
-  }
-
-  const cardStyle: React.CSSProperties = {
-    backgroundColor: 'var(--card)',
-    border: '1px solid var(--border)',
-    borderRadius: '0px',
-    overflow: 'hidden',
-  }
-
-  const imageStyle: React.CSSProperties = {
-    width: '100%',
-    aspectRatio: '3/2',
-    objectFit: 'cover',
-    borderBottom: '1px solid var(--border)',
-  }
-
-  const contentStyle: React.CSSProperties = {
-    padding: '2rem',
-    textAlign: 'center',
-  }
-
-  const titleStyle: React.CSSProperties = {
-    fontSize: '1.25rem',
-    fontWeight: '600',
-    marginBottom: '1rem',
-    color: 'var(--foreground)',
-  }
-
-  const descriptionStyle: React.CSSProperties = {
-    color: 'var(--muted-foreground)',
-    marginBottom: '1.5rem',
-  }
-
-  const buttonStyle: React.CSSProperties = {
-    display: 'inline-block',
-    padding: '0.75rem 2rem',
-    backgroundColor: 'var(--cta)',
-    color: 'white',
-    borderRadius: '0px',
-    textDecoration: 'none',
-    fontWeight: '500',
-    transition: 'background-color 0.2s',
-  }
-
   return (
-    <div data-blog-layout='narrow' style={containerStyle}>
-      <div style={cardStyle}>
-        <Image
-          src='/why-your-design-image.webp'
-          alt='Transform your design process'
-          width={400}
-          height={200}
-          style={imageStyle}
-        />
+    <div data-blog-layout='narrow' className='my-16'>
+      <div className='border border-border rounded-3xl overflow-hidden bg-card shadow-lg shadow-primary/5'>
+        <div className='relative w-full aspect-[3/2]'>
+          <Image
+            src='/why-your-design-image.webp'
+            alt='Transform your design process'
+            fill
+            className='object-cover'
+            sizes='(min-width: 768px) 768px, 100vw'
+            priority={false}
+          />
+        </div>
 
-        <div style={contentStyle}>
-          <h3 style={titleStyle}>{title}</h3>
-          <p style={descriptionStyle}>{description}</p>
-          <a
+        <div className='px-8 py-10 text-center flex flex-col items-center gap-6'>
+          <h3 className='text-2xl font-semibold text-foreground leading-tight max-w-2xl'>
+            {title}
+          </h3>
+          <p className='text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed'>
+            {description}
+          </p>
+          <Link
             href={buttonHref}
-            style={buttonStyle}
-            onMouseEnter={e =>
-              (e.currentTarget.style.backgroundColor = 'var(--growth)')
-            }
-            onMouseLeave={e =>
-              (e.currentTarget.style.backgroundColor = 'var(--cta)')
-            }
+            className='inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors duration-200 shadow-md shadow-primary/20'
           >
             {buttonText}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
