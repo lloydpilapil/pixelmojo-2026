@@ -1,37 +1,160 @@
 import type { Metadata } from 'next'
-import OptimizedImage from '@/components/ui/OptimizedImage'
-import { LinkButton } from '@/components/ui/button'
+import type { CSSProperties } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { getServiceTheme } from '@/utils/serviceThemes'
-import {
-  LenisFadeIn,
-  LenisStaggered,
-} from '@/components/animations/LenisReveal'
 import ServiceNavigation from '@/components/ServiceNavigation'
+import { LinkButton } from '@/components/ui/button'
+import {
+  ServiceCardGrid,
+  ServiceHero,
+  ServiceSplitSection,
+  ServiceStatList,
+  ServiceTimeline,
+} from '@/components/services/ServiceSections'
+import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'Full-Stack AI Implementation',
   description:
-    'Beyond code: our framework for high-performance development. Stop duct-taping tools together—we build fast, scalable, and collaborative digital products using a development system that actually works.',
-  pricing: 'Embedded teams from $12K/mo',
+    'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+  pricing: 'Programs from $18K',
 }
 
 export const metadata: Metadata = {
-  title:
-    'Full-Stack AI Implementation | Beyond Code: High-Performance Development Framework | Pixelmojo',
+  title: 'Full-Stack AI Implementation | Pixelmojo',
   description:
-    'Beyond code: our framework for high-performance development. Build fast, scalable, collaborative digital products with a development system that works.',
+    'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
   openGraph: {
-    title:
-      'Full-Stack AI Implementation | Beyond Code: High-Performance Development Framework | Pixelmojo',
+    title: 'Full-Stack AI Implementation | Pixelmojo',
     description:
-      'Beyond code: our framework for high-performance development. Build fast, scalable, collaborative digital products with a development system that works.',
+      'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
     type: 'website',
   },
 }
 
-export default function FullStackAI() {
+const heroStats = [
+  {
+    value: '6 weeks',
+    label: 'Production milestone',
+    detail:
+      'First feature in the hands of users with monitoring and guardrails live.',
+  },
+  {
+    value: '4x',
+    label: 'Deployment velocity',
+    detail:
+      'Model updates, integrations, and UI improvements shipping every sprint.',
+  },
+  {
+    value: '99.5%',
+    label: 'Reliability targets',
+    detail:
+      'Observability, testing, and rollback plans keep uptime and safety intact.',
+  },
+]
+
+const stackBlueprint = [
+  {
+    eyebrow: 'Data Spine',
+    title: 'Pipelines you can trust',
+    bullets: [
+      'Ingestion, cleaning, and governance layers tailored to your compliance needs.',
+      'Feature stores and vector databases that support retrieval-augmented workflows.',
+      'Quality scoring and drift detection with automated remediation paths.',
+    ],
+  },
+  {
+    eyebrow: 'Model Layer',
+    title: 'Balanced between bespoke and off-the-shelf',
+    bullets: [
+      'Strategy for when to fine-tune, prompt engineer, or orchestrate multiple models.',
+      'Evaluation harness with human-in-the-loop review where it matters most.',
+      'Cost and latency monitoring to protect gross margin and customer experience.',
+    ],
+  },
+  {
+    eyebrow: 'Interface & Workflow',
+    title: 'Experiences that feel native to your product',
+    bullets: [
+      'Copilots, dashboards, and automations embedded into existing journeys.',
+      'Role-based permissions and audit trails that satisfy IT and security.',
+      'Feedback capture wired straight into backlog refinement and model retraining.',
+    ],
+  },
+]
+
+const deliveryTimeline = [
+  {
+    title: 'Architecture decisions',
+    duration: 'Weeks 1-2',
+    description:
+      'We partner with your leads to choose cloud, data, and orchestration patterns that respect existing investments and regulatory boundaries.',
+  },
+  {
+    title: 'Pilot build',
+    duration: 'Weeks 3-6',
+    description:
+      'Cross-functional pods deliver the end-to-end workflow: data pipelines, model logic, and user-facing surfaces working together with telemetry.',
+  },
+  {
+    title: 'Hardening + scale',
+    duration: 'Weeks 7-9',
+    description:
+      'Load testing, security reviews, and compliance checks precede wider rollout. Automation handles deployment, rollback, and monitoring.',
+  },
+  {
+    title: 'Enable + handoff',
+    duration: 'Weeks 10-12',
+    description:
+      'Training, documentation, and ownership plans empower internal teams to operate, iterate, and extend the solution safely.',
+  },
+]
+
+const podHighlights = [
+  {
+    title: 'Product + Strategy',
+    description:
+      'Translates business goals into outcome-driven roadmaps and sprint cadences.',
+  },
+  {
+    title: 'Applied AI Engineering',
+    description:
+      'Designs, builds, and evaluates the models, integrations, and automations.',
+  },
+  {
+    title: 'Experience + Change',
+    description:
+      'Crafts the UI, training, and communications that drive adoption.',
+  },
+]
+
+const operationsHighlights = [
+  {
+    title: 'Runbook + observability',
+    description:
+      'Dashboards, alerts, and on-call workflows to keep systems healthy 24/7.',
+  },
+  {
+    title: 'Compliance toolkit',
+    description:
+      'Traceability, audit trails, and policy docs aligned to your industry requirements.',
+  },
+  {
+    title: 'Scale roadmap',
+    description:
+      'Multi-quarter plan covering feature expansion, team needs, and investment cases.',
+  },
+]
+
+export default function FullStackAIImplementation() {
   const theme = getServiceTheme(service.title)
+
+  const buttonStyle: CSSProperties = {
+    backgroundColor: theme.isDark
+      ? 'rgba(255, 255, 255, 0.12)'
+      : 'rgba(0, 0, 0, 0.08)',
+    color: theme.textColor,
+    border: `1px solid ${theme.textColor}`,
+  }
 
   return (
     <div
@@ -42,523 +165,146 @@ export default function FullStackAI() {
       }}
     >
       <div className='container mx-auto px-4 py-16'>
-        {/* Hero Section */}
-        <LenisFadeIn>
-          <div className='text-center mb-12'>
-            <p
-              className='text-sm font-medium mb-4 uppercase tracking-wider'
-              style={{ color: theme.mutedTextColor }}
-            >
-              • Full-Stack AI Implementation
-            </p>
-            <h1
-              className='mb-6 font-heading max-w-7xl mx-auto'
-              style={{ color: theme.textColor }}
-            >
-              Beyond Code: High-Performance Development Framework
-            </h1>
-            <p
-              className='lead max-w-5xl mx-auto mb-8'
-              style={{ color: theme.mutedTextColor }}
-            >
-              {service.description} Our comprehensive development approach
-              integrates cutting-edge AI technology with proven engineering
-              practices to deliver digital products that scale with your
-              business and evolve with your needs.
-            </p>
-          </div>
-        </LenisFadeIn>
+        <div className='space-y-16 md:space-y-24'>
+          <ServiceHero
+            theme={theme}
+            eyebrow='Data • Intelligence • Experience'
+            title='Your AI platform, deployed end to end'
+            description={`We bring the strategists, engineers, and designers that build production-grade AI without the usual integration hangovers.`}
+            layout='split'
+            image={{
+              src: '/placeholder.svg',
+              alt: 'Full-stack AI architecture visual',
+            }}
+          >
+            <div className='flex flex-wrap gap-4'>
+              <LinkButton
+                href='/contact-us'
+                size='lg'
+                className='group'
+                style={buttonStyle}
+              >
+                Scope my AI program
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </LinkButton>
+            </div>
+          </ServiceHero>
 
-        {/* Image Section - Moved up for better flow */}
-        <LenisFadeIn delay={200}>
-          <div className='mb-16'>
-            <OptimizedImage
-              src='/pixelmojo-services-full-stack-ai.webp'
-              alt='Full-Stack AI Implementation - Beyond code: high-performance development framework'
-              aspectRatio='video'
-              className='rounded-xl'
-              priority
+          <ServiceStatList theme={theme} items={heroStats} />
+
+          <ServiceSplitSection
+            theme={theme}
+            eyebrow='Blueprint first'
+            title='Architecture aligned to outcomes'
+            description={`Before we ship a line of code, we model how intelligence flows through your organization, from data sourcing to user impact.`}
+            bullets={[
+              'Capability mapping shows which teams own, operate, and benefit from each component.',
+              'Total cost of ownership forecasted with options to flex up or down over time.',
+              'Risk register covering compliance, security, and data exposure scenarios.',
+            ]}
+            image={{
+              src: '/placeholder.svg',
+              alt: 'AI platform blueprint connecting capabilities',
+            }}
+          />
+
+          <div className='space-y-8'>
+            <div className='max-w-3xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Stack we deliver as part of every engagement
+              </h2>
+              <p
+                className='mt-4 text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                Data, models, and experiences launch together so value is
+                obvious to stakeholders.
+              </p>
+            </div>
+            <ServiceCardGrid theme={theme} items={stackBlueprint} />
+          </div>
+
+          <ServiceSplitSection
+            theme={theme}
+            eyebrow='Pods that ship'
+            title='Cross-functional squads embedded with you'
+            description={`We slot into your cadence, augment existing teams, and leave you with the capability to keep shipping after we roll off.`}
+            bullets={[
+              'Daily stand-ups with your product and engineering leads to keep priorities tight.',
+              'Shared documentation, architecture diagrams, and decision logs for transparency.',
+              'Pairing sessions transfer knowledge to internal engineers and analysts.',
+            ]}
+            reverse
+            image={{
+              src: '/placeholder.svg',
+              alt: 'Cross-functional AI implementation pod',
+            }}
+          />
+
+          <div className='space-y-8'>
+            <div className='max-w-3xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Implementation runway with zero guesswork
+              </h2>
+            </div>
+            <ServiceTimeline theme={theme} items={deliveryTimeline} />
+          </div>
+
+          <div className='space-y-6'>
+            <div className='max-w-2xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Embedded capability when we are done
+              </h2>
+            </div>
+            <ServiceCardGrid theme={theme} items={podHighlights} compact />
+            <ServiceCardGrid
+              theme={theme}
+              items={operationsHighlights}
+              compact
             />
-            <p
-              className='text-center mt-4 text-sm'
-              style={{ color: theme.mutedTextColor }}
-            >
-              Comprehensive development solutions that integrate cutting-edge AI
-              with proven engineering practices
-            </p>
           </div>
-        </LenisFadeIn>
 
-        <LenisFadeIn delay={300}>
-          <div className='max-w-5xl mx-auto mb-20'>
-            <div className='grid gap-8 md:grid-cols-2 text-left'>
-              <div
-                className='rounded-xl border p-8 space-y-4'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.04)'
-                    : 'rgba(0, 0, 0, 0.04)',
-                  borderColor: theme.border,
-                }}
-              >
-                <div className='flex items-center gap-2 mb-3'>
-                  <span
-                    className='px-2 py-1 text-xs font-medium rounded-full'
-                    style={{
-                      backgroundColor: '#ef4444',
-                      color: '#ffffff',
-                    }}
-                  >
-                    The Problem
-                  </span>
-                </div>
-                <h3
-                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
-                  style={{ color: theme.textColor }}
-                >
-                  <span
-                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
-                    style={{
-                      backgroundColor: theme.iconBg,
-                      color: theme.textColor,
-                    }}
-                  >
-                    01
-                  </span>
-                  If This Sounds Familiar
-                </h3>
-                <p
-                  className='text-sm md:text-base leading-relaxed'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  Shipping slows down, vendor sprawl explodes, and infra tips
-                  over the minute growth hits. We bring a governed, AI-first
-                  delivery model so product, data, and platform teams finally
-                  row in the same direction.
-                </p>
-              </div>
-              <div
-                className='rounded-xl border p-8 space-y-4'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.04)'
-                    : 'rgba(0, 0, 0, 0.04)',
-                  borderColor: theme.border,
-                }}
-              >
-                <div className='flex items-center gap-2 mb-3'>
-                  <span
-                    className='px-2 py-1 text-xs font-medium rounded-full'
-                    style={{
-                      backgroundColor: theme.isDark
-                        ? 'rgba(255, 255, 255, 0.15)'
-                        : 'rgba(0, 0, 0, 0.1)',
-                      color: theme.isDark ? '#FFFFFF' : '#000000',
-                    }}
-                  >
-                    Our Solution
-                  </span>
-                </div>
-                <h3
-                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
-                  style={{ color: theme.textColor }}
-                >
-                  <span
-                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
-                    style={{
-                      backgroundColor: theme.iconBg,
-                      color: theme.textColor,
-                    }}
-                  >
-                    02
-                  </span>
-                  AI-Native Moves We Deploy
-                </h3>
-                <ul
-                  className='list-disc pl-5 space-y-2 text-sm md:text-base'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>
-                    Bedrock + Vertex pipelines route workloads to the right
-                    model based on latency and compliance.
-                  </li>
-                  <li>
-                    GitHub Copilot with Superhuman reviews keeps paired
-                    engineers shipping production slices every sprint.
-                  </li>
-                  <li>
-                    Dagster orchestrates LangChain, dbt, and Supabase so data,
-                    product, and analytics share one deployment rhythm.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </LenisFadeIn>
-
-        {/* Who It's For / Outcomes / KPIs Section */}
-        <LenisFadeIn delay={300}>
-          <div className='mb-20'>
-            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
-              {/* Who It's For */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  Who This Is For
-                </h3>
-                <ul
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>• Growing companies needing dev capacity</li>
-                  <li>• Enterprises modernizing systems</li>
-                  <li>• Startups requiring technical expertise</li>
-                  <li>• Teams replacing legacy infrastructure</li>
-                </ul>
-              </div>
-
-              {/* Outcomes Timeline */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  Outcomes You'll See
-                </h3>
-                <div
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <p>
-                    <strong>30 days:</strong> Team integration & project setup
-                  </p>
-                  <p>
-                    <strong>60 days:</strong> Core systems & AI implementation
-                  </p>
-                  <p>
-                    <strong>90 days:</strong> Production-ready scalable solution
-                  </p>
-                </div>
-              </div>
-
-              {/* Sample KPIs */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  What You'll Achieve
-                </h3>
-                <ul
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>• Ship products 3x faster</li>
-                  <li>• Scale without system failures</li>
-                  <li>• Cut development costs in half</li>
-                  <li>• Deploy features every 2 weeks</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </LenisFadeIn>
-
-        {/* Value Proposition Section */}
-        <LenisFadeIn delay={300}>
-          <div className='text-center mb-20'>
+          <section
+            className='rounded-3xl border p-10 text-center'
+            style={{ borderColor: theme.border }}
+          >
             <h2
-              className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'
+              className='text-3xl font-semibold md:text-4xl'
               style={{ color: theme.textColor }}
             >
-              Development System That Actually Works
+              Ready to operationalise AI across your stack?
             </h2>
             <p
-              className='max-w-4xl mx-auto text-lg leading-relaxed mb-16'
+              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
               style={{ color: theme.mutedTextColor }}
             >
-              Stop struggling with fragmented tools and inconsistent processes.
-              We provide embedded development teams that integrate seamlessly
-              with your organization, delivering enterprise-grade solutions
-              using our battle-tested framework for rapid, reliable, and
-              scalable product development.
+              We will review your roadmap, identify the highest-impact
+              workflows, and co-design a delivery plan that proves ROI before
+              the quarter closes.
             </p>
-
-            {/* Pricing Section */}
-            <p
-              className='text-lg font-bold mb-8'
-              style={{ color: theme.textColor }}
-            >
-              {service.pricing}
-            </p>
-
-            <LinkButton
-              href='/contact-us'
-              size='lg'
-              className='group'
-              style={{
-                backgroundColor: theme.isDark
-                  ? 'rgba(255, 255, 255, 0.1)'
-                  : 'rgba(0, 0, 0, 0.1)',
-                color: theme.textColor,
-                border: `2px solid ${theme.textColor}`,
-              }}
-            >
-              Start Your Project
-              <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-            </LinkButton>
-          </div>
-        </LenisFadeIn>
-
-        {/* Core Benefits Section */}
-        <LenisFadeIn delay={400}>
-          <div className='text-center mb-20'>
-            <h2 style={{ color: theme.textColor }}>
-              Integrated Development Excellence
-            </h2>
-            <p style={{ color: theme.mutedTextColor }}>
-              Our comprehensive approach delivers complete solutions from
-              architecture to deployment and beyond.
-            </p>
-          </div>
-        </LenisFadeIn>
-
-        {/* 3 Benefits Cards */}
-        <LenisStaggered
-          delay={500}
-          staggerDelay={150}
-          className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20'
-        >
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Rapid Development</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              AI-powered development tools and proven frameworks that accelerate
-              delivery without compromising quality or long-term
-              maintainability.
-            </p>
-          </div>
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Scalable Architecture</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              Enterprise-grade systems designed for growth, with robust
-              infrastructure that handles increasing load and complexity with
-              ease.
-            </p>
-          </div>
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Team Integration</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              Embedded developers who work as extension of your team, bringing
-              expertise while maintaining seamless collaboration and knowledge
-              transfer.
-            </p>
-          </div>
-        </LenisStaggered>
-
-        {/* Process Section Header */}
-        <LenisFadeIn delay={600}>
-          <div className='text-center mb-20'>
-            <h2
-              className='max-w-4xl mx-auto'
-              style={{ color: theme.textColor }}
-            >
-              Comprehensive Development Framework
-            </h2>
-            <p
-              className='max-w-3xl mx-auto'
-              style={{ color: theme.mutedTextColor }}
-            >
-              Our systematic approach ensures every project delivers exceptional
-              results through proven processes and cutting-edge technology.
-            </p>
-          </div>
-        </LenisFadeIn>
-
-        {/* 5-Step Process */}
-        <LenisStaggered
-          delay={700}
-          staggerDelay={150}
-          className='w-full px-4 mb-20'
-        >
-          <div className='relative'>
-            {/* Horizontal line - hidden on mobile */}
-            <div
-              className='absolute top-6 left-0 right-0 h-0.5 hidden md:block'
-              style={{
-                backgroundColor: theme.isDark
-                  ? 'rgba(255, 255, 255, 0.3)'
-                  : 'rgba(0, 0, 0, 0.3)',
-              }}
-            ></div>
-
-            {/* Steps */}
-            <div className='grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative'>
-              {/* Step 1 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  1
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Architecture Design
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We design scalable system architecture that supports current
-                  needs while providing flexibility for future growth and
-                  evolution.
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  2
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  AI Integration
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We implement AI-powered features and development tools that
-                  enhance functionality while accelerating development cycles.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  3
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Agile Development
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We build using proven agile methodologies with continuous
-                  integration and deployment for rapid, reliable delivery.
-                </p>
-              </div>
-
-              {/* Step 4 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  4
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Quality Assurance
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We implement comprehensive testing and monitoring systems to
-                  ensure reliability, security, and optimal performance.
-                </p>
-              </div>
-
-              {/* Step 5 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  5
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Continuous Evolution
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We provide ongoing optimization, feature development, and
-                  technical support to ensure long-term success and growth.
-                </p>
-              </div>
+            <div className='mt-8 flex justify-center'>
+              <LinkButton
+                href='/contact-us'
+                size='lg'
+                className='group'
+                style={buttonStyle}
+              >
+                Book the architecture workshop
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </LinkButton>
             </div>
-          </div>
-        </LenisStaggered>
+          </section>
+        </div>
 
-        {/* Service Navigation */}
         <ServiceNavigation currentService='full-stack-ai' theme={theme} />
       </div>
     </div>

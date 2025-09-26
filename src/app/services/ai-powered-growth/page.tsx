@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
-import OptimizedImage from '@/components/ui/OptimizedImage'
-import { LinkButton } from '@/components/ui/button'
+import type { CSSProperties } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { getServiceTheme } from '@/utils/serviceThemes'
-import {
-  LenisFadeIn,
-  LenisStaggered,
-} from '@/components/animations/LenisReveal'
 import ServiceNavigation from '@/components/ServiceNavigation'
+import { LinkButton } from '@/components/ui/button'
+import {
+  ServiceCardGrid,
+  ServiceHero,
+  ServiceSplitSection,
+  ServiceStatList,
+  ServiceTimeline,
+} from '@/components/services/ServiceSections'
+import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'AI-Powered Growth Engines',
@@ -30,8 +33,115 @@ export const metadata: Metadata = {
   },
 }
 
+const heroStats = [
+  {
+    value: '30 days',
+    label: 'Full-funnel lift visible',
+    detail:
+      'Acquisition, nurture, and sales enablement dashboards wired to revenue KPIs.',
+  },
+  {
+    value: '40%',
+    label: 'Average pipeline acceleration',
+    detail:
+      'Lead scoring and routing automations surface the hottest opportunities instantly.',
+  },
+  {
+    value: '65%',
+    label: 'More content shipped',
+    detail:
+      'AI-assisted production keeps every channel fresh without scaling headcount.',
+  },
+]
+
+const engineCards = [
+  {
+    eyebrow: 'Acquisition',
+    title: 'Demand engines that never sleep',
+    bullets: [
+      'SEO, paid, and outbound plays orchestrated from a single experimentation backlog.',
+      'Channel-specific content tuned by AI to stay on message and deliver consistent velocity.',
+      'Account intent monitoring so reps get context before prospects ever hit reply.',
+    ],
+  },
+  {
+    eyebrow: 'Lifecycle',
+    title: 'Nurture journeys that progress deals',
+    bullets: [
+      'Segmented nurture streams blending email, in-app, and community touchpoints.',
+      'Milestone-based playbooks triggered by product usage and sales stages.',
+      'Self-serve education hubs and AI chat assistance to reduce support drag.',
+    ],
+  },
+  {
+    eyebrow: 'Revenue Ops',
+    title: 'Data and process that stay aligned',
+    bullets: [
+      'Unified dashboards combining CRM, product analytics, and marketing attribution.',
+      'Automation governance to keep enrichment, scoring, and routing accurate.',
+      'RevOps health checks that prevent broken handoffs between teams.',
+    ],
+  },
+  {
+    eyebrow: 'Advocacy',
+    title: 'Communities that compound reach',
+    bullets: [
+      'Advocate identification and enablement layered into lifecycle journeys.',
+      'Customer storytelling sprints that turn wins into content within days.',
+      'Partner and reseller motions orchestrated alongside direct acquisition.',
+    ],
+  },
+]
+
+const experimentTimeline = [
+  {
+    title: 'Signal sync',
+    duration: 'Weekly',
+    description:
+      'We unify marketing, product, and revenue data to spot opportunities earlier. Hypotheses are scored against impact and confidence, keeping everyone focused on needle-moving tests.',
+  },
+  {
+    title: 'Sprint deployment',
+    duration: 'Bi-weekly',
+    description:
+      'Creative, copy, landing pages, and sales assets ship as bundles. Automations ensure experiments launch simultaneously across every relevant channel.',
+  },
+  {
+    title: 'Evidence review',
+    duration: 'Monthly',
+    description:
+      'Performance dashboards surface wins, learnings, and blockers. We double down on the plays that convert and retire what slows down pipeline.',
+  },
+]
+
+const measurementHighlights = [
+  {
+    title: 'Revenue command center',
+    description:
+      'Shared dashboards for marketing, sales, and success with live projections.',
+  },
+  {
+    title: 'Experiment library',
+    description:
+      'Archive of tests, learnings, and assets so teams avoid repeating work.',
+  },
+  {
+    title: 'Growth ops runbook',
+    description:
+      'Process documentation covering triggers, ownership, and escalation paths.',
+  },
+]
+
 export default function AIPoweredGrowth() {
   const theme = getServiceTheme(service.title)
+
+  const buttonStyle: CSSProperties = {
+    backgroundColor: theme.isDark
+      ? 'rgba(255, 255, 255, 0.12)'
+      : 'rgba(0, 0, 0, 0.08)',
+    color: theme.textColor,
+    border: `1px solid ${theme.textColor}`,
+  }
 
   return (
     <div
@@ -42,525 +152,152 @@ export default function AIPoweredGrowth() {
       }}
     >
       <div className='container mx-auto px-4 py-16'>
-        {/* Hero Section */}
-        <LenisFadeIn>
-          <div className='text-center mb-12'>
-            <p
-              className='text-sm font-medium mb-4 uppercase tracking-wider'
-              style={{ color: theme.mutedTextColor }}
-            >
-              • AI-Powered Growth Engines
-            </p>
-            <h1
-              className='mb-6 font-heading max-w-7xl mx-auto'
-              style={{ color: theme.textColor }}
-            >
-              Activate Your Brand for Real Growth
-            </h1>
-            <p
-              className='lead max-w-5xl mx-auto mb-8'
-              style={{ color: theme.mutedTextColor }}
-            >
-              {service.description} Our comprehensive growth strategy combines
-              content creation, performance optimization, and strategic
-              activation to transform your brand investment into measurable
-              business results.
-            </p>
-          </div>
-        </LenisFadeIn>
+        <div className='space-y-16 md:space-y-24'>
+          <ServiceHero
+            theme={theme}
+            eyebrow='Acquisition • Activation • Expansion'
+            title='Growth engines wired directly to revenue operations'
+            description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
+            layout='split'
+            image={{
+              src: '/placeholder.svg',
+              alt: 'Growth automation dashboards and workflows',
+            }}
+          >
+            <div className='flex flex-wrap gap-4'>
+              <LinkButton
+                href='/contact-us'
+                size='lg'
+                className='group'
+                style={buttonStyle}
+              >
+                Build my growth engine
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </LinkButton>
+            </div>
+          </ServiceHero>
 
-        {/* Image Section - Moved up for better flow */}
-        <LenisFadeIn delay={200}>
-          <div className='mb-16'>
-            <OptimizedImage
-              src='/pixelmojo-services-ai-powered-growth.webp'
-              alt='AI-Powered Growth Engines - Activate your brand for real growth'
-              aspectRatio='video'
-              className='rounded-xl'
-              priority
+          <ServiceStatList theme={theme} items={heroStats} />
+
+          <ServiceSplitSection
+            theme={theme}
+            eyebrow='Always-on signals'
+            title='The growth spine that stays aligned'
+            description={`Marketing, sales, product, and success all see the same truth. We wire every touchpoint to shared dashboards so decisions get smarter over time.`}
+            bullets={[
+              'Unified contact graph merges product usage, campaign history, and account intent.',
+              'AI scoring models prioritize accounts and leads that match your highest-value customers.',
+              'Alerting, routing, and playbooks keep teams executing within minutes, not days.',
+            ]}
+            image={{
+              src: '/placeholder.svg',
+              alt: 'Unified growth data across teams',
+            }}
+          />
+
+          <div className='space-y-8'>
+            <div className='max-w-3xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Growth engines we deploy together
+              </h2>
+              <p
+                className='mt-4 text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                Every play is documented, automated, and measured. Your team
+                knows exactly how each channel contributes to revenue.
+              </p>
+            </div>
+            <ServiceCardGrid theme={theme} items={engineCards} columns={2} />
+          </div>
+
+          <div className='space-y-8'>
+            <div className='max-w-3xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Experiment cycle that never loses momentum
+              </h2>
+              <p
+                className='mt-4 text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                We run structured sprints with clear ownership so wins scale
+                quickly and learnings stick.
+              </p>
+            </div>
+            <ServiceTimeline theme={theme} items={experimentTimeline} />
+          </div>
+
+          <ServiceSplitSection
+            theme={theme}
+            eyebrow='Creative + automation pairing'
+            title='Content production that keeps channels fed'
+            description={`Writers, designers, editors, and AI copilots work from the same source of truth. That means more campaigns live, more often.`}
+            bullets={[
+              'Prompt libraries produce channel-ready copy, motion graphics, and social cuts.',
+              'Editorial calendar synced to revenue goals with pre-approved story angles.',
+              'Feedback loops push performance insights back into creative briefs instantly.',
+            ]}
+            reverse
+            image={{
+              src: '/placeholder.svg',
+              alt: 'Content production workflows with automation',
+            }}
+          />
+
+          <div className='space-y-6'>
+            <div className='max-w-2xl'>
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Visibility that keeps leadership confident
+              </h2>
+            </div>
+            <ServiceCardGrid
+              theme={theme}
+              items={measurementHighlights}
+              compact
             />
-            <p
-              className='text-center mt-4 text-sm'
-              style={{ color: theme.mutedTextColor }}
-            >
-              Data-driven growth strategies that transform brand investments
-              into measurable revenue generation
-            </p>
           </div>
-        </LenisFadeIn>
 
-        <LenisFadeIn delay={300}>
-          <div className='max-w-5xl mx-auto mb-20'>
-            <div className='grid gap-8 md:grid-cols-2 text-left'>
-              <div
-                className='rounded-xl border p-8 space-y-4'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.04)'
-                    : 'rgba(0, 0, 0, 0.04)',
-                  borderColor: theme.border,
-                }}
-              >
-                <div className='flex items-center gap-2 mb-3'>
-                  <span
-                    className='px-2 py-1 text-xs font-medium rounded-full'
-                    style={{
-                      backgroundColor: '#ef4444',
-                      color: '#ffffff',
-                    }}
-                  >
-                    The Problem
-                  </span>
-                </div>
-                <h3
-                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
-                  style={{ color: theme.textColor }}
-                >
-                  <span
-                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
-                    style={{
-                      backgroundColor: theme.iconBg,
-                      color: theme.textColor,
-                    }}
-                  >
-                    01
-                  </span>
-                  If This Sounds Familiar
-                </h3>
-                <p
-                  className='text-sm md:text-base leading-relaxed'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  Paid campaigns burn budget, content sits unread, and sales is
-                  still asking where the pipeline went. We align brand, demand,
-                  and RevOps so every touchpoint compounds instead of
-                  cannibalizes.
-                </p>
-              </div>
-              <div
-                className='rounded-xl border p-8 space-y-4'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.04)'
-                    : 'rgba(0, 0, 0, 0.04)',
-                  borderColor: theme.border,
-                }}
-              >
-                <div className='flex items-center gap-2 mb-3'>
-                  <span
-                    className='px-2 py-1 text-xs font-medium rounded-full'
-                    style={{
-                      backgroundColor: theme.isDark
-                        ? 'rgba(255, 255, 255, 0.15)'
-                        : 'rgba(0, 0, 0, 0.1)',
-                      color: theme.isDark ? '#FFFFFF' : '#000000',
-                    }}
-                  >
-                    Our Solution
-                  </span>
-                </div>
-                <h3
-                  className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
-                  style={{ color: theme.textColor }}
-                >
-                  <span
-                    className='inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold'
-                    style={{
-                      backgroundColor: theme.iconBg,
-                      color: theme.textColor,
-                    }}
-                  >
-                    02
-                  </span>
-                  AI-Native Moves We Deploy
-                </h3>
-                <ul
-                  className='list-disc pl-5 space-y-2 text-sm md:text-base'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>
-                    GPT-4o + Claude 3 orchestrate omni-channel messaging so tone
-                    and timing stay consistent.
-                  </li>
-                  <li>
-                    HubSpot lead scoring blends Pipedrive deal data with
-                    Pinecone intent signals for real-time prioritization.
-                  </li>
-                  <li>
-                    Make + Mutiny automations run continuous experiments on
-                    every micro-conversion.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </LenisFadeIn>
-
-        {/* Who It's For / Outcomes / KPIs Section */}
-        <LenisFadeIn delay={300}>
-          <div className='mb-20'>
-            <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
-              {/* Who It's For */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  Who This Is For
-                </h3>
-                <ul
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>• Agencies scaling client growth</li>
-                  <li>• SaaS companies post-launch</li>
-                  <li>• B2B brands needing activation</li>
-                  <li>• Companies with stagnant growth</li>
-                </ul>
-              </div>
-
-              {/* Outcomes Timeline */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  Outcomes You'll See
-                </h3>
-                <div
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <p>
-                    <strong>30 days:</strong> Content strategy & campaign launch
-                  </p>
-                  <p>
-                    <strong>60 days:</strong> Lead flow & engagement systems
-                  </p>
-                  <p>
-                    <strong>90 days:</strong> Scalable growth infrastructure
-                  </p>
-                </div>
-              </div>
-
-              {/* Sample KPIs */}
-              <div
-                className='p-6 rounded-xl border'
-                style={{
-                  backgroundColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.05)'
-                    : 'rgba(0, 0, 0, 0.05)',
-                  borderColor: theme.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <h3
-                  className='font-semibold mb-3'
-                  style={{ color: theme.textColor }}
-                >
-                  What You'll Achieve
-                </h3>
-                <ul
-                  className='text-sm space-y-2'
-                  style={{ color: theme.mutedTextColor }}
-                >
-                  <li>• Build a predictable lead pipeline</li>
-                  <li>• Close deals 30%+ faster</li>
-                  <li>• Establish thought leadership</li>
-                  <li>• Scale revenue 3x year-over-year</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </LenisFadeIn>
-
-        {/* Value Proposition Section */}
-        <LenisFadeIn delay={300}>
-          <div className='text-center mb-20'>
+          <section
+            className='rounded-3xl border p-10 text-center'
+            style={{ borderColor: theme.border }}
+          >
             <h2
-              className='mb-6 max-w-5xl mx-auto leading-snug !text-4xl md:!text-5xl lg:!text-6xl'
+              className='text-3xl font-semibold md:text-4xl'
               style={{ color: theme.textColor }}
             >
-              Turn Investment Into Growth Engine
+              Let's architect a growth engine around your revenue goals
             </h2>
             <p
-              className='max-w-4xl mx-auto text-lg leading-relaxed mb-16'
+              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
               style={{ color: theme.mutedTextColor }}
             >
-              Great brands need strategic activation to drive results. We don't
-              just launch your brand— we build comprehensive growth systems that
-              generate leads, increase sales, and establish lasting market
-              presence through data-driven optimization and multi-channel
-              engagement.
+              We will audit your pipeline, surface quick wins, and plot the
+              automation backlog that keeps marketing, sales, and success rowing
+              in sync.
             </p>
-
-            {/* Pricing Section */}
-            <p
-              className='text-lg font-bold mb-8'
-              style={{ color: theme.textColor }}
-            >
-              {service.pricing}
-            </p>
-
-            <LinkButton
-              href='/contact-us'
-              size='lg'
-              className='group'
-              style={{
-                backgroundColor: theme.isDark
-                  ? 'rgba(255, 255, 255, 0.1)'
-                  : 'rgba(0, 0, 0, 0.1)',
-                color: theme.textColor,
-                border: `2px solid ${theme.textColor}`,
-              }}
-            >
-              Start Your Project
-              <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-            </LinkButton>
-          </div>
-        </LenisFadeIn>
-
-        {/* Core Benefits Section */}
-        <LenisFadeIn delay={400}>
-          <div className='text-center mb-20'>
-            <h2 style={{ color: theme.textColor }}>
-              Strategic Growth Framework
-            </h2>
-            <p style={{ color: theme.mutedTextColor }}>
-              Our proven approach transforms brand investment into measurable
-              business growth across all channels.
-            </p>
-          </div>
-        </LenisFadeIn>
-
-        {/* 3 Benefits Cards */}
-        <LenisStaggered
-          delay={500}
-          staggerDelay={150}
-          className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20'
-        >
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Lead Generation Engine</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              Strategic content and campaigns that consistently attract
-              qualified prospects, turning your brand into a powerful lead
-              generation machine that drives revenue growth.
-            </p>
-          </div>
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Sales Acceleration</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              Comprehensive sales enablement and conversion optimization that
-              shortens sales cycles, increases close rates, and maximizes
-              revenue from every opportunity.
-            </p>
-          </div>
-          <div
-            className='p-6 text-center border rounded-lg'
-            style={{
-              backgroundColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(0, 0, 0, 0.1)',
-              borderColor: theme.isDark
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-            }}
-          >
-            <h3 style={{ color: theme.textColor }}>Market Leadership</h3>
-            <p style={{ color: theme.mutedTextColor }}>
-              Establish lasting market presence through thought leadership,
-              strategic positioning, and consistent brand activation that builds
-              authority and drives long-term growth.
-            </p>
-          </div>
-        </LenisStaggered>
-
-        {/* Process Section Header */}
-        <LenisFadeIn delay={600}>
-          <div className='text-center mb-20'>
-            <h2
-              className='max-w-4xl mx-auto'
-              style={{ color: theme.textColor }}
-            >
-              Comprehensive Growth Activation Process
-            </h2>
-            <p
-              className='max-w-3xl mx-auto'
-              style={{ color: theme.mutedTextColor }}
-            >
-              Our systematic approach transforms your brand into a growth engine
-              through strategic activation and optimization.
-            </p>
-          </div>
-        </LenisFadeIn>
-
-        {/* 5-Step Process */}
-        <LenisStaggered
-          delay={700}
-          staggerDelay={150}
-          className='w-full px-4 mb-20'
-        >
-          <div className='relative'>
-            {/* Horizontal line - hidden on mobile */}
-            <div
-              className='absolute top-6 left-0 right-0 h-0.5 hidden md:block'
-              style={{
-                backgroundColor: theme.isDark
-                  ? 'rgba(255, 255, 255, 0.3)'
-                  : 'rgba(0, 0, 0, 0.3)',
-              }}
-            ></div>
-
-            {/* Steps */}
-            <div className='grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative'>
-              {/* Step 1 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  1
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Growth Strategy
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We analyze your market, audience, and goals to develop a
-                  comprehensive growth strategy aligned with business
-                  objectives.
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  2
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Content Systems
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We create strategic content frameworks that position your
-                  brand as the authority while driving consistent engagement and
-                  leads.
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  3
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Channel Activation
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We execute multi-channel campaigns across digital touchpoints,
-                  ensuring consistent brand presence and maximum market reach.
-                </p>
-              </div>
-
-              {/* Step 4 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  4
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Performance Optimization
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We continuously monitor, analyze, and optimize campaigns using
-                  data-driven insights to maximize ROI and growth impact.
-                </p>
-              </div>
-
-              {/* Step 5 */}
-              <div className='text-center'>
-                <div
-                  className='w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg mx-auto mb-4 relative z-10'
-                  style={{
-                    backgroundColor: theme.isDark ? '#FFFFFF' : '#000000',
-                    color: theme.isDark ? '#000000' : '#FFFFFF',
-                  }}
-                >
-                  5
-                </div>
-                <h3 className='mb-2' style={{ color: theme.textColor }}>
-                  Scale & Expand
-                </h3>
-                <p className='text-sm' style={{ color: theme.mutedTextColor }}>
-                  We scale successful strategies across new channels and
-                  markets, building sustainable growth systems for long-term
-                  success.
-                </p>
-              </div>
+            <div className='mt-8 flex justify-center'>
+              <LinkButton
+                href='/contact-us'
+                size='lg'
+                className='group'
+                style={buttonStyle}
+              >
+                Book a growth working session
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </LinkButton>
             </div>
-          </div>
-        </LenisStaggered>
+          </section>
+        </div>
 
-        {/* Service Navigation */}
         <ServiceNavigation currentService='ai-powered-growth' theme={theme} />
       </div>
     </div>
