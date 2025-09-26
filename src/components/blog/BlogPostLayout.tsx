@@ -19,8 +19,8 @@ export function BlogPostLayout({
       <div className='max-w-full mx-auto px-4'>
         {/* Mobile/Tablet: Stacked Layout */}
         <div className='xl:hidden max-w-4xl mx-auto space-y-8'>
-          <main className='blog-content'>{children}</main>
           {tableOfContents}
+          <main className='blog-content'>{children}</main>
           {sidebar && <div>{sidebar}</div>}
         </div>
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useId } from 'react'
 import { cn } from '@/lib/utils'
 import type { TOCItem } from '../../../contentlayer.config'
 
@@ -11,17 +11,53 @@ interface TableOfContentsProps {
 
 export function TableOfContents({ headings, className }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('')
+  const [isExpanded, setIsExpanded] = useState<boolean>(true)
+  const [isDesktop, setIsDesktop] = useState<boolean>(false)
+  const listId = useId()
 
-  // only level-2 items
-  const h2Headings = headings.filter(h => h.level === 2)
-
-  const scrollToId = useCallback((id: string, smooth = true) => {
-    const elements = document.querySelectorAll(`#${CSS.escape(id)}`)
-    if (elements.length === 0) return false
-    const el = elements[elements.length - 1] as HTMLElement
-    el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' })
-    return true
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const mediaQuery = window.matchMedia('(min-width: 1280px)')
+    const update = () => {
+      const matches = mediaQuery.matches
+      setIsDesktop(matches)
+      setIsExpanded(prev => (matches ? true : prev))
+    }
+    update()
+    mediaQuery.addEventListener('change', update)
+    return () => mediaQuery.removeEventListener('change', update)
   }, [])
+
+  const h2Headings = useMemo(
+    () => headings.filter(h => h.level === 2),
+    [headings]
+  )
+
+  const getAnchorOffset = useCallback(() => {
+    if (typeof window === 'undefined') return 120
+    const cssOffset = getComputedStyle(
+      document.documentElement
+    ).getPropertyValue('--anchor-offset')
+    const parsed = parseInt(cssOffset, 10)
+    return Number.isNaN(parsed) ? 120 : parsed
+  }, [])
+
+  const scrollToId = useCallback(
+    (id: string, smooth = true) => {
+      const elements = document.querySelectorAll(`#${CSS.escape(id)}`)
+      if (elements.length === 0) return false
+      const el = elements[elements.length - 1] as HTMLElement
+      const anchorOffset = getAnchorOffset() + 10
+      const target =
+        el.getBoundingClientRect().top + window.scrollY - anchorOffset
+      window.scrollTo({
+        top: Math.max(target, 0),
+        behavior: smooth ? 'smooth' : 'auto',
+      })
+      return true
+    },
+    [getAnchorOffset]
+  )
 
   useEffect(() => {
     if (h2Headings.length === 0) return
@@ -38,11 +74,8 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     if (h2Headings.length === 0) return
     let ticking = false
     const update = () => {
-      const cssOffset = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--anchor-offset')
-      const offset = cssOffset ? parseInt(cssOffset) : 120
-      const y = window.scrollY + offset + 10
+      const offset = getAnchorOffset() + 10
+      const y = window.scrollY + offset
       let current = ''
       for (let i = h2Headings.length - 1; i >= 0; i--) {
         const { id } = h2Headings[i]
@@ -70,7 +103,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     update()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [h2Headings])
+  }, [getAnchorOffset, h2Headings])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
@@ -78,20 +111,56 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     window.history.replaceState(null, '', `#${id}`)
     setActiveId(id)
     scrollToId(id, true)
+    if (!isDesktop) setIsExpanded(false)
   }
 
   if (!h2Headings.length) return null
 
   return (
-    <div className={cn('not-prose pr-8', className)}>
+    <div
+      className={cn(
+        'not-prose w-full xl:pr-8',
+        'sticky top-[calc(var(--anchor-offset)+0.75rem)] z-30 bg-background/98 backdrop-blur-sm supports-[backdrop-filter]:bg-background/90 border border-border/30 rounded-xl px-4 py-5 shadow-sm',
+        'xl:static xl:bg-transparent xl:backdrop-blur-none xl:border-0 xl:rounded-none xl:px-0 xl:py-0 xl:shadow-none',
+        className
+      )}
+    >
       <nav aria-label='Table of contents'>
-        {/* TOC title - same font as content but bold and uppercase */}
-        <span className='block mb-7 text-sm font-bold text-foreground uppercase tracking-wider'>
+        <button
+          type='button'
+          onClick={() => {
+            if (isDesktop) return
+            setIsExpanded(prev => !prev)
+          }}
+          className='flex w-full items-center justify-between gap-3 text-left text-sm font-bold uppercase tracking-wider text-foreground xl:cursor-default xl:pointer-events-none xl:mb-7'
+          aria-expanded={isDesktop ? true : isExpanded}
+          aria-controls={listId}
+          tabIndex={isDesktop ? -1 : 0}
+        >
           Table of Contents
-        </span>
+          <span
+            className={cn(
+              'text-base transition-transform duration-150',
+              isExpanded ? 'rotate-180' : 'rotate-0',
+              'xl:hidden'
+            )}
+            aria-hidden='true'
+          >
+            ▾
+          </span>
+        </button>
 
-        {/* Normalize list spacing to avoid hidden top margin */}
-        <ul className='mt-0 mb-0 p-0 list-none space-y-4'>
+        <ul
+          className={cn(
+            'mt-4 mb-0 p-0 list-none space-y-4 transition-[max-height,opacity] duration-200 ease-out overflow-hidden',
+            isExpanded
+              ? 'max-h-[75vh] opacity-100 pointer-events-auto'
+              : 'max-h-0 opacity-0 pointer-events-none',
+            'xl:mt-0 xl:overflow-visible xl:max-h-none xl:opacity-100 xl:pointer-events-auto'
+          )}
+          id={listId}
+          aria-hidden={!isDesktop && !isExpanded}
+        >
           {h2Headings.map(({ id, text }, index) => {
             const isActive = activeId === id
             const displayNumber = String(index + 1).padStart(2, '0')
@@ -104,7 +173,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
                 <span
                   className={cn(
                     'text-base font-semibold tracking-wide min-w-[2.5rem] transition-colors transition-opacity duration-150',
-                    isActive ? 'text-cta' : 'text-foreground opacity-40'
+                    isActive ? 'text-cta' : 'text-foreground opacity-60'
                   )}
                 >
                   {displayNumber}
@@ -115,7 +184,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
                   onClick={e => handleClick(e, id)}
                   className={cn(
                     'flex-1 text-base leading-snug transition-colors transition-opacity duration-150 font-medium outline-none focus-visible:ring-2 focus-visible:ring-cta/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                    isActive ? 'text-foreground' : 'text-foreground opacity-40'
+                    isActive ? 'text-foreground' : 'text-foreground opacity-70'
                   )}
                   aria-current={isActive ? 'location' : undefined}
                   title={text}
