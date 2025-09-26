@@ -11,6 +11,7 @@ import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
+import BlogPostNavigation from '@/components/blog/BlogPostNavigation'
 
 interface BlogPostProps {
   params: {
@@ -103,6 +104,49 @@ export default async function BlogPost({ params }: BlogPostProps) {
   // Get author data (defaulting to Lloyd Pilapil)
   const author = getAuthor('lloyd-pilapil')
 
+  const orderedPosts = [...allPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+  const canonicalSlug = post.slug || post._raw.flattenedPath
+  const currentIndex = orderedPosts.findIndex(
+    entry => (entry.slug || entry._raw.flattenedPath) === canonicalSlug
+  )
+
+  const previousPost =
+    currentIndex > 0 ? orderedPosts[currentIndex - 1] : undefined
+  const nextPost =
+    currentIndex >= 0 && currentIndex < orderedPosts.length - 1
+      ? orderedPosts[currentIndex + 1]
+      : undefined
+
+  const footerContent =
+    previousPost || nextPost ? (
+      <BlogPostNavigation
+        previousPost={
+          previousPost
+            ? {
+                title: previousPost.title,
+                href:
+                  previousPost.url ||
+                  `/blog/${previousPost.slug || previousPost._raw.flattenedPath}`,
+                date: previousPost.date,
+              }
+            : undefined
+        }
+        nextPost={
+          nextPost
+            ? {
+                title: nextPost.title,
+                href:
+                  nextPost.url ||
+                  `/blog/${nextPost.slug || nextPost._raw.flattenedPath}`,
+                date: nextPost.date,
+              }
+            : undefined
+        }
+      />
+    ) : undefined
+
   return (
     <>
       {/* Full Width Hero Section */}
@@ -125,6 +169,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
           ) : undefined
         }
         sidebar={undefined}
+        footer={footerContent}
       >
         {/* Article Content */}
         <article className='animate-fade-in blog-post'>

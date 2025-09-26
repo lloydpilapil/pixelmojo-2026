@@ -43,6 +43,17 @@ export default function Services() {
         <div className='grid gap-8 lg:grid-cols-2 text-left'>
           {/* Problem Card - Subtle warning treatment */}
           <div className='rounded-xl border border-destructive/20 bg-destructive/5 p-8 space-y-4'>
+            <div className='flex items-center gap-2 mb-3'>
+              <span
+                className='px-2 py-1 text-xs font-medium rounded-full'
+                style={{
+                  backgroundColor: '#ef4444',
+                  color: '#ffffff',
+                }}
+              >
+                The Problem
+              </span>
+            </div>
             <h3 className='text-sm font-semibold uppercase tracking-wide text-destructive/80'>
               If This Sounds Familiar
             </h3>
@@ -55,6 +66,11 @@ export default function Services() {
 
           {/* Solution Card - Positive emphasis */}
           <div className='rounded-xl border-2 border-primary/30 bg-primary/5 p-8 space-y-4'>
+            <div className='flex items-center gap-2 mb-3'>
+              <span className='px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary'>
+                Our Solution
+              </span>
+            </div>
             <h3 className='text-sm font-semibold uppercase tracking-wide text-primary'>
               AI-Native Moves We Deploy
             </h3>

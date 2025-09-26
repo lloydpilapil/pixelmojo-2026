@@ -100,6 +100,17 @@ export default function RevenueFirstDesign() {
                   borderColor: theme.border,
                 }}
               >
+                <div className='flex items-center gap-2 mb-3'>
+                  <span
+                    className='px-2 py-1 text-xs font-medium rounded-full'
+                    style={{
+                      backgroundColor: '#ef4444',
+                      color: '#ffffff',
+                    }}
+                  >
+                    The Problem
+                  </span>
+                </div>
                 <h3
                   className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
                   style={{ color: theme.textColor }}
@@ -134,6 +145,19 @@ export default function RevenueFirstDesign() {
                   borderColor: theme.border,
                 }}
               >
+                <div className='flex items-center gap-2 mb-3'>
+                  <span
+                    className='px-2 py-1 text-xs font-medium rounded-full'
+                    style={{
+                      backgroundColor: theme.isDark
+                        ? 'rgba(255, 255, 255, 0.15)'
+                        : 'rgba(0, 0, 0, 0.1)',
+                      color: theme.isDark ? '#FFFFFF' : '#000000',
+                    }}
+                  >
+                    Our Solution
+                  </span>
+                </div>
                 <h3
                   className='text-sm font-semibold uppercase tracking-wide flex items-center gap-2'
                   style={{ color: theme.textColor }}

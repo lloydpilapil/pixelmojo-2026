@@ -6,6 +6,7 @@ interface BlogPostLayoutProps {
   tableOfContents?: React.ReactNode
   sidebar?: React.ReactNode
   className?: string
+  footer?: React.ReactNode
 }
 
 export function BlogPostLayout({
@@ -13,6 +14,7 @@ export function BlogPostLayout({
   tableOfContents,
   sidebar,
   className,
+  footer,
 }: BlogPostLayoutProps) {
   return (
     <div className={cn('w-full px-4 py-8', className)}>
@@ -22,6 +24,7 @@ export function BlogPostLayout({
           {tableOfContents}
           <main className='blog-content'>{children}</main>
           {sidebar && <div>{sidebar}</div>}
+          {footer && <div className='space-y-12'>{footer}</div>}
         </div>
 
         {/* Desktop: CSS Grid Layout */}
@@ -43,6 +46,8 @@ export function BlogPostLayout({
               {sidebar && <div className='mt-12'>{sidebar}</div>}
             </main>
           </div>
+
+          {footer && <div className='mt-20 space-y-12'>{footer}</div>}
         </div>
       </div>
     </div>
