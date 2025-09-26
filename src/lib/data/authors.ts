@@ -5,7 +5,7 @@ export const authors: Record<string, AuthorData> = {
     name: 'Lloyd Pilapil',
     title: 'Founder',
     company: 'Pixelmojo',
-    bio: 'Lloyd Pilapil is the founder of Pixelmojo, a growth-driven design agency in the Philippines specializing in AI-powered marketing solutions. With over 20 years of experience in digital marketing and UI/UX design, Lloyd has helped scale startups and enterprises through strategic, measurable design and data-driven growth strategies. His expertise spans AI implementation, conversion optimization, and building scalable marketing systems that drive sustainable business growth.',
+    bio: 'Lloyd Pilapil is the founder of Pixelmojo who turns AI, design, and growth strategy into revenue-grade systems. He is a hands-on problem solver obsessed with measurable outcomes and building marketing engines that compound.',
     avatar:
       'https://cdn.prod.website-files.com/66eac95a8aac68f7db1bd0c7/684d7867d893b153117e5400_lloyd-headshot.jpg',
     expertise: [

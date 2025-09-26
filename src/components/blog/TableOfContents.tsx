@@ -71,7 +71,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
   }, [h2Headings])
 
   useEffect(() => {
-    if (h2Headings.length === 0) return
+    if (!isDesktop || h2Headings.length === 0) return
     let ticking = false
     const update = () => {
       const offset = getAnchorOffset() + 10
@@ -103,7 +103,7 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     update()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [getAnchorOffset, h2Headings])
+  }, [getAnchorOffset, h2Headings, isDesktop])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
@@ -120,7 +120,9 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
     <div
       className={cn(
         'not-prose w-full xl:pr-8',
-        'sticky top-[calc(var(--anchor-offset)+0.75rem)] z-30 bg-background/98 backdrop-blur-sm supports-[backdrop-filter]:bg-background/90 border border-border/30 rounded-xl px-4 py-5 shadow-sm',
+        isDesktop
+          ? 'sticky top-[calc(var(--anchor-offset)+0.75rem)] z-30 bg-background/98 backdrop-blur-sm supports-[backdrop-filter]:bg-background/90 border border-border/30 rounded-xl px-4 py-5 shadow-sm'
+          : 'relative bg-background/98 border border-border/30 rounded-xl px-4 py-5 shadow-sm',
         'xl:static xl:bg-transparent xl:backdrop-blur-none xl:border-0 xl:rounded-none xl:px-0 xl:py-0 xl:shadow-none',
         className
       )}
@@ -152,10 +154,10 @@ export function TableOfContents({ headings, className }: TableOfContentsProps) {
 
         <ul
           className={cn(
-            'mt-4 mb-0 p-0 list-none space-y-4 transition-[max-height,opacity] duration-200 ease-out overflow-hidden',
+            'mb-0 p-0 list-none space-y-4 transition-[max-height,opacity] duration-200 ease-out overflow-hidden',
             isExpanded
-              ? 'max-h-[75vh] opacity-100 pointer-events-auto'
-              : 'max-h-0 opacity-0 pointer-events-none',
+              ? 'max-h-[75vh] opacity-100 pointer-events-auto mt-4'
+              : 'max-h-0 opacity-0 pointer-events-none mt-0',
             'xl:mt-0 xl:overflow-visible xl:max-h-none xl:opacity-100 xl:pointer-events-auto'
           )}
           id={listId}

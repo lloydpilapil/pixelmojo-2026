@@ -252,7 +252,7 @@ const TestimonialSection = ({
                     </blockquote>
 
                     {/* Minimal Author Section */}
-                    <div className='testimonial-author flex items-center justify-center gap-4'>
+                    <div className='testimonial-author flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:text-left'>
                       {/* Author Image */}
                       {testimonial.authorImage && (
                         <div className='relative w-16 h-16 shrink-0 rounded-full overflow-hidden shadow-lg'>
@@ -267,7 +267,7 @@ const TestimonialSection = ({
                       )}
 
                       {/* Author Details - Simple Text */}
-                      <div className='text-left max-w-sm'>
+                      <div className='max-w-sm text-center sm:text-left'>
                         <div className='font-semibold text-foreground'>
                           {testimonial.authorName}
                         </div>
@@ -275,7 +275,7 @@ const TestimonialSection = ({
                           {testimonial.authorTitle}
                         </div>
                         {testimonial.authorCompany && (
-                          <div className='flex items-center gap-2 mt-1'>
+                          <div className='mt-1 flex items-center justify-center gap-2 sm:justify-start'>
                             {testimonial.companyLogo && (
                               <Image
                                 src={testimonial.companyLogo}
