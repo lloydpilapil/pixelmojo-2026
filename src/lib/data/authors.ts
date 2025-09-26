@@ -3,24 +3,24 @@ import { AuthorData } from '@/components/blog/AuthorBio'
 export const authors: Record<string, AuthorData> = {
   'lloyd-pilapil': {
     name: 'Lloyd Pilapil',
-    title: 'Full Stack Developer',
-    company: 'PixelMojo',
-    bio: 'Passionate developer with expertise in modern web technologies, specializing in React, Next.js, and TypeScript. I love creating beautiful, performant applications that solve real-world problems.',
-    avatar: '/authors/lloyd-pilapil.jpg', // You can add actual image later
+    title: 'Founder',
+    company: 'Pixelmojo',
+    bio: 'Lloyd Pilapil is the founder of Pixelmojo, a growth-driven design agency in the Philippines specializing in AI-powered marketing solutions. With over 20 years of experience in digital marketing and UI/UX design, Lloyd has helped scale startups and enterprises through strategic, measurable design and data-driven growth strategies. His expertise spans AI implementation, conversion optimization, and building scalable marketing systems that drive sustainable business growth.',
+    avatar:
+      'https://cdn.prod.website-files.com/66eac95a8aac68f7db1bd0c7/684d7867d893b153117e5400_lloyd-headshot.jpg',
     expertise: [
-      'React & Next.js',
-      'TypeScript',
-      'Node.js',
+      'AI Marketing',
+      'Growth Strategy',
       'UI/UX Design',
-      'Performance Optimization'
+      'Conversion Optimization',
+      'Digital Marketing',
+      'Brand Strategy',
     ],
     socialLinks: {
       linkedin: 'https://linkedin.com/in/lloydpilapil',
-      github: 'https://github.com/lloydpilapil',
-      twitter: 'https://twitter.com/lloydpilapil',
-      website: 'https://lloydpilapil.com'
-    }
-  }
+      website: 'https://www.pixelmojo.io',
+    },
+  },
 }
 
 export function getAuthor(authorId: string): AuthorData {

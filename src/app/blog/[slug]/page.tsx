@@ -20,7 +20,7 @@ interface BlogPostProps {
 
 export async function generateStaticParams() {
   return allPosts.map(post => ({
-    slug: post._raw.flattenedPath,
+    slug: post.slug || post._raw.flattenedPath,
   }))
 }
 
@@ -33,7 +33,10 @@ export const dynamicParams = true
 
 export async function generateMetadata({ params }: BlogPostProps) {
   const { slug } = await params
-  const post = allPosts.find(post => post._raw.flattenedPath === slug)
+  const post = allPosts.find(
+    post =>
+      (post.slug && post.slug === slug) || post._raw.flattenedPath === slug
+  )
 
   if (!post) {
     notFound()
@@ -52,7 +55,10 @@ export async function generateMetadata({ params }: BlogPostProps) {
 
 export default async function BlogPost({ params }: BlogPostProps) {
   const { slug } = await params
-  const post = allPosts.find(post => post._raw.flattenedPath === slug)
+  const post = allPosts.find(
+    post =>
+      (post.slug && post.slug === slug) || post._raw.flattenedPath === slug
+  )
 
   if (!post) {
     notFound()
@@ -60,12 +66,35 @@ export default async function BlogPost({ params }: BlogPostProps) {
 
   const MDXContent = getMDXComponent(post.body.code)
 
+  // Custom link component for external links
+  const CustomLink = ({ href, children, ...props }: any) => {
+    // Check if link is external (starts with http/https or is not relative)
+    const isExternal =
+      href && (href.startsWith('http') || href.startsWith('https'))
+
+    if (isExternal) {
+      return (
+        <a href={href} target='_blank' rel='noopener noreferrer' {...props}>
+          {children}
+        </a>
+      )
+    }
+
+    // Internal links remain as-is
+    return (
+      <a href={href} {...props}>
+        {children}
+      </a>
+    )
+  }
+
   // MDX components for blog posts
   const mdxComponents = {
     TLDR,
     BlogQuote,
     BlogFAQ,
     BlogPostImage,
+    a: CustomLink, // Override default anchor tag
   }
 
   // Calculate reading time

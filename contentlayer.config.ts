@@ -69,11 +69,17 @@ export const Post = defineDocumentType(() => ({
       required: false,
       default: false,
     },
+    slug: {
+      type: 'string',
+      description:
+        'Custom slug for the post URL (optional, overrides filename)',
+      required: false,
+    },
   },
   computedFields: {
     url: {
       type: 'string',
-      resolve: post => `/blog/${post._raw.flattenedPath}`,
+      resolve: post => `/blog/${post.slug || post._raw.flattenedPath}`,
     },
     headings: {
       type: 'json',

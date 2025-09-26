@@ -18,11 +18,10 @@ export function BlogQuote({
   company: _company,
   avatar: _avatar,
   variant: _variant = 'default',
-  className
+  className,
 }: BlogQuoteProps) {
-
   return (
-    <div className={cn('my-8', className)}>
+    <div data-blog-layout='narrow' className={cn('my-8', className)}>
       {/* Quote Text - Bigger, Bold, Left Aligned, No Italics */}
       <blockquote className='text-2xl font-bold text-foreground leading-relaxed text-left not-italic'>
         "{quote}"
