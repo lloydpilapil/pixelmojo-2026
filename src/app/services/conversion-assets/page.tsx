@@ -149,7 +149,7 @@ export default function ConversionAssetSystems() {
             description={`We craft the capital, sales, and product collateral that keeps buyers engaged and moving forward.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-conversion-assets.webp',
               alt: 'Conversion asset collection overview',
             }}
           >
@@ -179,7 +179,7 @@ export default function ConversionAssetSystems() {
               'Call scripts, speaker notes, and follow-up frameworks keep messaging tight across the team.',
             ]}
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-full-stack-ai.webp',
               alt: 'Pitch narrative frameworks connecting story and proof',
             }}
           />

@@ -153,7 +153,7 @@ export default function ProfitOptimizedInterfaces() {
             description={`We combine behavioural data, experimentation, and high-performing design systems so every experience earns its keep.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-profit-optimized-interfaces.webp',
               alt: 'Interface optimization dashboards',
             }}
           >

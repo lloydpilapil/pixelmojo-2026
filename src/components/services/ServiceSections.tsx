@@ -183,7 +183,7 @@ export function ServiceStatList({
       {items.map((item, index) => (
         <div key={index} className='space-y-2'>
           <p
-            className='text-3xl font-semibold md:text-4xl'
+            className='text-3xl font-bold md:text-4xl'
             style={{ color: textColor }}
           >
             {item.value}

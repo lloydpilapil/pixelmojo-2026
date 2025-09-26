@@ -164,7 +164,7 @@ export default function RevenueFirstDesign() {
             description={`Every component, message, and motion is engineered to push revenue, retention, and expansion metrics forward.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-revenue-first-design.webp',
               alt: 'Design system overview boards',
             }}
           >

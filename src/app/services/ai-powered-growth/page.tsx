@@ -160,7 +160,7 @@ export default function AIPoweredGrowth() {
             description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-ai-powered-growth.webp',
               alt: 'Growth automation dashboards and workflows',
             }}
           >
@@ -245,7 +245,7 @@ export default function AIPoweredGrowth() {
             ]}
             reverse
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-ai-powered-growth.webp',
               alt: 'Content production workflows with automation',
             }}
           />

@@ -173,7 +173,7 @@ export default function FullStackAIImplementation() {
             description={`We bring the strategists, engineers, and designers that build production-grade AI without the usual integration hangovers.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-full-stack-ai.webp',
               alt: 'Full-stack AI architecture visual',
             }}
           >

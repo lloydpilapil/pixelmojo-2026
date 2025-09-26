@@ -160,7 +160,7 @@ export default function AIProductDevelopment() {
             description={`Our sprint pods pair senior product strategists with automation engineers so you validate, build, and monetize in the same 90-day window.`}
             layout='split'
             image={{
-              src: '/placeholder.svg',
+              src: '/pixelmojo-services-ai-product-development.webp',
               alt: 'AI product development collaboration visual',
             }}
           >
