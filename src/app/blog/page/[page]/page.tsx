@@ -40,9 +40,10 @@ export const dynamicParams = true
 export async function generateMetadata({
   params,
 }: {
-  params: { page: string }
+  params: Promise<{ page: string }>
 }): Promise<Metadata> {
-  const pageNumber = parseInt(params.page)
+  const { page } = await params
+  const pageNumber = parseInt(page)
 
   return {
     title: `Blog - Page ${pageNumber} | Pixelmojo`,
@@ -62,8 +63,13 @@ export async function generateMetadata({
   }
 }
 
-export default function BlogPage({ params }: { params: { page: string } }) {
-  const pageNumber = parseInt(params.page)
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ page: string }>
+}) {
+  const { page } = await params
+  const pageNumber = parseInt(page)
 
   if (isNaN(pageNumber) || pageNumber < 1) {
     notFound()
@@ -205,7 +211,7 @@ export default function BlogPage({ params }: { params: { page: string } }) {
               )}
 
               {/* Last page link if there's more than one page */}
-              {totalPages > 1 && (
+              {totalPages > 1 && Math.abs(totalPages - pageNumber) > 1 && (
                 <Link
                   href={`/blog/page/${totalPages}`}
                   className={`px-3 py-1 rounded-lg transition-colors ${

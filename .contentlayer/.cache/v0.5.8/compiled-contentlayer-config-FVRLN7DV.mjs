@@ -13,8 +13,18 @@ var Post = defineDocumentType(() => ({
     },
     date: {
       type: "date",
-      description: "The date of the post",
+      description: "The publication date of the post",
       required: true
+    },
+    createdDate: {
+      type: "date",
+      description: "The date when the post was first created",
+      required: false
+    },
+    updatedDate: {
+      type: "date",
+      description: "The date when the post was last updated",
+      required: false
     },
     description: {
       type: "string",
@@ -38,12 +48,28 @@ var Post = defineDocumentType(() => ({
       description: "Whether to show CTA in sidebar",
       required: false,
       default: true
+    },
+    featuredImage: {
+      type: "string",
+      description: "Featured image URL for the post",
+      required: false
+    },
+    featured: {
+      type: "boolean",
+      description: "Marks the post as featured on the blog overview",
+      required: false,
+      default: false
+    },
+    slug: {
+      type: "string",
+      description: "Custom slug for the post URL (optional, overrides filename)",
+      required: false
     }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`
+      resolve: (post) => `/blog/${post.slug || post._raw.flattenedPath}`
     },
     headings: {
       type: "json",
@@ -77,4 +103,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-WS3PUIKD.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-FVRLN7DV.mjs.map

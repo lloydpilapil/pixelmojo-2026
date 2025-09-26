@@ -59,12 +59,17 @@ var Post = defineDocumentType(() => ({
       description: "Marks the post as featured on the blog overview",
       required: false,
       default: false
+    },
+    slug: {
+      type: "string",
+      description: "Custom slug for the post URL (optional, overrides filename)",
+      required: false
     }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`
+      resolve: (post) => `/blog/${post.slug || post._raw.flattenedPath}`
     },
     headings: {
       type: "json",
@@ -98,4 +103,4 @@ export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-D56XVX4S.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-QSPD67C5.mjs.map

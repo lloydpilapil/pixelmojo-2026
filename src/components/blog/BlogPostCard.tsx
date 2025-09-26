@@ -30,10 +30,6 @@ export function BlogPostCard({
         '--card-bg': theme.isDark
           ? 'rgba(255, 255, 255, 0.1)'
           : 'rgba(0, 0, 0, 0.1)',
-        '--card-border': theme.isDark
-          ? 'rgba(255, 255, 255, 0.2)'
-          : 'rgba(0, 0, 0, 0.2)',
-        '--card-hover-border': theme.hoverBorder,
         '--card-image-bg': theme.isDark
           ? 'rgba(255, 255, 255, 0.05)'
           : 'rgba(0, 0, 0, 0.05)',
@@ -45,9 +41,6 @@ export function BlogPostCard({
         backgroundColor: theme.isDark
           ? 'rgba(255, 255, 255, 0.1)'
           : 'rgba(0, 0, 0, 0.1)',
-        borderColor: theme.isDark
-          ? 'rgba(255, 255, 255, 0.2)'
-          : 'rgba(0, 0, 0, 0.2)',
         color: theme.textColor,
       }
     : undefined
@@ -55,15 +48,9 @@ export function BlogPostCard({
   return (
     <Link href={post.url} className='group'>
       <article
-        className={`overflow-hidden transition-all duration-300 h-full flex flex-col border relative ${
-          featured
-            ? theme
-              ? 'border-2 hover:shadow-xl hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
-              : 'border-2 border-secondary/20 hover:shadow-xl hover:border-secondary/30 focus-within:border-secondary/30'
-            : theme
-              ? 'border-border hover:shadow-lg hover:border-[var(--card-hover-border)] focus-within:border-[var(--card-hover-border)]'
-              : 'border-border hover:shadow-lg hover:border-primary/50 focus-within:border-primary/50'
-        }`}
+        className={`overflow-hidden transition-all duration-300 h-full flex flex-col relative rounded-2xl ${
+          featured ? 'shadow-lg hover:shadow-xl' : 'shadow-sm hover:shadow-lg'
+        } ${theme ? 'hover:-translate-y-1 focus-within:-translate-y-1' : ''}`}
         style={theme ? cardStyle : undefined}
       >
         {/* Featured Badge */}
