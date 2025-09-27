@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, createContext, useContext } from 'react'
+import { useEffect, useRef, useState, createContext, useContext } from 'react'
 import Lenis from 'lenis'
 
 interface SmoothScrollProviderProps {
@@ -22,10 +22,10 @@ export default function SmoothScrollProvider({
   children,
 }: SmoothScrollProviderProps) {
   const lenisRef = useRef<Lenis | null>(null)
+  const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null)
 
   useEffect(() => {
-    // Initialize Lenis
-    lenisRef.current = new Lenis({
+    const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
       smoothWheel: true,
@@ -33,25 +33,25 @@ export default function SmoothScrollProvider({
       touchMultiplier: 2,
     })
 
-    // Make Lenis instance available globally for parallax effects
-    ;(window as any).lenis = lenisRef.current
+    lenisRef.current = lenis
+    setLenisInstance(lenis)
+    ;(window as any).lenis = lenis
 
-    // Animation loop
     function raf(time: number) {
-      lenisRef.current?.raf(time)
+      lenis.raf(time)
       requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
 
-    // Cleanup
     return () => {
-      lenisRef.current?.destroy()
+      lenis.destroy()
       ;(window as any).lenis = null
+      setLenisInstance(null)
     }
   }, [])
 
   return (
-    <LenisContext.Provider value={{ lenis: lenisRef.current }}>
+    <LenisContext.Provider value={{ lenis: lenisInstance }}>
       {children}
     </LenisContext.Provider>
   )

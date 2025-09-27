@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { LinkButton } from './ui/button'
 import HeroVisual from './HeroVisual'
 import { WorkItem, generateAltText } from '@/data/works'
@@ -21,86 +22,80 @@ export function generateWorkMetadata(work: WorkItem): Metadata {
 }
 
 export default function WorkPage({ work }: WorkPageProps) {
-  const isDesignSwissKnife = work.slug === '/projects/design-swiss-knife'
+  const isMojoAI = work.slug === '/projects/mojo-ai'
 
-  const designSwissKnifeStats = [
+  const painPoints = [
     {
-      label: 'Variations Produced',
-      value: '100+',
-      detail:
-        'Batch-generate on-brand ads from a single template without manual layer shuffling.',
+      title: 'Repetitive Manual Work',
+      description:
+        'Adapting a single design into dozens, or even hundreds, of variations for A/B testing or diverse channels is a tedious, time-consuming nightmare. Copy-pasting, resizing, and tweaking text drains hours that could be spent on high-level creative strategy.',
     },
     {
-      label: 'Production Speed',
-      value: '10x faster',
-      detail:
-        'Compress days of repetitive layout work into one guided workflow designers can trust.',
+      title: 'The Content Gap',
+      description:
+        'Sourcing unique headlines and descriptions for every variation is a constant struggle. Brainstorming new copy for every ad can slow down even the most efficient teams.',
     },
     {
-      label: 'Quality Score Uplift',
-      value: '+22%',
-      detail:
-        'Automated scoring lifts baseline compliance across typography, contrast, and CTA visibility.',
+      title: 'Subjective Design Decisions',
+      description:
+        'Without objective data, understanding why one ad performs better than another can feel like guesswork, making true optimization difficult.',
     },
   ]
 
-  const designSwissKnifeWorkflow = [
+  const solutionFeatures = [
     {
-      stage: 'Phase 01',
-      title: 'Template intelligence',
-      description:
-        'The plugin inspects base frames, maps content layers, and locks brand tokens before automation kicks in.',
+      title: 'Mass Creative Generation, Instantly',
+      pain: 'The endless manual repetition of creating ad variations.',
+      solution:
+        'From a single Figma template, Mojo AI can generate up to 100 unique ad variations in minutes, not hours or days. It intelligently identifies design elements and automates the creation process, freeing you from tedious, repetitive tasks.',
     },
     {
-      stage: 'Phase 02',
-      title: 'AI content orchestration',
-      description:
-        'Context-aware prompts generate multiple headline and body combinations while respecting tone, length, and compliance.',
+      title: 'AI-Powered Content Creation',
+      pain: 'The struggle to generate diverse and effective copy for every ad variant.',
+      solution:
+        "Integrated with advanced AI models like OpenAI (GPT-3.5) and Mistral AI, Mojo AI can automatically generate contextual headlines and descriptions tailored to your campaign needs. Say goodbye to writer's block and hello to a limitless stream of compelling copy.",
     },
     {
-      stage: 'Phase 03',
-      title: 'Batch render & review',
-      description:
-        'Variations export into a review grid with live scoring, quick overrides, and handoff-ready assets for marketers.',
+      title: 'Data-Driven Design Insights',
+      pain: 'Subjective design choices and uncertainty about what makes a design perform.',
+      solution:
+        'Mojo AI includes an automated design quality scoring system. It analyzes typography, color contrast, spacing, and CTA visibility, providing an objective score for each variation. This means you can identify high-quality designs and make informed decisions for A/B testing with confidence.',
     },
   ]
 
-  const designSwissKnifeCapabilities = [
+  const keyFeatures = [
     {
-      icon: '🚀',
-      title: 'Adaptive Layout Engine',
-      description:
-        'Spin up families of ads from one master frame while the layout engine preserves brand grids, spacing, and typography without manual nudging.',
-    },
-    {
-      icon: '✍️',
-      title: 'Guided Copy Intelligence',
-      description:
-        'Purpose-built prompts keep tone, compliance, and length on brief while OpenAI plus Mistral fallback generate ready-to-test messaging.',
-    },
-    {
-      icon: '📊',
-      title: 'Visual Quality Radar',
-      description:
-        'Automated scoring surfaces typography, contrast, and CTA visibility risks instantly so designers can correct before export.',
-    },
-    {
-      icon: '🧪',
-      title: 'Experiment Command Center',
-      description:
-        'Side-by-side variant previews, performance projections, and quick filters keep experimentation organized for growth teams.',
+      icon: '⚡',
+      title: 'Rapid Generation',
+      description: 'Produce up to 100 ad variations from one template.',
     },
     {
       icon: '🧠',
-      title: 'Semantic Layer Mapping',
+      title: 'Smart AI Content',
       description:
-        'Intelligent layer parsing understands hierarchy, tagging headlines, subheads, and CTAs so content swaps land exactly where expected.',
+        'Generate headlines & descriptions with OpenAI & Mistral AI.',
     },
     {
-      icon: '📦',
-      title: 'Review-Ready Delivery',
+      icon: '✅',
+      title: 'Design Quality Score',
       description:
-        'Progress tracking, font management, and grid exports roll into cleaner handoffs so teams can launch without extra prep.',
+        'Automated analysis for typography, contrast, spacing, and more.',
+    },
+    {
+      icon: '↔️',
+      title: 'A/B Test Ready',
+      description:
+        'Tools for comparing design variants and predicting performance.',
+    },
+    {
+      icon: '🔍',
+      title: 'Intelligent Text Detection',
+      description: 'Automatically classifies headlines vs. descriptions.',
+    },
+    {
+      icon: '⚙️',
+      title: 'Real-time Progress',
+      description: 'Transparent generation process with live updates.',
     },
   ]
 
@@ -110,6 +105,11 @@ export default function WorkPage({ work }: WorkPageProps) {
       <div className='relative mb-24 lg:mb-32 w-screen -translate-x-1/2 px-4 sm:px-8 lg:px-16 xl:px-24 left-1/2'>
         <div className='mx-auto w-full max-w-[90rem] space-y-12 lg:space-y-16 text-center'>
           <h1 className='mx-auto leading-tight mb-8 lg:mb-12'>{work.title}</h1>
+          {isMojoAI && (
+            <h2 className='text-2xl lg:text-3xl font-semibold text-primary mb-6 lg:mb-8'>
+              Your Creative Copilot for Figma
+            </h2>
+          )}
           <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground mb-10 lg:mb-14'>
             {work.description}
           </p>
@@ -130,24 +130,6 @@ export default function WorkPage({ work }: WorkPageProps) {
         </div>
       </div>
 
-      {isDesignSwissKnife && (
-        <section className='mb-16'>
-          <div className='grid gap-10 text-center sm:grid-cols-3'>
-            {designSwissKnifeStats.map(stat => (
-              <div key={stat.label} className='space-y-2'>
-                <p className='text-sm font-semibold uppercase tracking-wide text-primary/80'>
-                  {stat.label}
-                </p>
-                <div className='text-3xl font-bold text-foreground'>
-                  {stat.value}
-                </div>
-                <p className='text-sm text-muted-foreground'>{stat.detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* Cover Image */}
       {work.coverImage && (
         <div className='mb-24 lg:mb-32'>
@@ -164,322 +146,233 @@ export default function WorkPage({ work }: WorkPageProps) {
 
       {/* Project Content */}
       <div className='mb-24 lg:mb-32'>
-        {isDesignSwissKnife ? (
+        {isMojoAI ? (
           <div className='space-y-24 lg:space-y-32'>
-            {/* Project Overview */}
+            {/* The Challenge Section */}
             <section className='space-y-16 lg:space-y-20'>
               <div className='text-center'>
-                <h2 className='text-4xl md:text-5xl font-bold mb-4 text-primary'>
-                  Project Overview
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-destructive'>
+                  The Challenge: The Creative Bottleneck is Real
                 </h2>
-                <p className='mx-auto max-w-3xl text-base text-muted-foreground md:text-lg'>
-                  Why the Design Swiss Knife exists and the impact it unlocks
-                  for in-house designers and marketing teams.
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  In today's fast-paced digital landscape, designers and
+                  marketers are constantly under pressure to produce more,
+                  faster. The demand for a steady stream of fresh, impactful ad
+                  creatives, social media content, and campaign assets has never
+                  been higher.
+                </p>
+                <p className='mx-auto max-w-2xl text-xl font-semibold text-foreground mt-8'>
+                  But here's the painful truth:
                 </p>
               </div>
 
-              <div className='grid items-start gap-12 lg:grid-cols-3'>
-                <div className='lg:col-span-2 space-y-6 text-left'>
-                  <p className='text-xl leading-relaxed text-muted-foreground'>
-                    This is a comprehensive AI-enhanced mass creative production
-                    Figma plugin designed for designers and marketers to rapidly
-                    generate ad variations and analyze design quality.
-                  </p>
-                  <p className='text-lg leading-relaxed text-foreground'>
-                    <strong>Primary Purpose:</strong> Automate the creation of
-                    multiple ad variations from a single template by replacing
-                    text content with different headlines and descriptions.
-                  </p>
-                  <p className='text-lg leading-relaxed font-medium text-primary'>
-                    The plugin bridges design and marketing workflows, enabling
-                    rapid creative iteration while maintaining quality standards
-                    through automated analysis.
-                  </p>
-                </div>
+              <div className='grid gap-8 md:grid-cols-3'>
+                {painPoints.map((point, index) => (
+                  <div
+                    key={index}
+                    className='bg-destructive/5 border border-destructive/20 rounded-2xl p-8 space-y-4'
+                  >
+                    <h3 className='text-xl font-bold text-destructive'>
+                      {point.title}
+                    </h3>
+                    <p className='text-muted-foreground leading-relaxed'>
+                      {point.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-                <div className='space-y-4 lg:border-l lg:border-border/50 lg:pl-8'>
-                  <div className='flex items-center gap-4'>
-                    <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10'>
-                      <span className='text-2xl'>⚡</span>
-                    </div>
-                    <div>
-                      <div className='text-2xl font-bold text-primary'>10x</div>
-                      <div className='text-sm text-muted-foreground'>
-                        Faster production
+              <div className='text-center'>
+                <p className='mx-auto max-w-4xl text-lg text-muted-foreground leading-relaxed'>
+                  This bottleneck doesn't just slow down production; it{' '}
+                  <strong>stifles creativity</strong>,{' '}
+                  <strong>limits testing</strong>, and ultimately{' '}
+                  <strong>impacts campaign performance</strong>.
+                </p>
+              </div>
+            </section>
+
+            {/* Solution Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-primary'>
+                  Our Solution: Introducing Mojo AI - Intelligent Creative
+                  Production
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  We built Mojo AI to fundamentally transform how designers and
+                  marketers scale their creative output. Our mission is to
+                  empower you to do more, faster, and smarter, by automating the
+                  mundane and augmenting your creative genius with artificial
+                  intelligence.
+                </p>
+              </div>
+
+              <div className='space-y-16'>
+                <h3 className='text-3xl font-bold text-center text-foreground'>
+                  How Mojo AI Solves Your Pain Points:
+                </h3>
+
+                <div className='space-y-12'>
+                  {solutionFeatures.map((feature, index) => (
+                    <div
+                      key={index}
+                      className='bg-primary/5 border border-primary/20 rounded-2xl p-8 lg:p-12'
+                    >
+                      <div className='grid lg:grid-cols-2 gap-8 lg:gap-12 items-start'>
+                        {/* Image */}
+                        <div className='w-full'>
+                          <div className='aspect-[3/2] rounded-xl overflow-hidden bg-muted border border-border'>
+                            <Image
+                              src='/placeholder.svg'
+                              alt={`${feature.title} - Mojo AI feature illustration`}
+                              width={1200}
+                              height={800}
+                              className='w-full h-full object-cover'
+                            />
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <div className='space-y-6'>
+                          <div>
+                            <h4 className='text-2xl font-bold text-primary mb-4'>
+                              {feature.title}
+                            </h4>
+                            <div className='space-y-3'>
+                              <p className='text-sm font-semibold text-destructive/80'>
+                                <strong>Pain Solved:</strong> {feature.pain}
+                              </p>
+                            </div>
+                          </div>
+                          <div>
+                            <p className='text-lg text-muted-foreground leading-relaxed'>
+                              <strong className='text-primary'>
+                                Our Approach:
+                              </strong>{' '}
+                              {feature.solution}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <h3 className='text-xl font-bold text-primary'>
-                    Core mission
-                  </h3>
-                  <p className='text-sm leading-relaxed text-muted-foreground'>
-                    Enable rapid creative iteration while maintaining brand
-                    consistency through intelligent automation and guided QA.
-                  </p>
-                  <ul className='space-y-3 text-sm text-muted-foreground'>
-                    <li className='flex items-start gap-3'>
-                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
-                      <span>
-                        Automated design scoring ensures every variation is
-                        launch-ready.
-                      </span>
-                    </li>
-                    <li className='flex items-start gap-3'>
-                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
-                      <span>
-                        Smart text classification preserves layout hierarchy
-                        automatically.
-                      </span>
-                    </li>
-                    <li className='flex items-start gap-3'>
-                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
-                      <span>
-                        Batch exports route seamlessly into performance
-                        marketing pipelines.
-                      </span>
-                    </li>
-                  </ul>
+                  ))}
                 </div>
               </div>
             </section>
 
-            {/* Production Workflow */}
+            {/* Pilot Project Section */}
+            <section className='space-y-12 lg:space-y-16'>
+              <div className='text-center bg-gradient-to-br from-accent/10 to-primary/10 rounded-3xl p-12 lg:p-16 border border-primary/20'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-primary'>
+                  Pilot Project: Join Us on This Journey!
+                </h2>
+                <div className='space-y-8 max-w-4xl mx-auto'>
+                  <p className='text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                    Mojo AI is currently a <strong>pilot project</strong>,
+                    representing our vision for the future of creative
+                    production. We're refining its capabilities and actively
+                    seeking designers and marketers who are passionate about
+                    innovation to join us.
+                  </p>
+                  <p className='text-xl font-semibold text-accent'>
+                    Your feedback is invaluable as we shape Mojo AI into the
+                    ultimate creative copilot.
+                  </p>
+
+                  {/* CTA Buttons */}
+                  <div className='flex flex-col sm:flex-row gap-4 justify-center items-center pt-4'>
+                    <LinkButton
+                      href='#'
+                      variant='default'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Join the Pilot Program
+                    </LinkButton>
+                    <LinkButton
+                      href='#'
+                      variant='outline'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Get Early Access
+                    </LinkButton>
+                  </div>
+
+                  <p className='text-sm text-muted-foreground mt-4'>
+                    Limited spots available for our pilot program
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Key Features Section */}
             <section className='space-y-12 lg:space-y-16'>
               <div className='text-center'>
-                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
-                  Flow in three beats
-                </p>
-                <h2 className='text-3xl font-bold md:text-4xl'>
-                  Creative operations we automated
+                <h2 className='text-4xl md:text-5xl font-bold mb-4 text-foreground'>
+                  Key Features at a Glance
                 </h2>
-                <p className='mt-4 text-base text-muted-foreground md:text-lg'>
-                  Each phase keeps designers in control while the plugin scales
-                  production, review, and handoff.
-                </p>
               </div>
-              <div className='grid gap-8 md:grid-cols-3'>
-                {designSwissKnifeWorkflow.map(phase => (
-                  <div key={phase.stage} className='space-y-3 text-left'>
-                    <span className='text-xs font-semibold uppercase tracking-[0.18em] text-primary/70'>
-                      {phase.stage}
-                    </span>
-                    <h3 className='text-xl font-semibold text-foreground'>
-                      {phase.title}
-                    </h3>
-                    <p className='text-sm leading-relaxed text-muted-foreground'>
-                      {phase.description}
+
+              <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
+                {keyFeatures.map((feature, index) => (
+                  <div
+                    key={index}
+                    className='bg-card border border-border rounded-xl p-6 space-y-3 hover:border-primary/50 transition-colors'
+                  >
+                    <div className='flex items-center gap-3'>
+                      <span className='text-2xl'>{feature.icon}</span>
+                      <h3 className='text-lg font-semibold text-foreground'>
+                        {feature.title}
+                      </h3>
+                    </div>
+                    <p className='text-muted-foreground text-sm leading-relaxed'>
+                      {feature.description}
                     </p>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Signature Capabilities */}
+            {/* CTA Section */}
             <section className='space-y-12 lg:space-y-16'>
-              <div className='text-center'>
-                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
-                  Signature capabilities
-                </p>
-                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
-                  Where automation still feels handcrafted
+              <div className='text-center bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 lg:p-16 border border-primary/30'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-primary'>
+                  Interested in Mojo AI?
                 </h2>
-                <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-                  Each module keeps creative control intact while the plugin
-                  handles the repetitive operations.
-                </p>
-              </div>
-
-              <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 text-left'>
-                {designSwissKnifeCapabilities.map(capability => (
-                  <div key={capability.title} className='space-y-3'>
-                    <span className='text-3xl'>{capability.icon}</span>
-                    <h3 className='text-xl font-semibold text-foreground'>
-                      {capability.title}
-                    </h3>
-                    <p className='text-sm leading-relaxed text-muted-foreground'>
-                      {capability.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Value Proposition */}
-            <section className='space-y-16 lg:space-y-20'>
-              <div className='text-center'>
-                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
-                  Why teams keep it in rotation
-                </p>
-                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
-                  The Value Proposition
-                </h2>
-                <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-                  Creative and revenue teams finally share one automated
-                  workspace for campaign-ready output.
-                </p>
-              </div>
-
-              <div className='grid gap-12 lg:grid-cols-2 text-left'>
-                <div className='space-y-6'>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-3xl'>🎨</span>
-                    <h3 className='text-3xl font-bold text-primary'>
-                      For Designers
-                    </h3>
-                  </div>
-                  <p className='text-base text-muted-foreground'>
-                    Keeps craft decisions front-and-center while automation
-                    clears the production backlog.
+                <div className='space-y-8 max-w-4xl mx-auto'>
+                  <p className='text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                    We're gathering interest from early adopters who want to
+                    influence the development of this powerful tool. If you're a
+                    designer or marketer eager to streamline your creative
+                    workflow and leverage the power of AI, we want to hear from
+                    you!
                   </p>
-                  <ul className='space-y-4 text-muted-foreground'>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        Production sprint ready
-                      </h4>
-                      <p className='text-sm'>
-                        Batch 80+ variants in a single session with brand tokens
-                        already locked, so designers stay focused on concepting.
-                      </p>
-                    </li>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        Live quality radar
-                      </h4>
-                      <p className='text-sm'>
-                        Scorecards flag typography, contrast, and CTA placement
-                        issues before anything leaves Figma.
-                      </p>
-                    </li>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        Precision overrides
-                      </h4>
-                      <p className='text-sm'>
-                        Smart defaults do the heavy lifting, but every layer
-                        stays editable when designers want to fine-tune.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
 
-                <div className='space-y-6'>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-3xl'>📊</span>
-                    <h3 className='text-3xl font-bold text-accent'>
-                      For Marketers
-                    </h3>
+                  <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+                    <LinkButton
+                      href='#'
+                      variant='default'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Express Your Interest
+                    </LinkButton>
+                    <LinkButton
+                      href='#'
+                      variant='outline'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Join Waitlist
+                    </LinkButton>
                   </div>
-                  <p className='text-base text-muted-foreground'>
-                    Campaign ops see what is launch-ready, what needs edits, and
-                    why—with zero spreadsheet wrangling.
+
+                  <p className='text-sm text-muted-foreground'>
+                    Connect with us via Google Form, Typeform, or simple email
+                    submission
                   </p>
-                  <ul className='space-y-4 text-muted-foreground'>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        Always-on campaign inventory
-                      </h4>
-                      <p className='text-sm'>
-                        One template becomes a library of approved variants,
-                        ready for every channel within minutes.
-                      </p>
-                    </li>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        AI copy co-pilot
-                      </h4>
-                      <p className='text-sm'>
-                        Structured prompts keep positioning consistent while new
-                        offers, CTAs, and compliance notes stay on message.
-                      </p>
-                    </li>
-                    <li>
-                      <h4 className='font-semibold text-foreground'>
-                        Evidence-first optimization
-                      </h4>
-                      <p className='text-sm'>
-                        Metrics roll up into performance-ready summaries so
-                        growth teams decide based on predicted lift, not
-                        guesswork.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            {/* Technology Stack */}
-            <section className='space-y-16 lg:space-y-20'>
-              <div className='text-center'>
-                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
-                  Under the hood
-                </p>
-                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
-                  Technology Stack
-                </h2>
-                <p className='text-xl text-muted-foreground max-w-4xl mx-auto'>
-                  Modern tooling tuned for the Figma plugin runtime so creative,
-                  data, and delivery stay in sync.
-                </p>
-              </div>
-
-              <div className='grid gap-10 lg:grid-cols-3 text-left'>
-                <div className='space-y-6'>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-3xl'>🎨</span>
-                    <h3 className='text-2xl font-bold text-blue-600'>
-                      Frontend
-                    </h3>
-                  </div>
-                  <ul className='space-y-3 text-sm text-muted-foreground'>
-                    <li>
-                      HTML5/CSS3 foundation layered with Material 3 tokens.
-                    </li>
-                    <li>
-                      Vanilla TypeScript drives lightweight plugin UI logic.
-                    </li>
-                    <li>
-                      Material Design components tuned to the Figma canvas.
-                    </li>
-                  </ul>
-                </div>
-
-                <div className='space-y-6'>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-3xl'>⚙️</span>
-                    <h3 className='text-2xl font-bold text-green-600'>
-                      Backend & Core
-                    </h3>
-                  </div>
-                  <ul className='space-y-3 text-sm text-muted-foreground'>
-                    <li>TypeScript compiled to performant plugin bundles.</li>
-                    <li>
-                      Figma Plugin API orchestrates frames, layers, and assets.
-                    </li>
-                    <li>OpenAI GPT-3.5 powers the copy intelligence layer.</li>
-                    <li>Mistral fallback keeps prompt generation resilient.</li>
-                  </ul>
-                </div>
-
-                <div className='space-y-6'>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-3xl'>🛠️</span>
-                    <h3 className='text-2xl font-bold text-purple-600'>
-                      Development Tools
-                    </h3>
-                  </div>
-                  <ul className='space-y-3 text-sm text-muted-foreground'>
-                    <li>
-                      ESLint + @figma/eslint-plugin-figma-plugins enforce
-                      discipline.
-                    </li>
-                    <li>
-                      Strict TypeScript configuration catches regressions early.
-                    </li>
-                    <li>NPM workspace keeps plugin dependencies tidy.</li>
-                    <li>
-                      @figma/plugin-typings provide typed access to canvas APIs.
-                    </li>
-                  </ul>
                 </div>
               </div>
             </section>

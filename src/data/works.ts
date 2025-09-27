@@ -14,12 +14,12 @@ export interface WorkItem {
 
 export const worksData: WorkItem[] = [
   {
-    title: 'Design Swiss Knife - Figma Plugin',
+    title: 'Mojo AI',
     description:
-      'An AI-enhanced mass creative production plugin for Figma, designed to bridge the gap between design and marketing by automating ad variation generation and providing data-driven design analysis.',
+      'Transform single templates into hundreds of on-brand ad variations in minutes. AI-powered content generation meets intelligent design analysis for faster, smarter creative workflows.',
     year: '2025',
     category: 'Product Design',
-    slug: '/projects/design-swiss-knife',
+    slug: '/projects/mojo-ai',
     coverImage: '/design-swiss-knife-hero.webp',
     thumbnailImage: '/placeholder.svg',
     technologies: [
