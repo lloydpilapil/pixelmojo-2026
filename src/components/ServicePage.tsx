@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import ScrollVideoSection from './ScrollVideoSection'
 import { LinkButton } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 import { getServiceTheme } from '@/utils/serviceThemes'
@@ -56,13 +55,6 @@ export default function ServicePage({ service }: ServicePageProps) {
             {service.description}
           </p>
         </div>
-
-        {/* Video Section */}
-        <ScrollVideoSection
-          videoId='1098410997'
-          coverImage='/our-services-cover.webp'
-          className='mb-16'
-        />
 
         {/* Value Proposition Section */}
         <div className='text-center mb-20'>

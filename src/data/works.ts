@@ -14,6 +14,24 @@ export interface WorkItem {
 
 export const worksData: WorkItem[] = [
   {
+    title: 'Design Swiss Knife',
+    description:
+      'AI-powered Figma plugin that turns one template into 100 scored ad variations with automated copywriting and design analytics.',
+    year: '2025',
+    category: 'Product Design',
+    slug: '/projects/design-swiss-knife',
+    coverImage: '/design-swiss-knife-hero.svg',
+    thumbnailImage: '/design-swiss-knife-thumb.svg',
+    technologies: [
+      'TypeScript',
+      'Figma Plugin API',
+      'OpenAI GPT-5',
+      'shadcn/ui',
+    ],
+    featured: true,
+    isNew: true,
+  },
+  {
     title: 'Real Estate Bear',
     description:
       'Unified web and mobile funnels that help real estate teams onboard agents faster and convert warmer leads.',
