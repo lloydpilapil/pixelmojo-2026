@@ -1,20 +1,32 @@
-import type { Metadata } from 'next'
-import DesignSwissKnifeCaseStudy from './DesignSwissKnifeCaseStudy'
+import WorkPage, { generateWorkMetadata } from '@/components/WorkPage'
+import { getAllWorks } from '@/data/works'
+import { notFound } from 'next/navigation'
 
-export const metadata: Metadata = {
-  title:
-    'Design Swiss Knife - AI Figma Plugin for Mass Creative Production | PixelMojo',
-  description:
-    'Generate 100 ad variations from a single template with AI-powered copy and automated quality scoring. Built by PixelMojo.',
-  openGraph: {
-    title:
-      'Design Swiss Knife - AI Figma Plugin for Mass Creative Production | PixelMojo',
-    description:
-      'Generate 100 ad variations from a single template with AI-powered copy and automated quality scoring. Built by PixelMojo.',
-    type: 'website',
-  },
+export async function generateMetadata() {
+  const works = getAllWorks()
+  const workData = works.find(
+    work => work.slug === '/projects/design-swiss-knife'
+  )
+
+  if (!workData) {
+    return {
+      title: 'Design Swiss Knife | Pixelmojo',
+      description: 'AI-powered Figma plugin case study',
+    }
+  }
+
+  return generateWorkMetadata(workData)
 }
 
 export default function DesignSwissKnifePage() {
-  return <DesignSwissKnifeCaseStudy />
+  const works = getAllWorks()
+  const workData = works.find(
+    work => work.slug === '/projects/design-swiss-knife'
+  )
+
+  if (!workData) {
+    notFound()
+  }
+
+  return <WorkPage work={workData} />
 }
