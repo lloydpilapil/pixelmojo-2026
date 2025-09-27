@@ -18,10 +18,11 @@ export default function WorksClient() {
       <div className='max-w-7xl mx-auto'>
         {/* Page Header */}
         <div className='text-center mb-20'>
-          <h1 className='mb-6 font-heading'>Our Works</h1>
+          <h1 className='mb-6 font-heading'>Our Projects</h1>
           <p className='lead max-w-3xl mx-auto mb-8'>
-            Explore our portfolio of successful projects that have driven
-            measurable results for clients across various industries.
+            Real results from our AI-native approach. Client work and innovative
+            products that prove the power of unified intelligence over
+            traditional agency chaos.
           </p>
         </div>
 

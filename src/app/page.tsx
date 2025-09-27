@@ -114,7 +114,7 @@ export default function Home() {
         {/* Testimonial Section */}
         <TestimonialSection />
 
-        {/* Featured Works Section */}
+        {/* Featured Projects Section */}
         <FeaturedWorks />
 
         {/* Our Approach Section */}

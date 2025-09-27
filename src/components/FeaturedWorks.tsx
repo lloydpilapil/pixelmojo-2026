@@ -192,8 +192,8 @@ const PortfolioCard: React.FC<PortfolioStripProps> = ({
 
 // Main FeaturedWorks Component
 const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
-  title = 'Featured Works',
-  subtitle = 'Explore our portfolio of successful projects that have driven measurable results for clients across various industries.',
+  title = 'Featured Projects',
+  subtitle = 'Client transformations and AI-powered products that deliver measurable results. See how we solve complex challenges with unified intelligence.',
   works = getFeaturedWorks(),
 }) => {
   return (
