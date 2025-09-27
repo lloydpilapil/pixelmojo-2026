@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { LinkButton } from './ui/button'
-import { Tag } from './ui/tag'
-import { ExternalLink } from 'lucide-react'
+import HeroVisual from './HeroVisual'
 import { WorkItem, generateAltText } from '@/data/works'
 import ProjectNavigation from './ProjectNavigation'
 
@@ -23,459 +21,465 @@ export function generateWorkMetadata(work: WorkItem): Metadata {
 }
 
 export default function WorkPage({ work }: WorkPageProps) {
-  return (
-    <div className='container mx-auto px-4 py-16 max-w-7xl'>
-      {/* Hero Section */}
-      <div className='text-center mb-16'>
-        <div className='inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm'>
-          <span>{work.category}</span>
-          <span>•</span>
-          <span>{work.year}</span>
-        </div>
-        <h1 className='mb-6'>{work.title}</h1>
-        <p className='lead mb-8'>{work.description}</p>
+  const isDesignSwissKnife = work.slug === '/projects/design-swiss-knife'
 
-        {/* Technologies */}
-        {work.technologies && work.technologies.length > 0 && (
-          <div className='flex flex-wrap items-center justify-center gap-2 mb-8'>
-            {work.technologies.map((tech, index) => (
-              <Tag key={index} variant='primary' size='sm'>
-                {tech}
-              </Tag>
+  const designSwissKnifeStats = [
+    {
+      label: 'Variations Produced',
+      value: '100+',
+      detail:
+        'Batch-generate on-brand ads from a single template without manual layer shuffling.',
+    },
+    {
+      label: 'Production Speed',
+      value: '10x faster',
+      detail:
+        'Compress days of repetitive layout work into one guided workflow designers can trust.',
+    },
+    {
+      label: 'Quality Score Uplift',
+      value: '+22%',
+      detail:
+        'Automated scoring lifts baseline compliance across typography, contrast, and CTA visibility.',
+    },
+  ]
+
+  const designSwissKnifeWorkflow = [
+    {
+      stage: 'Phase 01',
+      title: 'Template intelligence',
+      description:
+        'The plugin inspects base frames, maps content layers, and locks brand tokens before automation kicks in.',
+    },
+    {
+      stage: 'Phase 02',
+      title: 'AI content orchestration',
+      description:
+        'Context-aware prompts generate multiple headline and body combinations while respecting tone, length, and compliance.',
+    },
+    {
+      stage: 'Phase 03',
+      title: 'Batch render & review',
+      description:
+        'Variations export into a review grid with live scoring, quick overrides, and handoff-ready assets for marketers.',
+    },
+  ]
+
+  const designSwissKnifeCapabilities = [
+    {
+      icon: '🚀',
+      title: 'Adaptive Layout Engine',
+      description:
+        'Spin up families of ads from one master frame while the layout engine preserves brand grids, spacing, and typography without manual nudging.',
+    },
+    {
+      icon: '✍️',
+      title: 'Guided Copy Intelligence',
+      description:
+        'Purpose-built prompts keep tone, compliance, and length on brief while OpenAI plus Mistral fallback generate ready-to-test messaging.',
+    },
+    {
+      icon: '📊',
+      title: 'Visual Quality Radar',
+      description:
+        'Automated scoring surfaces typography, contrast, and CTA visibility risks instantly so designers can correct before export.',
+    },
+    {
+      icon: '🧪',
+      title: 'Experiment Command Center',
+      description:
+        'Side-by-side variant previews, performance projections, and quick filters keep experimentation organized for growth teams.',
+    },
+    {
+      icon: '🧠',
+      title: 'Semantic Layer Mapping',
+      description:
+        'Intelligent layer parsing understands hierarchy, tagging headlines, subheads, and CTAs so content swaps land exactly where expected.',
+    },
+    {
+      icon: '📦',
+      title: 'Review-Ready Delivery',
+      description:
+        'Progress tracking, font management, and grid exports roll into cleaner handoffs so teams can launch without extra prep.',
+    },
+  ]
+
+  return (
+    <div className='container mx-auto px-4 py-20 lg:py-32 max-w-7xl'>
+      {/* Hero Section */}
+      <div className='relative mb-24 lg:mb-32 w-screen -translate-x-1/2 px-4 sm:px-8 lg:px-16 xl:px-24 left-1/2'>
+        <div className='mx-auto w-full max-w-[90rem] space-y-12 lg:space-y-16 text-center'>
+          <h1 className='mx-auto leading-tight mb-8 lg:mb-12'>{work.title}</h1>
+          <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground mb-10 lg:mb-14'>
+            {work.description}
+          </p>
+
+          {/* Demo Link */}
+          {work.demoUrl && (
+            <div className='flex justify-center pt-4 lg:pt-8'>
+              <LinkButton
+                href={work.demoUrl}
+                variant='default'
+                size='default'
+                className='group'
+              >
+                View Live Project
+              </LinkButton>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {isDesignSwissKnife && (
+        <section className='mb-16'>
+          <div className='grid gap-10 text-center sm:grid-cols-3'>
+            {designSwissKnifeStats.map(stat => (
+              <div key={stat.label} className='space-y-2'>
+                <p className='text-sm font-semibold uppercase tracking-wide text-primary/80'>
+                  {stat.label}
+                </p>
+                <div className='text-3xl font-bold text-foreground'>
+                  {stat.value}
+                </div>
+                <p className='text-sm text-muted-foreground'>{stat.detail}</p>
+              </div>
             ))}
           </div>
-        )}
-
-        {/* Demo Link */}
-        {work.demoUrl && (
-          <div className='mb-8'>
-            <LinkButton
-              href={work.demoUrl}
-              variant='outline'
-              size='default'
-              className='group'
-            >
-              View Live Project
-              <ExternalLink className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-            </LinkButton>
-          </div>
-        )}
-      </div>
+        </section>
+      )}
 
       {/* Cover Image */}
       {work.coverImage && (
-        <div className='mb-16'>
-          <div className='relative aspect-[16/9] rounded-lg overflow-hidden'>
-            <Image
-              src={work.coverImage}
-              alt={generateAltText(work, 'main')}
-              fill
-              className='object-cover'
-              priority
-            />
-          </div>
+        <div className='mb-24 lg:mb-32'>
+          <HeroVisual
+            src={work.coverImage}
+            alt={generateAltText(work, 'main')}
+            priority
+            animation='reveal'
+            variant='full'
+            className='left-1/2 w-screen max-w-none -translate-x-1/2 overflow-hidden rounded-3xl [&>div]:w-full [&>div]:h-full [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover'
+          />
         </div>
       )}
 
       {/* Project Content */}
-      <div className='mb-20'>
-        {work.slug === '/projects/design-swiss-knife' ? (
-          <div className='space-y-20'>
+      <div className='mb-24 lg:mb-32'>
+        {isDesignSwissKnife ? (
+          <div className='space-y-24 lg:space-y-32'>
             {/* Project Overview */}
-            <section className='mb-20'>
-              <div className='text-center mb-12'>
-                <h2 className='text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'>
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-4 text-primary'>
                   Project Overview
                 </h2>
-                <div className='w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-8'></div>
+                <p className='mx-auto max-w-3xl text-base text-muted-foreground md:text-lg'>
+                  Why the Design Swiss Knife exists and the impact it unlocks
+                  for in-house designers and marketing teams.
+                </p>
               </div>
 
-              <div className='grid lg:grid-cols-3 gap-12 items-start'>
-                <div className='lg:col-span-2 space-y-6'>
+              <div className='grid items-start gap-12 lg:grid-cols-3'>
+                <div className='lg:col-span-2 space-y-6 text-left'>
                   <p className='text-xl leading-relaxed text-muted-foreground'>
-                    Design Swiss Knife is a comprehensive automation tool built
-                    to solve the time-consuming challenge of creating and
-                    testing ad creatives at scale.
+                    This is a comprehensive AI-enhanced mass creative production
+                    Figma plugin designed for designers and marketers to rapidly
+                    generate ad variations and analyze design quality.
                   </p>
-                  <p className='text-lg leading-relaxed'>
-                    It empowers designers and marketers to transform a single
-                    design template into hundreds of unique variations in
-                    minutes. By integrating powerful AI for content generation
-                    and a sophisticated engine for design quality analysis, the
-                    plugin streamlines the entire creative workflow—from initial
-                    concept to A/B test-ready assets.
+                  <p className='text-lg leading-relaxed text-foreground'>
+                    <strong>Primary Purpose:</strong> Automate the creation of
+                    multiple ad variations from a single template by replacing
+                    text content with different headlines and descriptions.
                   </p>
                   <p className='text-lg leading-relaxed font-medium text-primary'>
-                    The core mission is to enable rapid creative iteration while
-                    upholding brand and quality standards through intelligent
-                    automation.
+                    The plugin bridges design and marketing workflows, enabling
+                    rapid creative iteration while maintaining quality standards
+                    through automated analysis.
                   </p>
                 </div>
 
-                <div className='bg-gradient-to-br from-primary/5 to-accent/5 border border-border/50 rounded-2xl p-8'>
-                  <div className='flex items-center gap-4 mb-6'>
-                    <div className='w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center'>
+                <div className='space-y-4 lg:border-l lg:border-border/50 lg:pl-8'>
+                  <div className='flex items-center gap-4'>
+                    <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10'>
                       <span className='text-2xl'>⚡</span>
                     </div>
                     <div>
-                      <div className='text-2xl font-bold text-primary'>
-                        100x
-                      </div>
+                      <div className='text-2xl font-bold text-primary'>10x</div>
                       <div className='text-sm text-muted-foreground'>
-                        Faster Production
+                        Faster production
                       </div>
                     </div>
                   </div>
-                  <h3 className='text-xl font-bold mb-3 text-primary'>
-                    Core Mission
+                  <h3 className='text-xl font-bold text-primary'>
+                    Core mission
                   </h3>
-                  <p className='text-muted-foreground'>
+                  <p className='text-sm leading-relaxed text-muted-foreground'>
                     Enable rapid creative iteration while maintaining brand
-                    consistency through intelligent automation.
+                    consistency through intelligent automation and guided QA.
                   </p>
+                  <ul className='space-y-3 text-sm text-muted-foreground'>
+                    <li className='flex items-start gap-3'>
+                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
+                      <span>
+                        Automated design scoring ensures every variation is
+                        launch-ready.
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-3'>
+                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
+                      <span>
+                        Smart text classification preserves layout hierarchy
+                        automatically.
+                      </span>
+                    </li>
+                    <li className='flex items-start gap-3'>
+                      <span className='mt-1 h-2 w-2 rounded-full bg-primary'></span>
+                      <span>
+                        Batch exports route seamlessly into performance
+                        marketing pipelines.
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
 
-            {/* Key Features */}
-            <section>
-              <div className='text-center mb-16'>
-                <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-                  Key Features
+            {/* Production Workflow */}
+            <section className='space-y-12 lg:space-y-16'>
+              <div className='text-center'>
+                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
+                  Flow in three beats
+                </p>
+                <h2 className='text-3xl font-bold md:text-4xl'>
+                  Creative operations we automated
+                </h2>
+                <p className='mt-4 text-base text-muted-foreground md:text-lg'>
+                  Each phase keeps designers in control while the plugin scales
+                  production, review, and handoff.
+                </p>
+              </div>
+              <div className='grid gap-8 md:grid-cols-3'>
+                {designSwissKnifeWorkflow.map(phase => (
+                  <div key={phase.stage} className='space-y-3 text-left'>
+                    <span className='text-xs font-semibold uppercase tracking-[0.18em] text-primary/70'>
+                      {phase.stage}
+                    </span>
+                    <h3 className='text-xl font-semibold text-foreground'>
+                      {phase.title}
+                    </h3>
+                    <p className='text-sm leading-relaxed text-muted-foreground'>
+                      {phase.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Signature Capabilities */}
+            <section className='space-y-12 lg:space-y-16'>
+              <div className='text-center'>
+                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
+                  Signature capabilities
+                </p>
+                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
+                  Where automation still feels handcrafted
                 </h2>
                 <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-                  Powerful tools designed to transform your creative workflow
+                  Each module keeps creative control intact while the plugin
+                  handles the repetitive operations.
                 </p>
               </div>
 
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                <div className='group relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 rounded-3xl p-8 border border-blue-200/50 hover:border-blue-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>🚀</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-blue-900 dark:text-blue-100'>
-                      Mass Creative Generation
+              <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 text-left'>
+                {designSwissKnifeCapabilities.map(capability => (
+                  <div key={capability.title} className='space-y-3'>
+                    <span className='text-3xl'>{capability.icon}</span>
+                    <h3 className='text-xl font-semibold text-foreground'>
+                      {capability.title}
                     </h3>
-                    <p className='text-blue-700 dark:text-blue-200 leading-relaxed'>
-                      Produce up to 100 unique ad variations from one master
-                      template, automatically replacing text content with new
-                      headlines and descriptions.
+                    <p className='text-sm leading-relaxed text-muted-foreground'>
+                      {capability.description}
                     </p>
                   </div>
-                </div>
-
-                <div className='group relative overflow-hidden bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-3xl p-8 border border-purple-200/50 hover:border-purple-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>✍️</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-purple-900 dark:text-purple-100'>
-                      AI Content Enhancement
-                    </h3>
-                    <p className='text-purple-700 dark:text-purple-200 leading-relaxed'>
-                      Integrated with OpenAI (GPT-3.5) and Mistral AI to
-                      generate context-aware copy, saving hours on copywriting.
-                    </p>
-                  </div>
-                </div>
-
-                <div className='group relative overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-3xl p-8 border border-green-200/50 hover:border-green-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>📊</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-green-900 dark:text-green-100'>
-                      Automated Design Analysis
-                    </h3>
-                    <p className='text-green-700 dark:text-green-200 leading-relaxed'>
-                      Get an instant quality score (0-100) for each design based
-                      on typography consistency, color contrast, element
-                      spacing, and CTA visibility.
-                    </p>
-                  </div>
-                </div>
-
-                <div className='group relative overflow-hidden bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 rounded-3xl p-8 border border-orange-200/50 hover:border-orange-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>🔬</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-orange-900 dark:text-orange-100'>
-                      A/B Testing Support
-                    </h3>
-                    <p className='text-orange-700 dark:text-orange-200 leading-relaxed'>
-                      Directly compare design variants with detailed metrics and
-                      performance predictions to make data-informed decisions.
-                    </p>
-                  </div>
-                </div>
-
-                <div className='group relative overflow-hidden bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/20 dark:to-blue-950/20 rounded-3xl p-8 border border-cyan-200/50 hover:border-cyan-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>🧠</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-cyan-900 dark:text-cyan-100'>
-                      Smart Text Classification
-                    </h3>
-                    <p className='text-cyan-700 dark:text-cyan-200 leading-relaxed'>
-                      The plugin intelligently identifies and categorizes text
-                      layers as headlines or descriptions based on size and
-                      length.
-                    </p>
-                  </div>
-                </div>
-
-                <div className='group relative overflow-hidden bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20 rounded-3xl p-8 border border-violet-200/50 hover:border-violet-300/70 transition-all duration-300 hover:scale-105'>
-                  <div className='absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full transform translate-x-8 -translate-y-8'></div>
-                  <div className='relative'>
-                    <div className='w-16 h-16 bg-violet-500/10 rounded-2xl flex items-center justify-center mb-6'>
-                      <span className='text-3xl'>⚙️</span>
-                    </div>
-                    <h3 className='text-xl font-bold mb-4 text-violet-900 dark:text-violet-100'>
-                      Streamlined Workflow
-                    </h3>
-                    <p className='text-violet-700 dark:text-violet-200 leading-relaxed'>
-                      Features real-time progress tracking, automatic font
-                      loading, graceful error handling, and automated grid
-                      layouts.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </section>
 
             {/* Value Proposition */}
-            <section className='relative'>
-              <div className='absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl'></div>
-              <div className='relative p-12 md:p-16'>
-                <div className='text-center mb-16'>
-                  <h2 className='text-4xl md:text-5xl font-bold mb-6'>
-                    The Value Proposition
-                  </h2>
-                  <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-                    Transforming workflows for designers and marketers alike
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
+                  Why teams keep it in rotation
+                </p>
+                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
+                  The Value Proposition
+                </h2>
+                <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
+                  Creative and revenue teams finally share one automated
+                  workspace for campaign-ready output.
+                </p>
+              </div>
+
+              <div className='grid gap-12 lg:grid-cols-2 text-left'>
+                <div className='space-y-6'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-3xl'>🎨</span>
+                    <h3 className='text-3xl font-bold text-primary'>
+                      For Designers
+                    </h3>
+                  </div>
+                  <p className='text-base text-muted-foreground'>
+                    Keeps craft decisions front-and-center while automation
+                    clears the production backlog.
                   </p>
+                  <ul className='space-y-4 text-muted-foreground'>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        Production sprint ready
+                      </h4>
+                      <p className='text-sm'>
+                        Batch 80+ variants in a single session with brand tokens
+                        already locked, so designers stay focused on concepting.
+                      </p>
+                    </li>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        Live quality radar
+                      </h4>
+                      <p className='text-sm'>
+                        Scorecards flag typography, contrast, and CTA placement
+                        issues before anything leaves Figma.
+                      </p>
+                    </li>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        Precision overrides
+                      </h4>
+                      <p className='text-sm'>
+                        Smart defaults do the heavy lifting, but every layer
+                        stays editable when designers want to fine-tune.
+                      </p>
+                    </li>
+                  </ul>
                 </div>
 
-                <div className='grid lg:grid-cols-2 gap-12'>
-                  <div className='relative group'>
-                    <div className='absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl transform group-hover:scale-105 transition-transform duration-300'></div>
-                    <div className='relative bg-card/80 backdrop-blur-sm border border-primary/20 rounded-3xl p-10'>
-                      <div className='flex items-center gap-4 mb-8'>
-                        <div className='w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center'>
-                          <span className='text-3xl'>🎨</span>
-                        </div>
-                        <h3 className='text-3xl font-bold text-primary'>
-                          For Designers
-                        </h3>
-                      </div>
-
-                      <div className='space-y-6'>
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-primary font-bold text-sm'>
-                              10x
-                            </span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              Faster Production
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Drastically reduce time spent on manual
-                              adaptations, generating 100 variations in the time
-                              it takes to create a few.
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-primary'>📈</span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              Data-Driven Design
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Move beyond subjective feedback with automated
-                              scoring providing objective design quality
-                              metrics.
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-primary'>🎯</span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              Effortless A/B Testing
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Prepare dozens of variants with detailed
-                              comparison reports, proving which designs work
-                              best.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                <div className='space-y-6'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-3xl'>📊</span>
+                    <h3 className='text-3xl font-bold text-accent'>
+                      For Marketers
+                    </h3>
                   </div>
-
-                  <div className='relative group'>
-                    <div className='absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 rounded-3xl transform group-hover:scale-105 transition-transform duration-300'></div>
-                    <div className='relative bg-card/80 backdrop-blur-sm border border-accent/20 rounded-3xl p-10'>
-                      <div className='flex items-center gap-4 mb-8'>
-                        <div className='w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center'>
-                          <span className='text-3xl'>📊</span>
-                        </div>
-                        <h3 className='text-3xl font-bold text-accent'>
-                          For Marketers
-                        </h3>
-                      </div>
-
-                      <div className='space-y-6'>
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-accent'>🚀</span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              Unprecedented Campaign Scale
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Turn a single creative concept into a full-scale
-                              campaign with hundreds of tested variations.
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-accent'>🤖</span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              AI-Powered Copywriting
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Instantly generate contextual headlines and
-                              descriptions tailored to your campaign goals.
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className='flex items-start gap-4'>
-                          <div className='w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
-                            <span className='text-accent'>📈</span>
-                          </div>
-                          <div>
-                            <h4 className='font-bold mb-2'>
-                              Predictive Performance Insights
-                            </h4>
-                            <p className='text-muted-foreground'>
-                              Use design metrics as leading indicators for ad
-                              performance, optimizing before going live.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <p className='text-base text-muted-foreground'>
+                    Campaign ops see what is launch-ready, what needs edits, and
+                    why—with zero spreadsheet wrangling.
+                  </p>
+                  <ul className='space-y-4 text-muted-foreground'>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        Always-on campaign inventory
+                      </h4>
+                      <p className='text-sm'>
+                        One template becomes a library of approved variants,
+                        ready for every channel within minutes.
+                      </p>
+                    </li>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        AI copy co-pilot
+                      </h4>
+                      <p className='text-sm'>
+                        Structured prompts keep positioning consistent while new
+                        offers, CTAs, and compliance notes stay on message.
+                      </p>
+                    </li>
+                    <li>
+                      <h4 className='font-semibold text-foreground'>
+                        Evidence-first optimization
+                      </h4>
+                      <p className='text-sm'>
+                        Metrics roll up into performance-ready summaries so
+                        growth teams decide based on predicted lift, not
+                        guesswork.
+                      </p>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
 
             {/* Technology Stack */}
-            <section>
-              <div className='text-center mb-16'>
-                <h2 className='text-4xl md:text-5xl font-bold mb-6'>
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <p className='text-sm font-semibold uppercase tracking-[0.2em] text-primary/70'>
+                  Under the hood
+                </p>
+                <h2 className='text-4xl md:text-5xl font-bold mb-4'>
                   Technology Stack
                 </h2>
                 <p className='text-xl text-muted-foreground max-w-4xl mx-auto'>
-                  A modern tech stack chosen to leverage the Figma Plugin API
-                  efficiently while ensuring a clean, maintainable, and
-                  type-safe codebase.
+                  Modern tooling tuned for the Figma plugin runtime so creative,
+                  data, and delivery stay in sync.
                 </p>
               </div>
 
-              <div className='grid md:grid-cols-3 gap-8'>
-                <div className='bg-card border border-border/50 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group'>
-                  <div className='w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300'>
+              <div className='grid gap-10 lg:grid-cols-3 text-left'>
+                <div className='space-y-6'>
+                  <div className='flex items-center gap-3'>
                     <span className='text-3xl'>🎨</span>
+                    <h3 className='text-2xl font-bold text-blue-600'>
+                      Frontend
+                    </h3>
                   </div>
-                  <h3 className='text-2xl font-bold mb-6 text-blue-600'>
-                    Frontend
-                  </h3>
-                  <div className='space-y-4'>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20'>
-                      <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
-                      <span>HTML5 / CSS3</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20'>
-                      <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
-                      <span>TypeScript</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-950/20'>
-                      <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
-                      <span>Material Design 3</span>
-                    </div>
-                  </div>
+                  <ul className='space-y-3 text-sm text-muted-foreground'>
+                    <li>
+                      HTML5/CSS3 foundation layered with Material 3 tokens.
+                    </li>
+                    <li>
+                      Vanilla TypeScript drives lightweight plugin UI logic.
+                    </li>
+                    <li>
+                      Material Design components tuned to the Figma canvas.
+                    </li>
+                  </ul>
                 </div>
 
-                <div className='bg-card border border-border/50 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group'>
-                  <div className='w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300'>
+                <div className='space-y-6'>
+                  <div className='flex items-center gap-3'>
                     <span className='text-3xl'>⚙️</span>
+                    <h3 className='text-2xl font-bold text-green-600'>
+                      Backend & Core
+                    </h3>
                   </div>
-                  <h3 className='text-2xl font-bold mb-6 text-green-600'>
-                    Backend & Core
-                  </h3>
-                  <div className='space-y-4'>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-950/20'>
-                      <div className='w-2 h-2 bg-green-500 rounded-full'></div>
-                      <span>Figma Plugin API</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-950/20'>
-                      <div className='w-2 h-2 bg-green-500 rounded-full'></div>
-                      <span>OpenAI Integration</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-950/20'>
-                      <div className='w-2 h-2 bg-green-500 rounded-full'></div>
-                      <span>Mistral AI Integration</span>
-                    </div>
-                  </div>
+                  <ul className='space-y-3 text-sm text-muted-foreground'>
+                    <li>TypeScript compiled to performant plugin bundles.</li>
+                    <li>
+                      Figma Plugin API orchestrates frames, layers, and assets.
+                    </li>
+                    <li>OpenAI GPT-3.5 powers the copy intelligence layer.</li>
+                    <li>Mistral fallback keeps prompt generation resilient.</li>
+                  </ul>
                 </div>
 
-                <div className='bg-card border border-border/50 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 group'>
-                  <div className='w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300'>
+                <div className='space-y-6'>
+                  <div className='flex items-center gap-3'>
                     <span className='text-3xl'>🛠️</span>
+                    <h3 className='text-2xl font-bold text-purple-600'>
+                      Development Tools
+                    </h3>
                   </div>
-                  <h3 className='text-2xl font-bold mb-6 text-purple-600'>
-                    Development
-                  </h3>
-                  <div className='space-y-4'>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20'>
-                      <div className='w-2 h-2 bg-purple-500 rounded-full'></div>
-                      <span>NPM Package Manager</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20'>
-                      <div className='w-2 h-2 bg-purple-500 rounded-full'></div>
-                      <span>ESLint + Figma Plugins</span>
-                    </div>
-                    <div className='flex items-center gap-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-950/20'>
-                      <div className='w-2 h-2 bg-purple-500 rounded-full'></div>
-                      <span>TypeScript Compiler</span>
-                    </div>
-                  </div>
+                  <ul className='space-y-3 text-sm text-muted-foreground'>
+                    <li>
+                      ESLint + @figma/eslint-plugin-figma-plugins enforce
+                      discipline.
+                    </li>
+                    <li>
+                      Strict TypeScript configuration catches regressions early.
+                    </li>
+                    <li>NPM workspace keeps plugin dependencies tidy.</li>
+                    <li>
+                      @figma/plugin-typings provide typed access to canvas APIs.
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -497,7 +501,9 @@ export default function WorkPage({ work }: WorkPageProps) {
       </div>
 
       {/* Project Navigation */}
-      <ProjectNavigation currentSlug={work.slug} />
+      <div className='pt-16 lg:pt-24'>
+        <ProjectNavigation currentSlug={work.slug} />
+      </div>
     </div>
   )
 }
