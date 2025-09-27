@@ -220,7 +220,7 @@ const FeaturedWorks: React.FC<FeaturedWorksProps> = ({
         {/* Enhanced View All Works CTA */}
         <LenisFadeIn delay={400} className='text-center mt-16 md:mt-20'>
           <LinkButtonWithArrow
-            href='/works'
+            href='/projects'
             variant='default'
             size='lg'
             className='group relative overflow-hidden'

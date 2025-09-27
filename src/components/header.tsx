@@ -28,7 +28,7 @@ const truncateTitle = (title: string, maxLength = 40) => {
 const getFeaturedWorksNav = () => {
   const featuredWorks = getFeaturedWorks()
   return [
-    { label: 'All Projects', href: '/works' },
+    { label: 'All Projects', href: '/projects' },
     ...featuredWorks.map(work => ({
       label: work.title,
       href: work.slug,
@@ -84,8 +84,8 @@ const navigationConfig = {
       ],
     },
     {
-      label: 'Works',
-      href: '/works',
+      label: 'Projects',
+      href: '/projects',
       children: getFeaturedWorksNav(),
     },
     { label: 'About', href: '/about' },
@@ -119,7 +119,7 @@ export default function Header() {
     if (href !== '/' && pathname.startsWith(href)) return true
     if (hasChildren && label === 'Services' && pathname.startsWith('/services'))
       return true
-    if (hasChildren && label === 'Works' && pathname.startsWith('/works'))
+    if (hasChildren && label === 'Projects' && pathname.startsWith('/projects'))
       return true
     if (hasChildren && label === 'Blog' && pathname.startsWith('/blog'))
       return true
@@ -131,7 +131,9 @@ export default function Header() {
   )
   const servicesItems = servicesNav?.children || []
 
-  const worksNav = navigationConfig.mainNav.find(item => item.label === 'Works')
+  const worksNav = navigationConfig.mainNav.find(
+    item => item.label === 'Projects'
+  )
   const worksItems = worksNav?.children || []
 
   const blogNav = navigationConfig.mainNav.find(item => item.label === 'Blog')
@@ -242,7 +244,7 @@ export default function Header() {
             <div className='flex items-center gap-12'>
               {navigationConfig.mainNav.map(item =>
                 item.children ? (
-                  // Dropdown items (Services/Works)
+                  // Dropdown items (Services/Projects)
                   <div key={item.label} className='relative'>
                     <button
                       onClick={() => {
@@ -251,7 +253,7 @@ export default function Header() {
                           setIsWorksOpen(false)
                           setIsBlogOpen(false)
                           setIsSearchOpen(false)
-                        } else if (item.label === 'Works') {
+                        } else if (item.label === 'Projects') {
                           setIsWorksOpen(!isWorksOpen)
                           setIsServicesOpen(false)
                           setIsBlogOpen(false)
@@ -274,7 +276,7 @@ export default function Header() {
                       <svg
                         className={`w-4 h-4 transition-transform duration-200 ${
                           (item.label === 'Services' && isServicesOpen) ||
-                          (item.label === 'Works' && isWorksOpen) ||
+                          (item.label === 'Projects' && isWorksOpen) ||
                           (item.label === 'Blog' && isBlogOpen)
                             ? 'rotate-180'
                             : ''
@@ -449,7 +451,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Desktop Works Mega Menu Panel */}
+      {/* Desktop Projects Mega Menu Panel */}
       <div
         className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
           isWorksOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
@@ -659,7 +661,7 @@ export default function Header() {
               {navigationConfig.mainNav.map(item => (
                 <li key={item.label}>
                   {item.children ? (
-                    // Dropdown items (Services/Works)
+                    // Dropdown items (Services/Projects)
                     <div>
                       <button
                         onClick={() => {
@@ -667,7 +669,7 @@ export default function Header() {
                             setIsMobileServicesOpen(!isMobileServicesOpen)
                             setIsMobileWorksOpen(false)
                             setIsMobileBlogOpen(false)
-                          } else if (item.label === 'Works') {
+                          } else if (item.label === 'Projects') {
                             setIsMobileWorksOpen(!isMobileWorksOpen)
                             setIsMobileServicesOpen(false)
                             setIsMobileBlogOpen(false)
@@ -692,7 +694,7 @@ export default function Header() {
                           className={`w-5 h-5 transition-transform duration-200 ${
                             (item.label === 'Services' &&
                               isMobileServicesOpen) ||
-                            (item.label === 'Works' && isMobileWorksOpen) ||
+                            (item.label === 'Projects' && isMobileWorksOpen) ||
                             (item.label === 'Blog' && isMobileBlogOpen)
                               ? 'rotate-180'
                               : ''
@@ -714,7 +716,7 @@ export default function Header() {
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
                           (item.label === 'Services' && isMobileServicesOpen) ||
-                          (item.label === 'Works' && isMobileWorksOpen) ||
+                          (item.label === 'Projects' && isMobileWorksOpen) ||
                           (item.label === 'Blog' && isMobileBlogOpen)
                             ? 'max-h-96'
                             : 'max-h-0'

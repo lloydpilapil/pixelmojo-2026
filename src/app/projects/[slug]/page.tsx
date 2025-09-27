@@ -8,7 +8,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const works = getAllWorks()
-  const workData = works.find(work => work.slug === `/works/${params.slug}`)
+  const workData = works.find(work => work.slug === `/projects/${params.slug}`)
 
   if (!workData) {
     return {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default function WorkDetailPage({ params }: Props) {
   const works = getAllWorks()
-  const workData = works.find(work => work.slug === `/works/${params.slug}`)
+  const workData = works.find(work => work.slug === `/projects/${params.slug}`)
 
   if (!workData) {
     notFound()
