@@ -2,12 +2,37 @@ import type { Metadata } from 'next'
 import HeroVisual from '@/components/HeroVisual'
 import ServicesGrid from './ServicesGrid'
 
+const pageTitle = 'AI Products That Generate ROI From Day One'
+const pageDescription =
+  'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.'
+const canonicalUrl = 'https://pixelmojo.com/services'
+const brandedTitle = `${pageTitle} | Pixelmojo`
+
 export const metadata: Metadata = {
-  title: 'AI Products That Generate ROI From Day One | Pixelmojo',
-  description:
-    'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
+  title: pageTitle,
+  description: pageDescription,
   alternates: {
-    canonical: 'https://pixelmojo.com/services',
+    canonical: canonicalUrl,
+  },
+  openGraph: {
+    title: brandedTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+    type: 'website',
+    images: [
+      {
+        url: 'https://pixelmojo.com/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: brandedTitle,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandedTitle,
+    description: pageDescription,
+    images: ['https://pixelmojo.com/og-image.webp'],
   },
 }
 

@@ -3,6 +3,7 @@ import { LinkButton } from './ui/button'
 import { Tag } from './ui/tag'
 import HeroVisual from './HeroVisual'
 import { WorkItem, generateAltText } from '@/data/works'
+import { SITE_URL } from '@/lib/site-config'
 import ProjectNavigation from './ProjectNavigation'
 
 interface WorkPageProps {
@@ -10,13 +11,37 @@ interface WorkPageProps {
 }
 
 export function generateWorkMetadata(work: WorkItem): Metadata {
+  const pageUrl = new URL(work.slug, SITE_URL).toString()
+  const brandedTitle = `${work.title} | Pixelmojo`
+  const ogImageUrl = work.coverImage
+    ? new URL(work.coverImage, SITE_URL).toString()
+    : new URL('/og-image.webp', SITE_URL).toString()
+
   return {
-    title: `${work.title} | Pixelmojo`,
+    title: work.title,
     description: work.description,
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
-      title: `${work.title} | Pixelmojo`,
+      title: brandedTitle,
       description: work.description,
+      url: pageUrl,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: brandedTitle,
+        },
+      ],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: brandedTitle,
+      description: work.description,
+      images: [ogImageUrl],
     },
   }
 }

@@ -43,16 +43,20 @@ export async function generateMetadata({ params }: BlogPostProps) {
     ? `https://pixelmojo.com${post.featuredImage}`
     : 'https://pixelmojo.com/og-image.webp'
 
+  const brandedTitle = `${post.title} | Pixelmojo`
+  const canonicalUrl = `https://pixelmojo.com/blog/${slug}`
+
   return {
-    title: `${post.title} | Pixelmojo`,
+    title: post.title,
     description: post.description,
     alternates: {
-      canonical: `https://pixelmojo.com/blog/${slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title: post.title,
+      title: brandedTitle,
       description: post.description,
       type: 'article',
+      url: canonicalUrl,
       images: [
         {
           url: ogImage,
@@ -64,7 +68,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: brandedTitle,
       description: post.description,
       images: [ogImage],
     },

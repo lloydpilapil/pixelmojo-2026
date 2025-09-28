@@ -19,17 +19,39 @@ const service = {
   pricing: 'From $15K',
 }
 
+const pageTitle =
+  'AI Product Development | Transform Digital Products Into Growth Engines'
+const pageDescription =
+  'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.'
+const pageUrl = 'https://pixelmojo.com/services/ai-product-development'
+const pageImage = '/pixelmojo-services-ai-product-development-01.webp'
+const brandedTitle = `${pageTitle} | Pixelmojo`
+
 export const metadata: Metadata = {
-  title:
-    'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
-  description:
-    'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
-    title:
-      'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
-    description:
-      'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+    title: brandedTitle,
+    description: pageDescription,
+    url: pageUrl,
+    images: [
+      {
+        url: pageImage,
+        width: 1200,
+        height: 630,
+        alt: brandedTitle,
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandedTitle,
+    description: pageDescription,
+    images: [pageImage],
   },
 }
 

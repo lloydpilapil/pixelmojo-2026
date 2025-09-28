@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 
 export const metadata: Metadata = {
-  title: 'Components | Lloyd Pilapil',
+  title: 'Components Showcase',
   description: 'UI component showcase and design system documentation.',
 }
 

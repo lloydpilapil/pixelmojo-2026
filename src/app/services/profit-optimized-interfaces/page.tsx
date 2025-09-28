@@ -19,15 +19,39 @@ const service = {
   pricing: 'Projects from $12K',
 }
 
+const pageTitle =
+  'Profit-Optimized Interfaces | Interfaces That Maximize Revenue'
+const pageDescription =
+  'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.'
+const pageUrl = 'https://pixelmojo.com/services/profit-optimized-interfaces'
+const pageImage = '/pixelmojo-services-profit-optimized-interfaces-01.webp'
+const brandedTitle = `${pageTitle} | Pixelmojo`
+
 export const metadata: Metadata = {
-  title: 'Profit-Optimized Interfaces | Pixelmojo',
-  description:
-    'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
-    title: 'Profit-Optimized Interfaces | Pixelmojo',
-    description:
-      'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+    title: brandedTitle,
+    description: pageDescription,
+    url: pageUrl,
+    images: [
+      {
+        url: pageImage,
+        width: 1200,
+        height: 630,
+        alt: brandedTitle,
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandedTitle,
+    description: pageDescription,
+    images: [pageImage],
   },
 }
 

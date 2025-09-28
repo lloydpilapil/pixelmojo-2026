@@ -19,15 +19,39 @@ const service = {
   pricing: 'Programs from $18K',
 }
 
+const pageTitle =
+  'Full-Stack AI Implementation | Production AI That Generates ROI'
+const pageDescription =
+  'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.'
+const pageUrl = 'https://pixelmojo.com/services/full-stack-ai'
+const pageImage = '/pixelmojo-services-full-stack-ai-02.webp'
+const brandedTitle = `${pageTitle} | Pixelmojo`
+
 export const metadata: Metadata = {
-  title: 'Full-Stack AI Implementation | Pixelmojo',
-  description:
-    'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
-    title: 'Full-Stack AI Implementation | Pixelmojo',
-    description:
-      'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+    title: brandedTitle,
+    description: pageDescription,
+    url: pageUrl,
+    images: [
+      {
+        url: pageImage,
+        width: 1200,
+        height: 630,
+        alt: brandedTitle,
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandedTitle,
+    description: pageDescription,
+    images: [pageImage],
   },
 }
 

@@ -8,7 +8,7 @@ export default function StructuredData() {
         name: 'Pixelmojo',
         alternateName: 'Pixelmojo AI Product Studio',
         url: 'https://pixelmojo.com',
-        logo: 'https://pixelmojo.com/pixelmojo-icon.svg',
+        logo: 'https://pixelmojo.com/pixelmojo-branding.svg',
         image: 'https://pixelmojo.com/og-image.webp',
         description:
           'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',

@@ -45,20 +45,32 @@ export async function generateMetadata({
   const { page } = await params
   const pageNumber = parseInt(page)
 
+  const pageTitle = `Blog - Page ${pageNumber}`
+  const brandedTitle = `${pageTitle} | Pixelmojo`
+  const pageDescription = `Browse page ${pageNumber} of our insights on UX, product design, and growth strategy. Real-world lessons from the Pixelmojo team.`
+  const canonicalUrl = buildCanonicalUrl(`/blog/page/${pageNumber}`)
+
   return {
-    title: `Blog - Page ${pageNumber} | Pixelmojo`,
-    description: `Browse page ${pageNumber} of our insights on UX, product design, and growth strategy. Real-world lessons from the Pixelmojo team.`,
+    title: pageTitle,
+    description: pageDescription,
     openGraph: {
-      title: `Blog - Page ${pageNumber} | Pixelmojo`,
-      description: `Browse page ${pageNumber} of our insights on UX, product design, and growth strategy.`,
+      title: brandedTitle,
+      description: pageDescription,
       type: 'website',
+      url: canonicalUrl,
     },
     robots: {
       index: true,
       follow: true,
     },
     alternates: {
-      canonical: buildCanonicalUrl(`/blog/page/${pageNumber}`),
+      canonical: canonicalUrl,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: brandedTitle,
+      description: pageDescription,
+      images: ['https://pixelmojo.com/og-image.webp'],
     },
   }
 }

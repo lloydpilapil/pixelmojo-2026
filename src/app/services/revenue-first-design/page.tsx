@@ -19,17 +19,39 @@ const service = {
   pricing: 'Starts at $9K',
 }
 
+const pageTitle =
+  'Revenue-First Design Systems | Build Brands That Command Attention'
+const pageDescription =
+  'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.'
+const pageUrl = 'https://pixelmojo.com/services/revenue-first-design'
+const pageImage = '/pixelmojo-services-revenue-first-design-01.webp'
+const brandedTitle = `${pageTitle} | Pixelmojo`
+
 export const metadata: Metadata = {
-  title:
-    'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
-  description:
-    'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.',
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
-    title:
-      'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
-    description:
-      'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.',
+    title: brandedTitle,
+    description: pageDescription,
+    url: pageUrl,
+    images: [
+      {
+        url: pageImage,
+        width: 1200,
+        height: 630,
+        alt: brandedTitle,
+      },
+    ],
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: brandedTitle,
+    description: pageDescription,
+    images: [pageImage],
   },
 }
 
