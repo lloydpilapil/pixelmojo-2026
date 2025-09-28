@@ -136,7 +136,7 @@ export default function Footer() {
                 <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
               </LinkButton>
               <LinkButton
-                href='/works'
+                href='/projects'
                 variant='outline'
                 size='lg'
                 className='border-white/30 text-white hover:bg-white/10'
