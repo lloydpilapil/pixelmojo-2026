@@ -426,7 +426,6 @@ export default function Header() {
           isServicesOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
             : 'var(--border)',
@@ -457,7 +456,6 @@ export default function Header() {
           isWorksOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
             : 'var(--border)',
@@ -488,7 +486,6 @@ export default function Header() {
           isBlogOpen ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
             : 'var(--border)',
@@ -522,7 +519,6 @@ export default function Header() {
           isSearchOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          backgroundColor: theme?.bg || 'var(--card)',
           borderColor: theme?.isDark
             ? 'rgba(255, 255, 255, 0.2)'
             : 'var(--border)',
