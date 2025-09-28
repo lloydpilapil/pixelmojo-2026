@@ -29,7 +29,7 @@ export default function Footer() {
     { label: 'Services', href: '/services' },
     { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Blogs', href: '/blogs' },
     { label: 'Get in Touch', href: '/contact-us' },
   ]
 

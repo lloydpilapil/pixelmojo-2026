@@ -43,10 +43,10 @@ const getFeaturedBlogsNav = () => {
   )
 
   return [
-    { label: 'All Posts', href: '/blog' },
+    { label: 'All Posts', href: '/blogs' },
     ...sortedPosts.slice(0, 4).map(post => ({
       label: truncateTitle(post.title),
-      href: post.url || `/blog/${post.slug || post._raw.flattenedPath}`,
+      href: post.url || `/blogs/${post.slug || post._raw.flattenedPath}`,
       fullTitle: post.title, // For hover tooltip
     })),
   ]
@@ -90,8 +90,8 @@ const navigationConfig = {
     },
     { label: 'About', href: '/about' },
     {
-      label: 'Blog',
-      href: '/blog',
+      label: 'Blogs',
+      href: '/blogs',
       children: getFeaturedBlogsNav(),
     },
   ],
@@ -121,7 +121,7 @@ export default function Header() {
       return true
     if (hasChildren && label === 'Projects' && pathname.startsWith('/projects'))
       return true
-    if (hasChildren && label === 'Blog' && pathname.startsWith('/blog'))
+    if (hasChildren && label === 'Blogs' && pathname.startsWith('/blogs'))
       return true
     return false
   }
@@ -136,7 +136,7 @@ export default function Header() {
   )
   const worksItems = worksNav?.children || []
 
-  const blogNav = navigationConfig.mainNav.find(item => item.label === 'Blog')
+  const blogNav = navigationConfig.mainNav.find(item => item.label === 'Blogs')
   const blogItems = blogNav?.children || []
 
   // Prevent body scroll when mobile menu is open
@@ -258,7 +258,7 @@ export default function Header() {
                           setIsServicesOpen(false)
                           setIsBlogOpen(false)
                           setIsSearchOpen(false)
-                        } else if (item.label === 'Blog') {
+                        } else if (item.label === 'Blogs') {
                           setIsBlogOpen(!isBlogOpen)
                           setIsServicesOpen(false)
                           setIsWorksOpen(false)
@@ -277,7 +277,7 @@ export default function Header() {
                         className={`w-4 h-4 transition-transform duration-200 ${
                           (item.label === 'Services' && isServicesOpen) ||
                           (item.label === 'Projects' && isWorksOpen) ||
-                          (item.label === 'Blog' && isBlogOpen)
+                          (item.label === 'Blogs' && isBlogOpen)
                             ? 'rotate-180'
                             : ''
                         }`}
@@ -669,7 +669,7 @@ export default function Header() {
                             setIsMobileWorksOpen(!isMobileWorksOpen)
                             setIsMobileServicesOpen(false)
                             setIsMobileBlogOpen(false)
-                          } else if (item.label === 'Blog') {
+                          } else if (item.label === 'Blogs') {
                             setIsMobileBlogOpen(!isMobileBlogOpen)
                             setIsMobileServicesOpen(false)
                             setIsMobileWorksOpen(false)
@@ -691,7 +691,7 @@ export default function Header() {
                             (item.label === 'Services' &&
                               isMobileServicesOpen) ||
                             (item.label === 'Projects' && isMobileWorksOpen) ||
-                            (item.label === 'Blog' && isMobileBlogOpen)
+                            (item.label === 'Blogs' && isMobileBlogOpen)
                               ? 'rotate-180'
                               : ''
                           }`}
@@ -713,7 +713,7 @@ export default function Header() {
                         className={`overflow-hidden transition-all duration-300 ${
                           (item.label === 'Services' && isMobileServicesOpen) ||
                           (item.label === 'Projects' && isMobileWorksOpen) ||
-                          (item.label === 'Blog' && isMobileBlogOpen)
+                          (item.label === 'Blogs' && isMobileBlogOpen)
                             ? 'max-h-96'
                             : 'max-h-0'
                         }`}

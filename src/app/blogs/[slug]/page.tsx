@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
     : 'https://www.pixelmojo.io/og-image.webp'
 
   const brandedTitle = `${post.title} | Pixelmojo`
-  const canonicalUrl = `https://www.pixelmojo.io/blog/${slug}`
+  const canonicalUrl = `https://www.pixelmojo.io/blogs/${slug}`
 
   return {
     title: post.title,
@@ -149,7 +149,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                 title: previousPost.title,
                 href:
                   previousPost.url ||
-                  `/blog/${previousPost.slug || previousPost._raw.flattenedPath}`,
+                  `/blogs/${previousPost.slug || previousPost._raw.flattenedPath}`,
                 date: previousPost.date,
               }
             : undefined
@@ -160,7 +160,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                 title: nextPost.title,
                 href:
                   nextPost.url ||
-                  `/blog/${nextPost.slug || nextPost._raw.flattenedPath}`,
+                  `/blogs/${nextPost.slug || nextPost._raw.flattenedPath}`,
                 date: nextPost.date,
               }
             : undefined

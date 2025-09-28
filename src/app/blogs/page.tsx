@@ -13,7 +13,7 @@ import { buildCanonicalUrl } from '@/lib/site-config'
 const pageTitle = 'Blog | AI Product Development Insights & Case Studies'
 const pageDescription =
   'Learn how we build AI products that generate revenue. Deep dives on product design, AI implementation, growth strategies, and real client results.'
-const canonicalUrl = buildCanonicalUrl('/blog')
+const canonicalUrl = buildCanonicalUrl('/blogs')
 const brandedTitle = `${pageTitle} | Pixelmojo`
 
 export const metadata: Metadata = {
@@ -139,7 +139,7 @@ export default function Blog() {
                   ).map(page => (
                     <Link
                       key={page}
-                      href={`/blog/page/${page}`}
+                      href={`/blogs/page/${page}`}
                       className='px-3 py-1 rounded-lg hover:bg-muted transition-colors'
                     >
                       {page}
@@ -154,7 +154,7 @@ export default function Blog() {
                   {/* Last page link if it's not already shown */}
                   {totalPages > 4 && (
                     <Link
-                      href={`/blog/page/${totalPages}`}
+                      href={`/blogs/page/${totalPages}`}
                       className='px-3 py-1 rounded-lg hover:bg-muted transition-colors'
                     >
                       {totalPages}
@@ -164,7 +164,7 @@ export default function Blog() {
 
                 {/* Next Button */}
                 <Link
-                  href='/blog/page/2'
+                  href='/blogs/page/2'
                   className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors'
                 >
                   Next

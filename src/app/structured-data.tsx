@@ -293,8 +293,8 @@ export default function StructuredData() {
           {
             '@type': 'ListItem',
             position: 4,
-            name: 'Blog',
-            item: 'https://www.pixelmojo.io/blog',
+            name: 'Blogs',
+            item: 'https://www.pixelmojo.io/blogs',
           },
         ],
       },

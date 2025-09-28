@@ -106,7 +106,7 @@ const RecentArticles = ({
             {showViewAllButton && (
               <div className='text-center'>
                 <LinkButton
-                  href='/blog'
+                  href='/blogs'
                   variant='outline'
                   size='lg'
                   shape='pill'

@@ -123,9 +123,9 @@ export const RouteSpecificCaching = {
   } as CacheStrategy,
 
   // Blog routes
-  '/blog': CacheStrategies.BLOG_LISTING,
-  '/blog/[slug]': CacheStrategies.BLOG_POSTS,
-  '/blog/page/[page]': CacheStrategies.BLOG_LISTING,
+  '/blogs': CacheStrategies.BLOG_LISTING,
+  '/blogs/[slug]': CacheStrategies.BLOG_POSTS,
+  '/blogs/page/[page]': CacheStrategies.BLOG_LISTING,
 
   // Static pages
   '/about': CacheStrategies.STATIC_PAGES,
@@ -145,7 +145,7 @@ export const InvalidationPatterns = {
   // When blog content changes
   BLOG_UPDATE: {
     tags: ['blog-content', 'blog-posts', 'blog-listing', 'featured-content'],
-    paths: ['/', '/blog'],
+    paths: ['/', '/blogs'],
   },
 
   // When static pages change
@@ -175,7 +175,7 @@ export const InvalidationPatterns = {
       'static-pages',
       'dynamic-pages',
     ],
-    paths: ['/', '/blog', '/about', '/services', '/works', '/contact-us'],
+    paths: ['/', '/blogs', '/about', '/services', '/works', '/contact-us'],
   },
 } as const
 
@@ -189,11 +189,11 @@ export class CacheManager {
     }
 
     // Check for pattern matches
-    if (pathname.startsWith('/blog/') && pathname !== '/blog') {
+    if (pathname.startsWith('/blogs/') && pathname !== '/blogs') {
       return CacheStrategies.BLOG_POSTS
     }
 
-    if (pathname.startsWith('/blog/page/')) {
+    if (pathname.startsWith('/blogs/page/')) {
       return CacheStrategies.BLOG_LISTING
     }
 

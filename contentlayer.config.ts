@@ -79,7 +79,7 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: 'string',
-      resolve: post => `/blog/${post.slug || post._raw.flattenedPath}`,
+      resolve: post => `/blogs/${post.slug || post._raw.flattenedPath}`,
     },
     headings: {
       type: 'json',

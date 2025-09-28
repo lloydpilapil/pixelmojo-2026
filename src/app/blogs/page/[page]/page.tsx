@@ -48,7 +48,7 @@ export async function generateMetadata({
   const pageTitle = `Blog - Page ${pageNumber}`
   const brandedTitle = `${pageTitle} | Pixelmojo`
   const pageDescription = `Browse page ${pageNumber} of our insights on UX, product design, and growth strategy. Real-world lessons from the Pixelmojo team.`
-  const canonicalUrl = buildCanonicalUrl(`/blog/page/${pageNumber}`)
+  const canonicalUrl = buildCanonicalUrl(`/blogs/page/${pageNumber}`)
 
   return {
     title: pageTitle,
@@ -88,7 +88,7 @@ export default async function BlogPage({
   }
 
   if (pageNumber === 1) {
-    redirect('/blog')
+    redirect('/blogs')
   }
 
   const posts = [...allPosts].sort(
@@ -120,7 +120,7 @@ export default async function BlogPage({
           <div className='max-w-6xl mx-auto'>
             <div className='flex items-center justify-center mb-4'>
               <Link
-                href='/blog'
+                href='/blogs'
                 className='text-muted hover:text-primary transition-colors flex items-center gap-2'
               >
                 <ChevronLeft className='w-4 h-4' />
@@ -162,7 +162,7 @@ export default async function BlogPage({
             {pageNumber > 1 ? (
               <Link
                 href={
-                  pageNumber === 2 ? '/blog' : `/blog/page/${pageNumber - 1}`
+                  pageNumber === 2 ? '/blogs' : `/blogs/page/${pageNumber - 1}`
                 }
                 className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors'
               >
@@ -183,7 +183,7 @@ export default async function BlogPage({
             <div className='flex items-center gap-1'>
               {/* First page link */}
               <Link
-                href='/blog'
+                href='/blogs'
                 className={`px-3 py-1 rounded-lg transition-colors ${
                   pageNumber === 1 ? 'bg-primary text-white' : 'hover:bg-muted'
                 }`}
@@ -206,7 +206,7 @@ export default async function BlogPage({
                 .map(page => (
                   <Link
                     key={page}
-                    href={`/blog/page/${page}`}
+                    href={`/blogs/page/${page}`}
                     className={`px-3 py-1 rounded-lg transition-colors ${
                       page === pageNumber
                         ? 'bg-primary text-white'
@@ -225,7 +225,7 @@ export default async function BlogPage({
               {/* Last page link if there's more than one page */}
               {totalPages > 1 && Math.abs(totalPages - pageNumber) > 1 && (
                 <Link
-                  href={`/blog/page/${totalPages}`}
+                  href={`/blogs/page/${totalPages}`}
                   className={`px-3 py-1 rounded-lg transition-colors ${
                     pageNumber === totalPages
                       ? 'bg-primary text-white'
@@ -240,7 +240,7 @@ export default async function BlogPage({
             {/* Next Button */}
             {pageNumber < totalPages ? (
               <Link
-                href={`/blog/page/${pageNumber + 1}`}
+                href={`/blogs/page/${pageNumber + 1}`}
                 className='inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors'
               >
                 Next
