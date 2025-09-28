@@ -14,12 +14,12 @@ export interface WorkItem {
 
 export const worksData: WorkItem[] = [
   {
-    title: 'Road Runner Cargo Logistics',
+    title: 'Logistics Track & Trace System',
     description:
-      'Track & Trace system that unified fragmented operations into a real-time logistics platform, cutting ops workload by 70% and delivering 3 months ahead of schedule.',
+      'Enterprise logistics platform that unified fragmented operations into a real-time tracking system, cutting ops workload by 70% and delivering 3 months ahead of schedule.',
     year: '2025',
     category: 'Enterprise SaaS',
-    slug: '/projects/road-runner-cargo',
+    slug: '/projects/logistics-track-trace-system',
     coverImage: '/placeholder.svg',
     thumbnailImage: '/placeholder.svg',
     technologies: [

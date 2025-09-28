@@ -36,7 +36,7 @@ const CompanyLogos = ({
       height: 40,
     },
     {
-      name: 'Road Runner Logistics',
+      name: 'Enterprise Logistics',
       light: '/road-runner-logistics-light.svg',
       dark: '/road-runner-logistics-dark.svg',
       height: 40,
