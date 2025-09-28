@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
     'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+  alternates: {
+    canonical: 'https://pixelmojo.com',
+  },
 }
 
 export default function Home() {

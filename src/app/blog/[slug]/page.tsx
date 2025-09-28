@@ -25,12 +25,8 @@ export async function generateStaticParams() {
   }))
 }
 
-// ISR Configuration - Revalidate every hour
-export const revalidate = 3600 // 1 hour in seconds
-
-// Enable ISR for dynamic paths
+// Static generation for better SEO crawlability
 export const dynamic = 'force-static'
-export const dynamicParams = true
 
 export async function generateMetadata({ params }: BlogPostProps) {
   const { slug } = await params
@@ -46,8 +42,11 @@ export async function generateMetadata({ params }: BlogPostProps) {
   const ogImage = post.featuredImage || '/pixelmojo-hero-home-visual.webp'
 
   return {
-    title: `${post.title} | Lloyd Pilapil`,
+    title: `${post.title} | Pixelmojo`,
     description: post.description,
+    alternates: {
+      canonical: `https://pixelmojo.com/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.description,

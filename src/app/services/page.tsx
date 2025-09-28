@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'AI Products That Generate ROI From Day One | Pixelmojo',
   description:
     'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
+  alternates: {
+    canonical: 'https://pixelmojo.com/services',
+  },
 }
 
 export default function Services() {

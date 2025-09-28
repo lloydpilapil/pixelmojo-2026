@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   ],
   applicationName: 'Pixelmojo',
   alternates: {
-    canonical: '/',
+    canonical: 'https://pixelmojo.com',
   },
   openGraph: {
     title: 'Pixelmojo | AI Product Studio',
@@ -99,12 +99,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' data-theme='dark'>
-      <head>
-        <StructuredData />
-      </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
+        <StructuredData />
         <SmoothScrollProvider>
           <DynamicSelectionColors
             // Using default colors, changing on selection
