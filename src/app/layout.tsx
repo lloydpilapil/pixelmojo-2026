@@ -8,6 +8,7 @@ import ConditionalRecentArticles from '@/components/ConditionalRecentArticles'
 import { Analytics } from '@vercel/analytics/react'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import StructuredData from './structured-data'
+import Script from 'next/script'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -99,9 +100,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' data-theme='dark'>
+      <Script
+        id='gtm-script'
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5679MLR7');
+          `,
+        }}
+      />
       <body
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
+        <noscript>
+          <iframe
+            src='https://www.googletagmanager.com/ns.html?id=GTM-5679MLR7'
+            height='0'
+            width='0'
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <StructuredData />
         <SmoothScrollProvider>
           <DynamicSelectionColors
