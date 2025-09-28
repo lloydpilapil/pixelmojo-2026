@@ -9,13 +9,13 @@ import OurApproach from '@/components/OurApproach'
 import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
-  title: 'AI Product Development & UX Design Agency | Pixelmojo',
+  title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
-    'AI-native design and development agency that ships revenue-driving products. We fuse UX, engineering, and applied AI to deliver working products that validate with real users, in weeks not quarters.',
+    'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
   openGraph: {
-    title: 'AI Product Development & UX Design Agency | Pixelmojo',
+    title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
     description:
-      'AI-native design and development agency that ships revenue-driving products. We fuse UX, engineering, and applied AI to deliver working products that validate with real users, in weeks not quarters.',
+      'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
     type: 'website',
   },
 }

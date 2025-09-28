@@ -7,6 +7,7 @@ import { DynamicSelectionColors } from '@/components/DynamicSelectionColors'
 import ConditionalRecentArticles from '@/components/ConditionalRecentArticles'
 import { Analytics } from '@vercel/analytics/react'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
+import StructuredData from './structured-data'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -30,9 +31,34 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'End-to-End Product Design for SaaS | AI, UI/UX & ROI',
+  metadataBase: new URL('https://pixelmojo.com'),
+  title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
-    'Pixelmojo designs high-impact platforms for SaaS. We cut through the hype, blending human-centered UI/UX with strategic AI to deliver measurable ROI.',
+    'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+  openGraph: {
+    title: 'Pixelmojo - AI-Native Design & Product Studio',
+    description:
+      'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
+    url: 'https://pixelmojo.com',
+    siteName: 'Pixelmojo',
+    images: [
+      {
+        url: '/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Pixelmojo - AI-Native Design & Product Studio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pixelmojo - AI-Native Design & Product Studio',
+    description:
+      'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
+    images: ['/og-image.webp'],
+  },
 }
 
 export default function RootLayout({
@@ -42,6 +68,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' data-theme='dark'>
+      <head>
+        <StructuredData />
+      </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >

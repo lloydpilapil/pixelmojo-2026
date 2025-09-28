@@ -37,6 +37,19 @@ export default function WorksClient() {
             <ChevronDown className='ml-2 w-4 h-4 transition-transform group-hover:translate-y-0.5' />
           </Button>
         </div>
+
+        {/* Note about case studies */}
+        <div className='max-w-3xl mx-auto mt-8'>
+          <div className='bg-muted/30 border border-border/50 rounded-lg p-6 text-center'>
+            <p className='text-sm text-muted-foreground leading-relaxed'>
+              <strong className='text-foreground'>Note:</strong> We're carefully
+              preparing detailed case studies for each project. Some require
+              client approval and sensitive data redaction to protect
+              proprietary strategies and outcomes. Full case studies will be
+              published as they become available.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Projects Grid - Normal Container */}

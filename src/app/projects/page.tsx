@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import WorksClient from './works-client'
 
 export const metadata: Metadata = {
-  title: 'Our Projects | Growth-Focused Design & Strategy by Pixelmojo',
+  title: 'AI Product Portfolio | Revenue-Generating Solutions | Pixelmojo',
   description:
-    'View case studies in UI/UX, product design, and digital strategy. See how Pixelmojo delivers high-impact results for startups, B2B teams, and global brands.',
+    'Real AI products that generate measurable ROI. From enterprise logistics systems to marketing automation platforms. See how we transform ideas into revenue in 90 days.',
   openGraph: {
-    title: 'Our Projects | Growth-Focused Design & Strategy by Pixelmojo',
+    title: 'AI Product Portfolio | Revenue-Generating Solutions | Pixelmojo',
     description:
-      'View case studies in UI/UX, product design, and digital strategy. See how Pixelmojo delivers high-impact results for startups, B2B teams, and global brands.',
+      'Real AI products that generate measurable ROI. From enterprise logistics systems to marketing automation platforms. See how we transform ideas into revenue in 90 days.',
     type: 'website',
   },
 }

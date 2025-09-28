@@ -11,6 +11,15 @@ import {
 import { buildCanonicalUrl } from '@/lib/site-config'
 
 export const metadata: Metadata = {
+  title: 'Blog | AI Product Development Insights & Case Studies | Pixelmojo',
+  description:
+    'Learn how we build AI products that generate revenue. Deep dives on product design, AI implementation, growth strategies, and real client results.',
+  openGraph: {
+    title: 'Blog | AI Product Development Insights & Case Studies | Pixelmojo',
+    description:
+      'Learn how we build AI products that generate revenue. Deep dives on product design, AI implementation, growth strategies, and real client results.',
+    type: 'website',
+  },
   alternates: {
     canonical: buildCanonicalUrl('/blog'),
   },
