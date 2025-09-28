@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     siteName: 'Pixelmojo',
     images: [
       {
-        url: '/og-image.webp',
+        url: 'https://pixelmojo.com/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Pixelmojo - AI-Native Design & Product Studio',
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: 'Pixelmojo | AI Product Studio',
     description:
       'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
-    images: ['/og-image.webp'],
+    images: ['https://pixelmojo.com/og-image.webp'],
   },
   robots: {
     index: true,

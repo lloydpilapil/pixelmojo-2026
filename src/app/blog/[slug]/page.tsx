@@ -39,7 +39,9 @@ export async function generateMetadata({ params }: BlogPostProps) {
     notFound()
   }
 
-  const ogImage = post.featuredImage || '/pixelmojo-hero-home-visual.webp'
+  const ogImage = post.featuredImage
+    ? `https://pixelmojo.com${post.featuredImage}`
+    : 'https://pixelmojo.com/og-image.webp'
 
   return {
     title: `${post.title} | Pixelmojo`,
