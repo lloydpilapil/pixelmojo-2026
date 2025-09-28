@@ -9,13 +9,32 @@ import OurApproach from '@/components/OurApproach'
 import RecentArticles from '@/components/RecentArticles'
 
 export const metadata: Metadata = {
-  title: {
-    absolute: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
-  },
+  title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
     'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
-  alternates: {
-    canonical: 'https://pixelmojo.com',
+  openGraph: {
+    title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
+    description:
+      'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+    url: 'https://pixelmojo.com',
+    siteName: 'Pixelmojo',
+    images: [
+      {
+        url: 'https://pixelmojo.com/og-image.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
+    description:
+      'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+    images: ['https://pixelmojo.com/og-image.webp'],
   },
 }
 

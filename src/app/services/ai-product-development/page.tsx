@@ -19,39 +19,38 @@ const service = {
   pricing: 'From $15K',
 }
 
-const pageTitle =
-  'AI Product Development | Transform Digital Products Into Growth Engines'
-const pageDescription =
-  'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.'
-const pageUrl = 'https://pixelmojo.com/services/ai-product-development'
-const pageImage = '/pixelmojo-services-ai-product-development-01.webp'
-const brandedTitle = `${pageTitle} | Pixelmojo`
-
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: {
-    canonical: pageUrl,
-  },
+  title:
+    'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
+  description:
+    'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
   openGraph: {
-    title: brandedTitle,
-    description: pageDescription,
-    url: pageUrl,
+    title:
+      'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
+    description:
+      'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+    url: 'https://pixelmojo.com/services/ai-product-development',
+    siteName: 'Pixelmojo',
     images: [
       {
-        url: pageImage,
+        url: 'https://pixelmojo.com/pixelmojo-services-ai-product-development-01.webp',
         width: 1200,
         height: 630,
-        alt: brandedTitle,
+        alt: 'AI Product Development | Transform Digital Products Into Growth Engines',
       },
     ],
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: brandedTitle,
-    description: pageDescription,
-    images: [pageImage],
+    title:
+      'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
+    description:
+      'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+    images: [
+      'https://pixelmojo.com/pixelmojo-services-ai-product-development-01.webp',
+    ],
   },
 }
 

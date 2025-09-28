@@ -19,39 +19,38 @@ const service = {
   pricing: 'Projects from $12K',
 }
 
-const pageTitle =
-  'Profit-Optimized Interfaces | Interfaces That Maximize Revenue'
-const pageDescription =
-  'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.'
-const pageUrl = 'https://pixelmojo.com/services/profit-optimized-interfaces'
-const pageImage = '/pixelmojo-services-profit-optimized-interfaces-01.webp'
-const brandedTitle = `${pageTitle} | Pixelmojo`
-
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: {
-    canonical: pageUrl,
-  },
+  title:
+    'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
+  description:
+    'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
   openGraph: {
-    title: brandedTitle,
-    description: pageDescription,
-    url: pageUrl,
+    title:
+      'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
+    description:
+      'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+    url: 'https://pixelmojo.com/services/profit-optimized-interfaces',
+    siteName: 'Pixelmojo',
     images: [
       {
-        url: pageImage,
+        url: 'https://pixelmojo.com/pixelmojo-services-profit-optimized-interfaces-01.webp',
         width: 1200,
         height: 630,
-        alt: brandedTitle,
+        alt: 'Profit-Optimized Interfaces | Interfaces That Maximize Revenue',
       },
     ],
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: brandedTitle,
-    description: pageDescription,
-    images: [pageImage],
+    title:
+      'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
+    description:
+      'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+    images: [
+      'https://pixelmojo.com/pixelmojo-services-profit-optimized-interfaces-01.webp',
+    ],
   },
 }
 

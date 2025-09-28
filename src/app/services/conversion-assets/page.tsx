@@ -19,38 +19,35 @@ const service = {
   pricing: 'Projects from $8K',
 }
 
-const pageTitle = 'Conversion Asset Systems | Visuals That Close Deals'
-const pageDescription =
-  'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.'
-const pageUrl = 'https://pixelmojo.com/services/conversion-assets'
-const pageImage = '/pixelmojo-services-conversion-assets-02.webp'
-const brandedTitle = `${pageTitle} | Pixelmojo`
-
 export const metadata: Metadata = {
-  title: pageTitle,
-  description: pageDescription,
-  alternates: {
-    canonical: pageUrl,
-  },
+  title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
+  description:
+    'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
   openGraph: {
-    title: brandedTitle,
-    description: pageDescription,
-    url: pageUrl,
+    title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
+    description:
+      'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
+    url: 'https://pixelmojo.com/services/conversion-assets',
+    siteName: 'Pixelmojo',
     images: [
       {
-        url: pageImage,
+        url: 'https://pixelmojo.com/pixelmojo-services-conversion-assets-02.webp',
         width: 1200,
         height: 630,
-        alt: brandedTitle,
+        alt: 'Conversion Asset Systems | Visuals That Close Deals',
       },
     ],
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: brandedTitle,
-    description: pageDescription,
-    images: [pageImage],
+    title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
+    description:
+      'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
+    images: [
+      'https://pixelmojo.com/pixelmojo-services-conversion-assets-02.webp',
+    ],
   },
 }
 

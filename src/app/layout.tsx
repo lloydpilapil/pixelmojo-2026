@@ -33,32 +33,18 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pixelmojo.com'),
-  title: {
-    default: 'Pixelmojo | AI Product Studio',
-    template: '%s | Pixelmojo',
-  },
+  title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
     'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
-  keywords: [
-    'AI product studio',
-    'AI design agency',
-    'AI product development',
-    'Revenue-focused design',
-    'Growth engineering',
-  ],
-  applicationName: 'Pixelmojo',
-  alternates: {
-    canonical: 'https://pixelmojo.com',
-  },
   openGraph: {
-    title: 'Pixelmojo | AI Product Studio',
+    title: 'Pixelmojo - AI-Native Design & Product Studio',
     description:
       'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
     url: 'https://pixelmojo.com',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Pixelmojo - AI-Native Design & Product Studio',
@@ -69,27 +55,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@lloydpixelmojo',
-    creator: '@lloydpixelmojo',
-    title: 'Pixelmojo | AI Product Studio',
+    title: 'Pixelmojo - AI-Native Design & Product Studio',
     description:
       'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
-    images: ['https://pixelmojo.com/og-image.webp'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-      'max-video-preview': -1,
-    },
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    images: ['/og-image.webp'],
   },
 }
 
