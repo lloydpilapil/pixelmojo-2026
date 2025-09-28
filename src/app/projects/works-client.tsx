@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { PortfolioCard } from '@/components/FeaturedWorks'
 import { getAllWorks } from '@/data/works'
 import { Button } from '@/components/ui/button'
@@ -16,18 +17,48 @@ export default function WorksClient() {
   return (
     <div className='container mx-auto px-4 py-16 animate-fade-in'>
       <div className='max-w-7xl mx-auto'>
-        {/* Page Header */}
-        <div className='text-center mb-20'>
-          <h1 className='mb-6 font-heading'>Our Projects</h1>
-          <p className='lead max-w-3xl mx-auto mb-8'>
-            Real results from our AI-native approach. Client work and innovative
-            products that prove the power of unified intelligence over
-            traditional agency chaos.
-          </p>
+        {/* Hero Section - Side by Side Layout */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20'>
+          {/* Content - Left Side */}
+          <div>
+            <h1 className='mb-6 font-heading'>Our Projects</h1>
+            <p className='lead mb-8'>
+              Real results from our AI-native approach. Client work and
+              innovative products that prove the power of unified intelligence
+              over traditional agency chaos.
+            </p>
+            <Button
+              variant='default'
+              size='lg'
+              className='group'
+              onClick={() => {
+                const firstProject = document.querySelector('#projects-grid')
+                firstProject?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Explore Our Work
+              <ChevronDown className='ml-2 w-4 h-4 transition-transform group-hover:translate-y-0.5' />
+            </Button>
+          </div>
+
+          {/* Image - Right Side */}
+          <div className='relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden'>
+            <Image
+              src='/pixelmojo-service-hero-image.webp'
+              alt='Our Projects'
+              fill
+              className='object-cover'
+              priority
+            />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
+          </div>
         </div>
 
         {/* Projects Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8 max-w-7xl mx-auto mb-12'>
+        <div
+          id='projects-grid'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-8 max-w-7xl mx-auto mb-12'
+        >
           {displayedWorks.map((work, index) => (
             <PortfolioCard
               key={work.slug}

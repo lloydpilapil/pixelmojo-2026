@@ -3,12 +3,13 @@ import { getAllWorks } from '@/data/works'
 import { notFound } from 'next/navigation'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: Props) {
+  const { slug } = await params
   const works = getAllWorks()
-  const workData = works.find(work => work.slug === `/projects/${params.slug}`)
+  const workData = works.find(work => work.slug === `/projects/${slug}`)
 
   if (!workData) {
     return {
@@ -20,9 +21,10 @@ export async function generateMetadata({ params }: Props) {
   return generateWorkMetadata(workData)
 }
 
-export default function WorkDetailPage({ params }: Props) {
+export default async function WorkDetailPage({ params }: Props) {
+  const { slug } = await params
   const works = getAllWorks()
-  const workData = works.find(work => work.slug === `/projects/${params.slug}`)
+  const workData = works.find(work => work.slug === `/projects/${slug}`)
 
   if (!workData) {
     notFound()

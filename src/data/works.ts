@@ -14,6 +14,27 @@ export interface WorkItem {
 
 export const worksData: WorkItem[] = [
   {
+    title: 'Road Runner Cargo Logistics',
+    description:
+      'Track & Trace system that unified fragmented operations into a real-time logistics platform, cutting ops workload by 70% and delivering 3 months ahead of schedule.',
+    year: '2025',
+    category: 'Enterprise SaaS',
+    slug: '/projects/road-runner-cargo',
+    coverImage: '/placeholder.svg',
+    thumbnailImage: '/placeholder.svg',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Node.js',
+      'PostgreSQL',
+      'Redis',
+      'WebSockets',
+    ],
+    featured: true,
+    isNew: true,
+    demoUrl: '#',
+  },
+  {
     title: 'Mojo AI',
     description:
       'Transform single templates into hundreds of on-brand ad variations in minutes. AI-powered content generation meets intelligent design analysis for faster, smarter creative workflows.',

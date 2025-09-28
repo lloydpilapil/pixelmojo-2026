@@ -23,6 +23,7 @@ export function generateWorkMetadata(work: WorkItem): Metadata {
 
 export default function WorkPage({ work }: WorkPageProps) {
   const isMojoAI = work.slug === '/projects/mojo-ai'
+  const isRoadRunner = work.slug === '/projects/road-runner-cargo'
 
   const painPoints = [
     {
@@ -101,52 +102,402 @@ export default function WorkPage({ work }: WorkPageProps) {
 
   return (
     <div className='container mx-auto px-4 py-20 lg:py-32 max-w-7xl'>
-      {/* Hero Section */}
-      <div className='relative mb-24 lg:mb-32 w-screen -translate-x-1/2 px-4 sm:px-8 lg:px-16 xl:px-24 left-1/2'>
-        <div className='mx-auto w-full max-w-[90rem] space-y-12 lg:space-y-16 text-center'>
-          <h1 className='mx-auto leading-tight mb-8 lg:mb-12'>{work.title}</h1>
-          {isMojoAI && (
-            <h2 className='text-2xl lg:text-3xl font-semibold text-primary mb-6 lg:mb-8'>
-              Your Creative Copilot for Figma
-            </h2>
-          )}
-          <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground mb-10 lg:mb-14'>
-            {work.description}
-          </p>
+      {/* Hero Section - Side by Side Layout */}
+      <div className='mb-24 lg:mb-32'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
+          {/* Content - Left Side */}
+          <div>
+            {/* Project Metadata */}
+            <div className='flex flex-wrap gap-4 mb-6'>
+              <span className='text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full'>
+                {work.category}
+              </span>
+              <span className='text-sm font-medium text-muted-foreground'>
+                {work.year}
+              </span>
+              {work.isNew && (
+                <span className='text-sm font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full'>
+                  New
+                </span>
+              )}
+            </div>
 
-          {/* Demo Link */}
-          {work.demoUrl && (
-            <div className='flex justify-center pt-4 lg:pt-8'>
-              <LinkButton
-                href={work.demoUrl}
-                variant='default'
-                size='default'
-                className='group'
-              >
-                View Live Project
-              </LinkButton>
+            <h1 className='leading-tight mb-6 lg:mb-8'>{work.title}</h1>
+            {isMojoAI && (
+              <h2 className='text-2xl lg:text-3xl font-semibold text-primary mb-6'>
+                Your Creative Copilot for Figma
+              </h2>
+            )}
+            <p className='text-lg lg:text-xl text-muted-foreground mb-8 lg:mb-10'>
+              {work.description}
+            </p>
+
+            {/* Technologies */}
+            {work.technologies && work.technologies.length > 0 && (
+              <div className='mb-8'>
+                <p className='text-sm font-semibold text-foreground mb-3'>
+                  Technologies:
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  {work.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className='text-sm text-muted-foreground bg-muted px-3 py-1 rounded-lg'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Demo Link */}
+            {work.demoUrl && (
+              <div className='flex pt-4'>
+                <LinkButton
+                  href={work.demoUrl}
+                  variant='default'
+                  size='default'
+                  className='group'
+                >
+                  View Live Project
+                </LinkButton>
+              </div>
+            )}
+          </div>
+
+          {/* Cover Image - Right Side */}
+          {work.coverImage && (
+            <div className='relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden'>
+              <HeroVisual
+                src={work.coverImage}
+                alt={generateAltText(work, 'main')}
+                priority
+                animation='reveal'
+                className='w-full h-full [&>div]:w-full [&>div]:h-full [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover'
+              />
+              <div className='absolute inset-0 bg-gradient-to-t from-black/10 to-transparent' />
             </div>
           )}
         </div>
       </div>
 
-      {/* Cover Image */}
-      {work.coverImage && (
-        <div className='mb-24 lg:mb-32'>
-          <HeroVisual
-            src={work.coverImage}
-            alt={generateAltText(work, 'main')}
-            priority
-            animation='reveal'
-            variant='full'
-            className='left-1/2 w-screen max-w-none -translate-x-1/2 overflow-hidden rounded-3xl [&>div]:w-full [&>div]:h-full [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover'
-          />
-        </div>
-      )}
-
       {/* Project Content */}
       <div className='mb-24 lg:mb-32'>
-        {isMojoAI ? (
+        {isRoadRunner ? (
+          <div className='space-y-24 lg:space-y-32'>
+            {/* The Problem Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-destructive'>
+                  The Problem
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  Road Runner Cargo was drowning in operational inefficiencies.
+                  Their logistics operations were hampered by disconnected tools
+                  and manual processes that couldn't scale with their growing
+                  business.
+                </p>
+              </div>
+
+              <div className='grid gap-8 md:grid-cols-3'>
+                <div className='bg-destructive/5 border border-destructive/20 rounded-2xl p-8 space-y-4'>
+                  <h3 className='text-xl font-bold text-destructive'>
+                    Fragmented Operations
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Manual tools and spreadsheets slowed down shipment
+                    visibility and created errors.
+                  </p>
+                </div>
+                <div className='bg-destructive/5 border border-destructive/20 rounded-2xl p-8 space-y-4'>
+                  <h3 className='text-xl font-bold text-destructive'>
+                    Limited Transparency
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Clients had no direct way to see real-time shipment status.
+                  </p>
+                </div>
+                <div className='bg-destructive/5 border border-destructive/20 rounded-2xl p-8 space-y-4'>
+                  <h3 className='text-xl font-bold text-destructive'>
+                    Low Productivity
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Ops teams spent hours reconciling updates and answering
+                    repetitive inquiries.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* The Solution Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-primary'>
+                  The Solution
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  We designed and built a comprehensive Track & Trace system
+                  that transformed their operations from chaos to clarity.
+                </p>
+              </div>
+
+              <div className='space-y-12'>
+                <div className='bg-primary/5 border border-primary/20 rounded-2xl p-8 lg:p-12'>
+                  <div className='grid lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
+                    <div className='space-y-6'>
+                      <h4 className='text-2xl font-bold text-primary'>
+                        Unified Dashboard
+                      </h4>
+                      <p className='text-lg text-muted-foreground leading-relaxed'>
+                        A role-based platform (Admin, Master, Client)
+                        consolidating all shipment data in one place. Each role
+                        gets exactly what they need, when they need it.
+                      </p>
+                    </div>
+                    <div className='aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border'>
+                      <Image
+                        src='/placeholder.svg'
+                        alt='Unified Dashboard Interface'
+                        width={800}
+                        height={600}
+                        className='w-full h-full object-cover'
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className='bg-primary/5 border border-primary/20 rounded-2xl p-8 lg:p-12'>
+                  <div className='grid lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
+                    <div className='order-2 lg:order-1 aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border'>
+                      <Image
+                        src='/placeholder.svg'
+                        alt='Real-Time Tracking Visualization'
+                        width={800}
+                        height={600}
+                        className='w-full h-full object-cover'
+                      />
+                    </div>
+                    <div className='order-1 lg:order-2 space-y-6'>
+                      <h4 className='text-2xl font-bold text-primary'>
+                        Real-Time Tracking
+                      </h4>
+                      <p className='text-lg text-muted-foreground leading-relaxed'>
+                        Visualized milestones and alerts from booking to
+                        delivery. Every stakeholder can see exactly where
+                        shipments are in real-time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='bg-primary/5 border border-primary/20 rounded-2xl p-8 lg:p-12'>
+                  <div className='grid lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
+                    <div className='space-y-6'>
+                      <h4 className='text-2xl font-bold text-primary'>
+                        Client Self-Service
+                      </h4>
+                      <p className='text-lg text-muted-foreground leading-relaxed'>
+                        Shipment lookup without going through support. Clients
+                        can track their shipments independently, reducing
+                        support tickets by 60%.
+                      </p>
+                    </div>
+                    <div className='aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border'>
+                      <Image
+                        src='/placeholder.svg'
+                        alt='Client Self-Service Portal'
+                        width={800}
+                        height={600}
+                        className='w-full h-full object-cover'
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Our Process Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-accent'>
+                  Our Process – AI-Powered Delivery
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  At PixelMojo, we applied our AI-native design methodology to
+                  deliver unprecedented speed and quality.
+                </p>
+              </div>
+
+              <div className='grid gap-8 md:grid-cols-3'>
+                <div className='bg-accent/5 border border-accent/20 rounded-2xl p-8 space-y-4'>
+                  <div className='text-3xl mb-2'>🚀</div>
+                  <h3 className='text-xl font-bold text-accent'>
+                    Vibe Coding Sessions
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Fast ideation loops blending AI-assisted prototyping with
+                    human UX expertise.
+                  </p>
+                </div>
+                <div className='bg-accent/5 border border-accent/20 rounded-2xl p-8 space-y-4'>
+                  <div className='text-3xl mb-2'>🤖</div>
+                  <h3 className='text-xl font-bold text-accent'>
+                    AI-Powered Workflow
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Automated design documentation, user flow testing, and
+                    system prompts validation.
+                  </p>
+                </div>
+                <div className='bg-accent/5 border border-accent/20 rounded-2xl p-8 space-y-4'>
+                  <div className='text-3xl mb-2'>⚡</div>
+                  <h3 className='text-xl font-bold text-accent'>
+                    Accelerated Build
+                  </h3>
+                  <p className='text-muted-foreground leading-relaxed'>
+                    Delivered 3 months earlier than expected by eliminating
+                    redundant cycles.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* The Impact Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'>
+                  The Impact
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  Real, measurable results that transformed Road Runner's
+                  business operations.
+                </p>
+              </div>
+
+              <div className='grid gap-8 md:grid-cols-3'>
+                <div className='text-center space-y-4'>
+                  <div className='text-5xl font-bold text-primary'>70%</div>
+                  <h3 className='text-xl font-bold'>Productivity Boost</h3>
+                  <p className='text-muted-foreground'>
+                    Ops workload cut significantly; updates now take minutes
+                    instead of hours.
+                  </p>
+                </div>
+                <div className='text-center space-y-4'>
+                  <div className='text-5xl font-bold text-primary'>60%</div>
+                  <h3 className='text-xl font-bold'>Reduced Escalations</h3>
+                  <p className='text-muted-foreground'>
+                    Real-time transparency improved customer satisfaction
+                    dramatically.
+                  </p>
+                </div>
+                <div className='text-center space-y-4'>
+                  <div className='text-5xl font-bold text-primary'>3mo</div>
+                  <h3 className='text-xl font-bold'>Faster Delivery</h3>
+                  <p className='text-muted-foreground'>
+                    Early launch allowed Road Runner to realize ROI ahead of
+                    schedule.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Dashboard Features Section */}
+            <section className='space-y-16 lg:space-y-20'>
+              <div className='text-center'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6'>
+                  Simulated Dashboard Features
+                </h2>
+                <p className='mx-auto max-w-4xl text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                  A modern, AI-driven interface designed for maximum efficiency
+                  and clarity.
+                </p>
+              </div>
+
+              <div className='grid gap-6 md:grid-cols-2'>
+                <div className='bg-card border border-border rounded-xl p-6 space-y-3'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-2xl'>📦</span>
+                    <h3 className='text-lg font-semibold'>
+                      Dynamic Shipment Cards
+                    </h3>
+                  </div>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>
+                    Real-time counts of "In Transit," "Delivered," "Delayed"
+                    with instant updates.
+                  </p>
+                </div>
+                <div className='bg-card border border-border rounded-xl p-6 space-y-3'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-2xl'>📈</span>
+                    <h3 className='text-lg font-semibold'>Progress Timeline</h3>
+                  </div>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>
+                    Milestones update automatically as shipments move through
+                    the system.
+                  </p>
+                </div>
+                <div className='bg-card border border-border rounded-xl p-6 space-y-3'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-2xl'>🚨</span>
+                    <h3 className='text-lg font-semibold'>Alerts Feed</h3>
+                  </div>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>
+                    AI-flagged anomalies like customs holds or delays instantly
+                    surface.
+                  </p>
+                </div>
+                <div className='bg-card border border-border rounded-xl p-6 space-y-3'>
+                  <div className='flex items-center gap-3'>
+                    <span className='text-2xl'>🔍</span>
+                    <h3 className='text-lg font-semibold'>
+                      Client Quick Lookup
+                    </h3>
+                  </div>
+                  <p className='text-muted-foreground text-sm leading-relaxed'>
+                    Track any shipment instantly by entering a tracking ID.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className='space-y-12 lg:space-y-16'>
+              <div className='text-center bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 lg:p-16 border border-primary/30'>
+                <h2 className='text-4xl md:text-5xl font-bold mb-6 text-primary'>
+                  Ready to Transform Your Operations?
+                </h2>
+                <div className='space-y-8 max-w-4xl mx-auto'>
+                  <p className='text-lg lg:text-xl text-muted-foreground leading-relaxed'>
+                    See how our AI-native approach can deliver your solution
+                    months ahead of schedule while cutting operational overhead
+                    by up to 70%.
+                  </p>
+
+                  <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+                    <LinkButton
+                      href='/contact'
+                      variant='default'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Get Your Free Consultation
+                    </LinkButton>
+                    <LinkButton
+                      href='/services'
+                      variant='outline'
+                      size='lg'
+                      className='px-8 py-4 text-lg font-semibold'
+                    >
+                      Learn About Our Process
+                    </LinkButton>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        ) : isMojoAI ? (
           <div className='space-y-24 lg:space-y-32'>
             {/* The Challenge Section */}
             <section className='space-y-16 lg:space-y-20'>
