@@ -29,11 +29,11 @@ export const metadata: Metadata = {
       'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
     description:
       'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
-    url: 'https://pixelmojo.com/services/profit-optimized-interfaces',
+    url: 'https://www.pixelmojo.io/services/profit-optimized-interfaces',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-profit-optimized-interfaces-01.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-profit-optimized-interfaces-01.webp',
         width: 1200,
         height: 630,
         alt: 'Profit-Optimized Interfaces | Interfaces That Maximize Revenue',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
     images: [
-      'https://pixelmojo.com/pixelmojo-services-profit-optimized-interfaces-01.webp',
+      'https://www.pixelmojo.io/pixelmojo-services-profit-optimized-interfaces-01.webp',
     ],
   },
 }

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: brandedTitle,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: brandedTitle,
     description: pageDescription,
-    images: ['https://pixelmojo.com/og-image.webp'],
+    images: ['https://www.pixelmojo.io/og-image.webp'],
   },
 }
 

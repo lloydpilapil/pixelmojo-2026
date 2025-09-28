@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
     description:
       'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
-    url: 'https://pixelmojo.com/services/conversion-assets',
+    url: 'https://www.pixelmojo.io/services/conversion-assets',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-conversion-assets-02.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-conversion-assets-02.webp',
         width: 1200,
         height: 630,
         alt: 'Conversion Asset Systems | Visuals That Close Deals',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
     images: [
-      'https://pixelmojo.com/pixelmojo-services-conversion-assets-02.webp',
+      'https://www.pixelmojo.io/pixelmojo-services-conversion-assets-02.webp',
     ],
   },
 }

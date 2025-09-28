@@ -29,11 +29,11 @@ export const metadata: Metadata = {
       'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
     description:
       'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
-    url: 'https://pixelmojo.com/services/ai-powered-growth',
+    url: 'https://www.pixelmojo.io/services/ai-powered-growth',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-ai-powered-growth-01.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-ai-powered-growth-01.webp',
         width: 1200,
         height: 630,
         alt: 'AI-Powered Growth Engines | Activate Your Brand for Real Growth',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
     images: [
-      'https://pixelmojo.com/pixelmojo-services-ai-powered-growth-01.webp',
+      'https://www.pixelmojo.io/pixelmojo-services-ai-powered-growth-01.webp',
     ],
   },
 }

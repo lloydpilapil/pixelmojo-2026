@@ -29,11 +29,11 @@ export const metadata: Metadata = {
       'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
     description:
       'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
-    url: 'https://pixelmojo.com/services/ai-product-development',
+    url: 'https://www.pixelmojo.io/services/ai-product-development',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-ai-product-development-01.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-ai-product-development-01.webp',
         width: 1200,
         height: 630,
         alt: 'AI Product Development | Transform Digital Products Into Growth Engines',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
     images: [
-      'https://pixelmojo.com/pixelmojo-services-ai-product-development-01.webp',
+      'https://www.pixelmojo.io/pixelmojo-services-ai-product-development-01.webp',
     ],
   },
 }

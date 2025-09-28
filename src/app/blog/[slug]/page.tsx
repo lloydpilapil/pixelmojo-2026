@@ -40,11 +40,11 @@ export async function generateMetadata({ params }: BlogPostProps) {
   }
 
   const ogImage = post.featuredImage
-    ? `https://pixelmojo.com${post.featuredImage}`
-    : 'https://pixelmojo.com/og-image.webp'
+    ? `https://www.pixelmojo.io${post.featuredImage}`
+    : 'https://www.pixelmojo.io/og-image.webp'
 
   const brandedTitle = `${post.title} | Pixelmojo`
-  const canonicalUrl = `https://pixelmojo.com/blog/${slug}`
+  const canonicalUrl = `https://www.pixelmojo.io/blog/${slug}`
 
   return {
     title: post.title,

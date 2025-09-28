@@ -5,7 +5,7 @@ import ServicesGrid from './ServicesGrid'
 const pageTitle = 'AI Products That Generate ROI From Day One'
 const pageDescription =
   'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.'
-const canonicalUrl = 'https://pixelmojo.com/services'
+const canonicalUrl = 'https://www.pixelmojo.io/services'
 const brandedTitle = `${pageTitle} | Pixelmojo`
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: brandedTitle,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: brandedTitle,
     description: pageDescription,
-    images: ['https://pixelmojo.com/og-image.webp'],
+    images: ['https://www.pixelmojo.io/og-image.webp'],
   },
 }
 

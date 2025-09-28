@@ -4,7 +4,7 @@ import WorksClient from './works-client'
 const pageTitle = 'AI Product Portfolio | Revenue-Generating Solutions'
 const pageDescription =
   'Real AI products that generate measurable ROI. From enterprise logistics systems to marketing automation platforms. See how we transform ideas into revenue in 90 days.'
-const canonicalUrl = 'https://pixelmojo.com/projects'
+const canonicalUrl = 'https://www.pixelmojo.io/projects'
 const brandedTitle = `${pageTitle} | Pixelmojo`
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: brandedTitle,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: brandedTitle,
     description: pageDescription,
-    images: ['https://pixelmojo.com/og-image.webp'],
+    images: ['https://www.pixelmojo.io/og-image.webp'],
   },
 }
 

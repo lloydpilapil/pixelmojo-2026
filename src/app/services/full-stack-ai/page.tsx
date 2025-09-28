@@ -29,11 +29,11 @@ export const metadata: Metadata = {
       'Full-Stack AI Implementation | Production AI That Generates ROI | Pixelmojo',
     description:
       'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
-    url: 'https://pixelmojo.com/services/full-stack-ai',
+    url: 'https://www.pixelmojo.io/services/full-stack-ai',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-full-stack-ai-02.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-full-stack-ai-02.webp',
         width: 1200,
         height: 630,
         alt: 'Full-Stack AI Implementation | Production AI That Generates ROI',
@@ -48,7 +48,9 @@ export const metadata: Metadata = {
       'Full-Stack AI Implementation | Production AI That Generates ROI | Pixelmojo',
     description:
       'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
-    images: ['https://pixelmojo.com/pixelmojo-services-full-stack-ai-02.webp'],
+    images: [
+      'https://www.pixelmojo.io/pixelmojo-services-full-stack-ai-02.webp',
+    ],
   },
 }
 

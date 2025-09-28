@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
     description:
       'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
-    url: 'https://pixelmojo.com',
+    url: 'https://www.pixelmojo.io',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
     description:
       'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
-    images: ['https://pixelmojo.com/og-image.webp'],
+    images: ['https://www.pixelmojo.io/og-image.webp'],
   },
 }
 

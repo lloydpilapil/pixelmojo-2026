@@ -11,11 +11,11 @@ export const metadata: Metadata = {
       'About Pixelmojo: AI Products That Generate Profits From Day One | Pixelmojo',
     description:
       'Meet the team that builds complete AI product ecosystems generating measurable ROI immediately. 20+ years of turning concepts into profitable realities.',
-    url: 'https://pixelmojo.com/about',
+    url: 'https://www.pixelmojo.io/about',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'About Pixelmojo: AI Products That Generate Profits From Day One',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       'About Pixelmojo: AI Products That Generate Profits From Day One | Pixelmojo',
     description:
       'Meet the team that builds complete AI product ecosystems generating measurable ROI immediately. 20+ years of turning concepts into profitable realities.',
-    images: ['https://pixelmojo.com/og-image.webp'],
+    images: ['https://www.pixelmojo.io/og-image.webp'],
   },
 }
 

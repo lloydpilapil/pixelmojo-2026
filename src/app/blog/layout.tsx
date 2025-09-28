@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     title: brandedTitle,
     description: pageDescription,
     type: 'website',
-    url: 'https://pixelmojo.com/blog',
+    url: 'https://www.pixelmojo.io/blog',
     images: [
       {
-        url: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io/og-image.webp',
         width: 1200,
         height: 630,
         alt: brandedTitle,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://pixelmojo.com/blog',
+    canonical: 'https://www.pixelmojo.io/blog',
   },
 }
 

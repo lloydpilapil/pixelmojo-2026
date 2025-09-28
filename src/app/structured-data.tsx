@@ -4,12 +4,12 @@ export default function StructuredData() {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://pixelmojo.com/#organization',
+        '@id': 'https://www.pixelmojo.io/#organization',
         name: 'Pixelmojo',
         alternateName: 'Pixelmojo AI Product Studio',
-        url: 'https://pixelmojo.com',
-        logo: 'https://pixelmojo.com/pixelmojo-icon.svg',
-        image: 'https://pixelmojo.com/og-image.webp',
+        url: 'https://www.pixelmojo.io',
+        logo: 'https://www.pixelmojo.io/pixelmojo-icon.svg',
+        image: 'https://www.pixelmojo.io/og-image.webp',
         description:
           'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
         slogan: 'Ship Revenue in 90 Days',
@@ -31,7 +31,7 @@ export default function StructuredData() {
           '@type': 'ContactPoint',
           telephone: '+63-917-165-8601',
           contactType: 'sales',
-          email: 'founders@pixelmojo.com',
+          email: 'founders@pixelmojo.io',
           availableLanguage: ['English', 'Filipino'],
         },
         areaServed: [
@@ -70,30 +70,31 @@ export default function StructuredData() {
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://pixelmojo.com/#website',
-        url: 'https://pixelmojo.com',
+        '@id': 'https://www.pixelmojo.io/#website',
+        url: 'https://www.pixelmojo.io',
         name: 'Pixelmojo | AI Product Studio',
         description: 'AI-native product studio that ships revenue in 90 days',
         publisher: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://pixelmojo.com/search?q={search_term_string}',
+            urlTemplate:
+              'https://www.pixelmojo.io/search?q={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },
       },
       {
         '@type': 'Person',
-        '@id': 'https://pixelmojo.com/#founder',
+        '@id': 'https://www.pixelmojo.io/#founder',
         name: 'Lloyd Pilapil',
         jobTitle: 'Founder & AI Product Architect',
-        url: 'https://pixelmojo.com',
+        url: 'https://www.pixelmojo.io',
         worksFor: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         alumniOf: {
           '@type': 'Organization',
@@ -115,16 +116,17 @@ export default function StructuredData() {
       },
       {
         '@type': 'Service',
-        '@id': 'https://pixelmojo.com/services/ai-product-development/#service',
+        '@id':
+          'https://www.pixelmojo.io/services/ai-product-development/#service',
         serviceType: 'AI Product Development',
         name: 'AI Product Development',
         description:
           'Ship AI products in 90 days. Production-ready MVPs that validate with real users and generate early revenue.',
         provider: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         areaServed: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
@@ -151,45 +153,46 @@ export default function StructuredData() {
       },
       {
         '@type': 'Service',
-        '@id': 'https://pixelmojo.com/services/revenue-first-design/#service',
+        '@id':
+          'https://www.pixelmojo.io/services/revenue-first-design/#service',
         serviceType: 'Revenue-First Design Systems',
         name: 'Revenue-First Design Systems',
         description:
           'Design systems built to convert, not just look pretty. Every component optimized for activation, retention, and expansion.',
         provider: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
       },
       {
         '@type': 'Service',
-        '@id': 'https://pixelmojo.com/services/ai-powered-growth/#service',
+        '@id': 'https://www.pixelmojo.io/services/ai-powered-growth/#service',
         serviceType: 'AI-Powered Growth Engines',
         name: 'AI-Powered Growth Engines',
         description:
           'Automate growth that drives real pipeline. From lead scoring to lifecycle campaigns that convert.',
         provider: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
       },
       {
         '@type': 'Service',
-        '@id': 'https://pixelmojo.com/services/full-stack-ai/#service',
+        '@id': 'https://www.pixelmojo.io/services/full-stack-ai/#service',
         serviceType: 'Full-Stack AI Implementation',
         name: 'Full-Stack AI Implementation',
         description:
           'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
         provider: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
       },
       {
         '@type': 'CreativeWork',
-        '@id': 'https://pixelmojo.com/projects/mojo-ai/#project',
+        '@id': 'https://www.pixelmojo.io/projects/mojo-ai/#project',
         name: 'Mojo AI',
         description:
           'Transform single templates into hundreds of on-brand ad variations in minutes. AI-powered content generation meets intelligent design analysis.',
         creator: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         dateCreated: '2025',
         keywords: [
@@ -202,12 +205,12 @@ export default function StructuredData() {
       {
         '@type': 'CreativeWork',
         '@id':
-          'https://pixelmojo.com/projects/seo-intelligence-platform/#project',
+          'https://www.pixelmojo.io/projects/seo-intelligence-platform/#project',
         name: 'SEO Intelligence Platform',
         description:
           'Built with Google Search Console MCP to create an autonomous SEO optimization system that drove 3x organic traffic growth.',
         creator: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         dateCreated: '2025',
         keywords: [
@@ -220,12 +223,12 @@ export default function StructuredData() {
       {
         '@type': 'CreativeWork',
         '@id':
-          'https://pixelmojo.com/projects/logistics-track-trace-system/#project',
+          'https://www.pixelmojo.io/projects/logistics-track-trace-system/#project',
         name: 'Logistics Track & Trace System',
         description:
           'Enterprise logistics platform that unified fragmented operations into a real-time tracking system, cutting ops workload by 70%.',
         creator: {
-          '@id': 'https://pixelmojo.com/#organization',
+          '@id': 'https://www.pixelmojo.io/#organization',
         },
         dateCreated: '2025',
         keywords: [
@@ -237,7 +240,7 @@ export default function StructuredData() {
       },
       {
         '@type': 'FAQPage',
-        '@id': 'https://pixelmojo.com/#faq',
+        '@id': 'https://www.pixelmojo.io/#faq',
         mainEntity: [
           {
             '@type': 'Question',
@@ -267,31 +270,31 @@ export default function StructuredData() {
       },
       {
         '@type': 'BreadcrumbList',
-        '@id': 'https://pixelmojo.com/#breadcrumb',
+        '@id': 'https://www.pixelmojo.io/#breadcrumb',
         itemListElement: [
           {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://pixelmojo.com',
+            item: 'https://www.pixelmojo.io',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Services',
-            item: 'https://pixelmojo.com/services',
+            item: 'https://www.pixelmojo.io/services',
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: 'Projects',
-            item: 'https://pixelmojo.com/projects',
+            item: 'https://www.pixelmojo.io/projects',
           },
           {
             '@type': 'ListItem',
             position: 4,
             name: 'Blog',
-            item: 'https://pixelmojo.com/blog',
+            item: 'https://www.pixelmojo.io/blog',
           },
         ],
       },

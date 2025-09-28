@@ -3,7 +3,7 @@ import { getAllWorks } from '@/data/works'
 import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://pixelmojo.com'
+  const baseUrl = 'https://www.pixelmojo.io'
 
   // Get all works/projects
   const works = getAllWorks()

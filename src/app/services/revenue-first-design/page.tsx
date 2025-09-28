@@ -29,11 +29,11 @@ export const metadata: Metadata = {
       'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
     description:
       'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.',
-    url: 'https://pixelmojo.com/services/revenue-first-design',
+    url: 'https://www.pixelmojo.io/services/revenue-first-design',
     siteName: 'Pixelmojo',
     images: [
       {
-        url: 'https://pixelmojo.com/pixelmojo-services-revenue-first-design-01.webp',
+        url: 'https://www.pixelmojo.io/pixelmojo-services-revenue-first-design-01.webp',
         width: 1200,
         height: 630,
         alt: 'Revenue-First Design Systems | Build Brands That Command Attention',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.',
     images: [
-      'https://pixelmojo.com/pixelmojo-services-revenue-first-design-01.webp',
+      'https://www.pixelmojo.io/pixelmojo-services-revenue-first-design-01.webp',
     ],
   },
 }

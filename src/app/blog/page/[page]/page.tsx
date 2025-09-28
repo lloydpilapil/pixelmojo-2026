@@ -70,7 +70,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: brandedTitle,
       description: pageDescription,
-      images: ['https://pixelmojo.com/og-image.webp'],
+      images: ['https://www.pixelmojo.io/og-image.webp'],
     },
   }
 }
