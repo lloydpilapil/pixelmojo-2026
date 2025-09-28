@@ -6,12 +6,6 @@ export const metadata: Metadata = {
   title: 'AI Products That Generate ROI From Day One | Pixelmojo',
   description:
     'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
-  openGraph: {
-    title: 'AI Products That Generate ROI From Day One | Pixelmojo',
-    description:
-      'Complete product ecosystems that profit immediately. We design, develop, and deploy AI-powered solutions that generate measurable revenue from launch.',
-    type: 'website',
-  },
 }
 
 export default function Services() {

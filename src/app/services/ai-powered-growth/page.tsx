@@ -19,17 +19,47 @@ const service = {
   pricing: 'Retainers from $6K/mo',
 }
 
+const pageTitle =
+  'AI-Powered Growth Engines | Activate Your Brand for Real Growth'
+const fullPageTitle = `${pageTitle} | Pixelmojo`
+const pageDescription =
+  'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.'
+const pageUrl = 'https://pixelmojo.com/services/ai-powered-growth'
+const pageOgImage = '/pixelmojo-services-ai-powered-growth-01.webp'
+
 export const metadata: Metadata = {
-  title:
-    'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
-  description:
-    'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
+  title: pageTitle,
+  description: pageDescription,
+  keywords: [
+    'growth marketing automation',
+    'ai growth engine',
+    'lifecycle marketing agency',
+    'revenue operations alignment',
+  ],
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
-    title:
-      'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
-    description:
-      'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
+    title: fullPageTitle,
+    description: pageDescription,
+    url: pageUrl,
+    siteName: 'Pixelmojo',
+    images: [
+      {
+        url: pageOgImage,
+        width: 1200,
+        height: 630,
+        alt: fullPageTitle,
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: fullPageTitle,
+    description: pageDescription,
+    images: [pageOgImage],
   },
 }
 
