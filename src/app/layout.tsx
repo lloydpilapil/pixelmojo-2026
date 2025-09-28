@@ -32,15 +32,18 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pixelmojo.com'),
+  metadataBase: new URL('https://www.pixelmojo.io'),
   title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
     'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io',
+  },
   openGraph: {
     title: 'Pixelmojo - AI-Native Design & Product Studio',
     description:
       'Transform ideas into revenue-generating products. We design, develop, and deploy AI-powered solutions that deliver measurable ROI from day one.',
-    url: 'https://pixelmojo.com',
+    url: 'https://www.pixelmojo.io',
     siteName: 'Pixelmojo',
     images: [
       {
