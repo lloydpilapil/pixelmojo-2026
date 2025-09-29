@@ -7,23 +7,33 @@ interface Message {
   id: string
   text: string
   sender: 'user' | 'bot'
-  timestamp: Date
+  timestamp: number
 }
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: "Hi! I'm Pixelmojo's AI assistant. I'm currently being enhanced and will be available soon to help you with questions about our services, projects, and AI product development. Stay tuned! 🚀",
-      sender: 'bot',
-      timestamp: new Date(),
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>([])
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    setMessages([
+      {
+        id: '1',
+        text: "Hi! I'm Pixelmojo's AI assistant. I'm currently being enhanced and will be available soon to help you with questions about our services, projects, and AI product development. Stay tuned! 🚀",
+        sender: 'bot',
+        timestamp: Date.now(),
+      },
+    ])
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) {
+      return
+    }
+
     const handleScroll = () => {
       // Get hero section height (typically the first section after header)
       // Assuming hero is about 100vh or checking if scrolled past 80% of viewport height
@@ -52,18 +62,19 @@ export default function ChatBot() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [isOpen])
+  }, [isOpen, mounted])
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
     if (!message.trim()) return
 
     // Add user message
+    const now = Date.now()
     const userMessage: Message = {
-      id: Date.now().toString(),
+      id: now.toString(),
       text: message,
       sender: 'user',
-      timestamp: new Date(),
+      timestamp: now,
     }
 
     // Add bot response
@@ -71,11 +82,15 @@ export default function ChatBot() {
       id: (Date.now() + 1).toString(),
       text: 'Thanks for your message! Our AI assistant is coming soon. For immediate assistance, please contact us at founders@pixelmojo.io or use our contact form.',
       sender: 'bot',
-      timestamp: new Date(),
+      timestamp: Date.now(),
     }
 
     setMessages(prev => [...prev, userMessage, botMessage])
     setMessage('')
+  }
+
+  if (!mounted) {
+    return null
   }
 
   return (
@@ -156,7 +171,7 @@ export default function ChatBot() {
                     msg.sender === 'user' ? 'text-white/60' : 'text-gray-500'
                   }`}
                 >
-                  {msg.timestamp.toLocaleTimeString([], {
+                  {new Date(msg.timestamp).toLocaleTimeString([], {
                     hour: '2-digit',
                     minute: '2-digit',
                   })}
