@@ -182,6 +182,21 @@ const nextConfig: NextConfig = {
         destination: '/services/full-stack-ai',
         permanent: true,
       },
+      {
+        source: '/works',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/blog',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path*',
+        destination: '/blogs/:path*',
+        permanent: true,
+      },
     ]
   },
 }
