@@ -197,6 +197,77 @@ const nextConfig: NextConfig = {
         destination: '/blogs/:path*',
         permanent: true,
       },
+      {
+        source:
+          '/blogs/consumer-behavior-in-marketing-strategies-factors-technologys-role-and-research-methods',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/ui-ux-design-secrets-that-will-double-your-e-commerce-sales-in-2025',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-importance-of-ui-ux-in-visual-design-for-digital-products----and-how-it-benefits-businesses',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/best-digital-marketing-tools-for-small-businesses-on-a-budget',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/why-merging-ui-ux-seo-and-content-marketing-is-key-to-digital-brandings-future',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/what-is-vibe-coding-and-why-its-changing-how-we-build-software',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-symbiotic-relationship-between-ui-and-ux-beyond-surface-level-design',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-psychology-behind-consumer-behavior-understanding-the-minds-of-todays-buyers',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/the-evolution-of-digital-design-where-ux-and-ui-meet',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/integrating-ui-ux-branding-and-content-marketing-the-blueprint-for-digital-product-success',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/growth-marketing-the-ultimate-framework-for-scalable-business-expansion',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/designing-for-the-future-with-ai-a-guide-to-next-gen-innovation',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 }
