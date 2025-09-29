@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react'
 
 interface Message {
@@ -12,6 +12,7 @@ interface Message {
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -21,6 +22,37 @@ export default function ChatBot() {
       timestamp: new Date(),
     },
   ])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get hero section height (typically the first section after header)
+      // Assuming hero is about 100vh or checking if scrolled past 80% of viewport height
+      const heroHeight = window.innerHeight * 0.8
+      const scrollPosition = window.scrollY
+
+      // Show chatbot after scrolling past hero section
+      if (scrollPosition > heroHeight) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+        // Also close the chat window if it was open when scrolling back up
+        if (isOpen) {
+          setIsOpen(false)
+        }
+      }
+    }
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll)
+
+    // Check initial scroll position
+    handleScroll()
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isOpen])
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,13 +80,17 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* Chat Toggle Button */}
+      {/* Chat Toggle Button - Only visible after scrolling past hero */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary/20 ${
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary/20 ${
           isOpen
             ? 'bg-red-500 hover:bg-red-600'
             : 'bg-primary hover:bg-primary/90'
+        } ${
+          isVisible
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-8 scale-95 pointer-events-none'
         }`}
         aria-label={isOpen ? 'Close chat' : 'Open chat'}
       >
