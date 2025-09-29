@@ -8,6 +8,16 @@ export default function StructuredData() {
     addressCountry: 'PH',
   }
 
+  const organizationAreaServed = [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'Philippines' },
+    { '@type': 'Country', name: 'Singapore' },
+    { '@type': 'Country', name: 'Australia' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'Canada' },
+  ]
+
   const organizationGeo = {
     '@type': 'GeoCoordinates',
     latitude: 14.55443,
@@ -43,15 +53,7 @@ export default function StructuredData() {
           email: 'founders@pixelmojo.io',
           availableLanguage: ['English', 'Filipino'],
         },
-        areaServed: [
-          { '@type': 'Country', name: 'United States' },
-          { '@type': 'Country', name: 'Philippines' },
-          { '@type': 'Country', name: 'Singapore' },
-          { '@type': 'Country', name: 'Australia' },
-          { '@type': 'Country', name: 'United Arab Emirates' },
-          { '@type': 'Country', name: 'United Kingdom' },
-          { '@type': 'Country', name: 'Canada' },
-        ],
+        areaServed: organizationAreaServed,
         sameAs: [
           'https://www.linkedin.com/company/pixelmojo',
           'https://www.behance.net/pixelmojo',
@@ -134,9 +136,7 @@ export default function StructuredData() {
         provider: {
           '@id': 'https://www.pixelmojo.io/#organization',
         },
-        areaServed: {
-          '@id': 'https://www.pixelmojo.io/#organization',
-        },
+        areaServed: organizationAreaServed,
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: 'AI Product Development Services',
