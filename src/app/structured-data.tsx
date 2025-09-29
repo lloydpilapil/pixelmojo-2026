@@ -1,4 +1,19 @@
 export default function StructuredData() {
+  const organizationAddress = {
+    '@type': 'PostalAddress',
+    streetAddress: '111 Paseo de Roxas, Legazpi Village',
+    addressLocality: 'Makati',
+    addressRegion: 'Metro Manila',
+    postalCode: '1229',
+    addressCountry: 'PH',
+  }
+
+  const organizationGeo = {
+    '@type': 'GeoCoordinates',
+    latitude: 14.55443,
+    longitude: 121.01935,
+  }
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -14,18 +29,12 @@ export default function StructuredData() {
           'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
         slogan: 'Ship Revenue in 90 Days',
         foundingDate: '2020',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '111 Paseo de Roxas, Legazpi Village',
-          addressLocality: 'Makati',
-          addressRegion: 'Metro Manila',
-          postalCode: '1229',
-          addressCountry: 'PH',
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 14.55443,
-          longitude: 121.01935,
+        address: organizationAddress,
+        location: {
+          '@type': 'Place',
+          name: 'Pixelmojo Studio',
+          address: organizationAddress,
+          geo: organizationGeo,
         },
         contactPoint: {
           '@type': 'ContactPoint',
