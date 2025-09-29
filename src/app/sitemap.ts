@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getAllWorks } from '@/data/works'
+import { SITE_URL } from '@/lib/site-config'
 import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.pixelmojo.io'
+  const baseUrl = SITE_URL
 
   // Get all works/projects
   const works = getAllWorks()

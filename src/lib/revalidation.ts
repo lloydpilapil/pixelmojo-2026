@@ -1,7 +1,9 @@
 // Utility functions for triggering revalidation
 
+import { SITE_URL } from './site-config'
+
 const REVALIDATE_TOKEN = process.env.REVALIDATE_TOKEN || 'your-secret-token'
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+const BASE_URL = SITE_URL
 
 interface RevalidateOptions {
   type: 'blog-post' | 'blog-listing' | 'content' | 'tag' | 'full-site'

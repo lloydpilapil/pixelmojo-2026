@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+import { SITE_URL } from './site-config'
+
 // Cache configuration for different types of API responses
 export const CacheConfig = {
   // Static data that rarely changes
@@ -104,8 +106,7 @@ export function withEdgeCache(
 
 // Cache invalidation utilities
 export class CacheInvalidator {
-  private static baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  private static baseUrl = SITE_URL
   private static token = process.env.REVALIDATE_TOKEN || ''
 
   // Invalidate cache by tags

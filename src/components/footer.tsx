@@ -319,19 +319,13 @@ export default function Footer() {
             {/* Right - Legal Links */}
             <div className='flex-1 flex justify-end'>
               <div className='flex items-center gap-1'>
-                <Link
-                  href='/privacy'
-                  className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
-                >
+                <span className='text-white/50 text-sm px-2'>
                   Privacy Policy
-                </Link>
+                </span>
                 <span className='text-white/30'>|</span>
-                <Link
-                  href='/terms'
-                  className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
-                >
+                <span className='text-white/50 text-sm px-2'>
                   Terms of Service
-                </Link>
+                </span>
               </div>
             </div>
           </div>
@@ -350,19 +344,11 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div className='flex items-center gap-1'>
-              <Link
-                href='/privacy'
-                className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
-              >
-                Privacy Policy
-              </Link>
+              <span className='text-white/50 text-sm px-2'>Privacy Policy</span>
               <span className='text-white/30'>|</span>
-              <Link
-                href='/terms'
-                className='text-white/50 hover:text-white text-sm transition-colors duration-200 px-2'
-              >
+              <span className='text-white/50 text-sm px-2'>
                 Terms of Service
-              </Link>
+              </span>
             </div>
           </div>
         </div>
