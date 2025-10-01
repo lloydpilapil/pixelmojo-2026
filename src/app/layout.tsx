@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' data-theme='dark'>
+    <html lang='en' data-theme='dark' suppressHydrationWarning>
       <head>
         <Script
           id='gtm-script'
@@ -91,6 +91,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <noscript>
           <iframe
