@@ -70,14 +70,6 @@ export default function StructuredData() {
           'UI/UX Design',
           'Full-Stack Development',
         ],
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '5',
-          bestRating: '5',
-          worstRating: '1',
-          ratingCount: '12',
-          reviewCount: '12',
-        },
       },
       {
         '@type': 'WebSite',
