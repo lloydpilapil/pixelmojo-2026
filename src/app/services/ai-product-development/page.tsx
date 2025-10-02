@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
   description:
     'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/ai-product-development',
+  },
   openGraph: {
     title:
       'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
@@ -164,181 +167,269 @@ export default function AIProductDevelopment() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'AI Product Development',
+    description:
+      'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '15000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '15000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'project',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/ai-product-development',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'AI Product Development Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Product Strategy & User Research',
+            description:
+              'AI-driven user insights, product roadmapping, and validation sprints.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'UI/UX Design & Prototyping',
+            description:
+              'Modern interface design, interaction patterns, and high-fidelity prototypes.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Full-Stack Development & Launch',
+            description:
+              'Production-ready implementation, QA, and go-to-market support.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Build • Launch • Scale'
-            title='Ship AI products that prove revenue in quarter one.'
-            description={`Our sprint pods pair senior product strategists with automation engineers so you validate, build, and monetize in the same 90-day window.`}
-            subtitle='Modern UI/UX product design, research, and engineering delivered as one AI-native pod.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-ai-product-development-01.webp',
-              alt: 'Product strategists reviewing an AI product roadmap together',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Start your project
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-              <LinkButton
-                href='/services/revenue-first-design'
-                variant='ghost'
-                size='lg'
-                className='underline-offset-4 hover:underline'
-                style={{ color: theme.textColor }}
-              >
-                Explore design systems
-              </LinkButton>
-            </div>
-          </ServiceHero>
-
-          <ServiceStatList theme={theme} items={heroStats} />
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Validation without the drag'
-            title='Proof before code hits main'
-            description={`Discovery, ops, and experimentation run concurrently so there is never a "wait for research" gap. Every loop is measured against the revenue targets your board already cares about.`}
-            bullets={[
-              'Dual-LLM design partners pressure-test flows before engineering estimates are locked.',
-              'Weekly telemetry syncs translate live customer behaviour into sprint-ready stories.',
-              'Revenue instrumentation ships inside prototypes so leadership sees ARR impact instantly.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-ai-product-development-02.webp',
-              alt: 'Workshop board mapping the AI validation workflow steps',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Systems we build in the first month
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Your product leaves the lab with the infrastructure, design
-                language, and growth telemetry required to scale, not just a
-                shiny prototype.
-              </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={buildStackCards} />
-          </div>
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Delivery rhythm that keeps momentum high
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Each phase lands tangible assets, approvals, and learnings your
-                team can reuse.
-              </p>
-            </div>
-            <ServiceTimeline theme={theme} items={deliveryTimeline} />
-          </div>
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Embedded team'
-            title='Pods that drop into your roadmap without friction'
-            description={`We plug into the rituals your team already runs, introduce only the ceremonies that reduce risk, and leave with a repeatable operating system.`}
-            bullets={[
-              'Product strategy lead aligns exec expectations and keeps decisions moving.',
-              'AI enablement engineer pairs with your developers to harden integrations and data.',
-              'Growth analyst converts real usage signals into backlog priorities every single week.',
-            ]}
-            reverse
-            image={{
-              src: '/pixelmojo-services-ai-product-development-03.webp',
-              alt: 'Pixelmojo pod collaborating with client engineers during sprint planning',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                What you walk away with
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Documentation, assets, and growth plans that help internal teams
-                keep scaling long after launch.
-              </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={deliverableCards} compact />
-          </div>
-
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
+              theme={theme}
+              eyebrow='Build • Launch • Scale'
+              title='Ship AI products that prove revenue in quarter one.'
+              description={`Our sprint pods pair senior product strategists with automation engineers so you validate, build, and monetize in the same 90-day window.`}
+              subtitle='Modern UI/UX product design, research, and engineering delivered as one AI-native pod.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-ai-product-development-01.webp',
+                alt: 'Product strategists reviewing an AI product roadmap together',
+              }}
             >
-              Ready to launch a product that pays for itself?
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              Schedule a working session and we will map the first 12 weeks,
-              identify the critical automations, and align on the metrics that
-              matter to your leadership team.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Book the roadmap sprint
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Start your project
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+                <LinkButton
+                  href='/services/revenue-first-design'
+                  variant='ghost'
+                  size='lg'
+                  className='underline-offset-4 hover:underline'
+                  style={{ color: theme.textColor }}
+                >
+                  Explore design systems
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Validation without the drag'
+              title='Proof before code hits main'
+              description={`Discovery, ops, and experimentation run concurrently so there is never a "wait for research" gap. Every loop is measured against the revenue targets your board already cares about.`}
+              bullets={[
+                'Dual-LLM design partners pressure-test flows before engineering estimates are locked.',
+                'Weekly telemetry syncs translate live customer behaviour into sprint-ready stories.',
+                'Revenue instrumentation ships inside prototypes so leadership sees ARR impact instantly.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-ai-product-development-02.webp',
+                alt: 'Workshop board mapping the AI validation workflow steps',
+              }}
+            />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Systems we build in the first month
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Your product leaves the lab with the infrastructure, design
+                  language, and growth telemetry required to scale, not just a
+                  shiny prototype.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={buildStackCards} />
             </div>
-          </section>
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Delivery rhythm that keeps momentum high
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Each phase lands tangible assets, approvals, and learnings
+                  your team can reuse.
+                </p>
+              </div>
+              <ServiceTimeline theme={theme} items={deliveryTimeline} />
+            </div>
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Embedded team'
+              title='Pods that drop into your roadmap without friction'
+              description={`We plug into the rituals your team already runs, introduce only the ceremonies that reduce risk, and leave with a repeatable operating system.`}
+              bullets={[
+                'Product strategy lead aligns exec expectations and keeps decisions moving.',
+                'AI enablement engineer pairs with your developers to harden integrations and data.',
+                'Growth analyst converts real usage signals into backlog priorities every single week.',
+              ]}
+              reverse
+              image={{
+                src: '/pixelmojo-services-ai-product-development-03.webp',
+                alt: 'Pixelmojo pod collaborating with client engineers during sprint planning',
+              }}
+            />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  What you walk away with
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Documentation, assets, and growth plans that help internal
+                  teams keep scaling long after launch.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={deliverableCards} compact />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Ready to launch a product that pays for itself?
+              </h2>
+              <p
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                Schedule a working session and we will map the first 12 weeks,
+                identify the critical automations, and align on the metrics that
+                matter to your leadership team.
+              </p>
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Book the roadmap sprint
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
+          </div>
+
+          <ServiceNavigation
+            currentService='ai-product-development'
+            theme={theme}
+          />
         </div>
-
-        <ServiceNavigation
-          currentService='ai-product-development'
-          theme={theme}
-        />
       </div>
-    </div>
+    </>
   )
 }

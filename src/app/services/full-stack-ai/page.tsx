@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'Full-Stack AI Implementation | Production AI That Generates ROI | Pixelmojo',
   description:
     'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/full-stack-ai',
+  },
   openGraph: {
     title:
       'Full-Stack AI Implementation | Production AI That Generates ROI | Pixelmojo',
@@ -179,159 +182,247 @@ export default function FullStackAIImplementation() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Full-Stack AI Implementation',
+    description:
+      'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '18000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '18000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'program',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/full-stack-ai',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Full-Stack AI Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Data Infrastructure & Model Training',
+            description:
+              'Pipeline architecture, embeddings, retrieval infrastructure, and model fine-tuning.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI-Native Product Experience',
+            description:
+              'Interface design for AI features, conversational patterns, and user-facing intelligence.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Production Deployment & Ops',
+            description:
+              'Deployment pipelines, monitoring infrastructure, and ongoing model performance optimization.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Data • Intelligence • Experience'
-            title='Your AI platform, deployed end to end'
-            description={`We bring the strategists, engineers, and designers that build production-grade AI without the usual integration hangovers.`}
-            subtitle='Product and engineering enablement covering data pipelines, models, and shipped experiences.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-full-stack-ai.webp',
-              alt: 'End-to-end AI architecture diagram spanning data to interface layers',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Scope my AI program
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
+              theme={theme}
+              eyebrow='Data • Intelligence • Experience'
+              title='Your AI platform, deployed end to end'
+              description={`We bring the strategists, engineers, and designers that build production-grade AI without the usual integration hangovers.`}
+              subtitle='Product and engineering enablement covering data pipelines, models, and shipped experiences.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-full-stack-ai.webp',
+                alt: 'End-to-end AI architecture diagram spanning data to interface layers',
+              }}
+            >
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Scope my AI program
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Blueprint first'
+              title='Architecture aligned to outcomes'
+              description={`Before we ship a line of code, we model how intelligence flows through your organization, from data sourcing to user impact.`}
+              bullets={[
+                'Capability mapping shows which teams own, operate, and benefit from each component.',
+                'Total cost of ownership forecasted with options to flex up or down over time.',
+                'Risk register covering compliance, security, and data exposure scenarios.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-full-stack-ai-02.webp',
+                alt: 'Blueprint detailing AI platform capabilities and ownership',
+              }}
+            />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Stack we deliver as part of every engagement
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Data, models, and experiences launch together so value is
+                  obvious to stakeholders.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={stackBlueprint} />
             </div>
-          </ServiceHero>
 
-          <ServiceStatList theme={theme} items={heroStats} />
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Pods that ship'
+              title='Cross-functional squads embedded with you'
+              description={`We slot into your cadence, augment existing teams, and leave you with the capability to keep shipping after we roll off.`}
+              bullets={[
+                'Daily stand-ups with your product and engineering leads to keep priorities tight.',
+                'Shared documentation, architecture diagrams, and decision logs for transparency.',
+                'Pairing sessions transfer knowledge to internal engineers and analysts.',
+              ]}
+              reverse
+              image={{
+                src: '/pixelmojo-services-full-stack-ai-03.webp',
+                alt: 'Implementation pod coordinating AI build with client stakeholders',
+              }}
+            />
 
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Blueprint first'
-            title='Architecture aligned to outcomes'
-            description={`Before we ship a line of code, we model how intelligence flows through your organization, from data sourcing to user impact.`}
-            bullets={[
-              'Capability mapping shows which teams own, operate, and benefit from each component.',
-              'Total cost of ownership forecasted with options to flex up or down over time.',
-              'Risk register covering compliance, security, and data exposure scenarios.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-full-stack-ai-02.webp',
-              alt: 'Blueprint detailing AI platform capabilities and ownership',
-            }}
-          />
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Implementation runway with zero guesswork
+                </h2>
+              </div>
+              <ServiceTimeline theme={theme} items={deliveryTimeline} />
+            </div>
 
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
+            <div className='space-y-6'>
+              <div className='max-w-2xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Embedded capability when we are done
+                </h2>
+              </div>
+              <ServiceCardGrid theme={theme} items={podHighlights} compact />
+              <ServiceCardGrid
+                theme={theme}
+                items={operationsHighlights}
+                compact
+              />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
               <h2
                 className='text-3xl font-semibold md:text-4xl'
                 style={{ color: theme.textColor }}
               >
-                Stack we deliver as part of every engagement
+                Ready to operationalise AI across your stack?
               </h2>
               <p
-                className='mt-4 text-base md:text-lg'
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
                 style={{ color: theme.mutedTextColor }}
               >
-                Data, models, and experiences launch together so value is
-                obvious to stakeholders.
+                We will review your roadmap, identify the highest-impact
+                workflows, and co-design a delivery plan that proves ROI before
+                the quarter closes.
               </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={stackBlueprint} />
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Book the architecture workshop
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
           </div>
 
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Pods that ship'
-            title='Cross-functional squads embedded with you'
-            description={`We slot into your cadence, augment existing teams, and leave you with the capability to keep shipping after we roll off.`}
-            bullets={[
-              'Daily stand-ups with your product and engineering leads to keep priorities tight.',
-              'Shared documentation, architecture diagrams, and decision logs for transparency.',
-              'Pairing sessions transfer knowledge to internal engineers and analysts.',
-            ]}
-            reverse
-            image={{
-              src: '/pixelmojo-services-full-stack-ai-03.webp',
-              alt: 'Implementation pod coordinating AI build with client stakeholders',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Implementation runway with zero guesswork
-              </h2>
-            </div>
-            <ServiceTimeline theme={theme} items={deliveryTimeline} />
-          </div>
-
-          <div className='space-y-6'>
-            <div className='max-w-2xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Embedded capability when we are done
-              </h2>
-            </div>
-            <ServiceCardGrid theme={theme} items={podHighlights} compact />
-            <ServiceCardGrid
-              theme={theme}
-              items={operationsHighlights}
-              compact
-            />
-          </div>
-
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
-            >
-              Ready to operationalise AI across your stack?
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              We will review your roadmap, identify the highest-impact
-              workflows, and co-design a delivery plan that proves ROI before
-              the quarter closes.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Book the architecture workshop
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </section>
+          <ServiceNavigation currentService='full-stack-ai' theme={theme} />
         </div>
-
-        <ServiceNavigation currentService='full-stack-ai' theme={theme} />
       </div>
-    </div>
+    </>
   )
 }

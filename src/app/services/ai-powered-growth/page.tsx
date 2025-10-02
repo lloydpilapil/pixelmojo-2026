@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
   description:
     'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/ai-powered-growth',
+  },
   openGraph: {
     title:
       'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
@@ -164,165 +167,253 @@ export default function AIPoweredGrowth() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'AI-Powered Growth Engines',
+    description:
+      'Go beyond design. Activate your brand for real growth through strategic content, multi-channel engagement, and data-driven performance optimization.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '6000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '6000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'MONTH',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/ai-powered-growth',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'AI-Powered Growth Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Acquisition & Demand Generation',
+            description:
+              'SEO, paid, and outbound orchestrated with AI-tuned content and account intent monitoring.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Lifecycle & Nurture Automation',
+            description:
+              'Segmented nurture streams, milestone-based playbooks, and self-serve education hubs.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Revenue Operations & Analytics',
+            description:
+              'Unified dashboards, automation governance, and RevOps health checks.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Acquisition • Activation • Expansion'
-            title='Growth engines wired directly to revenue operations'
-            description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
-            subtitle='Brand activation, GTM strategy, and lifecycle growth orchestrated with AI-backed operations.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-ai-powered-growth-01.webp',
-              alt: 'Dashboard screens visualizing AI-powered growth automation performance',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Build my growth engine
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </ServiceHero>
-
-          <ServiceStatList theme={theme} items={heroStats} />
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Always-on signals'
-            title='The growth spine that stays aligned'
-            description={`Marketing, sales, product, and success all see the same truth. We wire every touchpoint to shared dashboards so decisions get smarter over time.`}
-            bullets={[
-              'Unified contact graph merges product usage, campaign history, and account intent.',
-              'AI scoring models prioritize accounts and leads that match your highest-value customers.',
-              'Alerting, routing, and playbooks keep teams executing within minutes, not days.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-ai-powered-growth-02.webp',
-              alt: 'Unified growth data pipelines connecting marketing and sales insights',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Growth engines we deploy together
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Every play is documented, automated, and measured. Your team
-                knows exactly how each channel contributes to revenue.
-              </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={engineCards} columns={2} />
-          </div>
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Experiment cycle that never loses momentum
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                We run structured sprints with clear ownership so wins scale
-                quickly and learnings stick.
-              </p>
-            </div>
-            <ServiceTimeline theme={theme} items={experimentTimeline} />
-          </div>
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Creative + automation pairing'
-            title='Content production that keeps channels fed'
-            description={`Writers, designers, editors, and AI copilots work from the same source of truth. That means more campaigns live, more often.`}
-            bullets={[
-              'Prompt libraries produce channel-ready copy, motion graphics, and social cuts.',
-              'Editorial calendar synced to revenue goals with pre-approved story angles.',
-              'Feedback loops push performance insights back into creative briefs instantly.',
-            ]}
-            reverse
-            image={{
-              src: '/pixelmojo-services-ai-powered-growth-03.webp',
-              alt: 'Content studio coordinating campaign production alongside automation tools',
-            }}
-          />
-
-          <div className='space-y-6'>
-            <div className='max-w-2xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Visibility that keeps leadership confident
-              </h2>
-            </div>
-            <ServiceCardGrid
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
               theme={theme}
-              items={measurementHighlights}
-              compact
+              eyebrow='Acquisition • Activation • Expansion'
+              title='Growth engines wired directly to revenue operations'
+              description={`We blend strategy, creative, and automation so your pipeline, content, and customer motions compound instead of competing.`}
+              subtitle='Brand activation, GTM strategy, and lifecycle growth orchestrated with AI-backed operations.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-ai-powered-growth-01.webp',
+                alt: 'Dashboard screens visualizing AI-powered growth automation performance',
+              }}
+            >
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Build my growth engine
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Always-on signals'
+              title='The growth spine that stays aligned'
+              description={`Marketing, sales, product, and success all see the same truth. We wire every touchpoint to shared dashboards so decisions get smarter over time.`}
+              bullets={[
+                'Unified contact graph merges product usage, campaign history, and account intent.',
+                'AI scoring models prioritize accounts and leads that match your highest-value customers.',
+                'Alerting, routing, and playbooks keep teams executing within minutes, not days.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-ai-powered-growth-02.webp',
+                alt: 'Unified growth data pipelines connecting marketing and sales insights',
+              }}
             />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Growth engines we deploy together
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Every play is documented, automated, and measured. Your team
+                  knows exactly how each channel contributes to revenue.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={engineCards} columns={2} />
+            </div>
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Experiment cycle that never loses momentum
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  We run structured sprints with clear ownership so wins scale
+                  quickly and learnings stick.
+                </p>
+              </div>
+              <ServiceTimeline theme={theme} items={experimentTimeline} />
+            </div>
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Creative + automation pairing'
+              title='Content production that keeps channels fed'
+              description={`Writers, designers, editors, and AI copilots work from the same source of truth. That means more campaigns live, more often.`}
+              bullets={[
+                'Prompt libraries produce channel-ready copy, motion graphics, and social cuts.',
+                'Editorial calendar synced to revenue goals with pre-approved story angles.',
+                'Feedback loops push performance insights back into creative briefs instantly.',
+              ]}
+              reverse
+              image={{
+                src: '/pixelmojo-services-ai-powered-growth-03.webp',
+                alt: 'Content studio coordinating campaign production alongside automation tools',
+              }}
+            />
+
+            <div className='space-y-6'>
+              <div className='max-w-2xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Visibility that keeps leadership confident
+                </h2>
+              </div>
+              <ServiceCardGrid
+                theme={theme}
+                items={measurementHighlights}
+                compact
+              />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Let's architect a growth engine around your revenue goals
+              </h2>
+              <p
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                We will audit your pipeline, surface quick wins, and plot the
+                automation backlog that keeps marketing, sales, and success
+                rowing in sync.
+              </p>
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Book a growth working session
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
           </div>
 
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
-            >
-              Let's architect a growth engine around your revenue goals
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              We will audit your pipeline, surface quick wins, and plot the
-              automation backlog that keeps marketing, sales, and success rowing
-              in sync.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Book a growth working session
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </section>
+          <ServiceNavigation currentService='ai-powered-growth' theme={theme} />
         </div>
-
-        <ServiceNavigation currentService='ai-powered-growth' theme={theme} />
       </div>
-    </div>
+    </>
   )
 }

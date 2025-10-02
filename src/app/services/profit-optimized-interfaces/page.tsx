@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
   description:
     'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/profit-optimized-interfaces',
+  },
   openGraph: {
     title:
       'Profit-Optimized Interfaces | Interfaces That Maximize Revenue | Pixelmojo',
@@ -159,164 +162,255 @@ export default function ProfitOptimizedInterfaces() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Profit-Optimized Interfaces',
+    description:
+      'Interfaces engineered to grow revenue per customer. Conversion optimization, personalization, and retention design for modern product teams.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '12000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '12000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'project',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/profit-optimized-interfaces',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Profit-Optimized Interface Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Conversion Rate Optimization',
+            description:
+              'Data-driven experimentation, funnel analysis, and interface improvements.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Personalization & Segmentation',
+            description:
+              'Dynamic experiences tailored to user behavior, lifecycle stage, and intent.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Retention & Loyalty Design',
+            description:
+              'Engagement loops, reward systems, and habitual usage patterns.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Retention • Expansion • Loyalty'
-            title='Interfaces engineered to grow revenue per customer'
-            description={`We combine behavioural data, experimentation, and high-performing design systems so every experience earns its keep.`}
-            subtitle='Conversion optimization, personalization, and retention design for modern product teams.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-profit-optimized-interfaces-01.webp',
-              alt: 'Analytics dashboards highlighting revenue-focused interface metrics',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Design my profit interface
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
+              theme={theme}
+              eyebrow='Retention • Expansion • Loyalty'
+              title='Interfaces engineered to grow revenue per customer'
+              description={`We combine behavioural data, experimentation, and high-performing design systems so every experience earns its keep.`}
+              subtitle='Conversion optimization, personalization, and retention design for modern product teams.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-profit-optimized-interfaces-01.webp',
+                alt: 'Analytics dashboards highlighting revenue-focused interface metrics',
+              }}
+            >
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Design my profit interface
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Full-funnel insight'
+              title='Your revenue telemetry stays live'
+              description={`From first visit to renewal, every interaction gets mapped, measured, and improved. Teams finally share the same conversion truth.`}
+              bullets={[
+                'Journey analytics stitched together from product, support, and billing platforms.',
+                'AI segment detection that spots hidden monetisation opportunities early.',
+                'Churn indicators trigger proactive outreach with pre-built enablement content.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-profit-optimized-interfaces-03.webp',
+                alt: 'Revenue telemetry bringing together product and support insights',
+              }}
+            />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  The levers we pull to lift profit fast
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Data, design, and marketing work together, not in silos, to
+                  keep users converting and expanding.
+                </p>
+              </div>
+              <ServiceCardGrid
+                theme={theme}
+                items={instrumentationHighlights}
+              />
             </div>
-          </ServiceHero>
 
-          <ServiceStatList theme={theme} items={heroStats} />
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Optimization program built for compounding gains
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  We move beyond one-off redesigns. The work keeps paying for
+                  itself through structured iteration.
+                </p>
+              </div>
+              <ServiceTimeline theme={theme} items={optimizationTimeline} />
+            </div>
 
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Full-funnel insight'
-            title='Your revenue telemetry stays live'
-            description={`From first visit to renewal, every interaction gets mapped, measured, and improved. Teams finally share the same conversion truth.`}
-            bullets={[
-              'Journey analytics stitched together from product, support, and billing platforms.',
-              'AI segment detection that spots hidden monetisation opportunities early.',
-              'Churn indicators trigger proactive outreach with pre-built enablement content.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-profit-optimized-interfaces-03.webp',
-              alt: 'Revenue telemetry bringing together product and support insights',
-            }}
-          />
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Team integration'
+              title='We operate as your optimization squad'
+              description={`Standing meetings, async updates, and shared documentation mean your product, design, and revenue teams always know the next best move.`}
+              bullets={[
+                'Joint backlog grooming keeps the roadmap aligned with the biggest revenue levers.',
+                'UX research, data science, and product marketing reviews happen in one rhythm.',
+                'Internal teams receive enablement so they can continue the program autonomously.',
+              ]}
+              reverse
+              image={{
+                src: '/pixelmojo-services-profit-optimized-interfaces-02.webp',
+                alt: 'Cross-functional squad prioritizing the optimization backlog together',
+              }}
+            />
 
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
+            <div className='space-y-6'>
+              <div className='max-w-2xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  What you take back to the business
+                </h2>
+              </div>
+              <ServiceCardGrid theme={theme} items={deliverableCards} compact />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
               <h2
                 className='text-3xl font-semibold md:text-4xl'
                 style={{ color: theme.textColor }}
               >
-                The levers we pull to lift profit fast
+                Ready to turn your interface into a profit center?
               </h2>
               <p
-                className='mt-4 text-base md:text-lg'
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
                 style={{ color: theme.mutedTextColor }}
               >
-                Data, design, and marketing work together, not in silos, to keep
-                users converting and expanding.
+                We will audit your current experience, pinpoint the revenue
+                leaks, and co-build the roadmap that turns every user
+                interaction into measurable ROI.
               </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={instrumentationHighlights} />
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Start the interface audit
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
           </div>
 
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Optimization program built for compounding gains
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                We move beyond one-off redesigns. The work keeps paying for
-                itself through structured iteration.
-              </p>
-            </div>
-            <ServiceTimeline theme={theme} items={optimizationTimeline} />
-          </div>
-
-          <ServiceSplitSection
+          <ServiceNavigation
+            currentService='profit-optimized-interfaces'
             theme={theme}
-            eyebrow='Team integration'
-            title='We operate as your optimization squad'
-            description={`Standing meetings, async updates, and shared documentation mean your product, design, and revenue teams always know the next best move.`}
-            bullets={[
-              'Joint backlog grooming keeps the roadmap aligned with the biggest revenue levers.',
-              'UX research, data science, and product marketing reviews happen in one rhythm.',
-              'Internal teams receive enablement so they can continue the program autonomously.',
-            ]}
-            reverse
-            image={{
-              src: '/pixelmojo-services-profit-optimized-interfaces-02.webp',
-              alt: 'Cross-functional squad prioritizing the optimization backlog together',
-            }}
           />
-
-          <div className='space-y-6'>
-            <div className='max-w-2xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                What you take back to the business
-              </h2>
-            </div>
-            <ServiceCardGrid theme={theme} items={deliverableCards} compact />
-          </div>
-
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
-            >
-              Ready to turn your interface into a profit center?
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              We will audit your current experience, pinpoint the revenue leaks,
-              and co-build the roadmap that turns every user interaction into
-              measurable ROI.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Start the interface audit
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </section>
         </div>
-
-        <ServiceNavigation
-          currentService='profit-optimized-interfaces'
-          theme={theme}
-        />
       </div>
-    </div>
+    </>
   )
 }

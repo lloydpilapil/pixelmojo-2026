@@ -269,6 +269,29 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-user-centered-design-principles-benefits-and-best-practices',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/generation-alpha-the-digital-pioneers-shaping-the-future',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/funnel-vs-flywheel-which-growth-model-actually-delivers-long-term-roi',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/stop-selling-services-start-delivering-results',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 }

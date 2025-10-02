@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
   description:
     'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/conversion-assets',
+  },
   openGraph: {
     title: 'Conversion Asset Systems | Visuals That Close Deals | Pixelmojo',
     description:
@@ -152,165 +155,253 @@ export default function ConversionAssetSystems() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Conversion Asset Systems',
+    description:
+      'Asset systems built to shorten sales cycles. Pitch decks, sales collateral, and motion assets produced as cohesive, data-backed systems.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '8000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '8000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'project',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/conversion-assets',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Conversion Asset Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Pitch Decks & Fundraising Collateral',
+            description:
+              'Investor decks, teasers, and data rooms built for capital rounds.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Sales Enablement Assets',
+            description:
+              'Demo environments, case studies, ROI calculators, and leave-behinds.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Motion & Video Production',
+            description:
+              'Product tours, explainer videos, and social-ready motion graphics.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Pitch • Prove • Close'
-            title='Asset systems built to shorten sales cycles'
-            description={`We craft the capital, sales, and product collateral that keeps buyers engaged and moving forward.`}
-            subtitle='Pitch decks, sales collateral, and motion assets produced as a cohesive, data-backed system.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-conversion-assets.webp',
-              alt: 'Collection of conversion-focused sales decks and visual assets',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Plan my asset sprint
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </ServiceHero>
-
-          <ServiceStatList theme={theme} items={heroStats} />
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Story meets proof'
-            title='Narratives engineered for decisions'
-            description={`We connect your strategy, data, and design so investors, buyers, and partners see the value and the path to ROI instantly.`}
-            bullets={[
-              'Win-loss intel and customer proof points shape every slide, demo, and leave-behind.',
-              'Financial models visualised so non-technical audiences grasp the upside fast.',
-              'Call scripts, speaker notes, and follow-up frameworks keep messaging tight across the team.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-conversion-assets-02.webp',
-              alt: 'Pitch narrative storyboard connecting proof points with messaging',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                The asset suite that ships with every engagement
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Everything is modular and templatized so updates are painless
-                and your team stays in sync.
-              </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={assetSuite} columns={3} />
-          </div>
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Production cadence that respects deal speed
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                We build quickly, test with real prospects, and hand over a
-                system that keeps creating value after the sprint ends.
-              </p>
-            </div>
-            <ServiceTimeline theme={theme} items={productionTimeline} />
-          </div>
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Activation'
-            title='Enablement that keeps momentum high'
-            description={`We do not just drop files in a folder. Your team learns how to deploy, measure, and evolve every asset.`}
-            bullets={[
-              'Live enablement sessions plus on-demand training content for recurring refreshers.',
-              'CRM and marketing automation triggers that send the right asset at the right moment.',
-              'Measurement loops highlight which assets drive pipeline so you can double down fast.',
-            ]}
-            reverse
-            image={{
-              src: '/pixelmojo-services-conversion-assets-03.webp',
-              alt: 'Enablement team launching a conversion asset program',
-            }}
-          />
-
-          <div className='space-y-6'>
-            <div className='max-w-2xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Operational backbone included
-              </h2>
-            </div>
-            <ServiceCardGrid
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
               theme={theme}
-              items={enablementHighlights}
-              compact
+              eyebrow='Pitch • Prove • Close'
+              title='Asset systems built to shorten sales cycles'
+              description={`We craft the capital, sales, and product collateral that keeps buyers engaged and moving forward.`}
+              subtitle='Pitch decks, sales collateral, and motion assets produced as a cohesive, data-backed system.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-conversion-assets.webp',
+                alt: 'Collection of conversion-focused sales decks and visual assets',
+              }}
+            >
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Plan my asset sprint
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Story meets proof'
+              title='Narratives engineered for decisions'
+              description={`We connect your strategy, data, and design so investors, buyers, and partners see the value and the path to ROI instantly.`}
+              bullets={[
+                'Win-loss intel and customer proof points shape every slide, demo, and leave-behind.',
+                'Financial models visualised so non-technical audiences grasp the upside fast.',
+                'Call scripts, speaker notes, and follow-up frameworks keep messaging tight across the team.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-conversion-assets-02.webp',
+                alt: 'Pitch narrative storyboard connecting proof points with messaging',
+              }}
             />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  The asset suite that ships with every engagement
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Everything is modular and templatized so updates are painless
+                  and your team stays in sync.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={assetSuite} columns={3} />
+            </div>
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Production cadence that respects deal speed
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  We build quickly, test with real prospects, and hand over a
+                  system that keeps creating value after the sprint ends.
+                </p>
+              </div>
+              <ServiceTimeline theme={theme} items={productionTimeline} />
+            </div>
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Activation'
+              title='Enablement that keeps momentum high'
+              description={`We do not just drop files in a folder. Your team learns how to deploy, measure, and evolve every asset.`}
+              bullets={[
+                'Live enablement sessions plus on-demand training content for recurring refreshers.',
+                'CRM and marketing automation triggers that send the right asset at the right moment.',
+                'Measurement loops highlight which assets drive pipeline so you can double down fast.',
+              ]}
+              reverse
+              image={{
+                src: '/pixelmojo-services-conversion-assets-03.webp',
+                alt: 'Enablement team launching a conversion asset program',
+              }}
+            />
+
+            <div className='space-y-6'>
+              <div className='max-w-2xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Operational backbone included
+                </h2>
+              </div>
+              <ServiceCardGrid
+                theme={theme}
+                items={enablementHighlights}
+                compact
+              />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Make every touchpoint a conversion trigger
+              </h2>
+              <p
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                We will map the deals you are chasing, identify collateral gaps,
+                and spin up the systems that move prospects from curiosity to
+                signature.
+              </p>
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Kick off the conversion sprint
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
           </div>
 
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
-            >
-              Make every touchpoint a conversion trigger
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              We will map the deals you are chasing, identify collateral gaps,
-              and spin up the systems that move prospects from curiosity to
-              signature.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Kick off the conversion sprint
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </section>
+          <ServiceNavigation currentService='conversion-assets' theme={theme} />
         </div>
-
-        <ServiceNavigation currentService='conversion-assets' theme={theme} />
       </div>
-    </div>
+    </>
   )
 }

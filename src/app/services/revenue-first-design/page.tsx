@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
   description:
     'Build a brand that commands attention. Visual strategies that capture attention, build trust, and drive growth through powerful brand identity.',
+  alternates: {
+    canonical: 'https://www.pixelmojo.io/services/revenue-first-design',
+  },
   openGraph: {
     title:
       'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
@@ -168,170 +171,259 @@ export default function RevenueFirstDesign() {
     border: `1px solid ${theme.textColor}`,
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Revenue-First Design Systems',
+    description:
+      'Build a brand that commands attention. We forge visual strategies for tech startups and SaaS businesses that capture attention, build trust, and drive growth through powerful brand identity.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Pixelmojo',
+      url: 'https://pixelmojo.com',
+      logo: 'https://pixelmojo.com/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/pixelmojo',
+        'https://twitter.com/pixelmojo',
+      ],
+    },
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Philippines',
+      },
+      {
+        '@type': 'Place',
+        name: 'Southeast Asia',
+      },
+      {
+        '@type': 'Place',
+        name: 'Global',
+      },
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '9000',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '9000',
+        priceCurrency: 'USD',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: '1',
+          unitText: 'project',
+        },
+      },
+      availability: 'https://schema.org/InStock',
+      url: 'https://pixelmojo.com/services/revenue-first-design',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Revenue-First Design Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Brand Identity & Messaging Architecture',
+            description:
+              'Narrative frameworks tied to each ICP and funnel stage with signature visual language.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Design System & Component Library',
+            description:
+              'Product experience with design language mapped to activation, retention, and expansion metrics.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Revenue Enablement Assets',
+            description:
+              'Interactive demo environments, sales enablement hub, and lifecycle content kits.',
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        backgroundColor: theme.bg,
-        color: theme.textColor,
-      }}
-    >
-      <div className='container mx-auto px-4 py-16'>
-        <div className='space-y-16 md:space-y-24'>
-          <ServiceHero
-            theme={theme}
-            eyebrow='Aligned brand + product + growth'
-            title='Design systems built to convert, not just impress.'
-            description={`Every component, message, and motion is engineered to push revenue, retention, and expansion metrics forward.`}
-            subtitle='Brand identity, design system, and governance program tuned to revenue outcomes.'
-            price={service.pricing}
-            layout='split'
-            image={{
-              src: '/pixelmojo-services-revenue-first-design-01.webp',
-              alt: 'Design leads arranging revenue-first design system components',
-            }}
-          >
-            <div className='flex flex-wrap gap-4'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Plan your system
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </ServiceHero>
-
-          <ServiceStatList theme={theme} items={heroStats} />
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Revenue-first identity'
-            title='Strategy, storytelling, and systems tied together'
-            description={`We align brand expression with product realities and go-to-market velocity. The result: a design language proven to impact pipeline, adoption, and retention.`}
-            bullets={[
-              'Quantitative heuristics guide every component choice so experimentation teams know the expected lift.',
-              'Finance, product, and marketing scorecards share the same metrics for a unified narrative.',
-              'AI prompt libraries mirror your voice so copy, visuals, and video stay consistent at speed.',
-            ]}
-            image={{
-              src: '/pixelmojo-services-revenue-first-design-02.webp',
-              alt: 'Brand and product stakeholders aligning shared performance metrics',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                The layers of a revenue-first design system
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                From executive story to on-page UI, everything is orchestrated
-                so every stakeholder can contribute without breaking the brand.
-              </p>
-            </div>
-            <ServiceCardGrid theme={theme} items={systemLayers} columns={2} />
-          </div>
-
-          <ServiceSplitSection
-            theme={theme}
-            eyebrow='Rollout without rework'
-            title='Change management that sticks'
-            description={`We choreograph communication, training, and feedback loops so the system feels empowering, not restrictive, for every team touching it.`}
-            bullets={[
-              'Executive briefings connect investment to ARR and brand equity goals.',
-              'Team-specific playbooks give product, marketing, and success the assets they need on day one.',
-              'Async office hours, Loom libraries, and change logs keep adoption high long-term.',
-            ]}
-            reverse
-            tone='muted'
-            image={{
-              src: '/pixelmojo-services-revenue-first-design-03.webp',
-              alt: 'Team planning the rollout sequence for a design system playbook',
-            }}
-          />
-
-          <div className='space-y-8'>
-            <div className='max-w-3xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                Automation keeps everything synched
-              </h2>
-              <p
-                className='mt-4 text-base md:text-lg'
-                style={{ color: theme.mutedTextColor }}
-              >
-                Agents, scripts, and workflows run behind the scenes so humans
-                focus on high-value creativity instead of manual updates.
-              </p>
-            </div>
-            <ServiceTimeline theme={theme} items={automationTimeline} />
-          </div>
-
-          <div className='space-y-6'>
-            <div className='max-w-2xl'>
-              <h2
-                className='text-3xl font-semibold md:text-4xl'
-                style={{ color: theme.textColor }}
-              >
-                What launches with your system
-              </h2>
-            </div>
-            <ServiceCardGrid
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        className='min-h-screen'
+        style={{
+          backgroundColor: theme.bg,
+          color: theme.textColor,
+        }}
+      >
+        <div className='container mx-auto px-4 py-16'>
+          <div className='space-y-16 md:space-y-24'>
+            <ServiceHero
               theme={theme}
-              items={rolloutHighlights}
-              compact
-              columns={3}
+              eyebrow='Aligned brand + product + growth'
+              title='Design systems built to convert, not just impress.'
+              description={`Every component, message, and motion is engineered to push revenue, retention, and expansion metrics forward.`}
+              subtitle='Brand identity, design system, and governance program tuned to revenue outcomes.'
+              price={service.pricing}
+              layout='split'
+              image={{
+                src: '/pixelmojo-services-revenue-first-design-01.webp',
+                alt: 'Design leads arranging revenue-first design system components',
+              }}
+            >
+              <div className='flex flex-wrap gap-4'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Plan your system
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </ServiceHero>
+
+            <ServiceStatList theme={theme} items={heroStats} />
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Revenue-first identity'
+              title='Strategy, storytelling, and systems tied together'
+              description={`We align brand expression with product realities and go-to-market velocity. The result: a design language proven to impact pipeline, adoption, and retention.`}
+              bullets={[
+                'Quantitative heuristics guide every component choice so experimentation teams know the expected lift.',
+                'Finance, product, and marketing scorecards share the same metrics for a unified narrative.',
+                'AI prompt libraries mirror your voice so copy, visuals, and video stay consistent at speed.',
+              ]}
+              image={{
+                src: '/pixelmojo-services-revenue-first-design-02.webp',
+                alt: 'Brand and product stakeholders aligning shared performance metrics',
+              }}
             />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  The layers of a revenue-first design system
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  From executive story to on-page UI, everything is orchestrated
+                  so every stakeholder can contribute without breaking the
+                  brand.
+                </p>
+              </div>
+              <ServiceCardGrid theme={theme} items={systemLayers} columns={2} />
+            </div>
+
+            <ServiceSplitSection
+              theme={theme}
+              eyebrow='Rollout without rework'
+              title='Change management that sticks'
+              description={`We choreograph communication, training, and feedback loops so the system feels empowering, not restrictive, for every team touching it.`}
+              bullets={[
+                'Executive briefings connect investment to ARR and brand equity goals.',
+                'Team-specific playbooks give product, marketing, and success the assets they need on day one.',
+                'Async office hours, Loom libraries, and change logs keep adoption high long-term.',
+              ]}
+              reverse
+              tone='muted'
+              image={{
+                src: '/pixelmojo-services-revenue-first-design-03.webp',
+                alt: 'Team planning the rollout sequence for a design system playbook',
+              }}
+            />
+
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  Automation keeps everything synched
+                </h2>
+                <p
+                  className='mt-4 text-base md:text-lg'
+                  style={{ color: theme.mutedTextColor }}
+                >
+                  Agents, scripts, and workflows run behind the scenes so humans
+                  focus on high-value creativity instead of manual updates.
+                </p>
+              </div>
+              <ServiceTimeline theme={theme} items={automationTimeline} />
+            </div>
+
+            <div className='space-y-6'>
+              <div className='max-w-2xl'>
+                <h2
+                  className='text-3xl font-semibold md:text-4xl'
+                  style={{ color: theme.textColor }}
+                >
+                  What launches with your system
+                </h2>
+              </div>
+              <ServiceCardGrid
+                theme={theme}
+                items={rolloutHighlights}
+                compact
+                columns={3}
+              />
+            </div>
+
+            <section
+              className='rounded-3xl border p-10 text-center'
+              style={{ borderColor: theme.border }}
+            >
+              <h2
+                className='text-3xl font-semibold md:text-4xl'
+                style={{ color: theme.textColor }}
+              >
+                Make every touchpoint feel aligned and profitable
+              </h2>
+              <p
+                className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
+                style={{ color: theme.mutedTextColor }}
+              >
+                We will assess your current system, identify the revenue gaps,
+                and design a plan that has every team shipping on-brand,
+                high-converting experiences in weeks.
+              </p>
+              <div className='mt-8 flex justify-center'>
+                <LinkButton
+                  href='/contact-us'
+                  size='lg'
+                  className='group'
+                  style={buttonStyle}
+                >
+                  Schedule the system audit
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </LinkButton>
+              </div>
+            </section>
           </div>
 
-          <section
-            className='rounded-3xl border p-10 text-center'
-            style={{ borderColor: theme.border }}
-          >
-            <h2
-              className='text-3xl font-semibold md:text-4xl'
-              style={{ color: theme.textColor }}
-            >
-              Make every touchpoint feel aligned and profitable
-            </h2>
-            <p
-              className='mx-auto mt-4 max-w-2xl text-base md:text-lg'
-              style={{ color: theme.mutedTextColor }}
-            >
-              We will assess your current system, identify the revenue gaps, and
-              design a plan that has every team shipping on-brand,
-              high-converting experiences in weeks.
-            </p>
-            <div className='mt-8 flex justify-center'>
-              <LinkButton
-                href='/contact-us'
-                size='lg'
-                className='group'
-                style={buttonStyle}
-              >
-                Schedule the system audit
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </LinkButton>
-            </div>
-          </section>
+          <ServiceNavigation
+            currentService='revenue-first-design'
+            theme={theme}
+          />
         </div>
-
-        <ServiceNavigation
-          currentService='revenue-first-design'
-          theme={theme}
-        />
       </div>
-    </div>
+    </>
   )
 }
