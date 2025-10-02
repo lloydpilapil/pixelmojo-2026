@@ -38,7 +38,7 @@ export default function StructuredData() {
         description:
           'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
         slogan: 'Ship Revenue in 90 Days',
-        foundingDate: '2020',
+        foundingDate: '2024',
         address: organizationAddress,
         location: {
           '@type': 'Place',
