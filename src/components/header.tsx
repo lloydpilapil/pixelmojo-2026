@@ -4,12 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { Search } from 'lucide-react'
+import { Search, ArrowRight } from 'lucide-react'
 import { LinkButton } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { getFeaturedWorks } from '@/data/works'
 import { getServiceTheme, getServiceTitleFromSlug } from '@/utils/serviceThemes'
 import { allPosts } from '.contentlayer/generated'
+import { useSearch } from '@/hooks/useSearch'
+import { getCategoryLabel } from '@/lib/search-index'
 
 // Utility function to truncate long titles for mega menu
 const truncateTitle = (title: string, maxLength = 40) => {
@@ -112,6 +114,7 @@ export default function Header() {
   const [isMobileBlogOpen, setIsMobileBlogOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const { query, setQuery, results, isSearching } = useSearch()
 
   // Helper function to check if nav item is active
   const isActiveNav = (href: string, hasChildren?: boolean, label?: string) => {
@@ -178,6 +181,45 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Handle keyboard shortcuts for search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // CMD+K or CTRL+K to toggle search
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen(prev => !prev)
+        setIsServicesOpen(false)
+        setIsWorksOpen(false)
+        setIsBlogOpen(false)
+      }
+      // ESC to close search
+      if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false)
+        setQuery('')
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isSearchOpen, setQuery])
+
+  // Close search when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (
+        isSearchOpen &&
+        !target.closest('[data-search-panel]') &&
+        !target.closest('[data-search-button]')
+      ) {
+        setIsSearchOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isSearchOpen])
 
   // Check if we're on a service page and get the theme
   const isServicePage =
@@ -334,6 +376,7 @@ export default function Header() {
           <div className='hidden lg:flex items-center gap-4'>
             <div className='relative'>
               <button
+                data-search-button
                 onClick={() => {
                   setIsSearchOpen(!isSearchOpen)
                   setIsServicesOpen(false)
@@ -503,7 +546,9 @@ export default function Header() {
                   color: theme?.mutedTextColor || 'var(--muted-foreground)',
                 }}
                 title={
-                  'fullTitle' in item ? (item as any).fullTitle : item.label
+                  'fullTitle' in item
+                    ? (item as { fullTitle?: string }).fullTitle
+                    : item.label
                 } // Show full title on hover
               >
                 {item.label}
@@ -515,8 +560,9 @@ export default function Header() {
 
       {/* Desktop Search Mega Menu Panel */}
       <div
+        data-search-panel
         className={`hidden lg:block w-full border-t border-b overflow-hidden transition-all duration-300 ease-in-out ${
-          isSearchOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+          isSearchOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
           borderColor: theme?.isDark
@@ -524,39 +570,114 @@ export default function Header() {
             : 'var(--border)',
         }}
       >
-        <div className='container mx-auto px-4 py-6'>
-          <div className='max-w-2xl mx-auto text-center'>
-            <div className='flex items-center gap-3 mb-4'>
-              <Search
-                className='w-6 h-6'
-                style={{
-                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
-                }}
-              />
+        <div className='container mx-auto px-4 py-4'>
+          <div className='max-w-3xl mx-auto'>
+            {/* Search Input */}
+            <div className='mb-4'>
               <input
                 type='text'
-                placeholder='Search coming soon...'
-                disabled
-                className='flex-1 px-4 py-3 rounded-lg border cursor-not-allowed'
+                placeholder='Search blog posts, projects, services...'
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                autoFocus
+                className='w-full px-4 py-2.5 rounded-lg border bg-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 transition-all'
                 style={{
-                  backgroundColor: theme?.isDark
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.05)',
                   borderColor: theme?.isDark
                     ? 'rgba(255, 255, 255, 0.2)'
                     : 'var(--border)',
-                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
+                  color: theme?.textColor || 'var(--foreground)',
                 }}
               />
             </div>
-            <p
-              className='text-sm'
-              style={{
-                color: theme?.mutedTextColor || 'var(--muted-foreground)',
-              }}
-            >
-              We're building an amazing search experience. Stay tuned!
-            </p>
+
+            {/* Search Results */}
+            {isSearching && (
+              <div className='max-h-[320px] overflow-y-auto'>
+                {results.length > 0 ? (
+                  <div className='space-y-1'>
+                    {results.map(item => (
+                      <Link
+                        key={item.id}
+                        href={item.url}
+                        onClick={() => {
+                          setIsSearchOpen(false)
+                          setQuery('')
+                        }}
+                        className='group flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-all hover:scale-[1.02]'
+                        style={{
+                          backgroundColor: theme?.isDark
+                            ? 'rgba(255, 255, 255, 0.05)'
+                            : 'rgba(0, 0, 0, 0.03)',
+                        }}
+                      >
+                        <div className='flex-1 min-w-0'>
+                          <div
+                            className='font-medium text-sm truncate'
+                            style={{
+                              color: theme?.textColor || 'var(--foreground)',
+                            }}
+                          >
+                            {item.title}
+                          </div>
+                          <div
+                            className='text-xs truncate mt-0.5'
+                            style={{
+                              color:
+                                theme?.mutedTextColor ||
+                                'var(--muted-foreground)',
+                            }}
+                          >
+                            {item.description}
+                          </div>
+                        </div>
+                        <div className='flex items-center gap-2 flex-shrink-0'>
+                          <span
+                            className='text-xs px-2 py-1 rounded-full'
+                            style={{
+                              backgroundColor: theme?.isDark
+                                ? 'rgba(255, 255, 255, 0.1)'
+                                : 'rgba(0, 0, 0, 0.05)',
+                              color:
+                                theme?.mutedTextColor ||
+                                'var(--muted-foreground)',
+                            }}
+                          >
+                            {getCategoryLabel(item.category)}
+                          </span>
+                          <ArrowRight
+                            className='w-4 h-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0'
+                            style={{
+                              color: theme?.textColor || 'var(--primary)',
+                            }}
+                          />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    className='text-center py-8 text-sm'
+                    style={{
+                      color: theme?.mutedTextColor || 'var(--muted-foreground)',
+                    }}
+                  >
+                    No results found for "{query}"
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Empty State */}
+            {!isSearching && (
+              <div
+                className='text-center py-6 text-sm'
+                style={{
+                  color: theme?.mutedTextColor || 'var(--muted-foreground)',
+                }}
+              >
+                Start typing to search across all content...
+              </div>
+            )}
           </div>
         </div>
       </div>

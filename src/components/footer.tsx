@@ -11,6 +11,7 @@ import {
   FaInstagram,
   FaGithub,
 } from 'react-icons/fa6'
+import { getVersion } from '@/lib/version'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -309,10 +310,18 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Center - Designed & Built */}
+            {/* Center - Designed & Built + Version */}
             <div className='flex-1 flex justify-center'>
-              <div className='text-white/50 text-sm'>
-                Designed & Built with Passion
+              <div className='text-white/50 text-sm flex items-center gap-2'>
+                <span>Designed & Built with Passion</span>
+                <span className='text-white/30'>•</span>
+                <Link
+                  href='/changelog'
+                  className='text-white/40 hover:text-white/60 font-mono text-xs transition-colors'
+                  title='View changelog'
+                >
+                  {getVersion()}
+                </Link>
               </div>
             </div>
 
@@ -337,9 +346,16 @@ export default function Footer() {
               &copy; {currentYear} Pixelmojo. All rights reserved.
             </p>
 
-            {/* Designed & Built */}
-            <div className='text-white/50 text-sm text-center'>
-              Designed & Built with Passion
+            {/* Designed & Built + Version */}
+            <div className='text-white/50 text-sm text-center flex flex-col gap-1'>
+              <span>Designed & Built with Passion</span>
+              <Link
+                href='/changelog'
+                className='text-white/40 hover:text-white/60 font-mono text-xs transition-colors'
+                title='View changelog'
+              >
+                {getVersion()}
+              </Link>
             </div>
 
             {/* Legal Links */}
