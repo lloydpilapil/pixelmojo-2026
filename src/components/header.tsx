@@ -592,76 +592,108 @@ export default function Header() {
 
             {/* Search Results */}
             {isSearching && (
-              <div className='max-h-[320px] overflow-y-auto'>
-                {results.length > 0 ? (
-                  <div className='space-y-1'>
-                    {results.map(item => (
-                      <Link
-                        key={item.id}
-                        href={item.url}
-                        onClick={() => {
-                          setIsSearchOpen(false)
-                          setQuery('')
-                        }}
-                        className='group flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-all hover:scale-[1.02]'
-                        style={{
-                          backgroundColor: theme?.isDark
-                            ? 'rgba(255, 255, 255, 0.05)'
-                            : 'rgba(0, 0, 0, 0.03)',
-                        }}
-                      >
-                        <div className='flex-1 min-w-0'>
-                          <div
-                            className='font-medium text-sm truncate'
-                            style={{
-                              color: theme?.textColor || 'var(--foreground)',
-                            }}
-                          >
-                            {item.title}
+              <div>
+                <div className='max-h-[320px] overflow-y-auto'>
+                  {results.length > 0 ? (
+                    <div className='space-y-1'>
+                      {results.map(item => (
+                        <Link
+                          key={item.id}
+                          href={item.url}
+                          onClick={() => {
+                            setIsSearchOpen(false)
+                            setQuery('')
+                          }}
+                          className='group flex items-center justify-between gap-3 px-4 py-3 rounded-lg transition-all hover:scale-[1.02]'
+                          style={{
+                            backgroundColor: theme?.isDark
+                              ? 'rgba(255, 255, 255, 0.05)'
+                              : 'rgba(0, 0, 0, 0.03)',
+                          }}
+                        >
+                          <div className='flex-1 min-w-0'>
+                            <div
+                              className='font-medium text-sm truncate'
+                              style={{
+                                color: theme?.textColor || 'var(--foreground)',
+                              }}
+                            >
+                              {item.title}
+                            </div>
+                            <div
+                              className='text-xs truncate mt-0.5'
+                              style={{
+                                color:
+                                  theme?.mutedTextColor ||
+                                  'var(--muted-foreground)',
+                              }}
+                            >
+                              {item.description}
+                            </div>
                           </div>
-                          <div
-                            className='text-xs truncate mt-0.5'
-                            style={{
-                              color:
-                                theme?.mutedTextColor ||
-                                'var(--muted-foreground)',
-                            }}
-                          >
-                            {item.description}
+                          <div className='flex items-center gap-2 flex-shrink-0'>
+                            <span
+                              className='text-xs px-2 py-1 rounded-full'
+                              style={{
+                                backgroundColor: theme?.isDark
+                                  ? 'rgba(255, 255, 255, 0.1)'
+                                  : 'rgba(0, 0, 0, 0.05)',
+                                color:
+                                  theme?.mutedTextColor ||
+                                  'var(--muted-foreground)',
+                              }}
+                            >
+                              {getCategoryLabel(item.category)}
+                            </span>
+                            <ArrowRight
+                              className='w-4 h-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0'
+                              style={{
+                                color: theme?.textColor || 'var(--primary)',
+                              }}
+                            />
                           </div>
-                        </div>
-                        <div className='flex items-center gap-2 flex-shrink-0'>
-                          <span
-                            className='text-xs px-2 py-1 rounded-full'
-                            style={{
-                              backgroundColor: theme?.isDark
-                                ? 'rgba(255, 255, 255, 0.1)'
-                                : 'rgba(0, 0, 0, 0.05)',
-                              color:
-                                theme?.mutedTextColor ||
-                                'var(--muted-foreground)',
-                            }}
-                          >
-                            {getCategoryLabel(item.category)}
-                          </span>
-                          <ArrowRight
-                            className='w-4 h-4 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0'
-                            style={{
-                              color: theme?.textColor || 'var(--primary)',
-                            }}
-                          />
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className='text-center py-8 text-sm'
+                      style={{
+                        color:
+                          theme?.mutedTextColor || 'var(--muted-foreground)',
+                      }}
+                    >
+                      No results found for "{query}"
+                    </div>
+                  )}
+                </div>
+
+                {/* See All Results Link */}
+                {results.length > 0 && (
                   <div
-                    className='text-center py-8 text-sm'
+                    className='mt-3 pt-3 border-t'
                     style={{
-                      color: theme?.mutedTextColor || 'var(--muted-foreground)',
+                      borderColor: theme?.isDark
+                        ? 'rgba(255, 255, 255, 0.1)'
+                        : 'rgba(0, 0, 0, 0.1)',
                     }}
                   >
-                    No results found for "{query}"
+                    <Link
+                      href={`/search?q=${encodeURIComponent(query)}`}
+                      onClick={() => {
+                        setIsSearchOpen(false)
+                      }}
+                      className='flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-[1.02]'
+                      style={{
+                        backgroundColor: theme?.isDark
+                          ? 'rgba(255, 255, 255, 0.05)'
+                          : 'rgba(0, 0, 0, 0.03)',
+                        color: theme?.textColor || 'var(--primary)',
+                      }}
+                    >
+                      See all results for "{query}"
+                      <ArrowRight className='w-4 h-4' />
+                    </Link>
                   </div>
                 )}
               </div>
