@@ -228,11 +228,20 @@ export async function POST(req: NextRequest) {
       .eq('id', sessionId)
 
     // Save user message to database
-    await supabase.from('messages').insert({
+    console.log(
+      '[API /chat] Saving user message to database for session:',
+      sessionId
+    )
+    const { error: userMsgError } = await supabase.from('messages').insert({
       session_id: sessionId,
       role: 'user',
       content: message,
     })
+    if (userMsgError) {
+      console.error('[API /chat] Error saving user message:', userMsgError)
+    } else {
+      console.log('[API /chat] User message saved successfully')
+    }
 
     // Prepare conversation history for OpenAI
     const conversationHistory = [
@@ -326,11 +335,20 @@ export async function POST(req: NextRequest) {
         'Thanks for sharing that information!'
 
       // Save AI response to database
-      await supabase.from('messages').insert({
+      console.log(
+        '[API /chat] Saving AI response to database for session:',
+        sessionId
+      )
+      const { error: aiMsgError } = await supabase.from('messages').insert({
         session_id: sessionId,
         role: 'assistant',
         content: aiResponse,
       })
+      if (aiMsgError) {
+        console.error('[API /chat] Error saving AI message:', aiMsgError)
+      } else {
+        console.log('[API /chat] AI message saved successfully')
+      }
 
       // Update session timestamp
       await supabase
@@ -347,11 +365,20 @@ export async function POST(req: NextRequest) {
       "I apologize, but I didn't quite catch that. Could you rephrase?"
 
     // Save AI response to database
-    await supabase.from('messages').insert({
+    console.log(
+      '[API /chat] Saving AI response to database for session:',
+      sessionId
+    )
+    const { error: aiMsgError2 } = await supabase.from('messages').insert({
       session_id: sessionId,
       role: 'assistant',
       content: aiResponse,
     })
+    if (aiMsgError2) {
+      console.error('[API /chat] Error saving AI message:', aiMsgError2)
+    } else {
+      console.log('[API /chat] AI message saved successfully')
+    }
 
     // Update session timestamp
     await supabase
