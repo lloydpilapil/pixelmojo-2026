@@ -154,8 +154,30 @@ const nextConfig: NextConfig = {
   },
   redirects: async () => {
     return [
+      // Trailing slash redirects
+      {
+        source: '/contact-us/',
+        destination: '/contact-us',
+        permanent: true,
+      },
+      {
+        source: '/about/',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/reviews/',
+        destination: '/reviews',
+        permanent: true,
+      },
+      // Old service URLs
       {
         source: '/services/ui-ux-design-solutions',
+        destination: '/services/ai-product-development',
+        permanent: true,
+      },
+      {
+        source: '/services/ui-ux-design-solutions/',
         destination: '/services/ai-product-development',
         permanent: true,
       },
@@ -165,7 +187,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/services/brand-identity/',
+        destination: '/services/revenue-first-design',
+        permanent: true,
+      },
+      {
         source: '/services/brand-activation-growth',
+        destination: '/services/ai-powered-growth',
+        permanent: true,
+      },
+      {
+        source: '/services/brand-activation-growth/',
         destination: '/services/ai-powered-growth',
         permanent: true,
       },
@@ -175,12 +207,57 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/services/web-mobile-app-design',
+        destination: '/services/profit-optimized-interfaces',
+        permanent: true,
+      },
+      {
+        source: '/services/web-mobile-app-design/',
+        destination: '/services/profit-optimized-interfaces',
+        permanent: true,
+      },
+      {
         source: '/services/graphic-visuals',
         destination: '/services/conversion-assets',
         permanent: true,
       },
       {
+        source: '/services/graphic-visual-design',
+        destination: '/services/conversion-assets',
+        permanent: true,
+      },
+      {
+        source: '/services/graphic-visual-design/',
+        destination: '/services/conversion-assets',
+        permanent: true,
+      },
+      {
         source: '/services/development-solutions',
+        destination: '/services/full-stack-ai',
+        permanent: true,
+      },
+      {
+        source: '/services/development-solutions/',
+        destination: '/services/full-stack-ai',
+        permanent: true,
+      },
+      {
+        source: '/services/digital-marketing-servies',
+        destination: '/services/ai-powered-growth',
+        permanent: true,
+      },
+      {
+        source: '/services/digital-marketing-servies/',
+        destination: '/services/ai-powered-growth',
+        permanent: true,
+      },
+      {
+        source: '/services/revenue-first-design/',
+        destination: '/services/revenue-first-design',
+        permanent: true,
+      },
+      {
+        source: '/services/full-stack-ai/',
         destination: '/services/full-stack-ai',
         permanent: true,
       },
@@ -197,6 +274,19 @@ const nextConfig: NextConfig = {
       {
         source: '/blog/:path*',
         destination: '/blogs/:path*',
+        permanent: true,
+      },
+      // Project trailing slash redirects
+      {
+        source: '/projects/logistics-track-trace-system/',
+        destination: '/projects/logistics-track-trace-system',
+        permanent: true,
+      },
+      // Blog post redirects - old URLs to home or new URLs
+      {
+        source:
+          '/blog/understanding-generation-alpha-characteristics-trends-and-their-impact-on-the-future',
+        destination: '/blogs',
         permanent: true,
       },
       {
@@ -291,6 +381,76 @@ const nextConfig: NextConfig = {
       {
         source: '/blogs/stop-selling-services-start-delivering-results',
         destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/we-design-for-impact-we-build-for-roi-so-why-are-you-still-settling-for-pretty-but-pointless',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/we-design-for-impact-we-build-for-roi-so-why-are-you-still-settling-for-pretty-but-pointless/',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/growth-marketing-vs-traditional-marketing-the-complete-guide',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/growth-marketing-vs-traditional-marketing-the-complete-guide/',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-best-branding-agency-for-startups-a-guide-to-building-your-brand-from-scratch',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/creative-agencies-in-the-philippines-why-this-country-is-now-a-hub-for-global-brands',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/why-llm-and-geo-visibility-are-the-new-frontiers-of-branding-not-just-seo',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/why-llm-and-geo-visibility-are-the-new-frontiers-of-branding-not-just-seo/',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/growth-marketing-seo-the-dream-team',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/growth-marketing-seo-the-dream-team/',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/elevate-b2b-saas',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance/',
+        destination:
+          '/blogs/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance',
         permanent: true,
       },
     ]
