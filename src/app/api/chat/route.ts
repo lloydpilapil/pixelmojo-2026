@@ -45,10 +45,31 @@ PROJECT TYPES WE HANDLE:
 - Full-stack AI feature implementation
 - Enterprise SaaS platforms
 
-BUDGET RANGES (mention when asked):
-- Validation Phase: $15k-$30k (AI MVP, market validation)
-- Growth Phase: $30k-$75k (Full product, growth systems)
-- Scale Phase: $75k+ (Enterprise platforms, AI infrastructure)
+PRICING BY PROJECT TYPE (use these exact ranges):
+
+Landing Pages & Marketing Sites:
+- Simple landing page: $4K-$8K (Conversion Asset Systems)
+- Conversion-optimized landing page: $8K-$12K (Conversion Assets + Profit-Optimized Interfaces)
+- Full marketing site (multi-page): $12K-$18K (Profit-Optimized Interfaces)
+
+AI Product Development:
+- AI MVP / Product validation: From $15K
+- Full AI product: $25K-$45K
+- Enterprise AI platform: $45K+
+
+Branding & Design Systems:
+- Brand identity package: Starts at $9K (Revenue-First Design Systems)
+- Complete brand system with assets: $15K-$25K
+
+Growth & Marketing:
+- Monthly growth retainer: From $6K/mo (AI-Powered Growth Engines)
+- Campaign + automation setup: $12K-$20K
+
+Development & Engineering:
+- Full-stack AI features: Programs from $18K (Full-Stack AI Implementation)
+- Embedded development team: From $12K/mo
+
+IMPORTANT: Always quote starting prices from the service, not made-up ranges. If unsure, direct them to contact form for custom quote.
 
 TYPICAL TIMELINES:
 - MVP/Validation: 6-12 weeks (90-day guarantee)
