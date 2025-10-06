@@ -4,6 +4,7 @@ import { withSentryConfig } from '@sentry/nextjs'
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
+  trailingSlash: false, // Enforce no trailing slashes, redirect /page/ to /page
   // Image optimization configuration
   images: {
     // Enable modern formats (WebP/AVIF) for better compression
@@ -267,6 +268,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/works/',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/projects/',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
         source: '/blog',
         destination: '/blogs',
         permanent: true,
@@ -280,6 +291,21 @@ const nextConfig: NextConfig = {
       {
         source: '/projects/logistics-track-trace-system/',
         destination: '/projects/logistics-track-trace-system',
+        permanent: true,
+      },
+      {
+        source: '/projects/mojo-ai/',
+        destination: '/projects/mojo-ai',
+        permanent: true,
+      },
+      {
+        source: '/projects/seo-intelligence-platform/',
+        destination: '/projects/seo-intelligence-platform',
+        permanent: true,
+      },
+      {
+        source: '/projects/real-estate-earnings-tracker/',
+        destination: '/projects/real-estate-earnings-tracker',
         permanent: true,
       },
       // Blog post redirects - old URLs to home or new URLs
@@ -485,6 +511,65 @@ const nextConfig: NextConfig = {
           '/blogs/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance/',
         destination:
           '/blogs/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance',
+        permanent: true,
+      },
+      // Missing blog posts - redirect to blogs homepage
+      {
+        source:
+          '/blogs/real-estate-digital-transformation-lessons-from-global-leaders',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-choosing-the-best-digital-marketing-and-advertising-company-for-your-business',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source: '/blogs/the-strategic-edge-of-outstanding-ui-ux-design',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-web-portal-development-building-solutions-that-work',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source: '/blogs/targeted-marketing-grow-your-brand',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/ux-design-shop-a-user-centric-approach-to-elevating-your-brand-and-conversions',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-user-personas-a-comprehensive-blueprint',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-marketing-glossary-that-finally-speaks-human----and-why-youll-actually-use-it',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/why-your-next-digital-partner-should-have-fortune-500-experience',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/content-creation-and-user-engagement-the-ultimate-guide-for-2025',
+        destination: '/blogs',
         permanent: true,
       },
     ]

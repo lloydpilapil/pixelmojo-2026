@@ -13,6 +13,7 @@ export default function robots(): MetadataRoute.Robots {
           '/private/',
           '*.json',
           '/blogs/design/',
+          '/search',
         ],
         crawlDelay: 1, // Be nice to servers, wait 1 second between requests
       },
