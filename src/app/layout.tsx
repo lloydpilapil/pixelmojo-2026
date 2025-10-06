@@ -9,7 +9,7 @@ import { Analytics } from '@vercel/analytics/react'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import StructuredData from './structured-data'
 import Script from 'next/script'
-import { ChatBot } from '@/components/chatbot'
+import ChatWidget from '@/components/chat/ChatWidget'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -129,7 +129,7 @@ export default function RootLayout({
           <main className='flex-1'>{children}</main>
           <ConditionalRecentArticles />
           <Footer />
-          <ChatBot />
+          <ChatWidget />
           <Analytics />
         </SmoothScrollProvider>
       </body>
