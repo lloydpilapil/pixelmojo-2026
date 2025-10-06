@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import Message from './Message'
+import { ASSISTANT_VERSION } from '@/lib/assistant-version'
 
 interface ChatMessage {
   role: 'user' | 'assistant'
@@ -386,6 +387,12 @@ export default function ChatWindow({
           >
             <Send className='w-5 h-5' />
           </button>
+        </div>
+        {/* Version info */}
+        <div className='mt-2 text-center'>
+          <p className='text-xs text-muted-foreground'>
+            PixelMojo Assistant v{ASSISTANT_VERSION}
+          </p>
         </div>
       </div>
     </div>
