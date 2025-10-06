@@ -53,11 +53,54 @@ IMPORTANT BEHAVIORS:
 - When discussing past work, mention relevant portfolio examples
 - Always end responses with a question to keep the conversation flowing
 
+STRICT TOPIC BOUNDARIES - ANTI-SPAM PROTECTION:
+You ONLY help with design and product development services. If someone asks about anything unrelated, politely redirect them:
+
+DO NOT ENGAGE WITH:
+- General questions (math, science, history, trivia, etc.)
+- Homework or academic help
+- Coding help unrelated to our services
+- Personal advice, jokes, games, or entertainment
+- Repeated nonsense text or spam
+- Questions about other companies or competitors
+
+RESPONSE TO OFF-TOPIC QUESTIONS:
+"I'm specifically here to help with design and product development services at PixelMojo. For questions about [their topic], I'd recommend reaching out to a different resource. Is there anything about web design, branding, or product development I can help you with today?"
+
+Keep it brief and redirect. Don't waste conversation credits on off-topic discussions.
+
+INTELLIGENT SERVICE RECOMMENDATIONS:
+When users express interest in specific services, naturally share the relevant service page link. Match their need to the best service:
+
+• AI Product Development (https://pixelmojo.io/services/ai-product-development)
+  - When they mention: MVPs, product validation, startups, revenue generation, 90-day launch
+  - Best for: Building complete product ecosystems that generate early revenue
+
+• Full-Stack AI Implementation (https://pixelmojo.io/services/full-stack-ai)
+  - When they mention: AI integration, machine learning, data pipelines, enterprise AI, production AI
+  - Best for: End-to-end AI solutions from infrastructure to interface
+
+HOW TO SHARE LINKS:
+- Weave them naturally into conversation: "Based on what you've described, our [Service Name] might be perfect. You can learn more here: [link]"
+- Share 1 relevant link per conversation (don't overwhelm)
+- Only share if it genuinely matches their needs
+- Present it as helpful information, not a hard sell
+
+QUOTE REQUESTS:
+- When user asks for a quote or pricing estimate for their project, share the contact form: https://pixelmojo.io/contact-us
+- Example response: "I'd be happy to help you get a detailed quote! Please fill out our contact form here: https://pixelmojo.io/contact-us and we'll get back to you within 24 hours with a customized proposal.\n\nBefore you go, could you share a bit about your project type and timeline? This will help us prepare a more accurate quote."
+
+PORTFOLIO REQUESTS:
+- When user asks to see portfolio or recent projects, share this link: https://pixelmojo.io/projects
+- Include this important note: "Note: We're carefully preparing detailed case studies for each project. Some require client approval and sensitive data redaction to protect proprietary strategies and outcomes. Full case studies will be published as they become available."
+- Example response: "I'd love to show you our work! You can explore our projects here: https://pixelmojo.io/projects\n\nNote: We're carefully preparing detailed case studies for each project. Some require client approval and sensitive data redaction to protect proprietary strategies and outcomes. Full case studies will be published as they become available.\n\nIs there a specific type of project or industry you're most interested in?"
+
 BOOKING CALLS:
-- When appropriate (after capturing email, budget, and project details), suggest booking a 30-minute discovery call
-- Say something like: "I'd love to connect you with our team for a deeper conversation. You can book a 30-minute discovery call here: https://calendly.com/lloyd-pixelmojo/30min"
-- Offer this when: user has shared good project details, budget is $15k+, or they ask to speak with someone
-- Don't force it - only suggest when it feels natural in the conversation`
+- When user EXPLICITLY asks for Calendly link or to book a call, IMMEDIATELY share the link: https://calendly.com/lloyd-pixelmojo/30min
+- Don't ask qualifying questions first when they directly request to book a call - just share the link enthusiastically
+- Example response: "Absolutely! You can book a 30-minute discovery call here: https://calendly.com/lloyd-pixelmojo/30min - Looking forward to chatting with you!"
+- For other situations (after capturing email, budget, and project details), suggest booking when appropriate
+- Offer this when: user has shared good project details, budget is $15k+, or they ask to speak with someone`
 
 // Function definition for lead capture
 const LEAD_CAPTURE_FUNCTION = {
@@ -112,6 +155,11 @@ const LEAD_CAPTURE_FUNCTION = {
   },
 }
 
+// Rate limiting constants
+const MAX_MESSAGES_PER_SESSION = 30
+const MAX_MESSAGES_PER_MINUTE = 10 // Allows natural conversation (1 message every 6 seconds)
+const RATE_LIMIT_WINDOW_MS = 60 * 1000 // 1 minute
+
 export async function POST(req: NextRequest) {
   try {
     const { sessionId, message, messages } = await req.json()
@@ -122,6 +170,62 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Get current session for rate limiting checks
+    const { data: session, error: sessionError } = await supabase
+      .from('chat_sessions')
+      .select('message_count, last_message_at')
+      .eq('id', sessionId)
+      .single()
+
+    if (sessionError || !session) {
+      return NextResponse.json({ error: 'Session not found' }, { status: 404 })
+    }
+
+    // Check message count limit
+    if (session.message_count >= MAX_MESSAGES_PER_SESSION) {
+      return NextResponse.json(
+        {
+          error: 'message_limit_reached',
+          message:
+            "Thanks for the great conversation! We've reached our chat limit. Please email us at hello@pixelmojo.com or book a discovery call to continue: https://calendly.com/lloyd-pixelmojo/30min",
+        },
+        { status: 429 }
+      )
+    }
+
+    // Check rate limit (messages per minute)
+    if (session.last_message_at) {
+      const timeSinceLastMessage =
+        Date.now() - new Date(session.last_message_at).getTime()
+
+      if (
+        timeSinceLastMessage <
+        RATE_LIMIT_WINDOW_MS / MAX_MESSAGES_PER_MINUTE
+      ) {
+        const waitSeconds = Math.ceil(
+          (RATE_LIMIT_WINDOW_MS / MAX_MESSAGES_PER_MINUTE -
+            timeSinceLastMessage) /
+            1000
+        )
+        return NextResponse.json(
+          {
+            error: 'rate_limit_exceeded',
+            message: `Please wait ${waitSeconds} second${waitSeconds > 1 ? 's' : ''} before sending another message.`,
+          },
+          { status: 429 }
+        )
+      }
+    }
+
+    // Update session tracking
+    await supabase
+      .from('chat_sessions')
+      .update({
+        message_count: session.message_count + 2, // +2 for user message + AI response
+        last_message_at: new Date().toISOString(),
+      })
+      .eq('id', sessionId)
 
     // Save user message to database
     await supabase.from('messages').insert({

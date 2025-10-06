@@ -18,6 +18,8 @@ export interface ChatSession {
   email: string | null
   session_metadata: Record<string, unknown>
   status: 'active' | 'completed' | 'abandoned'
+  message_count: number
+  last_message_at: string | null
 }
 
 export interface Message {

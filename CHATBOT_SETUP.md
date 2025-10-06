@@ -16,20 +16,31 @@ You now have a fully functional AI chatbot! Here's what we've built:
 
 ## 🚀 Next Steps to Go Live
 
-### Step 1: Apply Database Migration to Supabase
+### Step 1: Apply Database Migrations to Supabase
 
-You need to run the SQL migration to create the database tables:
+You need to run the SQL migrations to create the database tables and add rate limiting:
 
 **Option A: Using Supabase Dashboard (Recommended)**
 
 1. Go to https://supabase.com/dashboard
 2. Select your `pixelmojo-2026` project
 3. Click **SQL Editor** in the left sidebar
+
+**First Migration (Database Schema):**
+
 4. Click **New Query**
 5. Copy the contents of `supabase/migrations/001_chatbot_schema.sql`
 6. Paste into the SQL editor
 7. Click **Run** (or press Cmd/Ctrl + Enter)
 8. You should see: "Success. No rows returned"
+
+**Second Migration (Rate Limiting):**
+
+9. Click **New Query** again
+10. Copy the contents of `supabase/migrations/002_add_rate_limiting.sql`
+11. Paste into the SQL editor
+12. Click **Run** (or press Cmd/Ctrl + Enter)
+13. You should see: "Success. No rows returned"
 
 **Option B: Using Supabase CLI**
 
@@ -73,10 +84,14 @@ npm run dev
 - ✅ Greets visitors warmly
 - ✅ Understands project needs (web design, branding, UI/UX, etc.)
 - ✅ Asks about budget and timeline
-- ✅ Captures email addresses
+- ✅ Captures email addresses automatically
 - ✅ Saves all conversations to Supabase
 - ✅ Works on all pages
 - ✅ Mobile responsive
+- ✅ **Rate limiting protection** (30 messages per session, 10 messages per minute)
+- ✅ **Abuse prevention** with automatic limits and redirect to email/Calendly
+- ✅ **Content filtering** - Rejects off-topic questions (spam, homework, general Q&A)
+- ✅ **Topic enforcement** - Only engages with design/product development inquiries
 
 ### AI Behavior:
 
