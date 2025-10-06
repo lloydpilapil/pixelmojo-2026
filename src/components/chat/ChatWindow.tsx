@@ -21,9 +21,16 @@ interface ChatMessage {
 interface ChatWindowProps {
   sessionId: string
   onClose: () => void
+  exitIntentTriggered?: boolean
+  proactiveTriggered?: boolean
 }
 
-export default function ChatWindow({ sessionId, onClose }: ChatWindowProps) {
+export default function ChatWindow({
+  sessionId,
+  onClose,
+  exitIntentTriggered = false,
+  proactiveTriggered = false,
+}: ChatWindowProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -51,10 +58,32 @@ export default function ChatWindow({ sessionId, onClose }: ChatWindowProps) {
     { icon: Tag, text: 'Pricing info', value: 'Tell me about your pricing' },
   ]
 
+  // Get page-specific proactive message based on current URL
+  const getProactiveMessage = () => {
+    const path = window.location.pathname
+
+    if (path.includes('/pricing') || path.includes('/contact')) {
+      return "👋 Questions about our packages or pricing? I'm here to help!"
+    }
+    if (path.includes('/projects') || path.includes('/portfolio')) {
+      return '👋 Looking for design help? I can point you to relevant examples from our portfolio!'
+    }
+    if (path.includes('/services')) {
+      return '👋 Interested in our services? I can help you find the perfect solution for your needs!'
+    }
+    if (path.includes('/blog')) {
+      return "👋 Have questions about AI-native design? I'm here to help!"
+    }
+
+    // Default proactive message
+    return '👋 Looking for design help? I can point you to relevant examples and answer any questions!'
+  }
+
   // Load existing messages when session starts
   useEffect(() => {
     loadMessages()
-  }, [sessionId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId, proactiveTriggered, exitIntentTriggered])
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -76,11 +105,25 @@ export default function ChatWindow({ sessionId, onClose }: ChatWindowProps) {
         setShowQuickReplies(false)
       } else {
         // No existing messages, show greeting
+        let greetingMessage = ''
+
+        if (proactiveTriggered) {
+          // Proactive engagement with page-specific message
+          greetingMessage = `${getProactiveMessage()}\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat are you interested in?`
+        } else if (exitIntentTriggered) {
+          // Exit intent message
+          greetingMessage =
+            'Wait! Before you go, can I help answer any questions?\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat would you like to know?'
+        } else {
+          // Default greeting
+          greetingMessage =
+            "Hi! Welcome to PixelMojo. I can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWe're AI-native from day one. What are you looking to build?"
+        }
+
         setMessages([
           {
             role: 'assistant',
-            content:
-              "Hi! Welcome to PixelMojo. I can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWe're AI-native from day one. What are you looking to build?",
+            content: greetingMessage,
           },
         ])
         // Show quick replies for new conversations
@@ -128,6 +171,16 @@ export default function ChatWindow({ sessionId, onClose }: ChatWindowProps) {
       })
 
       if (!response.ok) {
+        // If session not found (404), clear localStorage and reload
+        if (response.status === 404) {
+          const data = await response.json()
+          if (data.error === 'Session not found') {
+            console.log('Session expired, creating new session...')
+            localStorage.removeItem('pixelmojo_chat_session_id')
+            window.location.reload()
+            return
+          }
+        }
         console.error('API returned error status:', response.status)
         throw new Error('Failed to send message')
       }

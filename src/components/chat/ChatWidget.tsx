@@ -8,6 +8,8 @@ export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [exitIntentTriggered, setExitIntentTriggered] = useState(false)
+  const [proactiveTriggered, setProactiveTriggered] = useState(false)
 
   // Initialize session when component mounts
   useEffect(() => {
@@ -27,6 +29,44 @@ export default function ChatWidget() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Exit intent detection - trigger when mouse moves to leave page
+  useEffect(() => {
+    // Check if exit intent was already shown
+    const exitIntentShown = localStorage.getItem('pixelmojo_exit_intent_shown')
+    if (exitIntentShown === 'true') return
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Detect when mouse moves to top of viewport (likely to close tab or navigate away)
+      if (e.clientY <= 10 && !isOpen) {
+        setExitIntentTriggered(true)
+        setIsOpen(true)
+        // Mark as shown so it only triggers once
+        localStorage.setItem('pixelmojo_exit_intent_shown', 'true')
+      }
+    }
+
+    document.addEventListener('mouseout', handleMouseLeave)
+    return () => document.removeEventListener('mouseout', handleMouseLeave)
+  }, [isOpen])
+
+  // Proactive engagement - show chat after 25 seconds
+  useEffect(() => {
+    // Check if proactive engagement was already shown
+    const proactiveShown = localStorage.getItem('pixelmojo_proactive_shown')
+    if (proactiveShown === 'true' || isOpen) return
+
+    // Wait 25 seconds then show proactive message
+    const timer = setTimeout(() => {
+      if (!isOpen) {
+        setProactiveTriggered(true)
+        setIsOpen(true)
+        localStorage.setItem('pixelmojo_proactive_shown', 'true')
+      }
+    }, 25000) // 25 seconds
+
+    return () => clearTimeout(timer)
+  }, [isOpen])
 
   // Lock body scroll when chat is open
   useEffect(() => {
@@ -113,7 +153,12 @@ export default function ChatWidget() {
       {/* Chat Window */}
       {isOpen && sessionId && (
         <div className='fixed inset-x-0 bottom-0 md:inset-auto md:bottom-20 md:right-4 z-50 mx-auto w-full md:max-w-md h-[calc(100vh-80px)] md:h-[600px] md:max-h-[80vh] animate-in slide-in-from-bottom-5 duration-300'>
-          <ChatWindow sessionId={sessionId} onClose={() => setIsOpen(false)} />
+          <ChatWindow
+            sessionId={sessionId}
+            onClose={() => setIsOpen(false)}
+            exitIntentTriggered={exitIntentTriggered}
+            proactiveTriggered={proactiveTriggered}
+          />
         </div>
       )}
     </>
