@@ -13,8 +13,16 @@ export default function ChatWidget() {
 
   // Initialize session when component mounts
   useEffect(() => {
+    console.log('[ChatWidget] Component mounted, initializing session')
     initializeSession()
   }, [])
+
+  // Track session ID changes
+  useEffect(() => {
+    if (sessionId) {
+      console.log('[ChatWidget] Session ID changed:', sessionId)
+    }
+  }, [sessionId])
 
   // Show chat button after scrolling past hero section
   useEffect(() => {
@@ -84,6 +92,8 @@ export default function ChatWidget() {
 
   const initializeSession = async () => {
     try {
+      console.log('[ChatWidget] Initializing session...')
+
       // Check if we have an existing session in localStorage
       const existingSessionId = localStorage.getItem(
         'pixelmojo_chat_session_id'
@@ -91,11 +101,46 @@ export default function ChatWidget() {
 
       if (existingSessionId) {
         // Use existing session
+        console.log(
+          '[ChatWidget] Found existing session in localStorage:',
+          existingSessionId
+        )
         setSessionId(existingSessionId)
         return
       }
 
+      // Use localStorage as a lock to prevent race conditions from React Strict Mode
+      const initLock = localStorage.getItem('pixelmojo_session_initializing')
+      if (initLock) {
+        const lockTime = parseInt(initLock)
+        // If lock is less than 5 seconds old, another initialization is in progress
+        if (Date.now() - lockTime < 5000) {
+          console.log(
+            '[ChatWidget] Session initialization already in progress (locked), waiting...'
+          )
+          // Wait a bit and check again for the session ID
+          setTimeout(() => {
+            const sessionId = localStorage.getItem('pixelmojo_chat_session_id')
+            if (sessionId) {
+              console.log(
+                '[ChatWidget] Session created by another process:',
+                sessionId
+              )
+              setSessionId(sessionId)
+            }
+          }, 100)
+          return
+        }
+      }
+
+      // Set lock
+      localStorage.setItem(
+        'pixelmojo_session_initializing',
+        Date.now().toString()
+      )
+
       // Create new session if none exists
+      console.log('[ChatWidget] No existing session, creating new one...')
       const response = await fetch('/api/chat/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -110,12 +155,18 @@ export default function ChatWidget() {
       })
 
       const data = await response.json()
+      console.log('[ChatWidget] Created new session:', data.sessionId)
       setSessionId(data.sessionId)
 
       // Save session ID to localStorage for persistence
       localStorage.setItem('pixelmojo_chat_session_id', data.sessionId)
+
+      // Remove lock
+      localStorage.removeItem('pixelmojo_session_initializing')
     } catch (error) {
       console.error('Failed to initialize chat session:', error)
+      // Remove lock on error
+      localStorage.removeItem('pixelmojo_session_initializing')
     }
   }
 

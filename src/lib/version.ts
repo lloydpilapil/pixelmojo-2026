@@ -6,7 +6,7 @@
 export const VERSION = {
   // Semantic versioning: MAJOR.MINOR.PATCH
   major: 1,
-  minor: 2,
+  minor: 3,
   patch: 0,
 
   // Get formatted version string
@@ -15,10 +15,10 @@ export const VERSION = {
   },
 
   // Release name (optional)
-  name: 'Search',
+  name: 'Conversions',
 
   // Release date
-  date: '2025-01-04',
+  date: '2025-10-06',
 
   // Build environment
   environment: process.env.NODE_ENV || 'development',
@@ -46,6 +46,14 @@ export function getVersionInfo() {
 
 /**
  * Version History
+ *
+ * v1.3.0 (Conversions) - 2025-10-06
+ * - AI-powered chatbot with OpenAI integration
+ * - Admin dashboard for chat conversations
+ * - Lead qualification and tracking system
+ * - Exit intent and proactive engagement triggers
+ * - Session persistence with localStorage
+ * - Rate limiting and message count tracking
  *
  * v1.2.0 (Search) - 2025-01-04
  * - Added client-side search with Fuse.js

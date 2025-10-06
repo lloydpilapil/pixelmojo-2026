@@ -6,6 +6,11 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const sessionId = searchParams.get('sessionId')
 
+    console.log(
+      '[API /chat/messages] Fetching messages for session:',
+      sessionId
+    )
+
     if (!sessionId) {
       return NextResponse.json(
         { error: 'Session ID required' },
@@ -20,7 +25,17 @@ export async function GET(req: NextRequest) {
       .eq('session_id', sessionId)
       .order('created_at', { ascending: true })
 
-    if (error) throw error
+    if (error) {
+      console.error('[API /chat/messages] Database error:', error)
+      throw error
+    }
+
+    console.log(
+      '[API /chat/messages] Found',
+      data?.length || 0,
+      'messages for session',
+      sessionId
+    )
 
     return NextResponse.json({ messages: data || [] })
   } catch (error) {

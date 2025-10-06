@@ -38,6 +38,17 @@ export default function ChatWindow({
   const [showQuickReplies, setShowQuickReplies] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
+  // Store initial trigger values to avoid reloading messages when they change
+  const initialTriggersRef = useRef({ proactiveTriggered, exitIntentTriggered })
+
+  // Track component lifecycle
+  useEffect(() => {
+    console.log('[ChatWindow] Component mounted with sessionId:', sessionId)
+    return () => {
+      console.log('[ChatWindow] Component unmounting')
+    }
+  }, [])
+
   const quickReplies = [
     {
       icon: DollarSign,
@@ -81,9 +92,15 @@ export default function ChatWindow({
 
   // Load existing messages when session starts
   useEffect(() => {
-    loadMessages()
+    console.log(
+      '[ChatWindow] loadMessages effect triggered, sessionId:',
+      sessionId
+    )
+    if (sessionId) {
+      loadMessages()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId, proactiveTriggered, exitIntentTriggered])
+  }, [sessionId])
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -92,8 +109,14 @@ export default function ChatWindow({
 
   const loadMessages = async () => {
     try {
+      console.log('[ChatWindow] Loading messages for session:', sessionId)
       const response = await fetch(`/api/chat/messages?sessionId=${sessionId}`)
       const data = await response.json()
+      console.log(
+        '[ChatWindow] Loaded messages:',
+        data.messages?.length || 0,
+        'messages'
+      )
       if (data.messages && data.messages.length > 0) {
         setMessages(
           data.messages.map((msg: { role: string; content: string }) => ({
@@ -104,13 +127,13 @@ export default function ChatWindow({
         // Hide quick replies if there are existing messages (conversation already started)
         setShowQuickReplies(false)
       } else {
-        // No existing messages, show greeting
+        // No existing messages, show greeting (use initial trigger values)
         let greetingMessage = ''
 
-        if (proactiveTriggered) {
+        if (initialTriggersRef.current.proactiveTriggered) {
           // Proactive engagement with page-specific message
           greetingMessage = `${getProactiveMessage()}\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat are you interested in?`
-        } else if (exitIntentTriggered) {
+        } else if (initialTriggersRef.current.exitIntentTriggered) {
           // Exit intent message
           greetingMessage =
             'Wait! Before you go, can I help answer any questions?\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat would you like to know?'
