@@ -291,6 +291,40 @@ const nextConfig: NextConfig = {
       },
       {
         source:
+          '/blog/consumer-behavior-in-marketing-strategies-factors-technology-role-and-research-methods',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blog/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance',
+        destination:
+          '/blogs/the-definitive-guide-to-growth-marketing-in-the-age-of-ai-strategies-frameworks-and-real-world-dominance',
+        permanent: true,
+      },
+      {
+        source: '/blogs/project',
+        destination: '/projects',
+        permanent: true,
+      },
+      {
+        source: '/blogs/domain-rebrand',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source: '/blogs/the-strategic-importance',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-digital-marketing-strategies-for-succe',
+        destination: '/blogs',
+        permanent: true,
+      },
+      {
+        source:
           '/blogs/consumer-behavior-in-marketing-strategies-factors-technologys-role-and-research-methods',
         destination: '/',
         permanent: true,

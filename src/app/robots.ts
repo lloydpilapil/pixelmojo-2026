@@ -6,7 +6,14 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/', '/private/'],
+        disallow: [
+          '/api/',
+          '/admin/',
+          '/_next/',
+          '/private/',
+          '*.json',
+          '/blogs/design/',
+        ],
         crawlDelay: 1, // Be nice to servers, wait 1 second between requests
       },
       {
