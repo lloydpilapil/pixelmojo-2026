@@ -171,13 +171,22 @@ export default function ChatWindow({
       })
 
       if (!response.ok) {
-        // If session not found (404), clear localStorage and reload
+        // If session not found (404), clear localStorage and ask user to refresh
         if (response.status === 404) {
           const data = await response.json()
           if (data.error === 'Session not found') {
-            console.log('Session expired, creating new session...')
+            console.error('Session expired, clearing localStorage')
+            // Clear the expired session ID so refresh creates new session
             localStorage.removeItem('pixelmojo_chat_session_id')
-            window.location.reload()
+            setMessages(prev => [
+              ...prev,
+              {
+                role: 'assistant',
+                content:
+                  "I'm sorry, our conversation session has expired. Please refresh the page to continue chatting.",
+              },
+            ])
+            setIsLimitReached(true) // Disable sending new messages until refresh
             return
           }
         }
