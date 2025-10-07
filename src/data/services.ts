@@ -4,8 +4,8 @@ export const servicesData: Record<string, ServiceData> = {
   'ai-product-development': {
     title: 'AI Product Development',
     description:
-      'Transform your digital product into a growth engine. Stop losing customers to poor user experience—we create intuitive AI-powered interfaces that keep users engaged and drive conversions.',
-    pricing: 'From $15K',
+      'Design and build AI-powered products from validation to launch using modern tools and frameworks.',
+    pricing: 'From $4,995',
     metadata: {
       title:
         'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
@@ -16,8 +16,8 @@ export const servicesData: Record<string, ServiceData> = {
   'revenue-first-design': {
     title: 'Revenue-First Design Systems',
     description:
-      'Build a brand that commands attention. We forge visual strategies for tech startups and SaaS businesses that capture attention, build trust, and drive growth through powerful brand identity.',
-    pricing: 'Starts at $9K',
+      'Brand identity and design systems that help startups look professional and build trust with customers.',
+    pricing: 'Starts at $1,995',
     metadata: {
       title:
         'Revenue-First Design Systems | Build Brands That Command Attention | Pixelmojo',
@@ -28,8 +28,8 @@ export const servicesData: Record<string, ServiceData> = {
   'ai-powered-growth': {
     title: 'AI-Powered Growth Engines',
     description:
-      'Go beyond design. Activate your brand for real growth. Turn your investment into your most powerful engine for leads, sales, and lasting market presence through strategic, data-driven activation.',
-    pricing: 'Retainers from $6K/mo',
+      'Content marketing and growth campaigns to help startups generate leads and build consistent pipeline.',
+    pricing: 'Retainers from $2,995/mo',
     metadata: {
       title:
         'AI-Powered Growth Engines | Activate Your Brand for Real Growth | Pixelmojo',
@@ -40,8 +40,8 @@ export const servicesData: Record<string, ServiceData> = {
   'profit-optimized-interfaces': {
     title: 'Profit-Optimized Interfaces',
     description:
-      'Design that delights, technology that delivers. We design and develop websites and mobile apps that balance beautiful design with powerful functionality for experiences users love.',
-    pricing: 'Project scopes from $22K',
+      'Product UI/UX designed to maximize user engagement, conversion, and retention.',
+    pricing: 'Projects from $2,995',
     metadata: {
       title:
         'Profit-Optimized Interfaces | Design That Delights, Technology That Delivers | Pixelmojo',
@@ -52,8 +52,8 @@ export const servicesData: Record<string, ServiceData> = {
   'conversion-assets': {
     title: 'Conversion Asset Systems',
     description:
-      'Visuals that speak volumes, designs that drive action. We create high-quality visuals that balance creativity with strategy to elevate your brand and share your message effectively.',
-    pricing: 'Bundles from $4K',
+      'Landing pages and marketing assets designed to convert visitors into customers.',
+    pricing: 'Projects from $1,995',
     metadata: {
       title:
         'Conversion Asset Systems | Visuals That Speak Volumes, Designs That Drive Action | Pixelmojo',
@@ -64,8 +64,8 @@ export const servicesData: Record<string, ServiceData> = {
   'full-stack-ai': {
     title: 'Full-Stack AI Implementation',
     description:
-      'Beyond code: our framework for high-performance development. Stop duct-taping tools together—we build fast, scalable, and collaborative digital products using a development system that actually works.',
-    pricing: 'Embedded teams from $12K/mo',
+      'Add AI features to existing products or get dedicated AI engineers for ongoing development.',
+    pricing: 'Programs from $5,995',
     metadata: {
       title:
         'Full-Stack AI Implementation | Beyond Code: High-Performance Development Framework | Pixelmojo',

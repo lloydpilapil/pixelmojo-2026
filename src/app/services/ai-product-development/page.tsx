@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'AI Product Development',
   description:
-    'Transform your digital product into a growth engine. Stop losing customers to poor user experience—we create intuitive AI-powered interfaces that keep users engaged and drive conversions.',
-  pricing: 'From $15K',
+    'Design and build AI-powered products from validation to launch using modern tools and frameworks.',
+  pricing: 'From $4,995',
 }
 
 export const metadata: Metadata = {
@@ -300,6 +301,9 @@ export default function AIProductDevelopment() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers serviceType='ai-product-development' theme={theme} />
 
             <ServiceSplitSection
               theme={theme}

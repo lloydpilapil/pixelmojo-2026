@@ -2,266 +2,213 @@
   "services": {
     "conversion-assets": {
       "name": "Conversion Asset Systems",
-      "tagline": "Content that drives action",
-      "description": "Graphics & Visuals become Conversion Asset Systems — Jasper, Gamma, and Synthesia pipelines turning behavioral science into assets that drive action.",
-      "starting_price": "$4K",
+      "tagline": "Landing pages and assets that convert",
+      "description": "Professional landing pages and marketing assets designed to convert visitors into customers using proven conversion psychology.",
+      "starting_price": "$1,995",
       "packages": {
-        "essential": {
-          "name": "Essential Assets",
-          "price": "$4K-$6K",
-          "best_for": "Startups, MVPs, single campaign",
+        "starter": {
+          "name": "Landing Page Starter",
+          "price": "$1,995-$2,995",
+          "best_for": "Startups testing ideas, simple landing pages",
           "deliverables": [
             "1 landing page design (single page, up to 5 sections)",
-            "Basic lead capture form integration",
+            "Basic lead capture form",
             "Mobile responsive design",
-            "Stock imagery selection and optimization",
+            "Stock imagery selection",
             "1 round of revisions",
             "Basic performance optimization"
           ],
-          "timeline": "2-3 weeks",
+          "timeline": "1-2 weeks",
           "not_included": [
-            "Custom branding/logo design",
-            "Custom copywriting (content writing)",
-            "Email marketing automation",
-            "A/B testing and optimization",
-            "Custom illustrations or video"
+            "Custom copywriting",
+            "Email automation",
+            "A/B testing",
+            "Custom illustrations"
           ],
-          "add_ons": [
-            "Custom copywriting: +$1K-$2K",
-            "Email automation setup: +$2K",
-            "Social media graphics (5-10): +$1K"
-          ]
+          "add_ons": []
         },
-        "conversion-optimized": {
-          "name": "Conversion-Optimized Package",
-          "price": "$8K-$12K",
-          "best_for": "Growth-stage companies, product launches, conversion focus",
+        "growth": {
+          "name": "Growth Package",
+          "price": "$3,995-$5,995",
+          "popular": true,
+          "value_note": "Only $2K more but includes full landing page + copywriting + analytics + support",
+          "best_for": "Most startups and growing companies",
           "deliverables": [
-            "Multi-section landing page (6-8 sections with conversion psychology)",
-            "Advanced lead form with validation and conditional logic",
-            "Mobile + tablet + desktop responsive",
-            "Conversion-focused copywriting assistance (editing + structure)",
-            "Performance optimization (speed, Core Web Vitals)",
-            "Analytics setup (GA4, Meta Pixel, conversion tracking)",
+            "Everything in Starter, plus:",
+            "Multi-section landing page (6-8 sections)",
+            "Conversion-focused copywriting",
+            "Advanced forms with validation",
+            "Analytics setup (GA4, conversion tracking)",
+            "Performance optimization",
             "2 rounds of revisions",
             "1 month post-launch support"
           ],
-          "timeline": "3-4 weeks",
+          "timeline": "2-3 weeks",
           "not_included": [
-            "Full brand identity package (logo, colors, fonts) - separate service",
-            "Email automation/CRM integration - add-on available",
-            "Ongoing A/B testing and optimization - retainer required",
-            "Video production or custom animations"
+            "Full brand identity",
+            "Email automation/CRM",
+            "Video production"
           ],
-          "add_ons": [
-            "Brand identity package: +$5K-$9K",
-            "Email automation + CRM: +$3K-$4K",
-            "A/B testing (first month): +$2K",
-            "Custom illustrations pack: +$2K-$3K"
-          ]
+          "add_ons": []
         },
-        "campaign-bundle": {
-          "name": "Full Campaign Bundle",
-          "price": "$12K-$18K",
-          "best_for": "Major launches, full campaigns, enterprise",
+        "scale": {
+          "name": "Campaign Bundle",
+          "price": "$7,995-$9,995",
+          "best_for": "Major launches and full campaigns",
           "deliverables": [
+            "Everything in Growth, plus:",
             "Multi-page campaign site (3-5 pages)",
-            "Landing page + thank you page + confirmation flows",
-            "Advanced lead forms with scoring and routing",
-            "Complete conversion funnel design",
-            "Full copywriting for all pages",
+            "Complete funnel design",
             "Email sequence design (3-5 emails)",
-            "Social media graphics set (10-15 assets)",
-            "Performance optimization + CDN setup",
-            "Analytics + conversion tracking (GA4, Meta, LinkedIn)",
+            "Social media graphics (10-15 assets)",
+            "Advanced analytics + conversion tracking",
             "3 rounds of revisions",
             "2 months post-launch support"
           ],
-          "timeline": "4-6 weeks",
-          "not_included": [
-            "Ongoing campaign management (retainer required)",
-            "Paid advertising management (separate service)",
-            "Video production (add-on available)"
-          ],
-          "add_ons": [
-            "Video production (30-60s): +$3K-$5K",
-            "Campaign management retainer: +$4K-$6K/mo",
-            "Paid ad creative pack: +$2K-$4K"
-          ]
+          "timeline": "3-4 weeks",
+          "add_ons": [],
+          "not_included": []
         }
       }
     },
     "profit-optimized-interfaces": {
       "name": "Profit-Optimized Interfaces",
-      "tagline": "Real-time personalization that drives revenue",
-      "description": "Web & App Design evolved into Profit-Optimized Interfaces — predictive personalization and experimentation that adapt in real-time to maximize revenue per user.",
-      "starting_price": "$12K",
+      "tagline": "Product UI/UX that drives engagement",
+      "description": "Product UI/UX designed to maximize user engagement, conversion, and retention using modern design systems.",
+      "starting_price": "$2,995",
       "packages": {
-        "web-app-starter": {
+        "starter": {
           "name": "Web App Starter",
-          "price": "$12K-$18K",
-          "best_for": "SaaS MVPs, internal tools, simple web apps",
+          "price": "$2,995-$4,995",
+          "best_for": "MVPs, simple web apps, internal tools",
           "deliverables": [
-            "5-8 core screens/pages (dashboard, forms, tables)",
+            "5-8 core screens",
             "Responsive design (mobile + desktop)",
-            "Component library (buttons, forms, cards, etc.)",
-            "Basic user flows (login, onboarding, core feature)",
-            "Design system documentation",
+            "Basic component library",
+            "User flows (login, onboarding, core feature)",
             "Figma files + dev handoff",
             "2 rounds of revisions"
           ],
-          "timeline": "4-6 weeks",
+          "timeline": "2-3 weeks",
           "not_included": [
-            "Frontend development (design only)",
-            "Backend/API development",
-            "User testing and research",
+            "Development",
+            "User research",
             "Ongoing design support"
           ],
-          "add_ons": [
-            "User research (5-10 interviews): +$3K",
-            "Prototype development: +$4K-$6K",
-            "1 month design support: +$4K"
-          ]
+          "add_ons": []
         },
-        "full-product-design": {
+        "growth": {
           "name": "Full Product Design",
-          "price": "$22K-$35K",
-          "best_for": "Complete SaaS products, mobile apps, complex platforms",
+          "price": "$7,995-$12,995",
+          "popular": true,
+          "value_note": "Only $5K more but includes complete design system + user flows + 1 month support",
+          "best_for": "Complete SaaS products and mobile apps",
           "deliverables": [
-            "15-25 screens with complete user flows",
-            "Full design system (colors, typography, components, patterns)",
-            "Mobile + tablet + desktop responsive designs",
-            "User onboarding flow",
-            "Empty states, error states, loading states",
-            "Microinteractions and animations spec",
-            "Accessibility compliance (WCAG 2.1 AA)",
-            "Figma files + comprehensive dev handoff",
+            "Everything in Starter, plus:",
+            "15-25 screens with complete flows",
+            "Full design system (components, patterns)",
+            "Onboarding flow",
+            "Empty/error/loading states",
+            "Microinteractions spec",
+            "Accessibility compliance (WCAG 2.1)",
             "3 rounds of revisions",
-            "1 month post-launch design support"
+            "1 month post-launch support"
+          ],
+          "timeline": "4-6 weeks",
+          "not_included": [
+            "Development",
+            "User testing",
+            "Marketing site design"
+          ],
+          "add_ons": []
+        },
+        "scale": {
+          "name": "Enterprise Design",
+          "price": "$19,995-$29,995",
+          "best_for": "Complex platforms and enterprise products",
+          "deliverables": [
+            "Everything in Growth, plus:",
+            "40+ screens with complete journeys",
+            "Multi-tenant design system",
+            "Admin + client portal designs",
+            "Advanced data visualizations",
+            "Role-based access control UI",
+            "Interactive prototypes",
+            "Unlimited revisions during project",
+            "3 months post-launch support"
           ],
           "timeline": "6-10 weeks",
-          "not_included": [
-            "Frontend/backend development (design only)",
-            "User testing with real users (add-on available)",
-            "Marketing website design (separate package)"
-          ],
-          "add_ons": [
-            "User testing (10-15 users): +$5K-$7K",
-            "Interactive prototype: +$6K-$8K",
-            "Marketing site design: +$8K-$12K",
-            "2 months design support: +$8K"
-          ]
-        },
-        "enterprise-platform": {
-          "name": "Enterprise Platform Design",
-          "price": "$45K-$75K",
-          "best_for": "Enterprise SaaS, complex multi-tenant platforms, admin + client portals",
-          "deliverables": [
-            "40+ screens with complete user journeys",
-            "Multi-tenant design system (white-label ready)",
-            "Admin portal + client portal designs",
-            "Advanced data visualization and dashboards",
-            "Complex workflows and automations",
-            "Role-based access control (RBAC) UI",
-            "Comprehensive design system with documentation",
-            "Interactive prototypes for key flows",
-            "Accessibility + internationalization (i18n) ready",
-            "Figma + design tokens for dev handoff",
-            "Unlimited revisions during project",
-            "3 months post-launch design support"
-          ],
-          "timeline": "10-16 weeks",
-          "not_included": [
-            "Development (design only)",
-            "Ongoing product design retainer (separate engagement)"
-          ],
-          "add_ons": [
-            "User research program: +$10K-$15K",
-            "Design retainer (ongoing): +$12K-$18K/mo",
-            "Mobile app design: +$15K-$25K"
-          ]
+          "add_ons": [],
+          "not_included": []
         }
       }
     },
     "revenue-first-design": {
       "name": "Revenue-First Design Systems",
-      "tagline": "Brand assets that drive conversions",
-      "description": "Traditional 'Brand Identity' becomes Revenue-First Design Systems — Figma token bots, Midjourney assets, and performance data working in sync to deploy brand assets that trigger measurable conversion lift.",
-      "starting_price": "$9K",
+      "tagline": "Brand identity that builds trust",
+      "description": "Brand identity and design systems that help startups look professional and build trust with customers.",
+      "starting_price": "$1,995",
       "packages": {
-        "brand-essentials": {
+        "starter": {
           "name": "Brand Essentials",
-          "price": "$9K-$14K",
-          "best_for": "Startups, MVPs, rebrands on a budget",
+          "price": "$1,995-$3,995",
+          "best_for": "Startups and MVPs on a budget",
           "deliverables": [
             "Logo design (3 concepts, 2 revisions)",
-            "Color palette (primary, secondary, accent colors)",
+            "Color palette (primary, secondary, accent)",
             "Typography system (2-3 font pairings)",
-            "Basic brand guidelines (15-20 pages PDF)",
+            "Basic brand guidelines (15-20 pages)",
             "Business card design",
             "Email signature template",
-            "Social media profile graphics (3 platforms)",
+            "Social media profile graphics",
             "Source files (AI, Figma, PNG, SVG)"
           ],
-          "timeline": "3-4 weeks",
+          "timeline": "2-3 weeks",
           "not_included": [
-            "Website design (separate service)",
-            "Marketing materials (add-on available)",
-            "Brand strategy workshop",
-            "Video/motion graphics"
+            "Website design",
+            "Marketing materials",
+            "Brand strategy workshop"
           ],
-          "add_ons": [
-            "Marketing materials pack (flyers, brochures): +$2K-$3K",
-            "Brand strategy session (4 hours): +$2K",
-            "Social media templates (10-15): +$1K-$2K"
-          ]
+          "add_ons": []
         },
-        "complete-brand-system": {
+        "growth": {
           "name": "Complete Brand System",
-          "price": "$18K-$28K",
-          "best_for": "Growth companies, full rebrands, enterprise",
+          "price": "$5,995-$9,995",
+          "popular": true,
+          "value_note": "Only $4K more but includes complete system + templates + social media + email templates",
+          "best_for": "Growth companies and full rebrands",
           "deliverables": [
-            "Comprehensive logo suite (primary, secondary, icon, variations)",
-            "Complete color system (primary, secondary, neutrals, semantic)",
-            "Typography system (headings, body, mono, scales)",
+            "Everything in Starter, plus:",
+            "Comprehensive logo suite (variations)",
+            "Complete color system",
             "Photography style guide",
-            "Illustration style and icon system",
-            "Brand voice and messaging framework",
-            "Comprehensive brand guidelines (40-60 pages)",
-            "Marketing templates (pitch deck, one-pager, case study)",
-            "Social media templates (20+ templates)",
+            "Illustration style and icons",
+            "Brand voice and messaging",
+            "Comprehensive guidelines (40-60 pages)",
+            "Marketing templates (pitch deck, one-pager)",
+            "Social media templates (20+)",
             "Email marketing templates (5 layouts)",
-            "Stationery suite (business cards, letterhead, envelopes)",
-            "Design system in Figma (tokens, components)",
-            "Source files + brand assets library"
+            "Stationery suite",
+            "Design system in Figma",
+            "Source files + assets library"
           ],
-          "timeline": "6-8 weeks",
-          "not_included": [
-            "Website development (design available as add-on)",
-            "Video/motion branding (add-on available)",
-            "Ongoing brand management (retainer required)"
-          ],
-          "add_ons": [
-            "Website design (5-10 pages): +$12K-$18K",
-            "Motion brand package (logo animation, templates): +$5K-$8K",
-            "Brand management retainer: +$4K-$6K/mo",
-            "Packaging design: +$6K-$10K"
-          ]
+          "timeline": "4-6 weeks",
+          "not_included": ["Website development", "Video/motion branding"],
+          "add_ons": []
         }
       }
     },
     "ai-product-development": {
       "name": "AI Product Development",
-      "tagline": "Ship production-ready MVPs in 90 days",
-      "description": "What others call 'UI/UX Design' — we call AI Product Development. Claude Sonnet + GPT-4o co-pilot every sprint so the system learns from each interaction and self-optimizes. LangChain telemetry bakes growth metrics in before launch.",
-      "starting_price": "$15K",
+      "tagline": "Build and launch AI products",
+      "description": "Design and build AI-powered products from validation to launch using modern tools and frameworks.",
+      "starting_price": "$4,995",
       "packages": {
-        "mvp-validation": {
+        "starter": {
           "name": "MVP Validation",
-          "price": "$15K-$25K",
-          "best_for": "Testing ideas, market validation, early-stage startups",
+          "price": "$4,995-$7,995",
+          "best_for": "Testing ideas, early-stage validation",
           "deliverables": [
-            "Core feature MVP (1-2 features)",
             "User research and validation (5-10 interviews)",
             "Wireframes and user flows",
             "Interactive prototype (clickable)",
@@ -269,272 +216,287 @@
             "Basic analytics setup",
             "Technical architecture recommendation",
             "Product roadmap (next 6 months)",
-            "90-day success metrics dashboard"
+            "Success metrics dashboard"
           ],
-          "timeline": "6-8 weeks",
+          "timeline": "3-4 weeks",
           "not_included": [
-            "Full production development (add-on available)",
-            "Marketing and growth (separate service)",
+            "Full production development",
+            "Marketing and growth",
             "Ongoing product management"
           ],
-          "add_ons": [
-            "MVP development (no-code): +$8K-$12K",
-            "User testing (15-20 users): +$4K-$6K",
-            "Growth strategy + execution: +$6K-$10K/mo"
-          ]
+          "add_ons": []
         },
-        "full-ai-product": {
+        "growth": {
           "name": "Full AI Product",
-          "price": "$35K-$55K",
-          "best_for": "Production-ready products, SaaS platforms, AI-powered apps",
+          "price": "$12,995-$19,995",
+          "popular": true,
+          "value_note": "Only $8K more but includes complete development + AI integration + 2 months support",
+          "best_for": "Production-ready products and SaaS platforms",
           "deliverables": [
+            "Everything in Starter, plus:",
             "Complete product design (20-30 screens)",
-            "AI integration architecture (LLM, embeddings, vector DB)",
-            "Full-stack development (frontend + backend + AI)",
+            "AI integration architecture",
+            "Full-stack development (frontend + backend)",
             "User authentication and authorization",
             "Database design and setup",
-            "AI model integration (OpenAI, Anthropic, or custom)",
+            "AI model integration (OpenAI, Anthropic)",
             "Admin dashboard",
-            "Analytics and telemetry (PostHog, Mixpanel)",
-            "Deployment and hosting setup (Vercel, AWS, etc.)",
+            "Analytics and telemetry",
+            "Deployment and hosting setup",
             "Documentation and handoff",
-            "90-day guarantee: working product that validates",
             "2 months post-launch support"
           ],
-          "timeline": "10-14 weeks (90-day guarantee)",
+          "timeline": "8-12 weeks",
           "not_included": [
-            "Marketing website (add-on available)",
-            "Ongoing product development (retainer available)",
-            "Custom AI model training (add-on available)"
+            "Marketing website",
+            "Ongoing development",
+            "Custom AI model training"
           ],
-          "add_ons": [
-            "Marketing website: +$10K-$15K",
-            "Custom AI model training: +$15K-$30K",
-            "Product development retainer: +$12K-$20K/mo",
-            "Mobile app (iOS/Android): +$25K-$40K"
-          ]
+          "add_ons": []
         },
-        "enterprise-ai-platform": {
-          "name": "Enterprise AI Platform",
-          "price": "$75K-$150K+",
-          "best_for": "Enterprise platforms, multi-tenant SaaS, complex AI systems",
+        "scale": {
+          "name": "Enterprise AI Product",
+          "price": "$29,995-$49,995",
+          "best_for": "Complex AI systems and enterprise platforms",
           "deliverables": [
+            "Everything in Growth, plus:",
             "Complete platform architecture (40+ screens)",
             "Multi-tenant infrastructure",
-            "Advanced AI capabilities (RAG, agents, fine-tuning)",
+            "Advanced AI capabilities (RAG, agents)",
             "Enterprise security and compliance",
-            "Role-based access control (RBAC)",
+            "Role-based access control",
             "API development and documentation",
             "Admin + client portals",
-            "Advanced analytics and reporting",
-            "Integration with enterprise tools (Salesforce, HubSpot, etc.)",
-            "White-label capabilities",
-            "Scalable infrastructure (auto-scaling, CDN, caching)",
+            "Advanced analytics",
+            "Integration with enterprise tools",
+            "Scalable infrastructure",
             "Comprehensive documentation",
-            "Team training and onboarding",
+            "Team training",
             "6 months post-launch support"
           ],
-          "timeline": "16-24 weeks",
-          "not_included": [
-            "Ongoing platform development (retainer required)",
-            "24/7 support (separate SLA agreement)"
-          ],
-          "add_ons": [
-            "Dedicated development team: +$25K-$40K/mo",
-            "24/7 enterprise support: +$8K-$12K/mo",
-            "Custom integrations: Quote based on scope",
-            "AI model development: +$30K-$75K"
-          ]
+          "timeline": "12-16 weeks",
+          "add_ons": [],
+          "not_included": []
         }
       }
     },
     "ai-powered-growth": {
       "name": "AI-Powered Growth Engines",
-      "tagline": "Automated revenue streams",
-      "description": "Beyond 'Marketing' — AI-Powered Growth Engines with GPT-4o copy orchestration, HubSpot scoring, and Pinecone intent data for maximum ROI. Turn on revenue streams that compound without manual intervention.",
-      "starting_price": "$6K/mo",
+      "tagline": "Content marketing and growth campaigns",
+      "description": "Content marketing and growth campaigns to help startups generate leads and build consistent pipeline.",
+      "starting_price": "$2,995/mo",
       "packages": {
-        "growth-starter": {
+        "starter": {
           "name": "Growth Starter",
-          "price": "$6K-$9K/month",
-          "best_for": "Startups, early traction, testing channels",
+          "price": "$2,995-$4,995/month",
+          "best_for": "Startups testing channels",
           "deliverables": [
             "Growth strategy and channel selection",
-            "2 primary channels (e.g., SEO + Email or Content + Social)",
+            "2 primary channels (SEO + Email or Content + Social)",
             "Content creation (4-8 pieces/month)",
             "Email marketing (2 campaigns/month)",
             "Analytics setup and monthly reporting",
             "A/B testing (2-3 tests/month)",
             "Monthly strategy calls (2 hours)",
-            "Basic automation setup (email sequences, lead scoring)"
+            "Basic automation setup"
           ],
           "timeline": "Month-to-month, 3-month minimum",
           "not_included": [
-            "Paid advertising management (add-on available)",
-            "Website development (separate service)",
-            "Advanced AI/ML personalization"
+            "Paid advertising management",
+            "Website development",
+            "Advanced AI personalization"
           ],
-          "add_ons": [
-            "Paid ads management (Google/Meta): +$3K-$5K/mo + ad spend",
-            "Additional channel: +$2K-$3K/mo per channel",
-            "Advanced analytics: +$2K/mo"
-          ]
+          "add_ons": []
         },
-        "growth-accelerator": {
+        "growth": {
           "name": "Growth Accelerator",
-          "price": "$12K-$18K/month",
-          "best_for": "Scaling companies, proven product-market fit, multi-channel",
+          "price": "$5,995-$9,995/month",
+          "popular": true,
+          "value_note": "Only $3K more but includes 4-5 channels + more content + dedicated manager",
+          "best_for": "Scaling companies with proven product-market fit",
           "deliverables": [
+            "Everything in Starter, plus:",
             "Comprehensive growth strategy",
-            "4-5 growth channels (SEO, Content, Email, Social, Partnerships)",
+            "4-5 channels (SEO, Content, Email, Social, Partnerships)",
             "Content production (12-20 pieces/month)",
-            "Email marketing (4-6 campaigns/month + nurture sequences)",
+            "Email marketing (4-6 campaigns + nurture)",
             "Social media management (15-25 posts/month)",
             "Paid advertising strategy and execution",
-            "Conversion rate optimization (CRO) - 5-10 tests/month",
-            "Marketing automation and workflows",
-            "Advanced analytics and attribution",
-            "Weekly strategy calls (4 hours/month)",
+            "CRO (5-10 tests/month)",
+            "Marketing automation",
+            "Advanced analytics",
+            "Weekly strategy calls",
             "Dedicated growth manager"
           ],
           "timeline": "Month-to-month, 6-month minimum",
           "not_included": [
-            "PR and media relations (add-on available)",
-            "Influencer marketing (add-on available)",
-            "Events and conferences"
+            "PR and media relations",
+            "Influencer marketing",
+            "Events"
           ],
-          "add_ons": [
-            "PR and media outreach: +$4K-$6K/mo",
-            "Influencer partnerships: +$3K-$5K/mo",
-            "Video content production: +$5K-$8K/mo",
-            "International expansion (new market): +$6K-$10K/mo"
-          ]
+          "add_ons": []
         },
-        "growth-enterprise": {
-          "name": "Enterprise Growth Engine",
-          "price": "$25K-$50K/month",
-          "best_for": "Enterprise, aggressive scaling, full-funnel optimization",
+        "scale": {
+          "name": "Growth Enterprise",
+          "price": "$12,995-$19,995/month",
+          "best_for": "Aggressive scaling and full-funnel optimization",
           "deliverables": [
-            "Full-funnel growth strategy (awareness to retention)",
-            "All growth channels (SEO, Content, Email, Social, Paid, Partnerships, PR)",
+            "Everything in Accelerator, plus:",
+            "Full-funnel growth strategy",
+            "All growth channels",
             "High-volume content (30-50 pieces/month)",
-            "Email marketing (10-15 campaigns/month + advanced automation)",
-            "Social media (30-50 posts/month across platforms)",
-            "Paid advertising across all platforms (Google, Meta, LinkedIn, etc.)",
-            "Advanced CRO and experimentation (15-25 tests/month)",
-            "Predictive analytics and AI-powered personalization",
-            "Marketing technology stack optimization",
-            "Account-based marketing (ABM) for enterprise",
-            "Attribution modeling and revenue forecasting",
-            "Dedicated growth team (strategist + specialist + analyst)",
-            "Executive reporting and strategy sessions"
+            "Email marketing (10-15 campaigns + automation)",
+            "Social media (30-50 posts/month)",
+            "Paid advertising across all platforms",
+            "Advanced CRO (15-25 tests/month)",
+            "Predictive analytics and AI personalization",
+            "Marketing tech stack optimization",
+            "Account-based marketing (ABM)",
+            "Attribution modeling",
+            "Dedicated growth team",
+            "Executive reporting"
           ],
           "timeline": "Month-to-month, 12-month minimum",
-          "not_included": [
-            "Product development (separate service)",
-            "Sales team enablement (add-on available)"
-          ],
-          "add_ons": [
-            "Sales enablement program: +$8K-$12K/mo",
-            "Custom AI/ML models: +$15K-$30K setup + $5K/mo",
-            "International market expansion: Custom quote"
-          ]
+          "add_ons": [],
+          "not_included": []
         }
       }
     },
     "full-stack-ai": {
       "name": "Full-Stack AI Implementation",
-      "tagline": "Revenue-generating features",
-      "description": "Development Solutions transformed into Full-Stack AI Implementation — Bedrock, LangChain, and Dagster orchestration with intelligence baked in from day one. Release revenue-generating features that pay for themselves.",
-      "starting_price": "$18K",
+      "tagline": "Add AI to your product",
+      "description": "Add AI features to existing products or get dedicated AI engineers for ongoing development.",
+      "starting_price": "$5,995",
       "packages": {
-        "ai-integration": {
+        "starter": {
           "name": "AI Feature Integration",
-          "price": "$18K-$28K",
-          "best_for": "Adding AI to existing product, single AI feature",
+          "price": "$5,995-$9,995",
+          "best_for": "Adding AI to existing product",
           "deliverables": [
-            "1-2 AI features (e.g., chatbot, content generation, recommendations)",
-            "LLM integration (OpenAI, Anthropic, or custom)",
+            "1-2 AI features (chatbot, content generation, etc.)",
+            "LLM integration (OpenAI, Anthropic)",
             "API development and documentation",
-            "Database and vector store setup (if needed)",
-            "Testing and quality assurance",
+            "Database and vector store setup",
+            "Testing and QA",
             "Deployment to production",
             "Performance optimization",
             "2 weeks post-launch support",
-            "Technical documentation and handoff"
+            "Technical documentation"
           ],
-          "timeline": "6-8 weeks",
+          "timeline": "4-6 weeks",
           "not_included": [
-            "Frontend/UI design (separate service)",
-            "Ongoing AI model optimization (retainer required)",
-            "Custom model training (add-on available)"
+            "Frontend/UI design",
+            "Ongoing optimization",
+            "Custom model training"
           ],
-          "add_ons": [
-            "UI/UX design for AI features: +$6K-$10K",
-            "Custom model fine-tuning: +$12K-$20K",
-            "Ongoing optimization: +$6K-$10K/mo"
-          ]
+          "add_ons": []
         },
-        "embedded-ai-team": {
-          "name": "Embedded AI Development Team",
-          "price": "$12K-$20K/month per developer",
-          "best_for": "Ongoing development, scaling AI capabilities, dedicated team",
+        "growth": {
+          "name": "Embedded AI Team",
+          "price": "$12,995/month per developer",
+          "popular": true,
+          "value_note": "Dedicated engineer who learns your product and delivers continuously",
+          "best_for": "Ongoing development and scaling AI capabilities",
           "deliverables": [
-            "Dedicated full-stack AI engineer(s)",
+            "Dedicated full-stack AI engineer",
             "Sprint-based development (2-week sprints)",
             "AI feature development and optimization",
             "Infrastructure and DevOps support",
-            "Code reviews and quality assurance",
+            "Code reviews and QA",
             "Technical documentation",
             "Weekly sync meetings and demos",
-            "Access to AI/ML expertise and best practices"
+            "Access to AI/ML expertise"
           ],
           "timeline": "Month-to-month, 3-month minimum",
           "team_options": [
-            "1 engineer: $12K-$15K/mo",
-            "2 engineers: $22K-$28K/mo",
-            "Full team (3-4 engineers + PM): $40K-$60K/mo"
+            "1 engineer: $12,995/mo",
+            "2 engineers: $24,995/mo",
+            "Full team (3-4 engineers): $45,995-$59,995/mo"
           ],
-          "not_included": [
-            "Product management (add-on available)",
-            "Design services (separate engagement)"
-          ],
-          "add_ons": [
-            "Product manager: +$8K-$12K/mo",
-            "DevOps specialist: +$10K-$15K/mo",
-            "Data scientist: +$12K-$18K/mo"
-          ]
+          "add_ons": [],
+          "not_included": []
         },
-        "ai-infrastructure": {
-          "name": "AI Infrastructure & Platform",
-          "price": "$45K-$80K",
-          "best_for": "Building AI infrastructure, LLMOps, enterprise AI platform",
+        "scale": {
+          "name": "AI Infrastructure",
+          "price": "$24,995-$39,995",
+          "best_for": "Building AI infrastructure and LLMOps",
           "deliverables": [
-            "Complete AI infrastructure setup (LLM gateway, vector DB, orchestration)",
+            "Complete AI infrastructure setup",
             "Multi-model support (OpenAI, Anthropic, open-source)",
-            "Prompt engineering and management system",
+            "Prompt engineering and management",
             "RAG (Retrieval Augmented Generation) pipeline",
-            "Fine-tuning and model optimization infrastructure",
-            "Monitoring and observability (LangSmith, Helicone, etc.)",
-            "Cost optimization and rate limiting",
-            "Security and compliance (data privacy, PII handling)",
-            "API gateway and authentication",
+            "Fine-tuning infrastructure",
+            "Monitoring and observability",
+            "Cost optimization",
+            "Security and compliance",
+            "API gateway and auth",
             "Documentation and runbooks",
-            "Team training and knowledge transfer",
+            "Team training",
             "3 months post-launch support"
           ],
-          "timeline": "12-16 weeks",
-          "not_included": [
-            "Application development (separate service)",
-            "Ongoing platform management (retainer required)"
-          ],
-          "add_ons": [
-            "Application development: +$30K-$60K",
-            "Platform management retainer: +$15K-$25K/mo",
-            "24/7 monitoring and support: +$8K-$12K/mo"
-          ]
+          "timeline": "8-12 weeks",
+          "add_ons": [],
+          "not_included": []
         }
       }
     }
+  },
+  "comparison_table": {
+    "title": "Why Pixelmojo?",
+    "subtitle": "Compare traditional agencies vs our AI-powered approach",
+    "columns": [
+      {
+        "label": "Traditional Agency",
+        "items": [
+          "6-12 month timelines",
+          "$50K-$200K+ budgets",
+          "Fixed deliverables",
+          "Limited revisions",
+          "Handoff and done",
+          "No ongoing optimization"
+        ]
+      },
+      {
+        "label": "Pixelmojo (AI-Powered)",
+        "highlight": true,
+        "items": [
+          "4-12 week delivery",
+          "$1,995-$49,995 budgets",
+          "Flexible and iterative",
+          "Collaborative process",
+          "Post-launch support included",
+          "Built for optimization"
+        ]
+      }
+    ],
+    "savings_example": {
+      "title": "Real project example",
+      "traditional": "$85K traditional agency quote",
+      "pixelmojo": "$19,995 with Pixelmojo",
+      "savings": "$65K saved",
+      "note": "Delivered in 10 weeks vs 6 months quoted by traditional agency"
+    }
+  },
+  "free_roi_audit": {
+    "title": "Free 30-Min Strategy Call",
+    "tagline": "Let's talk about your project",
+    "description": "We'll review your needs, discuss options, and create a custom proposal. No pressure, no obligation.",
+    "cta": "Book your free call",
+    "includes": [
+      "Project assessment and recommendations",
+      "Rough timeline and pricing estimate",
+      "Answer all your questions",
+      "Custom proposal (if it's a good fit)"
+    ]
+  },
+  "ph_startup_special": {
+    "title": "Philippines Startup Special",
+    "discount": "15-20% off",
+    "eligibility": [
+      "Registered Philippine startup",
+      "Pre-seed or seed stage",
+      "First-time clients"
+    ],
+    "note": "We're based in the Philippines and want to support local startups. Book a call to see if you qualify."
   }
 }

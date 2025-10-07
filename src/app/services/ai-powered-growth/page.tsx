@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'AI-Powered Growth Engines',
   description:
-    'Go beyond design. Activate your brand for real growth. Turn your investment into your most powerful engine for leads, sales, and lasting market presence through strategic, data-driven activation.',
-  pricing: 'Retainers from $6K/mo',
+    'Content marketing and growth campaigns to help startups generate leads and build consistent pipeline.',
+  pricing: 'Retainers from $2,995/mo',
 }
 
 export const metadata: Metadata = {
@@ -291,6 +292,9 @@ export default function AIPoweredGrowth() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers serviceType='ai-powered-growth' theme={theme} />
 
             <ServiceSplitSection
               theme={theme}

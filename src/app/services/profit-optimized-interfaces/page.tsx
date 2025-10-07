@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'Profit-Optimized Interfaces',
   description:
-    'Interfaces that maximize revenue per user. AI-powered experiences that convert, upsell, and retain.',
-  pricing: 'Projects from $12K',
+    'Product UI/UX designed to maximize user engagement, conversion, and retention.',
+  pricing: 'Projects from $2,995',
 }
 
 export const metadata: Metadata = {
@@ -286,6 +287,12 @@ export default function ProfitOptimizedInterfaces() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers
+              serviceType='profit-optimized-interfaces'
+              theme={theme}
+            />
 
             <ServiceSplitSection
               theme={theme}

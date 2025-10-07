@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'Revenue-First Design Systems',
   description:
-    'Build a brand that commands attention. We forge visual strategies for tech startups and SaaS businesses that capture attention, build trust, and drive growth through powerful brand identity.',
-  pricing: 'Starts at $9K',
+    'Brand identity and design systems that help startups look professional and build trust with customers.',
+  pricing: 'Starts at $1,995',
 }
 
 export const metadata: Metadata = {
@@ -295,6 +296,9 @@ export default function RevenueFirstDesign() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers serviceType='revenue-first-design' theme={theme} />
 
             <ServiceSplitSection
               theme={theme}

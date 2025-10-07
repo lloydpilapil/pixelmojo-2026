@@ -31,65 +31,63 @@ const ServicesPreview = ({
     {
       title: 'AI Product Development',
       description:
-        'What others call "UI/UX Design" — we call AI Product Development. Claude Sonnet + GPT-4o co-pilot every sprint so the system learns from each interaction and self-optimizes.',
+        'Design and build AI-powered products from validation to launch using modern tools and frameworks.',
       icon: '/pixelmojo-services-ai-product-development-thumb.webp',
       href: '/services/ai-product-development',
       gradient: '',
-      outcome: 'LangChain telemetry bakes growth metrics in before launch.',
-      startingAt: 'From $15K',
+      outcome: 'Ship production-ready AI products in 90 days.',
+      startingAt: 'From $4,995',
       featured: true,
     },
     {
       title: 'Revenue-First Design Systems',
       description:
-        'Traditional "Brand Identity" becomes Revenue-First Design Systems — Figma token bots, Midjourney assets, and performance data working in sync.',
+        'Brand identity and design systems that help startups look professional and build trust with customers.',
       icon: '/pixelmojo-services-revenue-first-design-thumb.webp',
       href: '/services/revenue-first-design',
       gradient: '',
-      outcome: 'Deploy brand assets that trigger measurable conversion lift.',
-      startingAt: 'Starts at $9K',
+      outcome: 'Complete brand system ready in weeks.',
+      startingAt: 'Starts at $1,995',
     },
     {
       title: 'AI-Powered Growth Engines',
       description:
-        'Beyond "Marketing" — AI-Powered Growth Engines with GPT-4o copy orchestration, HubSpot scoring, and Pinecone intent data for maximum ROI.',
+        'Content marketing and growth campaigns to help startups generate leads and build consistent pipeline.',
       icon: '/pixelmojo-services-ai-powered-growth-thumb.webp',
       href: '/services/ai-powered-growth',
       gradient: '',
-      outcome:
-        'Turn on revenue streams that compound without manual intervention.',
-      startingAt: 'Retainers from $6K/mo',
+      outcome: 'Generate qualified leads and build pipeline.',
+      startingAt: 'Retainers from $2,995/mo',
     },
     {
       title: 'Profit-Optimized Interfaces',
       description:
-        'Web & App Design evolved into Profit-Optimized Interfaces — predictive personalization and experimentation that adapt in real-time to maximize revenue per user.',
+        'Product UI/UX designed to maximize user engagement, conversion, and retention.',
       icon: '/pixelmojo-services-profit-optimized-interfaces-thumb.webp',
       href: '/services/profit-optimized-interfaces',
       gradient: '',
-      outcome: 'Ship interfaces that increase ARPU measurably within 30 days.',
-      startingAt: 'Project scopes from $22K',
+      outcome: 'Beautiful, functional product interfaces.',
+      startingAt: 'Projects from $2,995',
     },
     {
       title: 'Conversion Asset Systems',
       description:
-        'Graphics & Visuals become Conversion Asset Systems — Jasper, Gamma, and Synthesia pipelines turning behavioral science into assets that drive action.',
+        'Landing pages and marketing assets designed to convert visitors into customers.',
       icon: '/pixelmojo-services-conversion-assets-thumb.webp',
       href: '/services/conversion-assets',
       gradient: '',
-      outcome:
-        'Deploy assets with proven impact on close rates and deal velocity.',
-      startingAt: 'Bundles from $4K',
+      outcome: 'Professional landing pages that convert.',
+      startingAt: 'Projects from $1,995',
     },
     {
       title: 'Full-Stack AI Implementation',
       description:
-        'Development Solutions transformed into Full-Stack AI Implementation — Bedrock, LangChain, and Dagster orchestration with intelligence baked in from day one.',
+        'Add AI features to existing products or get dedicated AI engineers for ongoing development.',
       icon: '/pixelmojo-services-footer-image-thumb.webp',
       href: '/services/full-stack-ai',
       gradient: '',
-      outcome: 'Release revenue-generating features that pay for themselves.',
-      startingAt: 'Embedded teams from $12K/mo',
+      outcome: 'AI features integrated and deployed.',
+      startingAt: 'Programs from $5,995',
     },
   ],
 }: ServicesPreviewProps) => {

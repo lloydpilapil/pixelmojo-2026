@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'Full-Stack AI Implementation',
   description:
-    'Production AI that generates ROI in weeks. Complete ecosystems from infrastructure to interface.',
-  pricing: 'Programs from $18K',
+    'Add AI features to existing products or get dedicated AI engineers for ongoing development.',
+  pricing: 'Programs from $5,995',
 }
 
 export const metadata: Metadata = {
@@ -306,6 +307,9 @@ export default function FullStackAIImplementation() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers serviceType='full-stack-ai' theme={theme} />
 
             <ServiceSplitSection
               theme={theme}

@@ -10,13 +10,14 @@ import {
   ServiceStatList,
   ServiceTimeline,
 } from '@/components/services/ServiceSections'
+import PricingTiers from '@/components/services/PricingTiers'
 import { getServiceTheme } from '@/utils/serviceThemes'
 
 const service = {
   title: 'Conversion Asset Systems',
   description:
-    'Visuals that close deals, not win awards. From pitch decks to product experiences that drive expansion.',
-  pricing: 'Projects from $8K',
+    'Landing pages and marketing assets designed to convert visitors into customers.',
+  pricing: 'Projects from $1,995',
 }
 
 export const metadata: Metadata = {
@@ -279,6 +280,9 @@ export default function ConversionAssetSystems() {
             </ServiceHero>
 
             <ServiceStatList theme={theme} items={heroStats} />
+
+            {/* Pricing Tiers */}
+            <PricingTiers serviceType='conversion-assets' theme={theme} />
 
             <ServiceSplitSection
               theme={theme}
