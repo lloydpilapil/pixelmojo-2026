@@ -2,6 +2,13 @@
  * PixelMojo AI Assistant Version
  *
  * Version History:
+ * - 1.1.0 (2025-10-07) - Consultative Approach Update
+ *   - Added high-level strategic guidance vs detailed execution
+ *   - Curiosity gap technique (show value, not complete implementation)
+ *   - Auto-redirect "how to" questions to Calendly/contact form
+ *   - IP protection (doesn't give away full strategies)
+ *   - Lead qualification through booking redirects
+ *
  * - 1.0.0 (2025-10-07) - Major release with Dan Ariely + Chris Voss principles
  *   - Dan Ariely's 3-tier pricing psychology (Starter/Growth/Scale)
  *   - Chris Voss's "Never Split the Difference" negotiation framework
@@ -15,7 +22,7 @@
  *   - Rate limiting and session management
  */
 
-export const ASSISTANT_VERSION = '1.0.0'
+export const ASSISTANT_VERSION = '1.1.0'
 export const ASSISTANT_NAME = 'PixelMojo Assistant'
 export const ASSISTANT_MODEL = 'gpt-4o-mini'
 export const ASSISTANT_RELEASE_DATE = '2025-10-07'
