@@ -3,6 +3,14 @@
 import { useState, useEffect } from 'react'
 import { MessageCircle, X } from 'lucide-react'
 import ChatWindow from './ChatWindow'
+import {
+  getCurrentContext,
+  getTriggerRules,
+  detectExitIntent,
+  markAsVisited,
+  markAsEngaged,
+  type ChatContext,
+} from '@/lib/chat-context'
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
@@ -10,17 +18,40 @@ export default function ChatWidget() {
   const [isVisible, setIsVisible] = useState(false)
   const [exitIntentTriggered, setExitIntentTriggered] = useState(false)
   const [proactiveTriggered, setProactiveTriggered] = useState(false)
+  const [chatContext, setChatContext] = useState<ChatContext | null>(null)
 
-  // Initialize session when component mounts
+  // Initialize context and session when component mounts
   useEffect(() => {
-    console.log('[ChatWidget] Component mounted, initializing session')
+    // Get page context
+    const context = getCurrentContext()
+    setChatContext(context)
+
+    // Mark as visited
+    markAsVisited()
+
+    // Initialize session
     initializeSession()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Track time on page and update context
+  useEffect(() => {
+    if (!chatContext) return
+
+    const startTime = Date.now()
+    const interval = setInterval(() => {
+      const seconds = Math.floor((Date.now() - startTime) / 1000)
+
+      // Update context with new time
+      setChatContext(prev => (prev ? { ...prev, timeOnPage: seconds } : prev))
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [chatContext === null])
 
   // Track session ID changes
   useEffect(() => {
     if (sessionId) {
-      console.log('[ChatWidget] Session ID changed:', sessionId)
     }
   }, [sessionId])
 
@@ -38,43 +69,60 @@ export default function ChatWidget() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Exit intent detection - trigger when mouse moves to leave page
+  // Context-aware exit intent detection
   useEffect(() => {
+    if (!chatContext) return
+
+    const triggerRules = getTriggerRules(chatContext.pageType)
+
+    // Only enable exit intent on certain pages
+    if (!triggerRules.enableExitIntent) return
+
     // Check if exit intent was already shown
     const exitIntentShown = localStorage.getItem('pixelmojo_exit_intent_shown')
     if (exitIntentShown === 'true') return
 
-    const handleMouseLeave = (e: MouseEvent) => {
-      // Detect when mouse moves to top of viewport (likely to close tab or navigate away)
-      if (e.clientY <= 10 && !isOpen) {
-        setExitIntentTriggered(true)
-        setIsOpen(true)
-        // Mark as shown so it only triggers once
-        localStorage.setItem('pixelmojo_exit_intent_shown', 'true')
-      }
-    }
+    // Check if already manually opened chat
+    if (isOpen) return
 
-    document.addEventListener('mouseout', handleMouseLeave)
-    return () => document.removeEventListener('mouseout', handleMouseLeave)
-  }, [isOpen])
+    const cleanup = detectExitIntent(() => {
+      setExitIntentTriggered(true)
+      setIsOpen(true)
+      markAsEngaged()
+      localStorage.setItem('pixelmojo_exit_intent_shown', 'true')
+    })
 
-  // Proactive engagement - show chat after 25 seconds
+    return cleanup
+  }, [chatContext, isOpen])
+
+  // Context-aware proactive engagement
   useEffect(() => {
+    if (!chatContext) return
+
     // Check if proactive engagement was already shown
     const proactiveShown = localStorage.getItem('pixelmojo_proactive_shown')
     if (proactiveShown === 'true' || isOpen) return
 
-    // Wait 25 seconds then show proactive message
+    // Check if user previously engaged (return visitors)
+    if (chatContext.previouslyEngaged) {
+      // Don't auto-trigger for return visitors who already engaged
+      return
+    }
+
+    // Get page-specific trigger rules
+    const triggerRules = getTriggerRules(chatContext.pageType)
+    const delayMs = triggerRules.delaySeconds * 1000 // Wait for page-specific delay then show proactive message
     const timer = setTimeout(() => {
       if (!isOpen) {
         setProactiveTriggered(true)
         setIsOpen(true)
+        markAsEngaged()
         localStorage.setItem('pixelmojo_proactive_shown', 'true')
       }
-    }, 25000) // 25 seconds
+    }, delayMs)
 
     return () => clearTimeout(timer)
-  }, [isOpen])
+  }, [chatContext, isOpen])
 
   // Lock body scroll when chat is open
   useEffect(() => {
@@ -92,8 +140,6 @@ export default function ChatWidget() {
 
   const initializeSession = async () => {
     try {
-      console.log('[ChatWidget] Initializing session...')
-
       // Check if we have an existing session in localStorage
       const existingSessionId = localStorage.getItem(
         'pixelmojo_chat_session_id'
@@ -140,7 +186,6 @@ export default function ChatWidget() {
       )
 
       // Create new session if none exists
-      console.log('[ChatWidget] No existing session, creating new one...')
       const response = await fetch('/api/chat/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -155,7 +200,6 @@ export default function ChatWidget() {
       })
 
       const data = await response.json()
-      console.log('[ChatWidget] Created new session:', data.sessionId)
       setSessionId(data.sessionId)
 
       // Save session ID to localStorage for persistence
@@ -202,13 +246,14 @@ export default function ChatWidget() {
       )}
 
       {/* Chat Window */}
-      {isOpen && sessionId && (
+      {isOpen && sessionId && chatContext && (
         <div className='fixed inset-x-0 bottom-0 md:inset-auto md:bottom-20 md:right-4 z-50 mx-auto w-full md:max-w-md h-[calc(100vh-80px)] md:h-[600px] md:max-h-[80vh] animate-in slide-in-from-bottom-5 duration-300'>
           <ChatWindow
             sessionId={sessionId}
             onClose={() => setIsOpen(false)}
             exitIntentTriggered={exitIntentTriggered}
             proactiveTriggered={proactiveTriggered}
+            chatContext={chatContext}
           />
         </div>
       )}

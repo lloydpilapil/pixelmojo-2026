@@ -31,9 +31,37 @@ interface Session {
   created_at: string
   email: string | null
   visitor_id: string | null
-  session_metadata: any
+  session_metadata: Record<string, unknown>
   status: string
   message_count: number
+  // Location data
+  country: string | null
+  country_code: string | null
+  region: string | null
+  city: string | null
+  timezone: string | null
+  ip_address: string | null
+}
+
+// Helper function to get country flag emoji
+function getCountryFlag(countryCode: string | null): string {
+  if (!countryCode || countryCode.length !== 2) return ''
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0))
+  return String.fromCodePoint(...codePoints)
+}
+
+// Helper function to format location
+function formatLocation(session: Session): string {
+  const parts: string[] = []
+  if (session.city) parts.push(session.city)
+  if (session.region) parts.push(session.region)
+  if (session.country) parts.push(session.country)
+  const location = parts.join(', ')
+  const flag = getCountryFlag(session.country_code)
+  return flag ? `${flag} ${location}` : location
 }
 
 export default function ConversationDetailPage() {
@@ -50,6 +78,7 @@ export default function ConversationDetailPage() {
     if (sessionId) {
       fetchConversation()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId])
 
   const fetchConversation = async () => {
@@ -265,26 +294,51 @@ export default function ConversationDetailPage() {
                 </span>
                 <span>{session.message_count}</span>
               </div>
-              {session.session_metadata?.referrer && (
+              {/* Location Display */}
+              {(session.city || session.country) && (
+                <div>
+                  <span className='text-muted-foreground block mb-1'>
+                    Location
+                  </span>
+                  <span>{formatLocation(session)}</span>
+                </div>
+              )}
+              {session.timezone && (
+                <div>
+                  <span className='text-muted-foreground block mb-1'>
+                    Timezone
+                  </span>
+                  <span>{session.timezone}</span>
+                </div>
+              )}
+              {session.ip_address ? (
+                <div>
+                  <span className='text-muted-foreground block mb-1'>
+                    IP Address
+                  </span>
+                  <span className='text-xs'>{session.ip_address}</span>
+                </div>
+              ) : null}
+              {session.session_metadata?.referrer ? (
                 <div>
                   <span className='text-muted-foreground block mb-1'>
                     Referrer
                   </span>
                   <span className='text-xs break-all'>
-                    {session.session_metadata.referrer}
+                    {String(session.session_metadata.referrer)}
                   </span>
                 </div>
-              )}
-              {session.session_metadata?.userAgent && (
+              ) : null}
+              {session.session_metadata?.userAgent ? (
                 <div>
                   <span className='text-muted-foreground block mb-1'>
                     Device
                   </span>
                   <span className='text-xs break-all'>
-                    {session.session_metadata.userAgent}
+                    {String(session.session_metadata.userAgent)}
                   </span>
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

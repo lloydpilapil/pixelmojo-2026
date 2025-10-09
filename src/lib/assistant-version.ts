@@ -2,6 +2,19 @@
  * PixelMojo AI Assistant Version
  *
  * Version History:
+ * - 1.2.0 (2025-10-09) - Context-Aware Chat Triggers & IP Geolocation
+ *   - Phase 1: Context-aware proactive chat triggers
+ *   - Page-specific trigger timing (contact=5s, pricing=15s, home=30s, etc.)
+ *   - Context-aware greetings per page type (home, services, portfolio, blog, etc.)
+ *   - Service/project/blog topic extraction from URLs
+ *   - Exit intent detection (page-specific)
+ *   - Return visitor detection (no auto-trigger if previously engaged)
+ *   - Time-on-page tracking
+ *   - Page context passed to AI (pageType, serviceName, projectName, blogTopic)
+ *   - IP-based geolocation tracking (country, city, region, timezone)
+ *   - Graceful fallback when geolocation unavailable
+ *   - Admin location display with flags (e.g., "Manila, Philippines 🇵🇭")
+ *
  * - 1.1.0 (2025-10-07) - Consultative Approach Update
  *   - Added high-level strategic guidance vs detailed execution
  *   - Curiosity gap technique (show value, not complete implementation)
@@ -22,10 +35,10 @@
  *   - Rate limiting and session management
  */
 
-export const ASSISTANT_VERSION = '1.1.0'
+export const ASSISTANT_VERSION = '1.2.0'
 export const ASSISTANT_NAME = 'PixelMojo Assistant'
 export const ASSISTANT_MODEL = 'gpt-4o-mini'
-export const ASSISTANT_RELEASE_DATE = '2025-10-07'
+export const ASSISTANT_RELEASE_DATE = '2025-10-09'
 
 export interface AssistantInfo {
   version: string

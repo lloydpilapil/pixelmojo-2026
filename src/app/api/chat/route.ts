@@ -2,16 +2,20 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { supabase } from '@/lib/supabase'
 import servicesData from '@/data/services-knowledge.json'
+import { formatContextForAI, type ChatContext } from '@/lib/chat-context'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-// Build system prompt dynamically with pricing data from services-knowledge.json
-const buildSystemPrompt = () => {
+// Build system prompt dynamically with pricing data and page context
+const buildSystemPrompt = (chatContext?: ChatContext) => {
   const pricingKnowledge = JSON.stringify(servicesData, null, 2)
+  const contextInfo = chatContext ? formatContextForAI(chatContext) : ''
 
   return `You are a strategic consultant for PixelMojo, an AI-native design and development agency.
+
+${contextInfo ? contextInfo + '\n' : ''}
 
 ABOUT PIXELMOJO:
 We're AI-native from day one. Not a traditional agency that added AI tools—we rebuilt everything around AI to deliver revenue-generating products 3x faster with 60% fewer revisions.
@@ -429,7 +433,7 @@ const RATE_LIMIT_WINDOW_MS = 60 * 1000 // 1 minute
 
 export async function POST(req: NextRequest) {
   try {
-    const { sessionId, message, messages } = await req.json()
+    const { sessionId, message, messages, chatContext } = await req.json()
 
     if (!sessionId || !message) {
       return NextResponse.json(
@@ -504,9 +508,9 @@ export async function POST(req: NextRequest) {
       console.error('[API /chat] Error saving user message:', userMsgError)
     }
 
-    // Prepare conversation history for OpenAI
+    // Prepare conversation history for OpenAI with page context
     const conversationHistory = [
-      { role: 'system' as const, content: buildSystemPrompt() },
+      { role: 'system' as const, content: buildSystemPrompt(chatContext) },
       ...messages.map((msg: { role: string; content: string }) => ({
         role: msg.role as 'user' | 'assistant',
         content: msg.content,

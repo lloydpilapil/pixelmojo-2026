@@ -13,6 +13,7 @@ import {
 import Image from 'next/image'
 import Message from './Message'
 import { ASSISTANT_VERSION } from '@/lib/assistant-version'
+import { generateGreeting, type ChatContext } from '@/lib/chat-context'
 
 interface ChatMessage {
   role: 'user' | 'assistant'
@@ -24,6 +25,7 @@ interface ChatWindowProps {
   onClose: () => void
   exitIntentTriggered?: boolean
   proactiveTriggered?: boolean
+  chatContext: ChatContext
 }
 
 export default function ChatWindow({
@@ -31,6 +33,7 @@ export default function ChatWindow({
   onClose,
   exitIntentTriggered = false,
   proactiveTriggered = false,
+  chatContext,
 }: ChatWindowProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
@@ -44,10 +47,7 @@ export default function ChatWindow({
 
   // Track component lifecycle
   useEffect(() => {
-    console.log('[ChatWindow] Component mounted with sessionId:', sessionId)
-    return () => {
-      console.log('[ChatWindow] Component unmounting')
-    }
+    return () => {}
   }, [])
 
   const quickReplies = [
@@ -70,33 +70,13 @@ export default function ChatWindow({
     { icon: Tag, text: 'Pricing info', value: 'Tell me about your pricing' },
   ]
 
-  // Get page-specific proactive message based on current URL
-  const getProactiveMessage = () => {
-    const path = window.location.pathname
-
-    if (path.includes('/pricing') || path.includes('/contact')) {
-      return "👋 Questions about our packages or pricing? I'm here to help!"
-    }
-    if (path.includes('/projects') || path.includes('/portfolio')) {
-      return '👋 Looking for design help? I can point you to relevant examples from our portfolio!'
-    }
-    if (path.includes('/services')) {
-      return '👋 Interested in our services? I can help you find the perfect solution for your needs!'
-    }
-    if (path.includes('/blog')) {
-      return "👋 Have questions about AI-native design? I'm here to help!"
-    }
-
-    // Default proactive message
-    return '👋 Looking for design help? I can point you to relevant examples and answer any questions!'
+  // Get context-aware greeting message
+  const getContextualGreeting = () => {
+    return generateGreeting(chatContext)
   }
 
   // Load existing messages when session starts
   useEffect(() => {
-    console.log(
-      '[ChatWindow] loadMessages effect triggered, sessionId:',
-      sessionId
-    )
     if (sessionId) {
       loadMessages()
     }
@@ -110,14 +90,8 @@ export default function ChatWindow({
 
   const loadMessages = async () => {
     try {
-      console.log('[ChatWindow] Loading messages for session:', sessionId)
       const response = await fetch(`/api/chat/messages?sessionId=${sessionId}`)
       const data = await response.json()
-      console.log(
-        '[ChatWindow] Loaded messages:',
-        data.messages?.length || 0,
-        'messages'
-      )
       if (data.messages && data.messages.length > 0) {
         setMessages(
           data.messages.map((msg: { role: string; content: string }) => ({
@@ -128,20 +102,21 @@ export default function ChatWindow({
         // Hide quick replies if there are existing messages (conversation already started)
         setShowQuickReplies(false)
       } else {
-        // No existing messages, show greeting (use initial trigger values)
+        // No existing messages, show context-aware greeting
         let greetingMessage = ''
+        const contextualGreeting = getContextualGreeting()
+
+        const servicesList = `\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features`
 
         if (initialTriggersRef.current.proactiveTriggered) {
-          // Proactive engagement with page-specific message
-          greetingMessage = `${getProactiveMessage()}\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat are you interested in?`
+          // Proactive engagement with context-aware message
+          greetingMessage = `${contextualGreeting}${servicesList}\n\nWhat are you interested in?`
         } else if (initialTriggersRef.current.exitIntentTriggered) {
           // Exit intent message
-          greetingMessage =
-            'Wait! Before you go, can I help answer any questions?\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWhat would you like to know?'
+          greetingMessage = `Wait! Before you go, can I help answer any questions?${servicesList}\n\nWhat would you like to know?`
         } else {
-          // Default greeting
-          greetingMessage =
-            "Hi! Welcome to PixelMojo. I can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features\n\nWe're AI-native from day one. What are you looking to build?"
+          // Manual open - context-aware greeting
+          greetingMessage = `${contextualGreeting}${servicesList}\n\nWhat are you looking to build?`
         }
 
         setMessages([
@@ -191,6 +166,7 @@ export default function ChatWindow({
           sessionId,
           message: userMessage,
           messages: messages,
+          chatContext: chatContext, // Pass context to API
         }),
       })
 

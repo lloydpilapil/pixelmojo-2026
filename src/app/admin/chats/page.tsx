@@ -19,6 +19,32 @@ interface Session {
   message_count: number
   status: string
   lead: Lead | null
+  // Location data
+  country: string | null
+  country_code: string | null
+  region: string | null
+  city: string | null
+  timezone: string | null
+}
+
+// Helper function to get country flag emoji
+function getCountryFlag(countryCode: string | null): string {
+  if (!countryCode || countryCode.length !== 2) return ''
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0))
+  return String.fromCodePoint(...codePoints)
+}
+
+// Helper function to format location
+function formatLocation(session: Session): string {
+  const parts: string[] = []
+  if (session.city) parts.push(session.city)
+  if (session.country) parts.push(session.country)
+  const location = parts.join(', ')
+  const flag = getCountryFlag(session.country_code)
+  return flag ? `${location} ${flag}` : location
 }
 
 export default function AdminChatsPage() {
@@ -144,6 +170,10 @@ export default function AdminChatsPage() {
                     )}
                     {session.lead?.budget_range && (
                       <p>💰 {session.lead.budget_range}</p>
+                    )}
+                    {/* Location display */}
+                    {(session.city || session.country) && (
+                      <p>📍 {formatLocation(session)}</p>
                     )}
                     <p>💬 {session.message_count} messages</p>
                   </div>
