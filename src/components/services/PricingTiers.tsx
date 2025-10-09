@@ -228,57 +228,6 @@ export default function PricingTiers({
               </div>
             ))}
           </div>
-
-          {/* Savings Example */}
-          {servicesData.comparison_table.savings_example && (
-            <div
-              className='mt-6 rounded-xl border p-6 text-center'
-              style={{
-                borderColor: theme.textColor,
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
-              }}
-            >
-              <h4
-                className='mb-3 text-lg font-semibold'
-                style={{ color: theme.textColor }}
-              >
-                {servicesData.comparison_table.savings_example.title}
-              </h4>
-              <div className='flex flex-col items-center gap-2 md:flex-row md:justify-center md:gap-6'>
-                <div>
-                  <span
-                    className='text-sm line-through'
-                    style={{ color: theme.mutedTextColor }}
-                  >
-                    {servicesData.comparison_table.savings_example.traditional}
-                  </span>
-                </div>
-                <div>
-                  <span
-                    className='text-2xl font-bold'
-                    style={{ color: theme.textColor }}
-                  >
-                    {servicesData.comparison_table.savings_example.pixelmojo}
-                  </span>
-                </div>
-                <div>
-                  <span
-                    className='text-sm font-semibold'
-                    style={{ color: theme.textColor }}
-                  >
-                    {servicesData.comparison_table.savings_example.savings}{' '}
-                    saved
-                  </span>
-                </div>
-              </div>
-              <p
-                className='mt-2 text-sm leading-relaxed'
-                style={{ color: theme.mutedTextColor }}
-              >
-                {servicesData.comparison_table.savings_example.note}
-              </p>
-            </div>
-          )}
         </div>
       )}
 

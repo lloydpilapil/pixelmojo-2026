@@ -468,14 +468,7 @@
           "Built for optimization"
         ]
       }
-    ],
-    "savings_example": {
-      "title": "Real project example",
-      "traditional": "$85K traditional agency quote",
-      "pixelmojo": "$19,995 with Pixelmojo",
-      "savings": "$65K saved",
-      "note": "Delivered in 10 weeks vs 6 months quoted by traditional agency"
-    }
+    ]
   },
   "free_roi_audit": {
     "title": "Free 30-Min Strategy Call",

@@ -6,7 +6,7 @@
 export const VERSION = {
   // Semantic versioning: MAJOR.MINOR.PATCH
   major: 1,
-  minor: 3,
+  minor: 4,
   patch: 0,
 
   // Get formatted version string
@@ -15,10 +15,10 @@ export const VERSION = {
   },
 
   // Release name (optional)
-  name: 'Conversions',
+  name: 'Progressive Engagement',
 
   // Release date
-  date: '2025-10-06',
+  date: '2025-10-09',
 
   // Build environment
   environment: process.env.NODE_ENV || 'development',
@@ -46,6 +46,15 @@ export function getVersionInfo() {
 
 /**
  * Version History
+ *
+ * v1.4.0 (Progressive Engagement) - 2025-10-09
+ * - Progressive disclosure UX for chat widget
+ * - Context-aware chat triggering based on page type
+ * - Geolocation-based widget visibility (PH-only)
+ * - Markdown rendering in chatbot (headings, bullets)
+ * - Security improvements (rate limiting, error handling)
+ * - Loading/error states for all service pages
+ * - Removed placeholder project examples
  *
  * v1.3.0 (Conversions) - 2025-10-06
  * - AI-powered chatbot with OpenAI integration
