@@ -52,15 +52,48 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
+          // DNS Prefetch Control
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          // HSTS - Force HTTPS for 2 years
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          // Prevent MIME type sniffing
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          // Referrer Policy
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+          // Permissions Policy (formerly Feature-Policy)
+          {
+            key: 'Permissions-Policy',
+            value:
+              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          // Content Security Policy
           {
             key: 'Content-Security-Policy',
             value:
               "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://player.vimeo.com https://vimeo.com https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com https://googletagmanager.com https://cdn.getkoala.com https://www.clarity.ms https://scripts.clarity.ms https://analytics.ahrefs.com https://static.hotjar.com https://script.hotjar.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com https://static.hotjar.com https://res-1.cdn.office.net data: blob:; connect-src 'self' https://player.vimeo.com https://vitals.vercel-insights.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://cdn.getkoala.com https://api.getkoala.com https://analytics.ahrefs.com https://static.hotjar.com https://script.hotjar.com https://www.clarity.ms https://scripts.clarity.ms https://j.clarity.ms; frame-src 'self' https://player.vimeo.com https://www.googletagmanager.com;",
           },
+          // Cross-Origin Policies
           {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin',
           },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'same-origin',
+          },
+          // X-Frame-Options (defense in depth with CSP)
           {
             key: 'X-Frame-Options',
             value: 'DENY',

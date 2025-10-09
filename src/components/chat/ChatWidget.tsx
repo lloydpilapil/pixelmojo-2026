@@ -12,16 +12,38 @@ import {
   type ChatContext,
 } from '@/lib/chat-context'
 
+/**
+ * ChatWidget v2.0 - Progressive Disclosure Pattern
+ *
+ * Version History:
+ * - v2.0 (2025-10-09): Progressive disclosure, time-based visibility, context-aware timing
+ * - v1.0 (Previous): Scroll-based visibility
+ *
+ * Features:
+ * - Time-based visibility (no scroll required)
+ * - Mobile-first approach (immediate visibility on mobile)
+ * - Context-aware timing (faster on high-intent pages)
+ * - Progressive disclosure (icon → badge → tooltip)
+ * - Pulsing badge notifications
+ */
+const CHAT_WIDGET_VERSION = '2.0.0'
+
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [showBadge, setShowBadge] = useState(false)
   const [exitIntentTriggered, setExitIntentTriggered] = useState(false)
   const [proactiveTriggered, setProactiveTriggered] = useState(false)
   const [chatContext, setChatContext] = useState<ChatContext | null>(null)
 
   // Initialize context and session when component mounts
   useEffect(() => {
+    // Log version in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[ChatWidget v${CHAT_WIDGET_VERSION}] Initialized`)
+    }
+
     // Get page context
     const context = getCurrentContext()
     setChatContext(context)
@@ -55,19 +77,44 @@ export default function ChatWidget() {
     }
   }, [sessionId])
 
-  // Show chat button after scrolling past hero section
+  // Time-based visibility with progressive disclosure
   useEffect(() => {
-    const handleScroll = () => {
-      // Show after scrolling ~100vh (hero section height)
-      const scrolled = window.scrollY > window.innerHeight * 0.8
-      setIsVisible(scrolled)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
+    // Get current context to determine if high-intent page
+    const context = chatContext || getCurrentContext()
+    const triggerRules = getTriggerRules(context.pageType)
+    const isHighIntent = triggerRules.highIntent || false
+
+    // Mobile: Show immediately (harder to scroll, needs immediate access)
+    if (isMobile) {
+      setIsVisible(true)
+      // Show badge after 3 seconds on mobile
+      const badgeTimer = setTimeout(() => setShowBadge(true), 3000)
+      return () => clearTimeout(badgeTimer)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Check initial position
+    // Desktop high-intent pages (pricing, contact, services): Show after 1 second
+    if (isHighIntent) {
+      const timer = setTimeout(() => {
+        setIsVisible(true)
+        setShowBadge(true) // Show badge immediately on high-intent
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
 
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    // Desktop low-intent pages (blog, about, home): Show after 2 seconds
+    const visibilityTimer = setTimeout(() => setIsVisible(true), 2000)
+
+    // Show pulsing badge after 5 seconds to draw attention
+    const badgeTimer = setTimeout(() => setShowBadge(true), 5000)
+
+    return () => {
+      clearTimeout(visibilityTimer)
+      clearTimeout(badgeTimer)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Run once on mount
 
   // Context-aware exit intent detection
   useEffect(() => {
@@ -226,23 +273,46 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Chat Button - Only visible after scrolling past hero */}
+      {/* Chat Button - Time-based visibility with progressive disclosure */}
       {isVisible && (
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 p-3 md:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 animate-in fade-in slide-in-from-bottom-5 ${
-            isOpen
-              ? 'bg-muted hover:bg-muted/80'
-              : 'bg-primary hover:bg-primary/90'
-          }`}
-          aria-label={isOpen ? 'Close chat' : 'Open chat'}
-        >
-          {isOpen ? (
-            <X className='w-5 h-5 md:w-6 md:h-6 text-primary-foreground' />
-          ) : (
-            <MessageCircle className='w-5 h-5 md:w-6 md:h-6 text-primary-foreground' />
+        <div className='fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 group'>
+          <button
+            onClick={() => {
+              setIsOpen(!isOpen)
+              setShowBadge(false) // Hide badge when clicked
+            }}
+            className={`relative p-3 md:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 animate-in fade-in slide-in-from-bottom-5 ${
+              isOpen
+                ? 'bg-muted hover:bg-muted/80'
+                : 'bg-primary hover:bg-primary/90'
+            }`}
+            aria-label={isOpen ? 'Close chat' : 'Open chat'}
+          >
+            {isOpen ? (
+              <X className='w-5 h-5 md:w-6 md:h-6 text-primary-foreground' />
+            ) : (
+              <MessageCircle className='w-5 h-5 md:w-6 md:h-6 text-primary-foreground' />
+            )}
+
+            {/* Pulsing badge notification */}
+            {!isOpen && showBadge && (
+              <>
+                <div className='absolute -top-1 -right-1 w-3 h-3 bg-[#FDC304] rounded-full animate-pulse' />
+                <div className='absolute -top-1 -right-1 w-3 h-3 bg-[#FDC304] rounded-full animate-ping' />
+              </>
+            )}
+          </button>
+
+          {/* Tooltip hint - shows on hover */}
+          {!isOpen && showBadge && (
+            <div className='absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none'>
+              <p className='text-sm font-medium text-gray-900 dark:text-white'>
+                Need help? 👋
+              </p>
+              <div className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-4 border-l-white dark:border-l-gray-800' />
+            </div>
           )}
-        </button>
+        </div>
       )}
 
       {/* Chat Window */}

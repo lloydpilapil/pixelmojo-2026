@@ -41,6 +41,7 @@ export interface TriggerRules {
   delaySeconds: number
   message: string
   enableExitIntent: boolean
+  highIntent: boolean // True for pricing, contact, services pages
 }
 
 /**
@@ -174,6 +175,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         'Welcome to PixelMojo! 👋 What brings you here today - exploring our services, checking out projects, or looking for something specific?',
       enableExitIntent: true,
+      highIntent: false,
     },
     about: {
       pageType: 'about',
@@ -181,6 +183,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         "Learning about PixelMojo? I'm here to answer any questions about our process, team, or approach!",
       enableExitIntent: false,
+      highIntent: false,
     },
     services: {
       pageType: 'services',
@@ -188,6 +191,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         'Interested in our services? Tell me about your project and I can help you find the right solution!',
       enableExitIntent: true,
+      highIntent: true, // High-intent: user exploring solutions
     },
     portfolio: {
       pageType: 'portfolio',
@@ -195,6 +199,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         "I see you're checking out our work! Like what you see? Want to discuss a similar project for your brand?",
       enableExitIntent: true,
+      highIntent: false,
     },
     blog: {
       pageType: 'blog',
@@ -202,6 +207,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         'Enjoying the article? Have questions about how this applies to your project?',
       enableExitIntent: false,
+      highIntent: false,
     },
     pricing: {
       pageType: 'pricing',
@@ -209,6 +215,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         'Questions about our pricing? I can help you find the right package for your budget and timeline!',
       enableExitIntent: true,
+      highIntent: true, // High-intent: user evaluating cost
     },
     contact: {
       pageType: 'contact',
@@ -216,12 +223,14 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       message:
         "Hi! I'm here to help you get started. What kind of project do you have in mind? Rather chat than fill out a form?",
       enableExitIntent: false,
+      highIntent: true, // High-intent: user ready to reach out
     },
     other: {
       pageType: 'other',
       delaySeconds: 30,
       message: 'Hi! 👋 How can I help you today?',
       enableExitIntent: false,
+      highIntent: false,
     },
   }
 

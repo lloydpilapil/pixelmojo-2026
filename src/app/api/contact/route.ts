@@ -1,101 +1,167 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
+import { rateLimiters } from '@/lib/rate-limit'
+import {
+  ValidationError,
+  RateLimitError,
+  formatErrorResponse,
+} from '@/lib/errors'
+import { sanitizeText } from '@/lib/sanitize'
 
-const REQUIRED_FIELDS = ['firstName', 'lastName', 'email', 'message'] as const
-
-type RequiredField = (typeof REQUIRED_FIELDS)[number]
-
-type ContactRequest = {
-  firstName: string
-  lastName: string
-  company?: string
-  role?: string
-  email: string
-  linkedin?: string
-  projectWebsite?: string
-  projectStage?: string
-  projectTimeline?: string
-  projectBudget?: string
-  preferredContact: string
-  hearAboutUs?: string
-  message: string
-}
+// Zod schema for contact form validation
+const contactSchema = z.object({
+  firstName: z
+    .string()
+    .min(2, 'First name must be at least 2 characters')
+    .max(50, 'First name must be less than 50 characters'),
+  lastName: z
+    .string()
+    .min(2, 'Last name must be at least 2 characters')
+    .max(50, 'Last name must be less than 50 characters'),
+  company: z.string().max(100).optional(),
+  role: z.string().max(100).optional(),
+  email: z.string().email('Invalid email address'),
+  linkedin: z.string().url('Invalid LinkedIn URL').optional().or(z.literal('')),
+  projectWebsite: z
+    .string()
+    .url('Invalid website URL')
+    .optional()
+    .or(z.literal('')),
+  projectStage: z.string().optional(),
+  projectTimeline: z.string().optional(),
+  projectBudget: z.string().optional(),
+  preferredContact: z.string().default('email'),
+  hearAboutUs: z.string().optional(),
+  message: z
+    .string()
+    .min(10, 'Message must be at least 10 characters')
+    .max(1000, 'Message must be less than 1000 characters'),
+})
 
 const sanitize = (value?: string) => {
   if (!value) return null
-  const trimmed = value.trim()
+  const cleaned = sanitizeText(value)
+  const trimmed = cleaned.trim()
   return trimmed.length ? trimmed : null
 }
 
-export async function POST(request: Request) {
-  const body = (await request.json()) as Partial<ContactRequest>
+export async function POST(request: NextRequest) {
+  try {
+    // Rate limiting - 3 requests per hour per IP
+    const identifier =
+      request.headers.get('x-forwarded-for') ??
+      request.headers.get('x-real-ip') ??
+      'anonymous'
+    const { success: rateLimitSuccess } = await rateLimiters.contact.check(
+      3,
+      identifier
+    )
 
-  const missingField = REQUIRED_FIELDS.find(field => {
-    const value = body[field]
-    return typeof value !== 'string' || value.trim().length === 0
-  }) as RequiredField | undefined
+    if (!rateLimitSuccess) {
+      throw new RateLimitError(
+        'Too many contact form submissions. Please try again later.'
+      )
+    }
 
-  if (missingField) {
+    // Parse and validate request body
+    const body = await request.json()
+    const validatedData = contactSchema.parse(body)
+
+    // Check environment variables
+    const supabaseUrl = process.env.SUPABASE_URL
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (!supabaseUrl || !serviceRoleKey) {
+      console.error('Missing Supabase environment variables')
+      return NextResponse.json(
+        {
+          error: 'server_configuration_error',
+          message: 'Server configuration error. Please contact support.',
+        },
+        { status: 500 }
+      )
+    }
+
+    // Prepare payload with sanitized data
+    const payload = {
+      first_name: sanitize(validatedData.firstName)!,
+      last_name: sanitize(validatedData.lastName)!,
+      company: sanitize(validatedData.company),
+      role: sanitize(validatedData.role),
+      email: sanitize(validatedData.email)!,
+      linkedin: sanitize(validatedData.linkedin),
+      project_website: sanitize(validatedData.projectWebsite),
+      project_stage: sanitize(validatedData.projectStage),
+      project_timeline: sanitize(validatedData.projectTimeline),
+      project_budget: sanitize(validatedData.projectBudget),
+      preferred_contact: sanitize(validatedData.preferredContact) || 'email',
+      hear_about_us: sanitize(validatedData.hearAboutUs),
+      message: sanitize(validatedData.message)!,
+    }
+
+    // Save to Supabase
+    const response = await fetch(`${supabaseUrl}/rest/v1/contact_requests`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: serviceRoleKey,
+        Authorization: `Bearer ${serviceRoleKey}`,
+        Prefer: 'return=representation',
+      },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('Supabase insert failed:', errorText)
+      return NextResponse.json(
+        {
+          error: 'database_error',
+          message:
+            'We ran into an issue saving your request. Please try again later.',
+        },
+        { status: 500 }
+      )
+    }
+
     return NextResponse.json(
       {
-        error: 'invalid_request',
-        message: `Missing required field: ${missingField}`,
+        success: true,
+        message: "Your message has been received. We'll get back to you soon!",
       },
-      { status: 400 }
+      { status: 201 }
     )
+  } catch (error) {
+    // Handle Zod validation errors
+    if (error instanceof z.ZodError) {
+      const fieldErrors = error.flatten().fieldErrors
+      const cleanedErrors: Record<string, string[]> = {}
+
+      // Clean up undefined values
+      for (const [key, value] of Object.entries(fieldErrors)) {
+        if (value) {
+          cleanedErrors[key] = value
+        }
+      }
+
+      const validationError = new ValidationError(
+        'Invalid form data',
+        cleanedErrors
+      )
+      return NextResponse.json(formatErrorResponse(validationError), {
+        status: validationError.statusCode,
+      })
+    }
+
+    // Handle rate limit errors
+    if (error instanceof RateLimitError) {
+      return NextResponse.json(formatErrorResponse(error), {
+        status: error.statusCode,
+      })
+    }
+
+    // Handle unknown errors
+    console.error('Contact form error:', error)
+    return NextResponse.json(formatErrorResponse(error), { status: 500 })
   }
-
-  const supabaseUrl = process.env.SUPABASE_URL
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-  if (!supabaseUrl || !serviceRoleKey) {
-    return NextResponse.json(
-      {
-        error: 'server_configuration_error',
-        message: 'Supabase environment variables are not configured.',
-      },
-      { status: 500 }
-    )
-  }
-
-  const payload = {
-    first_name: sanitize(body.firstName)!,
-    last_name: sanitize(body.lastName)!,
-    company: sanitize(body.company),
-    role: sanitize(body.role),
-    email: sanitize(body.email)!,
-    linkedin: sanitize(body.linkedin),
-    project_website: sanitize(body.projectWebsite),
-    project_stage: sanitize(body.projectStage),
-    project_timeline: sanitize(body.projectTimeline),
-    project_budget: sanitize(body.projectBudget),
-    preferred_contact: sanitize(body.preferredContact) || 'email',
-    hear_about_us: sanitize(body.hearAboutUs),
-    message: sanitize(body.message)!,
-  }
-
-  const response = await fetch(`${supabaseUrl}/rest/v1/contact_requests`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: serviceRoleKey,
-      Authorization: `Bearer ${serviceRoleKey}`,
-      Prefer: 'return=representation',
-    },
-    body: JSON.stringify(payload),
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    return NextResponse.json(
-      {
-        error: 'supabase_insert_failed',
-        message:
-          'We ran into an issue saving your request. Please try again later.',
-        details: errorText,
-      },
-      { status: 500 }
-    )
-  }
-
-  return NextResponse.json({ success: true }, { status: 201 })
 }
