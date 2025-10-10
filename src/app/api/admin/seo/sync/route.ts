@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 import { GSCClient, getDateRange } from '@/lib/gsc-client'
 import { rateLimiters } from '@/lib/rate-limit'
+import { requireAuth } from '@/lib/auth-helpers'
 
 /**
  * Sync SEO data from Google Search Console
@@ -26,12 +27,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Verify admin authorization
-    const authHeader = request.headers.get('authorization')
-    const expectedAuth = `Basic ${Buffer.from(`admin:${process.env.ADMIN_PASSWORD}`).toString('base64')}`
-
-    if (!authHeader || authHeader !== expectedAuth) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // Verify admin authorization via session
+    const auth = await requireAuth()
+    if (!auth.authorized) {
+      return auth.response
     }
 
     const body = await request.json()
@@ -43,8 +42,6 @@ export async function POST(request: NextRequest) {
     const gscClient = new GSCClient(siteUrl)
 
     const { startDate, endDate } = getDateRange(days)
-
-    console.log(`[SEO Sync] Syncing data from ${startDate} to ${endDate}`)
 
     // 1. Sync tracked keyword rankings
     await syncKeywordRankings(gscClient, startDate, endDate)
@@ -90,7 +87,6 @@ async function syncKeywordRankings(
     .eq('is_active', true)
 
   if (!targetKeywords || targetKeywords.length === 0) {
-    console.log('[SEO Sync] No target keywords found')
     return
   }
 
@@ -122,8 +118,6 @@ async function syncKeywordRankings(
       }
     )
   }
-
-  console.log(`[SEO Sync] Synced ${rankings.size} keyword rankings`)
 }
 
 /**
@@ -155,8 +149,6 @@ async function syncPagePerformance(
       }
     )
   }
-
-  console.log(`[SEO Sync] Synced ${pages.length} pages`)
 }
 
 /**
@@ -188,8 +180,6 @@ async function syncSearchQueries(
       }
     )
   }
-
-  console.log(`[SEO Sync] Synced ${queries.length} search queries`)
 }
 
 /**
@@ -264,6 +254,4 @@ async function detectSEOAlerts(startDate: string, endDate: string) {
       }
     }
   }
-
-  console.log('[SEO Sync] Alerts detection completed')
 }

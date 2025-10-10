@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
 import { rateLimiters } from '@/lib/rate-limit'
+import { requireAuth } from '@/lib/auth-helpers'
 
 // Query parameter validation
 const seoQuerySchema = z.object({
@@ -31,12 +32,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Verify admin authorization
-    const authHeader = request.headers.get('authorization')
-    const expectedAuth = `Basic ${Buffer.from(`admin:${process.env.ADMIN_PASSWORD}`).toString('base64')}`
-
-    if (!authHeader || authHeader !== expectedAuth) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // Verify admin authorization via session
+    const auth = await requireAuth()
+    if (!auth.authorized) {
+      return auth.response
     }
 
     // Validate query parameters
@@ -247,7 +246,16 @@ async function getRankingTrends(startDate: Date) {
   if (!data) return []
 
   // Group by date
-  const trendsByDate: Record<string, any> = {}
+  const trendsByDate: Record<
+    string,
+    {
+      date: string
+      avgPosition: number
+      totalClicks: number
+      totalImpressions: number
+      count: number
+    }
+  > = {}
 
   data.forEach(row => {
     if (!trendsByDate[row.date]) {

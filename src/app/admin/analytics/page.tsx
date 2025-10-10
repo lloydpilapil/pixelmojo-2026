@@ -9,7 +9,6 @@ import {
   Award,
   AlertCircle,
 } from 'lucide-react'
-import { getAdminAuthHeader } from '@/lib/admin-auth'
 
 interface AnalyticsData {
   period: {
@@ -69,11 +68,7 @@ export default function AnalyticsPage() {
     setError(null)
 
     try {
-      const response = await fetch(`/api/admin/analytics?days=${timeRange}`, {
-        headers: {
-          Authorization: getAdminAuthHeader(),
-        },
-      })
+      const response = await fetch(`/api/admin/analytics?days=${timeRange}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch analytics')

@@ -11,7 +11,6 @@ import {
   BarChart3,
   RefreshCw,
 } from 'lucide-react'
-import { getAdminAuthHeader } from '@/lib/admin-auth'
 
 interface SEOData {
   period: {
@@ -80,11 +79,7 @@ export default function SEOMonitoringPage() {
     setError(null)
 
     try {
-      const response = await fetch(`/api/admin/seo?days=${timeRange}`, {
-        headers: {
-          Authorization: getAdminAuthHeader(),
-        },
-      })
+      const response = await fetch(`/api/admin/seo?days=${timeRange}`)
 
       if (!response.ok) {
         throw new Error('Failed to fetch SEO data')
@@ -106,7 +101,6 @@ export default function SEOMonitoringPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: getAdminAuthHeader(),
         },
         body: JSON.stringify({ days: 7 }),
       })

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { supabase } from '@/lib/supabase'
 import { rateLimiters } from '@/lib/rate-limit'
+import { requireAuth } from '@/lib/auth-helpers'
 
 // Query parameter validation schema
 const analyticsQuerySchema = z.object({
@@ -34,12 +35,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Verify admin authorization (same as other admin routes)
-    const authHeader = request.headers.get('authorization')
-    const expectedAuth = `Basic ${Buffer.from(`admin:${process.env.ADMIN_PASSWORD}`).toString('base64')}`
-
-    if (!authHeader || authHeader !== expectedAuth) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // Verify admin authorization via session
+    const auth = await requireAuth()
+    if (!auth.authorized) {
+      return auth.response
     }
 
     // Validate query parameters

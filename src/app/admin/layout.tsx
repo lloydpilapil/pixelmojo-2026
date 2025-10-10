@@ -1,109 +1,43 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Lock, BarChart3, MessageSquare, LogOut, Search } from 'lucide-react'
+import { useSession, signOut } from 'next-auth/react'
+import { BarChart3, MessageSquare, LogOut, Search } from 'lucide-react'
+import { AdminSessionProvider } from './providers'
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(true)
+function AdminLayoutContent({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession()
   const pathname = usePathname()
   const router = useRouter()
 
   useEffect(() => {
-    // Check if already authenticated
-    const auth = sessionStorage.getItem('admin_authenticated')
-    if (auth === 'true') {
-      setIsAuthenticated(true)
+    // Redirect to login if not authenticated (except on login page)
+    if (status === 'unauthenticated' && pathname !== '/admin/login') {
+      router.push(`/admin/login?callbackUrl=${encodeURIComponent(pathname)}`)
     }
-    setIsLoading(false)
-  }, [])
+  }, [status, pathname, router])
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-
-    try {
-      const response = await fetch('/api/admin/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      })
-
-      if (response.ok) {
-        sessionStorage.setItem('admin_authenticated', 'true')
-        setIsAuthenticated(true)
-        setPassword('')
-      } else {
-        setError('Incorrect password')
-      }
-    } catch {
-      setError('Authentication failed')
-    }
-  }
-
-  if (isLoading) {
-    return (
-      <div className='min-h-screen flex items-center justify-center'>
-        <div className='text-muted-foreground'>Loading...</div>
-      </div>
-    )
-  }
-
-  if (!isAuthenticated) {
+  // Show loading state while checking authentication
+  if (status === 'loading') {
     return (
       <div className='min-h-screen flex items-center justify-center bg-background'>
-        <div className='w-full max-w-md p-8'>
-          <div className='text-center mb-8'>
-            <div className='inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4'>
-              <Lock className='w-8 h-8 text-primary' />
-            </div>
-            <h1 className='text-2xl font-bold mb-2'>Admin Access</h1>
-            <p className='text-muted-foreground'>
-              Enter password to view chat dashboard
-            </p>
-          </div>
-
-          <form onSubmit={handleLogin} className='space-y-4'>
-            <div>
-              <input
-                type='password'
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder='Enter admin password'
-                className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary'
-                autoFocus
-              />
-            </div>
-
-            {error && (
-              <div className='text-sm text-destructive bg-destructive/10 px-4 py-2 rounded-lg'>
-                {error}
-              </div>
-            )}
-
-            <button
-              type='submit'
-              className='w-full px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium'
-            >
-              Access Dashboard
-            </button>
-          </form>
+        <div className='text-center'>
+          <div className='animate-spin h-12 w-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4' />
+          <p className='text-muted-foreground'>Loading...</p>
         </div>
       </div>
     )
   }
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('admin_authenticated')
-    setIsAuthenticated(false)
-    router.push('/')
+  // Show login page (the login page itself will be rendered as children)
+  if (status === 'unauthenticated') {
+    return <>{children}</>
+  }
+
+  // Show authenticated admin dashboard
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: '/' })
   }
 
   const tabs = [
@@ -112,13 +46,25 @@ export default function AdminLayout({
     { name: 'Chats', path: '/admin/chats', icon: MessageSquare },
   ]
 
+  // Don't show navigation on login page
+  if (pathname === '/admin/login') {
+    return <>{children}</>
+  }
+
   return (
     <div className='min-h-screen bg-background'>
       {/* Header with tabs */}
       <div className='border-b border-border bg-card sticky top-0 z-10 shadow-sm'>
         <div className='container mx-auto px-4'>
           <div className='flex items-center justify-between py-4'>
-            <h1 className='text-2xl font-bold'>Admin Dashboard</h1>
+            <div>
+              <h1 className='text-2xl font-bold'>Admin Dashboard</h1>
+              {session?.user?.email && (
+                <p className='text-sm text-muted-foreground'>
+                  {session.user.email}
+                </p>
+              )}
+            </div>
             <button
               onClick={handleLogout}
               className='flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors'
@@ -162,7 +108,19 @@ export default function AdminLayout({
       </div>
 
       {/* Page Content */}
-      {children}
+      <div className='container mx-auto px-4 py-6'>{children}</div>
     </div>
+  )
+}
+
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <AdminSessionProvider>
+      <AdminLayoutContent>{children}</AdminLayoutContent>
+    </AdminSessionProvider>
   )
 }
