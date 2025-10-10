@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
 
 // Type definitions for ToC
 export interface TOCItem {
@@ -118,6 +119,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post],
   mdx: {
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug],
   },
 })

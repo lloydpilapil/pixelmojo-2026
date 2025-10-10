@@ -463,6 +463,40 @@ li {
   width: 65%;
 }
 
+/* Table wrapper - explicit constraint with !important to override Tailwind */
+.blog-post-content > .blog-table-wrapper {
+  margin-left: 25% !important;
+  width: 65% !important;
+  max-width: 65% !important;
+  box-sizing: border-box !important;
+}
+
+/* BlogTable component wrapper - same constraints */
+.blog-post-content > div > div[class*="overflow-x-auto"] {
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+
+.blog-post-content > div:has(> div[class*="overflow-x-auto"]) {
+  margin-left: 25% !important;
+  width: 65% !important;
+  max-width: 65% !important;
+}
+
+/* Ensure table doesn't exceed wrapper */
+.blog-table-wrapper table {
+  table-layout: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Make table cells wrap if needed */
+.blog-table-wrapper td,
+.blog-table-wrapper th {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 /* Restore list styles for blog content */
 .blog-post-content ul {
   list-style-type: disc;
@@ -501,9 +535,11 @@ li {
   .blog-post-content > ul,
   .blog-post-content > ol,
   .blog-post-content > blockquote,
-  .blog-post-content > pre {
+  .blog-post-content > pre,
+  .blog-post-content > .blog-table-wrapper {
     margin-left: 0;
     width: 100%;
+    max-width: 100%;
   }
 
   /* Keep list padding on mobile for bullet visibility */

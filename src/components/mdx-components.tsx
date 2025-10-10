@@ -6,6 +6,7 @@ import TLDR from '@/components/blog/TLDR'
 import BlogQuote from '@/components/blog/BlogQuote'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
+import BlogTable from '@/components/blog/BlogTable'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -151,8 +152,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Table support
     table: ({ children }) => (
-      <div className='overflow-x-auto mb-6 rounded-lg border border-border/60'>
-        <table className='min-w-full divide-y divide-border'>{children}</table>
+      <div className='blog-table-wrapper overflow-x-auto mb-6 rounded-lg border border-border/60'>
+        <table className='w-full divide-y divide-border'>{children}</table>
       </div>
     ),
     thead: ({ children }) => <thead className='bg-muted/50'>{children}</thead>,
@@ -271,6 +272,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     BlogQuote: BlogQuote,
     BlogFAQ: BlogFAQ,
     BlogPostImage: BlogPostImage,
+    BlogTable: BlogTable,
 
     // Spread any additional components passed in
     ...components,

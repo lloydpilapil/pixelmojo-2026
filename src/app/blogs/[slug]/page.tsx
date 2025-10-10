@@ -12,6 +12,7 @@ import BlogQuote from '@/components/blog/BlogQuote'
 import BlogFAQ from '@/components/blog/BlogFAQ'
 import BlogPostImage from '@/components/blog/BlogPostImage'
 import BlogPostNavigation from '@/components/blog/BlogPostNavigation'
+import BlogTable from '@/components/blog/BlogTable'
 
 interface BlogPostProps {
   params: {
@@ -116,6 +117,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
     BlogQuote,
     BlogFAQ,
     BlogPostImage,
+    BlogTable,
     a: CustomLink, // Override default anchor tag
   }
 
