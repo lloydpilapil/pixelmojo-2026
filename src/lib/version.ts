@@ -6,7 +6,7 @@
 export const VERSION = {
   // Semantic versioning: MAJOR.MINOR.PATCH
   major: 1,
-  minor: 4,
+  minor: 5,
   patch: 0,
 
   // Get formatted version string
@@ -15,10 +15,10 @@ export const VERSION = {
   },
 
   // Release name (optional)
-  name: 'Progressive Engagement',
+  name: 'Intelligence & Analytics',
 
   // Release date
-  date: '2025-10-09',
+  date: '2025-10-10',
 
   // Build environment
   environment: process.env.NODE_ENV || 'development',
@@ -46,6 +46,18 @@ export function getVersionInfo() {
 
 /**
  * Version History
+ *
+ * v1.5.0 (Intelligence & Analytics) - 2025-10-10
+ * - Email notification system for qualified leads (Resend integration)
+ * - Analytics dashboard with conversion funnel visualization
+ * - Unified admin interface with tab navigation
+ * - Server-side A/B testing framework (Vercel Edge Config)
+ * - Advanced lead scoring (0-100 scale with weighted criteria)
+ * - Zod validation for API endpoints
+ * - Rate limiting on admin endpoints (10 req/min)
+ * - Memoized components for performance optimization
+ * - Route-level loading and error states
+ * - Production-ready code quality improvements
  *
  * v1.4.0 (Progressive Engagement) - 2025-10-09
  * - Progressive disclosure UX for chat widget

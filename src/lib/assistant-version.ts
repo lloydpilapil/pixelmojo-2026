@@ -2,6 +2,14 @@
  * PixelMojo AI Assistant Version
  *
  * Version History:
+ * - 1.3.0 (2025-10-10) - Enhanced Lead Intelligence & Analytics
+ *   - Advanced lead scoring (0-100 scale with weighted criteria)
+ *   - Email notifications for qualified leads (60+) and high-value alerts (80+)
+ *   - Beautiful HTML email templates with lead details
+ *   - Analytics dashboard integration for conversion tracking
+ *   - Improved lead qualification with budget, timeline, and project type weighting
+ *   - Admin dashboard with real-time lead performance metrics
+ *
  * - 1.2.0 (2025-10-09) - Context-Aware Chat Triggers & IP Geolocation
  *   - Phase 1: Context-aware proactive chat triggers
  *   - Page-specific trigger timing (contact=5s, pricing=15s, home=30s, etc.)
@@ -35,10 +43,10 @@
  *   - Rate limiting and session management
  */
 
-export const ASSISTANT_VERSION = '1.2.0'
+export const ASSISTANT_VERSION = '1.3.0'
 export const ASSISTANT_NAME = 'PixelMojo Assistant'
 export const ASSISTANT_MODEL = 'gpt-4o-mini'
-export const ASSISTANT_RELEASE_DATE = '2025-10-09'
+export const ASSISTANT_RELEASE_DATE = '2025-10-10'
 
 export interface AssistantInfo {
   version: string

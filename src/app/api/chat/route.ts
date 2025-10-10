@@ -3,6 +3,7 @@ import OpenAI from 'openai'
 import { supabase } from '@/lib/supabase'
 import servicesData from '@/data/services-knowledge.json'
 import { formatContextForAI, type ChatContext } from '@/lib/chat-context'
+import { sendLeadNotification, sendHighValueLeadAlert } from '@/lib/email'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -615,12 +616,15 @@ export async function POST(req: NextRequest) {
           .eq('session_id', sessionId)
           .single()
 
+        const qualificationScore = calculateQualificationScore(leadData)
+
         if (existingLead) {
           // Update existing lead
           await supabase
             .from('leads')
             .update({
               ...leadData,
+              qualification_score: qualificationScore,
               updated_at: new Date().toISOString(),
             })
             .eq('session_id', sessionId)
@@ -629,8 +633,34 @@ export async function POST(req: NextRequest) {
           await supabase.from('leads').insert({
             session_id: sessionId,
             ...leadData,
-            qualification_score: calculateQualificationScore(leadData),
+            qualification_score: qualificationScore,
           })
+
+          // Send email notification for new qualified leads
+          if (leadData.email && qualificationScore >= 60) {
+            const emailData = {
+              name: leadData.name || 'No name provided',
+              email: leadData.email,
+              company: leadData.company,
+              phone: leadData.phone,
+              projectType: leadData.project_type,
+              industry: leadData.industry,
+              budgetRange: leadData.budget_range,
+              timeline: leadData.timeline,
+              qualificationScore,
+              sessionId,
+              chatSummary: leadData.notes,
+            }
+
+            // Send regular notification for qualified leads (60-79)
+            if (qualificationScore < 80) {
+              await sendLeadNotification(emailData)
+            }
+            // Send high-value alert for hot leads (80+)
+            else {
+              await sendHighValueLeadAlert(emailData)
+            }
+          }
         }
 
         // Update session with email if provided
@@ -643,16 +673,23 @@ export async function POST(req: NextRequest) {
       }
 
       // Get a follow-up response after saving the lead
+      const toolResponses =
+        responseMessage.tool_calls?.map(tc => ({
+          role: 'tool' as const,
+          content: 'Lead information saved successfully',
+          tool_call_id: tc.id,
+        })) || []
+
       const followUpCompletion = await openai.chat.completions.create({
         model: 'gpt-4o-mini',
         messages: [
           ...conversationHistory,
-          responseMessage,
           {
-            role: 'tool' as const,
-            content: 'Lead information saved successfully',
-            tool_call_id: toolCall.id,
+            role: 'assistant' as const,
+            content: responseMessage.content || null,
+            tool_calls: responseMessage.tool_calls,
           },
+          ...toolResponses,
         ],
         temperature: 0.7,
         max_tokens: 500,
@@ -712,7 +749,23 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Calculate lead qualification score based on information provided
+/**
+ * Calculate lead qualification score (0-100)
+ *
+ * Scoring breakdown:
+ * - Email: 20 points (required for any lead)
+ * - Name: 10 points
+ * - Budget: 30 points (weighted by range)
+ * - Timeline: 20 points (weighted by urgency)
+ * - Project type: 10 points
+ * - Company: 5 points
+ * - Phone: 5 points
+ *
+ * Qualification levels:
+ * - 0-59: Low quality (no notification)
+ * - 60-79: Qualified (regular notification)
+ * - 80-100: High-value (urgent alert)
+ */
 function calculateQualificationScore(leadData: {
   email?: string
   name?: string
@@ -720,16 +773,49 @@ function calculateQualificationScore(leadData: {
   timeline?: string
   project_type?: string
   company?: string
+  phone?: string
   notes?: string
 }): number {
   let score = 0
 
-  if (leadData.email) score += 3
-  if (leadData.name) score += 1
-  if (leadData.budget_range && leadData.budget_range !== 'Not sure') score += 2
-  if (leadData.timeline && leadData.timeline !== 'Just exploring') score += 2
-  if (leadData.project_type) score += 1
-  if (leadData.company) score += 1
+  // Email (20 points) - Required
+  if (leadData.email) score += 20
 
-  return Math.min(score, 10) // Cap at 10
+  // Name (10 points)
+  if (leadData.name) score += 10
+
+  // Budget (30 points max) - Weighted by value
+  if (leadData.budget_range) {
+    const budgetScores: Record<string, number> = {
+      'Under $5k': 5,
+      '$5k-$15k': 15,
+      '$15k-$50k': 25,
+      '$50k+': 30,
+      'Not sure': 0,
+    }
+    score += budgetScores[leadData.budget_range] || 0
+  }
+
+  // Timeline (20 points max) - Weighted by urgency
+  if (leadData.timeline) {
+    const timelineScores: Record<string, number> = {
+      ASAP: 20,
+      '1-3 months': 15,
+      '3-6 months': 10,
+      '6+ months': 5,
+      'Just exploring': 0,
+    }
+    score += timelineScores[leadData.timeline] || 0
+  }
+
+  // Project type (10 points)
+  if (leadData.project_type) score += 10
+
+  // Company (5 points)
+  if (leadData.company) score += 5
+
+  // Phone (5 points) - Shows high intent
+  if (leadData.phone) score += 5
+
+  return Math.min(score, 100) // Cap at 100
 }

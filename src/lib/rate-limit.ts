@@ -117,4 +117,13 @@ export const rateLimiters = {
     interval: 24 * 60 * 60 * 1000,
     uniqueTokenPerInterval: 500,
   }),
+
+  /**
+   * For admin analytics endpoints
+   * 10 requests per minute
+   */
+  admin: rateLimit({
+    interval: 60 * 1000,
+    uniqueTokenPerInterval: 100,
+  }),
 }
