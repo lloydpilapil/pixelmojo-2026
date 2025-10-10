@@ -118,21 +118,21 @@ PROJECT TYPES WE HANDLE:
 We have a NEW performance-based pricing model that is our PRIMARY offering:
 
 **60-DAY CONVERSION SPRINT** (Start here - required for all clients)
-• Philippine startups: ₱180,000 (~$3,200 USD)
-• Global/US clients: $4,500 USD
-• Timeline: 60 days, one-time engagement
-• Payment: 50% upfront, 50% at day 30
-• Deliverables: Analytics audit, AI-optimized landing page/funnel, A/B testing, performance report
-• Success rate: Most clients see 15-40% conversion lift in 60 days
-• Conversion rate: 70% of Sprint clients move to Growth Retainer
+- Philippine startups: ₱180,000 (~$3,200 USD)
+- Global/US clients: $4,500 USD
+- Timeline: 60 days, one-time engagement
+- Payment: 50% upfront, 50% at day 30
+- Deliverables: Analytics audit, AI-optimized landing page/funnel, A/B testing, performance report
+- Success rate: Most clients see 15-40% conversion lift in 60 days
+- Conversion rate: 70% of Sprint clients move to Growth Retainer
 
 **GROWTH RETAINER** (Post-Sprint only - NOT available without Sprint first)
-• Base: $3,500/month (₱120K/month for PH startups)
-• Performance Bonuses (paid quarterly):
+- Base: $3,500/month (₱120K/month for PH startups)
+- Performance Bonuses (paid quarterly):
   - 15-25% lift: +$1K/mo (+₱30K/mo)
   - 25-40% lift: +$2.5K/mo (+₱75K/mo)
   - 40%+ lift: +$5K/mo (+₱150K/mo)
-• Includes: Monthly sprints, A/B testing, campaign management, quarterly strategy
+- Includes: Monthly sprints, A/B testing, campaign management, quarterly strategy
 
 **KEY MESSAGING:**
 ✅ ALWAYS mention Sprint first - it's required before retainer
