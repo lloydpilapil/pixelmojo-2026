@@ -5,11 +5,13 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { DynamicSelectionColors } from '@/components/DynamicSelectionColors'
 import ConditionalRecentArticles from '@/components/ConditionalRecentArticles'
-import { Analytics } from '@vercel/analytics/react'
 import SmoothScrollProvider from '@/components/SmoothScrollProvider'
 import StructuredData from './structured-data'
 import Script from 'next/script'
 import ChatWidget from '@/components/chat/ChatWidget'
+import CookieConsent from '@/components/CookieConsent'
+import { ConsentProvider } from '@/contexts/ConsentContext'
+import ConsentGatedScripts from '@/components/ConsentGatedScripts'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -74,16 +76,26 @@ export default function RootLayout({
   return (
     <html lang='en' data-theme='dark' suppressHydrationWarning>
       <head>
+        {/* Google Consent Mode v2 - Initialize BEFORE any tracking scripts */}
         <Script
-          id='gtm-script'
-          strategy='afterInteractive'
+          id='consent-mode-init'
+          strategy='beforeInteractive'
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-5679MLR7');
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+
+              // Set default consent to 'denied' for all consent types
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              });
+
+              // Initialize dataLayer
+              gtag('js', new Date());
             `,
           }}
         />
@@ -93,45 +105,48 @@ export default function RootLayout({
         className={`${montserrat.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <noscript>
-          <iframe
-            src='https://www.googletagmanager.com/ns.html?id=GTM-5679MLR7'
-            height='0'
-            width='0'
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-        <SmoothScrollProvider>
-          <DynamicSelectionColors
-            // Using default colors, changing on selection
-            rotationTrigger='selection'
-            fadeEffect={true}
-            transitionDuration={300}
-            randomize={false}
+        <ConsentProvider>
+          <noscript>
+            <iframe
+              src='https://www.googletagmanager.com/ns.html?id=GTM-5679MLR7'
+              height='0'
+              width='0'
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+          <SmoothScrollProvider>
+            <DynamicSelectionColors
+              // Using default colors, changing on selection
+              rotationTrigger='selection'
+              fadeEffect={true}
+              transitionDuration={300}
+              randomize={false}
 
-            // Optional: Use brand colors instead
-            // colors={[
-            //   { bg: 'rgba(0, 84, 147, 0.3)', color: 'rgb(0, 84, 147)' }, // Primary blue
-            //   { bg: 'rgba(60, 194, 158, 0.3)', color: 'rgb(60, 194, 158)' }, // Secondary teal
-            //   { bg: 'rgba(244, 128, 36, 0.3)', color: 'rgb(244, 128, 36)' }, // Accent orange
-            //   { bg: 'rgba(253, 75, 139, 0.3)', color: 'rgb(253, 75, 139)' }, // CTA pink
-            // ]}
+              // Optional: Use brand colors instead
+              // colors={[
+              //   { bg: 'rgba(0, 84, 147, 0.3)', color: 'rgb(0, 84, 147)' }, // Primary blue
+              //   { bg: 'rgba(60, 194, 158, 0.3)', color: 'rgb(60, 194, 158)' }, // Secondary teal
+              //   { bg: 'rgba(244, 128, 36, 0.3)', color: 'rgb(244, 128, 36)' }, // Accent orange
+              //   { bg: 'rgba(253, 75, 139, 0.3)', color: 'rgb(253, 75, 139)' }, // CTA pink
+              // ]}
 
-            // Optional: Time-based rotation every 10 seconds
-            // rotationTrigger="time"
-            // rotationInterval={10000}
+              // Optional: Time-based rotation every 10 seconds
+              // rotationTrigger="time"
+              // rotationInterval={10000}
 
-            // Optional: Apply only to blog content
-            // selector=".blog-content"
-            // excludeElements={['code', 'pre']}
-          />
-          <Header />
-          <main className='flex-1'>{children}</main>
-          <ConditionalRecentArticles />
-          <Footer />
-          <ChatWidget />
-          <Analytics />
-        </SmoothScrollProvider>
+              // Optional: Apply only to blog content
+              // selector=".blog-content"
+              // excludeElements={['code', 'pre']}
+            />
+            <Header />
+            <main className='flex-1'>{children}</main>
+            <ConditionalRecentArticles />
+            <Footer />
+            <ChatWidget />
+            <CookieConsent />
+            <ConsentGatedScripts />
+          </SmoothScrollProvider>
+        </ConsentProvider>
       </body>
     </html>
   )

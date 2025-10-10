@@ -20,6 +20,7 @@ export default function Contact() {
     preferredContact: 'email',
     hearAboutUs: '',
     message: '',
+    consentToPolicy: false,
   })
 
   const [formData, setFormData] = useState(getDefaultFormState)
@@ -35,9 +36,14 @@ export default function Contact() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
+    const value =
+      e.target.type === 'checkbox'
+        ? (e.target as HTMLInputElement).checked
+        : e.target.value
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     })
   }
 
@@ -53,7 +59,7 @@ export default function Contact() {
   }
 
   const validateStep2 = () => {
-    return formData.message.trim() !== ''
+    return formData.message.trim() !== '' && formData.consentToPolicy === true
   }
 
   const handleNext = () => {
@@ -81,7 +87,13 @@ export default function Contact() {
     }
 
     if (!validateStep2()) {
-      setError('Please describe what would make this engagement a win.')
+      if (formData.message.trim() === '') {
+        setError('Please describe what would make this engagement a win.')
+      } else if (!formData.consentToPolicy) {
+        setError(
+          'Please agree to the Terms of Service and Privacy Policy to continue.'
+        )
+      }
       return
     }
 
@@ -475,6 +487,44 @@ export default function Contact() {
                         placeholder='Share goals, success metrics, collaborators, or links we should review ahead of the call.&#10;&#10;Include anything you feel will help us prep for a productive first conversation.'
                         className='w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-vertical'
                       ></textarea>
+                    </div>
+
+                    <div className='md:col-span-2'>
+                      <label
+                        htmlFor='consentToPolicy'
+                        className='flex items-start gap-3 cursor-pointer group'
+                      >
+                        <input
+                          type='checkbox'
+                          id='consentToPolicy'
+                          name='consentToPolicy'
+                          required
+                          checked={formData.consentToPolicy}
+                          onChange={handleChange}
+                          className='mt-1 w-4 h-4 border-2 border-border rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 transition-colors cursor-pointer'
+                        />
+                        <span className='text-sm text-muted-foreground group-hover:text-foreground transition-colors'>
+                          I agree to the{' '}
+                          <a
+                            href='/terms-of-service'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='text-primary hover:underline font-medium'
+                          >
+                            Terms of Service
+                          </a>{' '}
+                          and{' '}
+                          <a
+                            href='/privacy-policy'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='text-primary hover:underline font-medium'
+                          >
+                            Privacy Policy
+                          </a>
+                          . *
+                        </span>
+                      </label>
                     </div>
                   </div>
                 </div>
