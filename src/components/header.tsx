@@ -91,6 +91,7 @@ const navigationConfig = {
       children: getFeaturedWorksNav(),
     },
     { label: 'About', href: '/about' },
+    { label: 'Pricing', href: '/pricing' },
     {
       label: 'Blogs',
       href: '/blogs',
