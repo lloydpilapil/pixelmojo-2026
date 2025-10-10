@@ -116,7 +116,7 @@ async function getKeywordStats(startDate: Date) {
       target_keywords (keyword, priority)
     `
     )
-    .gte('created_at', startDate.toISOString())
+    .gte('date', startDate.toISOString().split('T')[0])
     .eq('country', 'total')
     .eq('device', 'total')
     .order('date', { ascending: false })
@@ -182,7 +182,7 @@ async function getTopKeywords(startDate: Date, limit: number) {
       target_keywords (keyword, priority)
     `
     )
-    .gte('created_at', startDate.toISOString())
+    .gte('date', startDate.toISOString().split('T')[0])
     .eq('country', 'total')
     .eq('device', 'total')
     .order('clicks', { ascending: false })
@@ -198,7 +198,7 @@ async function getTopPages(startDate: Date, limit: number) {
   const { data } = await supabase
     .from('page_performance')
     .select('url, clicks, impressions, ctr, position')
-    .gte('created_at', startDate.toISOString())
+    .gte('date', startDate.toISOString().split('T')[0])
     .eq('country', 'total')
     .eq('device', 'total')
     .order('clicks', { ascending: false })
@@ -214,7 +214,7 @@ async function getRecentQueries(startDate: Date, limit: number) {
   const { data } = await supabase
     .from('search_queries')
     .select('query, clicks, impressions, ctr, position')
-    .gte('created_at', startDate.toISOString())
+    .gte('date', startDate.toISOString().split('T')[0])
     .eq('country', 'total')
     .eq('device', 'total')
     .order('impressions', { ascending: false })
