@@ -9,6 +9,7 @@ import {
   Award,
   AlertCircle,
 } from 'lucide-react'
+import { getAdminAuthHeader } from '@/lib/admin-auth'
 
 interface AnalyticsData {
   period: {
@@ -70,7 +71,7 @@ export default function AnalyticsPage() {
     try {
       const response = await fetch(`/api/admin/analytics?days=${timeRange}`, {
         headers: {
-          Authorization: `Basic ${btoa('admin:pixelmojo2026')}`,
+          Authorization: getAdminAuthHeader(),
         },
       })
 

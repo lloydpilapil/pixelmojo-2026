@@ -76,15 +76,15 @@ Ensure these are set in `.env.local`:
 
 ```bash
 # Google Search Console
-GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL=lloyd-website@lloyd-website.iam.gserviceaccount.com
+GOOGLE_SEARCH_CONSOLE_CLIENT_EMAIL=your-service-account@project.iam.gserviceaccount.com
 GOOGLE_SEARCH_CONSOLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n..."
-GOOGLE_SEARCH_CONSOLE_PROPERTY_URL=https://www.pixelmojo.io
+GOOGLE_SEARCH_CONSOLE_PROPERTY_URL=https://www.yoursite.com
 
 # Admin Access
-ADMIN_PASSWORD=pixelmojo2026
+ADMIN_PASSWORD=your-secure-password-here
 
 # Cron Security
-CRON_SECRET=pixelmojo-cron-secret-2026
+CRON_SECRET=your-random-secret-string
 ```
 
 ### 3. Add Service Account to GSC

@@ -45,7 +45,7 @@ npm run dev
 
 # Visit admin panel
 # http://localhost:3000/admin
-# Password: pixelmojo2026
+# Password: [Use your ADMIN_PASSWORD from .env.local]
 
 # Click "SEO" tab
 # Click "Sync GSC Data" to test
@@ -74,7 +74,7 @@ CRON_SECRET=pixelmojo-cron-secret-2026
 
 **URL:** `/admin/seo`
 
-**Password:** `pixelmojo2026`
+**Password:** Use your `ADMIN_PASSWORD` environment variable
 
 ### Dashboard Shows:
 

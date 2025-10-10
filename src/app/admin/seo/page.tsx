@@ -11,6 +11,7 @@ import {
   BarChart3,
   RefreshCw,
 } from 'lucide-react'
+import { getAdminAuthHeader } from '@/lib/admin-auth'
 
 interface SEOData {
   period: {
@@ -81,7 +82,7 @@ export default function SEOMonitoringPage() {
     try {
       const response = await fetch(`/api/admin/seo?days=${timeRange}`, {
         headers: {
-          Authorization: `Basic ${btoa('admin:pixelmojo2026')}`,
+          Authorization: getAdminAuthHeader(),
         },
       })
 
@@ -105,7 +106,7 @@ export default function SEOMonitoringPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Basic ${btoa('admin:pixelmojo2026')}`,
+          Authorization: getAdminAuthHeader(),
         },
         body: JSON.stringify({ days: 7 }),
       })
