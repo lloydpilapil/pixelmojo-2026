@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { MessageCircle, X } from 'lucide-react'
 import ChatWindow from './ChatWindow'
 import {
@@ -13,9 +13,10 @@ import {
 } from '@/lib/chat-context'
 
 /**
- * ChatWidget v2.0 - Progressive Disclosure Pattern
+ * ChatWidget v2.1 - Progressive Disclosure Pattern
  *
  * Version History:
+ * - v2.1 (2025-10-10): Lazy session creation - only create session when chat is opened
  * - v2.0 (2025-10-09): Progressive disclosure, time-based visibility, context-aware timing
  * - v1.0 (Previous): Scroll-based visibility
  *
@@ -25,8 +26,9 @@ import {
  * - Context-aware timing (faster on high-intent pages)
  * - Progressive disclosure (icon → badge → tooltip)
  * - Pulsing badge notifications
+ * - Lazy session creation (only on first interaction)
  */
-const CHAT_WIDGET_VERSION = '2.0.0'
+const CHAT_WIDGET_VERSION = '2.1.0'
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,8 +38,9 @@ export default function ChatWidget() {
   const [exitIntentTriggered, setExitIntentTriggered] = useState(false)
   const [proactiveTriggered, setProactiveTriggered] = useState(false)
   const [chatContext, setChatContext] = useState<ChatContext | null>(null)
+  const sessionInitializedRef = useRef(false)
 
-  // Initialize context and session when component mounts
+  // Initialize context when component mounts (but NOT session)
   useEffect(() => {
     // Log version in development
     if (process.env.NODE_ENV === 'development') {
@@ -51,9 +54,8 @@ export default function ChatWidget() {
     // Mark as visited
     markAsVisited()
 
-    // Initialize session
-    initializeSession()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // NOTE: We do NOT initialize session here anymore
+    // Session will be created only when user opens chat for the first time
   }, [])
 
   // Track time on page and update context
@@ -71,11 +73,15 @@ export default function ChatWidget() {
     return () => clearInterval(interval)
   }, [chatContext === null])
 
-  // Track session ID changes
+  // Lazy session initialization - only create session when chat is opened
   useEffect(() => {
-    if (sessionId) {
+    if (isOpen && !sessionId && !sessionInitializedRef.current) {
+      sessionInitializedRef.current = true
+      console.log('[ChatWidget] Chat opened - initializing session...')
+      initializeSession()
     }
-  }, [sessionId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, sessionId])
 
   // Time-based visibility with progressive disclosure
   useEffect(() => {
