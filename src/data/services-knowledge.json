@@ -1,4 +1,124 @@
 {
+  "sprint_retainer_model": {
+    "title": "Performance-Based Pricing",
+    "description": "Our primary offering - prove value in 60 days, then scale with performance-based retainers",
+    "is_primary": true,
+    "note": "All clients must start with the 60-Day Sprint before moving to Growth Retainer",
+    "sprint": {
+      "name": "60-Day Conversion Sprint",
+      "tagline": "Prove value first",
+      "description": "One-time engagement to prove measurable conversion lift in 60 days before long-term commitment",
+      "pricing": {
+        "philippine_startups": {
+          "price": "₱180,000",
+          "usd_equivalent": "~$3,200 USD",
+          "currency": "PHP"
+        },
+        "global_us_clients": {
+          "price": "$4,500",
+          "currency": "USD"
+        }
+      },
+      "payment_terms": "50% upfront, 50% at day 30",
+      "timeline": "60 days, one-time engagement",
+      "deliverables": [
+        "Analytics audit & conversion baseline setup",
+        "AI-optimized landing page/funnel (1-2 pages)",
+        "A/B test framework + 30-day iteration cycle",
+        "Performance report + growth roadmap"
+      ],
+      "target_audience": [
+        "Seed-funded PH startups needing conversion optimization",
+        "B2B/SaaS companies needing fast, measurable conversion wins"
+      ],
+      "success_metrics": "Most clients see 15-40% conversion lift in 60 days",
+      "conversion_rate_to_retainer": "~70% of successful Sprints convert to Growth Retainers"
+    },
+    "retainer": {
+      "name": "Growth Retainer",
+      "tagline": "Post-Sprint Only",
+      "description": "Only available to Sprint graduates. Scale together with performance-based monthly retainers",
+      "eligibility": "Must complete 60-Day Sprint first",
+      "base_pricing": {
+        "global_us_clients": {
+          "price": "$3,500/month",
+          "currency": "USD"
+        },
+        "philippine_startups": {
+          "price": "₱120,000/month",
+          "usd_equivalent": "~$2,100 USD",
+          "currency": "PHP"
+        }
+      },
+      "performance_bonuses": {
+        "description": "Paid quarterly based on conversion lift",
+        "tiers": [
+          {
+            "lift_range": "15-25% conversion lift",
+            "bonus_usd": "+$1,000/month",
+            "bonus_php": "+₱30,000/month"
+          },
+          {
+            "lift_range": "25-40% conversion lift",
+            "bonus_usd": "+$2,500/month",
+            "bonus_php": "+₱75,000/month"
+          },
+          {
+            "lift_range": "40%+ conversion lift",
+            "bonus_usd": "+$5,000/month",
+            "bonus_php": "+₱150,000/month"
+          }
+        ],
+        "alignment_message": "We only make real profit when you grow. You get a committed partner, not just a vendor billing hours."
+      },
+      "deliverables": [
+        "Monthly design/dev sprints",
+        "Ongoing A/B testing & optimization",
+        "Campaign management",
+        "Quarterly strategy sessions"
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Why is the Sprint cheaper than your retainer?",
+        "answer": "It's not cheaper—it's our way of proving ourselves before you commit long-term. Most Sprint clients (70%) convert to retainers because the results speak for themselves. We're aligned with your success from day one."
+      },
+      {
+        "question": "What if you don't deliver results?",
+        "answer": "We measure everything. If we don't hit conversion targets, we provide a detailed analysis of why and what needs to change (often it's product-market fit, not design). You'll know exactly what to fix. That's the advantage of our Sprint model vs traditional 6-12 month retainers."
+      },
+      {
+        "question": "How is this different from typical agencies?",
+        "answer": "Three ways: (1) Speed - We use AI-native workflows to move 3-5x faster. (2) Measurement - Every decision is data-driven, not creative intuition. (3) Alignment - Performance bonuses mean we profit when you profit."
+      },
+      {
+        "question": "Why the price difference between PH and global clients?",
+        "answer": "We price based on local market purchasing power. Philippine startups get the same quality work at rates that make sense for the local market."
+      },
+      {
+        "question": "Can I negotiate the pricing?",
+        "answer": "For funded startups with compelling use cases (YC/Antler/500 Startups portfolio), we're open to discussion. For bootstrapped founders, we can structure payment plans."
+      }
+    ],
+    "comparison_vs_traditional": {
+      "traditional_agencies": {
+        "pricing": "$8K-15K/month fixed",
+        "timeline": "3-6 months",
+        "ai_native": false,
+        "performance_based": false,
+        "focus": "Enterprise/Brand focus",
+        "speed": "2-3 month cycles"
+      },
+      "pixelmojo": {
+        "pricing": "$4.5K Sprint → $3.5K base + bonuses",
+        "timeline": "60 days",
+        "ai_native": true,
+        "performance_based": true,
+        "focus": "Built for startups",
+        "speed": "2-3 week sprints"
+      }
+    }
+  },
   "services": {
     "conversion-assets": {
       "name": "Conversion Asset Systems",

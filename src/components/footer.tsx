@@ -298,6 +298,151 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Tech Stack Section */}
+      <div className='relative border-t border-white/10'>
+        <div className='container mx-auto px-4 py-8'>
+          <div className='text-center mb-6'>
+            <h3 className='text-white/70 font-montserrat font-semibold text-sm uppercase tracking-wider mb-1'>
+              Built With
+            </h3>
+            <p className='text-white/40 text-xs'>
+              Cutting-edge AI-native technology stack
+            </p>
+          </div>
+          <div className='flex flex-wrap items-center justify-center gap-8 md:gap-12'>
+            {/* Next.js */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='h-8 flex items-center opacity-60 group-hover:opacity-100 transition-opacity'>
+                <Image
+                  src='/nextjs-logo.svg'
+                  alt='Next.js'
+                  width={80}
+                  height={32}
+                  className='h-8 w-auto brightness-0 invert'
+                />
+              </div>
+              <span className='text-white/40 text-xs font-medium'>Next.js</span>
+            </div>
+
+            {/* Vercel */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='h-8 flex items-center opacity-60 group-hover:opacity-100 transition-opacity'>
+                <Image
+                  src='/vercel-logo.svg'
+                  alt='Vercel'
+                  width={80}
+                  height={32}
+                  className='h-6 w-auto brightness-0 invert'
+                />
+              </div>
+              <span className='text-white/40 text-xs font-medium'>Vercel</span>
+            </div>
+
+            {/* OpenAI */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='text-white/60 group-hover:text-white transition-colors'>
+                <svg
+                  className='h-8 w-auto'
+                  viewBox='0 0 24 24'
+                  fill='currentColor'
+                >
+                  <path d='M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.896zm16.597 3.855-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z' />
+                </svg>
+              </div>
+              <span className='text-white/40 text-xs font-medium'>OpenAI</span>
+            </div>
+
+            {/* Anthropic Claude */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='text-white/60 group-hover:text-white transition-colors flex items-center justify-center h-8'>
+                <span className='text-2xl font-bold'>Claude</span>
+              </div>
+              <span className='text-white/40 text-xs font-medium'>
+                Anthropic
+              </span>
+            </div>
+
+            {/* TailwindCSS */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='text-white/60 group-hover:text-white transition-colors'>
+                <svg
+                  className='h-8 w-auto'
+                  viewBox='0 0 54 33'
+                  fill='currentColor'
+                >
+                  <g clipPath='url(#prefix__clip0)'>
+                    <path
+                      fillRule='evenodd'
+                      clipRule='evenodd'
+                      d='M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z'
+                    />
+                  </g>
+                </svg>
+              </div>
+              <span className='text-white/40 text-xs font-medium'>
+                Tailwind
+              </span>
+            </div>
+
+            {/* TypeScript */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='text-white/60 group-hover:text-white transition-colors flex items-center justify-center h-8'>
+                <span className='text-2xl font-bold'>TS</span>
+              </div>
+              <span className='text-white/40 text-xs font-medium'>
+                TypeScript
+              </span>
+            </div>
+
+            {/* Cursor AI */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='h-8 flex items-center opacity-60 group-hover:opacity-100 transition-opacity'>
+                <Image
+                  src='/cursor-logo-dark.svg'
+                  alt='Cursor AI'
+                  width={80}
+                  height={32}
+                  className='h-8 w-auto'
+                />
+              </div>
+              <span className='text-white/40 text-xs font-medium'>Cursor</span>
+            </div>
+
+            {/* Pinecone */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='h-8 flex items-center opacity-60 group-hover:opacity-100 transition-opacity'>
+                <Image
+                  src='/Pinecone Icon Logo Vector.svg'
+                  alt='Pinecone'
+                  width={32}
+                  height={32}
+                  className='h-8 w-auto brightness-0 invert'
+                />
+              </div>
+              <span className='text-white/40 text-xs font-medium'>
+                Pinecone
+              </span>
+            </div>
+
+            {/* Supabase */}
+            <div className='flex flex-col items-center gap-2 group'>
+              <div className='h-8 flex items-center opacity-60 group-hover:opacity-100 transition-opacity'>
+                <Image
+                  src='/supabase-icon.svg'
+                  alt='Supabase'
+                  width={32}
+                  height={32}
+                  className='h-8 w-auto brightness-0 invert'
+                />
+              </div>
+              <span className='text-white/40 text-xs font-medium'>
+                Supabase
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className='relative border-t border-white/10'>
         <div className='container mx-auto px-4 py-6'>

@@ -112,7 +112,51 @@ PROJECT TYPES WE HANDLE:
 - Enterprise SaaS platforms
 
 ===== PRICING DATA (SINGLE SOURCE OF TRUTH) =====
-Below is the complete pricing structure from our services-knowledge.json file. ALWAYS use this data for pricing questions. NEVER make up prices.
+
+🚨 PRIMARY PRICING MODEL: SPRINT + RETAINER (Use this FIRST for all pricing questions)
+
+We have a NEW performance-based pricing model that is our PRIMARY offering:
+
+**60-DAY CONVERSION SPRINT** (Start here - required for all clients)
+• Philippine startups: ₱180,000 (~$3,200 USD)
+• Global/US clients: $4,500 USD
+• Timeline: 60 days, one-time engagement
+• Payment: 50% upfront, 50% at day 30
+• Deliverables: Analytics audit, AI-optimized landing page/funnel, A/B testing, performance report
+• Success rate: Most clients see 15-40% conversion lift in 60 days
+• Conversion rate: 70% of Sprint clients move to Growth Retainer
+
+**GROWTH RETAINER** (Post-Sprint only - NOT available without Sprint first)
+• Base: $3,500/month (₱120K/month for PH startups)
+• Performance Bonuses (paid quarterly):
+  - 15-25% lift: +$1K/mo (+₱30K/mo)
+  - 25-40% lift: +$2.5K/mo (+₱75K/mo)
+  - 40%+ lift: +$5K/mo (+₱150K/mo)
+• Includes: Monthly sprints, A/B testing, campaign management, quarterly strategy
+
+**KEY MESSAGING:**
+✅ ALWAYS mention Sprint first - it's required before retainer
+✅ Frame as "prove value in 60 days" not "cheap option"
+✅ Compare to traditional $8K-15K/month agencies
+✅ Emphasize performance alignment: "We profit when you profit"
+✅ 70% Sprint→Retainer conversion rate is social proof
+
+**WHEN TO USE SPRINT + RETAINER:**
+- For any general pricing questions, lead with this model
+- When user asks "how much?", quote Sprint prices first
+- When user asks about monthly retainers, explain Sprint requirement
+- When comparing to traditional agencies, use Sprint + Retainer model
+
+**WHEN TO USE LEGACY TIER PRICING (below):**
+- When user specifically asks about a particular service (e.g., "How much for AI Product Development?")
+- When customizing scope beyond Sprint deliverables
+- When user needs specific services not covered in Sprint
+
+---
+
+LEGACY TIER-BASED PRICING (Secondary - use only for specific service inquiries):
+
+Below is the complete pricing structure from our services-knowledge.json file. Use this for specific service inquiries.
 
 ${pricingKnowledge}
 
@@ -142,6 +186,25 @@ Timeline: [timeline from data]
 
 [If budget-conscious:] We also have a Starter tier at [starter price] if you're just getting started.
 [If they need more:] For enterprise needs, our Scale tier at [scale price] includes [additional features]."
+
+**SPRINT + RETAINER FAQs** (Answer these confidently - they're on our pricing page):
+
+1. "Why is the Sprint cheaper than your retainer?"
+   → "It's not cheaper—it's our way of proving ourselves before you commit long-term. Most Sprint clients (70%) convert to retainers because the results speak for themselves."
+
+2. "What if you don't deliver results?"
+   → "We measure everything. If we don't hit conversion targets, we provide a detailed analysis of why and what needs to change (often it's product-market fit, not design). You'll know exactly what to fix."
+
+3. "How is this different from typical agencies?"
+   → "Three ways: (1) Speed - AI-native workflows move 3-5x faster. (2) Measurement - Data-driven, not creative intuition. (3) Alignment - Performance bonuses mean we profit when you profit."
+
+4. "Why the price difference between PH and global clients?"
+   → "We price based on local market purchasing power. Philippine startups get the same quality at rates that make sense for the local market."
+
+5. "Can I negotiate the pricing?"
+   → "For funded startups (YC/Antler/500 Startups portfolio), we're open to discussion. For bootstrapped founders, we can structure payment plans."
+
+---
 
 PHILIPPINE STARTUP SPECIAL 🇵🇭:
 From services-knowledge.json, we have:
