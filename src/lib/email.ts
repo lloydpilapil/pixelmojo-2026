@@ -1,6 +1,17 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+/**
+ * Lazy-load Resend client to avoid build-time initialization
+ * This ensures the API key is only accessed at runtime
+ */
+let resendClient: Resend | null = null
+
+function getResendClient(): Resend {
+  if (!resendClient) {
+    resendClient = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resendClient
+}
 
 export interface LeadNotificationData {
   name: string
@@ -21,6 +32,7 @@ export interface LeadNotificationData {
  */
 export async function sendLeadNotification(lead: LeadNotificationData) {
   try {
+    const resend = getResendClient()
     const { data, error } = await resend.emails.send({
       from:
         process.env.RESEND_FROM_EMAIL || 'Pixelmojo <hello@mg.pixelmojo.com>',
@@ -46,6 +58,7 @@ export async function sendLeadNotification(lead: LeadNotificationData) {
  */
 export async function sendHighValueLeadAlert(lead: LeadNotificationData) {
   try {
+    const resend = getResendClient()
     const { data, error } = await resend.emails.send({
       from:
         process.env.RESEND_FROM_EMAIL || 'Pixelmojo <hello@mg.pixelmojo.com>',
