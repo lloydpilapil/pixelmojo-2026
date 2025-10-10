@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { Lock, BarChart3, MessageSquare, LogOut } from 'lucide-react'
+import { Lock, BarChart3, MessageSquare, LogOut, Search } from 'lucide-react'
 
 export default function AdminLayout({
   children,
@@ -108,6 +108,7 @@ export default function AdminLayout({
 
   const tabs = [
     { name: 'Analytics', path: '/admin/analytics', icon: BarChart3 },
+    { name: 'SEO', path: '/admin/seo', icon: Search },
     { name: 'Chats', path: '/admin/chats', icon: MessageSquare },
   ]
 
@@ -134,7 +135,9 @@ export default function AdminLayout({
               const isActive =
                 pathname === tab.path ||
                 (tab.path === '/admin/chats' &&
-                  pathname.startsWith('/admin/chats/'))
+                  pathname.startsWith('/admin/chats/')) ||
+                (tab.path === '/admin/seo' &&
+                  pathname.startsWith('/admin/seo/'))
 
               return (
                 <button
