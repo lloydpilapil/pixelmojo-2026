@@ -25,6 +25,17 @@ export const metadata: Metadata = {
     'AI Product Development | Transform Digital Products Into Growth Engines | Pixelmojo',
   description:
     'Transform your digital product into a growth engine. AI-powered interfaces that drive engagement, conversions, and lasting customer relationships.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   alternates: {
     canonical: 'https://www.pixelmojo.io/services/ai-product-development',
   },

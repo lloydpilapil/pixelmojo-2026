@@ -12,6 +12,20 @@ export const metadata: Metadata = {
   title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
   description:
     'AI-native product studio that builds complete ecosystems generating immediate revenue. From idea to profitable product in 90 days. Real results, not promises.',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://www.pixelmojo.io',
+  },
   openGraph: {
     title: 'Pixelmojo | AI Product Studio - Ship Revenue in 90 Days',
     description:

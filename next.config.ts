@@ -605,6 +605,53 @@ const nextConfig: NextConfig = {
         destination: '/blogs',
         permanent: true,
       },
+      // Additional 404 blog posts - redirect to home
+      {
+        source:
+          '/blogs/the-power-of-ai-in-brand-marketing-smarter-strategies-for-b2b-growth',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blogs/strategy-is-the-philosophy-of-becoming',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/5-powerful-branding-solutions-for-startups-to-stand-out-in-the-market',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source:
+          '/blogs/the-ultimate-guide-to-digital-marketing-services-boosting-your-online-presence',
+        destination: '/',
+        permanent: true,
+      },
+      // Old works/projects
+      {
+        source: '/works/cigna',
+        destination: '/projects',
+        permanent: true,
+      },
+      // Old service pages
+      {
+        source: '/services/creative-contents',
+        destination: '/services',
+        permanent: true,
+      },
+      // Invalid URLs
+      {
+        source: '/&',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/$',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 }

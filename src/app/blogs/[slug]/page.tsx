@@ -50,6 +50,17 @@ export async function generateMetadata({ params }: BlogPostProps) {
   return {
     title: post.title,
     description: post.description,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     alternates: {
       canonical: canonicalUrl,
     },
@@ -58,6 +69,8 @@ export async function generateMetadata({ params }: BlogPostProps) {
       description: post.description,
       type: 'article',
       url: canonicalUrl,
+      publishedTime: post.date,
+      authors: ['Lloyd Pilapil'],
       images: [
         {
           url: ogImage,

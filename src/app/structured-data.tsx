@@ -187,57 +187,133 @@ export default function StructuredData() {
         },
       },
       {
-        '@type': 'CreativeWork',
+        '@type': 'SoftwareApplication',
         '@id': 'https://www.pixelmojo.io/projects/mojo-ai/#project',
         name: 'Mojo AI',
         description:
           'Transform single templates into hundreds of on-brand ad variations in minutes. AI-powered content generation meets intelligent design analysis.',
+        applicationCategory: 'DesignApplication',
+        operatingSystem: 'Figma',
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+        },
         creator: {
           '@id': 'https://www.pixelmojo.io/#organization',
         },
-        dateCreated: '2025',
+        datePublished: '2025-01-01',
         keywords: [
           'Figma Plugin',
           'AI Design',
           'Creative Automation',
           'GPT-5 Integration',
+          'Marketing Design',
+          'Ad Generation',
         ],
+        screenshot: 'https://www.pixelmojo.io/mojo-ai-visual.webp',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5.0',
+          ratingCount: '1',
+        },
       },
       {
-        '@type': 'CreativeWork',
+        '@type': 'SoftwareApplication',
         '@id':
           'https://www.pixelmojo.io/projects/seo-intelligence-platform/#project',
         name: 'SEO Intelligence Platform',
         description:
           'Built with Google Search Console MCP to create an autonomous SEO optimization system that drove 3x organic traffic growth.',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+        },
         creator: {
           '@id': 'https://www.pixelmojo.io/#organization',
         },
-        dateCreated: '2025',
+        datePublished: '2025-01-01',
         keywords: [
           'MCP Protocol',
           'SEO Automation',
           'Claude AI',
           'Marketing Tech',
+          'Google Search Console',
+          'Content Strategy',
         ],
+        screenshot:
+          'https://www.pixelmojo.io/seo-intelligence-platform-visual.webp',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5.0',
+          ratingCount: '1',
+        },
       },
       {
-        '@type': 'CreativeWork',
+        '@type': 'SoftwareApplication',
         '@id':
           'https://www.pixelmojo.io/projects/logistics-track-trace-system/#project',
         name: 'Logistics Track & Trace System',
         description:
           'Enterprise logistics platform that unified fragmented operations into a real-time tracking system, cutting ops workload by 70%.',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web, iOS, Android',
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+        },
         creator: {
           '@id': 'https://www.pixelmojo.io/#organization',
         },
-        dateCreated: '2025',
+        datePublished: '2025-01-01',
         keywords: [
           'Enterprise SaaS',
           'Real-time Tracking',
           'WebSockets',
           'PostgreSQL',
+          'Logistics Management',
+          'Supply Chain',
         ],
+        screenshot:
+          'https://www.pixelmojo.io/logistics-track-and-trace-visual.webp',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5.0',
+          ratingCount: '1',
+        },
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id':
+          'https://www.pixelmojo.io/projects/real-estate-earnings-tracker/#project',
+        name: 'Real Estate Earnings Tracker',
+        description:
+          'Predictive analytics platform that transforms property investment data into actionable profit forecasts with real-time market analysis.',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+        },
+        creator: {
+          '@id': 'https://www.pixelmojo.io/#organization',
+        },
+        datePublished: '2025-01-01',
+        keywords: [
+          'Real Estate',
+          'Predictive Analytics',
+          'Investment Tracking',
+          'Machine Learning',
+          'Property Management',
+        ],
+        screenshot:
+          'https://www.pixelmojo.io/real-estate-earning-tracker-visual.webp',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5.0',
+          ratingCount: '1',
+        },
       },
       {
         '@type': 'FAQPage',

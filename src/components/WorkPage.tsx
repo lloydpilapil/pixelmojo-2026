@@ -20,6 +20,17 @@ export function generateWorkMetadata(work: WorkItem): Metadata {
   return {
     title: work.title,
     description: work.description,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     alternates: {
       canonical: pageUrl,
     },
