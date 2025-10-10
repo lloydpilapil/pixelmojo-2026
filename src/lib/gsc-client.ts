@@ -201,13 +201,17 @@ export function formatGSCDate(date: Date): string {
 
 /**
  * Helper function to get date range
+ * Note: GSC data has a 2-3 day delay, so we use data from 3 days ago as the end date
  */
 export function getDateRange(days: number): {
   startDate: string
   endDate: string
 } {
+  // Use data from 3 days ago as the most recent available
   const endDate = new Date()
-  const startDate = new Date()
+  endDate.setDate(endDate.getDate() - 3)
+
+  const startDate = new Date(endDate)
   startDate.setDate(startDate.getDate() - days)
 
   return {
