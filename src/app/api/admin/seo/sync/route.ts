@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
     // Verify admin authorization via session
     const auth = await requireAuth()
     if (!auth.authorized) {
+      console.error('[SEO Sync] Authentication failed')
       return auth.response
     }
 
@@ -39,6 +40,7 @@ export async function POST(request: NextRequest) {
     const siteUrl =
       process.env.GOOGLE_SEARCH_CONSOLE_PROPERTY_URL ||
       'https://www.pixelmojo.io'
+
     const gscClient = new GSCClient(siteUrl)
 
     const { startDate, endDate } = getDateRange(days)
@@ -54,7 +56,6 @@ export async function POST(request: NextRequest) {
 
     // 4. Detect and create alerts
     await detectSEOAlerts(startDate, endDate)
-
     return NextResponse.json({
       success: true,
       message: `Synced SEO data for ${days} days`,
@@ -62,10 +63,15 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error('[SEO Sync] Error:', error)
+    console.error(
+      '[SEO Sync] Error stack:',
+      error instanceof Error ? error.stack : 'No stack trace'
+    )
     return NextResponse.json(
       {
         error: 'Failed to sync SEO data',
         details: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
       },
       { status: 500 }
     )
@@ -81,10 +87,15 @@ async function syncKeywordRankings(
   endDate: string
 ) {
   // Get all active target keywords
-  const { data: targetKeywords } = await supabase
+  const { data: targetKeywords, error: selectError } = await supabase
     .from('target_keywords')
     .select('id, keyword')
     .eq('is_active', true)
+
+  if (selectError) {
+    console.error('[SEO Sync] Error fetching target keywords:', selectError)
+    throw new Error(`Failed to fetch target keywords: ${selectError.message}`)
+  }
 
   if (!targetKeywords || targetKeywords.length === 0) {
     return
@@ -102,21 +113,31 @@ async function syncKeywordRankings(
     const targetKeyword = targetKeywords.find(k => k.keyword === keyword)
     if (!targetKeyword) continue
 
-    await supabase.from('keyword_rankings').upsert(
-      {
-        keyword_id: targetKeyword.id,
-        date: endDate,
-        position: data.position,
-        impressions: data.impressions,
-        clicks: data.clicks,
-        ctr: data.ctr,
-        country: 'total',
-        device: 'total',
-      },
-      {
-        onConflict: 'keyword_id,date,country,device',
-      }
-    )
+    const { error: upsertError } = await supabase
+      .from('keyword_rankings')
+      .upsert(
+        {
+          keyword_id: targetKeyword.id,
+          date: endDate,
+          position: data.position,
+          impressions: data.impressions,
+          clicks: data.clicks,
+          ctr: data.ctr,
+          country: 'total',
+          device: 'total',
+        },
+        {
+          onConflict: 'keyword_id,date,country,device',
+        }
+      )
+
+    if (upsertError) {
+      console.error(
+        `[SEO Sync] Error upserting ranking for "${keyword}":`,
+        upsertError
+      )
+      throw new Error(`Failed to upsert ranking: ${upsertError.message}`)
+    }
   }
 }
 
@@ -133,21 +154,33 @@ async function syncPagePerformance(
   for (const page of pages) {
     if (!page.keys || !page.keys[0]) continue
 
-    await supabase.from('page_performance').upsert(
-      {
-        url: page.keys[0],
-        date: endDate,
-        impressions: page.impressions,
-        clicks: page.clicks,
-        ctr: page.ctr,
-        position: page.position,
-        country: 'total',
-        device: 'total',
-      },
-      {
-        onConflict: 'url,date,country,device',
-      }
-    )
+    const { error: upsertError } = await supabase
+      .from('page_performance')
+      .upsert(
+        {
+          url: page.keys[0],
+          date: endDate,
+          impressions: page.impressions,
+          clicks: page.clicks,
+          ctr: page.ctr,
+          position: page.position,
+          country: 'total',
+          device: 'total',
+        },
+        {
+          onConflict: 'url,date,country,device',
+        }
+      )
+
+    if (upsertError) {
+      console.error(
+        `[SEO Sync] Error upserting page performance for "${page.keys[0]}":`,
+        upsertError
+      )
+      throw new Error(
+        `Failed to upsert page performance: ${upsertError.message}`
+      )
+    }
   }
 }
 
@@ -164,7 +197,7 @@ async function syncSearchQueries(
   for (const query of queries) {
     if (!query.keys || !query.keys[0]) continue
 
-    await supabase.from('search_queries').upsert(
+    const { error: upsertError } = await supabase.from('search_queries').upsert(
       {
         query: query.keys[0],
         date: endDate,
@@ -179,6 +212,14 @@ async function syncSearchQueries(
         onConflict: 'query,date,country,device',
       }
     )
+
+    if (upsertError) {
+      console.error(
+        `[SEO Sync] Error upserting search query "${query.keys[0]}":`,
+        upsertError
+      )
+      throw new Error(`Failed to upsert search query: ${upsertError.message}`)
+    }
   }
 }
 
