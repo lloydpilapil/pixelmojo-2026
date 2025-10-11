@@ -8,7 +8,14 @@ import { google } from 'googleapis'
 export interface GSCQuery {
   startDate: string
   endDate: string
-  dimensions?: ('query' | 'page' | 'country' | 'device' | 'searchAppearance')[]
+  dimensions?: (
+    | 'query'
+    | 'page'
+    | 'country'
+    | 'device'
+    | 'date'
+    | 'searchAppearance'
+  )[]
   dimensionFilterGroups?: any[]
   rowLimit?: number
   startRow?: number
@@ -75,7 +82,8 @@ export class GSCClient {
   }
 
   /**
-   * Get keyword rankings for specific queries
+   * Get keyword rankings for specific queries (aggregated across date range)
+   * @deprecated Use getKeywordRankingsByDate for daily data
    */
   async getKeywordRankings(
     keywords: string[],
@@ -112,7 +120,56 @@ export class GSCClient {
   }
 
   /**
-   * Get top performing pages
+   * Get keyword rankings with daily breakdown
+   * Returns a map of keyword -> array of daily data points
+   */
+  async getKeywordRankingsByDate(
+    keywords: string[],
+    startDate: string,
+    endDate: string
+  ): Promise<Map<string, Array<GSCRow & { date: string }>>> {
+    const response = await this.querySearchAnalytics({
+      startDate,
+      endDate,
+      dimensions: ['query', 'date'],
+      dimensionFilterGroups: [
+        {
+          filters: keywords.map(keyword => ({
+            dimension: 'query',
+            operator: 'equals',
+            expression: keyword,
+          })),
+        },
+      ],
+      rowLimit: 25000, // Higher limit for daily data
+    })
+
+    const rankingsMap = new Map<string, Array<GSCRow & { date: string }>>()
+
+    if (response.rows) {
+      response.rows.forEach(row => {
+        if (row.keys && row.keys[0] && row.keys[1]) {
+          const keyword = row.keys[0]
+          const date = row.keys[1]
+
+          if (!rankingsMap.has(keyword)) {
+            rankingsMap.set(keyword, [])
+          }
+
+          rankingsMap.get(keyword)!.push({
+            ...row,
+            date,
+          })
+        }
+      })
+    }
+
+    return rankingsMap
+  }
+
+  /**
+   * Get top performing pages (aggregated)
+   * @deprecated Use getTopPagesByDate for daily data
    */
   async getTopPages(
     startDate: string,
@@ -130,7 +187,33 @@ export class GSCClient {
   }
 
   /**
-   * Get top search queries
+   * Get top performing pages with daily breakdown
+   */
+  async getTopPagesByDate(
+    startDate: string,
+    endDate: string,
+    limit: number = 100
+  ): Promise<Array<GSCRow & { date: string }>> {
+    const response = await this.querySearchAnalytics({
+      startDate,
+      endDate,
+      dimensions: ['page', 'date'],
+      rowLimit: Math.min(25000, limit * 50), // GSC max is 25000
+    })
+
+    if (!response.rows) return []
+
+    return response.rows
+      .filter(row => row.keys && row.keys[0] && row.keys[1])
+      .map(row => ({
+        ...row,
+        date: row.keys![1],
+      }))
+  }
+
+  /**
+   * Get top search queries (aggregated)
+   * @deprecated Use getTopQueriesByDate for daily data
    */
   async getTopQueries(
     startDate: string,
@@ -145,6 +228,31 @@ export class GSCClient {
     })
 
     return response.rows || []
+  }
+
+  /**
+   * Get top search queries with daily breakdown
+   */
+  async getTopQueriesByDate(
+    startDate: string,
+    endDate: string,
+    limit: number = 1000
+  ): Promise<Array<GSCRow & { date: string }>> {
+    const response = await this.querySearchAnalytics({
+      startDate,
+      endDate,
+      dimensions: ['query', 'date'],
+      rowLimit: Math.min(25000, limit * 10), // GSC max is 25000
+    })
+
+    if (!response.rows) return []
+
+    return response.rows
+      .filter(row => row.keys && row.keys[0] && row.keys[1])
+      .map(row => ({
+        ...row,
+        date: row.keys![1],
+      }))
   }
 
   /**

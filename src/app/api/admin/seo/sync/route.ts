@@ -34,8 +34,8 @@ export async function POST(request: NextRequest) {
       return auth.response
     }
 
-    const body = await request.json()
-    const days = body.days || 7 // Default to last 7 days
+    const body = await request.json().catch(() => ({}))
+    const days = body.days || 30 // Default to last 30 days
 
     const siteUrl =
       process.env.GOOGLE_SEARCH_CONSOLE_PROPERTY_URL ||
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * Sync keyword rankings for tracked keywords
+ * Sync keyword rankings for tracked keywords with daily breakdown
  */
 async function syncKeywordRankings(
   gscClient: GSCClient,
@@ -98,83 +98,127 @@ async function syncKeywordRankings(
   }
 
   if (!targetKeywords || targetKeywords.length === 0) {
+    console.log('[SEO Sync] No active target keywords found')
     return
   }
 
   const keywords = targetKeywords.map(k => k.keyword)
-  const rankings = await gscClient.getKeywordRankings(
+  console.log(
+    `[SEO Sync] Fetching rankings for ${keywords.length} keywords from ${startDate} to ${endDate}`
+  )
+
+  // Fetch daily rankings data
+  const rankingsByKeyword = await gscClient.getKeywordRankingsByDate(
     keywords,
     startDate,
     endDate
   )
 
-  // Store rankings
-  for (const [keyword, data] of rankings.entries()) {
+  console.log(
+    `[SEO Sync] Retrieved data for ${rankingsByKeyword.size} keywords`
+  )
+
+  // Prepare batch upsert data
+  const rankingsToUpsert = []
+
+  for (const [keyword, dailyData] of rankingsByKeyword.entries()) {
     const targetKeyword = targetKeywords.find(k => k.keyword === keyword)
     if (!targetKeyword) continue
 
-    const { error: upsertError } = await supabase
-      .from('keyword_rankings')
-      .upsert(
-        {
-          keyword_id: targetKeyword.id,
-          date: endDate,
-          position: data.position,
-          impressions: data.impressions,
-          clicks: data.clicks,
-          ctr: data.ctr,
-          country: 'total',
-          device: 'total',
-        },
-        {
-          onConflict: 'keyword_id,date,country,device',
-        }
-      )
-
-    if (upsertError) {
-      console.error(
-        `[SEO Sync] Error upserting ranking for "${keyword}":`,
-        upsertError
-      )
-      throw new Error(`Failed to upsert ranking: ${upsertError.message}`)
+    for (const dayData of dailyData) {
+      rankingsToUpsert.push({
+        keyword_id: targetKeyword.id,
+        date: dayData.date,
+        position: dayData.position,
+        impressions: dayData.impressions,
+        clicks: dayData.clicks,
+        ctr: dayData.ctr,
+        country: 'total',
+        device: 'total',
+      })
     }
+  }
+
+  if (rankingsToUpsert.length > 0) {
+    console.log(
+      `[SEO Sync] Upserting ${rankingsToUpsert.length} ranking records`
+    )
+
+    // Batch upsert in chunks of 1000 to avoid payload size limits
+    const chunkSize = 1000
+    for (let i = 0; i < rankingsToUpsert.length; i += chunkSize) {
+      const chunk = rankingsToUpsert.slice(i, i + chunkSize)
+
+      const { error: upsertError } = await supabase
+        .from('keyword_rankings')
+        .upsert(chunk, {
+          onConflict: 'keyword_id,date,country,device',
+        })
+
+      if (upsertError) {
+        console.error(
+          `[SEO Sync] Error upserting ranking chunk ${i / chunkSize + 1}:`,
+          upsertError
+        )
+        throw new Error(`Failed to upsert rankings: ${upsertError.message}`)
+      }
+    }
+
+    console.log('[SEO Sync] Successfully upserted all keyword rankings')
+  } else {
+    console.log('[SEO Sync] No ranking data to upsert')
   }
 }
 
 /**
- * Sync page performance data
+ * Sync page performance data with daily breakdown
  */
 async function syncPagePerformance(
   gscClient: GSCClient,
   startDate: string,
   endDate: string
 ) {
-  const pages = await gscClient.getTopPages(startDate, endDate, 100)
+  console.log(
+    `[SEO Sync] Fetching page performance from ${startDate} to ${endDate}`
+  )
 
-  for (const page of pages) {
-    if (!page.keys || !page.keys[0]) continue
+  const pages = await gscClient.getTopPagesByDate(startDate, endDate, 100)
+
+  console.log(`[SEO Sync] Retrieved ${pages.length} page performance records`)
+
+  if (pages.length === 0) {
+    console.log('[SEO Sync] No page performance data to upsert')
+    return
+  }
+
+  // Prepare batch upsert data
+  const pagesToUpsert = pages
+    .filter(page => page.keys && page.keys[0])
+    .map(page => ({
+      url: page.keys![0],
+      date: page.date,
+      impressions: page.impressions,
+      clicks: page.clicks,
+      ctr: page.ctr,
+      position: page.position,
+      country: 'total',
+      device: 'total',
+    }))
+
+  // Batch upsert in chunks of 1000
+  const chunkSize = 1000
+  for (let i = 0; i < pagesToUpsert.length; i += chunkSize) {
+    const chunk = pagesToUpsert.slice(i, i + chunkSize)
 
     const { error: upsertError } = await supabase
       .from('page_performance')
-      .upsert(
-        {
-          url: page.keys[0],
-          date: endDate,
-          impressions: page.impressions,
-          clicks: page.clicks,
-          ctr: page.ctr,
-          position: page.position,
-          country: 'total',
-          device: 'total',
-        },
-        {
-          onConflict: 'url,date,country,device',
-        }
-      )
+      .upsert(chunk, {
+        onConflict: 'url,date,country,device',
+      })
 
     if (upsertError) {
       console.error(
-        `[SEO Sync] Error upserting page performance for "${page.keys[0]}":`,
+        `[SEO Sync] Error upserting page performance chunk ${i / chunkSize + 1}:`,
         upsertError
       )
       throw new Error(
@@ -182,45 +226,66 @@ async function syncPagePerformance(
       )
     }
   }
+
+  console.log('[SEO Sync] Successfully upserted all page performance data')
 }
 
 /**
- * Sync search queries
+ * Sync search queries with daily breakdown
  */
 async function syncSearchQueries(
   gscClient: GSCClient,
   startDate: string,
   endDate: string
 ) {
-  const queries = await gscClient.getTopQueries(startDate, endDate, 1000)
+  console.log(
+    `[SEO Sync] Fetching search queries from ${startDate} to ${endDate}`
+  )
 
-  for (const query of queries) {
-    if (!query.keys || !query.keys[0]) continue
+  const queries = await gscClient.getTopQueriesByDate(startDate, endDate, 1000)
 
-    const { error: upsertError } = await supabase.from('search_queries').upsert(
-      {
-        query: query.keys[0],
-        date: endDate,
-        impressions: query.impressions,
-        clicks: query.clicks,
-        ctr: query.ctr,
-        position: query.position,
-        country: 'total',
-        device: 'total',
-      },
-      {
+  console.log(`[SEO Sync] Retrieved ${queries.length} search query records`)
+
+  if (queries.length === 0) {
+    console.log('[SEO Sync] No search query data to upsert')
+    return
+  }
+
+  // Prepare batch upsert data
+  const queriesToUpsert = queries
+    .filter(query => query.keys && query.keys[0])
+    .map(query => ({
+      query: query.keys![0],
+      date: query.date,
+      impressions: query.impressions,
+      clicks: query.clicks,
+      ctr: query.ctr,
+      position: query.position,
+      country: 'total',
+      device: 'total',
+    }))
+
+  // Batch upsert in chunks of 1000
+  const chunkSize = 1000
+  for (let i = 0; i < queriesToUpsert.length; i += chunkSize) {
+    const chunk = queriesToUpsert.slice(i, i + chunkSize)
+
+    const { error: upsertError } = await supabase
+      .from('search_queries')
+      .upsert(chunk, {
         onConflict: 'query,date,country,device',
-      }
-    )
+      })
 
     if (upsertError) {
       console.error(
-        `[SEO Sync] Error upserting search query "${query.keys[0]}":`,
+        `[SEO Sync] Error upserting search queries chunk ${i / chunkSize + 1}:`,
         upsertError
       )
-      throw new Error(`Failed to upsert search query: ${upsertError.message}`)
+      throw new Error(`Failed to upsert search queries: ${upsertError.message}`)
     }
   }
+
+  console.log('[SEO Sync] Successfully upserted all search queries')
 }
 
 /**

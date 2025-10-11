@@ -72,7 +72,7 @@ export default function SEOMonitoringPage() {
   const [loading, setLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [timeRange, setTimeRange] = useState(30)
+  const [timeRange, setTimeRange] = useState(7) // Default to 7 days to match synced data
 
   const fetchSEOData = useCallback(async () => {
     setLoading(true)
@@ -102,7 +102,7 @@ export default function SEOMonitoringPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ days: 7 }),
+        body: JSON.stringify({ days: 30 }), // Sync 30 days of data
       })
 
       if (!response.ok) {
