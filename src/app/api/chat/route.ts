@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase'
 import servicesData from '@/data/services-knowledge.json'
 import { formatContextForAI, type ChatContext } from '@/lib/chat-context'
 import { sendLeadNotification, sendHighValueLeadAlert } from '@/lib/email'
+import { sendLeadConfirmationEmail } from '@/lib/lead-confirmation-emails'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -44,6 +45,12 @@ CONVERSATION GUIDELINES:
 - After the FIRST message understanding their need, ask for email with a value exchange: "I'd love to share our portfolio and pricing guide with you. What's your email?"
 - Keep responses under 100 words
 - Be conversational, warm, and results-focused
+
+PRIVACY POLICY CONSENT:
+When a user provides their email address, ALWAYS acknowledge it with privacy policy mention:
+- "Perfect! I've saved your email. By providing your email, you agree to our Privacy Policy (pixelmojo.io/privacy-policy). I'll send you the details right away!"
+- Or naturally weave it in: "Great! I've got your email ([email]). Just so you know, by sharing your email you agree to our Privacy Policy at pixelmojo.io/privacy-policy. I'll send you our portfolio and pricing now!"
+- Be warm and natural, not robotic or legal-sounding
 
 IMPORTANT: When you collect information like email, name, budget, timeline, or project type, ALWAYS call the save_lead_info function immediately to save it.
 
@@ -967,27 +974,52 @@ IMPORTANT: Follow the strategic guidance above. If marked HIGH_PRIORITY, you MUS
           console.log('[Chat API] Attempting to send email notification...')
 
           try {
+            // Send notification to founder
             if (qualificationScore < 80) {
               console.log(
                 '[Chat API] Sending regular lead notification (score < 80)'
               )
               const result = await sendLeadNotification(emailData)
-              console.log('[Chat API] Email result:', result)
+              console.log('[Chat API] Founder notification result:', result)
             } else {
               console.log('[Chat API] Sending high-value alert (score >= 80)')
               const result = await sendHighValueLeadAlert(emailData)
-              console.log('[Chat API] Email result:', result)
+              console.log('[Chat API] Founder notification result:', result)
             }
           } catch (emailError) {
-            console.error('[Chat API] Email sending failed:', emailError)
+            console.error('[Chat API] Founder notification failed:', emailError)
           }
         } else {
-          console.log('[Chat API] Email not sent. Reason:', {
+          console.log('[Chat API] Founder notification not sent. Reason:', {
             hasEmail: !!leadData.email,
             scoreQualified: qualificationScore >= 60,
             isNewLead,
             scoreImproved,
           })
+        }
+
+        // ALWAYS send confirmation email to the lead if they provided email
+        if (leadData.email && isNewLead) {
+          console.log('[Chat API] Sending confirmation email to lead...')
+
+          try {
+            const confirmationResult = await sendLeadConfirmationEmail({
+              name: leadData.name || 'there',
+              email: leadData.email,
+              projectType: leadData.project_type,
+              budgetRange: leadData.budget_range,
+              timeline: leadData.timeline,
+              industry: leadData.industry,
+              qualificationScore,
+              sessionId,
+            })
+            console.log(
+              '[Chat API] Lead confirmation result:',
+              confirmationResult
+            )
+          } catch (confirmError) {
+            console.error('[Chat API] Lead confirmation failed:', confirmError)
+          }
         }
 
         // Update session with email if provided
