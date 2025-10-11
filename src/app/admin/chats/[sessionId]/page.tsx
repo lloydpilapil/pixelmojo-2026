@@ -178,7 +178,7 @@ export default function ConversationDetailPage() {
                 <div className='flex items-center justify-between'>
                   <span className='text-sm text-muted-foreground'>Score</span>
                   <span className='font-semibold text-primary'>
-                    {lead.qualification_score}/10
+                    {lead.qualification_score}/100
                   </span>
                 </div>
                 <div className='flex items-center justify-between'>

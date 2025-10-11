@@ -46,6 +46,7 @@ export async function sendLeadNotification(lead: LeadNotificationData) {
       return { success: false, error }
     }
 
+    console.log('[Email] Lead notification sent successfully:', data?.id)
     return { success: true, data }
   } catch (error) {
     console.error('[Email] Error sending lead notification:', error)
@@ -72,6 +73,7 @@ export async function sendHighValueLeadAlert(lead: LeadNotificationData) {
       return { success: false, error }
     }
 
+    console.log('[Email] High-value alert sent successfully:', data?.id)
     return { success: true, data }
   } catch (error) {
     console.error('[Email] Error sending high-value alert:', error)

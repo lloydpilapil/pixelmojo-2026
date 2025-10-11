@@ -72,7 +72,7 @@ export default function AdminChatsPage() {
     if (filter === 'all') return true
     if (filter === 'leads') return session.lead !== null
     if (filter === 'high-score')
-      return (session.lead?.qualification_score ?? 0) >= 7
+      return (session.lead?.qualification_score ?? 0) >= 70
     return true
   })
 
@@ -123,8 +123,11 @@ export default function AdminChatsPage() {
               : 'bg-muted hover:bg-muted/80'
           }`}
         >
-          High Score (7+) (
-          {sessions.filter(s => (s.lead?.qualification_score ?? 0) >= 7).length}
+          High Score (70+) (
+          {
+            sessions.filter(s => (s.lead?.qualification_score ?? 0) >= 70)
+              .length
+          }
           )
         </button>
       </div>
@@ -150,7 +153,7 @@ export default function AdminChatsPage() {
                     </h3>
                     {session.lead && (
                       <span className='px-2 py-1 bg-primary/10 text-primary text-xs rounded-full'>
-                        Score: {session.lead.qualification_score}/10
+                        Score: {session.lead.qualification_score}/100
                       </span>
                     )}
                     <span
