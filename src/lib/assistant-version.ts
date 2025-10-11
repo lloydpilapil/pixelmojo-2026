@@ -2,6 +2,22 @@
  * PixelMojo AI Assistant Version
  *
  * Version History:
+ * - 1.4.0 (2025-10-11) - Page-Aware Intro Messages & Consultative UX
+ *   - Replaced menu-driven greetings with consultative, page-aware intros
+ *   - Removed services list from greeting for cleaner UX
+ *   - Implemented calibrated questions based on page context
+ *   - Homepage: Focus on biggest challenge
+ *   - About: Ask what made them curious
+ *   - Services: Ask about problem to solve
+ *   - Portfolio: Ask which project caught their eye
+ *   - Blog: Offer to explore topic further
+ *   - Pricing: Ask about project type
+ *   - Contact: Ask about urgency driver
+ *   - Exit intent: Simple, direct question
+ *   - Enhanced conversation intelligence with 8 negotiation patterns
+ *   - Urgency and budget alignment detection (+10 bonus points each)
+ *   - LLM optimization: max_tokens 800, presence_penalty 0.3, frequency_penalty 0.2
+ *
  * - 1.3.0 (2025-10-10) - Enhanced Lead Intelligence & Analytics
  *   - Advanced lead scoring (0-100 scale with weighted criteria)
  *   - Email notifications for qualified leads (60+) and high-value alerts (80+)
@@ -43,10 +59,10 @@
  *   - Rate limiting and session management
  */
 
-export const ASSISTANT_VERSION = '1.3.0'
+export const ASSISTANT_VERSION = '1.4.0'
 export const ASSISTANT_NAME = 'PixelMojo Assistant'
 export const ASSISTANT_MODEL = 'gpt-4o-mini'
-export const ASSISTANT_RELEASE_DATE = '2025-10-10'
+export const ASSISTANT_RELEASE_DATE = '2025-10-11'
 
 export interface AssistantInfo {
   version: string
