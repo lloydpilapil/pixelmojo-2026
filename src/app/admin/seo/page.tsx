@@ -289,7 +289,7 @@ export default function SEOMonitoringPage() {
                     Sorted by opportunity score
                   </p>
                 </div>
-                <div className='space-y-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-500/10'>
+                <div className='space-y-3 max-h-[600px] overflow-y-scroll pr-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-purple-500/10 [&::-webkit-scrollbar-thumb]:bg-purple-500 [&::-webkit-scrollbar-thumb]:rounded-full'>
                   {keywordResults.keywords.map((kw: any, i: number) => (
                     <KeywordResearchRow key={i} keyword={kw} />
                   ))}
