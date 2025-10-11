@@ -571,12 +571,12 @@ const LEAD_CAPTURE_FUNCTION = {
       budget_range: {
         type: 'string',
         description:
-          'Budget range based on user\'s stated budget. Map numeric amounts intelligently: Under $5k, $5k-$15k, $15k-$50k, $50k+, Not sure. EXAMPLES: "$30,000" or "$30000" → $15k-$50k, "open to budget" with context of $30K pricing → $15k-$50k, "$50,000+" → $50k+',
+          'Budget range based on user\'s stated budget. ALWAYS map to one of these exact values: "Under $5k", "$5k-$15k", "$15k-$50k", "$50k+", "Not sure". EXAMPLES: "$30,000" → "$15k-$50k", "₱4,995" → "Under $5k", "konti budget" (Filipino for small budget) → "Under $5k", "pricey" or "expensive" → "Under $5k", "open to budget" with $30K context → "$15k-$50k", "$50,000+" → "$50k+". CRITICAL: If user expresses budget concern ("small budget", "startup", "konti budget", "tight budget"), map to "Under $5k".',
       },
       timeline: {
         type: 'string',
         description:
-          'Project timeline: ASAP, 1-3 months, 3-6 months, 6+ months, Just exploring. DETECT URGENCY: "need support", "urgent", "yes pls", "ready to start" → ASAP',
+          'Project timeline. ALWAYS map to one of these exact values: "ASAP", "1-3 months", "3-6 months", "6+ months", "Just exploring". DETECT URGENCY SIGNALS: "urgent", "urgently", "this is urgent", "yes this is urgent", "ASAP", "as soon as possible", "need support", "need help", "immediately", "right away", "this week", "next week" → "ASAP". DETECT INTEREST: "interested", "ready to start", "let\'s go", "yes pls" → "ASAP". CRITICAL: If user says "urgent" or "yes this is urgent", ALWAYS set to "ASAP".',
       },
       notes: {
         type: 'string',

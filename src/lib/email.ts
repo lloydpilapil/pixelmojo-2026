@@ -346,6 +346,41 @@ function getScoreBadge(score: number): string {
 }
 
 /**
+ * Send follow-up email to a lead
+ */
+export async function sendFollowUpEmail(data: {
+  to: string
+  subject: string
+  htmlBody: string
+  textBody: string
+}) {
+  try {
+    const resend = getResendClient()
+    const { data: emailData, error } = await resend.emails.send({
+      from:
+        process.env.RESEND_FROM_EMAIL ||
+        'Lloyd from Pixelmojo <lloyd@mg.pixelmojo.com>',
+      to: [data.to],
+      subject: data.subject,
+      html: data.htmlBody,
+      text: data.textBody,
+      replyTo: 'lloyd@pixelmojo.io',
+    })
+
+    if (error) {
+      console.error('[Email] Failed to send follow-up:', error)
+      return { success: false, error }
+    }
+
+    console.log('[Email] Follow-up sent successfully:', emailData?.id)
+    return { success: true, data: emailData }
+  } catch (error) {
+    console.error('[Email] Error sending follow-up:', error)
+    return { success: false, error }
+  }
+}
+
+/**
  * Send weekly summary of all leads
  */
 export async function sendWeeklySummary(_leads: LeadNotificationData[]) {
