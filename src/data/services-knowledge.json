@@ -34,24 +34,97 @@
       "success_metrics": "Most clients see 15-40% conversion lift in 60 days",
       "conversion_rate_to_retainer": "~70% of successful Sprints convert to Growth Retainers"
     },
-    "retainer": {
-      "name": "Growth Retainer",
-      "tagline": "Post-Sprint Only",
-      "description": "Only available to Sprint graduates. Scale together with performance-based monthly retainers",
+    "subscription": {
+      "name": "AI Growth Subscription",
+      "tagline": "For Sprint Graduates",
+      "description": "Only available to Sprint graduates. Scale together with ongoing optimization and performance-based bonuses",
       "eligibility": "Must complete 60-Day Sprint first",
-      "base_pricing": {
-        "global_us_clients": {
-          "price": "$3,500/month",
-          "currency": "USD"
+      "cancellation_policy": "Month-to-month with 30-day cancellation notice. No long-term lock-ins.",
+      "tiers": {
+        "starter": {
+          "name": "Starter",
+          "subtitle": "AI Sprint Subscription",
+          "pricing": {
+            "global_us_clients": {
+              "price": "$2,000/month",
+              "currency": "USD"
+            },
+            "philippine_startups": {
+              "price": "₱70,000/month",
+              "usd_equivalent": "~$1,250 USD",
+              "currency": "PHP"
+            }
+          },
+          "best_for": "Startups needing continuous optimization",
+          "deliverables": [
+            "1 monthly conversion sprint (landing page/feature rollouts)",
+            "Always-on analytics dashboard",
+            "Up to 3 A/B tests per month",
+            "Quarterly strategy call & performance review",
+            "Cancel anytime (30-day notice)"
+          ],
+          "not_included": [
+            "Brand system maintenance",
+            "Funnel and campaign management",
+            "Dedicated manager"
+          ]
         },
-        "philippine_startups": {
-          "price": "₱120,000/month",
-          "usd_equivalent": "~$2,100 USD",
-          "currency": "PHP"
+        "growth": {
+          "name": "Growth",
+          "subtitle": "AI Optimization Partner",
+          "popular": true,
+          "pricing": {
+            "global_us_clients": {
+              "price": "$3,500/month",
+              "currency": "USD"
+            },
+            "philippine_startups": {
+              "price": "₱120,000/month",
+              "usd_equivalent": "~$2,100 USD",
+              "currency": "PHP"
+            }
+          },
+          "best_for": "Most common tier for scaling startups",
+          "deliverables": [
+            "Everything in Starter, PLUS:",
+            "Brand system/design system maintenance",
+            "Funnel and campaign management (ad creative, onboarding tweaks)",
+            "Dedicated AI/UX manager",
+            "Priority support (72-hour turnaround)",
+            "Higher performance bonuses"
+          ],
+          "value_note": "Most popular tier - includes dedicated manager and full optimization support"
+        },
+        "elite": {
+          "name": "Elite",
+          "subtitle": "Full-Stack AI Productization",
+          "pricing": {
+            "global_us_clients": {
+              "price": "$10,000-$25,000/month",
+              "currency": "USD",
+              "note": "Custom pricing based on scope"
+            },
+            "philippine_startups": {
+              "price": "₱350,000-₱850,000/month",
+              "usd_equivalent": "$6,000-$15,000 USD",
+              "currency": "PHP",
+              "note": "Custom pricing based on scope"
+            }
+          },
+          "best_for": "High-growth startups and scale-ups needing unlimited support",
+          "deliverables": [
+            "Unlimited design/dev sprints (as needed)",
+            "Growth consulting + engineering support",
+            "Executive reporting & attribution modeling",
+            "Live codebase integration for product updates",
+            "Custom performance targets",
+            "Dedicated full-stack team"
+          ]
         }
       },
       "performance_bonuses": {
-        "description": "Paid quarterly based on conversion lift",
+        "description": "Included in all tiers. Paid quarterly when we exceed conversion targets.",
+        "note": "We profit when you profit. No results? No bonus.",
         "tiers": [
           {
             "lift_range": "15-25% conversion lift",
@@ -71,12 +144,7 @@
         ],
         "alignment_message": "We only make real profit when you grow. You get a committed partner, not just a vendor billing hours."
       },
-      "deliverables": [
-        "Monthly design/dev sprints",
-        "Ongoing A/B testing & optimization",
-        "Campaign management",
-        "Quarterly strategy sessions"
-      ]
+      "conversion_rate": "~70% of Sprint clients move to subscription"
     },
     "faqs": [
       {
