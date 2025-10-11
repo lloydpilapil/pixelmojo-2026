@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Hero from '@/components/Hero'
 import { LinkButton } from '@/components/ui/button'
-import { Check, X, ChevronDown } from 'lucide-react'
+import { Check, X, ChevronDown, Zap, Target, TrendingUp } from 'lucide-react'
 import {
   LenisFadeIn,
   LenisStaggered,
@@ -24,7 +24,7 @@ export default function PricingPage() {
     if (persona === 'saas') {
       return 'Performance-based pricing for B2B/SaaS companies ready to scale conversion rates.'
     }
-    return 'Most agencies charge $8K-15K/month regardless of results. We prove ourselves in 60 days, then grow with you through performance-based pricing.'
+    return 'Most agencies charge $8K-15K/month regardless of results. We prove ourselves in 60 days, then partner with you on performance-based subscriptions for continuous growth.'
   }
 
   const getEyebrow = () => {
@@ -48,7 +48,7 @@ export default function PricingPage() {
         ctaHref='/contact-us'
         secondaryCta={{
           text: 'See How It Works',
-          href: '#sprint-model',
+          href: '#journey',
           variant: 'outline',
         }}
         eyebrow={getEyebrow()}
@@ -69,21 +69,21 @@ export default function PricingPage() {
               </h3>
               <ul className='space-y-4 text-sm md:text-base text-muted-foreground dark:text-white/80'>
                 <li className='flex gap-3'>
-                  <span className='mt-2 h-1.5 w-1.5 bg-destructive' />
+                  <X className='h-5 w-5 text-destructive mt-0.5 flex-shrink-0' />
                   <span>6-12 month commitments before proving value</span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='mt-2 h-1.5 w-1.5 bg-destructive' />
+                  <X className='h-5 w-5 text-destructive mt-0.5 flex-shrink-0' />
                   <span>$8K-15K/month regardless of results delivered</span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='mt-2 h-1.5 w-1.5 bg-destructive' />
+                  <X className='h-5 w-5 text-destructive mt-0.5 flex-shrink-0' />
                   <span>
                     2-3 month onboarding cycles before seeing progress
                   </span>
                 </li>
                 <li className='flex gap-3'>
-                  <span className='mt-2 h-1.5 w-1.5 bg-destructive' />
+                  <X className='h-5 w-5 text-destructive mt-0.5 flex-shrink-0' />
                   <span>Creative "process" over measurable outcomes</span>
                 </li>
               </ul>
@@ -91,7 +91,7 @@ export default function PricingPage() {
             <div className='p-10 md:p-12 bg-primary/5 text-foreground dark:bg-white/10 dark:text-white'>
               <header className='mb-6'>
                 <span className='inline-flex items-center px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-background bg-primary dark:text-[#0b1120] dark:bg-[#38bdf8]'>
-                  Our Sprint Model
+                  Our 2-Step Model
                 </span>
               </header>
               <h3 className='font-heading text-lg uppercase tracking-[0.25em] mb-6 text-primary dark:text-[#38bdf8]'>
@@ -112,8 +112,8 @@ export default function PricingPage() {
                     2
                   </span>
                   <span>
-                    <strong>Base + performance bonuses:</strong> We profit when
-                    you profit
+                    <strong>Then scale with subscription:</strong>{' '}
+                    Month-to-month flexibility with performance bonuses
                   </span>
                 </li>
                 <li className='flex gap-4'>
@@ -121,338 +121,508 @@ export default function PricingPage() {
                     3
                   </span>
                   <span>
-                    <strong>Ship in 2-week sprints:</strong> AI-native speed,
-                    not creative delays
+                    <strong>We profit when you profit:</strong> Quarterly
+                    bonuses align our success with yours
                   </span>
                 </li>
               </ul>
             </div>
           </div>
           <footer className='border-t border-border/50 bg-muted/20 px-10 py-4 md:px-12 text-xs uppercase tracking-[0.3em] text-muted-foreground text-center dark:bg-black/50 dark:text-white/70'>
-            Result: Prove ROI in 60 days, scale with performance-based retainers
+            Result: Prove ROI in 60 days → Scale with performance-based
+            subscriptions
           </footer>
         </section>
       </LenisFadeIn>
 
-      {/* Sprint Pricing Tiers */}
-      <section id='sprint-model' className='mb-32'>
+      {/* The Journey: Sprint → Subscription */}
+      <section id='journey' className='mb-32'>
         <LenisFadeIn delay={300}>
           <div className='text-center mb-16'>
+            <div className='inline-block px-4 py-2 bg-primary/10 border border-primary/30 mb-4'>
+              <span className='text-xs font-semibold uppercase tracking-wider text-primary'>
+                The Journey
+              </span>
+            </div>
             <h2 className='mb-6 max-w-5xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
-              60-Day Conversion Sprint
+              How It Works: Sprint → Subscribe
             </h2>
             <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-              Prove value fast. No 6-month retainers. Just measurable results in
-              60 days.
+              Step 1: Prove value in 60 days. Step 2: Scale with ongoing
+              optimization (optional).
             </p>
           </div>
         </LenisFadeIn>
 
-        <LenisStaggered delay={400} staggerDelay={150}>
-          <div className='grid gap-8 md:grid-cols-2 max-w-6xl mx-auto'>
-            {/* Philippine Market Pricing */}
-            <div
-              className={`relative border-2 p-10 bg-card/70 backdrop-blur-sm transition-all ${
-                persona === 'startup'
-                  ? 'border-growth shadow-lg shadow-growth/20'
-                  : 'border-border hover:border-secondary'
-              }`}
-            >
-              {persona === 'startup' && (
-                <div className='absolute -top-3 right-8 bg-growth text-white px-4 py-1 text-xs font-semibold uppercase tracking-wider'>
-                  Recommended for You
+        <div className='max-w-5xl mx-auto mb-16'>
+          <div className='relative'>
+            {/* Connecting line */}
+            <div className='hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-growth to-secondary -translate-y-1/2' />
+
+            <div className='relative grid md:grid-cols-2 gap-12 md:gap-8'>
+              {/* Step 1: Sprint */}
+              <LenisFadeIn delay={400}>
+                <div className='relative bg-card border-2 border-primary p-8 shadow-xl'>
+                  <div className='absolute -top-4 left-8 bg-primary text-primary-foreground px-4 py-1 text-xs font-bold uppercase tracking-wider flex items-center gap-2'>
+                    <Zap className='h-3 w-3' />
+                    Step 1: Start Here
+                  </div>
+                  <h3 className='text-2xl font-bold mb-3 text-foreground flex items-center gap-2'>
+                    <span className='flex h-10 w-10 items-center justify-center bg-primary text-primary-foreground font-bold rounded-full'>
+                      1
+                    </span>
+                    60-Day Conversion Sprint
+                  </h3>
+                  <p className='text-sm text-muted-foreground mb-6'>
+                    Required. Prove value before you commit long-term.
+                  </p>
+
+                  <div className='space-y-4 mb-6'>
+                    <div className='flex items-baseline gap-3'>
+                      <span className='text-3xl font-bold text-foreground'>
+                        ₱180,000
+                      </span>
+                      <span className='text-sm text-muted-foreground'>
+                        PH Startups (~$3,200 USD)
+                      </span>
+                    </div>
+                    <div className='flex items-baseline gap-3'>
+                      <span className='text-3xl font-bold text-foreground'>
+                        $4,500
+                      </span>
+                      <span className='text-sm text-muted-foreground'>
+                        Global/US Clients
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className='bg-muted/30 p-4 mb-6 border-l-4 border-primary'>
+                    <p className='text-xs font-semibold text-primary mb-2 uppercase tracking-wider'>
+                      What You Get
+                    </p>
+                    <ul className='space-y-2 text-sm text-foreground'>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-primary mt-0.5 flex-shrink-0' />
+                        <span>Analytics audit + conversion baseline</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-primary mt-0.5 flex-shrink-0' />
+                        <span>AI-optimized landing page/funnel</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-primary mt-0.5 flex-shrink-0' />
+                        <span>3-5 A/B tests with real traffic</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-primary mt-0.5 flex-shrink-0' />
+                        <span>60-day performance report</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className='p-3 bg-growth/10 border border-growth/30'>
+                    <p className='text-sm font-semibold text-growth'>
+                      ✓ 70% of clients see 15-40% conversion lift
+                    </p>
+                  </div>
                 </div>
-              )}
-              <div className='absolute -top-3 left-8 bg-background px-4 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground'>
-                Philippine Startups
-              </div>
+              </LenisFadeIn>
 
-              <div className='mb-6'>
-                <div className='flex items-baseline gap-2'>
-                  <span className='text-5xl font-bold text-foreground'>
-                    ₱180,000
-                  </span>
+              {/* Step 2: Subscription */}
+              <LenisFadeIn delay={500}>
+                <div className='relative bg-card border-2 border-growth p-8 shadow-xl'>
+                  <div className='absolute -top-4 left-8 bg-growth text-white px-4 py-1 text-xs font-bold uppercase tracking-wider flex items-center gap-2'>
+                    <TrendingUp className='h-3 w-3' />
+                    Step 2: Scale (Optional)
+                  </div>
+                  <h3 className='text-2xl font-bold mb-3 text-foreground flex items-center gap-2'>
+                    <span className='flex h-10 w-10 items-center justify-center bg-growth text-white font-bold rounded-full'>
+                      2
+                    </span>
+                    AI Growth Subscription
+                  </h3>
+                  <p className='text-sm text-muted-foreground mb-6'>
+                    For Sprint graduates who want continuous growth.
+                  </p>
+
+                  <div className='space-y-3 mb-6'>
+                    <div className='p-3 border border-border bg-background/50'>
+                      <div className='flex items-baseline gap-2 mb-1'>
+                        <span className='text-2xl font-bold text-foreground'>
+                          $2,000
+                        </span>
+                        <span className='text-sm text-muted-foreground'>
+                          /month
+                        </span>
+                      </div>
+                      <p className='text-xs text-muted-foreground'>
+                        Starter (PH: ₱70K/mo)
+                      </p>
+                    </div>
+
+                    <div className='p-3 border-2 border-growth bg-growth/5'>
+                      <div className='flex items-baseline gap-2 mb-1'>
+                        <span className='text-2xl font-bold text-foreground'>
+                          $3,500
+                        </span>
+                        <span className='text-sm text-muted-foreground'>
+                          /month
+                        </span>
+                      </div>
+                      <p className='text-xs text-growth font-semibold'>
+                        Growth (PH: ₱120K/mo) • Most Popular
+                      </p>
+                    </div>
+
+                    <div className='p-3 border border-border bg-background/50'>
+                      <div className='flex items-baseline gap-2 mb-1'>
+                        <span className='text-2xl font-bold text-foreground'>
+                          $10K-$25K
+                        </span>
+                        <span className='text-sm text-muted-foreground'>
+                          /month
+                        </span>
+                      </div>
+                      <p className='text-xs text-muted-foreground'>
+                        Elite (PH: ₱350K-₱850K/mo)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className='bg-muted/30 p-4 mb-6 border-l-4 border-growth'>
+                    <p className='text-xs font-semibold text-growth mb-2 uppercase tracking-wider'>
+                      Key Benefits
+                    </p>
+                    <ul className='space-y-2 text-sm text-foreground'>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-growth mt-0.5 flex-shrink-0' />
+                        <span>Month-to-month (cancel anytime)</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-growth mt-0.5 flex-shrink-0' />
+                        <span>Continuous optimization</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-growth mt-0.5 flex-shrink-0' />
+                        <span>Performance bonuses included</span>
+                      </li>
+                      <li className='flex gap-2'>
+                        <Check className='h-4 w-4 text-growth mt-0.5 flex-shrink-0' />
+                        <span>Live analytics dashboard</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className='p-3 bg-primary/10 border border-primary/30'>
+                    <p className='text-sm font-semibold text-primary'>
+                      ✓ 70% of Sprint clients move to subscription
+                    </p>
+                  </div>
                 </div>
-                <p className='text-sm text-muted-foreground mt-2'>
-                  ~$3,200 USD | One-time, 60-day engagement
-                </p>
-              </div>
-
-              <div className='mb-8'>
-                <p className='text-base text-foreground font-medium mb-4'>
-                  Perfect for seed-funded PH startups needing conversion
-                  optimization
-                </p>
-              </div>
-
-              <ul className='space-y-3 mb-8'>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    Analytics audit & conversion baseline setup
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    AI-optimized landing page/funnel (1-2 pages)
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    A/B test framework + 30-day iteration cycle
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    Performance report + growth roadmap
-                  </span>
-                </li>
-              </ul>
-
-              <div className='pt-6 border-t border-border'>
-                <p className='text-sm font-medium text-muted-foreground mb-1'>
-                  Payment Terms
-                </p>
-                <p className='text-sm text-foreground'>
-                  50% upfront, 50% at day 30
-                </p>
-              </div>
-
-              <LinkButton
-                href='/contact-us'
-                variant='outline'
-                className='w-full mt-6'
-              >
-                Get Started →
-              </LinkButton>
-            </div>
-
-            {/* Global Market Pricing */}
-            <div
-              className={`relative border-2 p-10 bg-primary/5 backdrop-blur-sm transition-all ${
-                persona === 'saas'
-                  ? 'border-primary shadow-lg shadow-primary/20'
-                  : 'border-primary'
-              }`}
-            >
-              {persona === 'saas' && (
-                <div className='absolute -top-3 right-8 bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold uppercase tracking-wider'>
-                  Recommended for You
-                </div>
-              )}
-              <div className='absolute -top-3 left-8 bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold uppercase tracking-wider'>
-                Global/US Clients
-              </div>
-
-              <div className='mb-6'>
-                <div className='flex items-baseline gap-2'>
-                  <span className='text-5xl font-bold text-foreground'>
-                    $4,500
-                  </span>
-                </div>
-                <p className='text-sm text-muted-foreground mt-2'>
-                  USD | One-time, 60-day engagement
-                </p>
-              </div>
-
-              <div className='mb-8'>
-                <p className='text-base text-foreground font-medium mb-4'>
-                  Perfect for B2B/SaaS companies needing fast, measurable
-                  conversion wins
-                </p>
-              </div>
-
-              <ul className='space-y-3 mb-8'>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    Analytics audit & conversion baseline setup
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    AI-optimized landing page/funnel (1-2 pages)
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    A/B test framework + 30-day iteration cycle
-                  </span>
-                </li>
-                <li className='flex gap-3 items-start'>
-                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                  <span className='text-sm text-foreground'>
-                    Performance report + growth roadmap
-                  </span>
-                </li>
-              </ul>
-
-              <div className='pt-6 border-t border-border'>
-                <p className='text-sm font-medium text-muted-foreground mb-1'>
-                  Payment Terms
-                </p>
-                <p className='text-sm text-foreground'>
-                  50% upfront, 50% at day 30
-                </p>
-              </div>
-
-              <LinkButton
-                href='/contact-us'
-                variant='default'
-                className='w-full mt-6'
-              >
-                Get Started →
-              </LinkButton>
+              </LenisFadeIn>
             </div>
           </div>
-        </LenisStaggered>
+        </div>
 
         <LenisFadeIn delay={600}>
-          <div className='mt-12 text-center max-w-3xl mx-auto'>
-            <p className='text-base text-muted-foreground'>
-              <strong className='text-foreground'>Our Promise:</strong> Most
-              clients see 15-40% conversion lift in 60 days. If we can't move
-              the needle, we'll tell you exactly why and how to fix it.
-            </p>
+          <div className='text-center max-w-3xl mx-auto'>
+            <div className='p-6 bg-gradient-to-r from-primary/10 via-growth/10 to-secondary/10 border border-border'>
+              <p className='text-lg font-semibold text-foreground mb-2'>
+                Start with Sprint → See results → Then decide if subscription
+                makes sense
+              </p>
+              <p className='text-sm text-muted-foreground'>
+                No pressure, no long-term commitment. Just measurable results in
+                60 days.
+              </p>
+            </div>
           </div>
         </LenisFadeIn>
       </section>
 
-      {/* Growth Retainer (Post-Sprint) */}
+      {/* Subscription Tier Details */}
       <section className='mb-32'>
         <LenisFadeIn delay={200}>
           <div className='text-center mb-16'>
             <div className='inline-block px-4 py-2 bg-growth/10 border border-growth/30 mb-4'>
               <span className='text-xs font-semibold uppercase tracking-wider text-growth'>
-                For Sprint Graduates
+                AI Growth Subscription
               </span>
             </div>
             <h2 className='mb-6 max-w-5xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
-              Growth Retainer (Post-Sprint)
+              Subscription Tiers
             </h2>
             <p className='text-muted max-w-4xl mx-auto text-lg leading-relaxed'>
-              After proving value in the Sprint, scale with performance-based
-              monthly retainers.
+              Choose the tier that matches your growth stage. All include
+              performance bonuses.
             </p>
           </div>
         </LenisFadeIn>
 
-        <div className='max-w-5xl mx-auto'>
-          <LenisStaggered delay={300} staggerDelay={100}>
-            <div className='border-2 border-border p-10 bg-card/70'>
-              <div className='grid md:grid-cols-2 gap-10 mb-8'>
-                <div>
-                  <h3 className='text-2xl font-bold mb-4 text-foreground'>
-                    Base Retainer
-                  </h3>
-                  <div className='mb-4'>
-                    <div className='flex items-baseline gap-3 mb-2'>
-                      <span className='text-4xl font-bold text-foreground'>
-                        $3,500
-                      </span>
-                      <span className='text-muted-foreground'>/month</span>
-                    </div>
-                    <p className='text-sm text-muted-foreground'>
-                      PH Startups: ₱120,000/month
-                    </p>
-                  </div>
-                  <ul className='space-y-2 text-sm text-foreground'>
-                    <li className='flex gap-2 items-start'>
-                      <Check className='h-4 w-4 text-primary mt-0.5' />
-                      <span>Monthly design/dev sprints</span>
-                    </li>
-                    <li className='flex gap-2 items-start'>
-                      <Check className='h-4 w-4 text-primary mt-0.5' />
-                      <span>Ongoing A/B testing & optimization</span>
-                    </li>
-                    <li className='flex gap-2 items-start'>
-                      <Check className='h-4 w-4 text-primary mt-0.5' />
-                      <span>Campaign management</span>
-                    </li>
-                    <li className='flex gap-2 items-start'>
-                      <Check className='h-4 w-4 text-primary mt-0.5' />
-                      <span>Quarterly strategy sessions</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className='text-2xl font-bold mb-4 text-growth'>
-                    Performance Bonuses
-                  </h3>
-                  <p className='text-sm text-muted-foreground mb-4'>
-                    Paid quarterly based on conversion lift
-                  </p>
-                  <div className='space-y-3'>
-                    <div className='p-4 border border-border bg-background/50'>
-                      <div className='flex justify-between items-center mb-1'>
-                        <span className='text-sm font-semibold text-foreground'>
-                          15-25% lift
-                        </span>
-                        <span className='text-lg font-bold text-growth'>
-                          +$1,000/mo
-                        </span>
-                      </div>
-                      <p className='text-xs text-muted-foreground'>
-                        PH: +₱30K/month
-                      </p>
-                    </div>
-                    <div className='p-4 border border-border bg-background/50'>
-                      <div className='flex justify-between items-center mb-1'>
-                        <span className='text-sm font-semibold text-foreground'>
-                          25-40% lift
-                        </span>
-                        <span className='text-lg font-bold text-growth'>
-                          +$2,500/mo
-                        </span>
-                      </div>
-                      <p className='text-xs text-muted-foreground'>
-                        PH: +₱75K/month
-                      </p>
-                    </div>
-                    <div className='p-4 border border-border bg-background/50'>
-                      <div className='flex justify-between items-center mb-1'>
-                        <span className='text-sm font-semibold text-foreground'>
-                          40%+ lift
-                        </span>
-                        <span className='text-lg font-bold text-growth'>
-                          +$5,000/mo
-                        </span>
-                      </div>
-                      <p className='text-xs text-muted-foreground'>
-                        PH: +₱150K/month
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className='pt-8 border-t border-border'>
-                <p className='text-center text-base text-muted-foreground'>
-                  <strong className='text-foreground'>Why This Works:</strong>{' '}
-                  We only make real profit when you grow. You get a committed
-                  partner, not just a vendor billing hours.
+        <LenisStaggered delay={300} staggerDelay={150}>
+          <div className='grid gap-8 md:grid-cols-3 max-w-7xl mx-auto'>
+            {/* Starter Tier */}
+            <div className='relative border-2 border-border p-8 bg-card/70 hover:border-primary transition-all'>
+              <div className='mb-6'>
+                <h3 className='text-xl font-bold mb-2 text-foreground'>
+                  Starter
+                </h3>
+                <p className='text-sm text-muted-foreground'>
+                  AI Sprint Subscription
                 </p>
               </div>
-            </div>
-          </LenisStaggered>
 
-          <LenisFadeIn delay={500}>
-            <div className='mt-8 text-center'>
-              <p className='text-sm text-muted-foreground mb-4'>
-                ~70% of successful Sprints convert to Growth Retainers
-              </p>
-              <LinkButton href='/contact-us' variant='default'>
-                Start with a Sprint →
+              <div className='mb-6'>
+                <div className='flex items-baseline gap-2 mb-2'>
+                  <span className='text-4xl font-bold text-foreground'>
+                    $2,000
+                  </span>
+                  <span className='text-muted-foreground'>/month</span>
+                </div>
+                <p className='text-sm text-muted-foreground'>
+                  PH Startups: ₱70,000/month
+                </p>
+              </div>
+
+              <ul className='space-y-3 mb-8'>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                  <span>1 monthly conversion sprint</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                  <span>Always-on analytics dashboard</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                  <span>Up to 3 A/B tests per month</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                  <span>Quarterly strategy call</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                  <span>Cancel anytime (30-day notice)</span>
+                </li>
+              </ul>
+
+              <LinkButton
+                href='/contact-us'
+                variant='outline'
+                className='w-full'
+              >
+                Get Started →
               </LinkButton>
             </div>
-          </LenisFadeIn>
-        </div>
+
+            {/* Growth Tier */}
+            <div className='relative border-2 border-growth p-8 bg-growth/5 shadow-xl scale-105'>
+              <div className='absolute -top-3 left-1/2 -translate-x-1/2 bg-growth text-white px-4 py-1 text-xs font-bold uppercase tracking-wider'>
+                Most Popular
+              </div>
+
+              <div className='mb-6'>
+                <h3 className='text-xl font-bold mb-2 text-foreground'>
+                  Growth
+                </h3>
+                <p className='text-sm text-muted-foreground'>
+                  AI Optimization Partner
+                </p>
+              </div>
+
+              <div className='mb-6'>
+                <div className='flex items-baseline gap-2 mb-2'>
+                  <span className='text-4xl font-bold text-foreground'>
+                    $3,500
+                  </span>
+                  <span className='text-muted-foreground'>/month</span>
+                </div>
+                <p className='text-sm text-muted-foreground'>
+                  PH: ₱120,000/month
+                </p>
+              </div>
+
+              <p className='text-xs font-semibold text-growth mb-4 uppercase tracking-wider'>
+                Everything in Starter, PLUS:
+              </p>
+
+              <ul className='space-y-3 mb-8'>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
+                  <span>Brand system maintenance</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
+                  <span>Funnel + campaign management</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
+                  <span>Dedicated AI/UX manager</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
+                  <span>Priority support (72hr turnaround)</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-growth mt-0.5 flex-shrink-0' />
+                  <span>Higher performance bonuses</span>
+                </li>
+              </ul>
+
+              <LinkButton
+                href='/contact-us'
+                variant='default'
+                className='w-full'
+              >
+                Get Started →
+              </LinkButton>
+            </div>
+
+            {/* Elite Tier */}
+            <div className='relative border-2 border-secondary p-8 bg-card/70 hover:border-secondary transition-all'>
+              <div className='mb-6'>
+                <h3 className='text-xl font-bold mb-2 text-foreground'>
+                  Elite
+                </h3>
+                <p className='text-sm text-muted-foreground'>
+                  Full-Stack AI Productization
+                </p>
+              </div>
+
+              <div className='mb-6'>
+                <div className='flex items-baseline gap-2 mb-2'>
+                  <span className='text-3xl font-bold text-foreground'>
+                    $10K-$25K
+                  </span>
+                  <span className='text-muted-foreground'>/month</span>
+                </div>
+                <p className='text-sm text-muted-foreground'>
+                  PH: ₱350K-₱850K/month
+                </p>
+              </div>
+
+              <p className='text-xs font-semibold text-secondary mb-4 uppercase tracking-wider'>
+                For high-growth startups:
+              </p>
+
+              <ul className='space-y-3 mb-8'>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-secondary mt-0.5 flex-shrink-0' />
+                  <span>Unlimited design/dev sprints</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-secondary mt-0.5 flex-shrink-0' />
+                  <span>Growth consulting + engineering</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-secondary mt-0.5 flex-shrink-0' />
+                  <span>Executive reporting</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-secondary mt-0.5 flex-shrink-0' />
+                  <span>Live codebase integration</span>
+                </li>
+                <li className='flex gap-3 items-start text-sm'>
+                  <Check className='h-5 w-5 text-secondary mt-0.5 flex-shrink-0' />
+                  <span>Custom performance targets</span>
+                </li>
+              </ul>
+
+              <LinkButton
+                href='/contact-us'
+                variant='outline'
+                className='w-full'
+              >
+                Request Quote →
+              </LinkButton>
+            </div>
+          </div>
+        </LenisStaggered>
+
+        {/* Performance Bonuses - Applies to All Tiers */}
+        <LenisFadeIn delay={600}>
+          <div className='max-w-4xl mx-auto mt-16 p-8 border-2 border-growth/30 bg-growth/5'>
+            <div className='text-center mb-8'>
+              <h3 className='text-2xl font-bold mb-3 text-foreground'>
+                Performance Bonuses{' '}
+                <span className='text-growth'>(Included in All Tiers)</span>
+              </h3>
+              <p className='text-sm text-muted-foreground'>
+                Paid quarterly when we exceed conversion targets. We profit when
+                you profit.
+              </p>
+            </div>
+
+            <div className='grid md:grid-cols-3 gap-6'>
+              <div className='p-6 bg-background border border-border'>
+                <div className='text-center mb-3'>
+                  <div className='text-3xl font-bold text-growth mb-2'>
+                    15-25%
+                  </div>
+                  <p className='text-xs text-muted-foreground uppercase tracking-wider'>
+                    Conversion Lift
+                  </p>
+                </div>
+                <div className='text-center pt-4 border-t border-border'>
+                  <div className='text-xl font-bold text-foreground mb-1'>
+                    +$1,000
+                  </div>
+                  <p className='text-xs text-muted-foreground'>
+                    per month (₱30K PH)
+                  </p>
+                </div>
+              </div>
+
+              <div className='p-6 bg-growth/10 border-2 border-growth'>
+                <div className='text-center mb-3'>
+                  <div className='text-3xl font-bold text-growth mb-2'>
+                    25-40%
+                  </div>
+                  <p className='text-xs text-muted-foreground uppercase tracking-wider'>
+                    Conversion Lift
+                  </p>
+                </div>
+                <div className='text-center pt-4 border-t border-growth/30'>
+                  <div className='text-xl font-bold text-foreground mb-1'>
+                    +$2,500
+                  </div>
+                  <p className='text-xs text-muted-foreground'>
+                    per month (₱75K PH)
+                  </p>
+                </div>
+              </div>
+
+              <div className='p-6 bg-background border border-border'>
+                <div className='text-center mb-3'>
+                  <div className='text-3xl font-bold text-growth mb-2'>
+                    40%+
+                  </div>
+                  <p className='text-xs text-muted-foreground uppercase tracking-wider'>
+                    Conversion Lift
+                  </p>
+                </div>
+                <div className='text-center pt-4 border-t border-border'>
+                  <div className='text-xl font-bold text-foreground mb-1'>
+                    +$5,000
+                  </div>
+                  <p className='text-xs text-muted-foreground'>
+                    per month (₱150K PH)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className='mt-8 text-center'>
+              <p className='text-sm text-muted-foreground'>
+                <strong className='text-foreground'>
+                  No results? No bonus.
+                </strong>{' '}
+                That's alignment.
+              </p>
+            </div>
+          </div>
+        </LenisFadeIn>
       </section>
 
       {/* Comparison Table */}
@@ -487,29 +657,40 @@ export default function PricingPage() {
             <tbody>
               <tr className='border-b border-border'>
                 <td className='p-4 text-sm font-semibold text-foreground'>
-                  Pricing
+                  Commitment
                 </td>
                 <td className='p-4 text-center text-sm text-muted-foreground'>
-                  $8K-15K/month fixed
+                  6-12 months
                 </td>
                 <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
-                  $4.5K Sprint → $3.5K base + bonuses
+                  60 days (Sprint) → Month-to-month
                 </td>
               </tr>
               <tr className='border-b border-border'>
                 <td className='p-4 text-sm font-semibold text-foreground'>
-                  Timeline to Results
+                  Time to Results
                 </td>
                 <td className='p-4 text-center text-sm text-muted-foreground'>
-                  3-6 months
+                  2-3 months
                 </td>
                 <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
-                  60 days
+                  14 days (first sprint)
                 </td>
               </tr>
               <tr className='border-b border-border'>
                 <td className='p-4 text-sm font-semibold text-foreground'>
-                  AI-Native Workflows
+                  Monthly Cost
+                </td>
+                <td className='p-4 text-center text-sm text-muted-foreground'>
+                  $8K-$15K
+                </td>
+                <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
+                  $2K-$3.5K (after Sprint)
+                </td>
+              </tr>
+              <tr className='border-b border-border'>
+                <td className='p-4 text-sm font-semibold text-foreground'>
+                  Performance Incentive
                 </td>
                 <td className='p-4 text-center'>
                   <X className='h-5 w-5 text-destructive mx-auto' />
@@ -519,36 +700,25 @@ export default function PricingPage() {
                 </td>
               </tr>
               <tr className='border-b border-border'>
-                <td className='p-4 text-sm font-semibold text-foreground'>
-                  Performance-Based Pricing
-                </td>
-                <td className='p-4 text-center'>
-                  <X className='h-5 w-5 text-destructive mx-auto' />
-                </td>
-                <td className='p-4 text-center bg-primary/5'>
-                  <Check className='h-5 w-5 text-primary mx-auto' />
-                </td>
-              </tr>
-              <tr className='border-b border-border'>
-                <td className='p-4 text-sm font-semibold text-foreground'>
-                  Startup Focus
-                </td>
-                <td className='p-4 text-center text-sm text-muted-foreground'>
-                  Enterprise/Brand focus
-                </td>
-                <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
-                  Built for startups
-                </td>
-              </tr>
-              <tr>
                 <td className='p-4 text-sm font-semibold text-foreground'>
                   Speed
                 </td>
                 <td className='p-4 text-center text-sm text-muted-foreground'>
-                  2-3 month cycles
+                  4-8 weeks/project
                 </td>
                 <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
-                  2-3 week sprints
+                  2-week sprints
+                </td>
+              </tr>
+              <tr>
+                <td className='p-4 text-sm font-semibold text-foreground'>
+                  Risk
+                </td>
+                <td className='p-4 text-center text-sm text-muted-foreground'>
+                  Pay regardless of results
+                </td>
+                <td className='p-4 text-center text-sm font-semibold text-primary bg-primary/5'>
+                  Prove value first (Sprint)
                 </td>
               </tr>
             </tbody>
@@ -559,39 +729,39 @@ export default function PricingPage() {
         <div className='md:hidden max-w-2xl mx-auto space-y-3'>
           {[
             {
-              feature: 'Pricing',
-              traditional: '$8K-15K/month fixed',
-              pixelmojo: '$4.5K Sprint → $3.5K base + bonuses',
+              feature: 'Commitment',
+              traditional: '6-12 months',
+              pixelmojo: '60 days (Sprint) → Month-to-month',
               icon: null,
             },
             {
-              feature: 'Timeline to Results',
-              traditional: '3-6 months',
-              pixelmojo: '60 days',
+              feature: 'Time to Results',
+              traditional: '2-3 months',
+              pixelmojo: '14 days (first sprint)',
               icon: null,
             },
             {
-              feature: 'AI-Native Workflows',
+              feature: 'Monthly Cost',
+              traditional: '$8K-$15K',
+              pixelmojo: '$2K-$3.5K (after Sprint)',
+              icon: null,
+            },
+            {
+              feature: 'Performance Incentive',
               traditional: 'no',
               pixelmojo: 'yes',
               icon: true,
-            },
-            {
-              feature: 'Performance-Based Pricing',
-              traditional: 'no',
-              pixelmojo: 'yes',
-              icon: true,
-            },
-            {
-              feature: 'Startup Focus',
-              traditional: 'Enterprise/Brand focus',
-              pixelmojo: 'Built for startups',
-              icon: null,
             },
             {
               feature: 'Speed',
-              traditional: '2-3 month cycles',
-              pixelmojo: '2-3 week sprints',
+              traditional: '4-8 weeks/project',
+              pixelmojo: '2-week sprints',
+              icon: null,
+            },
+            {
+              feature: 'Risk',
+              traditional: 'Pay regardless of results',
+              pixelmojo: 'Prove value first (Sprint)',
               icon: null,
             },
           ].map((item, index) => (
@@ -668,19 +838,25 @@ export default function PricingPage() {
           <LenisStaggered delay={300} staggerDelay={100}>
             {[
               {
-                question: 'Why is the Sprint cheaper than your retainer?',
+                question:
+                  'Why pick subscription vs. retainer vs. one-time project?',
                 answer:
-                  "It's not—it's our way of proving ourselves before you commit long-term. Most Sprint clients convert to retainers because the results speak for themselves.",
+                  'RETAINER (Traditional): 6-12 month commitment, $8K-15K/month regardless of results. Best for large enterprises.\n\nONE-TIME PROJECT: Fixed scope, fixed price, no ongoing relationship. Best for single deliverable (logo, website).\n\nSPRINT + SUBSCRIPTION (Us): Prove value in 60 days, then scale with monthly subscription ($2K-$3.5K). Performance bonuses align our success with yours. Best for startups/scale-ups who need continuous growth.',
+              },
+              {
+                question: 'Why is the Sprint cheaper than your subscription?',
+                answer:
+                  "It's not—it's our way of proving ourselves before you commit long-term. Most Sprint clients (70%) convert to subscriptions because the results speak for themselves. The Sprint is designed to de-risk the decision.",
               },
               {
                 question: "What if you don't deliver results?",
                 answer:
-                  "We measure everything. If we don't hit conversion targets, we provide a detailed analysis of why and what needs to change (often it's product-market fit, not design). You'll know exactly what to fix.",
+                  "We measure everything. If we don't hit conversion targets, we provide a detailed analysis of why and what needs to change (often it's product-market fit, not design). You'll know exactly what to fix. No results? No performance bonus.",
               },
               {
                 question: 'How is this different from typical agencies?',
                 answer:
-                  'Three ways: (1) Speed - We use AI-native workflows to move 3-5x faster. (2) Measurement - Every decision is data-driven, not creative intuition. (3) Alignment - Performance bonuses mean we profit when you profit.',
+                  'Three ways: (1) Speed - AI-native workflows move 3-5x faster. (2) Measurement - Data-driven, not creative intuition. (3) Alignment - Performance bonuses mean we profit when you profit.',
               },
               {
                 question:
@@ -689,9 +865,14 @@ export default function PricingPage() {
                   'We price based on local market purchasing power. Philippine startups get the same quality work at rates that make sense for the local market.',
               },
               {
+                question: 'Can I cancel the subscription anytime?',
+                answer:
+                  "Yes! After completing the 60-day Sprint, subscriptions are month-to-month with 30-day cancellation notice. No long-term lock-ins. If results don't match projections, we'll work with you to understand why.",
+              },
+              {
                 question: 'Can I negotiate the pricing?',
                 answer:
-                  "For funded startups with compelling use cases, we're open to discussion. For bootstrapped founders, we can structure payment plans.",
+                  "For funded startups (YC/Antler/500 Startups portfolio), we're open to discussion. For bootstrapped founders, we can structure payment plans.",
               },
             ].map((faq, index) => (
               <div key={index} className='border border-border bg-card/70'>
@@ -712,12 +893,12 @@ export default function PricingPage() {
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     openFaq === index
-                      ? 'max-h-96 opacity-100'
+                      ? 'max-h-[600px] opacity-100'
                       : 'max-h-0 opacity-0'
                   }`}
                 >
                   <div className='px-6 pb-6 pt-2'>
-                    <p className='text-base text-muted-foreground leading-relaxed'>
+                    <p className='text-base text-muted-foreground leading-relaxed whitespace-pre-line'>
                       {faq.answer}
                     </p>
                   </div>
@@ -728,112 +909,52 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Case Studies Teaser */}
-      <section className='mb-32'>
-        <LenisFadeIn delay={200}>
-          <div className='text-center mb-12'>
-            <h2 className='mb-6 max-w-5xl mx-auto leading-tight !text-4xl md:!text-5xl lg:!text-6xl'>
-              Real Results, Real Clients
-            </h2>
-          </div>
-        </LenisFadeIn>
-
-        <div className='grid md:grid-cols-2 gap-8 max-w-6xl mx-auto'>
-          <LenisFadeIn delay={300}>
-            <div className='border-2 border-border p-8 bg-card/70 hover:border-primary transition-all'>
-              <div className='mb-4'>
-                <span className='inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-primary/10 text-primary'>
-                  Logistics Platform
-                </span>
-              </div>
-              <h3 className='text-2xl font-bold mb-3 text-foreground'>
-                Track & Trace System
+      {/* Why This Model Works */}
+      <LenisFadeIn delay={200}>
+        <section className='mb-32 max-w-5xl mx-auto'>
+          <div className='grid md:grid-cols-4 gap-6'>
+            <div className='p-6 border border-border bg-card/70 text-center'>
+              <Target className='h-10 w-10 text-primary mx-auto mb-4' />
+              <h3 className='text-sm font-bold uppercase tracking-wider text-foreground mb-2'>
+                Month-to-Month Value
               </h3>
-              <p className='text-base text-muted-foreground mb-4 leading-relaxed'>
-                Enterprise logistics platform needed conversion-optimized web
-                presence with real-time tracking UI.
+              <p className='text-sm text-muted-foreground'>
+                No long lock-ins. Cancel anytime after Sprint.
               </p>
-              <div className='space-y-2 mb-6'>
-                <div className='flex justify-between items-center py-2 border-b border-border/50'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Investment
-                  </span>
-                  <span className='text-sm font-bold text-foreground'>
-                    ₱600,000
-                  </span>
-                </div>
-                <div className='flex justify-between items-center py-2 border-b border-border/50'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Timeline
-                  </span>
-                  <span className='text-sm font-bold text-foreground'>
-                    6 months
-                  </span>
-                </div>
-                <div className='flex justify-between items-center py-2'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Results
-                  </span>
-                  <span className='text-sm font-bold text-growth'>
-                    [Under NDA]
-                  </span>
-                </div>
-              </div>
             </div>
-          </LenisFadeIn>
 
-          <LenisFadeIn delay={400}>
-            <div className='border-2 border-border p-8 bg-card/70 hover:border-secondary transition-all'>
-              <div className='mb-4'>
-                <span className='inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-secondary/10 text-secondary'>
-                  Healthcare AI Startup
-                </span>
-              </div>
-              <h3 className='text-2xl font-bold mb-3 text-foreground'>
-                Brand & Web Launch
+            <div className='p-6 border border-border bg-card/70 text-center'>
+              <TrendingUp className='h-10 w-10 text-growth mx-auto mb-4' />
+              <h3 className='text-sm font-bold uppercase tracking-wider text-foreground mb-2'>
+                Continuous Growth
               </h3>
-              <p className='text-base text-muted-foreground mb-4 leading-relaxed'>
-                Startup needed professional web presence fast to support seed
-                fundraising conversations.
+              <p className='text-sm text-muted-foreground'>
+                Your site evolves weekly, not yearly.
               </p>
-              <div className='space-y-2 mb-6'>
-                <div className='flex justify-between items-center py-2 border-b border-border/50'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Investment
-                  </span>
-                  <span className='text-sm font-bold text-foreground'>
-                    $2,500
-                  </span>
-                </div>
-                <div className='flex justify-between items-center py-2 border-b border-border/50'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Timeline
-                  </span>
-                  <span className='text-sm font-bold text-foreground'>
-                    3 weeks
-                  </span>
-                </div>
-                <div className='flex justify-between items-center py-2'>
-                  <span className='text-sm font-medium text-muted-foreground'>
-                    Results
-                  </span>
-                  <span className='text-sm font-bold text-growth'>
-                    Enabled fundraising
-                  </span>
-                </div>
-              </div>
             </div>
-          </LenisFadeIn>
-        </div>
 
-        <LenisFadeIn delay={500}>
-          <div className='text-center mt-8'>
-            <p className='text-sm text-muted-foreground'>
-              More detailed case studies available during discovery call
-            </p>
+            <div className='p-6 border border-border bg-card/70 text-center'>
+              <Check className='h-10 w-10 text-secondary mx-auto mb-4' />
+              <h3 className='text-sm font-bold uppercase tracking-wider text-foreground mb-2'>
+                Full Transparency
+              </h3>
+              <p className='text-sm text-muted-foreground'>
+                Live metrics dashboard. No black box.
+              </p>
+            </div>
+
+            <div className='p-6 border border-border bg-card/70 text-center'>
+              <Zap className='h-10 w-10 text-primary mx-auto mb-4' />
+              <h3 className='text-sm font-bold uppercase tracking-wider text-foreground mb-2'>
+                AI-Native Speed
+              </h3>
+              <p className='text-sm text-muted-foreground'>
+                Fast outputs, always personalized.
+              </p>
+            </div>
           </div>
-        </LenisFadeIn>
-      </section>
+        </section>
+      </LenisFadeIn>
 
       {/* Final CTA */}
       <LenisFadeIn delay={200}>
@@ -842,8 +963,8 @@ export default function PricingPage() {
             Ready to Sprint?
           </h2>
           <p className='text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto'>
-            We're a 16-month-old startup building for startups. We GET the
-            pressure of proving ROI fast.
+            Start with a 60-day Sprint. Prove ROI. Then decide if ongoing
+            optimization makes sense.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <LinkButton
@@ -854,13 +975,17 @@ export default function PricingPage() {
             >
               Book Discovery Call
             </LinkButton>
-            <LinkButton href='/about' variant='outline' size='lg' shape='pill'>
-              Learn Our Process
+            <LinkButton
+              href='/projects'
+              variant='outline'
+              size='lg'
+              shape='pill'
+            >
+              View Case Studies
             </LinkButton>
           </div>
           <p className='text-sm text-muted-foreground mt-8'>
-            Special pricing available for YC/Antler/500 Startups portfolio
-            companies
+            Special pricing for YC/Antler/500 Startups portfolio companies
           </p>
         </section>
       </LenisFadeIn>
