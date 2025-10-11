@@ -13,6 +13,16 @@ import {
   Target,
   Zap,
 } from 'lucide-react'
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts'
 
 interface SEOData {
   period: {
@@ -269,7 +279,7 @@ export default function SEOMonitoringPage() {
             </div>
 
             {keywordResults && (
-              <div className='space-y-3 max-h-[500px] overflow-y-auto'>
+              <div>
                 <div className='flex items-center justify-between mb-3'>
                   <p className='text-sm font-semibold'>
                     Found {keywordResults.totalResults} keyword opportunities
@@ -279,9 +289,11 @@ export default function SEOMonitoringPage() {
                     Sorted by opportunity score
                   </p>
                 </div>
-                {keywordResults.keywords.map((kw: any, i: number) => (
-                  <KeywordResearchRow key={i} keyword={kw} />
-                ))}
+                <div className='space-y-3 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-500/10'>
+                  {keywordResults.keywords.map((kw: any, i: number) => (
+                    <KeywordResearchRow key={i} keyword={kw} />
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -322,6 +334,106 @@ export default function SEOMonitoringPage() {
             color='orange'
           />
         </div>
+
+        {/* Ranking Trends Chart */}
+        {data.rankingTrends && data.rankingTrends.length > 0 && (
+          <div className='bg-card border border-border p-6'>
+            <h3 className='text-xl font-bold mb-4 flex items-center gap-2'>
+              <TrendingUp className='h-5 w-5 text-blue-500' />
+              Keyword Ranking Trends
+            </h3>
+            <p className='text-sm text-muted-foreground mb-6'>
+              Track your average keyword position over time (lower is better)
+            </p>
+            <div className='h-[300px]'>
+              <ResponsiveContainer width='100%' height='100%'>
+                <LineChart
+                  data={data.rankingTrends}
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray='3 3' stroke='#333' />
+                  <XAxis
+                    dataKey='date'
+                    stroke='#888'
+                    tick={{ fill: '#888' }}
+                    tickFormatter={value => {
+                      const date = new Date(value)
+                      return `${date.getMonth() + 1}/${date.getDate()}`
+                    }}
+                  />
+                  <YAxis
+                    yAxisId='left'
+                    stroke='#888'
+                    tick={{ fill: '#888' }}
+                    reversed
+                    domain={[1, 'dataMax + 5']}
+                    label={{
+                      value: 'Avg Position',
+                      angle: -90,
+                      position: 'insideLeft',
+                      fill: '#888',
+                    }}
+                  />
+                  <YAxis
+                    yAxisId='right'
+                    orientation='right'
+                    stroke='#10b981'
+                    tick={{ fill: '#10b981' }}
+                    label={{
+                      value: 'Clicks',
+                      angle: 90,
+                      position: 'insideRight',
+                      fill: '#10b981',
+                    }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#1a1a1a',
+                      border: '1px solid #333',
+                      borderRadius: '8px',
+                    }}
+                    labelFormatter={value => {
+                      const date = new Date(value)
+                      return date.toLocaleDateString()
+                    }}
+                    formatter={(value: any, name: string) => {
+                      if (name === 'avgPosition') {
+                        return [`#${value.toFixed(1)}`, 'Avg Position']
+                      }
+                      if (name === 'totalClicks') {
+                        return [value.toLocaleString(), 'Total Clicks']
+                      }
+                      if (name === 'totalImpressions') {
+                        return [value.toLocaleString(), 'Total Impressions']
+                      }
+                      return [value, name]
+                    }}
+                  />
+                  <Legend />
+                  <Line
+                    type='monotone'
+                    dataKey='avgPosition'
+                    stroke='#8b5cf6'
+                    strokeWidth={3}
+                    dot={{ fill: '#8b5cf6', r: 4 }}
+                    activeDot={{ r: 6 }}
+                    name='Avg Position'
+                    yAxisId='left'
+                  />
+                  <Line
+                    type='monotone'
+                    dataKey='totalClicks'
+                    stroke='#10b981'
+                    strokeWidth={2}
+                    dot={{ fill: '#10b981', r: 3 }}
+                    yAxisId='right'
+                    name='Total Clicks'
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
 
         {/* Alerts */}
         {alerts.length > 0 && (
