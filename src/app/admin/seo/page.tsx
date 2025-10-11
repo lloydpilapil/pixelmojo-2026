@@ -10,6 +10,8 @@ import {
   AlertCircle,
   BarChart3,
   RefreshCw,
+  Target,
+  Zap,
 } from 'lucide-react'
 
 interface SEOData {
@@ -73,6 +75,10 @@ export default function SEOMonitoringPage() {
   const [syncing, setSyncing] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [timeRange, setTimeRange] = useState(7) // Default to 7 days to match synced data
+  const [showKeywordResearch, setShowKeywordResearch] = useState(false)
+  const [keywordSeed, setKeywordSeed] = useState('')
+  const [keywordResults, setKeywordResults] = useState<any>(null)
+  const [researching, setResearching] = useState(false)
 
   const fetchSEOData = useCallback(async () => {
     setLoading(true)
@@ -116,6 +122,28 @@ export default function SEOMonitoringPage() {
       setError(err instanceof Error ? err.message : 'Sync failed')
     } finally {
       setSyncing(false)
+    }
+  }
+
+  const researchKeywords = async () => {
+    if (!keywordSeed.trim()) return
+
+    setResearching(true)
+    try {
+      const response = await fetch(
+        `/api/admin/seo/keyword-research?seed=${encodeURIComponent(keywordSeed)}`
+      )
+
+      if (!response.ok) {
+        throw new Error('Failed to research keywords')
+      }
+
+      const results = await response.json()
+      setKeywordResults(results)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Research failed')
+    } finally {
+      setResearching(false)
     }
   }
 
@@ -171,6 +199,13 @@ export default function SEOMonitoringPage() {
             </p>
           </div>
           <div className='flex items-center gap-4'>
+            <button
+              onClick={() => setShowKeywordResearch(!showKeywordResearch)}
+              className='px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 flex items-center gap-2'
+            >
+              <Search className='h-4 w-4' />
+              Keyword Research
+            </button>
             <select
               value={timeRange}
               onChange={e => setTimeRange(Number(e.target.value))}
@@ -192,6 +227,65 @@ export default function SEOMonitoringPage() {
             </button>
           </div>
         </div>
+
+        {/* Keyword Research Tool */}
+        {showKeywordResearch && (
+          <div className='bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/30 p-6 rounded-lg'>
+            <h3 className='text-xl font-bold mb-4 flex items-center gap-2'>
+              <Search className='h-5 w-5 text-purple-500' />
+              Keyword Research Tool (100% Free)
+            </h3>
+            <p className='text-sm text-muted-foreground mb-4'>
+              Get keyword suggestions from Google Autocomplete + your GSC data.
+              No expensive API needed!
+            </p>
+
+            <div className='flex gap-3 mb-6'>
+              <input
+                type='text'
+                value={keywordSeed}
+                onChange={e => setKeywordSeed(e.target.value)}
+                onKeyPress={e => e.key === 'Enter' && researchKeywords()}
+                placeholder='Enter seed keyword (e.g., "ai design agency")'
+                className='flex-1 px-4 py-2 border border-border rounded bg-background'
+              />
+              <button
+                onClick={researchKeywords}
+                disabled={researching || !keywordSeed.trim()}
+                className='px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 disabled:opacity-50 flex items-center gap-2'
+              >
+                {researching ? (
+                  <>
+                    <RefreshCw className='h-4 w-4 animate-spin' />
+                    Researching...
+                  </>
+                ) : (
+                  <>
+                    <Search className='h-4 w-4' />
+                    Research
+                  </>
+                )}
+              </button>
+            </div>
+
+            {keywordResults && (
+              <div className='space-y-3 max-h-[500px] overflow-y-auto'>
+                <div className='flex items-center justify-between mb-3'>
+                  <p className='text-sm font-semibold'>
+                    Found {keywordResults.totalResults} keyword opportunities
+                    for "{keywordResults.seed}"
+                  </p>
+                  <p className='text-xs text-muted-foreground'>
+                    Sorted by opportunity score
+                  </p>
+                </div>
+                {keywordResults.keywords.map((kw: any, i: number) => (
+                  <KeywordResearchRow key={i} keyword={kw} />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Key Metrics */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
@@ -275,6 +369,33 @@ export default function SEOMonitoringPage() {
                 </p>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* Keyword Opportunities - Low Hanging Fruit */}
+        <div className='bg-card border border-border p-6'>
+          <h3 className='text-xl font-bold mb-4 flex items-center gap-2'>
+            <Target className='h-5 w-5 text-green-500' />
+            Keyword Opportunities (Low-Hanging Fruit)
+          </h3>
+          <p className='text-sm text-muted-foreground mb-4'>
+            Pages with high impressions but low CTR - optimize these for quick
+            wins
+          </p>
+          <div className='space-y-3'>
+            {recentQueries && recentQueries.length > 0 ? (
+              recentQueries
+                .filter(
+                  q => q.impressions > 100 && q.ctr < 0.05 && q.position <= 20
+                )
+                .slice(0, 10)
+                .map((query, i) => <OpportunityRow key={i} query={query} />)
+            ) : (
+              <p className='text-muted-foreground text-sm'>
+                No opportunities found yet. Click "Sync GSC Data" to analyze
+                keywords.
+              </p>
+            )}
           </div>
         </div>
 
@@ -474,6 +595,119 @@ function QueryRow({ query }: QueryRowProps) {
         <span className='text-sm font-semibold'>
           #{query.position.toFixed(1)}
         </span>
+      </div>
+    </div>
+  )
+}
+
+interface OpportunityRowProps {
+  query: {
+    query: string
+    clicks: number
+    impressions: number
+    ctr: number
+    position: number
+  }
+}
+
+function OpportunityRow({ query }: OpportunityRowProps) {
+  // Calculate potential clicks if CTR improves to expected CTR by position
+  const expectedCTR =
+    query.position <= 3 ? 0.15 : query.position <= 10 ? 0.08 : 0.03
+  const potentialClicks = Math.round(query.impressions * expectedCTR)
+  const clickOpportunity = potentialClicks - query.clicks
+
+  return (
+    <div className='flex items-start justify-between p-4 bg-gradient-to-r from-green-500/5 to-transparent border border-green-500/20 rounded'>
+      <div className='flex-1 min-w-0'>
+        <div className='flex items-center gap-2 mb-1'>
+          <Zap className='h-4 w-4 text-green-500' />
+          <p className='font-medium truncate'>{query.query}</p>
+        </div>
+        <p className='text-sm text-muted-foreground mb-2'>
+          {query.impressions.toLocaleString()} impressions • Position #
+          {query.position.toFixed(1)}
+        </p>
+        <div className='flex items-center gap-4 text-xs'>
+          <span className='text-red-500 font-semibold'>
+            Current: {(query.ctr * 100).toFixed(2)}% CTR ({query.clicks} clicks)
+          </span>
+          <span className='text-muted-foreground'>→</span>
+          <span className='text-green-500 font-semibold'>
+            Target: {(expectedCTR * 100).toFixed(1)}% CTR ({potentialClicks}{' '}
+            clicks)
+          </span>
+        </div>
+      </div>
+      <div className='text-right ml-4'>
+        <div className='flex items-center gap-1 text-green-500'>
+          <TrendingUp className='h-4 w-4' />
+          <span className='text-lg font-bold'>+{clickOpportunity}</span>
+        </div>
+        <span className='text-xs text-muted-foreground'>potential clicks</span>
+      </div>
+    </div>
+  )
+}
+
+interface KeywordResearchRowProps {
+  keyword: {
+    keyword: string
+    source: string
+    currentRanking: number | null
+    impressions: number
+    clicks: number
+    ctr: number
+    difficulty: string
+    opportunityScore: number
+    estimatedVolume: number | null
+  }
+}
+
+function KeywordResearchRow({ keyword }: KeywordResearchRowProps) {
+  const difficultyColors: Record<string, string> = {
+    Easy: 'text-green-500 bg-green-500/10',
+    Medium: 'text-yellow-500 bg-yellow-500/10',
+    Hard: 'text-red-500 bg-red-500/10',
+    Unknown: 'text-gray-500 bg-gray-500/10',
+  }
+
+  const sourceLabels: Record<string, string> = {
+    autocomplete: 'Google Suggest',
+    gsc: 'Your GSC Data',
+    seed: 'Seed',
+  }
+
+  return (
+    <div className='flex items-center justify-between p-3 bg-card border border-border rounded hover:border-purple-500/50 transition-colors'>
+      <div className='flex-1 min-w-0'>
+        <p className='font-medium truncate'>{keyword.keyword}</p>
+        <div className='flex items-center gap-3 mt-1 text-xs text-muted-foreground'>
+          <span className='px-2 py-0.5 rounded bg-purple-500/10 text-purple-500'>
+            {sourceLabels[keyword.source]}
+          </span>
+          {keyword.currentRanking && (
+            <span>Rank: #{keyword.currentRanking.toFixed(1)}</span>
+          )}
+          {keyword.impressions > 0 && (
+            <span>{keyword.impressions.toLocaleString()} imp</span>
+          )}
+          {keyword.estimatedVolume && (
+            <span>~{keyword.estimatedVolume.toLocaleString()}/mo volume</span>
+          )}
+        </div>
+      </div>
+      <div className='flex items-center gap-3 ml-4'>
+        <div className='text-right'>
+          <p className='text-sm font-semibold'>
+            Score: {keyword.opportunityScore}
+          </p>
+          <span
+            className={`text-xs px-2 py-0.5 rounded ${difficultyColors[keyword.difficulty]}`}
+          >
+            {keyword.difficulty}
+          </span>
+        </div>
       </div>
     </div>
   )
