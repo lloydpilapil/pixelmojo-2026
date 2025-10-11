@@ -618,6 +618,37 @@ export async function POST(req: NextRequest) {
 
         const qualificationScore = calculateQualificationScore(leadData)
 
+        console.log('[Chat API] Lead data received:', {
+          email: leadData.email,
+          name: leadData.name,
+          budget: leadData.budget_range,
+          timeline: leadData.timeline,
+          score: qualificationScore,
+          existingLead: !!existingLead,
+        })
+
+        // Prepare email data
+        const emailData = {
+          name: leadData.name || 'No name provided',
+          email: leadData.email,
+          company: leadData.company,
+          phone: leadData.phone,
+          projectType: leadData.project_type,
+          industry: leadData.industry,
+          budgetRange: leadData.budget_range,
+          timeline: leadData.timeline,
+          qualificationScore,
+          sessionId,
+          chatSummary: leadData.notes,
+        }
+
+        // Determine if we should send email
+        const shouldSendEmail = leadData.email && qualificationScore >= 60
+        const isNewLead = !existingLead
+        const scoreImproved =
+          existingLead &&
+          qualificationScore > (existingLead.qualification_score || 0)
+
         if (existingLead) {
           // Update existing lead
           await supabase
@@ -628,6 +659,12 @@ export async function POST(req: NextRequest) {
               updated_at: new Date().toISOString(),
             })
             .eq('session_id', sessionId)
+
+          console.log(
+            '[Chat API] Lead updated. Score improved:',
+            scoreImproved,
+            `(${existingLead.qualification_score} → ${qualificationScore})`
+          )
         } else {
           // Create new lead
           await supabase.from('leads').insert({
@@ -636,31 +673,38 @@ export async function POST(req: NextRequest) {
             qualification_score: qualificationScore,
           })
 
-          // Send email notification for new qualified leads
-          if (leadData.email && qualificationScore >= 60) {
-            const emailData = {
-              name: leadData.name || 'No name provided',
-              email: leadData.email,
-              company: leadData.company,
-              phone: leadData.phone,
-              projectType: leadData.project_type,
-              industry: leadData.industry,
-              budgetRange: leadData.budget_range,
-              timeline: leadData.timeline,
-              qualificationScore,
-              sessionId,
-              chatSummary: leadData.notes,
-            }
+          console.log(
+            '[Chat API] New lead created with score:',
+            qualificationScore
+          )
+        }
 
-            // Send regular notification for qualified leads (60-79)
+        // Send email for new qualified leads OR when score improves to qualified threshold
+        if (shouldSendEmail && (isNewLead || scoreImproved)) {
+          console.log('[Chat API] Attempting to send email notification...')
+
+          try {
             if (qualificationScore < 80) {
-              await sendLeadNotification(emailData)
+              console.log(
+                '[Chat API] Sending regular lead notification (score < 80)'
+              )
+              const result = await sendLeadNotification(emailData)
+              console.log('[Chat API] Email result:', result)
+            } else {
+              console.log('[Chat API] Sending high-value alert (score >= 80)')
+              const result = await sendHighValueLeadAlert(emailData)
+              console.log('[Chat API] Email result:', result)
             }
-            // Send high-value alert for hot leads (80+)
-            else {
-              await sendHighValueLeadAlert(emailData)
-            }
+          } catch (emailError) {
+            console.error('[Chat API] Email sending failed:', emailError)
           }
+        } else {
+          console.log('[Chat API] Email not sent. Reason:', {
+            hasEmail: !!leadData.email,
+            scoreQualified: qualificationScore >= 60,
+            isNewLead,
+            scoreImproved,
+          })
         }
 
         // Update session with email if provided
