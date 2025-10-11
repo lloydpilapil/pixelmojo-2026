@@ -102,21 +102,19 @@ export default function ChatWindow({
         // Hide quick replies if there are existing messages (conversation already started)
         setShowQuickReplies(false)
       } else {
-        // No existing messages, show context-aware greeting
+        // No existing messages, show context-aware greeting (no services list)
         let greetingMessage = ''
         const contextualGreeting = getContextualGreeting()
 
-        const servicesList = `\n\nI can help you with:\n\n• AI Product Development – Ship production-ready MVPs\n• Revenue-First Design Systems – Brand assets that drive conversions\n• AI-Powered Growth Engines – Automated revenue streams\n• Profit-Optimized Interfaces – Real-time personalization\n• Conversion Asset Systems – Content that drives action\n• Full-Stack AI Implementation – Revenue-generating features`
-
         if (initialTriggersRef.current.proactiveTriggered) {
-          // Proactive engagement with context-aware message
-          greetingMessage = `${contextualGreeting}${servicesList}\n\nWhat are you interested in?`
+          // Proactive engagement - use context-aware greeting directly
+          greetingMessage = contextualGreeting
         } else if (initialTriggersRef.current.exitIntentTriggered) {
-          // Exit intent message
-          greetingMessage = `Wait! Before you go, can I help answer any questions?${servicesList}\n\nWhat would you like to know?`
+          // Exit intent message - keep simple and direct
+          greetingMessage = `Wait! Before you go... 👋\n\nCan I help answer any questions about your project?`
         } else {
-          // Manual open - context-aware greeting
-          greetingMessage = `${contextualGreeting}${servicesList}\n\nWhat are you looking to build?`
+          // Manual open - use context-aware greeting directly
+          greetingMessage = contextualGreeting
         }
 
         setMessages([

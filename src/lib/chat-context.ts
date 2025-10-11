@@ -173,7 +173,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'home',
       delaySeconds: 30,
       message:
-        'Welcome to PixelMojo! 👋 What brings you here today - exploring our services, checking out projects, or looking for something specific?',
+        "Hey! 👋 I'm here to help you explore how AI-native design can accelerate your product.\n\nWhat's the biggest challenge you're facing right now?",
       enableExitIntent: true,
       highIntent: false,
     },
@@ -181,7 +181,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'about',
       delaySeconds: 20,
       message:
-        "Learning about PixelMojo? I'm here to answer any questions about our process, team, or approach!",
+        'Hi there! 👋 Learning about how we work?\n\nWhat made you curious about PixelMojo?',
       enableExitIntent: false,
       highIntent: false,
     },
@@ -189,7 +189,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'services',
       delaySeconds: 20,
       message:
-        'Interested in our services? Tell me about your project and I can help you find the right solution!',
+        'Hey! 👋 Exploring our services?\n\nWhat problem are you trying to solve?',
       enableExitIntent: true,
       highIntent: true, // High-intent: user exploring solutions
     },
@@ -197,7 +197,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'portfolio',
       delaySeconds: 25,
       message:
-        "I see you're checking out our work! Like what you see? Want to discuss a similar project for your brand?",
+        "Hey! 👋 Checking out our work?\n\nWhich project caught your eye, or is there a specific industry/type you're interested in?",
       enableExitIntent: true,
       highIntent: false,
     },
@@ -205,7 +205,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'blog',
       delaySeconds: 30,
       message:
-        'Enjoying the article? Have questions about how this applies to your project?',
+        "Hi! 👋 Enjoying the article?\n\nAnything you'd like to explore further?",
       enableExitIntent: false,
       highIntent: false,
     },
@@ -213,7 +213,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'pricing',
       delaySeconds: 15,
       message:
-        'Questions about our pricing? I can help you find the right package for your budget and timeline!',
+        'Hi! 👋 Exploring pricing options?\n\nWhat type of project are you planning - MVP, branding, growth system, or something else?',
       enableExitIntent: true,
       highIntent: true, // High-intent: user evaluating cost
     },
@@ -221,14 +221,14 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
       pageType: 'contact',
       delaySeconds: 5,
       message:
-        "Hi! I'm here to help you get started. What kind of project do you have in mind? Rather chat than fill out a form?",
+        "Hey! 👋 Ready to chat about your project?\n\nWhat's driving this conversation right now - is it an upcoming launch, competitor pressure, or something else?",
       enableExitIntent: false,
       highIntent: true, // High-intent: user ready to reach out
     },
     other: {
       pageType: 'other',
       delaySeconds: 30,
-      message: 'Hi! 👋 How can I help you today?',
+      message: 'Welcome to PixelMojo! 👋\n\nWhat brings you here today?',
       enableExitIntent: false,
       highIntent: false,
     },
@@ -239,6 +239,7 @@ export function getTriggerRules(pageType: PageType): TriggerRules {
 
 /**
  * Generate context-aware greeting message
+ * New consultative approach: Short, page-aware, single calibrated question
  */
 export function generateGreeting(context: ChatContext): string {
   const { pageType, serviceName, projectName, blogTopic, isReturnVisitor } =
@@ -246,43 +247,43 @@ export function generateGreeting(context: ChatContext): string {
 
   // Return visitors get personalized greeting
   if (isReturnVisitor && context.previouslyEngaged) {
-    return 'Welcome back! 👋 Did you have more questions about your project?'
+    return 'Welcome back! 👋\n\nDid you have more questions about your project?'
   }
 
-  // Context-aware greetings per page type
+  // Context-aware greetings per page type (consultative, not menu-driven)
   switch (pageType) {
     case 'home':
-      return 'Welcome to PixelMojo! 👋 What brings you here today?'
+      return "Hey! 👋 I'm here to help you explore how AI-native design can accelerate your product.\n\nWhat's the biggest challenge you're facing right now?"
 
     case 'about':
-      return "Learning about PixelMojo? I'm here to answer any questions about our process, team, or approach!"
+      return 'Hi there! 👋 Learning about how we work?\n\nWhat made you curious about PixelMojo?'
 
     case 'services':
       if (serviceName) {
-        return `Interested in ${serviceName}? Tell me about your project and I can help you find the right solution!`
+        return `Hey! 👋 Interested in ${serviceName}?\n\nWhat problem are you trying to solve with this?`
       }
-      return 'Interested in our services? Tell me about your project and I can help!'
+      return 'Hey! 👋 Exploring our services?\n\nWhat problem are you trying to solve with this?'
 
     case 'portfolio':
       if (projectName) {
-        return `Checking out ${projectName}? Like what you see? Want to discuss something similar for your brand?`
+        return `Hey! 👋 Checking out ${projectName}?\n\nWhich aspect of this project caught your eye?`
       }
-      return "I see you're exploring our work! Like what you see? Want to create something similar?"
+      return "Hey! 👋 Checking out our work?\n\nWhich project caught your eye, or is there a specific industry/type you're interested in?"
 
     case 'blog':
       if (blogTopic) {
-        return `Enjoying the article on ${blogTopic}? Have questions about how this applies to your project?`
+        return `Hi! 👋 Enjoying the article?\n\nAnything about ${blogTopic} you'd like to explore further?`
       }
-      return "Enjoying the article? Have questions about what you're reading?"
+      return "Hi! 👋 Enjoying the article?\n\nAnything you'd like to explore further?"
 
     case 'pricing':
-      return 'Questions about our pricing? I can help you find the right package for your budget and timeline!'
+      return 'Hi! 👋 Exploring pricing options?\n\nWhat type of project are you planning - MVP, branding, growth system, or something else?'
 
     case 'contact':
-      return "Hi! I'm here to help you get started. What kind of project do you have in mind?"
+      return "Hey! 👋 Ready to chat about your project?\n\nWhat's driving this conversation right now - is it an upcoming launch, competitor pressure, or something else?"
 
     default:
-      return 'Hi! 👋 How can I help you today?'
+      return 'Welcome to PixelMojo! 👋\n\nWhat brings you here today?'
   }
 }
 
