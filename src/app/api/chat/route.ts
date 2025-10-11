@@ -47,9 +47,9 @@ CONVERSATION GUIDELINES:
 
 IMPORTANT: When you collect information like email, name, budget, timeline, or project type, ALWAYS call the save_lead_info function immediately to save it.
 
-===== NEGOTIATION FRAMEWORK (Never Split the Difference) =====
+===== NEGOTIATION FRAMEWORK (Never Split the Difference + Engagement Intelligence) =====
 
-Use Chris Voss's tactical negotiation principles to build trust and uncover true needs:
+Use Chris Voss's tactical negotiation principles combined with engagement-based pattern detection:
 
 1. **TACTICAL EMPATHY** - Label their concerns BEFORE they voice them:
    - "You're probably wondering if we can deliver on time..."
@@ -86,7 +86,105 @@ Use Chris Voss's tactical negotiation principles to build trust and uncover true
    - Get them to say "That's right!" (not just "you're right")
    - Example: "So it sounds like you need to validate product-market fit before spending 6 months building, and you're looking for a partner who can move fast without sacrificing quality. That's right?"
 
-NEGOTIATION RESPONSE PATTERNS:
+===== ENGAGEMENT-BASED NEGOTIATION PATTERNS =====
+
+**PATTERN 1: HIGH ENGAGEMENT (40+) + NO BUDGET YET**
+Use ANCHORING with a range to make them comfortable revealing their budget:
+
+❌ DON'T: "What's your budget?"
+✅ DO: "To point you in the right direction, most clients like you invest between $15K-$50K depending on scope. Does that ballpark work for you, or are you thinking differently?"
+
+**Why this works:**
+- Anchors their expectation to your range
+- "Like you" = social proof + empathy
+- "Thinking differently" = opens door without pressure
+- They'll either confirm or reveal actual budget
+
+**PATTERN 2: BUDGET MENTIONED BUT VAGUE ("open to budget", "flexible")**
+Use BRACKETING to extract the real number:
+
+❌ DON'T: "Great! Let's move forward"
+✅ DO: "When you say 'open to budget,' help me understand - are we talking $10K range, $30K range, or $50K+ range? Just so I can make sure we're aligned on what's possible."
+
+**Why this works:**
+- Gives them 3 clear options to choose from
+- Middle option ($30K) becomes the natural anchor
+- Forces them to pick a bracket or reveal exact number
+- "What's possible" = value framing, not pressure
+
+**PATTERN 3: TIMELINE URGENCY DETECTED ("ASAP", "urgent", "need support")**
+Use URGENCY AMPLIFICATION to justify higher investment:
+
+❌ DON'T: "We can rush it for extra cost"
+✅ DO: "I hear the urgency. When you need to move this fast, we typically recommend our [higher tier] at [price] because it includes priority delivery and dedicated resources. Given your timeline, what would delaying this cost your business?"
+
+**Why this works:**
+- Labels their urgency (empathy)
+- Justifies higher price with logic (priority = premium)
+- Flips to LOSS AVERSION ("cost of delay")
+- Makes premium feel like smart investment, not expense
+
+**PATTERN 4: POSITIVE ENGAGEMENT ("yes", "sounds good", "interested")**
+Use MOMENTUM BUILD to capture commitment:
+
+❌ DON'T: "Great! Here's the contract"
+✅ DO: "Love the energy! Before we dive deeper, I want to make sure we're aligned on a few things. First, what's driving this project right now - is it revenue growth, competitor pressure, or something else?"
+
+**Why this works:**
+- Validates their enthusiasm (empathy)
+- "Before we dive deeper" = assumes forward motion
+- Calibrated question extracts pain point
+- Pain point → stronger case for investment
+
+**PATTERN 5: MULTIPLE SERVICES MENTIONED**
+Use VALUE STACKING to justify bundling:
+
+❌ DON'T: "That'll be $X + $Y + $Z = total"
+✅ DO: "You mentioned [website + branding + app]. Smart move - clients who do this together see 2-3x better results because everything's cohesive. That puts you around $[total range]. Most clients in your position go with $[middle-high end] to get the full impact. Does that align with where you're thinking?"
+
+**Why this works:**
+- Validates their smart thinking (empathy)
+- Proves value with data ("2-3x better results")
+- Anchors high but shows range
+- "Where you're thinking" = partnership framing
+
+**PATTERN 6: PRICE SHOCK / HESITATION DETECTED**
+Use REFRAME to shift from cost to ROI:
+
+❌ DON'T: "I can give you a discount"
+✅ DO: "I get it - it's an investment. Let me ask you this: if this [website/product/brand] brought you just 2 new clients worth $10K each in the next 90 days, would $[price] feel different? What's your current customer lifetime value?"
+
+**Why this works:**
+- Empathy ("I get it")
+- Reframes from cost to ROI
+- "Just 2 clients" = low bar to justify
+- Asking LTV = makes them calculate value, not cost
+
+**PATTERN 7: COMPARISON TO CHEAPER OPTIONS**
+Use CONTRAST to highlight value gap:
+
+❌ DON'T: "We're worth more than freelancers"
+✅ DO: "Fair question. Here's the difference: freelancers charge $5K-10K but take 4-6 months, need lots of management, and often don't deliver production-ready work. We're $[price] but deliver in 8 weeks with 60% fewer revisions because we're AI-native. What's more expensive - $10K over 6 months with delays, or $[price] done right in 8 weeks?"
+
+**Why this works:**
+- Validates their concern (empathy)
+- Contrast principle (cheap = slow/risky)
+- Reframes to TOTAL COST (time + revisions + risk)
+- Ends with calibrated question, not defensive statement
+
+**PATTERN 8: EXTRACTING URGENCY FROM ENGAGED LEADS**
+Use WHAT/WHY LADDERING to uncover real deadline:
+
+❌ DON'T: "When do you need this done?"
+✅ DO: "What's driving your timeline on this? [They answer] → And what happens if you don't hit that date? [They answer] → So if I'm hearing you right, [summarize the stakes]... that's right?"
+
+**Why this works:**
+- Calibrated questions ladder to root cause
+- Uncovers real pain (funding, competitor, launch)
+- Stronger pain = stronger urgency = faster close
+- "That's right" = commitment and alignment
+
+NEGOTIATION RESPONSE PATTERNS (Updated with Engagement Intelligence):
 
 **Budget Objection:**
 ❌ DON'T: "We can discount that for you"
@@ -441,7 +539,7 @@ Option 3 (Contact Form):
 const LEAD_CAPTURE_FUNCTION = {
   name: 'save_lead_info',
   description:
-    'Save lead information when the user provides their email, name, budget, timeline, or project details. Call this function as soon as you collect any of this information.',
+    'Save lead information when the user provides their email, name, budget, timeline, or project details. Call this function as soon as you collect any of this information. IMPORTANT: Always extract urgency signals and budget amounts into the notes field.',
   parameters: {
     type: 'object',
     properties: {
@@ -464,7 +562,7 @@ const LEAD_CAPTURE_FUNCTION = {
       project_type: {
         type: 'string',
         description:
-          'Type of project: web design, branding, ui/ux, ecommerce, mobile app, etc.',
+          'Type of project: web design, branding, ui/ux, ecommerce, mobile app, etc. If multiple services mentioned, list them all comma-separated.',
       },
       industry: {
         type: 'string',
@@ -473,17 +571,17 @@ const LEAD_CAPTURE_FUNCTION = {
       budget_range: {
         type: 'string',
         description:
-          'Budget range: Under $5k, $5k-$15k, $15k-$50k, $50k+, Not sure',
+          'Budget range based on user\'s stated budget. Map numeric amounts intelligently: Under $5k, $5k-$15k, $15k-$50k, $50k+, Not sure. EXAMPLES: "$30,000" or "$30000" → $15k-$50k, "open to budget" with context of $30K pricing → $15k-$50k, "$50,000+" → $50k+',
       },
       timeline: {
         type: 'string',
         description:
-          'Project timeline: ASAP, 1-3 months, 3-6 months, 6+ months, Just exploring',
+          'Project timeline: ASAP, 1-3 months, 3-6 months, 6+ months, Just exploring. DETECT URGENCY: "need support", "urgent", "yes pls", "ready to start" → ASAP',
       },
       notes: {
         type: 'string',
         description:
-          'Any additional project details, requirements, or context mentioned',
+          'Any additional project details, requirements, or context mentioned. CRITICAL: Include exact budget amounts mentioned (e.g., "$30,000"), urgency phrases ("yes pls", "need support", "urgent", "open to budget"), alignment signals ("sounds good", "let\'s go"), and full context of what they need.',
       },
     },
     required: [],
@@ -494,6 +592,137 @@ const LEAD_CAPTURE_FUNCTION = {
 const MAX_MESSAGES_PER_SESSION = 30
 const MAX_MESSAGES_PER_MINUTE = 10 // Allows natural conversation (1 message every 6 seconds)
 const RATE_LIMIT_WINDOW_MS = 60 * 1000 // 1 minute
+
+/**
+ * Analyze conversation patterns to detect serious clients and guide them
+ * Returns engagement signals and strategic guidance for the AI
+ */
+function analyzeConversationPatterns(
+  messages: Array<{ role: string; content: string }>,
+  leadData?: {
+    email?: string
+    budget_range?: string
+    timeline?: string
+    project_type?: string
+  }
+): {
+  engagementScore: number
+  seriousnessSignals: string[]
+  missingCriticalInfo: string[]
+  strategicGuidance: string
+} {
+  let engagementScore = 0
+  const seriousnessSignals: string[] = []
+  const missingCriticalInfo: string[] = []
+
+  // Count user messages (more messages = more engaged)
+  const userMessages = messages.filter(m => m.role === 'user')
+  const messageCount = userMessages.length
+  engagementScore += Math.min(messageCount * 5, 25) // Max 25 points
+
+  // Analyze message content for high-intent signals
+  const conversationText = userMessages
+    .map(m => m.content)
+    .join(' ')
+    .toLowerCase()
+
+  // High-intent keywords detection
+  const highIntentSignals = [
+    {
+      pattern: /\b(need|want|looking for|require)\b/gi,
+      signal: 'Active need stated',
+      points: 10,
+    },
+    {
+      pattern: /\b(how much|cost|price|pricing|budget)\b/gi,
+      signal: 'Budget awareness',
+      points: 15,
+    },
+    {
+      pattern: /\b(when|timeline|deadline|asap|urgent|soon)\b/gi,
+      signal: 'Timeline concern',
+      points: 15,
+    },
+    {
+      pattern: /\b(website|app|mobile|branding|design|development)\b/gi,
+      signal: 'Specific service interest',
+      points: 10,
+    },
+    {
+      pattern: /\b(can you|do you|are you able)\b/gi,
+      signal: 'Solution validation',
+      points: 10,
+    },
+    {
+      pattern: /\b(yes|sure|okay|sounds good|interested)\b/gi,
+      signal: 'Positive engagement',
+      points: 5,
+    },
+    { pattern: /\$\s*[0-9,]+/g, signal: 'Budget amount mentioned', points: 20 },
+    {
+      pattern: /\b(call|meeting|schedule|book|calendly)\b/gi,
+      signal: 'Meeting interest',
+      points: 20,
+    },
+  ]
+
+  highIntentSignals.forEach(({ pattern, signal, points }) => {
+    if (pattern.test(conversationText)) {
+      seriousnessSignals.push(signal)
+      engagementScore += points
+    }
+  })
+
+  // Check for missing critical information
+  if (!leadData?.email) missingCriticalInfo.push('email')
+  if (!leadData?.budget_range) missingCriticalInfo.push('budget')
+  if (!leadData?.timeline) missingCriticalInfo.push('timeline')
+  if (!leadData?.project_type) missingCriticalInfo.push('project_type')
+
+  // Generate strategic guidance based on patterns
+  let strategicGuidance = ''
+
+  // High engagement but missing budget → extract budget
+  if (engagementScore >= 40 && missingCriticalInfo.includes('budget')) {
+    strategicGuidance =
+      'HIGH_PRIORITY: This client is highly engaged but budget is unknown. After your next helpful response, naturally transition to: "To give you the most accurate recommendation, what budget range are you working with? (Ballpark is fine - just helps me point you in the right direction)"'
+  }
+  // Has budget but missing timeline → extract urgency
+  else if (
+    engagementScore >= 30 &&
+    !missingCriticalInfo.includes('budget') &&
+    missingCriticalInfo.includes('timeline')
+  ) {
+    strategicGuidance =
+      'HIGH_PRIORITY: Budget is known, now extract timeline. Ask: "What\'s driving your timeline? Are you looking to launch ASAP, or is this more of a 3-6 month planning horizon?"'
+  }
+  // Has timeline but missing budget → extract budget
+  else if (
+    engagementScore >= 30 &&
+    missingCriticalInfo.includes('budget') &&
+    !missingCriticalInfo.includes('timeline')
+  ) {
+    strategicGuidance =
+      'HIGH_PRIORITY: Timeline is urgent but budget unknown. Frame it: "Given your timeline, I want to make sure we\'re aligned on investment. Most clients in your situation invest between $15K-$50K. Does that range work for you?"'
+  }
+  // Multiple messages but missing email → get email
+  else if (messageCount >= 3 && missingCriticalInfo.includes('email')) {
+    strategicGuidance =
+      'MEDIUM_PRIORITY: Engaged conversation but no email. Offer value exchange: "I\'d love to send you our portfolio and case studies. What\'s your email?"'
+  }
+  // Low engagement, keep building interest
+  else if (engagementScore < 30 && messageCount <= 2) {
+    strategicGuidance =
+      'BUILD_INTEREST: Early stage conversation. Focus on understanding their pain points and demonstrating expertise before asking for information.'
+  }
+
+  return {
+    engagementScore: Math.min(engagementScore, 100),
+    seriousnessSignals,
+    missingCriticalInfo,
+    strategicGuidance,
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -572,9 +801,60 @@ export async function POST(req: NextRequest) {
       console.error('[API /chat] Error saving user message:', userMsgError)
     }
 
+    // Get existing lead data to analyze conversation patterns
+    const { data: existingLead } = await supabase
+      .from('leads')
+      .select('email, budget_range, timeline, project_type')
+      .eq('session_id', sessionId)
+      .single()
+
+    // Analyze conversation patterns for strategic guidance
+    const conversationAnalysis = analyzeConversationPatterns(
+      [...messages, { role: 'user', content: message }],
+      existingLead || undefined
+    )
+
+    console.log('[Chat API] Conversation Analysis:', {
+      engagementScore: conversationAnalysis.engagementScore,
+      seriousnessSignals: conversationAnalysis.seriousnessSignals,
+      missingInfo: conversationAnalysis.missingCriticalInfo,
+      guidance: conversationAnalysis.strategicGuidance,
+    })
+
+    // Build enhanced system prompt with strategic guidance
+    let enhancedSystemPrompt = buildSystemPrompt(chatContext)
+
+    if (conversationAnalysis.strategicGuidance) {
+      enhancedSystemPrompt += `
+
+===== CONVERSATION INTELLIGENCE ANALYSIS =====
+
+🎯 ENGAGEMENT SCORE: ${conversationAnalysis.engagementScore}/100
+${
+  conversationAnalysis.seriousnessSignals.length > 0
+    ? `
+✅ DETECTED SIGNALS:
+${conversationAnalysis.seriousnessSignals.map(s => `   • ${s}`).join('\n')}
+`
+    : ''
+}
+${
+  conversationAnalysis.missingCriticalInfo.length > 0
+    ? `
+❌ MISSING CRITICAL INFO: ${conversationAnalysis.missingCriticalInfo.join(', ')}
+`
+    : ''
+}
+
+📋 STRATEGIC GUIDANCE:
+${conversationAnalysis.strategicGuidance}
+
+IMPORTANT: Follow the strategic guidance above. If marked HIGH_PRIORITY, you MUST ask the suggested question in this response. Be natural and consultative - weave it into your helpful response.`
+    }
+
     // Prepare conversation history for OpenAI with page context
     const conversationHistory = [
-      { role: 'system' as const, content: buildSystemPrompt(chatContext) },
+      { role: 'system' as const, content: enhancedSystemPrompt },
       ...messages.map((msg: { role: string; content: string }) => ({
         role: msg.role as 'user' | 'assistant',
         content: msg.content,
@@ -587,7 +867,10 @@ export async function POST(req: NextRequest) {
       model: 'gpt-4o-mini',
       messages: conversationHistory,
       temperature: 0.7,
-      max_tokens: 500,
+      max_tokens: 800, // Increased from 500 to prevent truncation of negotiation patterns
+      top_p: 0.9, // Nucleus sampling for better variety
+      presence_penalty: 0.3, // Reduces repetition across conversation
+      frequency_penalty: 0.2, // Reduces overuse of specific phrases
       tools: [
         {
           type: 'function',
@@ -736,7 +1019,10 @@ export async function POST(req: NextRequest) {
           ...toolResponses,
         ],
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 800, // Increased from 500 to prevent truncation
+        top_p: 0.9,
+        presence_penalty: 0.3,
+        frequency_penalty: 0.2,
       })
 
       const aiResponse =
@@ -796,14 +1082,16 @@ export async function POST(req: NextRequest) {
 /**
  * Calculate lead qualification score (0-100)
  *
- * Scoring breakdown:
+ * Enhanced scoring with urgency and budget alignment detection:
  * - Email: 20 points (required for any lead)
  * - Name: 10 points
- * - Budget: 30 points (weighted by range)
- * - Timeline: 20 points (weighted by urgency)
+ * - Budget: 35 points max (weighted by range + alignment detection)
+ * - Timeline: 25 points max (weighted by urgency + signal detection)
  * - Project type: 10 points
  * - Company: 5 points
  * - Phone: 5 points
+ * - Urgency signals: +10 bonus points
+ * - Budget alignment signals: +10 bonus points
  *
  * Qualification levels:
  * - 0-59: Low quality (no notification)
@@ -828,25 +1116,25 @@ function calculateQualificationScore(leadData: {
   // Name (10 points)
   if (leadData.name) score += 10
 
-  // Budget (30 points max) - Weighted by value
+  // Budget (35 points max) - Enhanced with numeric detection
   if (leadData.budget_range) {
     const budgetScores: Record<string, number> = {
       'Under $5k': 5,
       '$5k-$15k': 15,
       '$15k-$50k': 25,
-      '$50k+': 30,
+      '$50k+': 35,
       'Not sure': 0,
     }
     score += budgetScores[leadData.budget_range] || 0
   }
 
-  // Timeline (20 points max) - Weighted by urgency
+  // Timeline (25 points max) - Enhanced urgency detection
   if (leadData.timeline) {
     const timelineScores: Record<string, number> = {
-      ASAP: 20,
-      '1-3 months': 15,
-      '3-6 months': 10,
-      '6+ months': 5,
+      ASAP: 25,
+      '1-3 months': 18,
+      '3-6 months': 12,
+      '6+ months': 6,
       'Just exploring': 0,
     }
     score += timelineScores[leadData.timeline] || 0
@@ -860,6 +1148,39 @@ function calculateQualificationScore(leadData: {
 
   // Phone (5 points) - Shows high intent
   if (leadData.phone) score += 5
+
+  // BONUS: Detect urgency signals in notes (+10 points)
+  if (leadData.notes) {
+    const urgencySignals = [
+      /\b(urgent|asap|immediately|right away|need\s+support|need\s+help)\b/i,
+      /\b(this\s+week|next\s+week|soon|quickly|fast)\b/i,
+      /\b(yes\s+pls|yes\s+please|let'?s\s+go|ready\s+to\s+start)\b/i,
+    ]
+    const hasUrgency = urgencySignals.some(pattern =>
+      pattern.test(leadData.notes!)
+    )
+    if (hasUrgency) {
+      score += 10
+    }
+  }
+
+  // BONUS: Detect budget alignment signals (+10 points)
+  if (leadData.notes || leadData.budget_range) {
+    const fullText = `${leadData.notes || ''} ${leadData.budget_range || ''}`
+    const budgetAlignmentSignals = [
+      /\b(open\s+to\s+budget|flexible\s+on\s+budget|budget\s+is\s+flexible)\b/i,
+      /\b(aligned\s+to.*pricing|aligned\s+with.*pricing)\b/i,
+      /\$\s*([1-9]\d{3,})/i, // Numeric budget like $5000, $10000, $30000
+      /\b([1-9]\d{1,2}[,\s]*\d{3})\b/, // Numbers like 30,000 or 30000
+      /\b(that'?s\s+fine|sounds\s+good|no\s+problem|works\s+for\s+me)\b/i,
+    ]
+    const hasBudgetAlignment = budgetAlignmentSignals.some(pattern =>
+      pattern.test(fullText)
+    )
+    if (hasBudgetAlignment) {
+      score += 10
+    }
+  }
 
   return Math.min(score, 100) // Cap at 100
 }
